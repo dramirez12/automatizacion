@@ -16,8 +16,8 @@ require_once ('../clases/Conexion.php');
             
 
             $sql=$mysqli->prepare("SELECT p.nombres,p.apellidos
-                                   FROM tbl_usuarios u, tbl_personas p
-                                   WHERE u.id_persona = p.id_persona  AND u.Usuario =?");
+                                   FROM  tbl_personas_extendidas u, tbl_personas p
+                                   WHERE u.id_persona = p.id_persona  AND u.valor =?");
             $sql->bind_param("i",$ncuenta);
             $sql->execute();
             $resultado = $sql->get_result();
