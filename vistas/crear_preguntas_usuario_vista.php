@@ -93,7 +93,8 @@ if (isset($_REQUEST['msj']))
            style="opacity: .8">
         </div>
 
-      <p class="login-box-msg">Ingreso de Preguntas de Seguridad</p>
+      <p class="login-box-msg">Se ingresarán 3 Preguntas de Seguridad </p>
+      
 
 <form action="../Controlador/guardar_pregunta_usuario_controlador.php?estatus_pregunta=<?php if (isset($estatus_nuevo_pregunta_usuario)){
   echo ($estatus_nuevo_pregunta_usuario); 
