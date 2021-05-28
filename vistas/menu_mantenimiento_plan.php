@@ -4,33 +4,33 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
 
 
-if (permiso_ver('56') == '1') {
+if (permiso_ver('99') == '1') {
 
-    $_SESSION['mantenimiento_crear_periodo_plan'] = "...";
+    $_SESSION['mantenimiento_crear_periodo_plan_vista'] = "...";
   } else {
-    $_SESSION['mantenimiento_crear_periodo_plan'] = "No 
+    $_SESSION['mantenimiento_crear_periodo_plan_vista'] = "No 
     tiene permisos para visualizar";
   }
-if (permiso_ver('56') == '1') {
+if (permiso_ver('100') == '1') {
 
-  $_SESSION['mantenimiento_periodo_plan'] = "...";
+  $_SESSION['mantenimiento_periodo_plan_vista'] = "...";
 } else {
-  $_SESSION['mantenimiento_periodo_plan'] = "No 
+  $_SESSION['mantenimiento_periodo_plan_vista'] = "No 
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('56') == '1') {
+if (permiso_ver('101') == '1') {
 
-    $_SESSION['mantenimiento_crear_tipo_plan'] = "...";
+    $_SESSION['mantenimiento_crear_tipo_plan_vista'] = "...";
   } else {
-    $_SESSION['mantenimiento_crear_tipo_plan'] = "No 
+    $_SESSION['mantenimiento_crear_tipo_plan_vista'] = "No 
     tiene permisos para visualizar";
   }
-if (permiso_ver('57') == '1') {
+if (permiso_ver('102') == '1') {
 
-  $_SESSION['mantenimiento_tipo_plan'] = "...";
+  $_SESSION['mantenimiento_tipo_plan_vista'] = "...";
 } else {
-  $_SESSION['mantenimiento_tipo_plan'] = "No 
+  $_SESSION['mantenimiento_tipo_plan_vista'] = "No 
   tiene permisos para visualizar";
 }
 

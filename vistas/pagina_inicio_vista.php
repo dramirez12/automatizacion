@@ -398,7 +398,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <p> Mantenimientos Carga </p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:<?php echo $_SESSION['mantemiento_carga_academica'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_plan'] ?>">
                   <a href="../vistas/menu_mantenimiento_plan.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Plan de Estudios</p>
