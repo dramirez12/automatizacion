@@ -261,6 +261,13 @@ if (session_status() === PHP_SESSION_NONE) {
                     <p> Carga Académica </p>
                   </a>
                 </li>
+                <!-- PLAN DE ESTUDIO -->
+                <li class="nav-item" style="display:<?php echo $_SESSION['plan_estudio_vista'] ?>">
+                  <a href="../vistas/menu_plan_estudio_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Plan de Estudio </p>
+                  </a>
+                </li>
               </ul>
             </li>
 

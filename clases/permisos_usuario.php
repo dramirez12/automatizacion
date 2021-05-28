@@ -53,6 +53,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['docentes_vista'] = 'none';
    $_SESSION['mantemiento_carga_academica']='none';
    $_SESSION['mantemiento_carga_academica1'] = 'none';
+   $_SESSION['plan_estudio_vista'] = 'none';
    
 
 
