@@ -1,9 +1,9 @@
 <?php
-    require_once ('../Modelos/tabla_carga_modelo.php');
+    require_once ('../Modelos/plan_estudio_modelo.php');
 
-    $MU = new modeloCarga();
+    $MU = new modelo_plan();
     
-    $consulta = $MU->listar_carga();
+    $consulta = $MU->listar_planes_estudio();
     if($consulta){
         echo json_encode($consulta);
 
@@ -15,5 +15,3 @@
 		    "aaData": []
 		}';
     }
-   
-    ?>
