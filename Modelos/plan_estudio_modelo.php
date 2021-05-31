@@ -47,7 +47,7 @@ class modelo_plan{
     function listar_planes_estudio()
     {
         global $instancia_conexion;
-        $sql = "call sel_gestion_ca()";
+        $sql = "call sel_gestion_plan_estudio()";
         $arreglo = array();
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             while ($consulta_VU = mysqli_fetch_assoc($consulta)) {

@@ -217,8 +217,8 @@ window.onload = function () {
 
 //DE AQUI COMIENZA LA GESTION DE PLAN
 var table;
-function TablaCarga() {
-  table = $("#tabla_carga").DataTable({
+function TablaPlanEstudio() {
+  table = $("#tabla_plan_estudio").DataTable({
     paging: true,
     lengthChange: true,
     ordering: true,
@@ -237,23 +237,22 @@ function TablaCarga() {
     async: false,
     processing: true,
     ajax: {
-      url: "../Controlador/tabla_carga_controlador.php",
+      url: "../Controlador/tabla_plan_estudio_controlador.php",
       type: "POST",
     },
-   
+
     columns: [
       {
         defaultContent:
           // "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit'></i></button><button style='font-size:10px;' type='button' class='eliminar btn btn-primary'><i class='fas fa-trash-alt'></i></button>",
 
-          "<div class='text-center'><div class='btn-group'><button class='editar btn btn-primary btn-m '><i class='fas fa-edit'></i></button> <button id='borrar' class='borrar btn btn-danger btn-m '><i class='fas fa-trash-alt'></i></button></div></div>",
+          "<button style='font-size:13px;' type='button' class='editar btn btn-primary'></i><i class='fas fa-edit'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check-circle'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-danger'><i class='fa fa-check-circle'></i></button>",
       },
-      { data: "nombre" },
+      { data: "nombre_plan" },
       { data: "num_clases" },
       { data: "codigo_plan" },
+      { data: "nombre_tipo_plan" },
       { data: "plan_vigente" },
-      { data: "asignatura" },
-      
     ],
 
     language: idioma_espanol,

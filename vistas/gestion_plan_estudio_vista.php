@@ -132,7 +132,6 @@ ob_end_flush();
                                                                 <th>Código de plan</th>
                                                                 <th>Tipo de plan</th>
                                                                 <th>Plan Vigente</th>
-
                                                             </tr>
                                                         </thead>
 
@@ -166,9 +165,10 @@ ob_end_flush();
 
     </form>
 
+
     <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="../js/plan_estudio.js"></script>
-    
+
     <script>
         var idioma_espanol = {
             select: {
@@ -198,6 +198,12 @@ ob_end_flush();
             }
 
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            TablaPlanEstudio();
+
+        });
     </script>
 
 </body>
