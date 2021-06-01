@@ -1,11 +1,14 @@
 <?php
+
 require_once('../clases/conexion_mantenimientos.php');
+
 
 
 $instancia_conexion = new conexion();
 
 class modelo_plan{
 
+ 
 
     function tipo_plan_sel()
     {
@@ -29,17 +32,17 @@ class modelo_plan{
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql4);
     }
 
-    function crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan)
+    function crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan, $creado_por)
     {
 
         global $instancia_conexion;
 
-        $sql = "call proc_insertar_plan_estudio('$nombre','$num_clases','$fecha_creacion','$codigo_plan','$plan_vigente','$id_tipo_plan')";
+        $sql = "call proc_insertar_plan_estudio('$nombre','$num_clases','$fecha_creacion','$codigo_plan','$plan_vigente','$id_tipo_plan','$creado_por')";
 
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             return 1;
-           // $Id_objeto = 96;
-
+             $Id_objeto = 96;
+            bitacora::evento_bitacora($Id_objeto, '1', 'INSERTO', 'UN NUEVO PLAN DE ESTUDIO');
         } else {
             return 0;
         }

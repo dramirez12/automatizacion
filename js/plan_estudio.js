@@ -26,7 +26,7 @@ function crear_plan_estudio() {
   var txt_codigo_plan = $("#txt_codigo_plan").val();
   var cbm_tipo_plan = $("#cbm_tipo_plan").children("option:selected").val();
   var fecha = $("#fechacreacion").val();
- 
+   var nombre_usuario = $("#id_sesion").val();
     
   var checkbox = document.getElementsByName('check[]');
   var contador = 0;
@@ -108,7 +108,8 @@ function crear_plan_estudio() {
                   fecha_creacion: fecha,
                   codigo_plan: txt_codigo_plan,
                   plan_vigente: opcion_check,
-                  id_tipo_plan: cbm_tipo_plan
+                  id_tipo_plan: cbm_tipo_plan,
+                  creado_por: nombre_usuario
                  
                 },
               }).done(function (resp) {
@@ -214,48 +215,3 @@ window.onload = function () {
   if (mes < 10) mes = "0" + mes; //agrega cero si el menor de 10
   document.getElementById("fechacreacion").value = ano + "-" + mes + "-" + dia;
 };
-
-//DE AQUI COMIENZA LA GESTION DE PLAN
-var table;
-function TablaPlanEstudio() {
-  table = $("#tabla_plan_estudio").DataTable({
-    paging: true,
-    lengthChange: true,
-    ordering: true,
-    info: true,
-    autoWidth: true,
-    responsive: true,
-    // LengthChange: false,
-    searching: { regex: true },
-    lengthMenu: [
-      [10, 25, 50, 100, -1],
-      [10, 25, 50, 100, "All"],
-    ],
-    sortable: false,
-    pageLength: 15,
-    destroy: true,
-    async: false,
-    processing: true,
-    ajax: {
-      url: "../Controlador/tabla_plan_estudio_controlador.php",
-      type: "POST",
-    },
-
-    columns: [
-      {
-        defaultContent:
-          // "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit'></i></button><button style='font-size:10px;' type='button' class='eliminar btn btn-primary'><i class='fas fa-trash-alt'></i></button>",
-
-          "<button style='font-size:13px;' type='button' class='editar btn btn-primary'></i><i class='fas fa-edit'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check-circle'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-danger'><i class='fa fa-check-circle'></i></button>",
-      },
-      { data: "nombre_plan" },
-      { data: "num_clases" },
-      { data: "codigo_plan" },
-      { data: "nombre_tipo_plan" },
-      { data: "plan_vigente" },
-    ],
-
-    language: idioma_espanol,
-    select: true,
-  });
-}

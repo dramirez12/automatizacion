@@ -45,6 +45,7 @@ if ($visualizacion == 0) {
     // }
 }
 
+$nombre = $_SESSION['usuario'];
 ob_end_flush();
 
 
@@ -99,6 +100,7 @@ ob_end_flush();
 
         <section>
 
+            <input type="text" id="id_sesion" name="id_sesion" value="<?php echo $nombre; ?>" hidden readonly>
 
 
             <!-- Main content -->
@@ -214,7 +216,7 @@ ob_end_flush();
 
                                         <label>Fecha de Creación</label>
 
-                                        <input class="form-control" type="date" id="fechacreacion" name="fechacreacion" value="" required  >
+                                        <input class="form-control" type="date" id="fechacreacion" name="fechacreacion" value="" required>
 
 
                                     </div>

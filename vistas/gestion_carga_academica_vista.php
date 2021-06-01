@@ -86,7 +86,7 @@ ob_end_flush();
 
 </head>
 
-<body">
+<body>
     <div class="content-wrapper">
 
 
