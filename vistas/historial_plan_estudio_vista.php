@@ -60,9 +60,10 @@ ob_end_flush();
 
 
 </head>
+<!-- shif alt f -->
 
 <body>
-    <form action="" method="POST" id="Formulario" class="FormularioAjax" name="miFormulario" autocomplete="off" role="form" enctype="multipart/form-data">
+    <div class="card card-default">
 
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -81,7 +82,7 @@ ob_end_flush();
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu plan de estudio</a></li>
-                                <li class="breadcrumb-item">Historial de plan de estudio</a></li>
+                                <li class="breadcrumb-item">Historial de Plan de Estudio</a></li>
 
                             </ol>
                         </div>
@@ -97,13 +98,64 @@ ob_end_flush();
 
 
                 <!-- Main content -->
-                <section class="content">
+                <section class="content-header">
                     <div class="container-fluid">
                         <!-- pantalla  -->
 
                         <div class="card card-default">
                             <div class="card-header">
-                                <h3 class="card-title">Datos Generales </h3>
+                                <h3 class="card-title">Datos Generales de Plan de Estudios</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div class="card-body" style="display: block;">
+                                <input type="text" class="form-control" id="nombre_busca" name="anno_busca" readonly hidden>
+                                <input type="text" class="form-control" id="codigo_busca" name="num_per_busca" readonly hidden>
+
+                                <div class="row">
+                                    <div class="table-responsive" style="width: auto;">
+                                        <table id="tabla_historial_plan" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Nombre</th>
+                                                    <th>Codigo</th>
+                                                    <th>Numero de Clases</th>
+                                                    <th>Vigente</th>
+                                                    <th>Acción</th>
+
+                                                </tr>
+                                            </thead>
+                                        </table>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+                <!-- Main content -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <!-- pantalla  -->
+
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">Plan de Estudios Vigente</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -116,6 +168,34 @@ ob_end_flush();
                             <div class="card-body" style="display: block;">
                                 <div class="row">
 
+                                    <div class=" px-12">
+                                        <form method="post" action="../Controlador/reporte_carga_gestion_controlador.php">
+                                            <button disabled class="btn btn-success " id="pdf"> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;">Exportar a PDF</a> </button>
+                                            <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="row">
+                                    <div class="table-responsive" style="width: auto;">
+                                        <table id="tabla_historial_plan" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Nombre</th>
+                                                    <th>Codigo</th>
+                                                    <th>Numero de Clases</th>
+                                                    <th>Vigente</th>
+                                                    <th>Acción</th>
+
+                                                </tr>
+                                            </thead>
+                                        </table>
+
+                                    </div>
+
 
 
                                 </div>
@@ -123,16 +203,92 @@ ob_end_flush();
 
                         </div>
 
+
+                    </div>
+
+
+                </section>
+                <!-- Main content -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <!-- pantalla  -->
+
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">Plan de Estudios Seleccionado</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div class="card-body" style="display: block;">
+                                <div class="row">
+
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary " id="limpiar" onclick="limpiar()"><i class="fas fa-sync-alt"></i> <a style="font-weight: bold;">limpiar tabla</a></button>
+
+                                    </div>
+
+                                    <div class=" px-12">
+                                        <form method="post" action="../Controlador/reporte_carga_gestion_controlador.php">
+                                            <button disabled class="btn btn-success " id="pdf"> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;">Exportar a PDF</a> </button>
+                                            <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="row">
+                                    <div class="table-responsive" style="width: auto;">
+                                        <table id="tabla_historial_plan" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Nombre</th>
+                                                    <th>Codigo</th>
+                                                    <th>Numero de Clases</th>
+                                                    <th>Vigente</th>
+                                                    <th>Acción</th>
+
+                                                </tr>
+                                            </thead>
+                                        </table>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
 
 
                 </section>
             </section>
+
         </div>
 
 
 
-    </form>
+
+
+
+
+    </div>
+
+
+
+
+
 
 
 </body>

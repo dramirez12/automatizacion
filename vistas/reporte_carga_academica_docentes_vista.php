@@ -199,8 +199,8 @@ ob_end_flush();
       <h1 class="hidden-print"></h1>
 
       <!-- /.card-header -->
-      <input type="text" id="id_sesion" name="id_sesion" value="<?php echo $id; ?>" hidden>
-      <input type="text" id="id_persona" name="id_persona" value="<?php echo $id_persona; ?>" hidden>
+      <input type="text" id="id_sesion" name="id_sesion" value="<?php echo $id; ?>" hidden readonly>
+      <input type="text" id="id_persona" name="id_persona" value="<?php echo $id_persona; ?>" hidden readonly>
 
       <div class="card-body">
 
