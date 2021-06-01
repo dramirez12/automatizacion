@@ -24,7 +24,7 @@ if($visualizacion==0){
 }
 if (isset($_GET['alumno'])){
 
-    $sqltabla = json_decode( file_get_contents("http://34.203.186.135/Automatizacion/api/cancelar_clases.php?alumno=".$_GET['alumno']), true );
+    $sqltabla = json_decode( file_get_contents("http://informaticaunah.com/automatizacion/api/cancelar_clases.php?alumno=".$_GET['alumno']), true );
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A REVISION CANCELAR CLASES ALUMNO '.$sqltabla["ROWS"][0]['nombres'].'');
 }
 

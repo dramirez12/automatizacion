@@ -24,7 +24,7 @@ if($visualizacion==0){
 }
 if (isset($_GET['alumno'])){
 
-    $sqltabla = json_decode( file_get_contents("http://34.203.186.135/Automatizacion/api/carta_egresado.php?alumno=".$_GET['alumno']), true );
+    $sqltabla = json_decode( file_get_contents("http://informaticaunah.com/automatizacion/api/carta_egresado.php?alumno=".$_GET['alumno']), true );
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A REVISION CARTA DE EGRESADO ALUMNO '.$sqltabla["ROWS"][0]['nombres'].'');
 }
 
@@ -137,7 +137,7 @@ ob_end_flush();
                 <div class="col-md-12">
                       <div class="form-group">
                         
-                            <a class="badge-warning btn-sm text-center form-group" href="http://34.203.186.135/Automatizacion/PDF/constancia_egresado_coordinador.php?cuenta=<?php echo $sqltabla['ROWS'][0]['documento'] ?>" id="documento" name="documento" target="_blank">Imprimir Documento</a>
+                            <a class="badge-warning btn-sm text-center form-group" href="http://informaticaunah.com/automatizacion/pdf/constancia_egresado_coordinador.php?cuenta=<?php echo $sqltabla['ROWS'][0]['documento'] ?>" id="documento" name="documento" target="_blank">Imprimir Documento</a>
                         
                       </div>
                 </div>

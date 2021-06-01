@@ -24,10 +24,10 @@ if($visualizacion==0){
    </script>'; 
 }
 if(isset($_GET['tipo']) && $_GET['tipo']=="simultanea"){
-  $sqltabla = json_decode( file_get_contents("http://34.203.186.135/Automatizacion/api/carrera_simultanea.php?alumno=".$_GET['alumno']), true );
+  $sqltabla = json_decode( file_get_contents("http://informaticaunah.com/automatizacion/api/carrera_simultanea.php?alumno=".$_GET['alumno']), true );
   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A REVISION CAMBIO DE CARRERA '.$sqltabla["ROWS"][0]['nombres'].'');
 }else{
-  $sqltabla = json_decode( file_get_contents("http://34.203.186.135/Automatizacion/api/cambio_carrera.php?alumno=".$_GET['alumno']), true );
+  $sqltabla = json_decode( file_get_contents("http://informaticaunah.com/automatizacion/api/cambio_carrera.php?alumno=".$_GET['alumno']), true );
   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A REVISION CAMBIO DE CARRERA '.$sqltabla["ROWS"][0]['nombres'].'');
 }
 
