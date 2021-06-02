@@ -175,7 +175,7 @@ $Intento1=$_REQUEST['intentos'];
            style="opacity: .8">
         </div>
 
-      <p class="login-box-msg"> Iniciar Sesión</p>
+      <p class="login-box-msg"> Iniciar Sesión321</p>
 
 <form action="Controlador/existe_usuario_controlador.php" method="post">
         <div class="input-group mb-3">
