@@ -211,7 +211,7 @@ $Intento1=$_REQUEST['intentos'];
         <a href="vistas/recuperar_clave_vista.php">Olvidaste tu contraseña?</a>
       </p>
       <p class="mb-0">
-        <a href="vistas/auto_registro_estudiante_vista.php" class="text-center">Registrate</a>
+        <a href="vistas/auto_registro_estudiante_vista.php" class="text-center">Registrate!!</a>
       </p>
     </div>
     <!-- /.login-card-body -->
