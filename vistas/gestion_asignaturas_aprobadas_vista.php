@@ -119,7 +119,7 @@ if ($visualizacion==0)
 
 
    $counter = 0;
-   $sql_tabla_clases_aprobadas = json_decode( file_get_contents('http://localhost/automatizacion2/api/asignaturas_aprobadas_api.php'), true );
+   $sql_tabla_clases_aprobadas = json_decode( file_get_contents('http://localhost/automatizacion/api/asignaturas_aprobadas_api.php'), true );
 
   
 $sql_tabla__modal_clases_aprobadas="select * from tbl_asignaturas";
