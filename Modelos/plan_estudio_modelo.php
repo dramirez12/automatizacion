@@ -59,6 +59,30 @@ class modelo_plan{
             return $arreglo;
         }
     }
+    function historial_plan_estudio_datos()
+    {
+        global $instancia_conexion;
+        $sql = "call sel_historial_plan_estudio()";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
+    function buscar_historial_plan($nombre,$codigo)
+    {
+        global $instancia_conexion;
+        $sql = "call sel_busca_historial_plan('$nombre','$codigo')";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
 
 }
 ?>

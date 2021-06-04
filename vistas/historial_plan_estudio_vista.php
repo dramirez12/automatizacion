@@ -115,18 +115,21 @@ ob_end_flush();
                             </div>
 
                             <div class="card-body" style="display: block;">
-                                <input type="text" class="form-control" id="nombre_busca" name="anno_busca" readonly hidden>
-                                <input type="text" class="form-control" id="codigo_busca" name="num_per_busca" readonly hidden>
+                                <input type="text" class="form-control" id="nombre_busca" name="nombre_busca" readonly hidden>
+                                <input type="text" class="form-control" id="codigo_busca" name="codigo_busca" readonly hidden>
+                                <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
+
 
                                 <div class="row">
                                     <div class="table-responsive" style="width: auto;">
-                                        <table id="tabla_historial_plan" class="table table-bordered table-striped">
+                                        <table id="tabla1_historial_plan" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
 
                                                     <th>Nombre</th>
                                                     <th>Codigo</th>
                                                     <th>Numero de Clases</th>
+                                                    <th>Fecha Creacion</th>
                                                     <th>Vigente</th>
                                                     <th>Acción</th>
 
@@ -184,24 +187,28 @@ ob_end_flush();
                                             <thead>
                                                 <tr>
 
-                                                    <th>Nombre</th>
+                                                    <th>Periodo</th>
+                                                    <th>Asignatura</th>
                                                     <th>Codigo</th>
-                                                    <th>Numero de Clases</th>
-                                                    <th>Vigente</th>
-                                                    <th>Acción</th>
+                                                    <th>UV</th>
+                                                    <th>Equivalencia</th>
+                                                    <th>Requisitos</th>
 
                                                 </tr>
+                                               
                                             </thead>
                                         </table>
+                                     
 
                                     </div>
-
 
 
                                 </div>
                             </div>
 
+
                         </div>
+                     
 
 
                     </div>
@@ -245,15 +252,16 @@ ob_end_flush();
 
                                 <div class="row">
                                     <div class="table-responsive" style="width: auto;">
-                                        <table id="tabla_historial_plan" class="table table-bordered table-striped">
+                                        <table id="tabla3_historial_plan" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
 
-                                                    <th>Nombre</th>
+                                                    <th>Periodo</th>
+                                                    <th>Asignatura</th>
                                                     <th>Codigo</th>
-                                                    <th>Numero de Clases</th>
-                                                    <th>Vigente</th>
-                                                    <th>Acción</th>
+                                                    <th>UV</th>
+                                                    <th>Equivalencia</th>
+                                                    <th>Requisitos</th>
 
                                                 </tr>
                                             </thead>
@@ -296,3 +304,51 @@ ob_end_flush();
 
 
 </html>
+<script>
+    $(document).ready(function() {
+        Tabla1_historial_plan();
+
+
+    });
+</script>
+
+
+
+<script src="../js/historial_plan_estudio.js"></script>
+
+<script>
+    var idioma_espanol = {
+        select: {
+            rows: "%d fila seleccionada"
+        },
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "No se encuentra los datos",
+        "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+        "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "<b>No se encontraron datos</b>",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+</script>
+
+<!-- -->
+<!-- <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script> -->
