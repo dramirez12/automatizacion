@@ -14,7 +14,8 @@ $Id_objeto = 98;
 
 $visualizacion = permiso_ver($Id_objeto);
 
-
+$nombre = $_SESSION['usuario'];
+$id_usuario = $_SESSION['id_usuario'];
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
                               swal({
@@ -79,9 +80,9 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_carga_academica_vista.php">Menu Carga Académica</a></li>
-                            <li class="breadcrumb-item">Gestión Carga Académica</li>
-                            <li class="breadcrumb-item"><a href="../vistas/historial_carga_academica_vista.php">Ir a Historial Carga Académica</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu Plan de Estudio</a></li>
+                            <li class="breadcrumb-item">Gestión Plan de Estudio</li>
+
                         </ol>
                     </div>
 
@@ -119,7 +120,7 @@ ob_end_flush();
                                     <th>Código de plan</th>
                                     <th>Tipo de plan</th>
                                     <th>Plan Vigente</th>
-                                    <th>Editar Vigencia</th>
+                                    <!-- <th>Editar Vigencia</th> -->
                                 </tr>
                             </thead>
 
@@ -147,7 +148,7 @@ ob_end_flush();
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Nueva Carga Académica</h5>
+                    <h5 class="modal-title">Editar Plan</h5>
                     <button class="close" data-dismiss="modal">
                         &times;
                     </button>
@@ -155,14 +156,75 @@ ob_end_flush();
 
 
                 <div class="modal-body">
+                    <input type="text" id="id_sesion" name="id_sesion" value="<?php echo $nombre; ?>" hidden readonly>
+                    <input type="text" id="id_sesion_usuario" name="id_sesion_usuario" value="<?php echo $id_usuario; ?>" hidden readonly>
+                    <input class="form-control" type="text" id="id_plan_estudio" name="id_plan_estudio" hidden readonly>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label>Nombre de Plan</label>
+
+                                <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="25" value="" required>
+                                <input class="form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden>
 
 
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label>Número de clases del plan</label>
+                                <input class="form-control" type="text" id="txt_num_clases_edita" name="txt_num_clases_edita" maxlength="2" value="">
+                                <input class="form-control" type="text" id="txt_num_clases_edita2" name="txt_num_clases_edita2" maxlength="2" value="" readonly hidden>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label>Código de Plan</label>
+
+                                <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" value="" required>
+                                <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label>Seleccione Tipo de plan:</label>
+                                <td><select class="form-control" style="width: 100%;" name="cbm_tipo_plan_edita" id="cbm_tipo_plan_edita">
+                                    </select></td>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+
+                                <label>Plan Vigente</label>
+
+                                <input class="form-control" type="text" id="txt_vigente_edita" name="txt_vigente_edita" maxlength="2" value="" required readonly>
+                                <input class="form-control" type="text" id="fecha_hoy" name="fecha_hoy" required readonly hidden>
+                                <input class="form-control" type="text" id="txt_vigente_edita2" name="txt_vigente_edita2" maxlength="2" value="" readonly hidden>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
                 </div>
 
 
 
                 <div class="modal-footer">
+                    <button class="btn btn-warning" name="cambiar" id="cambiar">Cambiar Vigencia</button>
                     <button class="btn btn-primary" id="guardar" name="guardar">Guardar</button>
                     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
@@ -181,6 +243,7 @@ ob_end_flush();
 
 <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../js/plan_estudio_gestion.js"></script>
+
 
 <script>
     var idioma_espanol = {

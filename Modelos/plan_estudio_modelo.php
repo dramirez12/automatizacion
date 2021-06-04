@@ -1,6 +1,8 @@
 <?php
+session_start();
 
 require_once('../clases/conexion_mantenimientos.php');
+require_once('../clases/')
 
 
 
@@ -84,5 +86,21 @@ class modelo_plan{
         }
     }
 
+    function modificar_plan_estudio($nombre, $num_clases, $codigo_plan, $id_tipo_plan, $fecha_modificacion, $modificado_por, $id_plan_estudio)
+    {
+
+        //$Id_objeto=98;
+        global $instancia_conexion;
+
+        $sql = "call proc_actualizar_plan_estudio('$nombre', '$num_clases', '$codigo_plan', '$id_tipo_plan', '$fecha_modificacion', '$modificado_por', '$id_plan_estudio')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
+          
+
+        } else {
+            return 0;
+        }
+    }
 }
 ?>
