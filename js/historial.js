@@ -19,27 +19,7 @@ function cargartablaabajo(anno,periodo) {
   console.log(anno);
 }
 
-// $("#tabla_periodo").on("click", ".ver", function () {
-//   var data = table.row($(this).parents("tr")).data();
-//   if (table.row(this).child.isShown()) {
-//     var data = table.row(this).data();
-//   }
 
-//   //  var table1 = $("#tabla_periodo").DataTable();
-//   // table1.ajax.reload();
-
-//   $("#txt_num_periodo").val(data.num_periodo);
-//   $("#txt_anno1").val(data.num_anno);
-//   $("#txt_count1").val(data.id_periodo);
-
-//   // table.ajax.reload("#tabla_periodo");
-
-//   //  TablaHcargahistorial(anno,periodo);
-
-//   // table.ajax.reload();
-
-//   // TablaHcargahistorial(anno,periodo);
-// });
 
 function cambiar(a, p) {
   console.log(a);
@@ -63,12 +43,7 @@ function limpiarinput() {
   document.getElementById("txt_anno1").value = "";
 }
 
-// $("#txt_num_periodo").change(function () {
-//    document.getElementById("txt_num_periodo").value;
-//   document.getElementById("txt_anno1").value;
 
-//   alert('cam');
-//  });
 
 var table;
 function TablaHcargahistorial(anno1, periodo1) {
@@ -259,21 +234,7 @@ function insertarCopia(periodobusca,periodonuevo) {
     console.log(resp);
     if (resp > 0) {
       if (resp == 1) {
-        // swal({
-        //   title: "buen trabajo!",
-        //   text: "Los datos se insertaron correctamente!",
-        //   type: "success",
-        //   showConfirmButton: true,
-        //   timer: 6000,
-        // });
-        //  swal({
-        //    title: "buen trabajo!",
-        //    text:
-        //      "Los datos se insertaron correctamente! ,Seras redirigido a la pantalla de gestion de carga!",
-        //    type: "success",
-        //    showConfirmButton: true,
-        //    timer: 6000,
-        //  });
+        
          swal({
            title: "Buen trabajo!",
            text:
@@ -297,22 +258,15 @@ function insertarCopia(periodobusca,periodonuevo) {
            }
          });
 
-        // swal("buen trabajo!", "Los datos se insertaron correctamente!", "success");
-
        
         
         document.getElementById("txt_id_periodo_busca").value = "";
         document.getElementById("txt_count").value = "";
-        // document.getElementById("txt_anno1").value = "";
-        // document.getElementById("txt_num_periodo").value = "";
+        
       }
     
     } else {
-      //  swal(
-      //    "Error!",
-      //    "No se pudo insertar los datos!",
-      //    "warning"
-      // );
+     
       swal({
         title: "Alerta!",
         text: "No se pudo insertar los datos intente de nuevo!",
@@ -330,7 +284,7 @@ function insertarCopia(periodobusca,periodonuevo) {
   });
 }
 
-//////////////////////
+/* ////////////////////// */
 var table2;
 function Tablaverperiodo() {
   table2 = $("#tabla_historial_vista").DataTable({
@@ -379,11 +333,7 @@ $("#tabla_historial_vista").on("click", ".ver", function () {
   if (table2.row(this).child.isShown()) {
     var data = table2.row(this).data();
   }
-  // $("#pdf").removeAttr("hidden");
-  //  var btn_1 = document.getElementById("pdf");
-  // btn_1.style.display = "inline";
-  
-  // $("#pdf").css("display", "none"); 
+ 
 
   $("#pdf").removeAttr("disabled");//habilita boton
 
@@ -417,21 +367,7 @@ $("#tabla_historial_vista").on("click", ".copiar", function () {
   copiar_carga(anno,periodo);
 
 
-  // seleccionar_dias($("#txt_dias_edita").val(), ",");
 });
 
 
-// $(document).on("click", "#limpiar", function () {
-  // var btn_1 = document.getElementById("pdf");
-  //  btn_1.style.display = "none";
-  //  $("#pdf").css("display", "hidden");
-  // $("#pdf").attr("disabled");//desabilita boton
-  // $("#pdf").css("display", "none");
-// });
-
-// $(document).ready(function () {
-   // $("#pdf").css("display", "none");  
-//   $("#pdf").enabled("true");
-//  });
-  
 

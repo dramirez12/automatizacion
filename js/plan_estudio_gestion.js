@@ -27,7 +27,6 @@ function TablaPlanEstudio() {
     columns: [
       {
         defaultContent:
-          
           "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>",
       },
       { data: "nombre_plan" },
@@ -35,7 +34,6 @@ function TablaPlanEstudio() {
       { data: "codigo_plan" },
       { data: "nombre_tipo_plan" },
       { data: "plan_vigente" },
-     
     ],
 
     language: idioma_espanol,
@@ -44,16 +42,13 @@ function TablaPlanEstudio() {
 }
 //trae los datos de la tabla gestion plan
 $("#tabla_plan_estudio").on("click", ".editar", function () {
-
-    $("#modal_editar").modal({ backdrop: "static", keyboard: false });
-    $("#modal_editar").modal("show");
+  $("#modal_editar").modal({ backdrop: "static", keyboard: false });
+  $("#modal_editar").modal("show");
 
   var data = table.row($(this).parents("tr")).data();
   if (table.row(this).child.isShown()) {
     var data = table.row(this).data();
   }
-
-
 
   $("#txt_nombre_edita").val(data.nombre_plan);
   $("#txt_nombre_edita2").val(data.nombre_plan);
@@ -96,108 +91,327 @@ $("#cambiar").click(function () {
   }
 });
 
-
-
-
-
 //FECHA HOY
 let today = new Date();
 let dd = today.getDate();
 let mm = today.getMonth() + 1; //January is 0!
 let yyyy = today.getFullYear();
 if (dd < 10) {
-	dd = '0' + dd;
+  dd = "0" + dd;
 }
 if (mm < 10) {
-	mm = '0' + mm;
+  mm = "0" + mm;
 }
 
-today = yyyy + '-' + mm + '-' + dd;
+today = yyyy + "-" + mm + "-" + dd;
 
- $("#fecha_hoy").val(today);
-
+$("#fecha_hoy").val(today);
 
 //      modificar plan
 $("#guardar").click(function () {
+  var cbm_tipo_plan = $("#cbm_tipo_plan_edita").val();
+  var txt_nombre = $("#txt_nombre_edita").val();
+  var txt_num_clases = $("#txt_num_clases_edita").val();
+  var txt_codigo_plan = $("#txt_codigo_plan_edita").val();
+  var txt_vigente = $("#txt_vigente_edita").val();
+  var fecha_modificado = $("#fecha_hoy").val();
+  var nombre_usuario = $("#id_sesion").val();
+  var id_usuario = $("#id_sesion_usuario").val();
+  var id_plan_estudio = $("#id_plan_estudio").val();
+  var txt_nombre2 = $("#txt_nombre_edita2").val();
+  var txt_num_clases2 = $("#txt_num_clases_edita2").val();
+  var txt_codigo_plan2 = $("#txt_codigo_plan_edita2").val();
+  var txt_vigente2 = $("#txt_vigente_edita2").val();
 
+  if (
+    cbm_tipo_plan == null ||
+    txt_nombre.length == 0 ||
+    txt_num_clases.length == 0 ||
+    txt_codigo_plan.length == 0 ||
+    cbm_tipo_plan == 0 ||
+    txt_vigente.length == 0 ||
+    fecha_modificado.length == 0 ||
+    nombre_usuario.length == 0
+  ) {
+    swal({
+      title: "alerta",
+      text: "Llene o seleccione los campos vacios correctamente",
+      type: "warning",
+      showConfirmButton: true,
+      timer: 15000,
+    });
+  } else if (
+    txt_nombre != txt_nombre2 ||
+    txt_num_clases != txt_num_clases2 ||
+    txt_codigo_plan != txt_codigo_plan2 ||
+    txt_vigente != txt_vigente2
+  ) {
+    if (txt_nombre != txt_nombre2 && txt_vigente == txt_vigente2) {
+      $.post(
+        "../Controlador/plan_estudio_controlador.php?op=verificarPlanNombre",
+        {
+          nombre: txt_nombre,
+        },
 
-   var cbm_tipo_plan = $("#cbm_tipo_plan_edita").val();
-   var txt_nombre = $("#txt_nombre_edita").val();
-   var txt_num_clases = $("#txt_num_clases_edita").val();
-   var txt_codigo_plan = $("#txt_codigo_plan_edita").val();
-   var txt_vigente = $("#txt_vigente_edita").val();
-   var fecha_modificado = $("#fecha_hoy").val();
-   var nombre_usuario = $("#id_sesion").val();
-   var id_usuario = $("#id_sesion_usuario").val();
-   var id_plan_estudio = $("#id_plan_estudio").val();
-   var txt_nombre2 = $("#txt_nombre_edita2").val();
-   var txt_num_clases2 = $("#txt_num_clases_edita2").val();
-   var txt_codigo_plan2 = $("#txt_codigo_plan_edita2").val();
-   var txt_vigente2 = $("#txt_vigente_edita2").val();
+        function (data, status) {
+          console.log(data);
+          data = JSON.parse(data);
 
-   if (
-     cbm_tipo_plan == null ||
-     txt_nombre.length == 0 ||
-     txt_num_clases.length == 0 ||
-     txt_codigo_plan.length == 0 ||
-     cbm_tipo_plan == 0 ||
-     txt_vigente.length == 0 ||
-     fecha_modificado.length == 0 ||
-     nombre_usuario.length == 0
-   ) {
-     swal({
-       title: "alerta",
-       text: "Llene o seleccione los campos vacios correctamente",
-       type: "warning",
-       showConfirmButton: true,
-       timer: 15000,
-     });
-   } else if (txt_nombre != txt_nombre2 || txt_num_clases != txt_num_clases2 || txt_codigo_plan !=txt_codigo_plan2 ||txt_vigente!=txt_vigente2) {
-     
-     if (txt_vigente == txt_vigente2) {
-       
-        $.ajax({
-          url: "../Controlador/modificar_plan_estudio_controlador.php",
-          type: "POST",
-          data: {
-            
-            nombre: txt_nombre,
-            num_clases: txt_num_clases,
-            codigo_plan: txt_codigo_plan,
-            id_tipo_plan: cbm_tipo_plan,
-            fecha_modificacion: fecha_modificado,
-            modificado_por: nombre_usuario,
-            id_plan_estudio: id_plan_estudio,
-           // Id_usuario: id_usuario
-            
-          },
-        }).done(function (resp) {
-          if (resp > 0) {
-            $("#modal_editar").modal("hide");
-            swal(
-              "Buen trabajo!",
-              "datos actualizados correctamente!",
-              "success"
-            );
-            //  document.getElementById("txt_registro").value = "";
-
-            table.ajax.reload();
+          if (data.registro > 0) {
+            alert("Ya existe un plan con el mismo nombre");
           } else {
-            swal("Alerta!", "No se pudo completar la actualización", "warning");
-            //document.getElementById("txt_registro").value = "";
+            modificar_plan_estudio(
+              txt_nombre,
+              txt_num_clases,
+              txt_codigo_plan,
+              cbm_tipo_plan,
+              fecha_modificado,
+              nombre_usuario,
+              id_plan_estudio
+            );
           }
-        });
+        }
+      );
+    } else if (txt_nombre == txt_nombre2 && txt_vigente != txt_vigente2) {
+      valida_plan(
+        txt_nombre,
+        txt_num_clases,
+        txt_codigo_plan,
+        cbm_tipo_plan,
+        fecha_modificado,
+        nombre_usuario,
+        id_plan_estudio,
+        txt_vigente,
+        txt_vigente2
+      );
+    } else {
+      if (txt_nombre != txt_nombre2 && txt_vigente != txt_vigente2) {
+        //una validacion para el nombre y vigencia
 
-     } else {
+        valida_nombre_vigencia(
+          txt_nombre,
+         // txt_nombre2,
+          txt_num_clases,
+        //  txt_num_clases2,
+          txt_codigo_plan,
+        //  txt_codigo_plan2,
+          cbm_tipo_plan,
+          fecha_modificado,
+          nombre_usuario,
+          id_plan_estudio,
+          txt_vigente,
+          txt_vigente2
+        );
 
-       alert("cambio vigencia");
+      } else {
 
-     }
-     
-     
-   } else {
-     alert("No se han modificado datos")
-   }
+        if (txt_nombre == txt_nombre2 && txt_vigente == txt_vigente2 || txt_codigo_plan != txt_codigo_plan2 || txt_num_clases != txt_num_clases2) {
 
-
+           modificar_plan_estudio(
+             txt_nombre,
+             txt_num_clases,
+             txt_codigo_plan,
+             cbm_tipo_plan,
+             fecha_modificado,
+             nombre_usuario,
+             id_plan_estudio
+          );
+          
+        }
+        
+      }
+    }
+  } else {
+    alert("No se han modificado datos");
+  }
 });
+
+//funcion para plan de estudio con mosdificar vigencia
+function modificar_plan_estudio_vigente(
+  txt_nombre,
+  txt_num_clases,
+  txt_codigo_plan,
+  cbm_tipo_plan,
+  fecha_modificado,
+  nombre_usuario,
+  id_plan_estudio,
+  txt_vigente
+) {
+  $.ajax({
+    url: "../Controlador/modificar_plan_estudio_vigente_controlador.php",
+    type: "POST",
+    data: {
+      nombre: txt_nombre,
+      num_clases: txt_num_clases,
+      codigo_plan: txt_codigo_plan,
+      id_tipo_plan: cbm_tipo_plan,
+      fecha_modificacion: fecha_modificado,
+      modificado_por: nombre_usuario,
+      id_plan_estudio: id_plan_estudio,
+      plan_vigente: txt_vigente,
+      // Id_usuario: id_usuario
+    },
+  }).done(function (resp) {
+    if (resp > 0) {
+      $("#modal_editar").modal("hide");
+      swal("Buen trabajo!", "datos actualizados correctamente!", "success");
+      //  document.getElementById("txt_registro").value = "";
+
+      table.ajax.reload();
+    } else {
+      swal("Alerta!", "No se pudo completar la actualización", "warning");
+      //document.getElementById("txt_registro").value = "";
+    }
+  });
+}
+
+//funcion para plan de estudio sin vigencia
+
+function modificar_plan_estudio(
+  txt_nombre,
+  txt_num_clases,
+  txt_codigo_plan,
+  cbm_tipo_plan,
+  fecha_modificado,
+  nombre_usuario,
+  id_plan_estudio
+) {
+  $.ajax({
+    url: "../Controlador/modificar_plan_estudio_controlador.php",
+    type: "POST",
+    data: {
+      nombre: txt_nombre,
+      num_clases: txt_num_clases,
+      codigo_plan: txt_codigo_plan,
+      id_tipo_plan: cbm_tipo_plan,
+      fecha_modificacion: fecha_modificado,
+      modificado_por: nombre_usuario,
+      id_plan_estudio: id_plan_estudio,
+      // Id_usuario: id_usuario
+    },
+  }).done(function (resp) {
+    if (resp > 0) {
+      $("#modal_editar").modal("hide");
+      swal("Buen trabajo!", "datos actualizados correctamente!", "success");
+      //  document.getElementById("txt_registro").value = "";
+
+      table.ajax.reload();
+    } else {
+      swal("Alerta!", "No se pudo completar la actualización", "warning");
+      //document.getElementById("txt_registro").value = "";
+    }
+  });
+}
+
+//las tres validaciones para el plan si, no, igual
+function valida_plan(
+  txt_nombre,
+  txt_num_clases,
+  txt_codigo_plan,
+  cbm_tipo_plan,
+  fecha_modificado,
+  nombre_usuario,
+  id_plan_estudio,
+  txt_vigente,
+  txt_vigente2
+) {
+  if (txt_vigente == "SI") {
+    $.post(
+      "../Controlador/plan_estudio_controlador.php?op=verificarPlan",
+      {
+        plan_vigente: txt_vigente,
+      },
+
+      function (data, status) {
+        console.log(data);
+        data = JSON.parse(data);
+
+        if (data.registro > 0) {
+          alert("Ya existe un plan actual Vigente");
+        } else {
+          modificar_plan_estudio_vigente(
+            txt_nombre,
+            txt_num_clases,
+            txt_codigo_plan,
+            cbm_tipo_plan,
+            fecha_modificado,
+            nombre_usuario,
+            id_plan_estudio,
+            txt_vigente
+          );
+        }
+      }
+    );
+  } else if (txt_vigente == txt_vigente2) {
+    modificar_plan_estudio(
+      txt_nombre,
+      txt_num_clases,
+      txt_codigo_plan,
+      cbm_tipo_plan,
+      fecha_modificado,
+      nombre_usuario,
+      id_plan_estudio
+    );
+  } else {
+    modificar_plan_estudio_vigente(
+      txt_nombre,
+      txt_num_clases,
+      txt_codigo_plan,
+      cbm_tipo_plan,
+      fecha_modificado,
+      nombre_usuario,
+      id_plan_estudio,
+      txt_vigente
+    );
+  }
+}
+
+//funcion que valida todo junto nombre y vigencia
+  function valida_nombre_vigencia(
+    txt_nombre,
+  //  txt_nombre2,
+    txt_num_clases,
+    // txt_num_clases2,
+    txt_codigo_plan,
+  //   txt_codigo_plan2,
+     cbm_tipo_plan,
+     fecha_modificado,
+     nombre_usuario,
+     id_plan_estudio,
+     txt_vigente,
+     txt_vigente2
+  ) {
+
+   
+      $.post(
+        "../Controlador/plan_estudio_controlador.php?op=verificarPlanNombre",
+        {
+          nombre: txt_nombre,
+        },
+
+        function (data, status) {
+          console.log(data);
+          data = JSON.parse(data);
+
+          if (data.registro > 0) {
+            alert("Ya existe un plan con el mismo nombre");
+          } else {
+
+           valida_plan(
+             txt_nombre,
+             txt_num_clases,
+             txt_codigo_plan,
+             cbm_tipo_plan,
+             fecha_modificado,
+             nombre_usuario,
+             id_plan_estudio,
+             txt_vigente,
+             txt_vigente2
+           );
+          
+          }
+        }
+      );
+   
+    
+   }

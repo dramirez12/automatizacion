@@ -2,7 +2,7 @@
 session_start();
 
 require_once('../clases/conexion_mantenimientos.php');
-require_once('../clases/')
+//require_once('../clases/');
 
 
 
@@ -43,8 +43,7 @@ class modelo_plan{
 
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             return 1;
-             $Id_objeto = 96;
-            bitacora::evento_bitacora($Id_objeto, '1', 'INSERTO', 'UN NUEVO PLAN DE ESTUDIO');
+            
         } else {
             return 0;
         }
@@ -98,6 +97,20 @@ class modelo_plan{
             return 1;
           
 
+        } else {
+            return 0;
+        }
+    }
+    function modificar_plan_estudio_vigente($nombre, $num_clases, $codigo_plan, $id_tipo_plan, $fecha_modificacion, $modificado_por, $plan_vigente, $id_plan_estudio)
+    {
+
+        //$Id_objeto=98;
+        global $instancia_conexion;
+
+        $sql = "call proc_actualizar_plan_estudio_vigente('$nombre', '$num_clases', '$codigo_plan', '$id_tipo_plan', '$fecha_modificacion', '$modificado_por','$plan_vigente', '$id_plan_estudio')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
         } else {
             return 0;
         }

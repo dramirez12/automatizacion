@@ -11,7 +11,7 @@ require_once('../clases/conexion_mantenimientos.php');
 
 
 
-$Id_objeto = 55;
+$Id_objeto = 47;
 
 $visualizacion = permiso_ver($Id_objeto);
 

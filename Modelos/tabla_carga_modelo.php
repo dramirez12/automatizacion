@@ -20,31 +20,7 @@ class modeloCarga
         }
     }
 
-    // function listar_combo_edificio()
-    // {
-    //     global $instancia_conexion;
-    //     $sql = "SELECT * FROM tbl_edificios";
-    //     $arreglo = array();
-    //     if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
-    //         while ($consulta_VU = mysqli_fetch_array($consulta)) {
-    //             $arreglo[] = $consulta_VU;
-    //         }
-    //         return $arreglo;
-    //     }
-    // }
-
-    // function listar_combo_aula($id_edificio)
-    // {
-    //     global $instancia_conexion;
-    //     $sql = "SELECT * FROM tbl_aula WHERE id_edificio = $id_edificio";
-    //     $arreglo = array();
-    //     if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
-    //         while ($consulta_VU = mysqli_fetch_array($consulta)) {
-    //             $arreglo[] = $consulta_VU;
-    //         }
-    //         return $arreglo;
-    //     }
-    // }
+   
 
     function modificar_carga_academica($control, $seccion, $hra_inicio, $hra_final, $num_alumnos, $id_aula, $id_asignatura, $dias, $id_modalidad, $id_carga_academica)
     {
