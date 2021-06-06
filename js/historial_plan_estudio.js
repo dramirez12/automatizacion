@@ -53,7 +53,7 @@ function Tabla3cargar_plan(nombre_, codigo) {
     async: false,
     processing: true,
     ajax: {
-      url: "../Controlador/tabla_buscar_historial_controlador.php",
+      url: "../Controlador/tabla_buscar_historial_plan_controlador.php",
       type: "POST",
       data: { nombre: nombre_, codigo_plan: codigo },
     },
@@ -147,3 +147,44 @@ $("#tabla1_historial_plan").on("click", ".ver", function () {
   
    // seleccionar_dias($("#txt_dias_edita").val(), ",");
   });
+  //cargar segundo tabla
+var table2;
+function Tabla2cargar_plan() {
+  table2 = $("#tabla2_historial_plan").DataTable({
+    paging: true,
+    lengthChange: true,
+    ordering: true,
+    info: true,
+    autoWidth: true,
+    responsive: false,
+    ordering: true,
+    // LengthChange: false,
+    searching: { regex: true },
+    lengthMenu: [
+      [10, 25, 50, 100, -1],
+      [10, 25, 50, 100, "All"],
+    ],
+    sortable: false,
+    pageLength: 15,
+    destroy: true,
+    async: false,
+    processing: true,
+    ajax: {
+      url: "../Controlador/tabla_historial_plan_vigente_controlador.php",
+      type: "POST",
+    },
+
+    columns: [
+      { data: "periodo_plan" },
+      { data: "asig_vigente" },
+      { data: "codigo_asig" },
+      { data: "uv" },
+      { data: "equi" },
+      { data: "requisito" },
+    ],
+
+    language: idioma_espanol,
+    select: true,
+  });
+ 
+}

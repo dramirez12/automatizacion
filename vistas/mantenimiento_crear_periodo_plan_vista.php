@@ -148,13 +148,13 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Nuevo Período de Plan de Estudios </label>
-                                        <input class="form-control" type="text"  maxlength="10" id="periodo_plan" name="periodo_plan" style="text-transform: uppercase"  onkeyup="DobleEspacio(this, event)"; onkeypress="return letrasynumeros(event)" >
+                                        <input class="form-control" type="text"  maxlength="10" id="periodo_plan" name="periodo_plan" style="text-transform: uppercase"  onkeypress=" return DobleEspacio(this, event);" onkeyup="MismaLetra('periodo_plan');" onkeypress="return letrasynumeros(event)"  onkeypress="return comprobar(this.value, event, this.id)" >
                                     </div>
 
                                 
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-primary" id="btn_guardar_periodo_plan" name="btn_guardar_periodo_plan" <?php echo $_SESSION['btn_guardar_periodo_plan']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                        <button type="submit" class="btn btn-primary" id="btn_guardar_periodo_plan" name="btn_guardar_periodo_plan" <?php echo $_SESSION['btn_guardar_periodo_plan']; ?>><i class="zmdi zmdi-floppy"></i>Guardar</button>
                                     </p>
 
                                 </div>
@@ -189,4 +189,5 @@ ob_end_flush();
 
 <script src="../js/ca2.js"></script>
 <script src="../Reporte/validar.js"></script>
-  <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
+<script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
+  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>

@@ -183,7 +183,40 @@ ob_end_flush();
 
                                 <div class="row">
                                     <div class="table-responsive" style="width: auto;">
-                                        <table id="tabla_historial_plan" class="table table-bordered table-striped">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <table id="tabla2_historial_plan" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Periodo</th>
+                                                                <th>Asignatura</th>
+                                                                <th>Codigo</th>
+                                                                <th>UV</th>
+                                                                <th>Equivalencia</th>
+                                                                <th>Requisitos</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </td>
+                                                <td>
+                                                    <table id="tabla3_historial_plan" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Periodo</th>
+                                                                <th>Asignatura</th>
+                                                                <th>Codigo</th>
+                                                                <th>UV</th>
+                                                                <th>Equivalencia</th>
+                                                                <th>Requisitos</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- <table id="tabla2_historial_plan" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
 
@@ -197,8 +230,8 @@ ob_end_flush();
                                                 </tr>
                                                
                                             </thead>
-                                        </table>
-                                     
+                                        </table> -->
+
 
                                     </div>
 
@@ -208,7 +241,7 @@ ob_end_flush();
 
 
                         </div>
-                     
+
 
 
                     </div>
@@ -307,6 +340,13 @@ ob_end_flush();
 <script>
     $(document).ready(function() {
         Tabla1_historial_plan();
+
+
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        Tabla2cargar_plan();
 
 
     });

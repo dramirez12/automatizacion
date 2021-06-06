@@ -2,7 +2,6 @@
 session_start();
 
 require_once('../clases/conexion_mantenimientos.php');
-//require_once('../clases/');
 
 
 
@@ -76,6 +75,18 @@ class modelo_plan{
     {
         global $instancia_conexion;
         $sql = "call sel_busca_historial_plan('$nombre','$codigo')";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
+    function listar_historial_plan_vigente()
+    {
+        global $instancia_conexion;
+        $sql = " call sel_historial_plan_vigente()";
         $arreglo = array();
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
