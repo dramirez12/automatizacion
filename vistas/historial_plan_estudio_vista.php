@@ -120,7 +120,7 @@ ob_end_flush();
                                 <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
 
 
-                                <div class="row">
+                               
                                     <div class="table-responsive" style="width: auto;">
                                         <table id="tabla1_historial_plan" class="table table-bordered table-striped">
                                             <thead>
@@ -141,7 +141,6 @@ ob_end_flush();
 
 
 
-                                </div>
                             </div>
 
                         </div>

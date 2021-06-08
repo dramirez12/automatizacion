@@ -74,14 +74,15 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Gestión Carga Académica</h1>
+                        <h1>Gestión Plan de Estudio</h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu Plan de Estudio</a></li>
-                            <li class="breadcrumb-item">Gestión Plan de Estudio</li>
+                            <li class="breadcrumb-item">Gestión de Plan</li>
+                            <li class="breadcrumb-item"><a href="../vistas/historial_plan_estudio_vista.php">Historial de planes</a></li>
 
                         </ol>
                     </div>
@@ -99,15 +100,7 @@ ob_end_flush();
         <div class="container-fluid" style="width: 100%;">
             <div class="box-body">
 
-                <!-- <div class="row">
-                        <div class="col-lg-10">
-                            <div class="input-group">
-                                <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" style="width: 90%;">
-                                <span class="input-group-text">Buscar</span>
-                            </div>
-                        </div>
-
-                    </div> -->
+               
 
                 <div class="card-body">
                     <div class="table-responsive" style="width: 100%;">
@@ -120,7 +113,7 @@ ob_end_flush();
                                     <th>Código de plan</th>
                                     <th>Tipo de plan</th>
                                     <th>Plan Vigente</th>
-                                    <!-- <th>Editar Vigencia</th> -->
+                                    
                                 </tr>
                             </thead>
 
@@ -166,7 +159,7 @@ ob_end_flush();
 
                                 <label>Nombre de Plan</label>
 
-                                <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="25" value="" required>
+                                <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="25" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required>
                                 <input class="form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden>
 
 
@@ -176,7 +169,7 @@ ob_end_flush();
                             <div class="form-group">
 
                                 <label>Número de clases del plan</label>
-                                <input class="form-control" type="text" id="txt_num_clases_edita" name="txt_num_clases_edita" maxlength="2" value="">
+                                <input class="form-control" type="text" id="txt_num_clases_edita" name="txt_num_clases_edita" maxlength="2" onkeypress="return solonumeros(event)">
                                 <input class="form-control" type="text" id="txt_num_clases_edita2" name="txt_num_clases_edita2" maxlength="2" value="" readonly hidden>
 
                             </div>
@@ -186,7 +179,7 @@ ob_end_flush();
 
                                 <label>Código de Plan</label>
 
-                                <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" value="" required>
+                                <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" required>
                                 <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden>
 
 
@@ -200,6 +193,8 @@ ob_end_flush();
                                 <label>Seleccione Tipo de plan:</label>
                                 <td><select class="form-control" style="width: 100%;" name="cbm_tipo_plan_edita" id="cbm_tipo_plan_edita">
                                     </select></td>
+                                <input class="form-control" type="text" id="txt_id_tipo_plan" name="txt_id_tipo_plan" required readonly hidden>
+
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -243,6 +238,7 @@ ob_end_flush();
 
 <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../js/plan_estudio_gestion.js"></script>
+<script src="../js/funciones.js"></script>
 
 
 <script>
