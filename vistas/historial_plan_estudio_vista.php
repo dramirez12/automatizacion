@@ -288,12 +288,12 @@ ob_end_flush();
                                             <thead>
                                                 <tr>
 
-                                                    <th bgcolor="blue">Periodo</th>
-                                                    <th bgcolor="blue">Asignatura</th>
-                                                    <th bgcolor="blue">Codigo</th> 
-                                                    <th bgcolor="blue">UV</th>
-                                                    <th bgcolor="blue">Equivalencia</th>
-                                                    <th bgcolor="blue">Requisitos</th>
+                                                    <th bgcolor="black">Periodo</th>
+                                                    <th bgcolor="black">Asignatura</th>
+                                                    <th bgcolor="black">Codigo</th> 
+                                                    <th bgcolor="black">UV</th>
+                                                    <th bgcolor="black">Equivalencia</th>
+                                                    <th bgcolor="black">Requisitos</th>
 
                                                 </tr>
                                             </thead>
