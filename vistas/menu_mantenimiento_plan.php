@@ -6,11 +6,11 @@ require_once('../clases/funcion_visualizar.php');
 
 if (permiso_ver('99') == '1') {
 
-    $_SESSION['mantenimiento_crear_periodo_plan_vista'] = "...";
-  } else {
-    $_SESSION['mantenimiento_crear_periodo_plan_vista'] = "No 
+  $_SESSION['mantenimiento_crear_periodo_plan_vista'] = "...";
+} else {
+  $_SESSION['mantenimiento_crear_periodo_plan_vista'] = "No 
     tiene permisos para visualizar";
-  }
+}
 if (permiso_ver('100') == '1') {
 
   $_SESSION['mantenimiento_periodo_plan_vista'] = "...";
@@ -21,16 +21,30 @@ if (permiso_ver('100') == '1') {
 
 if (permiso_ver('101') == '1') {
 
-    $_SESSION['mantenimiento_crear_tipo_plan_vista'] = "...";
-  } else {
-    $_SESSION['mantenimiento_crear_tipo_plan_vista'] = "No 
+  $_SESSION['mantenimiento_crear_tipo_plan_vista'] = "...";
+} else {
+  $_SESSION['mantenimiento_crear_tipo_plan_vista'] = "No 
     tiene permisos para visualizar";
-  }
+}
 if (permiso_ver('102') == '1') {
 
   $_SESSION['mantenimiento_tipo_plan_vista'] = "...";
 } else {
   $_SESSION['mantenimiento_tipo_plan_vista'] = "No 
+  tiene permisos para visualizar";
+}
+if (permiso_ver('118') == '1') {
+
+  $_SESSION['mantenimiento_crear_asignatura_vista'] = "...";
+} else {
+  $_SESSION['mantenimiento_crear_asignatura_vista'] = "No 
+  tiene permisos para visualizar";
+}
+if (permiso_ver('119') == '1') {
+
+  $_SESSION['mantenimiento_asignatura_vista'] = "...";
+} else {
+  $_SESSION['mantenimiento_asignatura_vista'] = "No 
   tiene permisos para visualizar";
 }
 
@@ -72,119 +86,169 @@ if (permiso_ver('102') == '1') {
 
 
       <div class="card card-default">
-          <div class="card-header">
-          
+        <div class="card-header">
+
           <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              
-            </div>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+
           </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="row">
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row">
             <div class="col-md-12">
-              
-     
-        
 
-      <!-- /.info-box -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+
+
+
+              <!-- /.info-box -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Periodo Plan </h4>
-                  <p><?php echo $_SESSION['mantenimiento_crear_periodo_plan_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Periodo Plan </h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_periodo_plan_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
 
-                <a href="../vistas/mantenimiento_crear_periodo_plan_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
+                        <a href="../vistas/mantenimiento_crear_periodo_plan_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
 
-            </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-            <!-- /.info-box -->
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Periodo Plan </h4>
-                  <p><?php echo $_SESSION['mantenimiento_periodo_plan_vista']; ?></p>
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+                    <!-- /.info-box -->
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Periodo Plan </h4>
+                          <p><?php echo $_SESSION['mantenimiento_periodo_plan_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_periodo_plan_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
                 </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
-
-                <a href="../vistas/mantenimiento_periodo_plan_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!-- /.row -->
-          </div>
-          <!--/. container-fluid -->
-        </div>
-      </section>
-      <!-- /.content -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+              </section>
+              <!-- /.content -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
 
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Tipo Plan </h4>
-                  <p><?php echo $_SESSION['mantenimiento_crear_tipo_plan_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Tipo Plan </h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_tipo_plan_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
 
-                <a href="../vistas/mantenimiento_crear_tipo_plan_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-              <!-- /.info-box -->
-            </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
+                        <a href="../vistas/mantenimiento_crear_tipo_plan_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+                      <!-- /.info-box -->
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
 
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Tipo Plan </h4>
-                  <p><?php echo $_SESSION['mantenimiento_tipo_plan_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Tipo Plan </h4>
+                          <p><?php echo $_SESSION['mantenimiento_tipo_plan_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
 
-                <a href="../vistas/mantenimiento_tipo_plan_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-              <!-- /.info-box -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!--/. container-fluid -->
-        </div>
-      </section>
-  
+                        <a href="../vistas/mantenimiento_tipo_plan_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+                      <!-- /.info-box -->
+                    </div>
+
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
+                </div>
+              </section>
+
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
+    align-items: center;
+    justify-content: center;">
+
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Asignatura</h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_asignatura_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_crear_asignatura_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Asignatura </h4>
+                          <p><?php echo $_SESSION['mantenimiento_asignatura_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_asignatura_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+                      <!-- /.info-box -->
+                    </div>
+
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
+                </div>
+              </section>
+
 </body>
 
 </html>
