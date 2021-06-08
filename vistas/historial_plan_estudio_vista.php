@@ -182,7 +182,7 @@ ob_end_flush();
 
                                 <div class="row">
                                     <div class="table-responsive" style="width: auto;">
-                                        <table>
+                                      <!--   <table>
                                             <tr>
                                                 <td>
                                                     <table id="tabla2_historial_plan" class="table table-bordered table-striped">
@@ -214,8 +214,8 @@ ob_end_flush();
                                                     </table>
                                                 </td>
                                             </tr>
-                                        </table>
-                                        <!-- <table id="tabla2_historial_plan" class="table table-bordered table-striped">
+                                        </table> -->
+                                        <table id="tabla2_historial_plan" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
 
@@ -229,7 +229,7 @@ ob_end_flush();
                                                 </tr>
                                                
                                             </thead>
-                                        </table> -->
+                                        </table>
 
 
                                     </div>
@@ -288,12 +288,12 @@ ob_end_flush();
                                             <thead>
                                                 <tr>
 
-                                                    <th>Periodo</th>
-                                                    <th>Asignatura</th>
-                                                    <th>Codigo</th>
-                                                    <th>UV</th>
-                                                    <th>Equivalencia</th>
-                                                    <th>Requisitos</th>
+                                                    <th bgcolor="blue">Periodo</th>
+                                                    <th bgcolor="blue">Asignatura</th>
+                                                    <th bgcolor="blue">Codigo</th> 
+                                                    <th bgcolor="blue">UV</th>
+                                                    <th bgcolor="blue">Equivalencia</th>
+                                                    <th bgcolor="blue">Requisitos</th>
 
                                                 </tr>
                                             </thead>
