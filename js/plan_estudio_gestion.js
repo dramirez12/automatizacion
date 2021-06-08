@@ -61,7 +61,6 @@ $("#tabla_plan_estudio").on("click", ".editar", function () {
   $("#txt_vigente_edita2").val(data.plan_vigente);
   $("#id_plan_estudio").val(data.id_plan_estudio);
   $("#txt_id_tipo_plan").val(data.id_tipo_plan);
-
 });
 //select del modal
 function llenar_tipo_plan() {
@@ -124,8 +123,6 @@ $("#guardar").click(function () {
   var txt_num_clases2 = $("#txt_num_clases_edita2").val();
   var txt_codigo_plan2 = $("#txt_codigo_plan_edita2").val();
   var txt_vigente2 = $("#txt_vigente_edita2").val();
-
-  
 
   if (
     cbm_tipo_plan == null ||
@@ -227,7 +224,6 @@ $("#guardar").click(function () {
   } else {
     alert("No se han modificado datos");
   }
- 
 });
 
 //funcion para plan de estudio con modificar vigencia
@@ -416,12 +412,10 @@ function valida_nombre_vigencia(
 
 $("#cbm_tipo_plan_edita").change(function () {
   var id_tipo_plan = $(this).val();
-    $("#txt_id_tipo_plan").val(id_tipo_plan);
-  
-  if (id_tipo_plan ==0) {
+  $("#txt_id_tipo_plan").val(id_tipo_plan);
+
+  if (id_tipo_plan == 0) {
     alert("Seleccione una opción válida");
     document.getElementById("cbm_tipo_plan_edita").value = "";
   }
-
 });
-
