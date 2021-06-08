@@ -180,7 +180,7 @@ ob_end_flush();
                                 </div>
                                 <br>
 
-                                <div class="row">
+                               
                                     <div class="table-responsive" style="width: auto;">
                                       <!--   <table>
                                             <tr>
@@ -235,7 +235,7 @@ ob_end_flush();
                                     </div>
 
 
-                                </div>
+                                
                             </div>
 
 
@@ -282,18 +282,18 @@ ob_end_flush();
                                 </div>
                                 <br>
 
-                                <div class="row">
+                                
                                     <div class="table-responsive" style="width: auto;">
                                         <table id="tabla3_historial_plan" class="table table-bordered table-striped">
-                                            <thead>
+                                            <thead class= "thead-dark">
                                                 <tr>
 
-                                                    <th bgcolor="black">Periodo</th>
-                                                    <th bgcolor="black">Asignatura</th>
-                                                    <th bgcolor="black">Codigo</th> 
-                                                    <th bgcolor="black">UV</th>
-                                                    <th bgcolor="black">Equivalencia</th>
-                                                    <th bgcolor="black">Requisitos</th>
+                                                    <th >Periodo</th>
+                                                    <th >Asignatura</th>
+                                                    <th >Codigo</th> 
+                                                    <th >UV</th>
+                                                    <th >Equivalencia</th>
+                                                    <th b>Requisitos</th>
 
                                                 </tr>
                                             </thead>
@@ -303,7 +303,7 @@ ob_end_flush();
 
 
 
-                                </div>
+                                
                             </div>
 
                         </div>
