@@ -52,12 +52,12 @@ $telefono_coordinador = strtoupper($_POST['txt_telefono_coordinador']);
 $correo_coordinador = strtoupper($_POST['txt_correo_coordinador']);
 
 
-$nombre_estud = strtoupper($_POST['nombre_estud']);
-$cargo_estud = strtoupper($_POST['cargo_estud']);
-$telefono_estud = strtoupper($_POST['telefono_estud']);
-$correo_estud = strtoupper($_POST['correo_estud']);
-$num_emple_estud = strtoupper($_POST['num_emple_estud']);
-$dirreccion_estud = strtoupper($_POST['dirreccion_estud']);
+$nombre_estud = strtoupper($_POST['nom_coordina']);
+$cargo_estud = strtoupper($_POST['txt_cargo_coordinador']);
+$telefono_estud = strtoupper($_POST['txt_telefono_coordinador']);
+$correo_estud = strtoupper($_POST['txt_correo_coordinador']);
+$num_emple_estud = strtoupper($_POST['txt_num_empleado']);
+$dirreccion_estud = strtoupper($_POST['txt_direccion_cor']);
 
 $sqlexiste_proyecto = ("select count(nombre) as nombre  from tbl_proyectos where nombre='$nombre_proyecto' ");
 //Obtener la fila del query

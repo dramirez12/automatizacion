@@ -418,55 +418,11 @@ ob_end_flush();
                   </tr>
                 </table>
 
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label> nombre prueba </label>
-                    <input class="form-control" type="text" id="nombre_estud" name="nombre_estud" >
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label> cargo_estud </label>
-                    <input class="form-control" type="text" id="cargo_estud" name="cargo_estud">
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label> telefono_estud </label>
-                    <input class="form-control" type="text" id="telefono_estud" name="telefono_estud">
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label> correo_estud </label>
-                    <input class="form-control" type="text" id="correo_estud" name="correo_estud">
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label> num_emple_estud </label>
-                    <input class="form-control" type="text" id="num_emple_estud" name="num_emple_estud">
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label> dirreccion_estud </label>
-                    <input class="form-control" type="text" id="dirreccion_estud" name="dirreccion_estud">
-                  </div>
-                </div>
-
                 <div class="col-sm-12">
                   <hr>
                   <label>III. Zona de influencia del Proyecto</label>
                   <hr>
                 </div>
-
-                  
 
                 <div class="col-sm-4">
                   <div class="form-group">
