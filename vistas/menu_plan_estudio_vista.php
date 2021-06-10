@@ -39,6 +39,14 @@
   tiene permisos para visualizar";
         }
 
+        if (permiso_ver('108') == '1') {
+
+            $_SESSION['prueba_capacitacion_vista'] = "...";
+        } else {
+            $_SESSION['prueba_capacitacion_vista'] = "No 
+  tiene permisos para visualizar";
+        }
+
 
         ?>
 <!DOCTYPE html>

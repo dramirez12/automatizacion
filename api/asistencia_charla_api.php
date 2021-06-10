@@ -13,7 +13,7 @@ if (isset($_GET["control"])) {
 
 
 
-if ($R = $mysqli->query("select concat(p.nombres,'',p.apellidos)AS nombre, px.valor as valor, p.id_persona, cp.Id_charla from tbl_personas p, tbl_charla_practica cp , tbl_personas_extendidas px where px.id_atributo=12 and px.id_persona=p.id_persona and cp.id_persona=p.id_persona and jornada='$_GET[control]' and cp.estado_asistencia_charla=0")) {
+if ($R = $mysqli->query("select concat(p.nombres,' ',p.apellidos)AS nombre, px.valor as valor, p.id_persona, cp.Id_charla from tbl_personas p, tbl_charla_practica cp , tbl_personas_extendidas px where px.id_atributo=12 and px.id_persona=p.id_persona and cp.id_persona=p.id_persona and jornada='$_GET[control]' and cp.estado_asistencia_charla=0")) {
             $items = [];
 
             while ($row = $R->fetch_assoc()) {
@@ -99,7 +99,7 @@ elseif (isset($_GET["asistencia"]))
 }
 else
 {
-	if ($R = $mysqli->query("select concat(p.nombres,'',p.apellidos)AS nombre, px.valor as valor, p.id_persona, cp.Id_charla  from tbl_personas p, tbl_charla_practica cp , tbl_personas_extendidas px where px.id_atributo=12 and px.id_persona=p.id_persona and cp.id_persona=p.id_persona and jornada='0' ")) {
+	if ($R = $mysqli->query("select concat(p.nombres,' ',p.apellidos)AS nombre, px.valor as valor, p.id_persona, cp.Id_charla  from tbl_personas p, tbl_charla_practica cp , tbl_personas_extendidas px where px.id_atributo=12 and px.id_persona=p.id_persona and cp.id_persona=p.id_persona and jornada='0' ")) {
             $items = [];
 
             while ($row = $R->fetch_assoc()) {

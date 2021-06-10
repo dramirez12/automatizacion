@@ -61,7 +61,7 @@ switch ($_GET["op"]){
     case 'selectCurso':
 		$rspta=$modelo->selectCurso();
         while ($r = mysqli_fetch_array($rspta)) {
-            echo '<option value="'.$r['id_persona'].' "  >'.$r['nombres']. ' ' .$r['apellidos']. '</option>';
+            echo '<option value="'.$r['id_persona'].' "  >'.$r['nombres']. '</option>';
 
         }
 

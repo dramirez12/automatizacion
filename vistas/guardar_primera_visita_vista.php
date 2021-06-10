@@ -83,7 +83,7 @@ ob_end_flush();
                   <div class="col-sm-12">
                   <div class="form-group">
                   <p><label>Seleccione un Alumno</label>
-                  <select class="form-control" name="curso" id="curso" onchange='llenarCampos(this);'> 
+                  <select class="form-control" name="curso" id="curso" onclick='llenarCampos(this);'> 
                   <option value="" selected hidden>Seleccione</option>
                 </select>
                 </div>

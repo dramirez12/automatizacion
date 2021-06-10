@@ -81,7 +81,7 @@ require_once ('../clases/funcion_permisos.php');
                   <div class="col-sm-12">
                   <div class="form-group">
                   <p><label>Seleccione un Alumno</label>
-                  <select class="form-control" name="curso" id="curso" onchange='llenarCampos(this);'> 
+                  <select class="form-control" name="curso" id="curso" onclick='llenarCampos(this);'> 
                   <option value="" >Seleccione</option>
                 </select>
                 </div>
