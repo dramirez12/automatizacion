@@ -18,13 +18,7 @@ class modelo_plan{
 
         return $consulta;
     }
-    function planActivo($opcion_check)
-    {
-        global $instancia_conexion;
-
-        $sql4 = "call proc_verificar_plan_activo('$opcion_check')";
-        return $instancia_conexion->ejecutarConsultaSimpleFila($sql4);
-    }
+  
     function verificarPlanNombre($nombre)
     {
         global $instancia_conexion;
@@ -33,12 +27,12 @@ class modelo_plan{
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql4);
     }
 
-    function crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan, $creado_por)
+    function crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan,$creado_por, $numero_acta, $fecha_acta, $fecha_emision,$creditos)
     {
 
         global $instancia_conexion;
 
-        $sql = "call proc_insertar_plan_estudio('$nombre','$num_clases','$fecha_creacion','$codigo_plan','$plan_vigente','$id_tipo_plan','$creado_por')";
+        $sql = "call proc_insertar_plan_estudio('$nombre','$num_clases','$fecha_creacion','$codigo_plan','$plan_vigente','$id_tipo_plan','$creado_por','$numero_acta','$fecha_acta','$fecha_emision','$creditos')";
 
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             return 1;
@@ -47,6 +41,7 @@ class modelo_plan{
             return 0;
         }
     }
+   
     function listar_planes_estudio()
     {
         global $instancia_conexion;

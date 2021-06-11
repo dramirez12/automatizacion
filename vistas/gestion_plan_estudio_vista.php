@@ -161,7 +161,7 @@ ob_end_flush();
 
                                 <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="25" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required ">
 
-                                <input class="form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden>
+                                <input class=" form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden>
 
 
                             </div>
@@ -239,7 +239,7 @@ ob_end_flush();
 
 <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../js/plan_estudio_gestion.js"></script>
-<script src="../js/validaciones_plan.js"></script> 
+<script src="../js/validaciones_plan.js"></script>
 
 
 

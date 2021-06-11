@@ -38,11 +38,11 @@ if ($visualizacion == 0) {
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A CREAR UN PLAN DE ESTUDIO.');
 
 
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "";
-    // } else {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "disabled";
-    // }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_crear_plan'] = "";
+    } else {
+        $_SESSION['btn_crear_plan'] = "disabled";
+    }
 }
 
 $nombre = $_SESSION['usuario'];
@@ -61,7 +61,7 @@ ob_end_flush();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
 
     <title></title>
 
@@ -120,15 +120,50 @@ ob_end_flush();
 
                         </div>
 
-                        <div class="card-body" style="display: block;">
+                        <div class="card-body">
                             <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+
+                                        <label>Seleccione Tipo de plan:</label>
+                                        <td><select class="form-control" style="width: 100%;" name="cbm_tipo_plan" id="cbm_tipo_plan">
+                                            </select></td>
+                                    </div>
+                                </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <input type="hidden">
+
+                                        <label>Número de Acta</label>
+
+                                        <input class="form-control" type="text" id="txt_num_acta" name="txt_num_acta" maxlength="25" value="" required>
+
 
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+
+                                        <label>Fecha de Acta</label>
+
+                                        <input class="form-control" type="date" id="fecha_acta" name="fecha_acta" required>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+
+                                        <label>Fecha de Emisión</label>
+
+                                        <input class="form-control" type="date" id="fecha_emision" name="fecha_emision" required>
+
+
+                                    </div>
+                                </div>
+
+
+
 
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -140,28 +175,6 @@ ob_end_flush();
 
                                     </div>
                                 </div>
-
-                                <div class="col-md-3">
-                                    <div class="form-group">
-
-                                        <label>Número de clases del plan</label>
-                                        <input class="form-control" type="text" id="txt_num_clases" name="txt_num_clases" maxlength="2" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input type="hidden">
-
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input type="hidden">
-
-                                    </div>
-                                </div>
-
-
                                 <div class="col-md-3">
                                     <div class="form-group">
 
@@ -174,26 +187,24 @@ ob_end_flush();
                                 </div>
 
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
 
-                                        <label>Seleccione Tipo de plan:</label>
-                                        <td><select class="form-control" style="width: 100%;" name="cbm_tipo_plan" id="cbm_tipo_plan">
-                                            </select></td>
+                                        <label># Clases plan</label>
+                                        <input class="form-control" type="text" id="txt_num_clases" name="txt_num_clases" maxlength="2" value="">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input type="hidden">
 
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <input type="hidden">
 
+                                        <label># Créditos de plan</label>
+                                        <input class="form-control" type="text" id="txt_creditos_plan" name="txt_creditos_plan" maxlength="3" value="">
                                     </div>
                                 </div>
+
+
+
 
                                 <!-- <div class="col-md-3">
                                     <label>Plan Vigente</label>
@@ -211,7 +222,7 @@ ob_end_flush();
                                         </div>
                                     </div>
                                 </div> -->
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
 
                                         <label>Fecha de Creación</label>
@@ -221,13 +232,14 @@ ob_end_flush();
 
                                     </div>
                                 </div>
-                               
+
+
 
                             </div>
                             <br>
                             <br>
                             <p class="text-center" style="margin-top: 10px;">
-                                <button class="btn btn-primary" id="guardar" class="guardar" name="guardar" onclick="crear_plan_estudio();">Guardar</button>
+                                <button class="btn btn-primary" id="guardar"  name="guarda" <?php echo $_SESSION['btn_crear_plan']; ?>>Guardar</button>
                             </p>
                         </div>
 
@@ -245,7 +257,8 @@ ob_end_flush();
 
 
 
-    <script type="text/javascript" src="../js/plan_estudio.js"></script>
+    <script type="text/javascript" src="../js/plan.js"></script>
+    <script type="text/javascript" src="../js/prueba.js"></script>
     <!-- <script type="text/javascript" src="../js/registro_docente.js"></script> -->
 
     <!-- para seleccionar limite de checkbox -->

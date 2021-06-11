@@ -2,7 +2,7 @@
 require_once "../Modelos/plan_estudio_modelo.php";
 
 
-$opcion_check = isset($_POST["plan_vigente"]) ? limpiarCadena1($_POST["plan_vigente"]) : "";
+
 $nombre_plan = isset($_POST["nombre"]) ? limpiarCadena1($_POST["nombre"]) : "";
 
 $instancia_modelo = new modelo_plan();
@@ -20,12 +20,7 @@ switch ($_GET["op"]) {
         }
         break;
 
-    case 'verificarPlan':
-        $rspta = $instancia_modelo->planActivo($opcion_check);
-        //Codificar el resultado utilizando json
-        echo json_encode($rspta);
-        break;
-
+   
     case 'verificarPlanNombre':
         $rspta = $instancia_modelo->verificarPlanNombre($nombre_plan);
         //Codificar el resultado utilizando json
