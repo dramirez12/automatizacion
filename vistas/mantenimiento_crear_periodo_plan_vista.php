@@ -187,7 +187,7 @@ ob_end_flush();
 
 </html>
 
-<script src="../js/ca2.js"></script>
-<script src="../Reporte/validar.js"></script>
+<!-- <script src="../js/ca2.js"></script>
+<script src="../Reporte/validar.js"></script> -->
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
