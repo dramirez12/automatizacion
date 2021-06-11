@@ -195,7 +195,7 @@ ob_end_flush();
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <label>Plan Vigente</label>
                                     <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:auto; height:35px;">
 
@@ -210,7 +210,7 @@ ob_end_flush();
                                             </span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-3">
                                     <div class="form-group">
 
@@ -221,6 +221,7 @@ ob_end_flush();
 
                                     </div>
                                 </div>
+                               
 
                             </div>
                             <br>
@@ -248,18 +249,18 @@ ob_end_flush();
     <!-- <script type="text/javascript" src="../js/registro_docente.js"></script> -->
 
     <!-- para seleccionar limite de checkbox -->
-    <script>
-        var limite = 1;
-        $(".ch").change(function() {
-            if ($("input:checked").length > limite) {
-                alert("Solo puede seleccionar una opción ");
-                document.getElementById('sino').value = '';
-                document.getElementById("SI").checked = false;
-                document.getElementById("NO").checked = false;
-                this.checked = false;
-            }
-        });
-    </script>
+    <!-- <script>
+            var limite = 1;
+            $(".ch").change(function() {
+                if ($("input:checked").length > limite) {
+                    alert("Solo puede seleccionar una opción ");
+                    document.getElementById('sino').value = '';
+                    document.getElementById("SI").checked = false;
+                    document.getElementById("NO").checked = false;
+                    this.checked = false;
+                }
+            });
+        </script> -->
 </body>
 
 

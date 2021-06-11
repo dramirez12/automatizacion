@@ -121,10 +121,38 @@ ob_end_flush();
             <div class="container-fluid ">
                 <!-- pantalla 1 -->
 
+                <div class="box-body">
 
-                
 
-            </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive" style="width: 100%;">
+                            <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Código</th>
+                                        <th>UV</th>
+                                        <th>Código de plan</th>
+                                        <th>Tipo Asignatura</th>
+                                        <th>área</th>
+                                        <th>Periodo</th>
+                                        <th>Plan de estudio</th>
+                                        <th>Acción</th>
+
+                                    </tr>
+                                </thead>
+
+
+                            </table>
+                            <br>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
         </section>
 
     </div>

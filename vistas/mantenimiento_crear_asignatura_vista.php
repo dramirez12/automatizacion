@@ -137,19 +137,92 @@ ob_end_flush();
                             <div class="col-md-3">
                                 <div class="form-group">
 
-                                    <label>Nombre de Asignatura</label>
+                                    <label>Código de Asignatura</label>
 
-                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="25" value="" required>
+                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required>
 
 
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Nombre de Asignatura</label>
+
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+
+                                    <label>Unidades Valorativas</label>
+
+                                    <input class="form-control" type="text" id="txt_uv" name="txt_uv" maxlength="45" required>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Seleccione Tipo de Asignatura:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_tipo_asignatura" id="cbm_tipo_asignatura">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Seleccione Área a la que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Seleccione periodo que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_periodo" id="cbm_periodo">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Seleccione plan que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Equivalencia</label>
+
+                                    <input class="form-control" type="text" id="txt_equivalencia" name="txt_equivalencia" maxlength="45" required>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label></label>
+
+                                    <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required>
+
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-           
+
 
         </section>
 
