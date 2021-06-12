@@ -24,16 +24,19 @@ if (permiso_ver('47') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('48')=='1')
- {
+if (permiso_ver('48') == '1') {
 
-  $_SESSION['historial_carga_academica_vista']="...";
-}
-else
-{
-$_SESSION['historial_carga_academica_vista']="No 
+  $_SESSION['historial_carga_academica_vista'] = "...";
+} else {
+  $_SESSION['historial_carga_academica_vista'] = "No 
   tiene permisos para visualizar";
+}
+if (permiso_ver('122') == '1') {
 
+  $_SESSION['importar_carga_final_vista'] = "...";
+} else {
+  $_SESSION['importar_carga_final_vista'] = "No 
+  tiene permisos para visualizar";
 }
 
 
@@ -132,6 +135,20 @@ $_SESSION['historial_carga_academica_vista']="No
                   <i class="fas fa-user-edit"></i>
                 </div>
                 <a href="../vistas/historial_carga_academica_vista.php" class="small-box-footer">
+                  Ir <i class="fas fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="small-box bg-primary">
+                <div class="inner">
+                  <h4>Importar Carga Final </h4>
+                  <p><?php echo $_SESSION['importar_carga_final_vista']; ?></p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-user-edit"></i>
+                </div>
+                <a href="../vistas/importar_carga_final_vista.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>

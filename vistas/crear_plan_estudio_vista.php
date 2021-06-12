@@ -136,7 +136,7 @@ ob_end_flush();
 
                                         <label>Número de Acta</label>
 
-                                        <input class="form-control" type="text" id="txt_num_acta" name="txt_num_acta" maxlength="25" value="" required>
+                                        <input class="form-control" type="text" id="txt_num_acta" name="txt_num_acta" maxlength="25" value="" required onkeypress="return solonumeros(event)">
 
 
                                     </div>
@@ -170,7 +170,7 @@ ob_end_flush();
 
                                         <label>Nombre de Plan</label>
 
-                                        <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="25" value="" required>
+                                        <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="25" value="" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre');" onkeypress="return sololetras(event)">
 
 
                                     </div>
@@ -191,7 +191,7 @@ ob_end_flush();
                                     <div class="form-group">
 
                                         <label># Clases plan</label>
-                                        <input class="form-control" type="text" id="txt_num_clases" name="txt_num_clases" maxlength="2" value="">
+                                        <input class="form-control" type="text" id="txt_num_clases" name="txt_num_clases" maxlength="2" value="" onkeypress="return solonumeros(event)">
                                     </div>
                                 </div>
 
@@ -199,7 +199,7 @@ ob_end_flush();
                                     <div class="form-group">
 
                                         <label># Créditos de plan</label>
-                                        <input class="form-control" type="text" id="txt_creditos_plan" name="txt_creditos_plan" maxlength="3" value="">
+                                        <input class="form-control" type="text" id="txt_creditos_plan" name="txt_creditos_plan" maxlength="3" value="" onkeypress="return solonumeros(event)">
                                     </div>
                                 </div>
 
@@ -239,7 +239,7 @@ ob_end_flush();
                             <br>
                             <br>
                             <p class="text-center" style="margin-top: 10px;">
-                                <button class="btn btn-primary" id="guardar"  name="guarda" <?php echo $_SESSION['btn_crear_plan']; ?>>Guardar</button>
+                                <button class="btn btn-primary" id="guardar" name="guarda" <?php echo $_SESSION['btn_crear_plan']; ?>>Guardar</button>
                             </p>
                         </div>
 
@@ -258,22 +258,8 @@ ob_end_flush();
 
 
     <script type="text/javascript" src="../js/plan.js"></script>
-    <script type="text/javascript" src="../js/prueba.js"></script>
-    <!-- <script type="text/javascript" src="../js/registro_docente.js"></script> -->
+    <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 
-    <!-- para seleccionar limite de checkbox -->
-    <!-- <script>
-            var limite = 1;
-            $(".ch").change(function() {
-                if ($("input:checked").length > limite) {
-                    alert("Solo puede seleccionar una opción ");
-                    document.getElementById('sino').value = '';
-                    document.getElementById("SI").checked = false;
-                    document.getElementById("NO").checked = false;
-                    this.checked = false;
-                }
-            });
-        </script> -->
 </body>
 
 

@@ -28,7 +28,15 @@ $("#guardar").click(function () {
     } else if(cbm_tipo_plan==0) {
       alert("Seleccione tipo de plan valido")
     } else {
-        // alert("si");
+        swal({
+          title: "Alerta",
+          text: "Porfavor espere!",
+          type: "warning",
+          showConfirmButton: true,
+          timer: 15000,
+        });
+    
+
         insertar(
           cbm_tipo_plan,
           txt_num_acta,
@@ -44,9 +52,11 @@ $("#guardar").click(function () {
         );
 
     }
-    
+
+      
 });
 
+//funcion para insertar el plan de estudio
 
 function insertar(
   cbm_tipo_plan,
@@ -110,3 +120,32 @@ function insertar(
     }
   );
 }
+
+//llena el selectt de plan e estudio crear
+function llenar_tipo_plan() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=tipo_plan",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_tipo_plan").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+
+      $("#cbm_tipo_plan").append(o);
+      $("#cbm_tipo_plan").val(0);
+    },
+  });
+}
+llenar_tipo_plan();
+
+//para poner la fecha de hoy
+window.onload = function () {
+  var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth() + 1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  if (dia < 10) dia = "0" + dia; //agrega cero si el menor de 10
+  if (mes < 10) mes = "0" + mes; //agrega cero si el menor de 10
+  document.getElementById("fechacreacion").value = ano + "-" + mes + "-" + dia;
+};
