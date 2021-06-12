@@ -27,6 +27,42 @@ switch ($_GET["op"]) {
         echo json_encode($rspta);
         break;
 
+    case 'plan':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->plan_sel();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_plan_estudio . "'> " . $r2->nombre . " </option>";
+        }
+        break;
+
+    case 'area':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->area_sel();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_area . "'> " . $r2->area . " </option>";
+        }
+        break;
+
+    case 'periodo':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->periodo_sel();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_periodo_plan . "'> " . $r2->periodo . " </option>";
+        }
+        break;
+
 
   
   
