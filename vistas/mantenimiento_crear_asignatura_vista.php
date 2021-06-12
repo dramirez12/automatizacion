@@ -45,11 +45,11 @@ if ($visualizacion == 0) {
 
 
 
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //     $_SESSION['btn_guardar_atributo'] = "";
-    // } else {
-    //     $_SESSION['btn_guardar_atributo'] = "disabled";
-    // }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_crear_asignatura'] = "";
+    } else {
+        $_SESSION['btn_crear_asignatura'] = "disabled";
+    }
     /*
 
  if (isset($_REQUEST['msj']))
@@ -137,46 +137,8 @@ ob_end_flush();
                             <div class="col-md-3">
                                 <div class="form-group">
 
-                                    <label>Código de Asignatura</label>
-
-                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required>
-
-
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-
-                                    <label>Nombre de Asignatura</label>
-
-                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required>
-
-
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-
-                                    <label>Unidades Valorativas</label>
-
-                                    <input class="form-control" type="text" id="txt_uv" name="txt_uv" maxlength="45" required>
-
-
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-
-                                    <label>Seleccione Tipo de Asignatura:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_tipo_asignatura" id="cbm_tipo_asignatura">
-                                        </select></td>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-
-                                    <label>Seleccione Área a la que pertenece:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
+                                    <label>Seleccione plan que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan">
                                         </select></td>
                                 </div>
                             </div>
@@ -191,25 +153,82 @@ ob_end_flush();
                             <div class="col-md-3">
                                 <div class="form-group">
 
-                                    <label>Seleccione plan que pertenece:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan">
+                                    <label>Código de Asignatura</label>
+
+                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Nombre de Asignatura</label>
+
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_asignatura');" onkeypress="return sololetras(event)">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Unidades Valorativas</label>
+
+                                    <input class="form-control" type="text" id="txt_uv" name="txt_uv" maxlength="45" required onkeypress="return solonumeros(event)">
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Seleccione Área a la que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
                                         </select></td>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-
-                                    <label>Equivalencia</label>
-
-                                    <input class="form-control" type="text" id="txt_equivalencia" name="txt_equivalencia" maxlength="45" required>
 
 
+
+
+                            <div class="col-md-2">
+                                <label>Reposición</label>
+                                <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:auto; height:35px;">
+
+                                    <div class="form-group">
+
+                                        <input type="text" name="sino_reposicion" id="sino_reposicion" readonly hidden>
+                                        <span class="checkbox-inline">
+                                            <label class="checkbox-inline"><input id="SI" type="checkbox" name="check1[]" class="ch1" value="SI"> SI</label>
+                                            <label class="checkbox-inline"><input id="NO" type="checkbox" name="check1[]" class="ch1" value="NO"> NO</label>
+
+
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
+                                <label>Suficiencia</label>
+                                <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:auto; height:35px;">
+
+                                    <div class="form-group">
+
+                                        <input type="text" name="sino_suficiencia" id="sino_suficiencia" readonly hidden>
+                                        <span class="checkbox-inline">
+                                            <label class="checkbox-inline"><input id="SI" type="checkbox" name="check2[]" class="ch2" value="SI"> SI</label>
+                                            <label class="checkbox-inline"><input id="NO" type="checkbox" name="check2[]" class="ch2" value="NO"> NO</label>
+
+
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
                                 <div class="form-group">
 
-                                    <label></label>
+                                    <label>Sílabo</label>
 
                                     <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required>
 
@@ -217,6 +236,11 @@ ob_end_flush();
                                 </div>
                             </div>
 
+
+                            <br>
+                            <p style="display: block; margin: 0 auto;">
+                                <button class="btn btn-primary" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -230,6 +254,8 @@ ob_end_flush();
 
 
 
+    <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
+    <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
 
 

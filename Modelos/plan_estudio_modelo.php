@@ -121,5 +121,29 @@ class modelo_plan{
             return 0;
         }
     }
+    function plan_sel()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio');
+
+        return $consulta;
+    }
+    function area_sel()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_area,area FROM tbl_areas');
+
+        return $consulta;
+    }
+    function periodo_sel()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_periodo_plan,periodo FROM tbl_periodo_plan');
+
+        return $consulta;
+    }
+  
+  
+  
 }
 ?>
