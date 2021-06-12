@@ -115,11 +115,11 @@ ob_end_flush();
 
                         <div class="row">
 
-                            <div class="col-md-3">
+                            <div class="col-md-5">
                                 <div class="form-group">
 
                                     <label>Seleccione el archivo</label>
-                                    <input type="file" class="form-control " id="archivo_excel">
+                                    <input type="file" class="form-control " id="archivo_excel" accept=".xls, .xlsx">
                                 </div>
                             </div>
                         </div>
