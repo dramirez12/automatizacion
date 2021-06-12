@@ -97,7 +97,6 @@ ob_end_flush();
 
                         <h1>Período de Plan de Estudios</h1>
                     </div>
-                    <input class="form-control" hidden type="text" id="max_periodo" name="max_periodo" value="<?php echo $max_periodo['valor'] ?>">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
@@ -147,7 +146,7 @@ ob_end_flush();
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Nuevo Período de Plan de Estudios </label>
+                                        <label>Nuevo Período </label>
                                         <input class="form-control" type="text"  maxlength="10" id="periodo_plan" name="periodo_plan" style="text-transform: uppercase"  onkeypress=" return DobleEspacio(this, event);" onkeyup="MismaLetra('periodo_plan');" onkeypress="return letrasynumeros(event)"  onkeypress="return comprobar(this.value, event, this.id)" >
                                     </div>
 
@@ -191,3 +190,4 @@ ob_end_flush();
 <script src="../Reporte/validar.js"></script> -->
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+  <!-- <script src="../js/validaciones_plan.js"></script>  -->

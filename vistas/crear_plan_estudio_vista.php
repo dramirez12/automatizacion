@@ -203,10 +203,7 @@ ob_end_flush();
                                     </div>
                                 </div>
 
-
-
-
-                                <!-- <div class="col-md-3">
+                                <div class="col-md-3">
                                     <label>Plan Vigente</label>
                                     <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:auto; height:35px;">
 
@@ -221,8 +218,8 @@ ob_end_flush();
                                             </span>
                                         </div>
                                     </div>
-                                </div> -->
-                                <div class="col-md-2">
+                                </div> 
+                                <div class="col-md-3">
                                     <div class="form-group">
 
                                         <label>Fecha de Creación</label>

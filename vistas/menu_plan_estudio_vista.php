@@ -38,14 +38,28 @@
             $_SESSION['gestion_plan_estudio_vista'] = "No 
   tiene permisos para visualizar";
         }
+        if (permiso_ver('120') == '1') {
 
-        if (permiso_ver('108') == '1') {
+            $_SESSION['equivalencias_vista'] = "...";
+        } else {
+            $_SESSION['equivalencias_vista'] = "No 
+  tiene permisos para visualizar";
+        }
+        if (permiso_ver('121') == '1') {
+
+            $_SESSION['comparar_plan_vista'] = "...";
+        } else {
+            $_SESSION['comparar_plan_vista'] = "No 
+  tiene permisos para visualizar";
+        }
+
+       /*  if (permiso_ver('108') == '1') {
 
             $_SESSION['prueba_capacitacion_vista'] = "...";
         } else {
             $_SESSION['prueba_capacitacion_vista'] = "No 
   tiene permisos para visualizar";
-        }
+        } */
 
 
         ?>
@@ -158,6 +172,36 @@
                             <i class="fas fa-user-edit"></i>
                         </div>
                         <a href="../vistas/historial_plan_estudio_vista.php" class="small-box-footer">
+                            Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="small-box bg-primary">
+                        <div class="inner">
+                            <h4>Equivalencias </h4>
+                            <p><?php echo $_SESSION['equivalencias_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <a href="../vistas/equivalencias_plan_estudio_vista.php" class="small-box-footer">
+                            Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="small-box bg-primary">
+                        <div class="inner">
+                            <h4>Comparar Planes </h4>
+                            <p><?php echo $_SESSION['comparar_plan_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <a href="../vistas/comparar_plan_estudio_vista.php" class="small-box-footer">
                             Ir <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
