@@ -165,7 +165,7 @@ ob_end_flush();
 
                                     <label>Nombre de Asignatura</label>
 
-                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required>
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_asignatura');" onkeypress="return sololetras(event)">
 
 
                                 </div>
@@ -175,7 +175,7 @@ ob_end_flush();
 
                                     <label>Unidades Valorativas</label>
 
-                                    <input class="form-control" type="text" id="txt_uv" name="txt_uv" maxlength="45" required>
+                                    <input class="form-control" type="text" id="txt_uv" name="txt_uv" maxlength="45" required onkeypress="return solonumeros(event)">
 
 
                                 </div>
@@ -228,7 +228,7 @@ ob_end_flush();
                             <div class="col-md-2">
                                 <div class="form-group">
 
-                                    <label></label>
+                                    <label>Sílabo</label>
 
                                     <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required>
 
@@ -255,6 +255,7 @@ ob_end_flush();
 
 
     <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
+    <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
 
 
