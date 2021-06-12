@@ -98,7 +98,7 @@ ob_end_flush();
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Importar Carga </h3>
+                        <h3 class="card-title">Seleccione el archivo</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -115,12 +115,17 @@ ob_end_flush();
 
                         <div class="row">
 
-                            <div class="col-md-5">
-                                <div class="form-group">
+                            <div class="col-lg-10">
 
-                                    <label>Seleccione el archivo</label>
-                                    <input type="file" class="form-control " id="archivo_excel" accept=".xls, .xlsx">
-                                </div>
+
+                                <input type="file" class="form-control " id="archivo_excel" accept=".xls, .xlsx">
+
+                            </div>
+                            <div class="col-lg-2">
+
+                                <button class="btn btn-danger" style="width: 100%;">Importar</button>
+
+
                             </div>
                         </div>
 
@@ -134,3 +139,14 @@ ob_end_flush();
 
 
 </html>
+<script>
+    $('input[type="file"]').on('change', function() {
+        var ext = $(this).val().split('.').pop();
+        if ($(this).val() != '') {
+            if (ext == "xls" || ext == "xlsx" || ext == "csv") {} else {
+                $(this).val('');
+                alert("Extensión no permitida");
+            }
+        }
+    });
+</script>
