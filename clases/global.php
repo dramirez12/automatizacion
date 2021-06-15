@@ -3,13 +3,13 @@
 define("DB_HOST","167.114.169.207");
 
 //Nombre de la base de datos
-define("DB_NAME", "informat_automatizacion");
+define("DB_NAME", "informat_desarrollo_automatizacion");
 
 //Usuario de la base de datos
-define("DB_USERNAME", "informat_admin");
+define("DB_USERNAME", "informat_desarrollo");
 
 //Contraseña del usuario de la base de datos
-define("DB_PASSWORD", "HLo{Q3e{)II^");
+define("DB_PASSWORD", "!fuRCr3XR-tz");
 
 //definimos la codificación de los caracteres
 define("DB_ENCODE","utf8");
