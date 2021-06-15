@@ -158,4 +158,22 @@ class modeloCarga
             return 0;
         }
     }
+
+    function insertar_import_carga($id_persona, $id_aula, $id_asignatura, $id_modalidad, $control, $seccion, $num_alumnos, $dias, $hora_inicial, $hora_final)
+    {
+
+        global $instancia_conexion;
+
+        $sql = "call proc_insert_import_carga('$id_persona', '$id_aula', '$id_asignatura', '$id_modalidad', '$control', '$seccion', '$num_alumnos', '$dias','$hora_inicial', '$hora_final')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            $Id_objeto = 104;
+            return 1;
+            bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'UNA CARGA ACADEMICA');
+        } else {
+            return 0;
+        }
+    }
 }
+
+?>
