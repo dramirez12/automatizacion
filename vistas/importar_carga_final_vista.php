@@ -9,7 +9,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 require_once('../clases/conexion_mantenimientos.php');
 //$registro = controlador_registro_docente::ctrRegistro();
-$Id_objeto = 122;
+$Id_objeto = 104;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -123,7 +123,7 @@ ob_end_flush();
                             </div>
                             <div class="col-lg-2">
 
-                                <button class="btn btn-danger" style="width: 100%;">Importar</button>
+                                <button class="btn btn-danger" style="width: 100%;" id="importar">Importar</button>
 
 
                             </div>
@@ -150,3 +150,5 @@ ob_end_flush();
         }
     });
 </script>
+
+<script src="../js/importar_carga.js"></script>

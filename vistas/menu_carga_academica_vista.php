@@ -31,7 +31,7 @@ if (permiso_ver('48') == '1') {
   $_SESSION['historial_carga_academica_vista'] = "No 
   tiene permisos para visualizar";
 }
-if (permiso_ver('122') == '1') {
+if (permiso_ver('104') == '1') {
 
   $_SESSION['importar_carga_final_vista'] = "...";
 } else {
