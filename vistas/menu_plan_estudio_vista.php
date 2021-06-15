@@ -38,14 +38,14 @@
             $_SESSION['gestion_plan_estudio_vista'] = "No 
   tiene permisos para visualizar";
         }
-        if (permiso_ver('120') == '1') {
+        if (permiso_ver('106') == '1') {
 
             $_SESSION['equivalencias_vista'] = "...";
         } else {
             $_SESSION['equivalencias_vista'] = "No 
   tiene permisos para visualizar";
         }
-        if (permiso_ver('121') == '1') {
+        if (permiso_ver('105') == '1') {
 
             $_SESSION['comparar_plan_vista'] = "...";
         } else {
