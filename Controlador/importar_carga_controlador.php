@@ -1,72 +1,98 @@
 <?php
-
 session_start();
-require ('../Modelos/tabla_carga_modelo.php');
+require('../Modelos/tabla_carga_modelo.php');
 require_once('../clases/funcion_bitacora.php');
-include "../clases/class.upload.php";
 
-$Id_objeto = 104;
-$MU = new modeloCarga();
 
-if(isset($_FILES["archivo_excel"])){
-	$up = new Upload($_FILES["archivo_excel"]);
-	if($up->uploaded){
-		$up->Process("../clases/uploads/");
-		if($up->processed){
-            /// leer el archivo excel
-            require_once '../clases/PHPExcel/Classes/PHPExcel.php';
-            $archivo = "../clases/uploads/".$up->file_dst_name;
-            $inputFileType = PHPExcel_IOFactory::identify($archivo);
-            $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-            $objPHPExcel = $objReader->load($archivo);
-            $sheet = $objPHPExcel->getSheet(0); 
-            $highestRow = $sheet->getHighestRow(); 
-            $highestColumn = $sheet->getHighestColumn();
-            for ($row = 2; $row <= $highestRow; $row++){ 
+// $Id_objeto = 104;
+// $MU = new modeloCarga();
+
+
+// $consulta = $MU->insertar_import_carga($id_persona, $id_aula, $id_asignatura, $id_modalidad, $control, $seccion, $num_alumnos, $dias, $hora_inicial, $hora_final);
+// echo $consulta;
+
+// if ($consulta === 1) {
+//     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'UNA NUEVA CARGA ACADÉMICA');
+// } else {
+// }
+
+if (isset($_GET['op'])) {
+
+    switch ($_GET['op']) {
+
+        case 'cargarExcel':
+
+            if (is_array($_FILES["archivoExcel"]) && count($_FILES["archivoExcel"]) > 0) {
+
+                //SE LLAMA A LA LIBRERIA
+                require_once('../PHPExcel/Classes/PHPExcel.php');
+
+                $tmpfname = $_FILES['archivoExcel']['tmp_name'];
+
+                //CREAR EL EXCEL PARA LUEGO LEERLO
+                $leer_excel = PHPExcel_IOFactory::createReaderForFile($tmpfname);
+
+                //CARGAR NUESTRO EXCELL
+                $excel_obj = $leer_excel->load($tmpfname);
+
+                //CARGAR EN QUE HOJA TRABAJAREMOS DEL EXCEL
+                $hoja = $excel_obj->getSheet(0);
+                $filas = $hoja->getHighestRow();
+                echo "<table id='tabla_detalle' class='table-responsive' style='width: 100%; table-layout:fixed'>
+                <thead>
+                    <tr> 
+                        <td>Control</td>
+                        <td>Cod Asig</td>
+                        <td>Asignatura</td>
+                        <td>Seccion</td>
+                        <td>Hra Inicio</td>
+                        <td>Hra Final</td>
+                        <td>Dias</td>
+                        <td>Aulas</td>
+                        <td>Profesor</td>
+                        <td>MAtriculados</td>
+            
+                    </tr>
+                </thead>
+                <tbody id='tabla_detalle'>
+                ";
+
+
+                for ($row = 2; $row <= $filas; $row++) {
+
+                    $control = $hoja->getCell('D'.$row);
+                    $cod_asig = $hoja->getCell('E'.$row);
+                    $asignatura = $hoja->getCell('F'.$row);
+                    $seccion = $hoja->getCell('G'.$row);
+                    $hora_inicio = $hoja->getCell('H'.$row);
+                    $hora_final = $hoja->getCell('I'.$row);
+                    $dias = $hoja->getCell('J'.$row);
+                    $aula = $hoja->getCell('K'.$row);
+                    $profesor = $hoja->getCell('N'.$row);
+                    $matriculados = $hoja->getCell('R'.$row);
+
+                    echo "<tr>";
+                    echo "<td>" . $control . "</td>";
+                    echo "<td>" . $cod_asig . "</td>";
+                    echo "<td>" . $asignatura . "</td>";
+                    echo "<td>" . $seccion . "</td>";
+                    echo "<td>" . $hora_inicio . "</td>";
+                    echo "<td>" . $hora_final . "</td>";
+                    echo "<td>" . $dias . "</td>";
+                    echo "<td>" . $aula . "</td>";
+                    echo "<td>" . $profesor . "</td>";
+                    echo "<td>" . $matriculados . "</td>";
+                    echo "</tr>";
+                }
+
+                echo "</tbody></table>";
                 
-                $control = $sheet->getCell("B".$row)->getValue();
-                $cod_asignatura = $sheet->getCell("C".$row)->getValue();
-                $asignatura = $sheet->getCell("D".$row)->getValue();
-                $seccion = $sheet->getCell("E".$row)->getValue();
-                $hra_inicio = $sheet->getCell("F".$row)->getValue();
-                $hra_final = $sheet->getCell("G".$row)->getValue();
-                $dias = $sheet->getCell("H".$row)->getValue();
-                $aula = $sheet->getCell("I".$row)->getValue();
-                $profesor = $sheet->getCell("L".$row)->getValue();
-                $cupos = $sheet->getCell("M".$row)->getValue();
-
-                // $sql = "insert into person (no, name, lastname, address1, email1, phone1, created_at) value ";
-                // $sql .= " (\"$x_no\",\"$x_name\",\"$x_lastname\",\"$x_address1\",\"$x_email\",\"$x_phone1\", NOW())";
-
-                // $consulta = $MU->insertar_import_carga($id_persona, $id_aula, $id_asignatura, $id_modalidad, $control, $seccion, $num_alumnos, $dias, $hora_inicial, $hora_final);
-                // echo $consulta;
-                
-                // if ($consulta === 1) {
-                //     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'UNA NUEVA CARGA ACADÉMICA');
-                
-                // } else {
-                
-                // }
-
-                echo $control;
-                echo $cod_asignatura;
-                echo $asignatura;
-                echo $seccion;
-                echo $hra_inicio;
-                echo $hra_final;
-                echo $dias;
-                echo $aula;
-                echo $profesor;
-                echo $cupos;
-
+            } else {
+                return 0;
             }
-    	unlink($archivo);
-        }	
-
-}
-}
 
 
 
-
-?>
+            break;
+    }
+};

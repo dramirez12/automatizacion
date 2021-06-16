@@ -110,24 +110,35 @@ ob_end_flush();
                     <!-- /.card-header -->
                     <!--empieza -->
 
+
                     <!-- /.card-body -->
                     <div class="card-body" style="display: block;">
 
-                        <div class="row">
-
-                            <div class="col-lg-10">
 
 
-                                <input type="file" class="form-control " id="archivo_excel" accept=".xls, .xlsx">
+                        <form action="#" enctype="multipart/form-data">
+
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <input type="file" class="form-control" id="archivo_excel" accept=".xls, .xlsx">
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <button class="btn btn-danger" style="width: 100%;" id="importar" onclick="cargar_excel();">Importar</button>
+
+
+                                </div>
+
+                                <div class="col-lg-12" id="div_tabla">
+                                    <tr>
+                                        
+                                    </tr>
+                                </div>
 
                             </div>
-                            <div class="col-lg-2">
 
-                                <button class="btn btn-danger" style="width: 100%;" id="importar">Importar</button>
+                        </form>
 
-
-                            </div>
-                        </div>
 
                     </div>
                 </div>
