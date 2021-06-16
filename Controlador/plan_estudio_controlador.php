@@ -4,6 +4,7 @@ require_once "../Modelos/plan_estudio_modelo.php";
 
 
 $nombre_plan = isset($_POST["nombre"]) ? limpiarCadena1($_POST["nombre"]) : "";
+$id_plan_estudio = isset($_POST["id_plan_estudio"]) ? limpiarCadena1($_POST["id_plan_estudio"]) : "";
 
 $instancia_modelo = new modelo_plan();
 switch ($_GET["op"]) {
@@ -61,6 +62,12 @@ switch ($_GET["op"]) {
             # code...
             echo "<option value='" . $r2->id_periodo_plan . "'> " . $r2->periodo . " </option>";
         }
+        break;
+
+    case 'UVasignaturas':
+        $rspta = $instancia_modelo->UVasignaturas($id_plan_estudio);
+        //Codificar el resultado utilizando json
+        echo json_encode($rspta);
         break;
 
 

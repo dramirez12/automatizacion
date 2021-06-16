@@ -27,12 +27,12 @@ class modelo_plan{
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql4);
     }
 
-    function crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan,$creado_por, $numero_acta, $fecha_acta, $fecha_emision,$creditos)
+    function crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan,$creado_por, $numero_acta, $fecha_acta, $fecha_emision,$creditos,$activo)
     {
 
         global $instancia_conexion;
 
-        $sql = "call proc_insertar_plan_estudio('$nombre','$num_clases','$fecha_creacion','$codigo_plan','$plan_vigente','$id_tipo_plan','$creado_por','$numero_acta','$fecha_acta','$fecha_emision','$creditos')";
+        $sql = "call proc_insertar_plan_estudio('$nombre','$num_clases','$fecha_creacion','$codigo_plan','$plan_vigente','$id_tipo_plan','$creado_por','$numero_acta','$fecha_acta','$fecha_emision','$creditos','$activo')";
 
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             return 1;
@@ -142,8 +142,29 @@ class modelo_plan{
 
         return $consulta;
     }
-  
-  
+
+    function UVasignaturas($id_plan_estudio)
+    {
+        global $instancia_conexion;
+
+        $sql4 = "call proc_verificar_unidades_asignatura_plan('$id_plan_estudio')";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql4);
+    }
+
+    function modificar_plan_estudio_no($vigencia_si, $id_plan, $vigencia_no, $estado_activo_asig, $estado_inactivo_asig, $activo_plan_pasado, $modificado_por, $fecha_primer_vigencia, $fecha_modificacion)
+    {
+
+        //$Id_objeto=98;
+        global $instancia_conexion;
+
+        $sql = "call proc_actualizar_vigencia_planes_no('$vigencia_si', '$id_plan', '$vigencia_no', '$estado_activo_asig', '$estado_inactivo_asig', '$activo_plan_pasado','$modificado_por', '$fecha_primer_vigencia','$fecha_modificacion')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
   
 }
 ?>

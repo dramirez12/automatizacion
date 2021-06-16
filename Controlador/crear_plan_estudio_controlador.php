@@ -15,8 +15,9 @@ $numero_acta = $_POST['numero_acta'];
 $fecha_acta = $_POST['fecha_acta'];
 $fecha_emision = $_POST['fecha_emision'];
 $creditos= $_POST['creditos_plan'];
+$activo = $_POST['activo'];
 
-    $consulta = $MU->crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan,$creado_por, $numero_acta, $fecha_acta, $fecha_emision,$creditos);
+    $consulta = $MU->crear_plan_estudio($nombre, $num_clases, $fecha_creacion, $codigo_plan, $plan_vigente, $id_tipo_plan,$creado_por, $numero_acta, $fecha_acta, $fecha_emision,$creditos,$activo);
     echo $consulta;
 
 if ($consulta == 1) {

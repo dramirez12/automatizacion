@@ -9,6 +9,7 @@ $("#guardar").click(function () {
     var txt_creditos_plan = $("#txt_creditos_plan").val();
     var fechacreacion = $("#fechacreacion").val();
     var vigencia = "NO";
+    var activo = 0;
     var usuario = $("#id_sesion").val();
    
       console.log(cbm_tipo_plan);
@@ -28,28 +29,30 @@ $("#guardar").click(function () {
     } else if(cbm_tipo_plan==0) {
       alert("Seleccione tipo de plan valido")
     } else {
-        swal({
-          title: "Alerta",
-          text: "Porfavor espere!",
-          type: "warning",
-          showConfirmButton: true,
-          timer: 15000,
-        });
+        
     
+      if (txt_creditos_plan<160 ||txt_creditos_plan>210) {
+        alert("Los créditos del plan no puede ser menor o sobrepasar lo establecido para una licenciatura");
+        
+        document.getElementById("txt_creditos_plan").value = "";
+      } else {
+         insertar(
+           cbm_tipo_plan,
+           txt_num_acta,
+           fecha_acta,
+           fecha_emision,
+           txt_nombre,
+           txt_codigo_plan,
+           txt_num_clases,
+           txt_creditos_plan,
+           fechacreacion,
+           vigencia,
+           usuario,
+           activo
+         );
+      }
 
-        insertar(
-          cbm_tipo_plan,
-          txt_num_acta,
-          fecha_acta,
-          fecha_emision,
-          txt_nombre,
-          txt_codigo_plan,
-          txt_num_clases,
-          txt_creditos_plan,
-          fechacreacion,
-          vigencia,
-          usuario
-        );
+       
 
     }
 
@@ -69,8 +72,16 @@ function insertar(
   txt_creditos_plan,
   fechacreacion,
   vigencia,
-  usuario
+  usuario,
+  activo
 ) {
+  swal({
+    title: "Alerta",
+    text: "Porfavor espere!",
+    type: "warning",
+    showConfirmButton: false,
+    timer: 15000,
+  });
   $.post(
     "../Controlador/plan_estudio_controlador.php?op=verificarPlanNombre",
     {
@@ -99,6 +110,7 @@ function insertar(
             fecha_creacion: fechacreacion,
             Creado_por: usuario,
             plan_vigente: vigencia,
+            activo: activo
           },
         }).done(function (resp) {
           if (resp > 0) {
@@ -109,7 +121,7 @@ function insertar(
               "success"
             );
             //  document.getElementById("txt_registro").value = "";
-
+            limpiarInputs();
           
           } else {
             swal("Alerta!", "No se pudo completar la actualización", "warning");
@@ -129,6 +141,7 @@ function llenar_tipo_plan() {
     type: "POST",
     data: cadena,
     success: function (r) {
+      
       $("#cbm_tipo_plan").html(r).fadeIn();
       var o = new Option("SELECCIONAR", 0);
 
@@ -149,3 +162,16 @@ window.onload = function () {
   if (mes < 10) mes = "0" + mes; //agrega cero si el menor de 10
   document.getElementById("fechacreacion").value = ano + "-" + mes + "-" + dia;
 };
+
+//para limpiar todos los inputs cuando se crea el plan
+function limpiarInputs() {
+   document.getElementById("txt_num_acta").value = "";
+   document.getElementById("txt_nombre").value = "";
+   document.getElementById("txt_codigo_plan").value = "";
+   document.getElementById("txt_num_clases").value = "";
+   document.getElementById("txt_creditos_plan").value = "";
+   document.getElementById("fecha_acta").value = "";
+   document.getElementById("fecha_emision").value = "";
+   document.getElementById("cbm_tipo_plan").value = "";
+}
+

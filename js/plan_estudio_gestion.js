@@ -23,16 +23,20 @@ function TablaPlanEstudio() {
       url: "../Controlador/tabla_plan_estudio_controlador.php",
       type: "POST",
     },
-
     columns: [
       {
         defaultContent:
           "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>",
       },
+      {
+        defaultContent:
+          "<button style='font-size:13px;' type='button' class='cambiar btn btn-warning '><i class='fas fa-exchange-alt'></i></button>",
+      },
       { data: "nombre_plan" },
       { data: "num_clases" },
       { data: "codigo_plan" },
       { data: "nombre_tipo_plan" },
+      { data: "creditos_plan" },
       { data: "plan_vigente" },
     ],
 
@@ -141,274 +145,14 @@ $("#guardar").click(function () {
       showConfirmButton: true,
       timer: 15000,
     });
-  } else if (
-    txt_nombre != txt_nombre2 ||
-    txt_num_clases != txt_num_clases2 ||
-    txt_codigo_plan != txt_codigo_plan2 ||
-    txt_vigente != txt_vigente2
-  ) {
-    if (txt_nombre != txt_nombre2 && txt_vigente == txt_vigente2) {
-      $.post(
-        "../Controlador/plan_estudio_controlador.php?op=verificarPlanNombre",
-        {
-          nombre: txt_nombre,
-        },
-
-        function (data, status) {
-          console.log(data);
-          data = JSON.parse(data);
-
-          if (data.registro > 0) {
-            alert("Ya existe un plan con el mismo nombre");
-          } else {
-            modificar_plan_estudio(
-              txt_nombre,
-              txt_num_clases,
-              txt_codigo_plan,
-              cbm_tipo_plan,
-              fecha_modificado,
-              nombre_usuario,
-              id_plan_estudio
-            );
-          }
-        }
-      );
-    } else if (txt_nombre == txt_nombre2 && txt_vigente != txt_vigente2) {
-      valida_plan(
-        txt_nombre,
-        txt_num_clases,
-        txt_codigo_plan,
-        cbm_tipo_plan,
-        fecha_modificado,
-        nombre_usuario,
-        id_plan_estudio,
-        txt_vigente,
-        txt_vigente2
-      );
-    } else {
-      if (txt_nombre != txt_nombre2 && txt_vigente != txt_vigente2) {
-        //una validacion para el nombre y vigencia
-
-        valida_nombre_vigencia(
-          txt_nombre,
-          // txt_nombre2,
-          txt_num_clases,
-          //  txt_num_clases2,
-          txt_codigo_plan,
-          //  txt_codigo_plan2,
-          cbm_tipo_plan,
-          fecha_modificado,
-          nombre_usuario,
-          id_plan_estudio,
-          txt_vigente,
-          txt_vigente2
-        );
-      } else {
-        if (
-          (txt_nombre == txt_nombre2 && txt_vigente == txt_vigente2) ||
-          txt_codigo_plan != txt_codigo_plan2 ||
-          txt_num_clases != txt_num_clases2
-        ) {
-          modificar_plan_estudio(
-            txt_nombre,
-            txt_num_clases,
-            txt_codigo_plan,
-            cbm_tipo_plan,
-            fecha_modificado,
-            nombre_usuario,
-            id_plan_estudio
-          );
-        }
-      }
-    }
+  } else if (cbm_tipo_plan == 0) {
+    alert("Seleccione una opción válida");
   } else {
     alert("No se han modificado datos");
   }
 });
 
-//funcion para plan de estudio con modificar vigencia
-function modificar_plan_estudio_vigente(
-  txt_nombre,
-  txt_num_clases,
-  txt_codigo_plan,
-  cbm_tipo_plan,
-  fecha_modificado,
-  nombre_usuario,
-  id_plan_estudio,
-  txt_vigente
-) {
-  $.ajax({
-    url: "../Controlador/modificar_plan_estudio_vigente_controlador.php",
-    type: "POST",
-    data: {
-      nombre: txt_nombre,
-      num_clases: txt_num_clases,
-      codigo_plan: txt_codigo_plan,
-      id_tipo_plan: cbm_tipo_plan,
-      fecha_modificacion: fecha_modificado,
-      modificado_por: nombre_usuario,
-      id_plan_estudio: id_plan_estudio,
-      plan_vigente: txt_vigente,
-      // Id_usuario: id_usuario
-    },
-  }).done(function (resp) {
-    if (resp > 0) {
-      $("#modal_editar").modal("hide");
-      swal("Buen trabajo!", "datos actualizados correctamente!", "success");
-      //  document.getElementById("txt_registro").value = "";
-
-      table.ajax.reload();
-    } else {
-      swal("Alerta!", "No se pudo completar la actualización", "warning");
-      //document.getElementById("txt_registro").value = "";
-    }
-  });
-}
-
-//funcion para plan de estudio sin vigencia
-
-function modificar_plan_estudio(
-  txt_nombre,
-  txt_num_clases,
-  txt_codigo_plan,
-  cbm_tipo_plan,
-  fecha_modificado,
-  nombre_usuario,
-  id_plan_estudio
-) {
-  $.ajax({
-    url: "../Controlador/modificar_plan_estudio_controlador.php",
-    type: "POST",
-    data: {
-      nombre: txt_nombre,
-      num_clases: txt_num_clases,
-      codigo_plan: txt_codigo_plan,
-      id_tipo_plan: cbm_tipo_plan,
-      fecha_modificacion: fecha_modificado,
-      modificado_por: nombre_usuario,
-      id_plan_estudio: id_plan_estudio,
-      // Id_usuario: id_usuario
-    },
-  }).done(function (resp) {
-    if (resp > 0) {
-      $("#modal_editar").modal("hide");
-      swal("Buen trabajo!", "datos actualizados correctamente!", "success");
-      //  document.getElementById("txt_registro").value = "";
-
-      table.ajax.reload();
-    } else {
-      swal("Alerta!", "No se pudo completar la actualización", "warning");
-      //document.getElementById("txt_registro").value = "";
-    }
-  });
-}
-
-//las tres validaciones para el plan si, no, igual
-function valida_plan(
-  txt_nombre,
-  txt_num_clases,
-  txt_codigo_plan,
-  cbm_tipo_plan,
-  fecha_modificado,
-  nombre_usuario,
-  id_plan_estudio,
-  txt_vigente,
-  txt_vigente2
-) {
-  if (txt_vigente == "SI") {
-    $.post(
-      "../Controlador/plan_estudio_controlador.php?op=verificarPlan",
-      {
-        plan_vigente: txt_vigente,
-      },
-
-      function (data, status) {
-        console.log(data);
-        data = JSON.parse(data);
-
-        if (data.registro > 0) {
-          alert("Ya existe un plan actual Vigente");
-        } else {
-          modificar_plan_estudio_vigente(
-            txt_nombre,
-            txt_num_clases,
-            txt_codigo_plan,
-            cbm_tipo_plan,
-            fecha_modificado,
-            nombre_usuario,
-            id_plan_estudio,
-            txt_vigente
-          );
-        }
-      }
-    );
-  } else if (txt_vigente == txt_vigente2) {
-    modificar_plan_estudio(
-      txt_nombre,
-      txt_num_clases,
-      txt_codigo_plan,
-      cbm_tipo_plan,
-      fecha_modificado,
-      nombre_usuario,
-      id_plan_estudio
-    );
-  } else {
-    modificar_plan_estudio_vigente(
-      txt_nombre,
-      txt_num_clases,
-      txt_codigo_plan,
-      cbm_tipo_plan,
-      fecha_modificado,
-      nombre_usuario,
-      id_plan_estudio,
-      txt_vigente
-    );
-  }
-}
-
-//funcion que valida todo junto nombre y vigencia
-function valida_nombre_vigencia(
-  txt_nombre,
-  //  txt_nombre2,
-  txt_num_clases,
-  // txt_num_clases2,
-  txt_codigo_plan,
-  //   txt_codigo_plan2,
-  cbm_tipo_plan,
-  fecha_modificado,
-  nombre_usuario,
-  id_plan_estudio,
-  txt_vigente,
-  txt_vigente2
-) {
-  $.post(
-    "../Controlador/plan_estudio_controlador.php?op=verificarPlanNombre",
-    {
-      nombre: txt_nombre,
-    },
-
-    function (data, status) {
-      console.log(data);
-      data = JSON.parse(data);
-
-      if (data.registro > 0) {
-        alert("Ya existe un plan con el mismo nombre");
-      } else {
-        valida_plan(
-          txt_nombre,
-          txt_num_clases,
-          txt_codigo_plan,
-          cbm_tipo_plan,
-          fecha_modificado,
-          nombre_usuario,
-          id_plan_estudio,
-          txt_vigente,
-          txt_vigente2
-        );
-      }
-    }
-  );
-}
+//el boton de cambiar vigencia
 
 $("#cbm_tipo_plan_edita").change(function () {
   var id_tipo_plan = $(this).val();
@@ -419,3 +163,139 @@ $("#cbm_tipo_plan_edita").change(function () {
     document.getElementById("cbm_tipo_plan_edita").value = "";
   }
 });
+
+$("#tabla_plan_estudio").on("click", ".cambiar", function () {
+  var data = table.row($(this).parents("tr")).data();
+  if (table.row(this).child.isShown()) {
+    var data = table.row(this).data();
+  }
+
+  var nombre = data.nombre_plan;
+  var id_plan = data.id_plan_estudio;
+  var vigencia = data.plan_vigente;
+  var activo = data.activo;
+  var uv = data.creditos_plan;
+
+  // console.log(nombre);
+  // console.log(id_plan);
+  // console.log(vigencia);
+  // console.log(activo);
+  // console.log(uv);
+
+  //alert("cambio")
+
+  // alert("la vigencia cambio");
+  swal({
+    title: "Estas seguro?",
+    text: "Cambiar la vigencia?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      //alert(prueba);
+      cambiarVigenciaPlan(id_plan, vigencia, activo, uv);
+
+      // swal("OK");
+    } else {
+      //swal("Cancelado!");
+    }
+  });
+});
+
+function cambiarVigenciaPlan(id_plan, vigencia, activo, uv) {
+  //parametros para el procedimiento
+  var vigencia_si = "SI";
+  var vigencia_no = "NO";
+  var activo_plan_pasado = 1;
+  var estado_activo_asig = 1;
+  var estado_inactivo_asig = 0;
+
+  //validando como es la vigencia del plan
+  if (vigencia == "NO") {
+    //LO CAMBIO A SI
+    //validando que el plna no estuviera ya activo en el pasado
+    if (activo == 0) {
+      //alert('no esta activo');
+      $.post(
+        "../Controlador/plan_estudio_controlador.php?op=UVasignaturas",
+        { id_plan_estudio: id_plan },
+        function (data, status) {
+          data = JSON.parse(data);
+          //validando la suma de uv de asignaturas del plan con los creditos del plan
+          if (data.uv_asig != uv) {
+            alert("el plan no cumple con los requisitos de uv de asignatura");
+          } else {
+            // alert("esta bien");
+
+            //desactiva los demas planes y activa este
+            ponerVigentePlanNo(
+              vigencia_si,
+              vigencia_no,
+              activo_plan_pasado,
+              estado_inactivo_asig,
+              estado_activo_asig,
+              id_plan
+            );
+          }
+        }
+      );
+    } else {
+      alert("ya estuvo activo");
+    }
+  } else {
+    
+  }
+}
+//funcion para activar un plan cuando su vigencia es no despues
+//de todas las validaciones anteriores
+function ponerVigentePlanNo(
+  vigencia_si,
+  vigencia_no,
+  activo_plan_pasado,
+  estado_inactivo_asig,
+  estado_activo_asig,
+  id_plan
+) {
+  var usuario = $("#id_sesion").val();
+  var fecha_hoy = $("#fecha_hoy").val();
+
+  $.ajax({
+    url: "../Controlador/modificar_plan_estudio_no_vigente_controlador.php",
+    type: "POST",
+    data: {
+      vigencia_si: vigencia_si,
+      vigencia_no: vigencia_no,
+      activo_plan_pasado: activo_plan_pasado,
+      estado_inactivo_asig: estado_inactivo_asig,
+      estado_activo_asig: estado_activo_asig,
+      id_plan: id_plan,
+      modificado_por: usuario,
+      fecha_primer_vigencia: fecha_hoy,
+      fecha_modificacion: fecha_hoy,
+     
+
+    },
+  }).done(function (resp) {
+    if (resp > 0) {
+      swal("Buen trabajo!", "datos insertados correctamente!", "success");
+      //  document.getElementById("txt_registro").value = "";
+      table.ajax.reload();
+    } else {
+      swal("Alerta!", "No se pudo completar la actualización", "warning");
+      //document.getElementById("txt_registro").value = "";
+    }
+  });
+
+}
+
+//para poner la fecha de hoy
+window.onload = function () {
+  var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth() + 1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  if (dia < 10) dia = "0" + dia; //agrega cero si el menor de 10
+  if (mes < 10) mes = "0" + mes; //agrega cero si el menor de 10
+  document.getElementById("fecha_hoy").value = ano + "-" + mes + "-" + dia;
+};
