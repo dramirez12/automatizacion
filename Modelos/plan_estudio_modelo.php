@@ -165,6 +165,21 @@ class modelo_plan{
             return 0;
         }
     }
+
+    function modificar_plan_estudio_si($vigencia_no, $modificado_por, $fecha_ultima_vigencia, $estado_inactivo_asig, $id_plan)
+    {
+
+        //$Id_objeto=98;
+        global $instancia_conexion;
+
+        $sql = "call proc_actualizar_vigencia_planes_si('$vigencia_no', '$modificado_por', '$fecha_ultima_vigencia', '$estado_inactivo_asig', '$id_plan')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
   
 }
 ?>

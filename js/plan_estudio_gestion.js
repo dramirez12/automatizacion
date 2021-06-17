@@ -187,7 +187,7 @@ $("#tabla_plan_estudio").on("click", ".cambiar", function () {
   // alert("la vigencia cambio");
   swal({
     title: "Estas seguro?",
-    text: "Cambiar la vigencia?",
+    text: "Cambiar la vigencia del " + nombre + "?",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -224,7 +224,15 @@ function cambiarVigenciaPlan(id_plan, vigencia, activo, uv, nombre) {
           data = JSON.parse(data);
           //validando la suma de uv de asignaturas del plan con los creditos del plan
           if (data.uv_asig != uv) {
-            alert("el plan no cumple con los requisitos de uv de asignatura");
+              swal(
+                "Alerta!",
+                "El " +
+                  nombre +
+                  " no cumple con el requisito de las UV necesarias para ponerse en vigencia.",
+                "warning"
+              );
+    
+           // alert("el plan no cumple con los requisitos de uv de asignatura");
           } else {
             // alert("esta bien");
 
@@ -242,9 +250,20 @@ function cambiarVigenciaPlan(id_plan, vigencia, activo, uv, nombre) {
         }
       );
     } else {
-      alert("ya estuvo activo");
+      swal(
+        "Alerta!",
+        "El " +
+          nombre +
+          " ya estuvo activo, su vigencia no puede ser cambiada.",
+        "warning"
+      );
+     // alert("ya estuvo activo");
     }
   } else {
+
+    ponerVigenciaPlanSi(vigencia_no,estado_inactivo_asig,id_plan);
+
+
   }
 }
 //funcion para activar un plan cuando su vigencia es no despues
@@ -288,6 +307,34 @@ function ponerVigentePlanNo(
   });
 }
 
+//funcion para desactivar un plan su vigencia es si 
+//va cambiar a no
+function ponerVigenciaPlanSi(vigencia_no, estado_inactivo_asig, id_plan) {
+  var usuario = $("#id_sesion").val();
+  var fecha_hoy = $("#fecha_hoy").val();
+
+   $.ajax({
+     url: "../Controlador/modificar_plan_estudio_si_vigente_controlador.php",
+     type: "POST",
+     data: {
+       vigencia_no: vigencia_no,
+       estado_inactivo_asig: estado_inactivo_asig,
+       id_plan: id_plan,
+       modificado_por: usuario,
+       fecha_ultima_vigencia: fecha_hoy,
+     },
+   }).done(function (resp) {
+     if (resp > 0) {
+       swal("Buen trabajo!", "datos insertados correctamente!", "success");
+       //  document.getElementById("txt_registro").value = "";
+       table.ajax.reload();
+     } else {
+       swal("Alerta!", "No se pudo completar la actualización", "warning");
+       //document.getElementById("txt_registro").value = "";
+     }
+   });
+
+}
 //para poner la fecha de hoy
 window.onload = function () {
   var fecha = new Date(); //Fecha actual
