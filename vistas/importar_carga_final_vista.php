@@ -119,19 +119,23 @@ ob_end_flush();
                         <form action="#" enctype="multipart/form-data">
 
                             <div class="row">
-                                <div class="col-lg-10">
-                                    <input type="file" class="form-control" id="archivo_excel" accept=".xls, .xlsx">
+                                <div class="col-lg-8">
+                                    <input type="file" class="form-control" id="archivo_excel" accept=".xls, .xlsx"><br>
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <button class="btn btn-danger" style="width: 100%;" id="importar" onclick="cargar_excel();">Importar</button>
+                                    <button class="btn btn-danger" style="width: 100%;" id="importar" onclick="cargar_excel();">Cargar Excel</button><br>
 
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <button class="btn btn-primary" style="width: 100%;" disabled id="btn_guardar" onclick="registrar_excel();">Guardar Datos</button><br>
 
                                 </div>
 
                                 <div class="col-lg-12" id="div_tabla">
                                     <tr>
-                                        
+
                                     </tr>
                                 </div>
 
@@ -160,6 +164,8 @@ ob_end_flush();
             }
         }
     });
+
+    
 </script>
 
 <script src="../js/importar_carga.js"></script>
