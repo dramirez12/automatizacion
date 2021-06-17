@@ -39,7 +39,6 @@ if ($visualizacion == 0) {
     //   $_SESSION['btn_guardar_registro_docentes'] = "disabled";
     // }
 }
-$nombre = $_SESSION['usuario'];
 ob_end_flush();
 
 
@@ -97,7 +96,7 @@ ob_end_flush();
 
 
             <input type="text" id="id_sesion" name="id_sesion" value="<?php echo $nombre; ?>" hidden readonly>
-            <input type="date" id="fecha_hoy" name="fecha_hoy"  hidden readonly>
+            <input type="date" id="fecha_hoy" name="fecha_hoy" hidden readonly>
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -172,21 +171,22 @@ ob_end_flush();
                             <div class="col-md-4">
                                 <div class="form-group">
 
-                                    <label>Nombre de Plan</label>
-
-                                    <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="25" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required>
-
-                                    <input class=" form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden>
-
+                                    <label>Seleccione Tipo de plan:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_tipo_plan_edita" id="cbm_tipo_plan_edita">
+                                        </select></td>
+                                    <!-- <input class="form-control" type="text" id="txt_id_tipo_plan" name="txt_id_tipo_plan" required readonly hidden> -->
 
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
 
-                                    <label>Número de clases del plan</label>
-                                    <input class="form-control" type="text" id="txt_num_clases_edita" name="txt_num_clases_edita" maxlength="2" onkeypress="return solonumeros(event)">
-                                    <input class="form-control" type="text" id="txt_num_clases_edita2" name="txt_num_clases_edita2" maxlength="2" value="" readonly hidden>
+                                    <label>Nombre de Plan</label>
+
+                                    <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="25" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required>
+
+                                    <!-- <input class=" form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden> -->
+
 
                                 </div>
                             </div>
@@ -196,23 +196,36 @@ ob_end_flush();
                                     <label>Código de Plan</label>
 
                                     <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_codigo_plan_edita');">
-                                    <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden>
+                                    <!-- <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden> -->
 
 
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
 
+                                    <label>Número de clases del plan</label>
+                                    <input class="form-control" type="text" id="txt_num_clases_edita" name="txt_num_clases_edita" maxlength="2" onkeypress="return solonumeros(event)">
+                                    <!-- <input class="form-control" type="text" id="txt_num_clases_edita2" name="txt_num_clases_edita2" maxlength="2" value="" readonly hidden> -->
+
+                                </div>
+                            </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
 
-                                    <label>Seleccione Tipo de plan:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_tipo_plan_edita" id="cbm_tipo_plan_edita">
-                                        </select></td>
-                                    <input class="form-control" type="text" id="txt_id_tipo_plan" name="txt_id_tipo_plan" required readonly hidden>
+                                    <label>Créditos del Plan</label>
+
+                                    <input class="form-control" type="text" id="txt_creditos_plan" name="txt_creditos_plan" maxlength="3" onkeypress="return solonumeros(event)">
+                                    <!-- <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden> -->
+
 
                                 </div>
                             </div>
+
+
+
+
                             <!-- <div class="col-md-4">
                                 <div class="form-group">
 

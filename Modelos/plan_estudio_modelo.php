@@ -91,13 +91,13 @@ class modelo_plan{
         }
     }
 
-    function modificar_plan_estudio($nombre, $num_clases, $codigo_plan, $id_tipo_plan, $fecha_modificacion, $modificado_por, $id_plan_estudio)
+    function modificar_plan_estudio($nombre, $num_clases, $codigo_plan, $id_tipo_plan, $fecha_modificacion, $modificado_por, $creditos_plan, $id_plan_estudio)
     {
 
         //$Id_objeto=98;
         global $instancia_conexion;
 
-        $sql = "call proc_actualizar_plan_estudio('$nombre', '$num_clases', '$codigo_plan', '$id_tipo_plan', '$fecha_modificacion', '$modificado_por', '$id_plan_estudio')";
+        $sql = "call proc_actualizar_plan_estudio('$nombre', '$num_clases', '$codigo_plan', '$id_tipo_plan', '$fecha_modificacion', '$modificado_por','$creditos_plan', '$id_plan_estudio')";
 
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             return 1;
@@ -107,20 +107,7 @@ class modelo_plan{
             return 0;
         }
     }
-    function modificar_plan_estudio_vigente($nombre, $num_clases, $codigo_plan, $id_tipo_plan, $fecha_modificacion, $modificado_por, $plan_vigente, $id_plan_estudio)
-    {
-
-        //$Id_objeto=98;
-        global $instancia_conexion;
-
-        $sql = "call proc_actualizar_plan_estudio_vigente('$nombre', '$num_clases', '$codigo_plan', '$id_tipo_plan', '$fecha_modificacion', '$modificado_por','$plan_vigente', '$id_plan_estudio')";
-
-        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+   
     function plan_sel()
     {
         global $instancia_conexion;
