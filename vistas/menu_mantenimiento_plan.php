@@ -33,14 +33,14 @@ if (permiso_ver('102') == '1') {
   $_SESSION['mantenimiento_tipo_plan_vista'] = "No 
   tiene permisos para visualizar";
 }
-if (permiso_ver('118') == '1') {
+if (permiso_ver('107') == '1') {
 
   $_SESSION['mantenimiento_crear_asignatura_vista'] = "...";
 } else {
   $_SESSION['mantenimiento_crear_asignatura_vista'] = "No 
   tiene permisos para visualizar";
 }
-if (permiso_ver('119') == '1') {
+if (permiso_ver('108') == '1') {
 
   $_SESSION['mantenimiento_asignatura_vista'] = "...";
 } else {

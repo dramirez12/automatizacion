@@ -14,7 +14,7 @@ require_once('../clases/funcion_permisos.php');
 
 
 
-$Id_objeto = 119;
+$Id_objeto = 108;
 
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento Asignatura');
 
