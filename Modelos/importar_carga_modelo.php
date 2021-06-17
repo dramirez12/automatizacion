@@ -1,29 +1,27 @@
 <?php
+require_once('../clases/conexion_mantenimientos.php');
+$instancia_conexion = new conexion();
 
 class modelo_excel{
 
-    private $conexion;
-    function __construct()
-    {
-        require_once ('../clases/modelo_conexion.php');
-        $this->conexion = new conexion();
-        $this->conexion->conectar();
-    }
-
+    
 
     function registrar_excel($profesor, $aula, $cod, $control, $seccion, $matri, $dias, $hr_inicio, $hr_final)
     {
+        global $instancia_conexion;
         $modalidad = "1";
         $sql = "call proc_insert_import_carga('$profesor', '$aula', '$cod', '$modalidad', '$control', '$seccion','$matri', '$dias', '$hr_inicio', '$hr_final')";
 
-        if ($resultado = $this->conexion->conexion->query($sql)){
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)){
 
-            $id_retornado= mysqli_insert_id($this->conexion->conexion);
+          
             return 1;
+            
         }else{
-            return $sql;
+            return 0 ;
+         
         }
 
-        $this->conexion->cerrar();
+     
     }
 }

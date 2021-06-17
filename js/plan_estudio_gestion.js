@@ -194,7 +194,7 @@ $("#tabla_plan_estudio").on("click", ".cambiar", function () {
   }).then((willDelete) => {
     if (willDelete) {
       //alert(prueba);
-      cambiarVigenciaPlan(id_plan, vigencia, activo, uv);
+      cambiarVigenciaPlan(id_plan, vigencia, activo, uv, nombre);
 
       // swal("OK");
     } else {
@@ -203,7 +203,7 @@ $("#tabla_plan_estudio").on("click", ".cambiar", function () {
   });
 });
 
-function cambiarVigenciaPlan(id_plan, vigencia, activo, uv) {
+function cambiarVigenciaPlan(id_plan, vigencia, activo, uv, nombre) {
   //parametros para el procedimiento
   var vigencia_si = "SI";
   var vigencia_no = "NO";
@@ -235,7 +235,8 @@ function cambiarVigenciaPlan(id_plan, vigencia, activo, uv) {
               activo_plan_pasado,
               estado_inactivo_asig,
               estado_activo_asig,
-              id_plan
+              id_plan,
+              nombre
             );
           }
         }
@@ -244,7 +245,6 @@ function cambiarVigenciaPlan(id_plan, vigencia, activo, uv) {
       alert("ya estuvo activo");
     }
   } else {
-    
   }
 }
 //funcion para activar un plan cuando su vigencia es no despues
@@ -255,7 +255,8 @@ function ponerVigentePlanNo(
   activo_plan_pasado,
   estado_inactivo_asig,
   estado_activo_asig,
-  id_plan
+  id_plan,
+  nombre
 ) {
   var usuario = $("#id_sesion").val();
   var fecha_hoy = $("#fecha_hoy").val();
@@ -273,8 +274,7 @@ function ponerVigentePlanNo(
       modificado_por: usuario,
       fecha_primer_vigencia: fecha_hoy,
       fecha_modificacion: fecha_hoy,
-     
-
+      nombre: nombre,
     },
   }).done(function (resp) {
     if (resp > 0) {
@@ -286,7 +286,6 @@ function ponerVigentePlanNo(
       //document.getElementById("txt_registro").value = "";
     }
   });
-
 }
 
 //para poner la fecha de hoy
