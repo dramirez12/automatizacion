@@ -23,7 +23,6 @@ class PDF extends FPDF
 		$this->Image('../dist/img/logo_ia.jpg', 15,8,37);
 			$this->Ln(5);
 						$this->Image('../dist/img/logo-unah.jpg', 240, 8, 25 );
-							$this->Image('../dist/img/Firmaysello.jpg', 150, 8, 25 );
 		}
 function Footer()
 		{
