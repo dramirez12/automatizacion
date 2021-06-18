@@ -11,7 +11,7 @@ if(!empty($_GET)) {
 
 $sql = "SELECT DISTINCTROW px.valor, CONCAT(p.nombres,' ',p.apellidos) AS nombre, cp.no_constancia, cp.jornada as jornada 
 FROM tbl_personas p,tbl_personas_extendidas px, tbl_charla_practica cp 
-WHERE p.id_persona=cp.id_persona AND cp.jornada =$jornada AND px.id_persona=cp.id_persona 
+WHERE p.id_persona=cp.id_persona AND cp.jornada = $jornada AND px.id_persona=cp.id_persona 
 AND cp.estado_asistencia_charla = 1";
 
 class PDF extends FPDF
