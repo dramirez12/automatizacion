@@ -167,6 +167,26 @@ class modelo_plan{
             return 0;
         }
     }
+    function nombre_plan_sel()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT * FROM tbl_plan_estudio');
+
+        return $consulta;
+    }
+    function comparar_historial_plan($nombre)
+    {
+        global $instancia_conexion;
+        $sql = "call sel_comparar_historial_plan('$nombre')";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
   
 }
+
 ?>

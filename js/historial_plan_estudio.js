@@ -144,8 +144,10 @@ $("#tabla1_historial_plan").on("click", ".ver", function () {
     cargartablaabajo(nombre_plan,codigo_plan);
     
   
-   // seleccionar_dias($("#txt_dias_edita").val(), ",");
+
   });
+
+//PANTALLA DE COMPARAR PLANES
   //cargar segundo tabla
 var table2;
 function Tabla2cargar_plan() {
@@ -186,3 +188,115 @@ function Tabla2cargar_plan() {
   });
  
 }
+//
+// llenar select nombre de plan
+function llenar_nombre_plan() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=nombre_plan",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_nombre_plan").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+
+      $("#cbm_nombre_plan").append(o);
+      $("#cbm_nombre_plan").val(0);
+    },
+  });
+}
+llenar_nombre_plan();
+
+
+  $("#cbm_nombre_plan").change(function () {
+    var id_nombre_plan = $(this).val();
+    $("#txt_id_nombre_plan").val(id_nombre_plan);
+  
+  
+    if (id_nombre_plan == 0) {
+      alert("Seleccione una opción válida");
+      document.getElementById("cbm_nombre_plan").value = "";
+    }
+    var nombre_plann = cbm_nombre_plan.options[cbm_nombre_plan.selectedIndex].text;
+
+      cargartabla4abajo(nombre_plann);
+  });
+
+
+
+//LLENAR TABLA DEL NOMBRE SELECCIONADO
+function cargartabla4abajo(nombre_plann) {
+  // var periodo = $("#txt_num_periodo").val();
+  // var anno = $("#txt_anno1").val();
+
+  if (nombre_plann.length == 0) {
+   // swal("Alerta!", "ingrese datos a buscar!", "warning");
+    swal({
+      title: "Alerta",
+      text: "Seleccione el Nombre !",
+      type: "error",
+      showConfirmButton: true,
+      timer: 20000,
+    });
+  } else {
+    cambiar_(nombre_plann);
+  }
+
+  console.log(nombre_plann);
+  
+}
+function limpiar_() {
+  var table4 = $("#tabla4_historial_plan").DataTable();
+
+  table4.clear().draw();
+}
+//datos seleccionados a la tabla
+function cambiar_(a) {
+  console.log(a);
+  
+
+  Tabla4cargar_plan(a);
+}
+//cargar cuarta tabla
+var table4;
+function Tabla4cargar_plan(nombre_) {
+table3 = $("#tabla4_historial_plan").DataTable({
+  paging: true,
+  lengthChange: true,
+  ordering: true,
+  info: true,
+  autoWidth: true,
+  responsive: false,
+  ordering: true,
+  // LengthChange: false,
+  searching: { regex: true },
+  lengthMenu: [
+    [10, 25, 50, 100, -1],
+    [10, 25, 50, 100, "All"],
+  ],
+  sortable: false,
+  pageLength: 15,
+  destroy: true,
+  async: false,
+  processing: true,
+  ajax: {
+    url: "../Controlador/tabla_comparar_plan_controlador.php",
+    type: "POST",
+    data: { nombre: nombre_ },
+  },
+
+  columns: [
+    { data: "periodo_plan" },
+    { data: "asig_vigente" },
+    { data: "codigo_asig" },
+    { data: "uv" },
+    { data: "requisito" },
+  ],
+
+  language: idioma_espanol,
+  select: true,
+});
+
+}
+
+

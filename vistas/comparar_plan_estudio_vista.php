@@ -109,7 +109,7 @@ ob_end_flush();
                                     <div class="card-body">
 
                                         <div class="form-group">
-                                            <label>hhh</label>
+                                            <label></label>
                                             <div class="table-responsive" style="width: auto;">
                                                 <table id="tabla2_historial_plan" class="table table-bordered table-striped">
                                                     <thead>
@@ -137,14 +137,30 @@ ob_end_flush();
                             <div class="col-md-6">
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Seleccione un Plan</h3>
+                                        <h3 class="card-title"> Plan de Estudios</h3>
 
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label></label>
-                                            <div class="inpu-group">
-                                                <table id="tabla2_historial_plan" class="table table-bordered table-striped">
+                                            <label>Seleccione nombre de Plan</label>
+                                            <br>
+                                            <div class="row">
+                                                <div class='text-center'>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <select class="form-control" name="cbm_nombre_plan" id="cbm_nombre_plan" value="" style="text-transform: uppercase">
+                                                    </select>
+                                                    <!--                                                     <input class="form-control" type="text" id="txt_id_nombre_plan" name="txt_id_nombre_plan" required>
+ -->
+
+                                                </div>
+                                                <button class="btn btn-primary " id="limpiar" onclick="limpiar_()"><i class="fas fa-sync-alt"></i> <a style="font-weight: bold;">limpiar tabla</a></button>
+
+                                            </div>
+
+                                            <div class="table-responsive" style="width: auto;">
+                                                <table id="tabla4_historial_plan" class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
 
