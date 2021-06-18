@@ -14,8 +14,7 @@ $Id_objeto = 105;
 
 $visualizacion = permiso_ver($Id_objeto);
 
-$nombre = $_SESSION['usuario'];
-$id_usuario = $_SESSION['id_usuario'];
+
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
                               swal({
@@ -30,7 +29,7 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A COMPARAR PLAN DE ESTUDIO.');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GESTIÓN DE PLAN DE ESTUDIO.');
 
 
     // if (permisos::permiso_insertar($Id_objeto) == '1') {
@@ -61,67 +60,196 @@ ob_end_flush();
 
 
 </head>
-
+<!-- shif alt f -->
 
 <body>
-    <div class="content-wrapper">
+    <div class="card card-default">
 
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
 
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
+                <div class="container-fluid">
 
-
-                        <h1>Comparar planes</h1>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu Plan de Estudio</a></li>
-                            <li class="breadcrumb-item">Comparar planes</li>
-                           
-                        </ol>
-                    </div>
-
-                    <div class="RespuestaAjax"></div>
-
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Comparar Plan de Estudio</h1>
+                        </div>
 
 
 
-        <!-- /.card-header -->
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="container-fluid" style="width: 100%;">
-            <div class="box-body">
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu plan de estudio</a></li>
+                                <li class="breadcrumb-item">Comparar Plan de Estudio</a></li>
+
+                            </ol>
+                        </div>
 
 
-
-                <div class="card-body">
-                   
 
                     </div>
-                </div>
-                <div class="card-footer">
-                    <h1></h1>
-                </div>
-            </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <section>
+
+                <!-- Main content -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <!-- pantalla  -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Plan Vigente</h3>
+
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="form-group">
+                                            <label>hhh</label>
+                                            <div class="table-responsive" style="width: auto;">
+                                                <table id="tabla2_historial_plan" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th>Periodo</th>
+                                                            <th>Asignatura</th>
+                                                            <th>Codigo</th>
+                                                            <th>U.V</th>
+                                                            <th>Requisitos</th>
+
+                                                        </tr>
+
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Seleccione un Plan</h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <div class="inpu-group">
+                                                <table id="tabla2_historial_plan" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th>Periodo</th>
+                                                            <th>Asignatura</th>
+                                                            <th>Codigo</th>
+                                                            <th>UV</th>
+                                                            <th>Requisitos</th>
+
+                                                        </tr>
+
+                                                    </thead>
+                                                </table>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </section>
+
+            </section>
+
 
         </div>
+
+
+
+
+
+
 
     </div>
 
 
 
- </body>
+
+
+
+
+</body>
+
 
 
 </html>
 
+<script>
+    $(document).ready(function() {
+        Tabla2cargar_plan();
+
+
+    });
+</script>
 
 
 
+<script src="../js/historial_plan_estudio.js"></script>
+
+<script>
+    var idioma_espanol = {
+        select: {
+            rows: "%d fila seleccionada"
+        },
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "No se encuentra los datos",
+        "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+        "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "<b>No se encontraron datos</b>",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+</script>
+
+<!-- -->
+<!-- <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script> -->

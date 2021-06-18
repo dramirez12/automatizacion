@@ -63,7 +63,6 @@ function Tabla3cargar_plan(nombre_, codigo) {
       { data: "asig_vigente" },
       { data: "codigo_asig" },
       { data: "uv" },
-      { data: "equi" },
       { data: "requisito" },
     ],
 
@@ -179,7 +178,6 @@ function Tabla2cargar_plan() {
       { data: "asig_vigente" },
       { data: "codigo_asig" },
       { data: "uv" },
-      { data: "equi" },
       { data: "requisito" },
     ],
 

@@ -150,103 +150,7 @@ ob_end_flush();
 
 
                 </section>
-                <!-- Main content -->
-                <section class="content-header">
-                    <div class="container-fluid">
-                        <!-- pantalla  -->
 
-                        <div class="card card-default">
-                            <div class="card-header">
-                                <h3 class="card-title">Plan de Estudios Vigente</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                            <div class="card-body" style="display: block;">
-                                <div class="row">
-
-                                    <div class=" px-12">
-                                        <form method="post" action="../Controlador/reporte_carga_gestion_controlador.php">
-                                            <button disabled class="btn btn-success " id="pdf"> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;">Exportar a PDF</a> </button>
-                                            <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
-
-                                        </form>
-                                    </div>
-                                </div>
-                                <br>
-
-                               
-                                    <div class="table-responsive" style="width: auto;">
-                                      <!--   <table>
-                                            <tr>
-                                                <td>
-                                                    <table id="tabla2_historial_plan" class="table table-bordered table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Periodo</th>
-                                                                <th>Asignatura</th>
-                                                                <th>Codigo</th>
-                                                                <th>UV</th>
-                                                                <th>Equivalencia</th>
-                                                                <th>Requisitos</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                </td>
-                                                <td>
-                                                    <table id="tabla3_historial_plan" class="table table-bordered table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Periodo</th>
-                                                                <th>Asignatura</th>
-                                                                <th>Codigo</th>
-                                                                <th>UV</th>
-                                                                <th>Equivalencia</th>
-                                                                <th>Requisitos</th>
-                                                            </tr>
-                                                        </thead>
-
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table> -->
-                                        <table id="tabla2_historial_plan" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-
-                                                    <th>Periodo</th>
-                                                    <th>Asignatura</th>
-                                                    <th>Codigo</th>
-                                                    <th>UV</th>
-                                                    <th>Equivalencia</th>
-                                                    <th>Requisitos</th>
-
-                                                </tr>
-                                               
-                                            </thead>
-                                        </table>
-
-
-                                    </div>
-
-
-                                
-                            </div>
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-                </section>
                 <!-- Main content -->
                 <section class="content-header">
                     <div class="container-fluid">
@@ -292,7 +196,6 @@ ob_end_flush();
                                                     <th >Asignatura</th>
                                                     <th >Codigo</th> 
                                                     <th >UV</th>
-                                                    <th >Equivalencia</th>
                                                     <th b>Requisitos</th>
 
                                                 </tr>
