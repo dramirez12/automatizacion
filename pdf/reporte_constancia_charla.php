@@ -23,6 +23,7 @@ class PDF extends FPDF
 		$this->Image('../dist/img/logo_ia.jpg', 15,8,37);
 			$this->Ln(5);
 						$this->Image('../dist/img/logo-unah.jpg', 240, 8, 25 );
+							$this->Image('../dist/img/Firmaysello.jpg', 150, 8, 25 );
 		}
 function Footer()
 		{
@@ -82,11 +83,11 @@ $_SESSION['impartida']=$Impartida["valor"] . " /".$Impartida2["valor"];
 	$pdf->AddPage();
 	$pdf->SetFont('Arial','B',15);
 
-	$pdf->cell(0,6,utf8_decode('Universidad Nacional Autonoma de Honduras'),0,1,'C');
+	$pdf->cell(0,6,utf8_decode('Universidad Nacional Autónoma de Honduras'),0,1,'C');
 	$pdf->ln(2);
-	$pdf->cell(0,6,utf8_decode('Facultad de Ciencias Economicas'),0,1,'C');
+	$pdf->cell(0,6,utf8_decode('Facultad de Ciencias Económicas'),0,1,'C');
 	$pdf->ln(2);
-	$pdf->cell(0,6,utf8_decode('Departamento de Informatica Administrativa'),0,1,'C');
+	$pdf->cell(0,6,utf8_decode('Departamento de Informática Administrativa'),0,1,'C');
 	$pdf->ln(7);
 	$pdf->SetFont('Arial','B',15);
 	$pdf->cell(0,6,utf8_decode('Constancia de Asistencia de charla previa a PPS'),0,1,'C');
@@ -106,7 +107,7 @@ $_SESSION['impartida']=$Impartida["valor"] . " /".$Impartida2["valor"];
 	$pdf->ln(5);
 
 	$pdf->SetX(20);
-    $pdf->multicell(170,5,utf8_decode('Por este medio hacemos constar que el (la)estudiante: '),0);
+    $pdf->multicell(170,5,utf8_decode('Por este medio hacemos constar que el(la) estudiante: '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
     $pdf->multicell(170,5,utf8_decode('Cuenta: '.$row['valor'].'. '),0);
@@ -115,7 +116,7 @@ $_SESSION['impartida']=$Impartida["valor"] . " /".$Impartida2["valor"];
     $pdf->multicell(170,5,utf8_decode('Nombre: '.$row['nombre'].'. '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
-	$pdf->multicell(170,5,utf8_decode('Ha cumplido con el requisito de recibir la charla de Orientacion a Practica Profesional, '),0);
+	$pdf->multicell(170,5,utf8_decode('Ha cumplido con el requisito de recibir la charla de Orientacion a Práctica Profesional, '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
 	$pdf->multicell(170,5,utf8_decode('En la fecha: '.$row['fecha_recibida'].'        Valida hasta: '.$row['fecha_valida'].''),0);
