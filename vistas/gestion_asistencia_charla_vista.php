@@ -134,13 +134,13 @@ if ($visualizacion == 0) {
 
       $counter = 0;
 
-      $sql_tabla_control = json_decode(file_get_contents("http://localhost:8080/automatizacion/api/asistencia_charla_api.php?control=" . $jornada), true);
+      $sql_tabla_control = json_decode(file_get_contents("http://http://desarrollo.informaticaunah.com/automatizacion/api/asistencia_charla_api.php?control=" . $jornada), true);
     }
   } else {
     $_SESSION['impartida'] = "";
     $counter = 0;
 
-    $sql_tabla_control = json_decode(file_get_contents("http://localhost:8080/automatizacion/api/asistencia_charla_api.php"), true);
+    $sql_tabla_control = json_decode(file_get_contents("http://http://desarrollo.informaticaunah.com/automatizacion/api/asistencia_charla_api.php"), true);
   }
 }
 
