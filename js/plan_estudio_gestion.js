@@ -171,7 +171,7 @@ function cambiarVigenciaPlan(id_plan, vigencia, activo, uv, nombre) {
       // alert("ya estuvo activo");
     }
   } else {
-    ponerVigenciaPlanSi(vigencia_no, estado_inactivo_asig, id_plan);
+    ponerVigenciaPlanSi(vigencia_no, estado_inactivo_asig, id_plan,nombre);
   }
 }
 //funcion para activar un plan cuando su vigencia es no despues
@@ -217,7 +217,7 @@ function ponerVigentePlanNo(
 
 //funcion para desactivar un plan su vigencia es si
 //va cambiar a no
-function ponerVigenciaPlanSi(vigencia_no, estado_inactivo_asig, id_plan) {
+function ponerVigenciaPlanSi(vigencia_no, estado_inactivo_asig, id_plan,nombre) {
   var usuario = $("#id_sesion").val();
   var fecha_hoy = $("#fecha_hoy").val();
 
@@ -230,6 +230,7 @@ function ponerVigenciaPlanSi(vigencia_no, estado_inactivo_asig, id_plan) {
       id_plan: id_plan,
       modificado_por: usuario,
       fecha_ultima_vigencia: fecha_hoy,
+      nombre:nombre
     },
   }).done(function (resp) {
     if (resp > 0) {

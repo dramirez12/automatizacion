@@ -52,3 +52,32 @@ function llenar_periodo() {
 }
 llenar_periodo();
 
+$(document).ready(function () {
+  $('[name="check[]"]').click(function () {
+    var arr = $('[name="check[]"]:checked')
+      .map(function () {
+        return this.value;
+      })
+      .get();
+
+    $("#arr").text(JSON.stringify(arr));
+
+    $("#sino").val(arr);
+
+    // console.log(str);
+  });
+});
+
+function name(params) {
+          var limite = 1;
+          $(".ch").change(function () {
+            if ($("input:checked").length > limite) {
+              alert("Solo puede seleccionar una opción ");
+              document.getElementById("sino").value = "";
+              document.getElementById("SI").checked = false;
+              document.getElementById("NO").checked = false;
+              this.checked = false;
+            }
+          });
+}
+

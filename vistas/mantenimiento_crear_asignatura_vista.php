@@ -16,7 +16,7 @@ require_once('../clases/funcion_permisos.php');
 
 $Id_objeto = 107;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento/Crear Asignatura');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A MANTENIMIENTO/CREAR ASIGNATURA');
 
 
 
@@ -35,7 +35,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/menu_roles_vista.php";
+                           window.location = "../vistas/menu_mantenimiento_plan.php";
 
                             </script>';
 } else {
@@ -50,23 +50,7 @@ if ($visualizacion == 0) {
     } else {
         $_SESSION['btn_crear_asignatura'] = "disabled";
     }
-    /*
-
- if (isset($_REQUEST['msj']))
- {
-      $msj=$_REQUEST['msj'];
-        if ($msj==1)
-            {
-            echo '<script> alert("Lo sentimos el rol a ingresar ya existe favor intenta con uno nuevo")</script>';
-            }
-   
-               if ($msj==2)
-                  {
-                  echo '<script> alert("Rol agregado correctamente")</script>';
-                  }
- }
-
-*/
+ 
 }
 
 
@@ -121,7 +105,7 @@ ob_end_flush();
             <div class="container-fluid ">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Nuevo Asignatura</h3>
+                        <h3 class="card-title">NUEVA ASIGNATURA</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -254,7 +238,7 @@ ob_end_flush();
 
 
 
-    <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
+    <script type="text/javascript" src="../js/asignatura.js"></script>
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
 

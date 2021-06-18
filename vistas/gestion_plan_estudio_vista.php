@@ -33,11 +33,11 @@ if ($visualizacion == 0) {
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GESTIÓN DE PLAN DE ESTUDIO.');
 
 
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "";
-    // } else {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "disabled";
-    // }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_guardar_cambio_plan'] = "";
+    } else {
+        $_SESSION['btn_guardar_cambio_plan'] = "disabled";
+    }
 }
 ob_end_flush();
 
@@ -260,7 +260,7 @@ ob_end_flush();
 
                     <div class="modal-footer">
                         <!-- <button class="btn btn-danger" name="cambiar_vigencia1" id="cambiar_vigencia1">Guardar Vigencia</button> -->
-                        <button class="btn btn-primary" id="guardar" name="guardar">Guardar</button>
+                        <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_plan']; ?>>Guardar</button>
                         <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>

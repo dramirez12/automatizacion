@@ -14,9 +14,9 @@ require_once('../clases/funcion_permisos.php');
 
 
 
-$Id_objeto = 108;
+$Id_objeto = 110;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A MANTENIMIENTO ASIGNATURA');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A MANTENIMIENTO/ASIGNATURA DE SERVICIO');
 
 
 
@@ -46,27 +46,10 @@ if ($visualizacion == 0) {
 
 
     // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //     $_SESSION['btn_guardar_atributo'] = "";
+    //     $_SESSION['btn_crear_asignatura'] = "";
     // } else {
-    //     $_SESSION['btn_guardar_atributo'] = "disabled";
+    //     $_SESSION['btn_crear_asignatura'] = "disabled";
     // }
-    /*
-
- if (isset($_REQUEST['msj']))
- {
-      $msj=$_REQUEST['msj'];
-        if ($msj==1)
-            {
-            echo '<script> alert("Lo sentimos el rol a ingresar ya existe favor intenta con uno nuevo")</script>';
-            }
-   
-               if ($msj==2)
-                  {
-                  echo '<script> alert("Rol agregado correctamente")</script>';
-                  }
- }
-
-*/
 }
 
 
@@ -97,7 +80,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>ASIGNATURAS</h1>
+                        <h1>ASIGNATURAS DE SERVICIO</h1>
                     </div>
 
 
@@ -106,7 +89,7 @@ ob_end_flush();
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_plan.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_asignatura_vista.php"> Mantenimiento Asignaturas</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_crear_asignatura_servicio_vista.php"> Mantenimiento crear Asignatura de servicio</a></li>
                         </ol>
                     </div>
 
@@ -119,45 +102,29 @@ ob_end_flush();
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid ">
-                <!-- pantalla 1 -->
-
-                <div class="box-body">
-
-
-
-                    <div class="card-body">
-                        <div class="table-responsive" style="width: 100%;">
-                            <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Código</th>
-                                        <th>UV</th>
-                                        <th>Código de plan</th>
-                                        <th>Tipo Asignatura</th>
-                                        <th>área</th>
-                                        <th>Periodo</th>
-                                        <th>Plan de estudio</th>
-                                        <th>Acción</th>
-
-                                    </tr>
-                                </thead>
-
-
-                            </table>
-                            <br>
-
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">MANTENIMIENTO DE ASIGNATURAS DE SERVICIO</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
 
                         </div>
+
                     </div>
 
+                    <div class="card-body" style="display: block;">
 
+                    </div>
                 </div>
+            </div>
+
+
+
         </section>
 
     </div>
-
-
 
 
 
