@@ -151,10 +151,18 @@ ob_end_flush();
                 <div class="form-group">
                   <label>Nombre Completo</label>
                     <input class="form-control" type="text"  maxlength="60" id="txt_nombre_estudiante" name="txt_nombre_estudiante"  value="<?php echo $nombre;?>" required style="text-transform: uppercase"   onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly >
+                    
                 </div>
                  </div>
 
+                 <div class="col-sm-6" hidden>
+                <div class="form-group">
+                  <label>persona</label>
+                    <input class="form-control" type="text" id="id_persona_charla" name="id_persona_charla"  value="<?php echo $id_persona;?>">
+                </div>
+                 </div>
 
+                 
                  <div class="col-sm-6">
                   <div class="form-group">
                   <label>Nº de Cuenta</label>

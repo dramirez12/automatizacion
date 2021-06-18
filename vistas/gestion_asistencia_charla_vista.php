@@ -16,7 +16,7 @@ if (isset($_REQUEST['msj'])) {
     echo '<script type="text/javascript">
   swal({
       title: "",
-      text: "Lo sentimos el período ya existe",
+      text: "Faltan datos por rellenar",
       type: "info",
       showConfirmButton: false,
       timer: 3000

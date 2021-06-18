@@ -9,7 +9,10 @@ if(!empty($_GET)) {
 
 }
 
-$sql = "select DISTINCTROW px.valor, concat(p.nombres,' ',p.apellidos) as nombre, cp.no_constancia, cp.jornada as jornada from tbl_personas p,tbl_personas_extendidas px, tbl_charla_practica cp WHERE p.id_persona=cp.id_persona and cp.jornada='$jornada' and px.id_atributo=12 and px.id_persona=cp.id_persona";
+$sql = "SELECT DISTINCTROW px.valor, CONCAT(p.nombres,' ',p.apellidos) AS nombre, cp.no_constancia, cp.jornada as jornada 
+FROM tbl_personas p,tbl_personas_extendidas px, tbl_charla_practica cp 
+WHERE p.id_persona=cp.id_persona AND cp.jornada ='MATUTINA' AND px.id_persona=cp.id_persona 
+AND cp.estado_asistencia_charla = 1";
 
 class PDF extends FPDF
 	{
