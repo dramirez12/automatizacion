@@ -83,8 +83,13 @@ elseif (isset($_GET["asistencia"]))
 		 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'ACTUALIZO' , 'LA ASISTENCIA CHARLA.');
      		 
 		//  header("location:../automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2"); 
-		echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2'); </script>";
+		// echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2'); </script>";
 		// header("location:../vistas/gestion_asistencia_charla_vista.php?msj=2"); 
+		$ch = curl_init("http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$respuesta = curl_exec($ch);
+		echo $repsuesta;
 	
 			}	
 			else
