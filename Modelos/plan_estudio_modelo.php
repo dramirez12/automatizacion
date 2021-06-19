@@ -186,7 +186,21 @@ class modelo_plan{
             return $arreglo;
         }
     }
-  
+
+    function asignatura_sel()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT * FROM tbl_asignaturas');
+
+        return $consulta;
+    }
+    function plan_sel_asig($id_plan_estudio)
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT * FROM tbl_asignaturas where id_plan_estudio=' . $id_plan_estudio . '');
+
+        return $consulta;
+    }
 }
 
 ?>

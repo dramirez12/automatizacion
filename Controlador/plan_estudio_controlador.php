@@ -81,4 +81,28 @@ switch ($_GET["op"]) {
             echo "<option value='" . $r2->id_plan_estudio . "'> " . $r2->nombre . " </option>";
         }
         break;
+
+    case 'asignatura':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->asignatura_sel();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
+        }
+        break;
+    case 'id_plan':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->plan_sel_asig($id_plan_estudio);
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
+        }
+        break;
 }
+

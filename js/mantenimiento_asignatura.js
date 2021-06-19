@@ -52,32 +52,54 @@ function llenar_periodo() {
 }
 llenar_periodo();
 
-$(document).ready(function () {
-  $('[name="check[]"]').click(function () {
-    var arr = $('[name="check[]"]:checked')
-      .map(function () {
-        return this.value;
-      })
-      .get();
+//llena el plan para equivalencia
+function llenar_plan1() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=plan",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_plan1").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
 
-    $("#arr").text(JSON.stringify(arr));
+      $("#cbm_plan1").append(o);
+      $("#cbm_plan1").val(0);
+    },
+  });
+}
+llenar_plan1();
 
-    $("#sino").val(arr);
 
-    // console.log(str);
+//llena en cascada equivalencia que selecciona del plan
+$("#cbm_plan1").change(function () {
+  var id_plan_estudio = $(this).val();
+  console.log(id_plan_estudio);
+  //  document.getElementById("txt_capacidad_edita").value = "";
+  // Lista deaulas
+  $.post("../Controlador/plan_estudio_controlador.php?op=id_plan", {
+    id_plan_estudio: id_plan_estudio,
+  }).done(function (respuesta) {
+    $("#cbm_asignaturas").html(respuesta);
+   // $("#cbm_requisito_asignaturas").html(respuesta);
+    console.log(respuesta);
   });
 });
 
-function name(params) {
-          var limite = 1;
-          $(".ch").change(function () {
-            if ($("input:checked").length > limite) {
-              alert("Solo puede seleccionar una opción ");
-              document.getElementById("sino").value = "";
-              document.getElementById("SI").checked = false;
-              document.getElementById("NO").checked = false;
-              this.checked = false;
-            }
-          });
-}
+$("#cbm_asignaturas").change(function () {
+  var id_plan_estudio = $(this).val();
 
+  console.log(id_plan_estudio);
+});
+
+
+var uploadField = document.getElementById("txt_silabo");
+var archivo = $("#txt_silabo").val();
+uploadField.onchange = function () {
+  var extensiones = archivo.substring(archivo.lastIndexOf("."));
+  console.log(extensiones);
+  if (extensiones != ".pdf") {
+    alert("El archivo de tipo " + extensiones + "no es válido");
+    document.getElementById("txt_silabo").value = "";
+  }
+};
