@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 require 'fpdf/fpdf.php';
 require_once ('../clases/Conexion.php');
 
@@ -82,5 +83,6 @@ $fecha_actual=date("Y-m-d H:i:s");
 	$pdf->Cell(90,5,utf8_decode('FIRMA Y NOMBRE DEL ENCARGADO '),'T',0,'C');
 
 	$pdf->Output();
+	ob_flush();
 
 ?>
