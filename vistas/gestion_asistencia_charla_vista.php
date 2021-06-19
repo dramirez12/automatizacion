@@ -212,12 +212,8 @@ ob_end_flush();
                     <select class="form-control" name="cb_jornada" id="cb_jornada">
                       <option value="0">Seleccione una opción :</option>
                       <option value="MATUTINA" <?php if (isset($jornada) and $jornada == "MATUTINA") {
-
-                                                  echo "selected";
                                                 } ?>>MATUTINA</option>
                       <option value="VESPERTINA" <?php if (isset($jornada) and $jornada == "VESPERTINA") {
-
-                                                    echo "selected";
                                                   } ?>>VESPERTINA</option>
                     </select>
                   </div>
@@ -373,12 +369,12 @@ ob_end_flush();
       $(this).bootstrapSwitch('state', $(this).prop('checkeds'));
     });
 
-
     $("#cb_jornada").change(function() {
-      var id_tipo_periodo = $(this).text();
+      var id_tipo_periodo = $("#estado_civil option:selected").text();
 
       $("#txt_jornada").val(id_tipo_periodo);
     });
+    
   </script>
 
   <script type="text/javascript">
