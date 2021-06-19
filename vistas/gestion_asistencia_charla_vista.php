@@ -370,7 +370,7 @@ ob_end_flush();
     });
 
     $("#cb_jornada").change(function() {
-      var id_tipo_periodo = $("#txt_jornada option:selected").text();
+      var id_tipo_periodo = $("#cb_jornada option:selected").text();
 
       $("#txt_jornada").val(id_tipo_periodo);
     });
