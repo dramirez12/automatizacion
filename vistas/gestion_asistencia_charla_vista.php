@@ -199,7 +199,7 @@ ob_end_flush();
             </div>
           </div>
 
-          <form action="../vistas/gestion_asistencia_charla_vista.php" method="post" autocomplete="off">
+          <form action="http://informaticaunah.com/vistas/gestion_asistencia_charla_vista.php" method="post" autocomplete="off">
             <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
@@ -264,7 +264,7 @@ ob_end_flush();
     <div class="container-fluid">
       <!-- pantalla 1 -->
 
-      <form action=" ../api/asistencia_charla_api.php?asistencia=<?php echo $jornada ?>" method="post" data-form="save" autocomplete="off">
+      <form action=" http://informaticaunah.com/automatizacion/api/asistencia_charla_api.php?asistencia=<?php echo $jornada ?>" method="post" data-form="save" autocomplete="off">
 
 
         <div class="card card-default">
