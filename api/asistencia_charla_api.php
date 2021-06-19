@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 header("Content-Type:application/json");
 
 require_once('../clases/funcion_bitacora.php');
@@ -86,4 +87,6 @@ elseif (isset($_GET["asistencia"])) {
 		$result["ROWS"] = $items;
 	}
 	echo json_encode($result);
+
+	ob_flush();
 }
