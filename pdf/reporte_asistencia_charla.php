@@ -8,12 +8,14 @@ if(!empty($_GET)) {
 	$jornada=$_GET['control'];
 
 
-}
+}else{
 
-$sql = "SELECT DISTINCTROW px.valor, CONCAT(p.nombres,' ',p.apellidos) AS nombre, cp.no_constancia, cp.jornada as jornada 
-FROM tbl_personas p,tbl_personas_extendidas px, tbl_charla_practica cp 
-WHERE p.id_persona=cp.id_persona AND cp.jornada = $jornada AND px.id_persona=cp.id_persona 
-AND cp.estado_asistencia_charla = 1";
+	$jornada=$_GET['control'];
+
+	$sql = "SELECT DISTINCTROW px.valor, CONCAT(p.nombres,' ',p.apellidos) AS nombre, cp.no_constancia, cp.jornada as jornada 
+	FROM tbl_personas p,tbl_personas_extendidas px, tbl_charla_practica cp 
+	WHERE p.id_persona=cp.id_persona AND cp.jornada = $jornada AND px.id_persona=cp.id_persona 
+	AND cp.estado_asistencia_charla = 1";
 
 class PDF extends FPDF
 	{
@@ -83,6 +85,9 @@ $fecha_actual=date("Y-m-d H:i:s");
 	$pdf->Cell(90,5,utf8_decode('FIRMA Y NOMBRE DEL ENCARGADO '),'T',0,'C');
 
 	$pdf->Output();
-	ob_flush();
+}
 
-?>
+
+
+
+	ob_flush();
