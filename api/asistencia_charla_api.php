@@ -42,7 +42,8 @@ elseif (isset($_GET["asistencia"]))
 		 {
 
     //  header("location:http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=1"); 
-	 echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=1'); </script>";
+	//  echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=1'); </script>";
+	header("location:../vistas/gestion_asistencia_charla_vista.php?msj=1"); 
 	
 	/*echo '<script> alert("  '.$identificador.'  ")</script>';*/
 
@@ -55,7 +56,8 @@ elseif (isset($_GET["asistencia"]))
 		if (empty($asistencia))
 		{
 		//   header("location:http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=4"); 
-		  echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=4'); </script>";
+		//   echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=4'); </script>";
+		header("location:../vistas/gestion_asistencia_charla_vista.php?msj=4"); 
 
 		}
 			foreach ($asistencia as $key => $idcharla) 
@@ -81,15 +83,14 @@ elseif (isset($_GET["asistencia"]))
 		 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'ACTUALIZO' , 'LA ASISTENCIA CHARLA.');
      		 
 		//  header("location:http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2"); 
-		echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2'); </script>";
+		// echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2'); </script>";
+		header("location:../vistas/gestion_asistencia_charla_vista.php?msj=3"); 
 	
 			}	
 			else
 			{
-				    //  header("location:../vistas/gestion_asistencia_charla_vista.php?msj=3"); 
+				     header("location:../vistas/gestion_asistencia_charla_vista.php?msj=3"); 
 					//  header("Location:http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=3", TRUE, 301);
-					 echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=3'); </script>";
-
 			}
 
 						}	
