@@ -295,6 +295,8 @@ ob_end_flush();
 
             </div>
 
+            <input class="form-control" type="text" id="txt_jornada" name="txt_jornada">
+
 
             <table id="tabla" class="table table-bordered table-striped">
               <thead>
@@ -370,11 +372,19 @@ ob_end_flush();
     $("input[data-bootstrap-switch]").each(function() {
       $(this).bootstrapSwitch('state', $(this).prop('checkeds'));
     });
+
+
+    $("#cb_jornada").change(function() {
+      var id_tipo_periodo = $(this).text();
+
+      $("#txt_jornada").val(id_tipo_periodo);
+    });
   </script>
 
   <script type="text/javascript">
     function dirigir(boton) {
-      var control_asistencia = document.getElementById("cb_jornada").value;
+      // var control_asistencia = document.getElementById("cb_jornada").value;
+      var control_asistencia = $("#txt_jornada").val();
 
       if (boton == "btn_imprimir_asistencia") {
         window.open("http://informaticaunah.com/automatizacion/pdf/reporte_asistencia_charla.php?control=" + control_asistencia);
