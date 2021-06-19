@@ -85,6 +85,7 @@ elseif (isset($_GET["asistencia"]))
 		 header("location:http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2"); 
 		// echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2'); </script>";
 		// header("location:../vistas/gestion_asistencia_charla_vista.php?msj=2"); 
+		var_dump("<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2'); </script>");
 	
 			}	
 			else
