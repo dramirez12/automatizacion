@@ -291,7 +291,7 @@ ob_end_flush();
 
             </div>
 
-            <input class="form-control" type="text" id="txt_jornada" name="txt_jornada">
+            <input class="form-control" type="text" id="txt_jornada" name="txt_jornada" hidden>
 
 
             <table id="tabla" class="table table-bordered table-striped">
