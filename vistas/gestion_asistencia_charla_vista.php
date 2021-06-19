@@ -381,6 +381,7 @@ ob_end_flush();
     function dirigir(boton) {
       // var control_asistencia = document.getElementById("cb_jornada").value;
       var control_asistencia = $("#txt_jornada").val();
+      console.log(control_asistencia);
 
       if (boton == "btn_imprimir_asistencia") {
         window.open("http://informaticaunah.com/automatizacion/pdf/reporte_asistencia_charla.php?control=" + control_asistencia);
