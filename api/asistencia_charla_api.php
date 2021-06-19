@@ -64,10 +64,18 @@ elseif (isset($_GET["asistencia"])) {
 				if ($resultado === TRUE) {
 					$Id_objeto = 14;
 					bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'ACTUALIZO', 'LA ASISTENCIA CHARLA.');
-
-					//  header("location:../automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2"); 
 					// echo "<script> window.location.replace('http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php?msj=2'); </script>";
-					header("location:../vistas/gestion_asistencia_charla_vista.php?msj=2"); 
+					echo '<script type="text/javascript">
+					swal({
+						 title:"",
+						 text:"Los datos  se almacenaron correctamente",
+						 type: "success",
+						 showConfirmButton: false,
+						 timer: 3000
+					  });
+					  $(".FormularioAjax")[0].reset();
+					  window.location = "../vistas/mantenimiento_crear_periodo_vista.php";
+				  </script>';
 					
 				} else {
 					//  header("location:../vistas/gestion_asistencia_charla_vista.php?msj=3"); 
