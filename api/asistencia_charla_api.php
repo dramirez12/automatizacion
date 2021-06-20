@@ -16,7 +16,7 @@ if (isset($_GET["control"])) {
 
 	if ($R = $mysqli->query("SELECT CONCAT(p.nombres,' ',p.apellidos) AS nombre, px.valor AS valor, p.id_persona, cp.Id_charla 
 FROM tbl_personas p, tbl_charla_practica cp , tbl_personas_extendidas px WHERE  px.id_persona=p.id_persona 
-AND cp.id_persona=p.id_persona AND cp.jornada = '$_GET[control]' AND cp.estado_asistencia_charla = 0 AND cp.fecha_valida > CURRENT_DATE()")) {
+AND cp.id_persona=p.id_persona AND cp.jornada = '$_GET[control]' AND cp.estado_asistencia_charla = 0")) {
 		$items = [];
 
 		while ($row = $R->fetch_assoc()) {
