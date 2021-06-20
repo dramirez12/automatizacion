@@ -201,6 +201,26 @@ class modelo_plan{
 
         return $consulta;
     }
+    
+    function UVplan($id_plan_estudio)
+    {
+
+        global $instancia_conexion;
+        $sql6 =
+        "SELECT creditos_plan,num_clases FROM tbl_plan_estudio where id_plan_estudio= $id_plan_estudio";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
+
+
+    function contarAsignaturas($id_plan_estudio)
+    {
+
+        global $instancia_conexion;
+        $sql6 =
+        "SELECT COUNT(Id_asignatura) as suma FROM tbl_asignaturas where id_plan_estudio= $id_plan_estudio";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
 }
+
 
 ?>

@@ -15,6 +15,13 @@ require_once('../clases/funcion_visualizar.php');
 //   tiene permisos para visualizar";
 
 // }
+if (permiso_ver('45') == '1') {
+
+  $_SESSION['menu_carga_academica_vista'] = "...";
+} else {
+  $_SESSION['menu_carga_academica_vista'] = "No 
+  tiene permisos para visualizar";
+}
 
 if (permiso_ver('47') == '1') {
 

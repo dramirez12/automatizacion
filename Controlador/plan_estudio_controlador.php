@@ -104,5 +104,17 @@ switch ($_GET["op"]) {
             echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
         }
         break;
+    case 'UVplan':
+
+        $respuesta = $instancia_modelo->UVplan($id_plan_estudio);
+        echo json_encode($respuesta);
+        break;
+    case 'contarAsignaturas':
+
+        $respuesta = $instancia_modelo->contarAsignaturas($id_plan_estudio);
+        echo json_encode($respuesta);
+        break;
+        
+
 }
 

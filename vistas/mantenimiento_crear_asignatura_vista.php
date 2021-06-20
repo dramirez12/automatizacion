@@ -123,6 +123,10 @@ ob_end_flush();
                                     <label>Plan que pertenece:</label>
                                     <td><select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan">
                                         </select></td>
+                                    <input class="form-control" type="text" id="txt_uv_plan" name="txt_uv_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="num_clases_plan" name="num_clases_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="suma_clases_plan" name="suma_clases_plan" readonly hidden>
+
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -136,7 +140,7 @@ ob_end_flush();
                             <div class="col-md-3">
                                 <div class="form-group">
 
-                                    <label> Área a la que pertenece:</label>
+                                    <label> Área que pertenece:</label>
                                     <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
                                         </select></td>
                                 </div>
@@ -200,7 +204,7 @@ ob_end_flush();
 
                                     <label>Sílabo</label>
 
-                                    <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required accept="application/pdf"> 
+                                    <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required accept="application/pdf" onchange="Validar();">
 
 
                                 </div>
@@ -208,31 +212,31 @@ ob_end_flush();
 
                         </div>
                         <div class=" row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
+                            <div class="col-md-4">
+                                <div class="form-group">
 
-                                            <label>Plan para equivalencia:</label>
-                                            <td><select class="form-control" style="width: 100%;" name="cbm_plan1" id="cbm_plan1">
-                                                </select></td>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label>Equivalencia</label>
-                                            <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br><br><br>
-                                    <p style="display: center; margin: 0 auto;">
-                                        <button class="btn btn-primary" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
-                                    </p>
+                                    <label>Plan para equivalencia:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan1" id="cbm_plan1">
+                                        </select></td>
                                 </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Equivalencia</label>
+                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <br><br><br>
+                            <p style="display: center; margin: 0 auto;">
+                                <button class="btn btn-primary" <?php echo $_SESSION['btn_crear_asignatura']; ?> onclick="insertarAsignatura();">Guardar</button>
+                            </p>
+                        </div>
 
 
 
-                                <!-- <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Requisito Asignatura</label>
                                             <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_requisito_asignaturas">
@@ -241,11 +245,11 @@ ob_end_flush();
                                         </div>
                                     </div> -->
 
-                            </div>
-
-                        </div>
-
                     </div>
+
+                </div>
+
+            </div>
 
         </section>
 
