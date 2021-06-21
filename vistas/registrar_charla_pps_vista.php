@@ -125,7 +125,7 @@ ob_end_flush();
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Válida Hasta:</label>
-                    <input class="form-control" type="text" maxlength="60" id="txt_fecha_valida" name="txt_fecha_valida" value="<?php echo $row2; ?>" readonly>
+                    <input class="form-control" type="text" maxlength="60" id="txt_fecha_valida" name="txt_fecha_valida" value="<?php echo $row2['fecha_valida']; ?>" readonly>
 
                   </div>
                 </div>
