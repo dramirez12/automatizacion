@@ -216,65 +216,77 @@ ob_end_flush();
 
   </div>
 
+</body>
+
+</html>
+
+<script type="text/javascript">
+  function Constancia() {
+    /* Para obtener el valor */
+
+    var certicados = document.getElementById("cb_jornada").value;
 
 
-  <script type="text/javascript">
-    function Constancia() {
-      /* Para obtener el valor */
 
-      var certicados = document.getElementById("cb_jornada").value;
-
-
-
-      if (certicados == "MATUTINA") {
-        //
-        document.getElementById("txt_constancia_charla").value = "<?php require_once('../clases/Conexion.php');
-                                                                  $sql = "select CONCAT(date_format(sysdate(), '%Y'), date_format(sysdate(), '%m'),CASE
+    if (certicados == "MATUTINA") {
+      //
+      document.getElementById("txt_constancia_charla").value = "<?php require_once('../clases/Conexion.php');
+                                                                $sql = "select CONCAT(date_format(sysdate(), '%Y'), date_format(sysdate(), '%m'),CASE
     WHEN contador < 10 THEN concat('00',contador+1)
     WHEN contador >= 10 AND contador < 100 THEN concat('0',contador+1)
     ELSE
     contador +1
 
 END) as contador from tbl_contador_constancia where id_contador =1 ";
-                                                                  $resultado = mysqli_fetch_assoc($mysqli->query($sql));
+                                                                $resultado = mysqli_fetch_assoc($mysqli->query($sql));
 
 
-                                                                  echo $resultado['contador'] ?>";
+                                                                echo $resultado['contador'] ?>";
 
 
-      }
-      if (certicados == "VESPERTINA") {
+    }
+    if (certicados == "VESPERTINA") {
 
 
-        document.getElementById("txt_constancia_charla").value = "<?php require_once('../clases/Conexion.php');
-                                                                  $sql = "select CONCAT(date_format(sysdate(), '%Y'), date_format(sysdate(), '%m'),CASE
+      document.getElementById("txt_constancia_charla").value = "<?php require_once('../clases/Conexion.php');
+                                                                $sql = "select CONCAT(date_format(sysdate(), '%Y'), date_format(sysdate(), '%m'),CASE
     WHEN contador < 10 THEN concat('00',contador+1)
     WHEN contador >= 10 AND contador < 100 THEN concat('0',contador+1)
     ELSE
     contador +1
 
 END) as contador from tbl_contador_constancia where id_contador =2 ";
-                                                                  $resultado = mysqli_fetch_assoc($mysqli->query($sql));
-                                                                  echo $resultado['contador'] ?>";
-
-
-      }
+                                                                $resultado = mysqli_fetch_assoc($mysqli->query($sql));
+                                                                echo $resultado['contador'] ?>";
 
 
     }
 
-    function fecha_valida() {
-      var hoy = new Date();
-      var fecha_desbloqueo = document.getElementById("txt_fecha_valida").value;
 
-      if (Date.parse(hoy) < Date.parse(fecha_desbloqueo)) {
-        $("#txt_fecha_valida").val().value == ""
+  }
 
-      } else {
-        
-      }
-    }
-  </script>
-</body>
+  // function fecha_valida() {
+  //   var hoy = new Date();
+  //   var fecha_desbloqueo = document.getElementById("txt_fecha_valida").value;
 
-</html>
+  //   if (Date.parse(hoy) < Date.parse(fecha_desbloqueo)) {
+  //     $("#txt_fecha_valida").val().value == ""
+
+  //   } else {
+
+  //   }
+  // }
+
+
+  function fecha_valida() {
+  var fech1 = new Date();
+  var fech2 = document.getElementById("txt_fecha_valida").value;
+
+  if ((Date.parse(fech1)) >= (Date.parse(fech2))) {
+
+    document.getElementById("txt_fecha_valida").value = "";
+  } else {
+
+  }
+}
+</script>
