@@ -118,7 +118,7 @@ else
 			{
 				$intentos=($intentos + 1 );
 				/* Aqui actualiza los intentos fallidos*/
-				$sql = "UPDATE tbl_usuarios SET   Intentos=$intentos WHERE id_usuario=".$_SESSION[id_usuario]."  ";
+				$sql = "UPDATE tbl_usuarios SET   Intentos=$intentos WHERE id_usuario=".$_SESSION['id_usuario']."  ";
 				$resultado = $mysqli->query($sql);
 				/*Aqui envia los intentos fallidos de acuerdo al usuario*/													
 				header("location: ../login.php?msj=3&intentos=$intentos" );	
@@ -126,14 +126,14 @@ else
 			}
 			elseif ($row_parametro_intento_admin['idusuario']==1)
 			{
-				$sql_actualizar_intentos = "UPDATE tbl_usuarios SET   Intentos=0 WHERE id_usuario=".$_SESSION[id_usuario]." ";
+				$sql_actualizar_intentos = "UPDATE tbl_usuarios SET   Intentos=0 WHERE id_usuario=".$_SESSION['id_usuario']." ";
 				$resultado_actualizar_intentos= $mysqli->query($sql_actualizar_intentos);
 				header('location: ../login.php');
 			}
 			else
 			{
 				/*Esta condicion permite que al llegar al limite de intentos el usuario se bloquea*/
-				$sql_bloqueo_usuario = "UPDATE tbl_usuarios SET   Intentos=0 , estado=0 WHERE id_usuario=".$_SESSION[id_usuario]." ";
+				$sql_bloqueo_usuario = "UPDATE tbl_usuarios SET   Intentos=0 , estado=0 WHERE id_usuario=".$_SESSION['id_usuario']." ";
 				$resultado_bloqueo_usuario = $mysqli->query($sql_bloqueo_usuario);
 				header('location: ../login.php?msj=4');	
 
@@ -252,7 +252,7 @@ else
 			{
 				$intentos=($intentos + 1 );
 				/* Aqui actualiza los intentos fallidos*/
-				$sql = "UPDATE tbl_usuarios SET   Intentos=$intentos WHERE id_usuario=".$_SESSION[id_usuario]."  ";
+				$sql = "UPDATE tbl_usuarios SET   Intentos=$intentos WHERE id_usuario=".$_SESSION['id_usuario']."  ";
 				$resultado = $mysqli->query($sql);
 				/*Aqui envia los intentos fallidos de acuerdo al usuario*/													
 				header("location: ../login.php?msj=3&intentos=$intentos" );	
@@ -260,14 +260,14 @@ else
 			}
 			elseif ($row_parametro_intento_admin['idusuario']==1)
 			{
-				$sql_actualizar_intentos = "UPDATE tbl_usuarios SET   Intentos=0 WHERE id_usuario=".$_SESSION[id_usuario]." ";
+				$sql_actualizar_intentos = "UPDATE tbl_usuarios SET   Intentos=0 WHERE id_usuario=".$_SESSION['id_usuario']." ";
 				$resultado_actualizar_intentos= $mysqli->query($sql_actualizar_intentos);
 				header('location: ../login.php');
 			}
 			else
 			{
 				/*Esta condicion permite que al llegar al limite de intentos el usuario se bloquea*/
-				$sql_bloqueo_usuario = "UPDATE tbl_usuarios SET   Intentos=0 , estado=0 WHERE id_usuario=".$_SESSION[id_usuario]." ";
+				$sql_bloqueo_usuario = "UPDATE tbl_usuarios SET   Intentos=0 , estado=0 WHERE id_usuario=".$_SESSION['id_usuario']." ";
 				$resultado_bloqueo_usuario = $mysqli->query($sql_bloqueo_usuario);
 				header('location: ../login.php?msj=4');	
 
@@ -380,7 +380,7 @@ elseif(ctype_alpha($Usuario)==true)
 					{
 						$intentos=($intentos + 1 );
 						/* Aqui actualiza los intentos fallidos*/
-						$sql = "UPDATE tbl_usuarios SET   Intentos=$intentos WHERE id_usuario=".$_SESSION[id_usuario]."  ";
+						$sql = "UPDATE tbl_usuarios SET   Intentos=$intentos WHERE id_usuario=".$_SESSION['id_usuario']."  ";
 						$resultado = $mysqli->query($sql);
 						/*Aqui envia los intentos fallidos de acuerdo al usuario*/													
 						header("location: ../login.php?msj=3&intentos=$intentos" );	
@@ -388,14 +388,14 @@ elseif(ctype_alpha($Usuario)==true)
 					}
 					elseif ($row_parametro_intento_admin['idusuario']==1)
 					{
-						$sql_actualizar_intentos = "UPDATE tbl_usuarios SET   Intentos=0 WHERE id_usuario=".$_SESSION[id_usuario]." ";
+						$sql_actualizar_intentos = "UPDATE tbl_usuarios SET   Intentos=0 WHERE id_usuario=".$_SESSION['id_usuario']." ";
 						$resultado_actualizar_intentos= $mysqli->query($sql_actualizar_intentos);
 						header('location: ../login.php');
 					}
 					else
 					{
 						/*Esta condicion permite que al llegar al limite de intentos el usuario se bloquea*/
-						$sql_bloqueo_usuario = "UPDATE tbl_usuarios SET   Intentos=0 , estado=0 WHERE id_usuario=".$_SESSION[id_usuario]." ";
+						$sql_bloqueo_usuario = "UPDATE tbl_usuarios SET   Intentos=0 , estado=0 WHERE id_usuario=".$_SESSION['id_usuario']." ";
 						$resultado_bloqueo_usuario = $mysqli->query($sql_bloqueo_usuario);
 						header('location: ../login.php?msj=4');	
 
