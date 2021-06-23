@@ -83,7 +83,6 @@ ob_end_flush();
                                 <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu Plan de Estudio</a></li>
                                 <li class="breadcrumb-item">Gestión de Plan</li>
-                                <li class="breadcrumb-item"><a href="../vistas/historial_plan_estudio_vista.php">Historial de planes</a></li>
 
                             </ol>
                         </div>
