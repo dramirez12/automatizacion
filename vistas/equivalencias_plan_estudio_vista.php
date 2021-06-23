@@ -63,10 +63,11 @@ ob_end_flush();
 </head>
 
 
+
 <body>
+
+
     <div class="content-wrapper">
-
-
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -74,15 +75,16 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Equivalencias</h1>
+                        <h1>ASIGNATURAS</h1>
                     </div>
+
+
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu Plan de Estudio</a></li>
-                            <li class="breadcrumb-item">Equivalencia plan de estudio</li>
-
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_plan.php">Menu Mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_asignatura_vista.php"> Mantenimiento Asignatura</a></li>
                         </ol>
                     </div>
 
@@ -92,16 +94,54 @@ ob_end_flush();
             </div><!-- /.container-fluid -->
         </section>
 
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid ">
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">DATOS GENERALES</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
 
-       
-      
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive" style="width: auto;">
+                            <table id="tabla_equivalencia" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>editar</th>
+                                        <th>Asignatura</th>
+                                        <th>equivalencia</th>
+
+                                    </tr>
+                                </thead>
+
+
+                            </table>
+                            <br>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
     </div>
 
 
 
+    <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
+    <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
-
 
 </html>

@@ -60,15 +60,35 @@ function llenar_plan1() {
     type: "POST",
     data: cadena,
     success: function (r) {
+      
       $("#cbm_plan1").html(r).fadeIn();
       var o = new Option("SELECCIONAR", 0);
 
       $("#cbm_plan1").append(o);
       $("#cbm_plan1").val(0);
+
     },
   });
 }
 llenar_plan1();
+
+//llenar plan para requisito
+function llenar_plan2() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=plan",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_plan_requisito").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+
+      $("#cbm_plan_requisito").append(o);
+      $("#cbm_plan_requisito").val(0);
+    },
+  });
+}
+llenar_plan2();
 
 
 //llena en cascada equivalencia que selecciona del plan
@@ -83,6 +103,22 @@ $("#cbm_plan1").change(function () {
     $("#cbm_asignaturas").html(respuesta);
 
    // $("#cbm_requisito_asignaturas").html(respuesta);
+    console.log(respuesta);
+  });
+});
+
+//llena las asignaturas para requisito de ella
+$("#cbm_plan_requisito").change(function () {
+  var id_plan_estudio = $(this).val();
+  console.log(id_plan_estudio);
+  //  document.getElementById("txt_capacidad_edita").value = "";
+  // Lista deaulas
+  $.post("../Controlador/plan_estudio_controlador.php?op=id_plan", {
+    id_plan_estudio: id_plan_estudio,
+  }).done(function (respuesta) {
+    $("#cbm_asignaturas_requisito").html(respuesta);
+
+    // $("#cbm_requisito_asignaturas").html(respuesta);
     console.log(respuesta);
   });
 });
@@ -226,4 +262,43 @@ function insertarAsignatura() {
     //   }
     //);
  }
+}
+
+var table;
+function TablaPlanEstudio() {
+  table = $("#tabla_equivalencia").DataTable({
+    paging: true,
+    lengthChange: true,
+    ordering: true,
+    info: true,
+    autoWidth: true,
+    responsive: true,
+    // LengthChange: false,
+    searching: { regex: true },
+    lengthMenu: [
+      [10, 25, 50, 100, -1],
+      [10, 25, 50, 100, "All"],
+    ],
+    sortable: false,
+    pageLength: 15,
+    destroy: true,
+    async: false,
+    processing: true,
+    ajax: {
+      url: "../Controlador/tabla_plan_estudio_controlador.php",
+      type: "POST",
+    },
+    columns: [
+      {
+        defaultContent:
+          "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>",
+      },
+      
+      { data: "asignatura" },
+      { data: "equivalencia" },
+    ],
+
+    language: idioma_espanol,
+    select: true,
+  });
 }

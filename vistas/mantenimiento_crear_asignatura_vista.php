@@ -104,7 +104,7 @@ ob_end_flush();
             <div class="container-fluid ">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">NUEVA ASIGNATURA</h3>
+                        <h3 class="card-title">DATOS GENERALES</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -211,6 +211,35 @@ ob_end_flush();
                             </div>
 
                         </div>
+                        
+
+
+                        <!-- <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Requisito Asignatura</label>
+                                            <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_requisito_asignaturas">
+
+                                            </select>
+                                        </div>
+                                    </div> -->
+
+                    </div>
+
+                </div>
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">ASIGNAR EQUIVALENCIA Y REQUISITO</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+                        
                         <div class=" row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -224,6 +253,25 @@ ob_end_flush();
                                 <div class="form-group">
                                     <label>Equivalencia</label>
                                     <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label>Plan para requisito:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan_requisito" id="cbm_plan_requisito">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Requisito</label>
+                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_requisito">
 
                                     </select>
                                 </div>
@@ -248,7 +296,6 @@ ob_end_flush();
                     </div>
 
                 </div>
-
             </div>
 
         </section>
