@@ -18,7 +18,7 @@ class correo
 
 		$mail->isSMTP();
 
-		$correo = "pruebaunah2021@gmail.com";
+		$correo = "mail.informaticaunah.com";
 		$Password = "inforunah2021";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
