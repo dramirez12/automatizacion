@@ -18,10 +18,10 @@ class correo
 
 		$mail->isSMTP();
 
-		$correo = "prueba_vinculacion@desarrollo.informaticaunah.com";
-		$Password = "*FYS_8ZMiW6i";
+		$correo = "vinculacionunah@informaticaunah.com";
+		$Password = "N5y*%U(Ofb+T";
 		$mail->SMTPDebug = 0;
-		$mail->Host = 'desarrollo.informaticaunah.com';
+		$mail->Host = 'mail.informaticaunah.com';
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
@@ -55,9 +55,9 @@ class correo
 
 
 		$correo = "vinculacionunah@informaticaunah.com";
-		$Password = "";
+		$Password = "N5y*%U(Ofb+T";
 		$mail->SMTPDebug = 0;
-		$mail->Host = '	mail.informaticaunah.com';
+		$mail->Host = 'mail.informaticaunah.com';
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
