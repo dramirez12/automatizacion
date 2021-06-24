@@ -22,7 +22,7 @@ class correo
 		$Password = "inforunah2021";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
-		$mail->Port = 2080;
+		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo;
