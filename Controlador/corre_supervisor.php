@@ -18,11 +18,11 @@ class correo
 
 		$mail->isSMTP();
 
-		$correo = "mail.informaticaunah.com";
+		$correo = "pruebaunah2021@gmail.com";
 		$Password = "inforunah2021";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
-		$mail->Port = 465;
+		$mail->Port = 993;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo;
