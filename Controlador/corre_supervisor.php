@@ -18,7 +18,7 @@ class correo
 
 		$mail->isSMTP();
 
-		$correo = "vinculacionunah@informaticaunah.com";
+		$correo = "pruebaunah2021@gmail.com";
 		$Password = "inforunah2021";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
@@ -54,7 +54,7 @@ class correo
 		$mail->isSMTP();
 
 
-		$correo = "vinculacionunah@informaticaunah.com";
+		$correo = "pruebaunah2021@gmail.com";
 		$Password = "inforunah2021";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
