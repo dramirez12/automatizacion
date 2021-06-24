@@ -70,9 +70,6 @@ function listar()
 
 function editar()
 {
-	
-	
-    
     var datos = $("#formulario").serialize();
 	
 	$.ajax({
@@ -83,7 +80,6 @@ function editar()
 
 	    success: function(d)
 	    {
-            
 	    	swal({
 				  title: d,
 
@@ -93,11 +89,7 @@ function editar()
 				}).then(function() {
 					window.location = "../vistas/gestion_docente_supervisor_vista.php";
 				});
-				
-
 		}
-		
-
 	});
 	
 	//limpiar();

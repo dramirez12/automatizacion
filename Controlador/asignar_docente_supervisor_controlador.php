@@ -19,10 +19,6 @@ switch ($_GET["op"]){
 	case 'editar':
 
 			$rspta=$modelo->editar($docente,$id_supervisor);
-
-
-			echo $rspta ? "DOCENTE SUPERVISOR ASIGNADO CORRECTAMENTE." : "DOCENTE SUPERVISOR NO SE PUDO ASIGNAR";
-			//query para los datos de alumnos
 		
 
 			$rspta1=$modelo->mostrar_datos_alumno($id_supervisor)->fetch_all();
@@ -43,7 +39,8 @@ switch ($_GET["op"]){
 				
 				
 			} // fin del query para los datos del alumno
-//query para los datos del docente
+
+
 				$rspta2=$modelo->mostrar_datos_docente($docente)->fetch_all();
 			foreach ($rspta2 as $key => $value)
 			 {
@@ -55,7 +52,6 @@ switch ($_GET["op"]){
 	   		}// fin del query de los datos del docente
 
 			//Correo de docente
-
 			
 			//print_r($->fetch_all());
 			//cuerpo del correo del docente
@@ -179,6 +175,8 @@ switch ($_GET["op"]){
 			</html>
 			';
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+		
+
 		//cuerpo de correo del estudiante
 		$cuerpo_estudiante='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
@@ -292,6 +290,7 @@ switch ($_GET["op"]){
 		</html>
 		';
 		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+
 	break;
 
 	case 'desactivar':
