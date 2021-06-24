@@ -33,11 +33,11 @@ if ($visualizacion == 0) {
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A EQUIVALENCIA DE PLAN DE ESTUDIO.');
 
 
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "";
-    // } else {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "disabled";
-    // }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_guardar_cambio_equivalencia'] = "";
+    } else {
+        $_SESSION['btn_guardar_cambio_equivalencia'] = "disabled";
+    }
 }
 
 ob_end_flush();
@@ -129,6 +129,72 @@ ob_end_flush();
                         </div>
                     </div>
 
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal_editar">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Editar equivalencia</h5>
+                                    <button class="close" data-dismiss="modal">
+                                        &times;
+                                    </button>
+                                </div>
+
+
+                                <div class="modal-body">
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+
+                                                <label>Asignatura</label>
+
+                                                <input class="form-control" type="text" id="txt_asignatura" name="txt_asignatura" maxlength="45" required readonly>
+
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+
+                                                <label>Plan para equivalencia:</label>
+                                                <td><select class="form-control" style="width: 100%;" name="cbm_plan1" id="cbm_plan1">
+                                                    </select></td>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+
+
+                                            </div>
+                                        </div>
+                                        
+
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Equivalencia</label>
+                                                <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="modal-footer">
+                                    <!-- <button class="btn btn-danger" name="cambiar_vigencia1" id="cambiar_vigencia1">Guardar Vigencia</button> -->
+                                    <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_equivalencia']; ?>>Guardar</button>
+                                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -140,8 +206,53 @@ ob_end_flush();
 
 
 
-    <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
+    <script type="text/javascript" src="../js/equivalencia_plan.js"></script>
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
 
 </html>
+<script>
+    var idioma_espanol = {
+        select: {
+            rows: "%d fila seleccionada"
+        },
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "Ning&uacute;n dato disponible en esta tabla",
+        "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+        "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "<b>No se encontrarón datos</b>",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        TablaPlanEstudio();
+
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(".mul-select").select2({
+            placeholder: "SELECCIONE ASIGNATURAS", //placeholder
+            tags: true,
+            tokenSeparators: ['/', ',', ';', " "]
+        });
+    })
+</script>

@@ -92,8 +92,8 @@
 
 
 
-            <p><?php echo $_SESSION['crear_plan_de_estudio_vista']; ?></p>
-
+            <!-- <p><?php echo $_SESSION['crear_plan_de_estudio_vista']; ?></p>
+ -->
 
             <!-- fix for small devices only -->
             <div class="clearfix hidden-md-up"></div>

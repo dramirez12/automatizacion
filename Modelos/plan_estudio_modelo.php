@@ -220,6 +220,18 @@ class modelo_plan{
         "SELECT COUNT(Id_asignatura) as suma FROM tbl_asignaturas where id_plan_estudio= $id_plan_estudio";
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
     }
+    function tabla_equivalencias()
+    {
+        global $instancia_conexion;
+        $sql = " call sel_equivalencias_plan()";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
 }
 
 
