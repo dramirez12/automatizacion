@@ -158,6 +158,8 @@ ob_end_flush();
                                                 <button class="btn btn-primary " id="limpiar" onclick="limpiar_()"><i class="fas fa-sync-alt"></i> <a style="font-weight: bold;">limpiar tabla</a></button>
 
                                             </div>
+                                            <br>
+                                            <br>
 
                                             <div class="table-responsive" style="width: auto;">
                                                 <table id="tabla4_historial_plan" class="table table-bordered table-striped">

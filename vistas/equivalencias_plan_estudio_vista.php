@@ -114,9 +114,9 @@ ob_end_flush();
                             <table id="tabla_equivalencia" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>editar</th>
+                                        <th>Editar</th>
                                         <th>Asignatura</th>
-                                        <th>equivalencia</th>
+                                        <th>Equivalencias</th>
 
                                     </tr>
                                 </thead>
@@ -144,42 +144,101 @@ ob_end_flush();
                                 <div class="modal-body">
 
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <input type="hidden">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
+                                                <input type="text" id="txt_id_asignatura" readonly>
 
-                                                <label>Asignatura</label>
-
-                                                <input class="form-control" type="text" id="txt_asignatura" name="txt_asignatura" maxlength="45" required readonly>
-
+                                                <label> Asignatura </label>
+                                                <input class="form-control" type="text" id="txt_asignatura" name="txt_asignatura" readonly>
 
 
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4">
-                                            <div class="form-group">
 
-                                                <label>Plan para equivalencia:</label>
-                                                <td><select class="form-control" style="width: 100%;" name="cbm_plan1" id="cbm_plan1">
-                                                    </select></td>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
 
+                                        <div class="col-md-3">
+                                            <div class="form-group">
 
                                             </div>
                                         </div>
-                                        
 
-                                        <div class="col-md-8">
+
+
+
+                                        <div class="col-md-2">
                                             <div class="form-group">
-                                                <label>Equivalencia</label>
-                                                <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
 
-                                                </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-3">
+
+                                            <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Equivalencias</button>
+
+                                        </div>
+
+
+
+                                        <div class="card " style="width:600px;border-color:gray;">
+                                            <!--comisiones-->
+                                            <div class="card-body">
+                                                <h4 class="card-title">Equivalencias</h4>
+                                                <div class="card-text">
+                                                    <table class="table table-bordered table-striped m-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>Equivalencias</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbl_equivalencias"></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+
                                     </div>
 
                                 </div>
@@ -194,6 +253,43 @@ ob_end_flush();
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Datos</h5>
+                                    <button class="close" data-dismiss="modal">
+                                        &times;
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="form-group">
+                                            <input  type="text" id="txt_id_asignatura1" readonly>
+                                            <label> Plan de Equivalencias </label>
+                                            <select  class="form-control" type="text" id="cbm_plan1" name="cbm_plan1" readonly></select>
+                                           
+
+
+
+                                            <label>Equivalencia</label>
+                                            <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" onclick="saveAll3();addTask3(); ">Agregar</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                 </div>
 

@@ -111,7 +111,7 @@ class modelo_plan{
     function plan_sel()
     {
         global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio');
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio WHERE plan_vigente="NO" ');
 
         return $consulta;
     }
@@ -232,6 +232,29 @@ class modelo_plan{
             return $arreglo;
         }
     }
+    function sel_equivalencias($id_asignatura)
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta(" call sel_busca_equivalencias_plan($id_asignatura)");
+      
+        $equivalencias = array();
+        
+    
+        while ($row = $consulta->fetch_assoc()) {
+    
+          $equivalencias['equivalencias'][] = $row;
+        }
+    
+        //echo '<pre>';print_r($actividades);echo'</pre>';
+        return $equivalencias;
+       
+    }
+    function existe_equivalencia($id_asignatura, $id_equivalencia)
+  {
+    global $instancia_conexion;
+    $sql5 = "CALL sel_existe_equivalencia_plan('$id_asignatura','$id_equivalencia')";
+    return $instancia_conexion->ejecutarConsultaSimpleFila($sql5);
+  }
 }
 
 
