@@ -18,10 +18,10 @@ class correo
 
 		$mail->isSMTP();
 
-		$correo = "pruebaunah2021@gmail.com";
-		$Password = "inforunah2021";
+		$correo = "vinculacionunah@informaticaunah.com";
+		$Password = "";
 		$mail->SMTPDebug = 0;
-		$mail->Host = 'smtp.gmail.com';
+		$mail->Host = '	mail.informaticaunah.com';
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
@@ -54,12 +54,12 @@ class correo
 		$mail->isSMTP();
 
 
-		$correo = "pruebaunah2021@gmail.com";
-		$Password = "inforunah2021";
+		$correo = "vinculacionunah@informaticaunah.com";
+		$Password = "";
 		$mail->SMTPDebug = 0;
-		$mail->Host = 'smtp.gmail.com';
+		$mail->Host = '	mail.informaticaunah.com';
 		$mail->Port = 465;
-		$mail->SMTPSecure = "ssl";
+		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo;
 		$mail->Password = $Password;
