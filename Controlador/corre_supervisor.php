@@ -3,7 +3,7 @@ ob_start();
 require('../PHPMAILER/PHPMailer.php');
 require('../PHPMAILER/SMTP.php');
 require('../PHPMAILER/Exception.php');
-// require ('OAuth.php');
+require ('../Controlador/OAuth.php');
 require_once('../clases/Conexion.php');
 class correo
 {
@@ -38,6 +38,7 @@ class correo
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
 			echo "muy bien docente";
+			exit();
 		}
 	} //cierre de la funcion
 
@@ -73,6 +74,7 @@ class correo
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
 			echo "muy bien estudiante";
+			exit();
 		}
 	} //cierre de la funcion
 

@@ -129,14 +129,14 @@ switch ($_GET["op"]){
 			<br> 1.	Nombre del estudiante: '.$estudiante.'
 			<br> 2.	Número cuenta: '.$num_cuenta.'
 			<br> 3.	Correo del estudiante: '.$ecorreo.'
-			<br> 4.	teléfono del Estudiante: '.$celular.'
+			<br> 4.	Teléfono del Estudiante: '.$celular.'
 			<br> 5.	Nombre Empresa: '.$empresa.'
 			<br> 6.	Ubicada en: '.$direccion.'
 			<br> 7.	Contacto en la empresa: '.$jefe.'
 			<br> 8.	Fecha de inicio: '.$fechai.'
 			<br> 9.	Fecha de finalización: '.$fechan.'
 			<br>
-			<br>Usted puede consultar los datos dentro del Sistema de gestión administrativa del Departamento de Informática (SGADI), tambien puede comunicarse al correo uvinculacion.dia@unah.edu.hn.
+			<br>Usted puede consultar los datos dentro del Sistema de gestión administrativa del Departamento de Informática (SGADI), también puede comunicarse al correo uvinculacion.dia@unah.edu.hn.
 			Agradeciendo su atención,
 			</p>
 									<p style="box-sizing: border-box; color: #000000; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;" align="left">
