@@ -54,8 +54,8 @@ class correo
 		$mail->isSMTP();
 
 
-		$correo = "vinculacionunah@informaticaunah.com";
-		$Password = "";
+		$correo = "pruebaunah2021@gmail.com";
+		$Password = "inforunah2021";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
 		$mail->Port = 465;
