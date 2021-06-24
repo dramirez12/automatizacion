@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require('../PHPMAILER/PHPMailer.php');
 require('../PHPMAILER/SMTP.php');
 require('../PHPMAILER/Exception.php');
@@ -77,3 +77,6 @@ class correo
 	} //cierre de la funcion
 
 }//cierre class
+
+
+ob_end_flush();

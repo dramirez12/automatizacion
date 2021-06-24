@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require "../clases/conexion_mantenimientos.php";
 
 
@@ -112,7 +113,7 @@ class asignaturas
 
 
 
-
+ob_end_flush();
 ?>
 
 
