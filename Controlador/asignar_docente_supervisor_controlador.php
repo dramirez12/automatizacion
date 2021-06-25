@@ -40,7 +40,6 @@ switch ($_GET["op"]){
 				
 				
 			} // fin del query para los datos del alumno
-var_dump($rspta1);
 
 				$rspta2=$modelo->mostrar_datos_docente($docente)->fetch_all();
 			foreach ($rspta2 as $key => $value)
@@ -291,7 +290,7 @@ var_dump($rspta1);
 		</html>
 		';
 		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-		var_dump($correo);
+		
 	break;
 
 	case 'desactivar':
