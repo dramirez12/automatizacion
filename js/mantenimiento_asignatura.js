@@ -197,7 +197,7 @@ function insertarRequisitos() {
 }
 
 //el documento de la asignatura silabo
-function Registrarcurriculum() {
+function RegistrarSilabo() {
   var formData = new FormData();
   var curriculum = $("#txt_silabo")[0].files[0];
   formData.append("c", curriculum);
@@ -277,7 +277,7 @@ function insertarAsignatura() {
         },
 
         function (e) {
-          Registrarcurriculum();
+          RegistrarSilabo();
           insertarRequisitos();
           insertarEquivalencias();
         }
@@ -289,21 +289,21 @@ function insertarAsignatura() {
         showConfirmButton: false,
         timer: 8000,
       });
-      refrescar(10000);
-      mensaje();
+      // refrescar(10000);
+      // mensaje();
     }
   }
 }
 
 //FUNCION PARA ACTUALIZAR PAGINA DESPUES DE 10 SEGUNDOS DE HABER GUARDADO
-function refrescar(tiempo) {
-	setTimeout('location.reload(true);', tiempo);
+// function refrescar(tiempo) {
+// 	setTimeout('location.reload(true);', tiempo);
 
 
-}
+// }
 
-function mensaje() {
-	setTimeout(function() {
-		swal('Buen trabajo!', 'Los datos se insertaron correctamente!', 'success');
-	 }, 9000);
-}
+// function mensaje() {
+// 	setTimeout(function() {
+// 		swal('Buen trabajo!', 'Los datos se insertaron correctamente!', 'success');
+// 	 }, 9000);
+// }
