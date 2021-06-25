@@ -1,8 +1,8 @@
 <?php
 ob_start();
-require_once "../Modelos/asignar_docente_supervisor_modelo.php";
-require_once ("corre_supervisor.php");
-require_once ("correo_estudiante_controlador.php");
+require_once("../Modelos/asignar_docente_supervisor_modelo.php");
+require_once('corre_supervisor.php');
+require_once('correo_estudiante_controlador.php');
 
 
 $modelo=new asignaturas();
@@ -10,7 +10,7 @@ $id_supervisor=isset($_POST["id_supervisor"])? $instancia_conexion->limpiarCaden
 $nombre_alumno=isset($_POST["nombre_alumno"]);
 $cuenta=isset($_POST["cuenta"]);
 $docente=isset($_POST["docente"])? $instancia_conexion->limpiarCadena($_POST["docente"]):"";
-$correo= new correo2();
+$correo= new correo();
 $correodocente = new correo();
 
 
