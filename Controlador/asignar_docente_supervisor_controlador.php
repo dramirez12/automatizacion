@@ -35,7 +35,7 @@ switch ($_GET["op"]){
 				$fechan= $value[5];
 				$jefe= $value[8];
 				$titulo= $value[9];
-				$correo= new correo();
+				
 					
 				
 				
@@ -289,7 +289,7 @@ switch ($_GET["op"]){
 		</body>
 		</html>
 		';
-		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+		$correoprac->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 		
 	break;
 
