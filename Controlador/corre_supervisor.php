@@ -11,8 +11,6 @@ class correo
 	function enviarEmailDocente($cuerpo, $asunto_docente, $destino, $nombre_destino)
 	{
 
-
-
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 
 
@@ -45,8 +43,6 @@ class correo
 
 	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante)
 	{
-
-
 
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 

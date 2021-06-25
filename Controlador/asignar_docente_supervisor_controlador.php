@@ -291,7 +291,7 @@ switch ($_GET["op"]){
 		</html>
 		';
 		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-
+		var_dump($correo);
 	break;
 
 	case 'desactivar':
