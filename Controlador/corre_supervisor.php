@@ -10,7 +10,7 @@ class correo
 	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante, $cuerpo, $asunto_docente, $destino, $nombre_destino)
 	{
 
-		$mail = new PHPMailer\PHPMailer\PHPMailer();
+		$mail = new PHPMailer(true);
 
 
 		$mail->isSMTP();
@@ -40,9 +40,7 @@ class correo
 		// }
 
 
-		$mail2 = new PHPMailer\PHPMailer\PHPMailer();
-
-
+		$mail2 = new PHPMailer(true);
 		$mail2->isSMTP();
 
 		$correo_doc = "vinculacionunah@informaticaunah.com";
