@@ -1,5 +1,4 @@
 <?php
-ob_start();
 require('../PHPMAILER/PHPMailer.php');
 require('../PHPMAILER/SMTP.php');
 require('../PHPMAILER/Exception.php');
