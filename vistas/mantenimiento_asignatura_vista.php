@@ -130,6 +130,7 @@ ob_end_flush();
                             <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
                                 <thead>
                                     <tr>
+                                        <th>Acción</th>
                                         <th>Nombre</th>
                                         <th>Código</th>
                                         <th>UV</th>
@@ -138,7 +139,6 @@ ob_end_flush();
                                         <th>área</th>
                                         <th>Periodo</th>
                                         <th>Plan de estudio</th>
-                                        <th>Acción</th>
 
                                     </tr>
                                 </thead>

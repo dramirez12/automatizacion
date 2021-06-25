@@ -223,8 +223,10 @@ function RegistrarSilabo() {
   return false;
 }
 
+
+ 
 //insertar asignatura
-function insertarAsignatura() {
+$("#guardar_asig").click(function () {
   var cbm_plan = $("#cbm_plan").val();
   var cbm_periodo = $("#cbm_periodo").val();
   var cbm_area = $("#cbm_area").val();
@@ -252,58 +254,83 @@ function insertarAsignatura() {
     cbm_reposicion == 0 ||
     cbm_suficiencia == 0
   ) {
+
     alert("seleccione una opcion valida");
+    
   } else {
 
     var clases_plan = $("suma_clases_plan").val();
     var num_clases_plan = $("num_clases_plan").val();
 
     if (clases_plan + 1 > num_clases_plan) {
-      alert("La asignatura excede el numero de clases asignadas al plan!");
-    } else {
-      $.post(
-        "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
-        {
-          id_plan_estudio: cbm_plan,
-          id_periodo_plan: cbm_periodo,
-          id_area: cbm_area,
-          uv: txt_uv,
-          codigo: txt_codigo_asignatura,
-          asignatura: txt_nombre_asignatura,
-          reposicion: cbm_reposicion,
-          suficiencia: cbm_suficiencia,
-          estado: estado,
-          id_tipo_asignatura: tipo_asignatura,
-        },
 
-        function (e) {
-          RegistrarSilabo();
-          insertarRequisitos();
-          insertarEquivalencias();
-        }
-      );
-      swal({
-        title: "alerta",
-        text: "Por favor espere un momento",
-        type: "warning",
-        showConfirmButton: false,
-        timer: 8000,
-      });
-      // refrescar(10000);
-      // mensaje();
+      alert("La asignatura excede el numero de clases asignadas al plan!");
+
+    } else {
+      
+        $.post(
+          "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
+          { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
+          function (data, status) {
+            data = JSON.parse(data);
+
+            if (data.suma > 0) {
+             
+              alert("Ya existe una asignatura con ese nombre!");
+
+            } else {
+
+               $.post(
+                 "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+                 {
+                   id_plan_estudio: cbm_plan,
+                   id_periodo_plan: cbm_periodo,
+                   id_area: cbm_area,
+                   uv: txt_uv,
+                   codigo: txt_codigo_asignatura,
+                   asignatura: txt_nombre_asignatura,
+                   reposicion: cbm_reposicion,
+                   suficiencia: cbm_suficiencia,
+                   estado: estado,
+                   id_tipo_asignatura: tipo_asignatura,
+                 },
+
+                 function (e) {
+                   RegistrarSilabo();
+                   insertarRequisitos();
+                   insertarEquivalencias();
+                 }
+               );
+               swal({
+                 title: "alerta",
+                 text: "Por favor espere un momento",
+                 type: "warning",
+                 showConfirmButton: false,
+                 timer: 11000,
+               });
+               refrescar(14000);
+               mensaje();
+
+            } 
+          }
+        );
+      
+
     }
   }
-}
+
+});
+
 
 //FUNCION PARA ACTUALIZAR PAGINA DESPUES DE 10 SEGUNDOS DE HABER GUARDADO
-// function refrescar(tiempo) {
-// 	setTimeout('location.reload(true);', tiempo);
+function refrescar(tiempo) {
+	setTimeout('location.reload(true);', tiempo);
 
 
-// }
+}
 
-// function mensaje() {
-// 	setTimeout(function() {
-// 		swal('Buen trabajo!', 'Los datos se insertaron correctamente!', 'success');
-// 	 }, 9000);
-// }
+function mensaje() {
+	setTimeout(function() {
+		swal('Buen trabajo!', 'Los datos se insertaron correctamente!', 'success');
+	 }, 12000);
+}

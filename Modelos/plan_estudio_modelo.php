@@ -271,7 +271,14 @@ class modelo_plan{
         return $instancia_conexion->ejecutarConsulta($sql);
     }
 
-  
+
+    function nombreAsignatura($id_plan_estudio,$asignatura)
+    {
+
+        global $instancia_conexion;
+        $sql6 = "SELECT COUNT(Id_asignatura) AS  suma FROM tbl_asignaturas WHERE id_plan_estudio='$id_plan_estudio' AND asignatura='$asignatura'";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
 }
 
 

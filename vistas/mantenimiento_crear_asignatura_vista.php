@@ -278,7 +278,7 @@ ob_end_flush();
                             </div>
                             <br><br><br>
                             <p style="display: center; margin: 0 auto;">
-                                <button class="btn btn-primary" <?php echo $_SESSION['btn_crear_asignatura']; ?> onclick="insertarAsignatura();">Guardar</button>
+                                <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?> onclick="insertarAsignatura();">Guardar</button>
                             </p>
                         </div>
 
@@ -305,7 +305,7 @@ ob_end_flush();
 
 
 
-    <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
+    <script type="text/javascript" src="../js/mantenimiento_asignatura_crear.js"></script>
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
 
