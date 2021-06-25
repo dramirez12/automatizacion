@@ -11,7 +11,7 @@ $nombre_alumno=isset($_POST["nombre_alumno"]);
 $cuenta=isset($_POST["cuenta"]);
 $docente=isset($_POST["docente"])? $instancia_conexion->limpiarCadena($_POST["docente"]):"";
 $correo= new correo();
-$correo2 = new correo();
+$correodocente = new correo();
 
 
 switch ($_GET["op"]){
@@ -291,7 +291,7 @@ switch ($_GET["op"]){
 		</html>
 		';
 		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-		$correo2->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+		$correodocente->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 	break;
 
 	case 'desactivar':
