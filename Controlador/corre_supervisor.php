@@ -31,13 +31,13 @@ class correo
 		$mail->Body = $cuerpo_estudiante;
 		$mail->CharSet = 'UTF-8';
 		$mail->IsHTML(true);
-
-		if (!$mail->send()) {
-			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
-		} else {
-			echo "muy bien estudiante";
-			exit();
-		}
+		$mail->Send();
+		// if (!$mail->send()) {
+		// 	echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
+		// } else {
+		// 	echo "muy bien estudiante";
+		// 	exit();
+		// }
 
 
 		$mail2 = new PHPMailer\PHPMailer\PHPMailer();
@@ -60,13 +60,13 @@ class correo
 		$mail2->Body = $cuerpo;
 		$mail2->CharSet = 'UTF-8';
 		$mail2->IsHTML(true);
-
-		if (!$mail2->send()) {
-			echo "Error al enviar el E-Mail: " . $mail2->ErrorInfo;
-		} else {
-			echo "muy bien docente";
-			exit();
-		}
+		$mail->Send();
+		// if (!$mail2->send()) {
+		// 	echo "Error al enviar el E-Mail: " . $mail2->ErrorInfo;
+		// } else {
+		// 	echo "muy bien docente";
+		// 	exit();
+		// }
 	}
 } 
 
