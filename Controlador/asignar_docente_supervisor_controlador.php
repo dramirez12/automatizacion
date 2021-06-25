@@ -290,8 +290,15 @@ switch ($_GET["op"]){
 		</body>
 		</html>
 		';
-		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-		$correodocente->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+
+		if ($ecorreo <> "" and $estudiante <> "" and $destino <> "" and $nombre_destino <> "") {
+			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correodocente->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+		}else{
+			
+			echo "Correo no enviado";
+		}
+		
 	break;
 
 	case 'desactivar':
