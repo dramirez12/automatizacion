@@ -1,8 +1,8 @@
 <?php
-require_once ('../PHPMAILER/PHPMailer.php');
-require_once ('../PHPMAILER/SMTP.php');
-require_once ('../PHPMAILER/Exception.php');
-require_once ('../Controlador/OAuth.php');
+require_once ('../PHPMAILER/src/PHPMailer.php');
+require_once ('../PHPMAILER/src/SMTP.php');
+require_once ('../PHPMAILER/src/Exception.php');
+require_once ('../PHPMAILER/src/OAuth.php');
 require_once ('../clases/Conexion.php');
 class correo
 {
@@ -19,7 +19,7 @@ class correo
 		$correo = "vinculacionunah@informaticaunah.com";
 		$Password = "N5y*%U(Ofb+T";
 		$mail->SMTPDebug = 0;
-		$mail->Host = 'mail.informaticaunah.com';
+		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
@@ -29,7 +29,7 @@ class correo
 		$mail->addAddress($ecorreo, $estudiante);
 		$mail->Subject = $asunto_estudiante;
 		$mail->Body = $cuerpo_estudiante;
-		$mail->CharSet = 'UTF-8'; // Con esto ya funcionan los acentos
+		$mail->CharSet = 'UTF-8';
 		$mail->IsHTML(true);
 
 		if (!$mail->send()) {
@@ -38,7 +38,8 @@ class correo
 			echo "muy bien estudiante";
 			exit();
 		}
-	} //cierre de la funcion
+		
+	} 
 
 	function enviarEmailDocente($cuerpo, $asunto_docente, $destino, $nombre_destino)
 	{
@@ -48,20 +49,20 @@ class correo
 
 		$mail->isSMTP();
 
-		$correo = "vinculacionunah@informaticaunah.com";
-		$Password = "N5y*%U(Ofb+T";
+		$correo_doc = "vinculacionunah@informaticaunah.com";
+		$Password_doc = "N5y*%U(Ofb+T";
 		$mail->SMTPDebug = 0;
-		$mail->Host = 'mail.informaticaunah.com';
+		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
-		$mail->Username = $correo;
-		$mail->Password = $Password;
-		$mail->setFrom($correo, 'Unidad de Vinculación depto Informática');
+		$mail->Username = $correo_doc;
+		$mail->Password = $Password_doc;
+		$mail->setFrom($correo_doc, 'Unidad de Vinculación Departamento de Informática');
 		$mail->addAddress($destino, $nombre_destino);
 		$mail->Subject = $asunto_docente;
 		$mail->Body = $cuerpo;
-		$mail->CharSet = 'UTF-8'; // Con esto ya funcionan los acentos
+		$mail->CharSet = 'UTF-8';
 		$mail->IsHTML(true);
 
 		if (!$mail->send()) {
@@ -70,7 +71,7 @@ class correo
 			echo "muy bien docente";
 			exit();
 		}
-	} //cierre de la funcion
+	}
 
 
 	
