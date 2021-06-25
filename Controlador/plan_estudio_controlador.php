@@ -5,6 +5,15 @@ require_once "../Modelos/plan_estudio_modelo.php";
 
 $nombre_plan = isset($_POST["nombre"]) ? limpiarCadena1($_POST["nombre"]) : "";
 $id_plan_estudio = isset($_POST["id_plan_estudio"]) ? limpiarCadena1($_POST["id_plan_estudio"]) : "";
+$id_periodo_plan = isset($_POST["id_periodo_plan"]) ? limpiarCadena1($_POST["id_periodo_plan"]) : "";
+$id_area = isset($_POST["id_area"]) ? limpiarCadena1($_POST["id_area"]) : "";
+$uv = isset($_POST["uv"]) ? limpiarCadena1($_POST["uv"]) : "";
+$codigo = isset($_POST["codigo"]) ? limpiarCadena1($_POST["codigo"]) : "";
+$asignatura = isset($_POST["asignatura"]) ? limpiarCadena1($_POST["asignatura"]) : "";
+$reposicion = isset($_POST["reposicion"]) ? limpiarCadena1($_POST["reposicion"]) : "";
+$suficiencia = isset($_POST["suficiencia"]) ? limpiarCadena1($_POST["suficiencia"]) : "";
+$id_tipo_asignatura = isset($_POST["id_tipo_asignatura"]) ? limpiarCadena1($_POST["id_tipo_asignatura"]) : "";
+$estado = isset($_POST["estado"]) ? limpiarCadena1($_POST["estado"]) : "";
 
 $instancia_modelo = new modelo_plan();
 switch ($_GET["op"]) {
@@ -114,7 +123,11 @@ switch ($_GET["op"]) {
         $respuesta = $instancia_modelo->contarAsignaturas($id_plan_estudio);
         echo json_encode($respuesta);
         break;
-        
 
+
+    case 'registrarAsignatura':
+        $respuesta = $instancia_modelo->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
+
+        break;
 }
 

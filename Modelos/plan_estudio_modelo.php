@@ -217,7 +217,7 @@ class modelo_plan{
 
         global $instancia_conexion;
         $sql6 =
-        "SELECT COUNT(Id_asignatura) as suma FROM tbl_asignaturas where id_plan_estudio= $id_plan_estudio";
+        "SELECT COUNT(Id_asignatura) as suma FROM tbl_asignaturas where id_plan_estudio= '$id_plan_estudio'";
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
     }
     function tabla_equivalencias()
@@ -249,13 +249,31 @@ class modelo_plan{
         return $equivalencias;
        
     }
-    function existe_equivalencia($id_asignatura, $id_equivalencia)
-  {
+    function existe_equivalencia($id_asignatura, $id_equivalencia){
     global $instancia_conexion;
     $sql5 = "CALL sel_existe_equivalencia_plan('$id_asignatura','$id_equivalencia')";
     return $instancia_conexion->ejecutarConsultaSimpleFila($sql5);
-  }
+    }
+    function Registrar_silabo_asignatura($nombrearchivo2)
+    {
+        global $instancia_conexion;
+        $sql = "CALL proc_insertar_silabo('$nombrearchivo2')";
+
+        return $instancia_conexion->ejecutarConsulta($sql);
+    }
+    //Insertar registros
+     function registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura)
+    {
+        global $instancia_conexion;
+        $sql = "call proc_insertar_asignatura('$id_plan_estudio', '$id_periodo_plan', '$id_area', '$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia', '$id_tipo_asignatura')";
+
+
+        return $instancia_conexion->ejecutarConsulta($sql);
+    }
+
+  
 }
+
 
 
 ?>

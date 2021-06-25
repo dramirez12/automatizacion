@@ -11,12 +11,12 @@ require_once('../clases/Conexion.php');
 $data = json_decode($_POST['array']);
 
 //var_dump($data);
-var_dump($id_persona);
+// var_dump($id_persona);
 
 foreach ($data as $item) {
-    $sql = "CALL proc_insertar_desea_asig_docen(:Id_asignatura, :id_persona)";
+    $sql = "CALL proc_insertar_equivalencia_asignatura(:id_equivalencia)";
     $stmt =  $connect->prepare($sql);
-    $stmt->bindParam(":Id_asignatura", $item, PDO::PARAM_INT);
+    $stmt->bindParam(":id_equivalencia", $item, PDO::PARAM_INT);
 
 
 
