@@ -2,7 +2,6 @@
 ob_start();
 require_once "../Modelos/asignar_docente_supervisor_modelo.php";
 require_once('corre_supervisor.php');
-require_once('correo_estudiante_controlador.php');
 
 
 $modelo=new asignaturas();
