@@ -116,7 +116,7 @@ ob_end_flush();
 
 
 
-                        <form action="#" enctype="multipart/form-data">
+                        <form enctype="multipart/form-data">
 
                             <div class="row">
                                 <div class="col-lg-8">
