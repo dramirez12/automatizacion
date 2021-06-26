@@ -117,7 +117,7 @@ ob_end_flush();
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
 
                                     <label>Plan que pertenece:</label>
@@ -129,7 +129,7 @@ ob_end_flush();
 
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
 
                                     <label>Periodo que pertenece:</label>
@@ -137,12 +137,32 @@ ob_end_flush();
                                         </select></td>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
 
                                     <label> Área que pertenece:</label>
                                     <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
                                         </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+
+                                    <label>Código</label>
+
+                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+
+                                    <label>Nombre de Asignatura</label>
+
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_asignatura');" onkeypress="return sololetras(event)">
+
+
                                 </div>
                             </div>
 
@@ -156,31 +176,6 @@ ob_end_flush();
 
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-
-                                    <label>Código</label>
-
-                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required>
-
-
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-
-                                    <label>Nombre de Asignatura</label>
-
-                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_asignatura');" onkeypress="return sololetras(event)">
-
-
-                                </div>
-                            </div>
-
-
-
 
 
                             <div class="col-md-2">
@@ -199,7 +194,7 @@ ob_end_flush();
                                         <option value="NO">NO</option>
                                     </select></td>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
 
                                     <label>Sílabo</label>
@@ -211,7 +206,7 @@ ob_end_flush();
                             </div>
 
                         </div>
-                        
+
 
 
                         <!-- <div class="col-md-4">
@@ -239,7 +234,7 @@ ob_end_flush();
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class=" row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -278,7 +273,7 @@ ob_end_flush();
                             </div>
                             <br><br><br>
                             <p style="display: center; margin: 0 auto;">
-                                <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?> onclick="insertarAsignatura();">Guardar</button>
+                                <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
                             </p>
                         </div>
 

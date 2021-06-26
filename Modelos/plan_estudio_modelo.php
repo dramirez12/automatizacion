@@ -111,7 +111,7 @@ class modelo_plan{
     function plan_sel()
     {
         global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio WHERE plan_vigente="NO" ');
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio ');
 
         return $consulta;
     }
@@ -278,6 +278,27 @@ class modelo_plan{
         global $instancia_conexion;
         $sql6 = "SELECT COUNT(Id_asignatura) AS  suma FROM tbl_asignaturas WHERE id_plan_estudio='$id_plan_estudio' AND asignatura='$asignatura'";
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
+
+    function listar_asignaturas_vigentes()
+    {
+        global $instancia_conexion;
+        $sql = " call sel_asignaturas_vigentes()";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
+
+    function silabo($id_asignatura)
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT valor AS silabo FROM tbl_asignatura_silabo WHERE id_asignatura = '$id_asignatura' ");
+
+        return $consulta;
     }
 }
 

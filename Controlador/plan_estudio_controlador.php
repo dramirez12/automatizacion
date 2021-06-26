@@ -13,6 +13,7 @@ $asignatura = isset($_POST["asignatura"]) ? limpiarCadena1($_POST["asignatura"])
 $reposicion = isset($_POST["reposicion"]) ? limpiarCadena1($_POST["reposicion"]) : "";
 $suficiencia = isset($_POST["suficiencia"]) ? limpiarCadena1($_POST["suficiencia"]) : "";
 $id_tipo_asignatura = isset($_POST["id_tipo_asignatura"]) ? limpiarCadena1($_POST["id_tipo_asignatura"]) : "";
+$id_asignatura = isset($_POST["id_asignatura"]) ? limpiarCadena1($_POST["id_asignatura"]) : "";
 $estado = isset($_POST["estado"]) ? limpiarCadena1($_POST["estado"]) : "";
 
 $instancia_modelo = new modelo_plan();
@@ -135,5 +136,13 @@ switch ($_GET["op"]) {
         echo json_encode($respuesta);
         break;
 
+    case 'silabo':
+
+
+        $rspta = $instancia_modelo->silabo($id_asignatura);
+        echo json_encode($rspta);
+
+        break;
 }
+
 

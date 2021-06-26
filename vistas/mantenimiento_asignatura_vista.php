@@ -45,11 +45,11 @@ if ($visualizacion == 0) {
 
 
 
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //     $_SESSION['btn_guardar_atributo'] = "";
-    // } else {
-    //     $_SESSION['btn_guardar_atributo'] = "disabled";
-    // }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_modificar_asignatura'] = "";
+    } else {
+        $_SESSION['btn_modificar_asignatura'] = "disabled";
+    }
     /*
 
  if (isset($_REQUEST['msj']))
@@ -83,6 +83,7 @@ ob_end_flush();
     <title></title>
 
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
@@ -106,7 +107,7 @@ ob_end_flush();
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_plan.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_asignatura_vista.php"> Mantenimiento Asignaturas</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_crear_asignatura_vista.php"> Crear Asignaturas</a></li>
                         </ol>
                     </div>
 
@@ -116,52 +117,251 @@ ob_end_flush();
             </div><!-- /.container-fluid -->
         </section>
 
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid ">
-                <!-- pantalla 1 -->
-
-                <div class="box-body">
-
-
-
-                    <div class="card-body">
-                        <div class="table-responsive" style="width: 100%;">
-                            <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
-                                <thead>
-                                    <tr>
-                                        <th>Acción</th>
-                                        <th>Nombre</th>
-                                        <th>Código</th>
-                                        <th>UV</th>
-                                        <th>Código de plan</th>
-                                        <th>Tipo Asignatura</th>
-                                        <th>área</th>
-                                        <th>Periodo</th>
-                                        <th>Plan de estudio</th>
-
-                                    </tr>
-                                </thead>
-
-
-                            </table>
-                            <br>
-
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">DATOS GENERALES</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
 
                         </div>
+
                     </div>
 
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="table-responsive" style="width: 100%;">
+                                <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
+                                    <thead>
+                                        <tr>
+                                            <th>Acción</th>
+                                            <th>Acción</th>
+                                            <th>Asignatura</th>
+                                            <th>Código</th>
+                                            <th>UV</th>
+                                            <th>Plan</th>
+                                            <th>Área</th>
+                                            <!--   <th>Tipo Asignatura</th> -->
+                                            <th>Periodo</th>
+                                            <!--  <th>Plan de estudio</th> -->
+                                            <th>Suficiencia</th>
+                                            <th>Reposición</th>
+                                            <th>Sílabo</th>
+                                            <a href=""></a>
+                                        </tr>
+                                    </thead>
+
+
+                                </table>
+                                <br>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <input class="form-control" type="text" id="id_asig1" name="id_asig1" readonly hidden>
+                        <!-- modal modificar carga -->
+
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal_editar" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Editar Asignatura</h5>
+                                        <button class="close" data-dismiss="modal">
+                                            &times;
+                                        </button>
+
+                                    </div>
+
+                                    <input class="form-control" type="text" id="id_asig" name="id_asig" readonly hidden>
+
+                                    <div class="modal-body">
+
+                                        <div class="row">
+
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="text" id="cbm_plan1" name="cbm_plan1" readonly hidden>
+
+                                                    <label>Plan de estudio:</label>
+                                                    <td> <select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan"></select>
+                                                    </td>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="text" id="cbm_periodo1" name="cbm_periodo1" readonly hidden>
+                                                    <label>Periodo:</label>
+                                                    <td><select class="form-control" style="width: 100%;" name="cbm_periodo" id="cbm_periodo">
+                                                        </select></td>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+
+                                                    <input class="form-control" type="text" id="cbm_area1" name="cbm_area1" readonly hidden>
+                                                    <label>Área:</label>
+                                                    <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
+                                                        </select></td>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+
+                                                    <input class="form-control" type="text" id="txt_codigo1" name="txt_codigo1" readonly hidden>
+                                                    <label>Código:</label>
+                                                    <input class="form-control" type="text" id="txt_codigo" name="txt_codigo">
+
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+
+                                                    <input class="form-control" type="text" id="txt_nombre1" name="txt_nombre1" readonly hidden>
+                                                    <label>Nombre Asignatura:</label>
+                                                    <input class="form-control" type="text" id="txt_nombre" name="txt_nombre">
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <input type="hidden">
+                                                    <label>UV:</label>
+
+                                                    <input class="form-control" type="text" id="txt_uv1" name="txt_uv1" readonly hidden>
+                                                    <input class="form-control" type="text" id="txt_uv" name="txt_uv">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Reposición:</label>
+
+                                                    <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden>
+                                                    <td> <select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
+                                                            <option value="0">SELECCIONAR</option>
+                                                            <option value="SI">SI</option>
+                                                            <option value="NO">NO</option>
+                                                        </select>
+                                                    </td>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Suficiencia:</label>
+                                                    <input class="form-control" type="text" id="cbm_suficiencia1" name="cbm_suficiencia1" readonly hidden>
+                                                    <td> <select class="form-control" style="width: 100%;" name="cbm_suficiencia" id="cbm_suficiencia">
+                                                            <option value="0">SELECCIONAR</option>
+                                                            <option value="SI">SI</option>
+                                                            <option value="NO">NO</option>
+                                                        </select>
+                                                    </td>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label>Actualizar Sílabo:</label>
+                                                    <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required accept="application/pdf" onchange="Validar();">
+                                                    </td>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_modificar_asignatura']; ?>>Guardar</button>
+                                        <button class="btn btn-primary" id="descargar" name="descargar" onclick="silabo()">descargar silabo</button>
+
+
+                                        <button class="btn btn-secondary" data-dismiss="modal" id="salir">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
 
                 </div>
+
+            </div>
+
         </section>
 
-    </div>
 
 
 
-
-
+        <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
+        <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
 
 
 </html>
+<script>
+    $(document).ready(function() {
+        TablaManteniAsignatura();
+
+
+    });
+</script>
+
+
+
+
+<script>
+    var idioma_espanol = {
+        select: {
+            rows: "%d fila seleccionada"
+        },
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "No se encuentra el periodo o año",
+        "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+        "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "<b>No se encontraron datos</b>",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    }
+</script>
