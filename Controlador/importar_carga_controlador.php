@@ -45,18 +45,18 @@ if (isset($_GET['op'])) {
                 ";
 
 
-                for ($row = 4; $row <= $filas; $row++) {
+                for ($row = 7; $row <= $filas; $row++) {
 
-                    $control = $hoja->getCell('B'.$row);
-                    $cod_asig = $hoja->getCell('C'.$row);
-                    $asignatura = $hoja->getCell('D'.$row);
-                    $seccion = $hoja->getCell('E'.$row);
-                    $hora_inicio = $hoja->getCell('F'.$row);
-                    $hora_final = $hoja->getCell('G'.$row);
-                    $dias = $hoja->getCell('H'.$row);
-                    $aula = $hoja->getCell('I'.$row);
-                    $profesor = $hoja->getCell('L'.$row);
-                    $matriculados = $hoja->getCell('M'.$row);
+                    $control = $hoja->getCell('A'.$row);
+                    $cod_asig = $hoja->getCell('B'.$row);
+                    $asignatura = $hoja->getCell('C'.$row);
+                    $seccion = $hoja->getCell('D'.$row);
+                    $hora_inicio = $hoja->getCell('E'.$row);
+                    $hora_final = $hoja->getCell('F'.$row);
+                    $dias = $hoja->getCell('G'.$row);
+                    $aula = $hoja->getCell('H'.$row);
+                    $profesor = $hoja->getCell('K'.$row);
+                    $matriculados = $hoja->getCell('L'.$row);
 
                     if ($control =="") {
                         
