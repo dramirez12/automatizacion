@@ -116,7 +116,7 @@ ob_end_flush();
 
 
 
-                        <form enctype="multipart/form-data">
+                        
 
                             <div class="row">
                                 <div class="col-lg-8">
@@ -141,8 +141,7 @@ ob_end_flush();
 
                             </div>
 
-                        </form>
-
+                     
 
                     </div>
                 </div>
