@@ -793,7 +793,7 @@ function saveAll3 () {
 				document.getElementById("actividades").value = "";
 				$('#ModalTask2').modal('hide');
 			
-				limpiar();
+				/* limpiar(); */
 				
 			}
 			});

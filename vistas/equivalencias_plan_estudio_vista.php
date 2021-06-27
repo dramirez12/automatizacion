@@ -55,8 +55,8 @@ ob_end_flush();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+   <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ -->
     <title></title>
 
 
@@ -75,7 +75,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>ASIGNATURAS</h1>
+                        <h1>Equivalencias</h1>
                     </div>
 
 
@@ -83,8 +83,7 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_plan.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_asignatura_vista.php"> Mantenimiento Asignatura</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_plan_estudio_vista.php">Menu Plan de Estudio</a></li>
                         </ol>
                     </div>
 
@@ -95,9 +94,9 @@ ob_end_flush();
         </section>
 
         <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid ">
-                <div class="card card-default">
+       
+            <div class="card card-default">
+                <div class="card-footer">
                     <div class="card-header">
                         <h3 class="card-title">DATOS GENERALES</h3>
                         <div class="card-tools">
@@ -135,7 +134,7 @@ ob_end_flush();
 
                                 <div class="modal-header">
                                     <h5 class="modal-title">Editar equivalencia</h5>
-                                    <button class="close" data-dismiss="modal">
+                                    <button onclick="limpiar(); actualizar_tabla();" class="close" data-dismiss="modal">
                                         &times;
                                     </button>
                                 </div>
@@ -147,7 +146,7 @@ ob_end_flush();
                                         <input type="hidden">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <input type="text" id="txt_id_asignatura" readonly>
+                                                <input hidden type="text" id="txt_id_asignatura" readonly>
 
                                                 <label> Asignatura </label>
                                                 <input class="form-control" type="text" id="txt_asignatura" name="txt_asignatura" readonly>
@@ -206,7 +205,7 @@ ob_end_flush();
 
                                             </div>
                                         </div>
-
+                                    
 
                                         <div class="col-sm-3">
 
@@ -241,15 +240,16 @@ ob_end_flush();
 
                                     </div>
 
-                                </div>
+                                
 
 
 
                                 <div class="modal-footer">
                                     <!-- <button class="btn btn-danger" name="cambiar_vigencia1" id="cambiar_vigencia1">Guardar Vigencia</button> -->
-                                    <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_equivalencia']; ?>>Guardar</button>
-                                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--                                     <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_equivalencia']; ?>>Guardar</button>
+ -->                                    <button class="btn btn-secondary" data-dismiss="modal"onclick="limpiar(); actualizar_tabla();">Close</button>
                                 </div>
+                             </div>
                             </div>
                         </div>
                     </div>
@@ -266,7 +266,7 @@ ob_end_flush();
                                 <div class="modal-body">
                                     <div class="container">
                                         <div class="form-group">
-                                            <input  type="text" id="txt_id_asignatura1" readonly>
+                                            <input +hidden type="text" id="txt_id_asignatura1" readonly>
                                             <label> Plan de Equivalencias </label>
                                             <select  class="form-control" type="text" id="cbm_plan1" name="cbm_plan1" readonly></select>
                                            
@@ -274,15 +274,15 @@ ob_end_flush();
 
 
                                             <label>Equivalencia</label>
-                                            <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
-
-                                            </select>
+                                        
+                                            <select class="form-control" name="cbm_asignaturas" id="cbm_asignaturas"></select>
+                                            
 
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-success" onclick="saveAll3();addTask3(); ">Agregar</button>
+                                    <button class="btn btn-success" onclick="saveAll3();addTask3(); limpiar() ">Agregar</button>
                                     <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
@@ -295,7 +295,7 @@ ob_end_flush();
 
             </div>
 
-        </section>
+     
 
 
     </div>
@@ -343,7 +343,7 @@ ob_end_flush();
 
     });
 </script>
-<script>
+<!-- <script>
     $(document).ready(function() {
         $(".mul-select").select2({
             placeholder: "SELECCIONE ASIGNATURAS", //placeholder
@@ -351,4 +351,4 @@ ob_end_flush();
             tokenSeparators: ['/', ',', ';', " "]
         });
     })
-</script>
+</script> -->

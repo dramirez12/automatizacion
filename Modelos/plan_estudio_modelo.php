@@ -253,53 +253,31 @@ class modelo_plan{
     global $instancia_conexion;
     $sql5 = "CALL sel_existe_equivalencia_plan('$id_asignatura','$id_equivalencia')";
     return $instancia_conexion->ejecutarConsultaSimpleFila($sql5);
+  }
+  function insertar_equivalencias($id_asignatura, $id_equivalencia)
+  {
+    global $instancia_conexion;
+    $sql = "CALL proc_insertar_equivalencias_plan($id_asignatura, $id_equivalencia);";
+
+    if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+      return 1;
+    } else {
+      return 0;
     }
-    function Registrar_silabo_asignatura($nombrearchivo2)
-    {
-        global $instancia_conexion;
-        $sql = "CALL proc_insertar_silabo('$nombrearchivo2')";
+  }
+  
+  function eliminar_equivalencias($eliminar_equivalencia)
+  {
+    global $instancia_conexion;
+    $consulta = $instancia_conexion->ejecutarConsulta("DELETE FROM tbl_equivalencias_plan WHERE id_equivalencias_plan='$eliminar_equivalencia';");
 
-        return $instancia_conexion->ejecutarConsulta($sql);
-    }
-    //Insertar registros
-     function registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura)
-    {
-        global $instancia_conexion;
-        $sql = "call proc_insertar_asignatura('$id_plan_estudio', '$id_periodo_plan', '$id_area', '$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia', '$id_tipo_asignatura')";
+    return $consulta;
+  }
+  
 
 
-        return $instancia_conexion->ejecutarConsulta($sql);
-    }
 
 
-    function nombreAsignatura($id_plan_estudio,$asignatura)
-    {
-
-        global $instancia_conexion;
-        $sql6 = "SELECT COUNT(Id_asignatura) AS  suma FROM tbl_asignaturas WHERE id_plan_estudio='$id_plan_estudio' AND asignatura='$asignatura'";
-        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
-    }
-
-    function listar_asignaturas_vigentes()
-    {
-        global $instancia_conexion;
-        $sql = " call sel_asignaturas_vigentes()";
-        $arreglo = array();
-        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
-            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
-                $arreglo["data"][] = $consulta_VU;
-            }
-            return $arreglo;
-        }
-    }
-
-    function silabo($id_asignatura)
-    {
-        global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT valor AS silabo FROM tbl_asignatura_silabo WHERE id_asignatura = '$id_asignatura' ");
-
-        return $consulta;
-    }
 }
 
 

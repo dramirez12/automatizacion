@@ -420,7 +420,7 @@ ob_end_flush();
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-success" onclick="saveAll3();addTask3(); ">Agregar</button>
+                                <button class="btn btn-success" onclick="saveAll3();addTask3(); limpiar();">Agregar</button>
                                 <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
