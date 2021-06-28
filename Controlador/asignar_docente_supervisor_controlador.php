@@ -2,7 +2,6 @@
 ob_start();
 require_once "../Modelos/asignar_docente_supervisor_modelo.php";
 require_once('corre_supervisor.php');
-require_once('correo_estudiante_controlador.php');
 
 $modelo=new asignaturas();
 $id_supervisor=isset($_POST["id_supervisor"])? $instancia_conexion->limpiarCadena($_POST["id_supervisor"]):"";
@@ -311,7 +310,7 @@ switch ($_GET["op"]){
 
 		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino,);
-		
+
 	break;
 
 	case 'desactivar':
