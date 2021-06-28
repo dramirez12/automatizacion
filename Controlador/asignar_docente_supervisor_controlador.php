@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require_once "../Modelos/asignar_docente_supervisor_modelo.php";
-require_once('corre_supervisor.php');
+require_once ('corre_supervisor.php');
 
 $modelo=new asignaturas();
 $id_supervisor=isset($_POST["id_supervisor"])? $instancia_conexion->limpiarCadena($_POST["id_supervisor"]):"";
@@ -288,9 +288,13 @@ switch ($_GET["op"]){
 		</html>
 		';
 
+		$mail =new PHPMailer\PHPMailer\PHPMailer();
+		$mail->issMTP();
+		
 		if ($destino <> "" && $nombre_destino <> "" && $ecorreo <> "" && $estudiante <> "") {
 			
-			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+			
+			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino, $mail);
 			
 		}else{
 
@@ -299,7 +303,7 @@ switch ($_GET["op"]){
 
 		if ($ecorreo <> "" and $estudiante <> "") {
 
-			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante, $mail);
 			
 		}else{
 

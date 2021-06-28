@@ -7,14 +7,9 @@ require_once('../clases/Conexion.php');
 class correo
 {
 
-	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante)
+	
+	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante, $mail)
 	{
-
-		$mail = new PHPMailer\PHPMailer\PHPMailer();
-
-
-		$mail->isSMTP();
-
 
 		$correo = "vinculacionunah@informaticaunah.com";
 		$Password = "N5y*%U(Ofb+T";
@@ -34,21 +29,14 @@ class correo
 
 		if (!$mail->send()) {
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
-			$mail->__destruct();
 		} else {
 			echo "muy bien estudiante";
-			$mail->__destruct();
 			exit();
 		}
 	}
 
-	function enviarEmailDocente($cuerpo, $asunto_docente, $destino, $nombre_destino)
+	function enviarEmailDocente($cuerpo, $asunto_docente, $destino, $nombre_destino, $mail)
 	{
-
-		$mail = new PHPMailer\PHPMailer\PHPMailer();
-
-
-		$mail->isSMTP();
 
 		$correo_doc = "vinculacionunah@informaticaunah.com";
 		$Password_doc = "N5y*%U(Ofb+T";
@@ -68,10 +56,8 @@ class correo
 
 		if (!$mail->send()) {
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
-			$mail->__destruct();
 		} else {
 			echo "muy bien docente";
-			$mail->__destruct();
 			exit();
 		}
 	}
