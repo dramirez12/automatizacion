@@ -73,7 +73,7 @@ $resultado = mysqli_query($connection, $sqltabla);
 	$pdf->multicell(170,5,utf8_decode('La Práctica Profesional es una actividad formativa del alumno, consistente en la asunción supervisada y gradual, del rol profesional, a través de su inserción a una realidad o ambiente laboral específico, al mismo tiempo se convierte en un aporte desde su capacidad, habilidad y conocimientos adquiridos, cuya meta es producir algún producto o aporte significativo dentro de la institución. '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
-    $pdf->multicell(170,5,utf8_decode('Este es un requisito de graduación para los estudiantes de las carreras de la Facultad de Ciencias Económicas Administrativas y Contables, la cual tiene una duración de 800 horas y puede ser realizada a partir de que los alumnos hayan cursado como minimo el 80% de las asignaturas del plan de estudios de su Carrera. Para continuar con los tramites relacionados con la práctica profesional le solicitamos lo siguiente: '),0);
+    $pdf->multicell(170,5,utf8_decode('Este es un requisito de graduación para los estudiantes de las carreras de la Facultad de Ciencias Económicas Administrativas y Contables, la cual tiene una duración de 800 horas y puede ser realizada a partir de que los alumnos hayan cursado como minimo el 80% de las asignaturas del plan de estudios de su Carrera. Para continuar con los trámites relacionados con la práctica profesional le solicitamos lo siguiente: '),0);
 	$pdf->SetX(20);
 	$pdf->multicell(170,5,utf8_decode('
 		a.Perfil de la empresa: Misión, Visión, objetivos/metas y datos generales de los contactos de la empresa.
