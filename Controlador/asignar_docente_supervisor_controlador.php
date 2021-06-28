@@ -288,12 +288,11 @@ switch ($_GET["op"]){
 		</html>
 		';
 
-		$mail =new PHPMailer\PHPMailer\PHPMailer();
-		$mail->issMTP();
+		
 
 		try {
-			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante, $mail);
-			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino, $mail);
+			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 
 			
 

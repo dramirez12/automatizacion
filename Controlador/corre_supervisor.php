@@ -8,8 +8,11 @@ class correo
 {
 
 
-	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante, $mail)
+	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante)
 	{
+
+		$mail =new PHPMailer\PHPMailer\PHPMailer();
+		$mail->issMTP();
 
 		$correo = "vinculacionunah@informaticaunah.com";
 		$Password = "N5y*%U(Ofb+T";
@@ -30,15 +33,18 @@ class correo
 		if (!$mail->send()) {
 			// echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
-			// echo "muy bien estudiante";
+			echo "muy bien estudiante";
 			exit();
 		}
 
 		
 	}
 
-	function enviarEmailDocente($cuerpo, $asunto_docente, $destino, $nombre_destino, $mail)
+	function enviarEmailDocente($cuerpo, $asunto_docente, $destino, $nombre_destino)
 	{
+		
+		$mail =new PHPMailer\PHPMailer\PHPMailer();
+		$mail->issMTP();
 
 		$correo_doc = "vinculacionunah@informaticaunah.com";
 		$Password_doc = "N5y*%U(Ofb+T";
@@ -59,7 +65,7 @@ class correo
 		if (!$mail->send()) {
 			// echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
-			// echo "muy bien docente";
+			echo "muy bien docente";
 			exit();
 		}
 	}
