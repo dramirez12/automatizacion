@@ -7,7 +7,7 @@ require_once('../clases/Conexion.php');
 class correo
 {
 
-	
+
 	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante, $mail)
 	{
 
@@ -28,11 +28,13 @@ class correo
 		$mail->IsHTML(true);
 
 		if (!$mail->send()) {
-			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
+			// echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
-			echo "muy bien estudiante";
+			// echo "muy bien estudiante";
 			exit();
 		}
+
+		
 	}
 
 	function enviarEmailDocente($cuerpo, $asunto_docente, $destino, $nombre_destino, $mail)
@@ -55,9 +57,9 @@ class correo
 		$mail->IsHTML(true);
 
 		if (!$mail->send()) {
-			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
+			// echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
-			echo "muy bien docente";
+			// echo "muy bien docente";
 			exit();
 		}
 	}

@@ -291,41 +291,20 @@ switch ($_GET["op"]){
 		$mail =new PHPMailer\PHPMailer\PHPMailer();
 		$mail->issMTP();
 
-		if ($destino <> "" && $nombre_destino <> "" && $ecorreo <> "" && $estudiante <> "") {
-			
-			try {
-
-				$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino, $mail);
-
-			} catch (\Throwable $th) {
-				
-			}
-			
-			
-		}else{
-
-			echo "Correo no enviado";
-		}
-
-		if ($ecorreo <> "" and $estudiante <> "") {
-
-			try {
-				$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante, $mail);
-
-			} catch (\Throwable $th) {
-				
-			}
-			
-			
-		}else{
-
-			echo "Correo no enviado";
-		}
+		
 
 		
 
-		// $correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-		// $correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino,);
+		try {
+			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante, $mail);
+			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino, $mail);
+
+		} catch (\Throwable $th) {
+			//throw $th;
+		}
+		
+		echo ("find");
+		
 
 	break;
 
