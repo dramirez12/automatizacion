@@ -289,22 +289,23 @@ switch ($_GET["op"]){
 		</html>
 		';
 
-		if ($destino <> "" and $nombre_destino <> "") {
+		if ($destino <> "" and $nombre_destino <> "" and $ecorreo <> "" and $estudiante <> "") {
 			
-			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
-		}else{
-
-			echo "Correo no enviado";
-		}
-
-		if ($ecorreo <> "" and $estudiante <> "") {
-
-			$correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino) && $correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 			
 		}else{
 
 			echo "Correo no enviado";
 		}
+
+		// if ($ecorreo <> "" and $estudiante <> "") {
+
+		// 	$correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			
+		// }else{
+
+		// 	echo "Correo no enviado";
+		// }
 
 		
 
