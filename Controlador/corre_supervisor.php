@@ -34,7 +34,7 @@ class correo
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
 			echo "muy bien estudiante";
-			exit();
+			
 		}
 
 		
@@ -66,7 +66,7 @@ class correo
 			// echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
 			echo "muy bien docente";
-			exit();
+			
 		}
 	}
 }//cierre class
