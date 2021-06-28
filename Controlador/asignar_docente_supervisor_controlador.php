@@ -291,19 +291,17 @@ switch ($_GET["op"]){
 		$mail =new PHPMailer\PHPMailer\PHPMailer();
 		$mail->issMTP();
 
-		
-
-		
-
 		try {
 			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante, $mail);
 			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino, $mail);
 
+			
+
 		} catch (\Throwable $th) {
-			//throw $th;
+			echo ($th->getMessage());
 		}
+
 		
-		echo ("find");
 		
 
 	break;
