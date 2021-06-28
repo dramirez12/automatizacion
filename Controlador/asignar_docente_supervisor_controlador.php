@@ -288,28 +288,28 @@ switch ($_GET["op"]){
 		</html>
 		';
 
-		// if ($destino <> "" && $nombre_destino <> "" && $ecorreo <> "" && $estudiante <> "") {
+		if ($destino <> "" && $nombre_destino <> "" && $ecorreo <> "" && $estudiante <> "") {
 			
-		// 	$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino) && $correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 			
-		// }else{
+		}else{
 
-		// 	echo "Correo no enviado";
-		// }
+			echo "Correo no enviado";
+		}
 
-		// if ($ecorreo <> "" and $estudiante <> "") {
+		if ($ecorreo <> "" and $estudiante <> "") {
 
-		// 	$correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 			
-		// }else{
+		}else{
 
-		// 	echo "Correo no enviado";
-		// }
+			echo "Correo no enviado";
+		}
 
 		
 
-		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino,);
+		// $correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+		// $correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino,);
 
 	break;
 
