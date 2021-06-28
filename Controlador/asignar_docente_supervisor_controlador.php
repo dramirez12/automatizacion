@@ -289,16 +289,18 @@ switch ($_GET["op"]){
 		';
 
 		
-
-		try {
-			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+		
+		// try {
+		// 	$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+		// 	$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 
 			
 
-		} catch (\Throwable $th) {
-			echo ($th->getMessage());
-		}
+		// } catch (\Throwable $th) {
+		// 	echo ($th->getMessage());
+		// }
 
 		
 		

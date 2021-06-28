@@ -11,8 +11,8 @@ class correo
 	function enviarEmailPracticante($cuerpo_estudiante, $asunto_estudiante, $ecorreo, $estudiante)
 	{
 
-		$mail =new PHPMailer\PHPMailer\PHPMailer();
-		$mail->issMTP();
+		$mail = new PHPMailer\PHPMailer\PHPMailer();
+		$mail->isSMTP();
 
 		$correo = "vinculacionunah@informaticaunah.com";
 		$Password = "N5y*%U(Ofb+T";
@@ -31,7 +31,7 @@ class correo
 		$mail->IsHTML(true);
 
 		if (!$mail->send()) {
-			// echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
+			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
 			echo "muy bien estudiante";
 			exit();
