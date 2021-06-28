@@ -33,10 +33,8 @@ class correo
 
 		if (!$mail->send()) {
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
-			$mail->__destruct();
 		} else {
 			echo "muy bien docente";
-			$mail->__destruct();
 			exit();
 		}
 	}
@@ -70,10 +68,8 @@ class correo
 		if (!$mail->send()) {
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 
-			$mail->__destruct();
 		} else {
 			echo "muy bien estudiante";
-			$mail->__destruct();
 			exit();
 			
 		}
