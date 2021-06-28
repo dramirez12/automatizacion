@@ -291,7 +291,7 @@ switch ($_GET["op"]){
 
 		if ($destino <> "" and $nombre_destino <> "") {
 			
-			$correodocente->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino,);
+			$correodocente->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 		}else{
 
 			echo "Correo no enviado";
