@@ -254,7 +254,7 @@ ob_end_flush();
 
                     <div class="col-sm-6">
                     <div class="form-group">
-                 <label>Departamento</label>
+                 <label>Departamento en la Empresa</label>
                     <input class="form-control" type="text"  maxlength="60" id="txt_departamento_practica" name="txt_departamento_practica"  value="<?php
                     if(isset($_SESSION['Modificar_empresa']) and $_SESSION['Modificar_empresa']=="SI")
                     {
