@@ -2,7 +2,7 @@
 ob_start();
 require_once "../Modelos/asignar_docente_supervisor_modelo.php";
 require_once('corre_supervisor.php');
-
+require_once('correo_estudiante_controlador.php');
 
 $modelo=new asignaturas();
 $id_supervisor=isset($_POST["id_supervisor"])? $instancia_conexion->limpiarCadena($_POST["id_supervisor"]):"";
@@ -10,7 +10,7 @@ $nombre_alumno=isset($_POST["nombre_alumno"]);
 $cuenta=isset($_POST["cuenta"]);
 $docente=isset($_POST["docente"])? $instancia_conexion->limpiarCadena($_POST["docente"]):"";
 $correo= new correo();
-
+$correo_estudiante= new correo_estudiante();
 
 switch ($_GET["op"]){
 
@@ -291,7 +291,7 @@ switch ($_GET["op"]){
 
 		if ($destino <> "" and $nombre_destino <> "") {
 			
-			$correodocente->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 		}else{
 
 			echo "Correo no enviado";
@@ -299,7 +299,7 @@ switch ($_GET["op"]){
 
 		if ($ecorreo <> "" and $estudiante <> "") {
 
-			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 			
 		}else{
 
