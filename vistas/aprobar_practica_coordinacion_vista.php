@@ -395,7 +395,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                <div class="form-group">
                          <center> <h5>Fecha de finalización de PPS</h5></center>
                          <center><label>Fecha</label>  </center>
-                         <input type="date" placeholder="Escribe tu nombre" name="fecha_finalizacion" class="form-control" id="fecha_finalizacion"  autofocus title="Ingresa tu nombre porfavor">
+                         <input type="date" placeholder="Escribe tu nombre" name="fecha_finalizacion" class="form-control" id="fecha_finalizacion"  autofocus title="Ingresa tu nombre porfavor" disabled>
                          
               </div>
             </div>

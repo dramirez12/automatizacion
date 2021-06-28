@@ -10,7 +10,7 @@ $nombre_alumno=isset($_POST["nombre_alumno"]);
 $cuenta=isset($_POST["cuenta"]);
 $docente=isset($_POST["docente"])? $instancia_conexion->limpiarCadena($_POST["docente"]):"";
 $correo= new correo();
-$correo_estudiante= new correo_estudiante();
+
 
 switch ($_GET["op"]){
 
@@ -289,14 +289,14 @@ switch ($_GET["op"]){
 		</html>
 		';
 
-		if ($destino <> "" && $nombre_destino <> "" && $ecorreo <> "" && $estudiante <> "") {
+		// if ($destino <> "" && $nombre_destino <> "" && $ecorreo <> "" && $estudiante <> "") {
 			
-			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino) && $correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+		// 	$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino) && $correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 			
-		}else{
+		// }else{
 
-			echo "Correo no enviado";
-		}
+		// 	echo "Correo no enviado";
+		// }
 
 		// if ($ecorreo <> "" and $estudiante <> "") {
 
@@ -309,8 +309,9 @@ switch ($_GET["op"]){
 
 		
 
-		// $correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-		// $correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino,);
+		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino,);
+		
 	break;
 
 	case 'desactivar':
