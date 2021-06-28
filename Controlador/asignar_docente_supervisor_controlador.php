@@ -291,7 +291,7 @@ switch ($_GET["op"]){
 
 		if ($destino <> "" and $nombre_destino <> "" and $ecorreo <> "" and $estudiante <> "") {
 			
-			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino) && $correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
+			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino) and $correo_estudiante->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 			
 		}else{
 
