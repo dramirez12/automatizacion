@@ -34,7 +34,7 @@ switch ($_GET["op"]){
 				$jefe= $value[8];
 				$titulo= $value[9];
 				
-					
+					var_dump($rspta1);
 				
 				
 			} // fin del query para los datos del alumno
@@ -288,10 +288,10 @@ switch ($_GET["op"]){
 		</html>
 		';
 
-		
-		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
+		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 		
+
 		// try {
 		// 	$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 		// 	$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
