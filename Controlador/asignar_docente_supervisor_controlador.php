@@ -290,11 +290,17 @@ switch ($_GET["op"]){
 
 		$mail =new PHPMailer\PHPMailer\PHPMailer();
 		$mail->issMTP();
-		
+
 		if ($destino <> "" && $nombre_destino <> "" && $ecorreo <> "" && $estudiante <> "") {
 			
+			try {
+
+				$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino, $mail);
+
+			} catch (\Throwable $th) {
+				
+			}
 			
-			$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino, $mail);
 			
 		}else{
 
@@ -303,7 +309,13 @@ switch ($_GET["op"]){
 
 		if ($ecorreo <> "" and $estudiante <> "") {
 
-			$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante, $mail);
+			try {
+				$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante, $mail);
+
+			} catch (\Throwable $th) {
+				
+			}
+			
 			
 		}else{
 
