@@ -46,7 +46,7 @@ class correo
 		$mail =new PHPMailer\PHPMailer\PHPMailer();
 		$mail->issMTP();
 
-		$correo_doc = "vinculacionunah@informaticaunah.com";
+		$correo_doc = "unahvinculacion@informaticaunah.com";
 		$Password_doc = "N5y*%U(Ofb+T";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
