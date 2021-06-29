@@ -1,8 +1,7 @@
 <?php
-require_once('../PHPMAILER/src/PHPMailer.php');
-require_once('../PHPMAILER/src/SMTP.php');
-require_once('../PHPMAILER/src/Exception.php');
-require_once('../PHPMAILER/src/OAuth.php');
+require_once('../PHPMAILER/PHPMailer.php');
+require_once('../PHPMAILER/SMTP.php');
+require_once('../PHPMAILER/Exception.php');
 require_once('../clases/Conexion.php');
 class correo
 {
