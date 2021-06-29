@@ -12,7 +12,7 @@ $descripcion = strtoupper($_POST['txt_descripcion']);
 $capacidad = strtoupper($_POST['txt_capacidad']);
 $edificio = strtoupper($_POST['edificio']);
 $tipoaula = strtoupper($_POST['aula']);
-$id_aula = $_POST['id_aula'];
+$id_aula = $_GET['id_aula'];
 
 
 
