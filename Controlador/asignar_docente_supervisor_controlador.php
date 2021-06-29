@@ -288,12 +288,8 @@ switch ($_GET["op"]){
 		</html>
 		';
 
-		$cuerpo_estud = "probando correo";
-		$correo_estud = "roy_mendieta@hotmail.com";
-		$nombre_estud = "LUIS DAVID PACHECO PINEDA";
-		$asunto_estud = "probando probando";
 
-		$correo->enviarEmailPracticante($cuerpo_estud,$asunto_estud,$correo_estud,$nombre_estud);
+		$correo->enviarEmailPracticante($cuerpo_estud,$asunto_estud,$ecorreo,$estudiante);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 		
 
