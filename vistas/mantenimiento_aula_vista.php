@@ -247,7 +247,7 @@ ob_end_flush();
 
                 <td style="text-align: center;">
 
-    <!-- Location:http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php -->
+                  Location:http://informaticaunah.com/automatizacion/vistas/gestion_asistencia_charla_vista.php
 
                   <form action="../Controlador/eliminar_aula_controlador.php?id_aula=<?php echo $row['id_aula']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
                     <button type="submit" class="btn btn-danger btn-raised btn-xs">
@@ -281,7 +281,7 @@ ob_end_flush();
 
 -->
 
-  <form action="Location:http://informaticaunah.com/automatizacion/actualizar_aula_controlador.php?id_aula=<?php echo $_SESSION['id_aula']; ?>" method="post" data-form="update" autocomplete="off">
+  <form action="../Controlador/actualizar_aula_controlador.php?id_aula=<?php echo $_SESSION['id_aula']; ?>" method="post" data-form="update" autocomplete="off">
 
 
 

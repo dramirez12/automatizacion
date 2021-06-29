@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 
 require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
@@ -157,8 +158,10 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
 
         if ($resultado == true) {
             header("location:../vistas/mantenimiento_aula_vista.php?msj=2");
+                exit();
         } else {
             header("location:../vistas/mantenimiento_aula_vista.php?msj=3");
+             //   exit();
         }
     } elseif ($valor_viejo['codigo'] <> $codigo) {
 
@@ -226,6 +229,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
 
         if ($resultado == true) {
             header("location:../vistas/mantenimiento_aula_vista.php?msj=2");
+           
         } else {
             header("location:../vistas/mantenimiento_aula_vista.php?msj=3");
         }
@@ -235,5 +239,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
 
     }
 }
-
+   
 }
+ob_flush();
+?>
