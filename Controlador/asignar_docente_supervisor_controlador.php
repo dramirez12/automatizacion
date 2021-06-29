@@ -3,51 +3,57 @@ ob_start();
 require_once "../Modelos/asignar_docente_supervisor_modelo.php";
 require_once('corre_supervisor.php');
 
-$modelo = new asignaturas();
-$id_supervisor = isset($_POST["id_supervisor"]) ? $instancia_conexion->limpiarCadena($_POST["id_supervisor"]) : "";
-$nombre_alumno = isset($_POST["nombre_alumno"]);
-$cuenta = isset($_POST["cuenta"]);
-$docente = isset($_POST["docente"]) ? $instancia_conexion->limpiarCadena($_POST["docente"]) : "";
-$correo = new correo();
+$modelo=new asignaturas();
+$id_supervisor=isset($_POST["id_supervisor"])? $instancia_conexion->limpiarCadena($_POST["id_supervisor"]):"";
+$nombre_alumno=isset($_POST["nombre_alumno"]);
+$cuenta=isset($_POST["cuenta"]);
+$docente=isset($_POST["docente"])? $instancia_conexion->limpiarCadena($_POST["docente"]):"";
+$correo= new correo();
 
 
-switch ($_GET["op"]) {
+switch ($_GET["op"]){
 
 
 
 	case 'editar':
 
-		$rspta = $modelo->editar($docente, $id_supervisor);
+		$rspta=$modelo->editar($docente,$id_supervisor);
+		
 
+			$rspta1=$modelo->mostrar_datos_alumno($id_supervisor)->fetch_all();
+				foreach ($rspta1 as $key => $value) {
 
-		$rspta1 = $modelo->mostrar_datos_alumno($id_supervisor)->fetch_all();
-		foreach ($rspta1 as $key => $value) {
+				$estudiante= $value[1];
+				$num_cuenta= $value[0];
+				$ecorreo= $value[6];
+				$celular= $value[7];
+				$empresa= $value[2];
+				$direccion= $value[3];
+				$fechai= $value[4];
+				$fechan= $value[5];
+				$jefe= $value[8];
+				$titulo= $value[9];
+				
+					
+				
+				
+			} // fin del query para los datos del alumno
 
-			$estudiante = $value[1];
-			$num_cuenta = $value[0];
-			$ecorreo = $value[6];
-			$celular = $value[7];
-			$empresa = $value[2];
-			$direccion = $value[3];
-			$fechai = $value[4];
-			$fechan = $value[5];
-			$jefe = $value[8];
-			$titulo = $value[9];
-		} // fin del query para los datos del alumno
+				$rspta2=$modelo->mostrar_datos_docente($docente)->fetch_all();
+			foreach ($rspta2 as $key => $value)
+			 {
+				$asunto_docente="ASIGNACIÓN DE SUPERVISIÓN DE PRACTICA PROFESIONAL";
+				$asunto_estudiante="ASIGNACIÓN DE DOCENTE SUPERVISOR";
+				$destino = $value[1];
+				$nombre_destino= $value[0];
+			
+	   		}// fin del query de los datos del docente
 
-		$rspta2 = $modelo->mostrar_datos_docente($docente)->fetch_all();
-		foreach ($rspta2 as $key => $value) {
-			$asunto_docente = "ASIGNACIÓN DE SUPERVISIÓN DE PRACTICA PROFESIONAL";
-			$asunto_estudiante = "ASIGNACIÓN DE DOCENTE SUPERVISOR";
-			$destino = $value[1];
-			$nombre_destino = $value[0];
-		} // fin del query de los datos del docente
-
-		//Correo de docente
-
-		//print_r($->fetch_all());
-		//cuerpo del correo del docente
-		$cuerpo = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+			//Correo de docente
+			
+			//print_r($->fetch_all());
+			//cuerpo del correo del docente
+			$cuerpo='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
 			<head>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -92,7 +98,7 @@ switch ($_GET["op"]) {
 
 							<tr>
 								<td class="content-cell" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; padding: 35px; word-break: break-word;">
-									<h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $nombre_destino . ' </h4>
+								<h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: '.$nombre_destino.' </h4>
 
 
 									<table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
@@ -117,15 +123,15 @@ switch ($_GET["op"]) {
 									</table>
 									<p style="box-sizing: border-box; color: #000000; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;" align="left"> Reciba un cordial saludo. La presente comunicación, tiene por objeto proporcionar la oportunidad de garantizar como docente los principios de La universidad Nacional Autónoma de Honduras para dignificar la función social de la enseñanza universitaria, descrita en la Ley Orgánica, que indica la docencia exhibirá la variedad de sus formas (Docencia, Investigación y extensión).
 			En esta ocasión a través de la extensión dándole la oportunidad de supervisar al estudiante con los siguientes datos:<br>
-			<br> 1.	Nombre del estudiante: ' . $estudiante . '
-			<br> 2.	Número cuenta: ' . $num_cuenta . '
-			<br> 3.	Correo del estudiante: ' . $ecorreo . '
-			<br> 4.	Teléfono del Estudiante: ' . $celular . '
-			<br> 5.	Nombre Empresa: ' . $empresa . '
-			<br> 6.	Ubicada en: ' . $direccion . '
-			<br> 7.	Contacto en la empresa: ' . $jefe . '
-			<br> 8.	Fecha de inicio: ' . $fechai . '
-			<br> 9.	Fecha de finalización: ' . $fechan . '
+			<br> 1.	Nombre del estudiante: '.$estudiante.'
+			<br> 2.	Número cuenta: '.$num_cuenta.'
+			<br> 3.	Correo del estudiante: '.$ecorreo.'
+			<br> 4.	Teléfono del Estudiante: '.$celular.'
+			<br> 5.	Nombre Empresa: '.$empresa.'
+			<br> 6.	Ubicada en: '.$direccion.'
+			<br> 7.	Contacto en la empresa: '.$jefe.'
+			<br> 8.	Fecha de inicio: '.$fechai.'
+			<br> 9.	Fecha de finalización: '.$fechan.'
 			<br>
 			<br>Usted puede consultar los datos dentro del Sistema de gestión administrativa del Departamento de Informática (SGADI), también puede comunicarse al correo uvinculacion.dia@unah.edu.hn.
 			Agradeciendo su atención,
