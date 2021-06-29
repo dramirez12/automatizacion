@@ -292,7 +292,7 @@ switch ($_GET["op"]){
 		$correo_estud = "luisdavidpacheco123@gmail.com";
 		$nombre_estud = "LUIS DAVID PACHECO PINEDA";
 
-		$correo->enviarEmailPracticante($cuerpo_estud,$asunto_estudiante,$ecorreo,$estudiante);
+		$correo->enviarEmailPracticante($cuerpo_estud,$asunto_estudiante,$correo_estud,$nombre_estud);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 		
 
