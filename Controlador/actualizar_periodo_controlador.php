@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
@@ -64,3 +65,4 @@ if ($_POST['num_periodo']  <> ' ' and  $_POST['num_anno'] <> '' and  $_POST['fec
                                     });
                                 </script>';
 }
+?>

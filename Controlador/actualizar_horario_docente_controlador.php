@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
@@ -70,3 +71,4 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
 
           } 
 }
+?>
