@@ -136,7 +136,7 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el código de aula</label>
-                                        <input class="form-control " type="text" id="txt_codigo1" name="txt_codigo1" required="" maxlength="60" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)"  onkeypress="return comprobar(this.value, event, this.id)">
+                                        <input class="form-control " type="text" id="txt_codigo1" name="txt_codigo1" required="" maxlength="60" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" >
                                     </div>
 
                                     <div class="form-group">
@@ -168,7 +168,7 @@ ob_end_flush();
 
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-primary" id="btn_guardar_aula" name="btn_guardar_aula" <?php echo $_SESSION['btn_guardar_aula']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                        <button type="" class="btn btn-primary" id="btn_guardar_aula" name="btn_guardar_aula" <?php echo $_SESSION['btn_guardar_aula']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
                                     </p>
 
                                 </div>
