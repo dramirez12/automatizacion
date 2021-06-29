@@ -93,7 +93,7 @@ class modelo_modal
     function listar_select7()
     {
         global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsulta('SELECT hora FROM tbl_hora ');
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT hora FROM tbl_hora order BY hora asc');
 
         return $consulta;
     }

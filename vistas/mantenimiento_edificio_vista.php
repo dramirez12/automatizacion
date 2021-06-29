@@ -310,7 +310,7 @@ ob_end_flush();
                     <!--Footer del modal-->
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" id="btn_modificar_edificio" name="btn_modificar_edificio" <?php echo $_SESSION['btn_modificar_edificio']; ?>>Guardar Cambios</button>
+                        <button type="" class="btn btn-primary" id="btn_modificar_edificio" name="btn_modificar_edificio" <?php echo $_SESSION['btn_modificar_edificio']; ?>>Guardar Cambios</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

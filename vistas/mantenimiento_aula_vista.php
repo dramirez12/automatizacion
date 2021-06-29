@@ -161,8 +161,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -307,20 +307,28 @@ ob_end_flush();
 
 
 
-                <div class="form-group">
-
-                  
+                  <div class="form-group">
 
 
-                      <input hidden class="form-control" type="text" id="txt_idaula" name="txt_idaula" value="<?php echo $_SESSION['id_aula']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Numeros(event)" maxlength="30">
 
-                </div>
+
+                    <input hidden class="form-control" type="text" id="txt_idaula" name="txt_idaula" value="<?php echo $_SESSION['id_aula']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Numeros(event)" maxlength="30">
+
+                  </div>
                   <div class="form-group">
 
                     <label>Modificar Código Aula</label>
 
 
-                    <input class="form-control" type="text" id="txt_codigo" name="txt_codigo" value="<?php echo $_SESSION['codigo']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Numeros(event)" maxlength="30">
+                    <input class="form-control" type="text" id="txt_codigo" name="txt_codigo" value="<?php echo $_SESSION['codigo']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)"  maxlength="60">
+
+                  </div>
+                  <div class="form-group">
+
+                    <!-- <label>Modificar Código Aula</label> -->
+
+
+                    <input class="form-control" type="text" id="txt_codigo1" name="txt_codigo1" value="<?php echo $_SESSION['codigo']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Numeros(event)" maxlength="30" readonly hidden>
 
                   </div>
 
@@ -340,68 +348,56 @@ ob_end_flush();
                   </div>
 
                   <div class="form-group ">
-                          <label class="control-label">Edificio</label>
-                          <select class="form-control" name="edificio" required="">
-        <option value="0"  >Seleccione una opción:</option>
-                  <?php
+                    <label class="control-label">Edificio</label>
+                    <select class="form-control" name="edificio" required="">
+                      <option value="0">Seleccione una opción:</option>
+                      <?php
 
-          if(isset($_SESSION['id_edificio']))
-          {
-                $query = $mysqli -> query ("select * FROM tbl_edificios  where id_edificio<>$_SESSION[id_edificio] ");
-                while ($resultado = mysqli_fetch_array($query)) 
-                {
-                echo '<option value="'.$resultado['id_edificio'].'"  > '.$resultado['nombre'].'</option>' ;
-                }
+                      if (isset($_SESSION['id_edificio'])) {
+                        $query = $mysqli->query("select * FROM tbl_edificios  where id_edificio<>$_SESSION[id_edificio] ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_edificio'] . '"  > ' . $resultado['nombre'] . '</option>';
+                        }
 
-                        echo '<option value="'.$_SESSION['id_edificio'].'" selected="" >  '.$_SESSION['nombre'].'</option>' ;
-          } 
-          else
-          {
-              $query = $mysqli -> query ("select * FROM tbl_edificios ");
-              while ($resultado = mysqli_fetch_array($query))
-               {
-               echo '<option value="'.$resultado['id_edificio'].'"  > '.$resultado['nombre'].'</option>' ;
-               }
+                        echo '<option value="' . $_SESSION['id_edificio'] . '" selected="" >  ' . $_SESSION['nombre'] . '</option>';
+                      } else {
+                        $query = $mysqli->query("select * FROM tbl_edificios ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_edificio'] . '"  > ' . $resultado['nombre'] . '</option>';
+                        }
+                      }
 
-          }
-          
 
-        ?>
-        
-      </select>
-                          </div>
+                      ?>
+
+                    </select>
+                  </div>
 
                   <div class="form-group ">
-                          <label class="control-label">Tipo Aula</label>
-                          <select class="form-control" name="aula" required="">
-        <option value="0"  >Seleccione una opción:</option>
-                  <?php
+                    <label class="control-label">Tipo Aula</label>
+                    <select class="form-control" name="aula" required="">
+                      <option value="0">Seleccione una opción:</option>
+                      <?php
 
-          if(isset($_SESSION['id_tipo_aula']))
-          {
-                $query = $mysqli -> query ("select * FROM tbl_tipo_aula  where id_tipo_aula<>$_SESSION[id_tipo_aula] ");
-                while ($resultado = mysqli_fetch_array($query)) 
-                {
-                echo '<option value="'.$resultado['id_tipo_aula'].'"  > '.$resultado['tipo_aula'].'</option>' ;
-                }
+                      if (isset($_SESSION['id_tipo_aula'])) {
+                        $query = $mysqli->query("select * FROM tbl_tipo_aula  where id_tipo_aula<>$_SESSION[id_tipo_aula] ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_tipo_aula'] . '"  > ' . $resultado['tipo_aula'] . '</option>';
+                        }
 
-                        echo '<option value="'.$_SESSION['id_tipo_aula'].'" selected="" >  '.$_SESSION['tipo_aula'].'</option>' ;
-          } 
-          else
-          {
-              $query = $mysqli -> query ("select * FROM tbl_tipo_aula ");
-              while ($resultado = mysqli_fetch_array($query))
-               {
-               echo '<option value="'.$resultado['id_tipo_aula'].'"  > '.$resultado['tipo_aula'].'</option>' ;
-               }
+                        echo '<option value="' . $_SESSION['id_tipo_aula'] . '" selected="" >  ' . $_SESSION['tipo_aula'] . '</option>';
+                      } else {
+                        $query = $mysqli->query("select * FROM tbl_tipo_aula ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_tipo_aula'] . '"  > ' . $resultado['tipo_aula'] . '</option>';
+                        }
+                      }
 
-          }
-          
 
-        ?>
-        
-      </select>
-                          </div>
+                      ?>
+
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -477,7 +473,7 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

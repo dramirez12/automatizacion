@@ -638,8 +638,11 @@ function modificar_carga_academica() {
     //    timer: 20000,
     //  });
 
-      var hora_inicial = document.getElementById("cbm_hi_edita").value;
-      var hora_final = document.getElementById("cbm_hf_edita").value;
+    var hora_inicial = $("#cbm_hi_edita").value; 
+    var hora_final = $("#cbm_hf_edita").value; 
+    
+    console.log(hora_inicial);
+    console.log(hora_final);
       var horas_validas = document.getElementById("txt_hras_validas").value;
 
     if (
