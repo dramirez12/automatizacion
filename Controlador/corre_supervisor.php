@@ -14,7 +14,7 @@ class correo
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 		$mail->isSMTP();
 
-		$correo = "vinculacionunah@informaticaunah.com";
+		$correo = "unahvinculacion@informaticaunah.com";
 		$Password = "N5y*%U(Ofb+T";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
