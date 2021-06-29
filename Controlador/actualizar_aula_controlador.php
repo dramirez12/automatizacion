@@ -1,6 +1,6 @@
 <?php
 session_start();
-//ob_start();
+ob_start();
 
 require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
