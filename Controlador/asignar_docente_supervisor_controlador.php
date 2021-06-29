@@ -289,7 +289,7 @@ switch ($_GET["op"]){
 		';
 
 		$cuerpo_estud = "probando correo";
-		$correo_estud = "luisdavidpacheco123@gmail.com";
+		$correo_estud = "roy_mendieta@hotmail.com";
 		$nombre_estud = "LUIS DAVID PACHECO PINEDA";
 		$asunto_estud = "probando probando";
 
