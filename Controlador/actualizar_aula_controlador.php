@@ -44,8 +44,10 @@ if($codigo1==$codigo){
 
         if ($resultado == true) {
             header("location:../vistas/mantenimiento_aula_vista.php?msj=2");
+            exit();
         } else {
             header("location:../vistas/mantenimiento_aula_vista.php?msj=3");
+            exit();
         }
     } elseif ($valor_viejo['codigo'] <> $codigo) {
 
