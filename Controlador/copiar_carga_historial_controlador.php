@@ -13,11 +13,11 @@ $id_periodo_nuevo = $_POST['id_periodo_nuevo_'];
 
     echo $consulta;
 
-if ($consulta == 1) {
-    # code...
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'UNA CARGA ANTIGUA A UN PERIODO NUEVO');
+// if ($consulta == 1) {
+//     # code...
+//     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'UNA CARGA ANTIGUA A UN PERIODO NUEVO');
 
     
-}
+// }
 
 ?>
