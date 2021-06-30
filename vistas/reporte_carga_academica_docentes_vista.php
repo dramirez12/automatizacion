@@ -28,7 +28,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/menu_roles_vista.php";
+                           window.location = "../vistas/menu_docentes_vista.php";
 
                             </script>';
 } else {
@@ -143,7 +143,7 @@ ob_end_flush();
     <div class="card card-default">
       <div class="card-header">
         <h1>Actividad Docente: </h1>
-        <!-- <h1><?php// echo $nombre ?></h1>-->
+        <!-- <h1>// echo $nombre ?></h1>-->
         <?php while ($row = $resultado3->fetch_array(MYSQLI_ASSOC)) { ?>
           <h1><?php echo $row['nombres'], ' ', $row['apellidos']; ?></h1>
         <?php }  ?>

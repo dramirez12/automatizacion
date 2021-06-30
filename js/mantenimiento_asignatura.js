@@ -28,10 +28,7 @@ function TablaManteniAsignatura() {
         defaultContent:
           "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>",
       },
-      {
-        defaultContent:
-          "<button style='font-size:13px;' type='button' class='descargar btn btn-primary '><i class='fas fa-edit'></i></button>",
-      },
+     
 
       { data: "nombre_asig" },
       { data: "codigo" },
@@ -43,6 +40,7 @@ function TablaManteniAsignatura() {
       //{ data: "nombre_plan" },
       { data: "suficiencia" },
       { data: "reposicion" },
+       { data: "silabo" },
     ],
 
     language: idioma_espanol,

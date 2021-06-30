@@ -137,7 +137,7 @@ ob_end_flush();
                                 <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
                                     <thead>
                                         <tr>
-                                            <th>Acción</th>
+                                           
                                             <th>Acción</th>
                                             <th>Asignatura</th>
                                             <th>Código</th>
@@ -150,7 +150,7 @@ ob_end_flush();
                                             <th>Suficiencia</th>
                                             <th>Reposición</th>
                                             <th>Sílabo</th>
-                                            <a href=""></a>
+                                           
                                         </tr>
                                     </thead>
 
@@ -296,9 +296,7 @@ ob_end_flush();
 
                                     <div class="modal-footer">
                                         <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_modificar_asignatura']; ?>>Guardar</button>
-                                        <button class="btn btn-primary" id="descargar" name="descargar" onclick="silabo()">descargar silabo</button>
-
-
+                                
                                         <button class="btn btn-secondary" data-dismiss="modal" id="salir">Cancelar</button>
                                     </div>
                                 </div>
