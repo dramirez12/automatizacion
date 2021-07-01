@@ -20,7 +20,7 @@ switch ($_GET["op"]){
 			$rspta=$modelo->editar($docente,$id_supervisor);
 		
 
-			$rspta1=$modelo->mostrar_datos_alumno($id_supervisor)->fetch_all();
+			$rspta1=$modelo->mostrar_datos_alumno($nombre_alumno)->fetch_all();
 				foreach ($rspta1 as $key => $value) {
 
 				$estudiante= $value[1];
