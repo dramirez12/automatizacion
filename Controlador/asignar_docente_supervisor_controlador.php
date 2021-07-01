@@ -347,7 +347,8 @@ switch ($_GET["op"]){
 				"3"=>$reg->nombre_empresa,
 				"4"=>$reg->direccion_empresa,
 				"5"=>$reg->fecha_inicio,
-				"6"=>$reg->fecha_finaliza
+				"6"=>$reg->fecha_finaliza,
+				"7"=>$reg->id_persona
 
 
  				);
