@@ -4,7 +4,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-$Id_objeto = 93;
+$Id_objeto = 111;
 
 
 $area_asignatura = strtoupper($_POST['area_asignatura']);

@@ -349,66 +349,77 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['btn_coordinacion'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] == '48') {
+   if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] =='48' or $_SESSION['pantalla'] == '104') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['carga_academica_vista'] = "block";
       }
    }
 
+   ///planes de estudio mantenimiento
 
-   if ($_SESSION['pantalla'] == '49' or $_SESSION['pantalla'] == '50' or $_SESSION['pantalla'] == '54' or $_SESSION['pantalla'] == '53' or $_SESSION['pantalla'] == '51') {
+   if ($_SESSION['pantalla'] == '95') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_plan'] = "block";
+      }
+   }
+
+   if ($_SESSION['pantalla'] == '99' or $_SESSION['pantalla'] == '100' or $_SESSION['pantalla'] == '101' or $_SESSION['pantalla'] == '102' or $_SESSION['pantalla'] =='107' or $_SESSION['pantalla'] == '108'or $_SESSION['pantalla'] =='109' or $_SESSION['pantalla'] == '110') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_plan'] = "block";
+      }
+   }
+
+
+   //
+   //esto es docentes la vista
+   if ($_SESSION['pantalla'] == '49') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['docentes_vista'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '50' or $_SESSION['pantalla'] == '54' or $_SESSION['pantalla'] == '53' or $_SESSION['pantalla'] == '51') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['docentes_vista'] = "block";
+      }
+   }
+   //menu manteniiento carga academica
    if ($_SESSION['pantalla'] == '94') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['mantemiento_carga_academica1'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '111' or $_SESSION['pantalla'] == '93' or $_SESSION['pantalla'] == '82' or $_SESSION['pantalla'] == '60' or $_SESSION['pantalla'] == '83' or $_SESSION['pantalla'] == '58'or $_SESSION['pantalla'] == '86'or $_SESSION['pantalla'] == '85'or $_SESSION['pantalla'] =='63' or $_SESSION['pantalla'] == '55') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantemiento_carga_academica1'] = "block";
+      }
+   }
+   //menu mantenimietno docente
 
    if ($_SESSION['pantalla'] == '70') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['mantemiento_carga_academica'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '95') {
+   if ($_SESSION['pantalla'] == '56' or $_SESSION['pantalla'] == '57' or $_SESSION['pantalla'] == '59' or $_SESSION['pantalla'] == '61' or $_SESSION['pantalla'] == '62' or $_SESSION['pantalla'] == '64' or $_SESSION['pantalla'] == '65' or $_SESSION['pantalla'] == '66' or $_SESSION['pantalla'] == '67' or $_SESSION['pantalla'] =='68' or $_SESSION['pantalla'] == '84'or $_SESSION['pantalla'] == '73'or $_SESSION['pantalla'] == '90'or $_SESSION['pantalla'] == '91'or $_SESSION['pantalla'] =='80' or $_SESSION['pantalla'] == '81'or $_SESSION['pantalla'] == '74'or $_SESSION['pantalla'] =='75' or $_SESSION['pantalla'] == '76'or $_SESSION['pantalla'] =='77' or $_SESSION['pantalla'] =='78' or $_SESSION['pantalla'] =='79' or $_SESSION['pantalla'] =='88' or $_SESSION['pantalla'] == '89') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_mantenimientos'] = "block";
+         $_SESSION['mantemiento_carga_academica'] = "block";
       }
    }
+
+  
+   //menu plan de estudio
    if ($_SESSION['pantalla'] == '103') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['plan_estudio_vista'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] = '55') {
+   if ($_SESSION['pantalla'] == '96' or $_SESSION['pantalla'] == '97' or $_SESSION['pantalla'] == '98' or $_SESSION['pantalla'] == '106' or $_SESSION['pantalla'] == '105') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_mantenimiento'] = "block";
+         $_SESSION['plan_estudio_vista'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '118') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['mantenimiento_plan'] = "block";
-      }
-   }
-   if ($_SESSION['pantalla'] = '119') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['mantenimiento_plan'] = "block";
-      }
-   }  
-   
 
-   // if ($_SESSION['pantalla']=='55')
-   // {
-   //  if ( $_SESSION['confirmacion']=='block') 
-   //  {
-   //   $_SESSION['mantemiento_carga_academica']="block";
-
-   //  }
-   // }
-       //--------------------------
    }
 
 
