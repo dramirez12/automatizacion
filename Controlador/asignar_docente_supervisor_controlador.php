@@ -35,7 +35,7 @@ switch ($_GET["op"]){
 				$titulo= $value[9];
 				
 					
-				
+				var_dump($rspta1);
 				
 			} // fin del query para los datos del alumno
 
