@@ -13,8 +13,8 @@ class correo
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 		$mail->isSMTP();
 
-		$correo = "unahvinculacion@informaticaunah.com";
-		$Password = "N5y*%U(Ofb+T";
+		$correo = "tramites@informaticaunah.com";
+		$Password = "XJfDzlbDWfCD";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
@@ -45,8 +45,8 @@ class correo
 		$mail =new PHPMailer\PHPMailer\PHPMailer();
 		$mail->issMTP();
 
-		$correo_doc = "unahvinculacion@informaticaunah.com";
-		$Password_doc = "N5y*%U(Ofb+T";
+		$correo_doc = "tramites@informaticaunah.com";
+		$Password_doc = "XJfDzlbDWfCD";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
