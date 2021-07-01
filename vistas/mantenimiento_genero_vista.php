@@ -74,7 +74,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/menu_roles_vista.php";
+                           window.location = "../vistas/menu_mantenimiento.php";
 
                             </script>';
 } else {
