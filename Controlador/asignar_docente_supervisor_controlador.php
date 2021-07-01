@@ -51,8 +51,6 @@ switch ($_GET["op"]){
 	   		}// fin del query de los datos del docente
 
 			//Correo de docente
-			var_dump($rspta1);
-			var_dump($rspta2);
 			//print_r($->fetch_all());
 			//cuerpo del correo del docente
 			$cuerpo='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
