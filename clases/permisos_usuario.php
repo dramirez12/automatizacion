@@ -374,7 +374,7 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
    }
    if ($_SESSION['pantalla'] == '95') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['mantenimiento_plan'] = "block";
+         $_SESSION['btn_mantenimientos'] = "block";
       }
    }
    if ($_SESSION['pantalla'] == '103') {

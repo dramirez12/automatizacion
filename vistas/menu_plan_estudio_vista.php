@@ -4,7 +4,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
 
 
-if (permiso_ver('95') == '1') {
+if (permiso_ver('103') == '1') {
 
     $_SESSION['menu_plan_estudio_vista'] = "...";
 } else {
