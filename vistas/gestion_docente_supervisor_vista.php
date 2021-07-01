@@ -54,6 +54,7 @@ ob_end_flush();
                 <th>DIRECCIÓN</th>
                 <th>FECHA INICIO</th>
                 <th>FECHA FINALIZACIÓN</th>
+                <th hidden>ID_PERSONA</th>
               </thead>
             </table>
           </div>

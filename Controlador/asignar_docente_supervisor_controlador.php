@@ -20,7 +20,7 @@ switch ($_GET["op"]){
 			$rspta=$modelo->editar($docente,$id_supervisor);
 		
 
-			$rspta1=$modelo->mostrar_datos_alumno($id_supervisor)->fetch_all();
+			$rspta1=$modelo->mostrar_datos_alumno($nombre_alumno)->fetch_all();
 				foreach ($rspta1 as $key => $value) {
 
 				$estudiante= $value[1];
@@ -38,6 +38,8 @@ switch ($_GET["op"]){
 				
 				
 			} // fin del query para los datos del alumno
+
+			echo($nombre_alumno);
 
 				$rspta2=$modelo->mostrar_datos_docente($docente)->fetch_all();
 			foreach ($rspta2 as $key => $value)
@@ -290,7 +292,7 @@ switch ($_GET["op"]){
 
 
 		$cuerpo_estudi = "prueba cuerpo";
-		$correo->enviarEmailPracticante($cuerpo_estudi,$asunto_estud,$ecorreo,$estudiante);
+		$correo->enviarEmailPracticante($cuerpo_estudi,$asunto_estudiante,$ecorreo,$estudiante);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 		
 
@@ -345,7 +347,8 @@ switch ($_GET["op"]){
 				"3"=>$reg->nombre_empresa,
 				"4"=>$reg->direccion_empresa,
 				"5"=>$reg->fecha_inicio,
-				"6"=>$reg->fecha_finaliza
+				"6"=>$reg->fecha_finaliza,
+				"7"=>$reg->id_persona
 
 
  				);
