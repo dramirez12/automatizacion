@@ -357,7 +357,7 @@ ob_end_flush();
                     <!--Footer del modal-->
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" id="btn_modificar_comision" name="btn_modificar_comision" <?php echo $_SESSION['btn_modificar_comision']; ?>>Guardar
+                        <button type="" class="btn btn-primary" id="btn_modificar_comision" name="btn_modificar_comision" <?php echo $_SESSION['btn_modificar_comision']; ?>>Guardar
                             Cambios</button>
                     </div>
                 </div>
