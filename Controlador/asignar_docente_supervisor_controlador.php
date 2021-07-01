@@ -20,7 +20,7 @@ switch ($_GET["op"]){
 			$rspta=$modelo->editar($docente,$id_supervisor);
 		
 
-			$rspta1=$modelo->mostrar_datos_alumno($nombre_alumno)->fetch_all();
+			$rspta1=$modelo->mostrar_datos_alumno($id_supervisor)->fetch_all();
 				foreach ($rspta1 as $key => $value) {
 
 				$estudiante= $value[1];
@@ -39,8 +39,7 @@ switch ($_GET["op"]){
 				
 			} // fin del query para los datos del alumno
 
-			echo($nombre_alumno);
-
+			
 				$rspta2=$modelo->mostrar_datos_docente($docente)->fetch_all();
 			foreach ($rspta2 as $key => $value)
 			 {
@@ -52,7 +51,8 @@ switch ($_GET["op"]){
 	   		}// fin del query de los datos del docente
 
 			//Correo de docente
-			
+			var_dump($rspta1);
+			var_dump($rspta2);
 			//print_r($->fetch_all());
 			//cuerpo del correo del docente
 			$cuerpo='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

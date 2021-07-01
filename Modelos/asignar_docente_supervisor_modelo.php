@@ -50,7 +50,7 @@ class asignaturas
 	}
 
 	//Implementar un método para mostrar los datos de un registro a modificar
-	public function mostrar_datos_alumno($nombre_alumno)
+	public function mostrar_datos_alumno($id_supervisor)
 	{
         global $instancia_conexion;
 		$sql="SELECT px.valor, concat(a.nombres,' ',a.apellidos) as nombre, ep.nombre_empresa, ep.direccion_empresa,pe.fecha_inicio, pe.fecha_finaliza, c.valor Correo, e.valor Celular, ep.jefe_inmediato, ep.titulo_jefe_inmediato
@@ -65,7 +65,7 @@ class asignaturas
 		JOIN tbl_contactos e ON a.id_persona = e.id_persona
 		JOIN tbl_tipo_contactos f ON e.id_tipo_contacto = f.id_tipo_contacto AND f.descripcion = 'TELEFONO CELULAR'
 		join tbl_personas_extendidas as px on px.id_atributo=12 and px.id_persona=a.id_persona
-		where concat(a.nombres,' ',a.apellidos) ='$nombre_alumno'";
+		where a.id_persona='$id_supervisor'";
 		return $instancia_conexion->ejecutarConsulta($sql);
 	}
 	public function mostrar_datos_docente($docente)
