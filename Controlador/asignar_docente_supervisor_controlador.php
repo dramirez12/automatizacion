@@ -290,7 +290,7 @@ switch ($_GET["op"]){
 
 
 		$cuerpo_estudi = "prueba cuerpo";
-		$correo->enviarEmailPracticante($cuerpo_estudi,$asunto_estud,$ecorreo,$estudiante);
+		$correo->enviarEmailPracticante($cuerpo_estudi,$asunto_estudiante,$ecorreo,$estudiante);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 		
 
