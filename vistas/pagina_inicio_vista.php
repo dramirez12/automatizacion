@@ -294,6 +294,8 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
 
+
+
             <!---- solicitudes ----->
 
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_solicitudes'] ?>">
@@ -373,6 +375,8 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
               </ul>
 
+           
+
               <!---- ----->
               <!----MANTENIMIENTOS ----->
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_mantenimiento'] ?>">
@@ -408,6 +412,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
 
             </li>
+
             <!----About ----->
 
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_solicitudes'] ?>">

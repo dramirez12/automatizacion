@@ -23,9 +23,9 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['btn_solicitudes']='none';
    $_SESSION['btn_coordinacion']='none';
    $_SESSION['btn_docentes']='none';
-   $_SESSION['btn_mantenimientos']='none';
    $_SESSION['btn_ayuda']='none';
    $_SESSION['btn_mantenimiento']='none';
+
 
    /*Menu laterales*/
    $_SESSION['pregunta_vista']='none';
@@ -115,13 +115,13 @@ $resultado_permisos = $mysqli->query($sql_permisos);
 
         }
        } 
-       if ($_SESSION['pantalla']>='51')
-       {
-        if ( $_SESSION['confirmacion']=='block') 
-        {
-         $_SESSION['btn_docentes']="block";
-       }
-      }
+      //  if ($_SESSION['pantalla']>='51')
+      //  {
+      //   if ( $_SESSION['confirmacion']=='block') 
+      //   {
+      //    $_SESSION['btn_docentes']="block";
+      //  }
+      // }
 
       if ($_SESSION['pantalla']>='71')
        {
@@ -130,7 +130,13 @@ $resultado_permisos = $mysqli->query($sql_permisos);
          $_SESSION['btn_ayuda']="block";
 
         }
-       } 
+       }
+
+   if ($_SESSION['pantalla'] >= '70') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_mantenimiento'] = "block";
+      }
+   } 
  if ($_SESSION['pantalla']=='1' or $_SESSION['pantalla']=='2')
        {
         if ( $_SESSION['confirmacion']=='block') 
@@ -407,6 +413,8 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
    }
 
   
+
+
    //menu plan de estudio
    if ($_SESSION['pantalla'] == '103') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -420,6 +428,8 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
       }
    }
 
+
+   
    }
 
 
