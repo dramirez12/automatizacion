@@ -178,7 +178,7 @@ switch ($_GET["op"]){
 		
 
 		//cuerpo de correo del estudiante
-		$cuerpo_estudiante='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+		$cuerpo_estudiante = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -223,7 +223,7 @@ switch ($_GET["op"]){
 
 						<tr>
 							<td class="content-cell" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; padding: 35px; word-break: break-word;">
-								<h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado estudiante: '.$estudiante.' </h4>
+								<h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado Estudiante: '.$estudiante.' </h4>
 
 
 								<table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
@@ -246,12 +246,11 @@ switch ($_GET["op"]){
 										</td>
 									</tr>
 								</table>
-								<p style="box-sizing: border-box; color: #000000; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;" align="left">
-		Reciba un cordial saludo. La presente comunicación, tiene por objeto proporcionar la información de su docente supervisor:<br/>
-		<br/> 1.	Nombre del docente: '.$nombre_destino.'
-		<br/> 2.	Correo institucional: '.$destino.'
-		<br/>
-		<br/>Su docente supervisor se estará comunicado con Usted, en caso contrario, y transcurrido exactamente un mes, después de la fecha de aprobación de su Práctica Profesional comuníquese con su docente supervisor a través del correo institucional, y envié copia al correo  uvinculacion.dia@unah.edu.hn,
+								<p style="box-sizing: border-box; color: #000000; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;" align="left">Reciba un cordial saludo. La presente comunicación, tiene por objeto proporcionar la información de su docente supervisor:<br/>
+		<br> 1.	Nombre del docente: '.$nombre_destino.'
+		<br> 2.	Correo institucional: '.$destino.'
+		<br>
+		<br>Su docente supervisor se estará comunicado con Usted, en caso contrario, y transcurrido exactamente un mes, después de la fecha de aprobación de su Práctica Profesional comuníquese con su docente supervisor a través del correo institucional, y envié copia al correo  uvinculacion.dia@unah.edu.hn,
 		</p>
 								<p style="box-sizing: border-box; color: #000000; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;" align="left">
 									<br />Coordinación del Departamento de Informática</p>
@@ -291,8 +290,8 @@ switch ($_GET["op"]){
 		';
 
 
-		$cuerpo_estudi = "prueba cuerpo";
-		$correo->enviarEmailPracticante($cuerpo_estudi,$asunto_estudiante,$ecorreo,$estudiante);
+		// $cuerpo_estudi = "prueba cuerpo";
+		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
 		
 
