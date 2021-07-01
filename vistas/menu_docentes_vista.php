@@ -27,14 +27,6 @@ if (permiso_ver('51') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('52') == '1') {
-
-  $_SESSION['comisiones_actividades_docentes_vista'] = "...";
-} else {
-  $_SESSION['comisiones_actividades_docentes_vista'] = "No 
-  tiene permisos para visualizar";
-}
-
 if (permiso_ver('53') == '1') {
 
   $_SESSION['reporte_carga_academica_docentes_vista'] = "...";

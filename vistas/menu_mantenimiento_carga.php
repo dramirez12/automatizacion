@@ -66,7 +66,7 @@ if (permiso_ver('82') == '1') {
     $_SESSION['mantenimiento_crear_aula_vista'] = "No 
   tiene permisos para visualizar";
 }
-if (permiso_ver('93') == '1') {
+if (permiso_ver('111') == '1') {
 
     $_SESSION['mantenimiento_crear_areas'] = "...";
 } else {
