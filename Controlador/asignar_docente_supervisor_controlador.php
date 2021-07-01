@@ -35,9 +35,11 @@ switch ($_GET["op"]){
 				$titulo= $value[9];
 				
 					
-				var_dump($rspta1);
+				
 				
 			} // fin del query para los datos del alumno
+
+			var_dump($rspta1);
 
 				$rspta2=$modelo->mostrar_datos_docente($docente)->fetch_all();
 			foreach ($rspta2 as $key => $value)
