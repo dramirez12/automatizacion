@@ -38,6 +38,11 @@ if ($visualizacion == 0) {
     } else {
         $_SESSION['btn_guardar_cambio_equivalencia'] = "disabled";
     }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_guardar_nuevo_equivalencia'] = "";
+    } else {
+        $_SESSION['btn_guardar_nuevo_equivalencia'] = "disabled";
+    }
 }
 
 ob_end_flush();
@@ -111,7 +116,7 @@ ob_end_flush();
                             <div class="row">
                                 <div class="col-sm-3">
 
-                                    <button type="" class="btn btn-warning btn">Agregar Nueva Equivalencia <i class="fas fa-plus"></i></button>
+                                    <button type="" class="btn btn-warning btn" id="nueva_equi">Agregar Nueva Equivalencia <i class="fas fa-plus"></i></button>
                                 </div>
 
                             </div>
@@ -121,7 +126,7 @@ ob_end_flush();
 
 
 
-                        <div class="table-responsive" style="width: auto;">
+                        <div class="table-responsive" style="width: 100%;">
                             <table id="tabla_equivalencia" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -248,11 +253,61 @@ ob_end_flush();
                                 </div>
                             </div>
                         </div>
+
+                        <!-- modal para nueva equivalencia -->
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal_nueva_equi">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Nueva equivalencia</h5>
+                                        <button class="close" data-dismiss="modal">
+                                            &times;
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+
+                                        <div class=" row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                    <label>Asignatura:</label>
+                                                    <td><select class="form-control" style="width: 100%;" name="cbm_asignaturas_vigentes" id="cbm_asignaturas_vigentes">
+                                                        </select></td>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+
+                                                    <label>Plan para equivalencia:</label>
+                                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan_crear" id="cbm_plan_crear">
+                                                        </select></td>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Equivalencia</label>
+                                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_equivalencia">
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" id="guardar_nueva_equi" name="guardar_nueva_equi" <?php echo $_SESSION['btn_guardar_nuevo_equivalencia']; ?>>Guardar</button>
+                                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
 
 
@@ -299,7 +354,7 @@ ob_end_flush();
 
     });
 </script>
-<!-- <script>
+<script>
     $(document).ready(function() {
         $(".mul-select").select2({
             placeholder: "SELECCIONE ASIGNATURAS", //placeholder
@@ -307,4 +362,4 @@ ob_end_flush();
             tokenSeparators: ['/', ',', ';', " "]
         });
     })
-</script> -->
+</script>

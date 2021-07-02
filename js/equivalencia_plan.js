@@ -299,3 +299,61 @@ function actualizar_modal() {
 function actualizar_pagina() {
   windows.location.href = windows.location.href;
 }
+
+//para nueva equivalencia
+$("#nueva_equi").click(function () {
+  $("#modal_nueva_equi").modal({ backdrop: "static", keyboard: false });
+  $("#modal_nueva_equi").modal("show");
+});
+
+//llena el plan para equivalencia
+function llenar_plan_crear() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=plan",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_plan_crear").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+
+      $("#cbm_plan_crear").append(o);
+      $("#cbm_plan_crear").val(0);
+    },
+  });
+}
+llenar_plan_crear();
+
+//lena las assignaturas vigentes
+function llenar_asignatura_crear() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=asignaturaVigente",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_asignaturas_vigentes").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+
+      $("#cbm_asignaturas_vigentes").append(o);
+      $("#cbm_asignaturas_vigentes").val(0);
+    },
+  });
+}
+llenar_asignatura_crear();
+
+//llena en cascada asignaturas del plan
+$("#cbm_plan_crear").change(function () {
+  var id_plan_estudio = $(this).val();
+  console.log(id_plan_estudio);
+  //  document.getElementById("txt_capacidad_edita").value = "";
+  // Lista deaulas
+  $.post("../Controlador/plan_estudio_controlador.php?op=id_plan", {
+    id_plan_estudio: id_plan_estudio,
+  }).done(function (respuesta) {
+    $("#cbm_asignaturas_equivalencia").html(respuesta);
+
+    // $("#cbm_requisito_asignaturas").html(respuesta);
+    console.log(respuesta);
+  });
+});

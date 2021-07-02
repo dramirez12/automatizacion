@@ -145,4 +145,17 @@ switch ($_GET["op"]) {
         break;;
 
         
+
+    case 'asignaturaVigente':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->asignaturaVigente();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
+        }
+        break;
+        
 }

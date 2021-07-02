@@ -330,6 +330,13 @@ class modelo_plan{
         return $instancia_conexion->ejecutarConsulta($sql);
     }
 
+    function asignaturaVigente()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT Id_asignatura,asignatura FROM tbl_asignaturas where estado=1');
+
+        return $consulta;
+    }
 }
 
 
