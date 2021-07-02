@@ -130,7 +130,7 @@ $("#tabla_asignatura").on("click", ".editar", function () {
      $("#cbm_suficiencia1").val(data.suficiencia);
     $("#cbm_reposicion").val(data.reposicion).trigger("change");
     $("#cbm_reposicion1").val(data.reposicion);
-    silabo();
+  
     //  $("#txt_silabo").val(data.silabo);
 });
 
@@ -150,6 +150,7 @@ function RegistrarSilabo() {
   var formData = new FormData();
   var curriculum = $("#txt_silabo")[0].files[0];
   formData.append("c", curriculum);
+  formData.append("Id_asignatura", $("#id_asig").val());
   //formData.append('nombrearchivo',nombrearchivo);
 
   $.ajax({
@@ -255,45 +256,5 @@ $("#guardar").click(function () {
   }
 });
 
-function silabo() {
-  var id_asignatura = $("#id_asig").val();
 
-  $.post(
-    "../Controlador/plan_estudio_controlador.php?op=silabo",
-    { id_asignatura: id_asignatura },
-    function (data, status) {
-      data = JSON.parse(data);
 
-      $("#curriculum").attr("href", data.silabo);
-    }
-  );
-}
-
-$("#tabla_asignatura").on("click", ".descargar", function () {
-
-    var data = table.row($(this).parents("tr")).data();
-    if (table.row(this).child.isShown()) {
-      var data = table.row(this).data();
-    }
-
-    $("#id_asig1").val(data.id_asignatura);
-    
-
-   
-
-    swal({
-      title: "Estas seguro?",
-      text: "Cambiar la vigencia del " +  + "?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        //alert(prueba);
-        alert("si");
-        // swal("OK");
-      } else {
-        //swal("Cancelado!");
-      }
-    });
-});

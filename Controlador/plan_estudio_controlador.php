@@ -135,14 +135,24 @@ switch ($_GET["op"]) {
         $respuesta = $instancia_modelo->nombreAsignatura($id_plan_estudio,$asignatura);
         echo json_encode($respuesta);
         break;
+;
 
-    case 'silabo':
+    // case 'cambiarCurriculum':
 
+    //     if (is_array($_FILES) && count($_FILES) > 0) {
 
-        $rspta = $instancia_modelo->silabo($id_asignatura);
-        echo json_encode($rspta);
+    //         if (move_uploaded_file($_FILES["c"]["tmp_name"], "../curriculum_docentes/" . $_FILES["c"]["name"])) {
+    //             $nombrearchivo2 = '../curriculum_docentes/' . $_FILES["c"]["name"];
+    //             $consulta = $instancia_modelo->Registrar_curriculum($nombrearchivo2, $id_persona);
+    //             echo json_encode($nombrearchivo2);
+    //         } else {
+    //             return 0;
+    //         }
+    //     } else {
+    //         return 0;
+    //     }
 
-        break;
+    //     break;
 }
 
 

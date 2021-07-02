@@ -164,8 +164,7 @@ ob_end_flush();
 
 
 
-                        <input class="form-control" type="text" id="id_asig1" name="id_asig1" readonly hidden>
-                        <!-- modal modificar carga -->
+                       <!-- modal modificar carga -->
 
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal_editar" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -178,7 +177,7 @@ ob_end_flush();
 
                                     </div>
 
-                                    <input class="form-control" type="text" id="id_asig" name="id_asig" readonly hidden>
+                                    <input class="form-control" type="text" id="id_asig" name="id_asig" readonly  hidden>
 
                                     <div class="modal-body">
 

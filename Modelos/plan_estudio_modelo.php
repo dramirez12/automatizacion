@@ -286,9 +286,31 @@ class modelo_plan{
         }
     }
 
-  
+    function nombreAsignatura($id_plan_estudio, $asignatura)
+    {
+
+        global $instancia_conexion;
+        $sql6 = "SELECT COUNT(Id_asignatura) AS  suma FROM tbl_asignaturas WHERE id_plan_estudio='$id_plan_estudio' AND asignatura='$asignatura'";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
 
 
+    function Registrar_silabo_asignatura($nombrearchivo2)
+    {
+        global $instancia_conexion;
+        $sql = "CALL proc_insertar_silabo('$nombrearchivo2')";
+
+        return $instancia_conexion->ejecutarConsulta($sql);
+    }
+    //Insertar registros
+    function registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura)
+    {
+        global $instancia_conexion;
+        $sql = "call proc_insertar_asignatura('$id_plan_estudio', '$id_periodo_plan', '$id_area', '$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia', '$id_tipo_asignatura')";
+
+
+        return $instancia_conexion->ejecutarConsulta($sql);
+    }
 
 
 }
