@@ -120,6 +120,13 @@ ob_end_flush();
                                 </div>
 
                             </div>
+
+                            <!-- <div class="col-sm-3">
+
+                                <button type="" class="btn btn-warning btn" id="refres">Refrescar tabla<i class="fas fa-plus"></i></button>
+                            </div> -->
+
+
                         </div>
 
 
@@ -260,7 +267,7 @@ ob_end_flush();
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Nueva equivalencia</h5>
-                                        <button class="close" data-dismiss="modal">
+                                        <button class="close" data-dismiss="modal" onclick="cancelar()">
                                             &times;
                                         </button>
                                     </div>
@@ -298,8 +305,8 @@ ob_end_flush();
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary" id="guardar_nueva_equi" name="guardar_nueva_equi" <?php echo $_SESSION['btn_guardar_nuevo_equivalencia']; ?>>Guardar</button>
-                                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-primary" id="guardar_nueva_equi" name="guardar_nueva_equi" <?php echo $_SESSION['btn_guardar_nuevo_equivalencia']; ?> >Guardar</button>
+                                        <button class="btn btn-secondary" data-dismiss="modal" onclick="cancelar()">Close</button>
                                     </div>
                                 </div>
                             </div>

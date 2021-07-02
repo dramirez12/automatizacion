@@ -6,17 +6,18 @@ require_once('../clases/Conexion.php');
 //$id_persona = $_POST['id_persona'];
 
 
-
+$Id_asignatura = json_decode($_POST['Id_asignatura']);
 //$data = $_POST['array'];
 $data = json_decode($_POST['array']);
 
-//var_dump($data);
+var_dump($Id_asignatura);
 // var_dump($id_persona);
 
 foreach ($data as $item) {
-    $sql = "CALL proc_insertar_equivalencia_asignatura(:id_equivalencia)";
+    $sql = "CALL proc_insertar_equivalencia_asignatura(:id_equivalencias, :id_asignaturas_equivalencias)";
     $stmt =  $connect->prepare($sql);
-    $stmt->bindParam(":id_equivalencia", $item, PDO::PARAM_INT);
+    $stmt->bindParam(":id_equivalencias", $item, PDO::PARAM_INT);
+    $stmt->bindParam(":id_asignaturas_equivalencias", $Id_asignatura, PDO::PARAM_INT);
 
 
 

@@ -205,6 +205,7 @@ ob_end_flush();
                                 </div>
                             </div>
 
+
                         </div>
 
 
@@ -219,9 +220,13 @@ ob_end_flush();
                                     </div> -->
 
                     </div>
-
+                    <br><br><br>
+                    <p style="display: center; margin: 0 auto;">
+                        <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
+                    </p>
+                    <br><br>
                 </div>
-                <div class="card card-default">
+                <!-- <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">ASIGNAR EQUIVALENCIA Y REQUISITO</h3>
                         <div class="card-tools">
@@ -271,26 +276,16 @@ ob_end_flush();
                                     </select>
                                 </div>
                             </div>
-                            <br><br><br>
-                            <p style="display: center; margin: 0 auto;">
-                                <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
-                            </p>
+                            
                         </div>
 
 
 
-                        <!-- <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Requisito Asignatura</label>
-                                            <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_requisito_asignaturas">
-
-                                            </select>
-                                        </div>
-                                    </div> -->
+                        
 
                     </div>
 
-                </div>
+                </div> -->
             </div>
 
         </section>

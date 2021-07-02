@@ -37,13 +37,11 @@ if ($visualizacion == 0) {
         $_SESSION['btn_guardar_cambio_requisito'] = "";
     } else {
         $_SESSION['btn_guardar_cambio_requisito'] = "disabled";
-        
     }
     if (permisos::permiso_insertar($Id_objeto) == '1') {
         $_SESSION['btn_guardar_nuevo_requisito'] = "";
     } else {
         $_SESSION['btn_guardar_nuevo_requisito'] = "disabled";
-        
     }
 }
 
@@ -289,7 +287,7 @@ ob_end_flush();
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Requisito</label>
-                                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_equivalencia">
+                                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_requisito">
 
                                                     </select>
                                                 </div>
@@ -299,7 +297,7 @@ ob_end_flush();
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary" id="guardar_nueva_equi" name="guardar_nueva_equi" <?php echo $_SESSION['btn_guardar_nuevo_requisito']; ?>>Guardar</button>
+                                        <button class="btn btn-primary" id="guardar_nueva_requi" name="guardar_nueva_equi" <?php echo $_SESSION['btn_guardar_nuevo_requisito']; ?> onclick="insertarRequisitos()">Guardar</button>
                                         <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>

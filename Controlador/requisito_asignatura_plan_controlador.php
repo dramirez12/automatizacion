@@ -1,4 +1,3 @@
-
 <?php
 require_once('../clases/Conexion.php');
 
@@ -6,17 +5,18 @@ require_once('../clases/Conexion.php');
 //$id_persona = $_POST['id_persona'];
 
 
-
+$Id_asignatura = json_decode($_POST['Id_asignatura']);
 //$data = $_POST['array'];
-$data = json_decode($_POST['array1']);
+$data = json_decode($_POST['array']);
 
-//var_dump($data);
+var_dump($Id_asignatura);
 // var_dump($id_persona);
 
 foreach ($data as $item) {
-    $sql = "CALL proc_insertar_requisito_asignatura(:id_requisito)";
+    $sql = "CALL proc_insertar_requisito_asignatura(:id_asignatura_requisito,:Id_asignatura)";
     $stmt =  $connect->prepare($sql);
-    $stmt->bindParam(":id_requisito", $item, PDO::PARAM_INT);
+    $stmt->bindParam(":id_asignatura_requisito", $item, PDO::PARAM_INT);
+    $stmt->bindParam(":Id_asignatura", $Id_asignatura, PDO::PARAM_INT);
 
 
 

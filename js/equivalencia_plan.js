@@ -28,13 +28,10 @@ function TablaPlanEstudio() {
       {
         defaultContent:
           "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>",
-          
       },
-
 
       { data: "asignatura" },
       { data: "equivalencias" },
-     
     ],
 
     language: idioma_espanol,
@@ -82,7 +79,7 @@ llenar_plan1();
 //llena en cascada equivalencia que selecciona del plan
 $("#cbm_plan1").change(function () {
   var id_plan_estudio = $(this).val();
-  console.log(id_plan_estudio);
+  //console.log(id_plan_estudio);
   //  document.getElementById("txt_capacidad_edita").value = "";
   // Lista deaulas
   $.post("../Controlador/plan_estudio_controlador.php?op=id_plan", {
@@ -91,7 +88,7 @@ $("#cbm_plan1").change(function () {
     $("#cbm_asignaturas").html(respuesta);
 
     // $("#cbm_requisito_asignaturas").html(respuesta);
-    console.log(respuesta);
+    //  console.log(respuesta);
   });
 });
 
@@ -101,20 +98,16 @@ $(document).ready(function () {
     if (confirmLeave == true) {
       var id = $(this).attr("id");
       var eliminar_equivalencia = document.getElementById("tel" + id).value;
-      console.log(eliminar_equivalencia);
+      //console.log(eliminar_equivalencia);
       $("#row" + id).remove();
-      console.log(id);
+      //  console.log(id);
       $.post(
         "../Controlador/equivalencia_plan_controlador.php?op=eliminar_equivalencia",
         { eliminar_equivalencia: eliminar_equivalencia },
         function (e) {}
       );
 
-      swal(
-        "Buen trabajo!",
-        "¡ Se eliminó la equivalencia!",
-        "success"
-      );
+      swal("Buen trabajo!", "¡ Se eliminó la equivalencia!", "success");
     }
   }
 
@@ -131,7 +124,7 @@ function equivalencias() {
     { id_asignatura: id_asignatura },
     function (data, status) {
       data = JSON.parse(data);
-      console.log(data);
+      //  console.log(data);
       for (i = 0; i < data.equivalencias.length; i++) {
         $("#tbl_equivalencias").append(
           '<tr id="row' +
@@ -213,25 +206,23 @@ function saveAll3() {
     { id_asignatura: id_asignatura1_, id_equivalencia: equivalencia1_ },
 
     function (data, status) {
-      console.log(data);
+      //console.log(data);
       data = JSON.parse(data);
       /* 	$("#id").val(data.suma);
 			var id=$("#id").val();
 			console.log(id); */
 
-      if (id_asignatura1_ == equivalencia1_ ) {
-				swal({
-					title: "Alerta",
-					text: "La asignatura es igual a la equivalencia",
-					icon: "warning",
-					showConfirmButton: true,
-					timer: 20000,
-				});
-				document.getElementById("cbm_asignaturas").value = "";
-				$('#ModalTask2').modal('hide');
-
-				
-			} else if (data == null) {
+      if (id_asignatura1_ == equivalencia1_) {
+        swal({
+          title: "Alerta",
+          text: "La asignatura es igual a la equivalencia",
+          icon: "warning",
+          showConfirmButton: true,
+          timer: 20000,
+        });
+        document.getElementById("cbm_asignaturas").value = "";
+        $("#ModalTask2").modal("hide");
+      } else if (data == null) {
         insert_equivalencias();
       } else {
         swal({
@@ -252,15 +243,15 @@ function insert_equivalencias() {
   var equivalencia1 = document.getElementById("cbm_asignaturas");
   var equivalencia1_ = equivalencia1.value;
   var id_asignatura1 = id_asignatura.value;
-  console.log(equivalencia1_)
-  console.log(id_asignatura1)
+  // console.log(equivalencia1_)
+  // console.log(id_asignatura1)
 
   $.post(
     "../Controlador/equivalencia_plan_controlador.php?op=insertar_equivalencias",
     { id_asignatura: id_asignatura1, id_equivalencia: equivalencia1_ },
 
     function (data, status) {
-      console.log(data);
+      //  console.log(data);
       data = JSON.parse(data);
       swal("Buen trabajo!", "¡ Se insertaron nuevas equivalencias!", "success");
       limpiar_arreglo();
@@ -345,7 +336,7 @@ llenar_asignatura_crear();
 //llena en cascada asignaturas del plan
 $("#cbm_plan_crear").change(function () {
   var id_plan_estudio = $(this).val();
-  console.log(id_plan_estudio);
+  //console.log(id_plan_estudio);
   //  document.getElementById("txt_capacidad_edita").value = "";
   // Lista deaulas
   $.post("../Controlador/plan_estudio_controlador.php?op=id_plan", {
@@ -354,6 +345,64 @@ $("#cbm_plan_crear").change(function () {
     $("#cbm_asignaturas_equivalencia").html(respuesta);
 
     // $("#cbm_requisito_asignaturas").html(respuesta);
-    console.log(respuesta);
+    // console.log(respuesta);
   });
+});
+
+//las equivalencias de la asignatura
+function insertarEquivalencias() {
+  var cbm_asignaturas = $("#cbm_asignaturas_equivalencia").val();
+  var id_asignatura = $("#cbm_asignaturas_vigentes").val();
+
+  // console.log(id_asignatura);
+  // console.log(cbm_asignaturas);
+  $.ajax({
+    type: "POST",
+    url: "../Controlador/equivalencia_asignatura_plan_controlador.php",
+    //  data: { array: id_area}, //capturo array
+    data: {
+      array: JSON.stringify(cbm_asignaturas),
+      Id_asignatura: id_asignatura,
+    },
+    success: function (data) {
+      //  swal("Bien!", "Datos ingresados correctamente!", "success");
+      // console.log("equivalencia");
+      cerrar();
+    },
+  });
+
+  //table.ajax.reload();
+}
+
+function cerrar() {
+  swal("Bien!", "Datos ingresados correctamente!", "success");
+
+  $("#modal_nueva_equi").modal("hide");
+  table.ajax.reload();
+  cancelar();
+ 
+}
+function cancelar() {
+   document.getElementById("cbm_asignaturas_vigentes").value = "";
+  document.getElementById("cbm_asignaturas_equivalencia").value = "";
+  document.getElementById("cbm_plan_crear").value = "";
+  
+
+}
+
+// $("#refres").click(function () {
+//   table.ajax.reload();
+// });
+
+$("#guardar_nueva_equi").click(function () {
+  var cbm_asignaturas = $("#cbm_asignaturas_vigentes").val();
+  var cbm_equivalencias = $("#cbm_asignaturas_equivalencia").val();
+
+  if (cbm_asignaturas == null || cbm_equivalencias.length == 0) {
+    alert("no se permiten campos vacios");
+  } else if (cbm_asignaturas == 0) {
+    alert("seleccione una opcion valida");
+  } else {
+    insertarEquivalencias();
+  }
 });

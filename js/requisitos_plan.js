@@ -346,15 +346,74 @@ llenar_asignatura_crear();
 //llena en cascada asignaturas del plan
 $("#cbm_plan_crear").change(function () {
   var id_plan_estudio = $(this).val();
-  console.log(id_plan_estudio);
+  //console.log(id_plan_estudio);
   //  document.getElementById("txt_capacidad_edita").value = "";
   // Lista deaulas
   $.post("../Controlador/plan_estudio_controlador.php?op=id_plan", {
     id_plan_estudio: id_plan_estudio,
   }).done(function (respuesta) {
-    $("#cbm_asignaturas_equivalencia").html(respuesta);
+    $("#cbm_asignaturas_requisito").html(respuesta);
 
     // $("#cbm_requisito_asignaturas").html(respuesta);
-    console.log(respuesta);
+    // console.log(respuesta);
   });
+});
+
+//las equivalencias de la asignatura
+function insertarRequisitos() {
+  var cbm_asignaturas = $("#cbm_asignaturas_requisito").val();
+  var id_asignatura = $("#cbm_asignaturas_vigentes").val();
+
+  // console.log(id_asignatura);
+  // console.log(cbm_asignaturas);
+  $.ajax({
+    type: "POST",
+    url: "../Controlador/requisito_asignatura_plan_controlador.php",
+    //  data: { array: id_area}, //capturo array
+    data: {
+      array: JSON.stringify(cbm_asignaturas),
+      Id_asignatura: id_asignatura,
+    },
+    success: function (data) {
+      //  swal("Bien!", "Datos ingresados correctamente!", "success");
+      // console.log("equivalencia");
+      cerrar();
+    },
+  });
+
+  //table.ajax.reload();
+}
+
+
+function cerrar() {
+  swal("Bien!", "Datos ingresados correctamente!", "success");
+
+  $("#modal_nueva_requi").modal("hide");
+  table.ajax.reload();
+  cancelar();
+ 
+}
+function cancelar() {
+   document.getElementById("cbm_asignaturas_vigentes").value = "";
+  document.getElementById("cbm_asignaturas_requisito").value = "";
+  document.getElementById("cbm_plan_crear").value = "";
+  
+
+}
+
+// $("#refres").click(function () {
+//   table.ajax.reload();
+// });
+
+$("#guardar_nueva_requi").click(function () {
+  var cbm_asignaturas = $("#cbm_asignaturas_vigentes").val();
+  var cbm_equivalencias = $("#cbm_asignaturas_requisito").val();
+
+  if (cbm_asignaturas == null || cbm_equivalencias.length == 0) {
+    alert("no se permiten campos vacios");
+  } else if (cbm_asignaturas == 0) {
+    alert("seleccione una opcion valida");
+  } else {
+    insertarRequisitos();
+  }
 });
