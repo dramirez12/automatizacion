@@ -322,7 +322,7 @@ function Act_asig_silabo_si_nombre(
         alert("Ya existe una asignatura con ese nombre!");
       } else {
         $.post(
-          "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+          "../Controlador/plan_estudio_controlador.php?op=actualizarAsignatura",
           {
             id_plan_estudio: cbm_plan,
             id_periodo_plan: cbm_periodo,
@@ -369,7 +369,7 @@ function Act_asig_silabo_no_nombre(
   id_asignatura
 ) {
   $.post(
-    "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+    "../Controlador/plan_estudio_controlador.php?op=actualizarAsignatura",
     {
       id_plan_estudio: cbm_plan,
       id_periodo_plan: cbm_periodo,
@@ -421,7 +421,7 @@ function Act_asig_si_nombre(
         alert("Ya existe una asignatura con ese nombre!");
       } else {
         $.post(
-          "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+          "../Controlador/plan_estudio_controlador.php?op=actualizarAsignatura",
           {
             id_plan_estudio: cbm_plan,
             id_periodo_plan: cbm_periodo,
@@ -467,7 +467,7 @@ function Act_asig_no_nombre(
   id_asignatura
 ) {
   $.post(
-    "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+    "../Controlador/plan_estudio_controlador.php?op=actualizarAsignatura",
     {
       id_plan_estudio: cbm_plan,
       id_periodo_plan: cbm_periodo,

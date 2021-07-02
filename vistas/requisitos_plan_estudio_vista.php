@@ -55,14 +55,12 @@ ob_end_flush();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-   <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
  -->
     <title></title>
 
 
 </head>
-
-
 
 <body>
 
@@ -92,11 +90,9 @@ ob_end_flush();
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
-        <!-- Main content -->
-       
-            <div class="card card-default">
-                <div class="card-footer">
+        <section class="content">
+            <div class="container-fluid ">
+                <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">DATOS GENERALES</h3>
                         <div class="card-tools">
@@ -109,14 +105,28 @@ ob_end_flush();
                     </div>
 
                     <div class="card-body">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+
+                                    <button type="" class="btn btn-warning btn">Agregar Nuevo Requisito <i class="fas fa-plus"></i></button>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
                         <div class="table-responsive" style="width: auto;">
-                            <table id="tabla_equivalencia" class="table table-bordered table-striped">
+                            <table id="tabla_requisito" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Editar Requisitos</th>
+                                        <th>Editar Requisito</th>
                                         <th>Asignatura</th>
-                                        <th>Requisitos</th>
-                                        
+                                        <th>Requisito</th>
+
 
                                     </tr>
                                 </thead>
@@ -127,99 +137,49 @@ ob_end_flush();
 
 
                         </div>
-                    </div>
+                        <!-- modales -->
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal_editar">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
 
-                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal_editar">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Editar Requisitos</h5>
-                                    <button onclick="limpiar(); actualizar_tabla();" class="close" data-dismiss="modal">
-                                        &times;
-                                    </button>
-                                </div>
-
-
-                                <div class="modal-body">
-
-                                    <div class="row">
-                                        <input type="hidden">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input hidden type="text" id="txt_id_asignatura" readonly>
-
-                                                <label> Asignatura </label>
-                                                <input class="form-control" type="text" id="txt_asignatura" name="txt_asignatura" readonly>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Editar Requisitos</h5>
+                                        <button onclick="limpiar(); actualizar_tabla();" class="close" data-dismiss="modal">
+                                            &times;
+                                        </button>
+                                    </div>
 
 
+                                    <div class="modal-body">
+
+                                        <div class="row">
+                                            <input type="hidden">
+                                            <div class="col-sm-10">
+                                                <div class="form-group">
+                                                    <input hidden type="text" id="txt_id_asignatura" readonly>
+                                                    <label> Asignatura </label>
+                                                    <input class="form-control" type="text" id="txt_asignatura" name="txt_asignatura" readonly>
+
+
+                                                </div>
                                             </div>
-                                        </div>
 
-
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-
-                                            </div>
-                                        </div>
-                                    
-
-                                        <div class="col-sm-3">
-
-                                            <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Equivalencias</button>
 
                                         </div>
+                                        <div>
 
 
 
-                                        <div class="card " style="width:600px;border-color:gray;">
+
+
+
+
                                             <!--comisiones-->
                                             <div class="card-body">
-                                                <h4 class="card-title">Requisitos</h4>
+                                                <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Requisitos</button>
+
+                                                <br>
+
                                                 <div class="card-text">
                                                     <table class="table table-bordered table-striped m-0">
                                                         <thead>
@@ -239,73 +199,68 @@ ob_end_flush();
 
 
 
-                                    </div>
-
-                                
 
 
-
-                                <div class="modal-footer">
-                                    <!-- <button class="btn btn-danger" name="cambiar_vigencia1" id="cambiar_vigencia1">Guardar Vigencia</button> -->
-<!--                                     <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_requisito']; ?>>Guardar</button>
- -->                                    <button class="btn btn-secondary" data-dismiss="modal"onclick="limpiar(); actualizar_tabla();">Close</button>
-                                </div>
-                             </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Datos</h5>
-                                    <button class="close" data-dismiss="modal">
-                                        &times;
-                                    </button>
-                                </div>
-
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="form-group">
-                                            <input hidden type="text" id="txt_id_asignatura1" readonly>
-                                            <label> Plan de Requisitos </label>
-                                            <select  class="form-control" type="text" id="cbm_plan1" name="cbm_plan1" readonly></select>
-                                           
-
-
-
-                                            <label>Requisito</label>
-                                        
-                                            <select class="form-control" name="cbm_asignaturas" id="cbm_asignaturas"></select>
-                                            
-
+                                        <div class="modal-footer">
+                                            <!-- <button class="btn btn-danger" name="cambiar_vigencia1" id="cambiar_vigencia1">Guardar Vigencia</button> -->
+                                            <!--                                     <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_equivalencia']; ?>>Guardar</button>
+ --> <button class="btn btn-secondary" data-dismiss="modal" onclick="limpiar(); actualizar_tabla();">Close</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-success" onclick="saveAll3();addTask3(); limpiar() ">Agregar</button>
-                                    <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                        <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Datos</h5>
+                                        <button class="close" data-dismiss="modal">
+                                            &times;
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="form-group">
+                                                <input hidden type="text" id="txt_id_asignatura1" readonly>
+                                                <label> Plan de Requisito </label>
+                                                <select class="form-control" type="text" id="cbm_plan1" name="cbm_plan1"></select>
+
+
+
+
+                                                <label>Requisitos</label>
+
+                                                <select class="form-control" name="cbm_asignaturas" id="cbm_asignaturas"></select>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-success" onclick="saveAll3();addTask3(); limpiar() ">Agregar</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
             </div>
-
-     
-
-
     </div>
+    </section>
+    </div>
+
 
 
 
     <script type="text/javascript" src="../js/requisitos_plan.js"></script>
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
+
+
+
 
 </html>
 <script>

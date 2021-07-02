@@ -127,11 +127,15 @@ switch ($_GET["op"]) {
 
 
     case 'registrarAsignatura':
-        if (empty($estado)) {
-            $respuesta = $instancia_modelo->ActualizarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia,$id_asignatura);
-        } else {
+        
             $respuesta = $instancia_modelo->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
-        }
+        
+        break;
+
+    case 'actualizarAsignatura':
+      
+            $respuesta = $instancia_modelo->ActualizarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura);
+       
         break;
 
     case 'nombreAsignatura':
