@@ -2,7 +2,7 @@
 
 var table;
 function TablaPlanEstudio() {
-  table = $("#tabla_equivalencia").DataTable({
+  table = $("#tabla_requisitos").DataTable({
     paging: true,
     lengthChange: true,
     ordering: true,
@@ -33,7 +33,7 @@ function TablaPlanEstudio() {
 
 
       { data: "asignatura" },
-      { data: "equivalencias" },
+      { data: "requisitos" },
      
     ],
 
@@ -43,7 +43,7 @@ function TablaPlanEstudio() {
 }
 
 ///abrir modal de tabla equivalencia
-$("#tabla_equivalencia").on("click", ".editar", function () {
+$("#tabla_requisitos").on("click", ".editar", function () {
   var data = table.row($(this).parents("tr")).data();
   if (table.row(this).child.isShown()) {
     var data = table.row(this).data();

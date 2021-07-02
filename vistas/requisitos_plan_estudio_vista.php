@@ -9,7 +9,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 require_once('../clases/conexion_mantenimientos.php');
 //$registro = controlador_registro_docente::ctrRegistro();
-$Id_objeto = 106;
+$Id_objeto = 112;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -30,13 +30,13 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A EQUIVALENCIA DE PLAN DE ESTUDIO.');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REQUISITO DE PLAN DE ESTUDIO.');
 
 
     if (permisos::permiso_insertar($Id_objeto) == '1') {
-        $_SESSION['btn_guardar_cambio_equivalencia'] = "";
+        $_SESSION['btn_guardar_cambio_requisito'] = "";
     } else {
-        $_SESSION['btn_guardar_cambio_equivalencia'] = "disabled";
+        $_SESSION['btn_guardar_cambio_requisito'] = "disabled";
     }
 }
 
@@ -75,7 +75,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Equivalencias</h1>
+                        <h1>Requisitos</h1>
                     </div>
 
 
@@ -113,9 +113,9 @@ ob_end_flush();
                             <table id="tabla_equivalencia" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Editar Equivalencias</th>
+                                        <th>Editar Requisitos</th>
                                         <th>Asignatura</th>
-                                        <th>Equivalencias</th>
+                                        <th>Requisitos</th>
                                         
 
                                     </tr>
@@ -134,7 +134,7 @@ ob_end_flush();
                             <div class="modal-content">
 
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Editar equivalencia</h5>
+                                    <h5 class="modal-title">Editar Requisitos</h5>
                                     <button onclick="limpiar(); actualizar_tabla();" class="close" data-dismiss="modal">
                                         &times;
                                     </button>
@@ -219,17 +219,17 @@ ob_end_flush();
                                         <div class="card " style="width:600px;border-color:gray;">
                                             <!--comisiones-->
                                             <div class="card-body">
-                                                <h4 class="card-title">Equivalencias</h4>
+                                                <h4 class="card-title">Requisitos</h4>
                                                 <div class="card-text">
                                                     <table class="table table-bordered table-striped m-0">
                                                         <thead>
                                                             <tr>
                                                                 <th></th>
-                                                                <th>Equivalencias</th>
+                                                                <th>Requisitos</th>
 
                                                             </tr>
                                                         </thead>
-                                                        <tbody id="tbl_equivalencias"></tbody>
+                                                        <tbody id="tbl_requisitos"></tbody>
                                                     </table>
                                                 </div>
                                             </div>
@@ -247,7 +247,7 @@ ob_end_flush();
 
                                 <div class="modal-footer">
                                     <!-- <button class="btn btn-danger" name="cambiar_vigencia1" id="cambiar_vigencia1">Guardar Vigencia</button> -->
-<!--                                     <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_equivalencia']; ?>>Guardar</button>
+<!--                                     <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_guardar_cambio_requisito']; ?>>Guardar</button>
  -->                                    <button class="btn btn-secondary" data-dismiss="modal"onclick="limpiar(); actualizar_tabla();">Close</button>
                                 </div>
                              </div>
@@ -268,13 +268,13 @@ ob_end_flush();
                                     <div class="container">
                                         <div class="form-group">
                                             <input hidden type="text" id="txt_id_asignatura1" readonly>
-                                            <label> Plan de Equivalencias </label>
+                                            <label> Plan de Requisitos </label>
                                             <select  class="form-control" type="text" id="cbm_plan1" name="cbm_plan1" readonly></select>
                                            
 
 
 
-                                            <label>Equivalencia</label>
+                                            <label>Requisito</label>
                                         
                                             <select class="form-control" name="cbm_asignaturas" id="cbm_asignaturas"></select>
                                             
@@ -303,7 +303,7 @@ ob_end_flush();
 
 
 
-    <script type="text/javascript" src="../js/equivalencia_plan.js"></script>
+    <script type="text/javascript" src="../js/requisitos_plan.js"></script>
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 </body>
 

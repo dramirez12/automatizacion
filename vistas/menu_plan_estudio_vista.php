@@ -48,6 +48,13 @@ if (permiso_ver('105') == '1') {
     $_SESSION['comparar_plan_vista'] = "No 
   tiene permisos para visualizar";
 }
+if (permiso_ver('112') == '1') {
+
+    $_SESSION['requisitos_vista'] = "...";
+} else {
+    $_SESSION['requisitos_vista'] = "No 
+  tiene permisos para visualizar";
+}
 
 
 
@@ -162,6 +169,20 @@ if (permiso_ver('105') == '1') {
                                     <i class="fas fa-user-edit"></i>
                                 </div>
                                 <a href="../vistas/equivalencias_plan_estudio_vista.php" class="small-box-footer">
+                                    Ir <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h4>Requisitos</h4>
+                                    <p><?php echo $_SESSION['requisitos_vista']; ?></p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-edit"></i>
+                                </div>
+                                <a href="../vistas/requisitos_plan_estudio_vista.php" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
