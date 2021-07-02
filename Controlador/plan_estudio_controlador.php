@@ -13,7 +13,7 @@ $asignatura = isset($_POST["asignatura"]) ? limpiarCadena1($_POST["asignatura"])
 $reposicion = isset($_POST["reposicion"]) ? limpiarCadena1($_POST["reposicion"]) : "";
 $suficiencia = isset($_POST["suficiencia"]) ? limpiarCadena1($_POST["suficiencia"]) : "";
 $id_tipo_asignatura = isset($_POST["id_tipo_asignatura"]) ? limpiarCadena1($_POST["id_tipo_asignatura"]) : "";
-$id_asignatura = isset($_POST["id_asignatura"]) ? limpiarCadena1($_POST["id_asignatura"]) : "";
+$id_asignatura = isset($_POST["Id_asignatura"]) ? limpiarCadena1($_POST["Id_asignatura"]) : "";
 $estado = isset($_POST["estado"]) ? limpiarCadena1($_POST["estado"]) : "";
 
 $instancia_modelo = new modelo_plan();
@@ -79,7 +79,7 @@ switch ($_GET["op"]) {
         //Codificar el resultado utilizando json
         echo json_encode($rspta);
         break;
-        
+
     case 'nombre_plan':
 
         $data = array();
@@ -127,32 +127,18 @@ switch ($_GET["op"]) {
 
 
     case 'registrarAsignatura':
-        $respuesta = $instancia_modelo->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
-
+        if (empty($estado)) {
+            $respuesta = $instancia_modelo->ActualizarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia,$id_asignatura);
+        } else {
+            $respuesta = $instancia_modelo->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
+        }
         break;
+
     case 'nombreAsignatura':
 
-        $respuesta = $instancia_modelo->nombreAsignatura($id_plan_estudio,$asignatura);
+        $respuesta = $instancia_modelo->nombreAsignatura($id_plan_estudio, $asignatura);
         echo json_encode($respuesta);
-        break;
-;
+        break;;
 
-    // case 'cambiarCurriculum':
-
-    //     if (is_array($_FILES) && count($_FILES) > 0) {
-
-    //         if (move_uploaded_file($_FILES["c"]["tmp_name"], "../curriculum_docentes/" . $_FILES["c"]["name"])) {
-    //             $nombrearchivo2 = '../curriculum_docentes/' . $_FILES["c"]["name"];
-    //             $consulta = $instancia_modelo->Registrar_curriculum($nombrearchivo2, $id_persona);
-    //             echo json_encode($nombrearchivo2);
-    //         } else {
-    //             return 0;
-    //         }
-    //     } else {
-    //         return 0;
-    //     }
-
-    //     break;
+        
 }
-
-

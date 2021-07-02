@@ -28,7 +28,6 @@ function TablaManteniAsignatura() {
         defaultContent:
           "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>",
       },
-     
 
       { data: "nombre_asig" },
       { data: "codigo" },
@@ -40,7 +39,7 @@ function TablaManteniAsignatura() {
       //{ data: "nombre_plan" },
       { data: "suficiencia" },
       { data: "reposicion" },
-       { data: "silabo" },
+      { data: "silabo" },
     ],
 
     language: idioma_espanol,
@@ -107,31 +106,30 @@ $("#tabla_asignatura").on("click", ".editar", function () {
   var data = table.row($(this).parents("tr")).data();
   if (table.row(this).child.isShown()) {
     var data = table.row(this).data();
-    }
-    
-     $("#modal_editar").modal({ backdrop: "static", keyboard: false });
-    $("#modal_editar").modal("show");
-    
-    
-     $("#id_asig").val(data.id_asignatura);
-     $("#txt_codigo").val(data.codigo);
-     $("#txt_codigo1").val(data.codigo);
-     $("#txt_nombre").val(data.nombre_asig);
-     $("#txt_nombre1").val(data.nombre_asig);
-     $("#txt_uv").val(data.uv);
-     $("#txt_uv1").val(data.uv);
-     $("#cbm_plan").val(data.id_plan_estudio).trigger("change");
-     $("#cbm_plan1").val(data.id_plan_estudio);
-     $("#cbm_periodo").val(data.id_periodo_plan).trigger("change");
-     $("#cbm_periodo1").val(data.id_periodo_plan);
-     $("#cbm_area").val(data.id_area).trigger("change");
-     $("#cbm_area1").val(data.id_area);
-     $("#cbm_suficiencia").val(data.suficiencia).trigger("change");
-     $("#cbm_suficiencia1").val(data.suficiencia);
-    $("#cbm_reposicion").val(data.reposicion).trigger("change");
-    $("#cbm_reposicion1").val(data.reposicion);
-  
-    //  $("#txt_silabo").val(data.silabo);
+  }
+
+  $("#modal_editar").modal({ backdrop: "static", keyboard: false });
+  $("#modal_editar").modal("show");
+
+  $("#id_asig").val(data.id_asignatura);
+  $("#txt_codigo").val(data.codigo);
+  $("#txt_codigo1").val(data.codigo);
+  $("#txt_nombre").val(data.nombre_asig);
+  $("#txt_nombre1").val(data.nombre_asig);
+  $("#txt_uv").val(data.uv);
+  $("#txt_uv1").val(data.uv);
+  $("#cbm_plan").val(data.id_plan_estudio).trigger("change");
+  $("#cbm_plan1").val(data.id_plan_estudio);
+  $("#cbm_periodo").val(data.id_periodo_plan).trigger("change");
+  $("#cbm_periodo1").val(data.id_periodo_plan);
+  $("#cbm_area").val(data.id_area).trigger("change");
+  $("#cbm_area1").val(data.id_area);
+  $("#cbm_suficiencia").val(data.suficiencia).trigger("change");
+  $("#cbm_suficiencia1").val(data.suficiencia);
+  $("#cbm_reposicion").val(data.reposicion).trigger("change");
+  $("#cbm_reposicion1").val(data.reposicion);
+
+  //  $("#txt_silabo").val(data.silabo);
 });
 
 //validar que solo acepte archivos pdf
@@ -173,8 +171,8 @@ function RegistrarSilabo() {
   return false;
 }
 
- 
 //modificar asignatura
+
 $("#guardar").click(function () {
   var cbm_plan = $("#cbm_plan").val();
   var cbm_periodo = $("#cbm_periodo").val();
@@ -185,7 +183,18 @@ $("#guardar").click(function () {
   var cbm_reposicion = $("#cbm_reposicion").val();
   var cbm_suficiencia = $("#cbm_suficiencia").val();
   var txt_silabo = $("#txt_silabo").val();
-  var tipo_asignatura = 1;
+  var id_asignatura = $("#id_asig").val();
+  //var tipo_asignatura = 1;
+
+  var cbm_plan1 = $("#cbm_plan1").val();
+  var cbm_periodo1 = $("#cbm_periodo1").val();
+  var cbm_area1 = $("#cbm_area1").val();
+  var txt_uv1 = $("#txt_uv1").val();
+  var txt_codigo_asignatura1 = $("#txt_codigo1").val();
+  var txt_nombre_asignatura1 = $("#txt_nombre1").val();
+  var cbm_reposicion1 = $("#cbm_reposicion1").val();
+  var cbm_suficiencia1 = $("#cbm_suficiencia1").val();
+
 
   if (
     cbm_plan == null ||
@@ -195,7 +204,6 @@ $("#guardar").click(function () {
     cbm_area == null ||
     txt_nombre_asignatura.length == 0 ||
     cbm_reposicion == null ||
-    txt_silabo.length == 0 ||
     cbm_suficiencia == null
   ) {
     alert("no se permiten campos vacios");
@@ -208,53 +216,282 @@ $("#guardar").click(function () {
   ) {
     alert("seleccione una opcion valida");
   } else {
-    
-   
-      $.post(
-        "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
-        { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
-        function (data, status) {
-          data = JSON.parse(data);
 
-          if (data.suma > 0) {
-            alert("Ya existe una asignatura con ese nombre!");
-          } else {
-            $.post(
-              "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
-              {
-                id_plan_estudio: cbm_plan,
-                id_periodo_plan: cbm_periodo,
-                id_area: cbm_area,
-                uv: txt_uv,
-                codigo: txt_codigo_asignatura,
-                asignatura: txt_nombre_asignatura,
-                reposicion: cbm_reposicion,
-                suficiencia: cbm_suficiencia,
-                estado: estado,
-                id_tipo_asignatura: tipo_asignatura,
-              },
+    if (cbm_plan != cbm_plan1 || cbm_periodo != cbm_periodo1 || cbm_area != cbm_area1 || txt_uv != txt_uv1 || txt_codigo_asignatura != txt_codigo_asignatura1 ||
+      txt_nombre_asignatura != txt_nombre_asignatura1 || cbm_reposicion != cbm_reposicion1 || cbm_suficiencia != cbm_suficiencia1||txt_silabo.length !=0) {
 
-              function (e) {
-                RegistrarSilabo();
-                insertarRequisitos();
-                insertarEquivalencias();
-              }
-            );
-            swal({
-              title: "alerta",
-              text: "Por favor espere un momento",
-              type: "warning",
-              showConfirmButton: false,
-              timer: 11000,
-            });
-            refrescar(14000);
-            mensaje();
-          }
+      if (txt_silabo.length == 0) {
+        //alert("vacio");
+        if ((txt_nombre_asignatura1 = !txt_nombre_asignatura)) {
+          Act_asig_si_nombre(
+            cbm_plan,
+            cbm_periodo,
+            cbm_area,
+            txt_uv,
+            txt_codigo_asignatura,
+            txt_nombre_asignatura,
+            cbm_reposicion,
+            cbm_suficiencia,
+            id_asignatura
+          );
+        } else {
+          Act_asig_no_nombre(
+            cbm_plan,
+            cbm_periodo,
+            cbm_area,
+            txt_uv,
+            txt_codigo_asignatura,
+            txt_nombre_asignatura,
+            cbm_reposicion,
+            cbm_suficiencia,
+            id_asignatura
+          );
+       
         }
-      );
-    
+      } else {
+      
+
+        if ((txt_nombre_asignatura1 = !txt_nombre_asignatura)) {
+          Act_asig_silabo_si_nombre(
+            cbm_plan,
+            txt_nombre_asignatura,
+            cbm_periodo,
+            cbm_area,
+            txt_uv,
+            txt_codigo_asignatura,
+            txt_nombre_asignatura,
+            cbm_reposicion,
+            cbm_suficiencia,
+            id_asignatura
+          );
+        } else {
+          Act_asig_silabo_no_nombre(
+            cbm_plan,
+            txt_nombre_asignatura,
+            cbm_periodo,
+            cbm_area,
+            txt_uv,
+            txt_codigo_asignatura,
+            cbm_reposicion,
+            cbm_suficiencia,
+            id_asignatura
+          );
+        }
+      }
+    } else {
+      alert("No se han modificado datos");
+    }
   }
 });
 
+//se muestra despues de insertar el silabo y actualiza la tabla
+function mensaje() {
+  setTimeout(function () {
+    swal("Bien", "Los datos se insertaron correctamente!", "success");
+    $("#modal_editar").modal("hide");
+    table.ajax.reload();
+    limpiarSilabo();
+  }, 12000);
+ 
+}
 
+//limpia el campo de silabo sin guardar
+function limpiarSilabo() {
+  document.getElementById("txt_silabo").value = "";
+}
 
+//actualiza asignatura cunado lleva silabo y cambia nombre
+function Act_asig_silabo_si_nombre(
+  cbm_plan,
+  txt_nombre_asignatura,
+  cbm_periodo,
+  cbm_area,
+  txt_uv,
+  txt_codigo_asignatura,
+  cbm_reposicion,
+  cbm_suficiencia,
+  id_asignatura
+) {
+  $.post(
+    "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
+    { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
+    function (data, status) {
+      data = JSON.parse(data);
+
+      if (data.suma > 0) {
+        alert("Ya existe una asignatura con ese nombre!");
+      } else {
+        $.post(
+          "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+          {
+            id_plan_estudio: cbm_plan,
+            id_periodo_plan: cbm_periodo,
+            id_area: cbm_area,
+            uv: txt_uv,
+            codigo: txt_codigo_asignatura,
+            asignatura: txt_nombre_asignatura,
+            reposicion: cbm_reposicion,
+            suficiencia: cbm_suficiencia,
+            estado: "",
+            Id_asignatura: id_asignatura,
+            // id_tipo_asignatura: tipo_asignatura,
+          },
+
+          function (e) {
+            RegistrarSilabo();
+          }
+        );
+        swal({
+          title: "alerta",
+          text: "Por favor espere un momento",
+          type: "warning",
+          showConfirmButton: false,
+          timer: 11000,
+        });
+
+        mensaje();
+      }
+    }
+  );
+}
+
+//actualiza asignatura cunado lleva silabo y no cambia nombre
+
+function Act_asig_silabo_no_nombre(
+  cbm_plan,
+  txt_nombre_asignatura,
+  cbm_periodo,
+  cbm_area,
+  txt_uv,
+  txt_codigo_asignatura,
+  cbm_reposicion,
+  cbm_suficiencia,
+  id_asignatura
+) {
+  $.post(
+    "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+    {
+      id_plan_estudio: cbm_plan,
+      id_periodo_plan: cbm_periodo,
+      id_area: cbm_area,
+      uv: txt_uv,
+      codigo: txt_codigo_asignatura,
+      asignatura: txt_nombre_asignatura,
+      reposicion: cbm_reposicion,
+      suficiencia: cbm_suficiencia,
+      estado: "",
+      Id_asignatura: id_asignatura,
+      // id_tipo_asignatura: tipo_asignatura,
+    },
+
+    function (e) {
+      RegistrarSilabo();
+    }
+  );
+  swal({
+    title: "alerta",
+    text: "Por favor espere un momento",
+    type: "warning",
+    showConfirmButton: false,
+    timer: 11000,
+  });
+
+  mensaje();
+}
+
+//actualiza la asignatura sin silabo cambio nombre
+function Act_asig_si_nombre(
+  cbm_plan,
+  cbm_periodo,
+  cbm_area,
+  txt_uv,
+  txt_codigo_asignatura,
+  txt_nombre_asignatura,
+  cbm_reposicion,
+  cbm_suficiencia,
+  id_asignatura
+) {
+  $.post(
+    "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
+    { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
+    function (data, status) {
+      data = JSON.parse(data);
+
+      if (data.suma > 0) {
+        alert("Ya existe una asignatura con ese nombre!");
+      } else {
+        $.post(
+          "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+          {
+            id_plan_estudio: cbm_plan,
+            id_periodo_plan: cbm_periodo,
+            id_area: cbm_area,
+            uv: txt_uv,
+            codigo: txt_codigo_asignatura,
+            asignatura: txt_nombre_asignatura,
+            reposicion: cbm_reposicion,
+            suficiencia: cbm_suficiencia,
+            estado: "",
+            Id_asignatura: id_asignatura,
+
+            // id_tipo_asignatura: tipo_asignatura,
+          },
+
+          function (e) {
+            swal({
+              title: "Bien",
+              text: "Se actualizó correctamente",
+              type: "success",
+              showConfirmButton: false,
+              timer: 4000,
+            });
+            $("#modal_editar").modal("hide");
+            table.ajax.reload();
+          }
+        );
+      }
+    }
+  );
+}
+
+//actualiza asignatura sin silabo no cambia nombre
+function Act_asig_no_nombre(
+  cbm_plan,
+  cbm_periodo,
+  cbm_area,
+  txt_uv,
+  txt_codigo_asignatura,
+  txt_nombre_asignatura,
+  cbm_reposicion,
+  cbm_suficiencia,
+  id_asignatura
+) {
+  $.post(
+    "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+    {
+      id_plan_estudio: cbm_plan,
+      id_periodo_plan: cbm_periodo,
+      id_area: cbm_area,
+      uv: txt_uv,
+      codigo: txt_codigo_asignatura,
+      asignatura: txt_nombre_asignatura,
+      reposicion: cbm_reposicion,
+      suficiencia: cbm_suficiencia,
+      estado: "",
+      Id_asignatura: id_asignatura,
+      // id_tipo_asignatura: tipo_asignatura,
+    },
+
+    function (e) {
+      swal({
+        title: "Bien",
+        text: "Se actualizó correctamente",
+        type: "success",
+        showConfirmButton: false,
+        timer: 4000,
+      });
+      $("#modal_editar").modal("hide");
+      table.ajax.reload();
+    }
+  );
+}

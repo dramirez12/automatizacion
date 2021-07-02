@@ -137,7 +137,7 @@ ob_end_flush();
                                 <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
                                     <thead>
                                         <tr>
-                                           
+
                                             <th>Acción</th>
                                             <th>Asignatura</th>
                                             <th>Código</th>
@@ -150,7 +150,7 @@ ob_end_flush();
                                             <th>Suficiencia</th>
                                             <th>Reposición</th>
                                             <th>Sílabo</th>
-                                           
+
                                         </tr>
                                     </thead>
 
@@ -164,20 +164,20 @@ ob_end_flush();
 
 
 
-                       <!-- modal modificar carga -->
+                        <!-- modal modificar carga -->
 
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal_editar" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Editar Asignatura</h5>
-                                        <button class="close" data-dismiss="modal">
+                                        <button onclick="limpiarSilabo()" class="close" data-dismiss="modal">
                                             &times;
                                         </button>
 
                                     </div>
 
-                                    <input class="form-control" type="text" id="id_asig" name="id_asig" readonly  hidden>
+                                    <input class="form-control" type="text" id="id_asig" name="id_asig" readonly hidden>
 
                                     <div class="modal-body">
 
@@ -295,8 +295,8 @@ ob_end_flush();
 
                                     <div class="modal-footer">
                                         <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_modificar_asignatura']; ?>>Guardar</button>
-                                
-                                        <button class="btn btn-secondary" data-dismiss="modal" id="salir">Cancelar</button>
+
+                                        <button class="btn btn-secondary" data-dismiss="modal" id="salir" onclick="limpiarSilabo()">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
@@ -341,7 +341,7 @@ ob_end_flush();
         "sProcessing": "Procesando...",
         "sLengthMenu": "Mostrar _MENU_ registros",
         "sZeroRecords": "No se encontraron resultados",
-        "sEmptyTable": "No se encuentra el periodo o año",
+        "sEmptyTable": "No se encontraron resultados",
         "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
         "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
         "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",

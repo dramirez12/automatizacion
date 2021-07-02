@@ -312,6 +312,23 @@ class modelo_plan{
         return $instancia_conexion->ejecutarConsulta($sql);
     }
 
+    function ActualizarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia,$id_asignatura)
+    {
+        global $instancia_conexion;
+        $sql = "call proc_actualizar_asignatura('$id_plan_estudio', '$id_periodo_plan', '$id_area', '$uv', '$codigo',  '$asignatura', '$reposicion', '$suficiencia','$id_asignatura')";
+
+
+        return $instancia_conexion->ejecutarConsulta($sql);
+    }
+
+
+    function Actualizar_silabo_asignatura($nombrearchivo2,$Id_asignatura)
+    {
+        global $instancia_conexion;
+        $sql = "CALL proc_actualizar_silabo('$nombrearchivo2','$Id_asignatura')";
+
+        return $instancia_conexion->ejecutarConsulta($sql);
+    }
 
 }
 
