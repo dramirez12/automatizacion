@@ -13,20 +13,20 @@ $instancia_modelo = new modelo_plan();
 switch ($_GET["op"]) {
 
     case 'id_asignatura':
-        $rspta = $instancia_modelo->sel_equivalencias($id_asignatura);
+        $rspta = $instancia_modelo->sel_requisitos($id_asignatura);
         //Codificar el resultado utilizando json
         echo json_encode($rspta);
         break;
 
-    case 'existe_equivalencias':
-        $rspta = $instancia_modelo->existe_equivalencia($id_asignatura, $id_equivalencia);
+    case 'existe_requisito':
+        $rspta = $instancia_modelo->existe_requisito($id_asignatura, $id_equivalencia);
         //Codificar el resultado utilizando json
         echo json_encode($rspta);
         break;
 
-    case 'insertar_equivalencias':
+    case 'insertar_requisitos':
 
-        $rspta = $instancia_modelo->insertar_equivalencias($id_asignatura, $id_equivalencia);
+        $rspta = $instancia_modelo->insertar_requisitos($id_asignatura, $id_equivalencia);
         echo json_encode($rspta);
 
         break;

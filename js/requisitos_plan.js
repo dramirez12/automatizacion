@@ -21,7 +21,7 @@ function TablaPlanEstudio() {
     async: false,
     processing: true,
     ajax: {
-      url: "../Controlador/tabla_equivalencia_plan_controlador.php",
+      url: "../Controlador/tabla_requisito_plan_controlador.php",
       type: "POST",
     },
     columns: [
@@ -52,9 +52,9 @@ $("#tabla_requisitos").on("click", ".editar", function () {
   $("#modal_editar").modal("show");
   $("#txt_id_asignatura").val(data.id_asignatura);
   $("#txt_asignatura").val(data.asignatura);
-  $("#txt_equivalencias").val(data.equivalencia);
+  $("#txt_requisitos").val(data.requisitos);
   $("#cbm_plan1").val(data.id_plan_estudio).trigger("change");
-  equivalencias();
+  requisitos();
 });
 
 function id_asignatura() {
@@ -97,7 +97,7 @@ $("#cbm_plan1").change(function () {
 
 $(document).ready(function () {
   function eliminar() {
-    var confirmLeave = confirm("¿Desea eliminar está equivalencia?");
+    var confirmLeave = confirm("¿Desea eliminar éste requisito?");
     if (confirmLeave == true) {
       var id = $(this).attr("id");
       var eliminar_equivalencia = document.getElementById("tel" + id).value;
@@ -105,7 +105,7 @@ $(document).ready(function () {
       $("#row" + id).remove();
       console.log(id);
       $.post(
-        "../Controlador/equivalencia_plan_controlador.php?op=eliminar_equivalencia",
+        "../Controlador/requisito_plan_controlador.php?op=eliminar_equivalencia",
         { eliminar_equivalencia: eliminar_equivalencia },
         function (e) {}
       );
@@ -120,20 +120,20 @@ $(document).ready(function () {
 
   $(document).on("click", ".btn_remove", eliminar);
 
-  equivalencias();
+  requisitos();
 });
 
-function equivalencias() {
+function requisitos() {
   var id_asignatura = $("#txt_id_asignatura").val();
 
   $.post(
-    "../Controlador/equivalencia_plan_controlador.php?op=id_asignatura",
+    "../Controlador/requisito_plan_controlador.php?op=id_asignatura",
     { id_asignatura: id_asignatura },
     function (data, status) {
       data = JSON.parse(data);
       console.log(data);
-      for (i = 0; i < data.equivalencias.length; i++) {
-        $("#tbl_equivalencias").append(
+      for (i = 0; i < data.requisitos.length; i++) {
+        $("#tbl_requisitos").append(
           '<tr id="row' +
             i +
             '">' +
@@ -142,10 +142,10 @@ function equivalencias() {
             '"><input maxlength="9" hidden readonly onkeyup="javascript:mascara()" id="tel' +
             i +
             '" type="tel" name="tel" class="form-control name_list" value="' +
-            data["equivalencias"][i].id_equivalencia +
+            data["requisitos"][i].id_requisitos +
             '" placeholder="___-___"/></td>' +
             "<td>" +
-            data["equivalencias"][i].equivalencia +
+            data["requisitos"][i].requisito +
             "</td>" +
             '<td><button type="button" name="remove" id="' +
             i +
@@ -164,7 +164,7 @@ var list3 = [];
 var asignatura = document.getElementById("cbm_asignaturas");
 var id_asignatura1 = document.getElementById("txt_id_asignatura1");
 
-var tbl_equivalencias = document.getElementById("tbl_equivalencias");
+var tbl_requisitos = document.getElementById("tbl_requisitos");
 var asignatura1 = document.getElementById("cbm_asignaturas");
 var addTask3 = () => {
   var item3 = {
@@ -175,7 +175,7 @@ var addTask3 = () => {
       cbm_asignaturas.options[cbm_asignaturas.selectedIndex].text,
   };
 
-  equivalencias();
+  requisitos();
 
   list3.push(item3);
   viewlist3();
@@ -209,7 +209,7 @@ function saveAll3() {
   var equivalencia1_ = asignatura1.value;
 
   $.post(
-    "../Controlador/equivalencia_plan_controlador.php?op=existe_equivalencias",
+    "../Controlador/requisito_plan_controlador.php?op=existe_requisito",
     { id_asignatura: id_asignatura1_, id_equivalencia: equivalencia1_ },
 
     function (data, status) {
@@ -222,7 +222,7 @@ function saveAll3() {
       if (id_asignatura1_ == equivalencia1_ ) {
 				swal({
 					title: "Alerta",
-					text: "La asignatura es igual a la equivalencia",
+					text: "El requisito no puede ser igual a la asignatura",
 					icon: "warning",
 					showConfirmButton: true,
 					timer: 20000,
@@ -232,11 +232,11 @@ function saveAll3() {
 
 				
 			} else if (data == null) {
-        insert_equivalencias();
+        insert_requisitos();
       } else {
         swal({
           title: "Alerta",
-          text: "La asignatura ya cuenta con está equivalencia!",
+          text: "La asignatura ya cuenta con éste requisito!",
           icon: "warning",
           showConfirmButton: true,
           timer: 20000,
@@ -247,7 +247,7 @@ function saveAll3() {
     }
   );
 }
-function insert_equivalencias() {
+function insert_requisitos() {
   var id_asignatura = document.getElementById("txt_id_asignatura1");
   var equivalencia1 = document.getElementById("cbm_asignaturas");
   var equivalencia1_ = equivalencia1.value;
@@ -256,15 +256,15 @@ function insert_equivalencias() {
   console.log(id_asignatura1)
 
   $.post(
-    "../Controlador/equivalencia_plan_controlador.php?op=insertar_equivalencias",
+    "../Controlador/requisito_plan_controlador.php?op=insertar_requisitos",
     { id_asignatura: id_asignatura1, id_equivalencia: equivalencia1_ },
 
     function (data, status) {
       console.log(data);
       data = JSON.parse(data);
-      swal("Buen trabajo!", "¡ Se insertaron nuevas equivalencias!", "success");
+      swal("Buen trabajo!", "¡Se insertaron nuevos requisitos!", "success");
       limpiar_arreglo();
-      equivalencias();
+      requisitos();
       /* tbl_comisiones.reload(); */
     }
   );
@@ -290,10 +290,10 @@ function insert_equivalencias() {
 } */
 
 function limpiar() {
-  $("#tbl_equivalencias").empty();
+  $("#tbl_requisitos").empty();
 }
 function actualizar_modal() {
-  $("#tbl_equivalencias").reload();
+  $("#tbl_requisitos").reload();
 }
 
 function actualizar_pagina() {

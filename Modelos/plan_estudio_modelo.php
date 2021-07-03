@@ -337,6 +337,53 @@ class modelo_plan{
 
         return $consulta;
     }
+
+    //tabla requisitos
+    function tabla_requisitos()
+    {
+        global $instancia_conexion;
+        $sql = " call sel_requisitos_plan()";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
+    function sel_requisitos($id_asignatura)
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta(" call sel_busca_requisitos_plan($id_asignatura)");
+      
+        $requisitos = array();
+        
+    
+        while ($row = $consulta->fetch_assoc()) {
+    
+          $requisitos['requisitos'][] = $row;
+        }
+    
+        //echo '<pre>';print_r($actividades);echo'</pre>';
+        return $requisitos;
+       
+    }
+    function existe_requisito($id_asignatura, $id_equivalencia){
+        global $instancia_conexion;
+        $sql5 = "CALL sel_existe_requisito_plan('$id_asignatura','$id_equivalencia')";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql5);
+      }
+      function insertar_requisitos($id_asignatura, $id_equivalencia)
+      {
+        global $instancia_conexion;
+        $sql = "CALL proc_insertar_requisitos_plan($id_asignatura, $id_equivalencia);";
+    
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
 }
 
 

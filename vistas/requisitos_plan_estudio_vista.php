@@ -125,7 +125,7 @@ ob_end_flush();
 
 
                         <div class="table-responsive" style="width: 100%;">
-                            <table id="tabla_requisito" class="table table-bordered table-striped">
+                            <table id="tabla_requisitos" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Editar Requisito</th>
