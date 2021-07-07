@@ -63,7 +63,7 @@ function aprobar_practica(){
 
 
     $.ajax({
-        url: "../Controlador/calculo_fecha_pps_controlador.php",
+        url: "../Controlador/aprobar_practica_controlador.php",
         type: "POST",
         data: {
             cuenta_estud: cuenta_estudid,
