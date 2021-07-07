@@ -78,9 +78,9 @@ else
 
         case 'update':
             $rspta=$db->update_pps($txt_estudiante_cuenta, $obs, $empresa, $cb_horas_practica, $fechaN, $fechaF);
-            echo $rspta ? 0 : 1 ;
-
-            echo($rspta);
+            // echo $rspta ? 0 : 1 ;
+            echo $rspta;
+            var_dump($rspta);
             
         break;
 }
