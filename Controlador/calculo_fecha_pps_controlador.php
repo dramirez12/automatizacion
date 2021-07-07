@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once "../Modelos/calculo_fecha_pps_modelos.php";
 //recepcion de variables por el metodo POST
 $fecha_inicio = $_POST['fecha_inicio'];
@@ -11,7 +12,7 @@ $fechaN= $_POST['fecha_inicio'];
 $fechaF=$_POST['fecha_finalizacion'];
 $txt_estudiante_cuenta=$_POST['txt_estudiante_cuenta'];
 $empresa=$_POST['txt_empresa'];
-
+$obs=$_POST['txt_motivo_rechazo'];
 //print_r($cb_practica.'-'.$cb_horas_practica.'-'.$fechaN.'-'.$fechaF.'-'.$txt_estudiante_cuenta.'-'.$empresa);
 $db= new pruebas();
 
@@ -76,12 +77,12 @@ else
         break;
 
         case 'update':
-            $rspta=$db->update_pps($cb_practica,$cb_horas_practica,$fechaF,$fechaN,$txt_estudiante_cuenta,$empresa);
+            $rspta=$db->update_pps($txt_estudiante_cuenta, $obs, $empresa, $cb_horas_practica, $fechaN, $fechaF);
             echo $rspta ? 0 : 1 ;
 
-            var_dump($rspta);
+            echo($rspta);
             
         break;
 }
-
+ob_end_flush();
 ?>

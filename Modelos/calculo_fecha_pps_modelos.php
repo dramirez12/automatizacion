@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require "../clases/conexion_mantenimientos.php";
 $instancia_conexion = new conexion();
 
@@ -36,7 +37,7 @@ Class pruebas
 		return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
         
     }
-	public function update_pps($cb_practica,$cb_horas_practica,$fechaF,$fechaN,$txt_estudiante_cuenta,$empresa)
+	public function update_pps($txt_estudiante_cuenta, $cb_practica, $empresa, $cb_horas_practica, $fechaN, $fechaF)
 	{
         global $instancia_conexion;
 		$sql="call proc_aprobacion_practica('$txt_estudiante_cuenta','$cb_practica',1,'$empresa', '$cb_horas_practica', '$fechaN', '$fechaF') ";
@@ -65,6 +66,6 @@ Class pruebas
 
 
 
-
+ob_end_flush();
 
 ?>
