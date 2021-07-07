@@ -216,7 +216,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
       <html>
       <head>
         <title></title>
-        <script type="text/javascript" src="../js/calculo_fecha_pps.js"></script>
+       
       </head>
       <body >
 
@@ -450,7 +450,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
     <!--Footer del modal-->
     <div class="modal-footer justify-content-between">
       <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      <button type="button" class="btn btn-primary" id="btn_aprobacion_rechazo_practica" name="btn_aprobacion_rechazo_practica"  <?php echo $_SESSION['btn_aprobacion_rechazo_practica']; ?> onclick="aprobar_practica();">Guardar Cambios</button>
+      <button type="button" class="btn btn-primary" id="btn_aprobacion_rechazo_practica" name="btn_aprobacion_rechazo_practica"  <?php echo $_SESSION['btn_aprobacion_rechazo_practica']; ?>>Guardar Cambios</button>
     </div>
 
 
@@ -541,6 +541,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
 </form>
 
 
+<script type="text/javascript" src="../js/calculo_fecha_pps.js"></script>
 
 <script type="text/javascript">
 
