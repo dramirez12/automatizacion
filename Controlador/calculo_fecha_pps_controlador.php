@@ -13,6 +13,15 @@ $fechaF=$_POST['fecha_finalizacion'];
 $txt_estudiante_cuenta=$_POST['txt_estudiante_cuenta'];
 $empresa=$_POST['txt_empresa'];
 $obs=$_POST['txt_motivo_rechazo'];
+
+
+$cuenta_estud=$_POST['cuenta_estud'];
+$obs_prac=$_POST['obs_prac'];
+$empresa_prac=$_POST['empresa_prac'];
+$hrs_pps=$_POST['hrs_pps'];
+$fecha_inicio_prac=$_POST['fecha_inicio_prac'];
+$fecha_final_prac=$_POST['fecha_final_prac'];
+
 //print_r($cb_practica.'-'.$cb_horas_practica.'-'.$fechaN.'-'.$fechaF.'-'.$txt_estudiante_cuenta.'-'.$empresa);
 $db= new pruebas();
 
@@ -77,10 +86,9 @@ else
         break;
 
         case 'update':
-            $rspta=$db->update_pps($txt_estudiante_cuenta, $obs, $empresa, $cb_horas_practica, $fechaN, $fechaF);
-            // echo $rspta ? 0 : 1 ;
-            echo $rspta;
-            var_dump($rspta);
+            $rspta=$db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac);
+            echo $rspta ? 0 : 1 ;
+            
             
         break;
 }

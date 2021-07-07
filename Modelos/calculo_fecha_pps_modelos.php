@@ -37,10 +37,10 @@ Class pruebas
 		return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
         
     }
-	public function update_pps($txt_estudiante_cuenta, $cb_practica, $empresa, $cb_horas_practica, $fechaN, $fechaF)
+	public function update_pps($txt_estudiante_cuenta, $obs, $empresa, $cb_horas_practica, $fechaN, $fechaF)
 	{
         global $instancia_conexion;
-		$sql="call proc_aprobacion_practica('$txt_estudiante_cuenta','$cb_practica',1,'$empresa', '$cb_horas_practica', '$fechaN', '$fechaF') ";
+		$sql="call proc_aprobacion_practica('$txt_estudiante_cuenta','$obs',1,'$empresa', '$cb_horas_practica', '$fechaN', '$fechaF') ";
 		return $instancia_conexion->ejecutarConsulta($sql);
 
 		var_dump($sql);

@@ -368,7 +368,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
             <div class="col-sm-4">
                   <div class="form-group">
                   
-                        <center> <h5>Horario de PPS</h5></center>
+                        <center> <h5>Fechas de PPS</h5></center>
                         
                         <center> <label for="cars">Fecha de inicio</label>  </center>
                         <input type="date" placeholder="Escribe tu nombre" name="fecha_inicio" class="form-control" id="fecha_inicio" required autofocus title="Ingresa tu nombre porfavor">
@@ -423,8 +423,6 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
               </div>
 
             </div>
-
-            <input type="text" name="miremos" id="miremos" class="form-control">
             <div class="col-sm-12">
               <div class="form-group">
                 <label>Motivo</label>
@@ -452,7 +450,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
     <!--Footer del modal-->
     <div class="modal-footer justify-content-between">
       <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      <button type="button" class="btn btn-primary" id="btn_aprobacion_rechazo_practica" name="btn_aprobacion_rechazo_practica"  <?php echo $_SESSION['btn_aprobacion_rechazo_practica']; ?> >Guardar Cambios</button>
+      <button type="button" class="btn btn-primary" id="btn_aprobacion_rechazo_practica" name="btn_aprobacion_rechazo_practica"  <?php echo $_SESSION['btn_aprobacion_rechazo_practica']; ?> onclick="aprobar_practica();">Guardar Cambios</button>
     </div>
 
 
