@@ -26,26 +26,30 @@ $.ajax({
    data: $("#formulario").serialize(), 
    success: function(data)             
    {
-       if(data==0)
-       {
-        swal({
-            title: 'Práctica aprobada con éxito',
-            type: "success",
-            button: "OK",
-          }).then(function() {
-            location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
-        }); 
-       }
-       else if(data==1)
-       {
-        swal({
-            title: 'Práctica no se pudo aprobar',
-            type: "error",
-            button: "OK",
-          }).then(function() {
-            location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
-        }); 
-       }
+    //    if(data==0)
+    //    {
+    //     swal({
+    //         title: 'Práctica aprobada con éxito',
+    //         type: "success",
+    //         button: "OK",
+    //       }).then(function() {
+    //         location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
+    //     }); 
+    //    }
+    //    else if(data==1)
+    //    {
+    //     swal({
+    //         title: 'Práctica no se pudo aprobar',
+    //         type: "error",
+    //         button: "OK",
+    //       }).then(function() {
+    //         location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
+    //     }); 
+    //    }
+
+    $("#miremos").html(data);
+
+    alert(data);
         
  
    }

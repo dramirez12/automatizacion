@@ -423,6 +423,8 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
               </div>
 
             </div>
+
+            <input type="time" name="miremos" id="miremos" class="form-control">
             <div class="col-sm-12">
               <div class="form-group">
                 <label>Motivo</label>
