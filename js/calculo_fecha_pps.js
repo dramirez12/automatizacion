@@ -51,6 +51,14 @@ $(document).ready(function () {
 
         //    }
         // });
+
+        var cuenta_estudid = $("#txt_estudiante_cuenta").val();
+        var obs = $("#txt_motivo_rechazo").val();
+        var empresa_prac = $("#txt_empresa").val();
+        var hrs_pps = $("#cb_horas_practica").val();
+        var fecha_inicio = $("#fecha_inicio").val();
+        var fecha_final = $("#fecha_finalizacion").val();
+
         $.ajax({
             url: "../Controlador/aprobar_practica_controlador.php",
             type: "POST",

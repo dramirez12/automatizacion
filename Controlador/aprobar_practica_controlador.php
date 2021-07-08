@@ -7,11 +7,11 @@ $Id_objeto = 46;
 
 
 $cuenta_estud=$_POST['cuenta_estud'];
-$obs_prac=$_POST['obs_prac'];
-$empresa_prac=$_POST['empresa_prac'];
-$hrs_pps=$_POST['hrs_pps'];
-$fecha_inicio_prac=$_POST['fecha_inicio_prac'];
-$fecha_final_prac=$_POST['fecha_final_prac'];
+$obs_prac = $_POST['obs_prac'];
+$empresa_prac = $_POST['empresa_prac'];
+$hrs_pps = $_POST['hrs_pps'];
+$fecha_inicio_prac = $_POST['fecha_inicio_prac'];
+$fecha_final_prac = $_POST['fecha_final_prac'];
 
 
 
