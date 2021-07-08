@@ -71,7 +71,7 @@ $(document).ready(function () {
 $("#dias").change(function () {
     var dias_practi = $("#dias option:selected").text();
   
-    $("#ver_estado").text(dias_practi);
+    $("#ver_estado").val(dias_practi);
   });
 
 
