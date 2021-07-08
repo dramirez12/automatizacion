@@ -85,12 +85,12 @@ else
 
         break;
 
-        case 'update':
-            $rspta=$db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac);
-            // echo $rspta ? 0 : 1 ;
-            echo $consulta;
+        // case 'update':
+        //     $rspta=$db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac);
+        //     // echo $rspta ? 0 : 1 ;
+        //     echo $consulta;
             
-        break;
+        // break;
 }
 ob_end_flush();
 ?>

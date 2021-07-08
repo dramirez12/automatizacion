@@ -46,15 +46,15 @@ $(document).ready(function () {
 
                 swal(
                     "Buen trabajo!",
-                    "datos actualizados correctamente!",
+                    "Datos almacenados correctamente!",
                     "success"
                 );
-
+                alert(resp);
 
             } else {
                 swal(
                     "Alerta!",
-                    "No se pudo completar la actualización",
+                    "No se pudo completar la aprobacion de PPS",
                     "warning"
                 );
                     alert(resp);
