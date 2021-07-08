@@ -6,10 +6,23 @@ $fecha_inicio = $_POST['fecha_inicio'];
 $horario_incio = $_POST['horario_incio'];
 $horario_fin = $_POST['horario_fin'];
 $dias = $_POST['dias'];
+$cb_practica= $_POST['cb_practica'];
+$cb_horas_practica= $_POST['cb_horas_practica'];
+$fechaN= $_POST['fecha_inicio'];
+$fechaF=$_POST['fecha_finalizacion'];
+$txt_estudiante_cuenta=$_POST['txt_estudiante_cuenta'];
+$empresa=$_POST['txt_empresa'];
+$obs=$_POST['txt_motivo_rechazo'];
 
 
+$cuenta_estud=$_POST['cuenta_estud'];
+$obs_prac=$_POST['obs_prac'];
+$empresa_prac=$_POST['empresa_prac'];
+$hrs_pps=$_POST['hrs_pps'];
+$fecha_inicio_prac=$_POST['fecha_inicio_prac'];
+$fecha_final_prac=$_POST['fecha_final_prac'];
 
-
+//print_r($cb_practica.'-'.$cb_horas_practica.'-'.$fechaN.'-'.$fechaF.'-'.$txt_estudiante_cuenta.'-'.$empresa);
 $db= new pruebas();
 
 switch ($_GET["op"])
@@ -34,6 +47,19 @@ $fecha_p = date('Y-m-d', strtotime($fecha_inicio. ' + '.$dias_totales_trabajo.' 
 $fecha_inicial = new DateTime($fecha_inicio);//fecha inicial
 $fecha_final = new DateTime($fecha_p);//fecha final
 
+/*$contador_Sabados_Domingos=0;
+$contador_dias_habiles=0;
+while( $fecha_inicial <= $fecha_final){
+    if($fecha_inicial->format('l')== 'Saturday' || $fecha_inicial->format('l')== 'Sunday'){
+                  // echo $fecha_inicial->format('y-m-d (D)')."<br/>";
+                  $contador_Sabados_Domingos=$contador_Sabados_Domingos+1;//esto me cuenta los dias sabados y domingos
+    }
+    $fecha_inicial->modify("+1 days");
+   
+
+}
+
+$contador_Sabados_Domingos;*/
 
 $rspta=$db->busqueda_fechas($fecha_inicio,$fecha_p);
 
@@ -59,6 +85,12 @@ else
 
         break;
 
+        // case 'update':
+        //     $rspta=$db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac);
+        //     // echo $rspta ? 0 : 1 ;
+        //     echo $consulta;
+            
+        // break;
 }
 ob_end_flush();
 ?>
