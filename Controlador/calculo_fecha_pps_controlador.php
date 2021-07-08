@@ -27,7 +27,7 @@ $db= new pruebas();
 
 switch ($_GET["op"])
 {
-        case 'fecha':
+case 'fecha':
            
           
 $h1 = new DateTime($horario_incio);
