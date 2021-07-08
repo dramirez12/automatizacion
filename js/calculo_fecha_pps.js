@@ -50,13 +50,14 @@ $(document).ready(function () {
                     "success"
                 );
 
+
             } else {
                 swal(
                     "Alerta!",
                     "No se pudo completar la actualización",
                     "warning"
                 );
-
+                    alert(resp);
             }
         });
     });
