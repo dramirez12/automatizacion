@@ -5,7 +5,7 @@
     $servidor= "167.114.169.207";
     $usuario= "informat_informaticaunah2";
     $password = "dF%&(M6tJL?P";
-    $base= "informat_informaticaunah2";
+    $base= "informat_automatizacion";
 
 	$mysqli = new mysqli($servidor, $usuario,$password,$base);
 	$connection = mysqli_connect($servidor, $usuario,$password,$base) or die("Error " . mysqli_error($connection));
