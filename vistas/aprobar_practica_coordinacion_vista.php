@@ -383,22 +383,22 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                   </div>
             </div>
 
-            <input hidden type="text" name="dias_practica" id="dias_practica" class="form-control">
+            <!-- <input hidden type="text" name="dias_practica" id="dias_practica" class="form-control"> -->
 
             <div class="col-sm-4">
                 <div class="form-group">
                           <center> <h5>Horario de Trabajo</h5></center>
                           <center> <label>Entrada</label> </center>
-                          <input type="time" name="horario_incio" id="horario_incio" class="form-control" required autofocus title="Ingresa tu apeliido porfavor">
+                          <input type="time" name="horario_incio" id="horario_incio" class="form-control" required autofocus title="Horario Entrada">
                           <center><label>Salida</label>  </center>
-                    <input type="time" name="horario_fin" id="horario_fin" class="form-control" required autofocus title="Ingresa tu apeliido porfavor">
+                    <input type="time" name="horario_fin" id="horario_fin" class="form-control" required autofocus title="Horario Salida">
                 </div>
             </div>
             <div class="col-sm-4">
                <div class="form-group">
                          <center> <h5>Fecha de finalización de PPS</h5></center>
                          <center><label>Fecha</label>  </center>
-                         <input type="date" placeholder="Escribe tu nombre" name="fecha_finalizacion" class="form-control" id="fecha_finalizacion"  autofocus title="Ingresa tu nombre porfavor" disabled>
+                         <input type="date" placeholder="Escribe tu nombre" name="fecha_finalizacion" class="form-control" id="fecha_finalizacion"  autofocus title="Fecha Finalizacion PPS" disabled>
                          
               </div>
             </div>
