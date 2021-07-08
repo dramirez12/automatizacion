@@ -295,7 +295,7 @@ ob_end_flush();
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Equivalencia</label>
-                                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_equivalencia">
+                                                    <select class="form-control" style="width: 100%;" id="cbm_asignaturas_equivalencia">
 
                                                     </select>
                                                 </div>

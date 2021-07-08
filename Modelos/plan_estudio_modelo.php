@@ -391,6 +391,30 @@ class modelo_plan{
 
     return $consulta;
   }
+
+    function consAsig($id_asignatura, $id_equivalencias)
+    {
+
+        global $instancia_conexion;
+        $sql6 = "SELECT COUNT(id_equivalencias_plan) AS  suma FROM tbl_equivalencias_plan WHERE id_asignaturas_equivalencias='$id_asignatura' AND id_equivalencias='$id_equivalencias'";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
+
+    function insAsigEqui($id_asignatura, $id_equivalencias)
+    {
+
+        global $instancia_conexion;
+
+        $sql = "call proc_insertar_equivalencia_asignatura('$id_equivalencias','$id_asignatura')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+   
+
 }
 
 

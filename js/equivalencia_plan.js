@@ -202,53 +202,46 @@ function saveAll3() {
   var equivalencia1_ = asignatura1.value;
   var select = $("#cbm_plan1").val();
   console.log(select);
-  if (select==0) {
+  if (select == 0) {
+    swal("Alerta!", "¡Seleccione una opcion!", "warning");
+  } else {
+    $.post(
+      "../Controlador/equivalencia_plan_controlador.php?op=existe_equivalencias",
+      { id_asignatura: id_asignatura1_, id_equivalencia: equivalencia1_ },
 
-    swal(
-      "Alerta!",
-      "¡Seleccione una opcion!",
-      "warning"
-    );
-   
-  }else{
-
-  $.post(
-    "../Controlador/equivalencia_plan_controlador.php?op=existe_equivalencias",
-    { id_asignatura: id_asignatura1_, id_equivalencia: equivalencia1_ },
-
-    function (data, status) {
-      //console.log(data);
-      data = JSON.parse(data);
-      /* 	$("#id").val(data.suma);
+      function (data, status) {
+        //console.log(data);
+        data = JSON.parse(data);
+        /* 	$("#id").val(data.suma);
 			var id=$("#id").val();
 			console.log(id); */
 
-      if (id_asignatura1_ == equivalencia1_) {
-        swal({
-          title: "Alerta",
-          text: "La asignatura es igual a la equivalencia",
-          icon: "warning",
-          showConfirmButton: true,
-          timer: 20000,
-        });
-        document.getElementById("cbm_asignaturas").value = "";
-        $("#ModalTask2").modal("hide");
-      } else if (data == null) {
-        insert_equivalencias();
-      } else {
-        swal({
-          title: "Alerta",
-          text: "La asignatura ya cuenta con está equivalencia!",
-          icon: "warning",
-          showConfirmButton: true,
-          timer: 20000,
-        });
-        document.getElementById("cbm_asignaturas").value = "";
-        $("#ModalTask2").modal("hide");
+        if (id_asignatura1_ == equivalencia1_) {
+          swal({
+            title: "Alerta",
+            text: "La asignatura es igual a la equivalencia",
+            icon: "warning",
+            showConfirmButton: true,
+            timer: 20000,
+          });
+          document.getElementById("cbm_asignaturas").value = "";
+          $("#ModalTask2").modal("hide");
+        } else if (data == null) {
+          insert_equivalencias();
+        } else {
+          swal({
+            title: "Alerta",
+            text: "La asignatura ya cuenta con está equivalencia!",
+            icon: "warning",
+            showConfirmButton: true,
+            timer: 20000,
+          });
+          document.getElementById("cbm_asignaturas").value = "";
+          $("#ModalTask2").modal("hide");
+        }
       }
-    }
-  );
-}
+    );
+  }
 }
 function insert_equivalencias() {
   var id_asignatura = document.getElementById("txt_id_asignatura1");
@@ -362,29 +355,29 @@ $("#cbm_plan_crear").change(function () {
 });
 
 //las equivalencias de la asignatura
-function insertarEquivalencias() {
-  var cbm_asignaturas = $("#cbm_asignaturas_equivalencia").val();
-  var id_asignatura = $("#cbm_asignaturas_vigentes").val();
+// function insertarEquivalencias() {
+//   var cbm_asignaturas = $("#cbm_asignaturas_equivalencia").val();
+//   var id_asignatura = $("#cbm_asignaturas_vigentes").val();
 
-  // console.log(id_asignatura);
-  // console.log(cbm_asignaturas);
-  $.ajax({
-    type: "POST",
-    url: "../Controlador/equivalencia_asignatura_plan_controlador.php",
-    //  data: { array: id_area}, //capturo array
-    data: {
-      array: JSON.stringify(cbm_asignaturas),
-      Id_asignatura: id_asignatura,
-    },
-    success: function (data) {
-      //  swal("Bien!", "Datos ingresados correctamente!", "success");
-      // console.log("equivalencia");
-      cerrar();
-    },
-  });
+//   // console.log(id_asignatura);
+//   // console.log(cbm_asignaturas);
+//   $.ajax({
+//     type: "POST",
+//     url: "../Controlador/equivalencia_asignatura_plan_controlador.php",
+//     //  data: { array: id_area}, //capturo array
+//     data: {
+//       array: JSON.stringify(cbm_asignaturas),
+//       Id_asignatura: id_asignatura,
+//     },
+//     success: function (data) {
+//       //  swal("Bien!", "Datos ingresados correctamente!", "success");
+//       // console.log("equivalencia");
+//       cerrar();
+//     },
+//   });
 
-  //table.ajax.reload();
-}
+//   //table.ajax.reload();
+// }
 
 function cerrar() {
   swal("Bien!", "Datos ingresados correctamente!", "success");
@@ -392,14 +385,11 @@ function cerrar() {
   $("#modal_nueva_equi").modal("hide");
   table.ajax.reload();
   cancelar();
- 
 }
 function cancelar() {
-   document.getElementById("cbm_asignaturas_vigentes").value = "";
+  document.getElementById("cbm_asignaturas_vigentes").value = "";
   document.getElementById("cbm_asignaturas_equivalencia").value = "";
   document.getElementById("cbm_plan_crear").value = "";
-  
-
 }
 
 // $("#refres").click(function () {
@@ -415,6 +405,44 @@ $("#guardar_nueva_equi").click(function () {
   } else if (cbm_asignaturas == 0) {
     alert("seleccione una opcion valida");
   } else {
-    insertarEquivalencias();
+    $.post(
+      "../Controlador/plan_estudio_controlador.php?op=consAsig",
+      {
+        Id_asignatura: cbm_asignaturas,
+        id_equivalencias: cbm_equivalencias,
+      },
+      function (data, status) {
+        data = JSON.parse(data);
+
+        if (data.suma > 0) {
+          alert("La asignatura ya cuenta con esa equivalencia!");
+        } else {
+         
+           $.ajax({
+             url: "../Controlador/equivalencia_asignatura_plan_controlador.php",
+             type: "POST",
+             data: {
+               Id_asignatura: cbm_asignaturas,
+               id_equivalencias: cbm_equivalencias,
+             },
+           }).done(function (resp) {
+             if (resp > 0) {
+               swal(
+                 "Buen trabajo!",
+                 "datos insertados correctamente!",
+                 "success"
+               );
+                $("#modal_nueva_equi").modal("hide");
+               //  document.getElementById("txt_registro").value = "";
+               table.ajax.reload();
+             } else {
+               swal("Alerta!", "No se pudo completar", "warning");
+               //document.getElementById("txt_registro").value = "";
+             }
+           });
+
+        }
+      }
+    );
   }
 });
