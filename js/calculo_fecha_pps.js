@@ -69,9 +69,9 @@ $(document).ready(function () {
 });
 
 $("#dias").change(function () {
-    var id_tipo_periodo = $("#dias option:selected").text();
+    var dias_practi = $("#dias option:selected").text();
   
-    $("#ver_estado").val(id_tipo_periodo);
+    $("#ver_estado").text(dias_practi);
   });
 
 
