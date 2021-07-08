@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require_once ('../clases/Conexion.php');
 require_once ('../clases/encriptar_desencriptar.php'); 
 require_once "../Modelos/login_modelo.php";
@@ -585,5 +585,5 @@ else
    }  
 
 */
-
+ob_end_flush();
 ?>
