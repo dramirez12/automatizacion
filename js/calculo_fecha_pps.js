@@ -28,8 +28,10 @@ $(document).ready(function () {
         var empresa_prac = $("#txt_empresa").val();
         var hrs_pps = $("#cb_horas_practica").val();
         var fecha_inicio_prac = $("#fecha_inicio").val();
-        var fecha_final_prac = $("#fecha_finalizacion").val();
-
+        var fecha_final_prac = $("#fecha_finalizacion").val(); horario_incio
+        var horario_incio_prac = $("#horario_incio").val();
+        var horario_fin_prac = $("#horario_fin").val();
+        var dias_prac = $("#dias").val();
         $.ajax({
             url: "../Controlador/aprobar_practica_controlador.php",
             type: "POST",
@@ -40,6 +42,9 @@ $(document).ready(function () {
                 hrs_pps: hrs_pps,
                 fecha_inicio_prac: fecha_inicio_prac,
                 fecha_final_prac: fecha_final_prac,
+                horario_incio_prac: horario_incio_prac,
+                horario_fin_prac: horario_fin_prac,
+                dias_prac: dias_prac,
             },
         }).done(function (resp) {
             if (resp > 0) {

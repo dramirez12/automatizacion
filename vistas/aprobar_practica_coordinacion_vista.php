@@ -351,8 +351,8 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
              </div></div>
 
 
-             <input class="form-control" type="text" id="txt_estudiante_cuenta" name="txt_estudiante_cuenta"   value="<?php echo strtoupper( $_SESSION['cuenta']) ?>" readonly="readonly">
-             <input class="form-control" type="text" id="txt_empresa" name="txt_empresa"  value="<?php echo strtoupper( $_SESSION['empresa']) ?>" readonly="readonly">
+             <input class="form-control" type="text" id="txt_estudiante_cuenta" name="txt_estudiante_cuenta" hidden value="<?php echo strtoupper( $_SESSION['cuenta']) ?>" readonly="readonly">
+             <input class="form-control" type="text" id="txt_empresa" name="txt_empresa" hidden value="<?php echo strtoupper( $_SESSION['empresa']) ?>" readonly="readonly">
 
 
               <div class="col-sm-6">
