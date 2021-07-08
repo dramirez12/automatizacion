@@ -2,10 +2,10 @@
 
 
 
-$servidor= "167.114.169.207";
-$usuario= "informat_desarrollo";
-$password = "!fuRCr3XR-tz";
-$base= "informat_desarrollo_automatizacion";
+    $servidor= "167.114.169.207";
+    $usuario= "informat_desarrollo";
+    $password = "!fuRCr3XR-tz";
+    $base= "informat_desarrollo_automatizacion";
 
 	$mysqli = new mysqli($servidor, $usuario,$password,$base);
 	$connection = mysqli_connect($servidor, $usuario,$password,$base) or die("Error " . mysqli_error($connection));
