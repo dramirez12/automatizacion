@@ -413,6 +413,27 @@ class modelo_plan{
             return 0;
         }
     }
+    function consAsigRequ($id_asignatura, $id_asignatura_requisito)
+    {
+
+        global $instancia_conexion;
+        $sql6 = "SELECT COUNT(id_requisito_asig) AS  suma FROM tbl_requisito_asignatura WHERE Id_asignatura='$id_asignatura' AND id_asignatura_requisito='$id_asignatura_requisito'";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
+
+    function insAsigReq($id_asignatura_requisito, $id_asignatura)
+    {
+
+        global $instancia_conexion;
+
+        $sql = "call proc_insertar_requisito_asignatura('$id_asignatura_requisito','$id_asignatura')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
    
 
 }

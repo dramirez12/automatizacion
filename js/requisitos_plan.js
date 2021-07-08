@@ -421,13 +421,49 @@ function cancelar() {
 
 $("#guardar_nueva_requi").click(function () {
   var cbm_asignaturas = $("#cbm_asignaturas_vigentes").val();
-  var cbm_equivalencias = $("#cbm_asignaturas_requisito").val();
+  var cbm_requisito = $("#cbm_asignaturas_requisito").val();
 
-  if (cbm_asignaturas == null || cbm_equivalencias.length == 0) {
+  if (cbm_asignaturas == null || cbm_requisito.length == 0) {
     alert("no se permiten campos vacios");
   } else if (cbm_asignaturas == 0) {
     alert("seleccione una opcion valida");
   } else {
-    insertarRequisitos();
+    $.post(
+      "../Controlador/plan_estudio_controlador.php?op=consAsigRequ",
+      {
+        Id_asignatura: cbm_asignaturas,
+        id_asignatura_requisito: cbm_requisito,
+      },
+      function (data, status) {
+        data = JSON.parse(data);
+
+        if (data.suma > 0) {
+          alert("La asignatura ya cuenta con ese requisito!");
+        } else {
+          $.ajax({
+            url: "../Controlador/requisito_asignatura_plan_controlador.php",
+            type: "POST",
+            data: {
+              Id_asignatura: cbm_asignaturas,
+              id_asignatura_requisito: cbm_requisito,
+            },
+          }).done(function (resp) {
+            if (resp > 0) {
+              swal(
+                "Buen trabajo!",
+                "datos insertados correctamente!",
+                "success"
+              );
+              $("#modal_nueva_requi").modal("hide");
+              //  document.getElementById("txt_registro").value = "";
+              table.ajax.reload();
+            } else {
+              swal("Alerta!", "No se pudo completar", "warning");
+              //document.getElementById("txt_registro").value = "";
+            }
+          });
+        }
+      }
+    );
   }
 });

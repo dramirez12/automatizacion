@@ -406,7 +406,7 @@ $("#guardar_nueva_equi").click(function () {
     alert("seleccione una opcion valida");
   } else {
     $.post(
-      "../Controlador/plan_estudio_controlador.php?op=consAsig",
+      "../Controlador/plan_estudio_controlador.php?op=consAsigEqui",
       {
         Id_asignatura: cbm_asignaturas,
         id_equivalencias: cbm_equivalencias,

@@ -173,12 +173,6 @@ ob_end_flush();
                                         </div>
                                         <div>
 
-
-
-
-
-
-
                                             <!--comisiones-->
                                             <div class="card-body">
                                                 <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Requisitos</button>
@@ -287,7 +281,7 @@ ob_end_flush();
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Requisito</label>
-                                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_requisito">
+                                                    <select class="form-control"  style="width: 100%;" id="cbm_asignaturas_requisito">
 
                                                     </select>
                                                 </div>
@@ -297,7 +291,7 @@ ob_end_flush();
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary" id="guardar_nueva_requi" name="guardar_nueva_equi" <?php echo $_SESSION['btn_guardar_nuevo_requisito']; ?> onclick="insertarRequisitos()">Guardar</button>
+                                        <button class="btn btn-primary" id="guardar_nueva_requi" name="guardar_nueva_requi" <?php echo $_SESSION['btn_guardar_nuevo_requisito']; ?> >Guardar</button>
                                         <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>

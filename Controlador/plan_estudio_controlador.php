@@ -15,6 +15,7 @@ $suficiencia = isset($_POST["suficiencia"]) ? limpiarCadena1($_POST["suficiencia
 $id_tipo_asignatura = isset($_POST["id_tipo_asignatura"]) ? limpiarCadena1($_POST["id_tipo_asignatura"]) : "";
 $id_asignatura = isset($_POST["Id_asignatura"]) ? limpiarCadena1($_POST["Id_asignatura"]) : "";
 $id_equivalencias = isset($_POST["id_equivalencias"]) ? limpiarCadena1($_POST["id_equivalencias"]) : "";
+$id_asignatura_requisito = isset($_POST["id_asignatura_requisito"]) ? limpiarCadena1($_POST["id_asignatura_requisito"]) : "";
 $estado = isset($_POST["estado"]) ? limpiarCadena1($_POST["estado"]) : "";
 
 $instancia_modelo = new modelo_plan();
@@ -158,9 +159,15 @@ switch ($_GET["op"]) {
             echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
         }
         break;
-    case 'consAsig':
+    case 'consAsigEqui':
 
         $respuesta = $instancia_modelo->consAsig($id_asignatura, $id_equivalencias);
+        echo json_encode($respuesta);
+        break;
+
+    case 'consAsigRequ':
+
+        $respuesta = $instancia_modelo->consAsigRequ($id_asignatura, $id_asignatura_requisito);
         echo json_encode($respuesta);
         break;
 

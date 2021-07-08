@@ -1,28 +1,18 @@
 <?php
-require_once('../clases/Conexion.php');
+require '../Modelos/plan_estudio_modelo.php';
+// require_once('../clases/funcion_bitacora.php');
+// $Id_objeto = 98;
+$MU = new modelo_plan();
 
-// $id_area = $_POST['id_area'];
-//$id_persona = $_POST['id_persona'];
-
-
-$Id_asignatura = json_decode($_POST['Id_asignatura']);
-//$data = $_POST['array'];
-$data = json_decode($_POST['array']);
-
-var_dump($Id_asignatura);
-// var_dump($id_persona);
-
-foreach ($data as $item) {
-    $sql = "CALL proc_insertar_requisito_asignatura(:id_asignatura_requisito,:Id_asignatura)";
-    $stmt =  $connect->prepare($sql);
-    $stmt->bindParam(":id_asignatura_requisito", $item, PDO::PARAM_INT);
-    $stmt->bindParam(":Id_asignatura", $Id_asignatura, PDO::PARAM_INT);
+$Id_asignatura = $_POST['Id_asignatura'];
+$id_asignatura_requisito = $_POST['id_asignatura_requisito'];
 
 
+$consulta = $MU->insAsigReq($id_asignatura_requisito, $Id_asignatura);
+echo $consulta;
 
-    $stmt->execute();
-
-    // $idTask = $stmt->fetchAll(PDO::FETCH_ASSOC)[0]['id_pref_area_doce'];
-    // array_push($info, $idTask);  
-
-}
+    // if ($consulta==1) {
+    // # code...
+    //      bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'UN PLAN DE ESTUDIO' .$nombre.'');
+     
+    // }
