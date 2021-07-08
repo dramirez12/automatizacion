@@ -220,13 +220,9 @@ ob_end_flush();
                                     </div> -->
 
                     </div>
-                    <br><br><br>
-                    <p style="display: center; margin: 0 auto;">
-                        <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
-                    </p>
-                    <br><br>
+
                 </div>
-                <!-- <div class="card card-default">
+                <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">ASIGNAR EQUIVALENCIA Y REQUISITO</h3>
                         <div class="card-tools">
@@ -276,16 +272,20 @@ ob_end_flush();
                                     </select>
                                 </div>
                             </div>
-                            
+
+                            <br><br><br>
+                            <p style="display: center; margin: 0 auto;">
+                                <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
+                            </p>
+
                         </div>
 
 
 
-                        
 
                     </div>
 
-                </div> -->
+                </div>
             </div>
 
         </section>

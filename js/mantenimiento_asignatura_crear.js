@@ -160,41 +160,41 @@ function Validar() {
 }
 
 //las equivalencias de la asignatura
-// function insertarEquivalencias() {
-//   var cbm_asignaturas = $("#cbm_asignaturas").val();
+function insertarEquivalencias() {
+  var cbm_asignaturas = $("#cbm_asignaturas").val();
 
-//  // console.log(cbm_asignaturas);
-//   $.ajax({
-//     type: "POST",
-//     url: "../Controlador/equivalencia_asignatura_plan_controlador.php",
-//     //  data: { array: id_area}, //capturo array
-//     data: {
-//       array: JSON.stringify(cbm_asignaturas),
-//     },
-//     success: function (data) {
-//       // swal("Ingresado!", "Datos ingresados correctamente!", "success");
-//     //  console.log("equivalencia");
-//     },
-//   });
-// }
-// //las equivalencias de la asignatura
-// function insertarRequisitos() {
-//   var cbm_asignaturas_requisito = $("#cbm_asignaturas_requisito").val();
+ // console.log(cbm_asignaturas);
+  $.ajax({
+    type: "POST",
+    url: "../Controlador/equivalencia_crear_asignatura_controlador.php",
+    //  data: { array: id_area}, //capturo array
+    data: {
+      array: JSON.stringify(cbm_asignaturas),
+    },
+    success: function (data) {
+      // swal("Ingresado!", "Datos ingresados correctamente!", "success");
+    //  console.log("equivalencia");
+    },
+  });
+}
+//las equivalencias de la asignatura
+function insertarRequisitos() {
+  var cbm_asignaturas_requisito = $("#cbm_asignaturas_requisito").val();
 
-// //  console.log(cbm_asignaturas);
-//   $.ajax({
-//     type: "POST",
-//     url: "../Controlador/requisito_asignatura_plan_controlador.php",
-//     //  data: { array: id_area}, //capturo array
-//     data: {
-//       array1: JSON.stringify(cbm_asignaturas_requisito),
-//     },
-//     success: function (data) {
-//       // swal("Ingresado!", "Datos ingresados correctamente!", "success");
-//     //  console.log("requisito");
-//     },
-//   });
-// }
+//  console.log(cbm_asignaturas);
+  $.ajax({
+    type: "POST",
+    url: "../Controlador/requisito_crear_asignatura_controlador.php",
+    //  data: { array: id_area}, //capturo array
+    data: {
+      array1: JSON.stringify(cbm_asignaturas_requisito),
+    },
+    success: function (data) {
+      // swal("Ingresado!", "Datos ingresados correctamente!", "success");
+    //  console.log("requisito");
+    },
+  });
+}
 
 //el documento de la asignatura silabo
 function RegistrarSilabo() {
@@ -297,8 +297,8 @@ $("#guardar_asig").click(function () {
 
                  function (e) {
                    RegistrarSilabo();
-                  //  insertarRequisitos();
-                  //  insertarEquivalencias();
+                   insertarRequisitos();
+                   insertarEquivalencias();
                  }
                );
                swal({
