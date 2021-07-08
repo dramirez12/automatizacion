@@ -31,7 +31,7 @@ $(document).ready(function () {
         var fecha_final_prac = $("#fecha_finalizacion").val();
         var horario_incio_prac = $("#horario_incio").val();
         var horario_fin_prac = $("#horario_fin").val();
-        var dias_prac = $("#dias").val();
+        var dias_prac = $("#dias_practica").val();
         $.ajax({
             url: "../Controlador/aprobar_practica_controlador.php",
             type: "POST",
