@@ -375,13 +375,16 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                         <center> <h5>Días de Trabajo</h5></center>
                           <select class="form-control"name="dias" id="dias">
                           <option value="">Seleccione una opción :</option>
-                          <option>Lu-Ju</option>
-                          <option>Lu-Vi</option>
-                          <option>Lu-Sa</option>
+                          <option value="4">Lu-Ju</option>
+                          <option value="5">Lu-Vi</option>
+                          <option value="5.5">Lu-Sa</option>
                           </select>
                           <br>
                   </div>
             </div>
+
+            <input type="text" name="dias_practica" id="dias_practica" class="form-control">
+            
             <div class="col-sm-4">
                 <div class="form-group">
                           <center> <h5>Horario de Trabajo</h5></center>
