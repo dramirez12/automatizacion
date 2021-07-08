@@ -7,9 +7,8 @@ $(document).ready(function () {
             type: "POST",
             url: url,
             data: $("#formulario").serialize(),
-            success: function (rsp) {
-                // $("#fecha_finalizacion").val(rsp);
-                $("#fecha_finalizacion").html(rsp).fadeIn();
+            success: function (data){
+                $("#fecha_finalizacion").val(data);
 
             }
         });
