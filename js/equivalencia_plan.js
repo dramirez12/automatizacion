@@ -107,7 +107,7 @@ $(document).ready(function () {
         function (e) {}
       );
 
-      swal("Buen trabajo!", "¡ Se eliminó la equivalencia!", "success");
+      /* swal("Buen trabajo!", "¡ Se eliminó la equivalencia!", "success"); */
     }
   }
 
@@ -200,6 +200,17 @@ function actualizar_tabla() {
 function saveAll3() {
   var id_asignatura1_ = id_asignatura1.value;
   var equivalencia1_ = asignatura1.value;
+  var select = $("#cbm_plan1").val();
+  console.log(select);
+  if (select==0) {
+
+    swal(
+      "Alerta!",
+      "¡Seleccione una opcion!",
+      "warning"
+    );
+   
+  }else{
 
   $.post(
     "../Controlador/equivalencia_plan_controlador.php?op=existe_equivalencias",
@@ -237,6 +248,7 @@ function saveAll3() {
       }
     }
   );
+}
 }
 function insert_equivalencias() {
   var id_asignatura = document.getElementById("txt_id_asignatura1");

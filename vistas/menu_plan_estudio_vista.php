@@ -191,7 +191,7 @@ if (permiso_ver('112') == '1') {
                         <div class="col-12 col-sm-6 col-md-4">
                             <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h4>Comparar Planes </h4>
+                                    <h4>Tabla de Equivalencias </h4>
                                     <p><?php echo $_SESSION['comparar_plan_vista']; ?></p>
                                 </div>
                                 <div class="icon">

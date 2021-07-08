@@ -63,7 +63,7 @@ function Tabla3cargar_plan(nombre_, codigo) {
       { data: "asig_vigente" },
       { data: "codigo_asig" },
       { data: "uv" },
-      { data: "requisito" },
+      { data: "requisitos" },
     ],
 
     language: idioma_espanol,
@@ -180,7 +180,7 @@ function Tabla2cargar_plan() {
       { data: "asig_vigente" },
       { data: "codigo_asig" },
       { data: "uv" },
-      { data: "requisito" },
+      { data: "requisitos" },
     ],
 
     language: idioma_espanol,
@@ -290,7 +290,7 @@ table3 = $("#tabla4_historial_plan").DataTable({
     { data: "asig_vigente" },
     { data: "codigo_asig" },
     { data: "uv" },
-    { data: "requisito" },
+    { data: "requisitos" },
   ],
 
   language: idioma_espanol,

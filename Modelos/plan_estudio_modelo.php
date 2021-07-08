@@ -384,6 +384,13 @@ class modelo_plan{
           return 0;
         }
       }
+      function eliminar_requisitos($eliminar_requisito)
+  {
+    global $instancia_conexion;
+    $consulta = $instancia_conexion->ejecutarConsulta("DELETE FROM tbl_requisito_asignatura WHERE id_requisito_asig='$eliminar_requisito';");
+
+    return $consulta;
+  }
 }
 
 

@@ -100,21 +100,21 @@ $(document).ready(function () {
     var confirmLeave = confirm("¿Desea eliminar éste requisito?");
     if (confirmLeave == true) {
       var id = $(this).attr("id");
-      var eliminar_equivalencia = document.getElementById("tel" + id).value;
-      console.log(eliminar_equivalencia);
+      var eliminar_requisito = document.getElementById("tel" + id).value;
+      console.log(eliminar_requisito);
       $("#row" + id).remove();
       console.log(id);
       $.post(
-        "../Controlador/requisito_plan_controlador.php?op=eliminar_equivalencia",
-        { eliminar_equivalencia: eliminar_equivalencia },
+        "../Controlador/requisito_plan_controlador.php?op=eliminar_requisito",
+        { eliminar_requisito: eliminar_requisito },
         function (e) {}
       );
 
-      swal(
+      /* swal(
         "Buen trabajo!",
-        "¡ Se eliminó la equivalencia!",
+        "¡Se eliminó el requisito!",
         "success"
-      );
+      ); */
     }
   }
 
@@ -207,7 +207,17 @@ function actualizar_tabla() {
 function saveAll3() {
   var id_asignatura1_ = id_asignatura1.value;
   var equivalencia1_ = asignatura1.value;
+  var select = $("#cbm_plan1").val();
+  console.log(select);
+  if (select==0) {
 
+    swal(
+      "Alerta!",
+      "¡Seleccione una opcion!",
+      "warning"
+    );
+   
+  }else{
   $.post(
     "../Controlador/requisito_plan_controlador.php?op=existe_requisito",
     { id_asignatura: id_asignatura1_, id_equivalencia: equivalencia1_ },
@@ -218,6 +228,7 @@ function saveAll3() {
       /* 	$("#id").val(data.suma);
 			var id=$("#id").val();
 			console.log(id); */
+  
 
       if (id_asignatura1_ == equivalencia1_ ) {
 				swal({
@@ -243,9 +254,12 @@ function saveAll3() {
         });
         document.getElementById("cbm_asignaturas").value = "";
         $("#ModalTask2").modal("hide");
-      }
-    }
+      } 
+    } 
+    
+
   );
+}
 }
 function insert_requisitos() {
   var id_asignatura = document.getElementById("txt_id_asignatura1");

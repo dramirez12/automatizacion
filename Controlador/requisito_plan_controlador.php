@@ -7,7 +7,7 @@ $id_asignatura = isset($_POST["id_asignatura"]) ? limpiarCadena1($_POST["id_asig
 $id_equivalencia = isset($_POST["id_equivalencia"]) ? limpiarCadena1($_POST["id_equivalencia"]) : "";
 
 // eliminar equivalencia
-$eliminar_equivalencia = isset($_POST["eliminar_equivalencia"]) ? limpiarCadena1($_POST["eliminar_equivalencia"]) : "";
+$eliminar_requisito = isset($_POST["eliminar_requisito"]) ? limpiarCadena1($_POST["eliminar_requisito"]) : "";
 
 $instancia_modelo = new modelo_plan();
 switch ($_GET["op"]) {
@@ -30,10 +30,10 @@ switch ($_GET["op"]) {
         echo json_encode($rspta);
 
         break;
-    case 'eliminar_equivalencia':
+    case 'eliminar_requisito':
 
 
-        $rspta = $instancia_modelo->eliminar_equivalencias($eliminar_equivalencia);
+        $rspta = $instancia_modelo->eliminar_requisitos($eliminar_requisito);
 
         break;
 }

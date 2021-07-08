@@ -73,7 +73,7 @@ ob_end_flush();
 
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Comparar Plan de Estudio</h1>
+                            <h1>Tabla de Equivalencias</h1>
                         </div>
 
 
