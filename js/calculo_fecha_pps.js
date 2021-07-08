@@ -54,7 +54,7 @@ $(document).ready(function () {
                     "Datos almacenados correctamente!",
                     "success"
                 );
-                
+                location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
 
             } else {
                 swal(
@@ -62,7 +62,7 @@ $(document).ready(function () {
                     "No se pudo completar la aprobacion de PPS",
                     "warning"
                 );
-                   
+                location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
             }
         });
     });
