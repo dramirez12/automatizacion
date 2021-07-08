@@ -3,7 +3,6 @@
 session_start();
 require_once ("../Modelos/calculo_fecha_pps_modelos.php");
 
-$Id_objeto = 46;
 
 
 $cuenta_estud=$_POST['cuenta_estud'];
