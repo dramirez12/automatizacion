@@ -253,8 +253,8 @@ ob_end_flush();
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Nuevo requisito</h5>
-                                        <button class="close" data-dismiss="modal">
-                                            &times;
+                                        <button class="close" data-dismiss="modal" onclick="cancelar()">
+                                            &times; 
                                         </button>
                                     </div>
                                     <div class="modal-body">
@@ -292,7 +292,7 @@ ob_end_flush();
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-primary" id="guardar_nueva_requi" name="guardar_nueva_requi" <?php echo $_SESSION['btn_guardar_nuevo_requisito']; ?> >Guardar</button>
-                                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-secondary" data-dismiss="modal" onclick="cancelar()">Close</button>
                                     </div>
                                 </div>
                             </div>

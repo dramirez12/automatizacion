@@ -432,7 +432,8 @@ $("#guardar_nueva_equi").click(function () {
                  "datos insertados correctamente!",
                  "success"
                );
-                $("#modal_nueva_equi").modal("hide");
+               $("#modal_nueva_equi").modal("hide");
+               cancelar();
                //  document.getElementById("txt_registro").value = "";
                table.ajax.reload();
              } else {

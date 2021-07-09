@@ -374,46 +374,39 @@ $("#cbm_plan_crear").change(function () {
 });
 
 //las equivalencias de la asignatura
-function insertarRequisitos() {
-  var cbm_asignaturas = $("#cbm_asignaturas_requisito").val();
-  var id_asignatura = $("#cbm_asignaturas_vigentes").val();
+// function insertarRequisitos() {
+//   var cbm_asignaturas = $("#cbm_asignaturas_requisito").val();
+//   var id_asignatura = $("#cbm_asignaturas_vigentes").val();
 
-  // console.log(id_asignatura);
-  // console.log(cbm_asignaturas);
-  $.ajax({
-    type: "POST",
-    url: "../Controlador/requisito_asignatura_plan_controlador.php",
-    //  data: { array: id_area}, //capturo array
-    data: {
-      array: JSON.stringify(cbm_asignaturas),
-      Id_asignatura: id_asignatura,
-    },
-    success: function (data) {
-      //  swal("Bien!", "Datos ingresados correctamente!", "success");
-      // console.log("equivalencia");
-      cerrar();
-    },
-  });
+//   // console.log(id_asignatura);
+//   // console.log(cbm_asignaturas);
+//   $.ajax({
+//     type: "POST",
+//     url: "../Controlador/requisito_asignatura_plan_controlador.php",
+//     //  data: { array: id_area}, //capturo array
+//     data: {
+//       array: JSON.stringify(cbm_asignaturas),
+//       Id_asignatura: id_asignatura,
+//     },
+//     success: function (data) {
+//       //  swal("Bien!", "Datos ingresados correctamente!", "success");
+//       // console.log("equivalencia");
+//       cerrar();
+//     },
+//   });
 
-  //table.ajax.reload();
-}
+//   //table.ajax.reload();
+// }
 
 
-function cerrar() {
-  swal("Bien!", "Datos ingresados correctamente!", "success");
+// function cerrar() {
+//   swal("Bien!", "Datos ingresados correctamente!", "success");
 
-  $("#modal_nueva_requi").modal("hide");
-  table.ajax.reload();
-  cancelar();
+//   $("#modal_nueva_requi").modal("hide");
+//   table.ajax.reload();
+//   cancelar();
  
-}
-function cancelar() {
-   document.getElementById("cbm_asignaturas_vigentes").value = "";
-  document.getElementById("cbm_asignaturas_requisito").value = "";
-  document.getElementById("cbm_plan_crear").value = "";
-  
-
-}
+// }
 
 // $("#refres").click(function () {
 //   table.ajax.reload();
@@ -455,6 +448,7 @@ $("#guardar_nueva_requi").click(function () {
                 "success"
               );
               $("#modal_nueva_requi").modal("hide");
+              cancelar();
               //  document.getElementById("txt_registro").value = "";
               table.ajax.reload();
             } else {
