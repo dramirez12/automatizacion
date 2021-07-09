@@ -467,3 +467,8 @@ $("#guardar_nueva_requi").click(function () {
     );
   }
 });
+function cancelar() {
+  document.getElementById("cbm_asignaturas_vigentes").value = "";
+  document.getElementById("cbm_asignaturas_requisito").value = "";
+  document.getElementById("cbm_plan_crear").value = "";
+}

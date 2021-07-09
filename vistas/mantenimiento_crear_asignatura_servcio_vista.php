@@ -45,11 +45,11 @@ if ($visualizacion == 0) {
 
 
 
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //     $_SESSION['btn_crear_asignatura'] = "";
-    // } else {
-    //     $_SESSION['btn_crear_asignatura'] = "disabled";
-    // }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_crear_asignatura_servicio'] = "";
+    } else {
+        $_SESSION['btn_crear_asignatura_servicio'] = "disabled";
+    }
 }
 
 
@@ -115,7 +115,110 @@ ob_end_flush();
                     </div>
 
                     <div class="card-body" style="display: block;">
-                        
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label>Plan que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan">
+                                        </select></td>
+                                    <input class="form-control" type="text" id="txt_uv_plan" name="txt_uv_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="num_clases_plan" name="num_clases_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="suma_clases_plan" name="suma_clases_plan" readonly hidden>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label>Periodo que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_periodo" id="cbm_periodo">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label> Área que pertenece:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+
+                                    <label>Código</label>
+
+                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required style="text-transform: uppercase">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+
+                                    <label>Nombre de Asignatura</label>
+
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_asignatura');" onkeypress="return sololetras(event)">
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="form-group">
+
+                                    <label>UV</label>
+
+                                    <input class="form-control" type="text" id="txt_uv" name="txt_uv" maxlength="45" required onkeypress="return solonumeros(event)">
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <label>Reposición</label>
+                                <td><select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
+                                        <option value="0">SELECCIONAR</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select></td>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Suficiencia</label>
+                                <td><select class="form-control" style="width: 100%;" name="cbm_suficiencia" id="cbm_suficiencia">
+                                        <option value="0">SELECCIONAR</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select></td>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label>Sílabo</label>
+
+                                    <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required accept="application/pdf" onchange="Validar();">
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="container-fluid h-100">
+                            <div class="row w-100 align-items-center">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary" id="guardar_asig_servicio" <?php echo $_SESSION['btn_crear_asignatura_servicio']; ?>>Guardar </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -126,7 +229,8 @@ ob_end_flush();
 
     </div>
 
-
+    <script type="text/javascript" src="../js/mantenimiento_asignatura_crear.js"></script>
+    <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 
 </body>
 

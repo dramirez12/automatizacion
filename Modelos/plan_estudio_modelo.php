@@ -434,8 +434,19 @@ class modelo_plan{
             return 0;
         }
     }
-   
 
+    function listar_asignaturas_vigentes_servicio()
+    {
+        global $instancia_conexion;
+        $sql = " call sel_asignaturas_vigentes_servicio()";
+        $arreglo = array();
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][] = $consulta_VU;
+            }
+            return $arreglo;
+        }
+    }
 }
 
 

@@ -495,3 +495,82 @@ function Act_asig_no_nombre(
     }
   );
 }
+
+//asignatura de servicio
+function TablaManteniAsignaturaServicio() {
+  table = $("#tabla_asignatura_servicio").DataTable({
+    paging: true,
+    lengthChange: true,
+    ordering: true,
+    info: true,
+    autoWidth: true,
+    responsive: true,
+    // LengthChange: false,
+    searching: { regex: true },
+    lengthMenu: [
+      [10, 25, 50, 100, -1],
+      [10, 25, 50, 100, "All"],
+    ],
+    sortable: false,
+    pageLength: 15,
+    destroy: true,
+    async: false,
+    processing: true,
+    ajax: {
+      url: "../Controlador/tabla_mantenimiento_asignatura_servicio_controlador.php",
+      type: "POST",
+    },
+    columns: [
+      {
+        defaultContent:
+          "<button style='font-size:13px;' type='button' class='editar1 btn btn-primary '><i class='fas fa-edit'></i></button>",
+      },
+
+      { data: "nombre_asig" },
+      { data: "codigo" },
+      { data: "uv" },
+      { data: "nombre_plan" },
+      { data: "nombre_area" },
+      //{ data: "tipo_asignatura" },
+      { data: "nombre_periodo" },
+      //{ data: "nombre_plan" },
+      { data: "suficiencia" },
+      { data: "reposicion" },
+      { data: "silabo" },
+    ],
+
+    language: idioma_espanol,
+    select: true,
+  });
+}
+
+//boton editar de la tabla de asignatura servicio
+$("#tabla_asignatura_servicio").on("click", ".editar1", function () {
+  var data = table.row($(this).parents("tr")).data();
+  if (table.row(this).child.isShown()) {
+    var data = table.row(this).data();
+  }
+
+  $("#modal_editar").modal({ backdrop: "static", keyboard: false });
+  $("#modal_editar").modal("show");
+
+  $("#id_asig").val(data.id_asignatura);
+  $("#txt_codigo").val(data.codigo);
+  $("#txt_codigo1").val(data.codigo);
+  $("#txt_nombre").val(data.nombre_asig);
+  $("#txt_nombre1").val(data.nombre_asig);
+  $("#txt_uv").val(data.uv);
+  $("#txt_uv1").val(data.uv);
+  $("#cbm_plan").val(data.id_plan_estudio).trigger("change");
+  $("#cbm_plan1").val(data.id_plan_estudio);
+  $("#cbm_periodo").val(data.id_periodo_plan).trigger("change");
+  $("#cbm_periodo1").val(data.id_periodo_plan);
+  $("#cbm_area").val(data.id_area).trigger("change");
+  $("#cbm_area1").val(data.id_area);
+  $("#cbm_suficiencia").val(data.suficiencia).trigger("change");
+  $("#cbm_suficiencia1").val(data.suficiencia);
+  $("#cbm_reposicion").val(data.reposicion).trigger("change");
+  $("#cbm_reposicion1").val(data.reposicion);
+
+  //  $("#txt_silabo").val(data.silabo);
+});

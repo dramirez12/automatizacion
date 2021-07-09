@@ -334,3 +334,90 @@ function mensaje() {
 		swal('Buen trabajo!', 'Los datos se insertaron correctamente!', 'success');
 	 }, 12000);
 }
+ 
+//insertar asignatura de servicio
+$("#guardar_asig_servicio").click(function () {
+  var cbm_plan = $("#cbm_plan").val();
+  var cbm_periodo = $("#cbm_periodo").val();
+  var cbm_area = $("#cbm_area").val();
+  var txt_uv = $("#txt_uv").val();
+  var txt_codigo_asignatura = $("#txt_codigo_asignatura").val();
+  var txt_nombre_asignatura = $("#txt_nombre_asignatura").val();
+  var cbm_reposicion = $("#cbm_reposicion").val();
+  var cbm_suficiencia = $("#cbm_suficiencia").val();
+  var txt_silabo = $("#txt_silabo").val();
+  var estado = 0;
+  var tipo_asignatura = 2;
+
+  if (
+    cbm_plan == null ||
+    txt_uv.length == 0 ||
+    cbm_periodo == null ||
+    txt_codigo_asignatura.length == 0 ||
+    cbm_area == null ||
+    txt_nombre_asignatura.length == 0 ||
+    cbm_reposicion == null ||
+    txt_silabo.length == 0 ||
+    cbm_suficiencia == null
+  ) {
+    alert("no se permiten campos vacios");
+  } else if (
+    cbm_plan == 0 ||
+    cbm_periodo == 0 ||
+    cbm_area == 0 ||
+    cbm_reposicion == 0 ||
+    cbm_suficiencia == 0
+  ) {
+    alert("seleccione una opcion valida");
+  } else {
+    var clases_plan = $("suma_clases_plan").val();
+    var num_clases_plan = $("num_clases_plan").val();
+
+    if (clases_plan + 1 > num_clases_plan) {
+      alert("La asignatura excede el numero de clases asignadas al plan!");
+    } else {
+      $.post(
+        "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
+        { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
+        function (data, status) {
+          data = JSON.parse(data);
+
+          if (data.suma > 0) {
+            alert("Ya existe una asignatura con ese nombre!");
+          } else {
+            $.post(
+              "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+              {
+                id_plan_estudio: cbm_plan,
+                id_periodo_plan: cbm_periodo,
+                id_area: cbm_area,
+                uv: txt_uv,
+                codigo: txt_codigo_asignatura,
+                asignatura: txt_nombre_asignatura,
+                reposicion: cbm_reposicion,
+                suficiencia: cbm_suficiencia,
+                estado: estado,
+                id_tipo_asignatura: tipo_asignatura,
+              },
+
+              function (e) {
+                RegistrarSilabo();
+                // insertarRequisitos();
+                // insertarEquivalencias();
+              }
+            );
+            swal({
+              title: "alerta",
+              text: "Por favor espere un momento",
+              type: "warning",
+              showConfirmButton: false,
+              timer: 11000,
+            });
+            refrescar(14000);
+            mensaje();
+          }
+        }
+      );
+    }
+  }
+});
