@@ -67,7 +67,7 @@ $resultado = mysqli_query($connection, $sqltabla);
     $pdf->multicell(170,9,utf8_decode('Estimado '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
-	$pdf->multicell(170,5,utf8_decode('Por este medio me permito presentar a : '.$row['nombre'].'  con número de cuenta '.$row['valor'].'  estudiante de la carrera de Informática Administrativa, quien desea realizar la práctica profesional en tan prestigiosa empresa. '),0);
+	$pdf->multicell(170,5,utf8_decode('Por este medio me permito presentar a : '.$row['nombre'].' con número de cuenta '.$row['valor'].' estudiante de la carrera de Informática Administrativa, quien desea realizar la práctica profesional en tan prestigiosa empresa. '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
 	$pdf->multicell(170,5,utf8_decode('La Práctica Profesional es una actividad formativa del alumno, consistente en la asunción supervisada y gradual, del rol profesional, a través de su inserción a una realidad o ambiente laboral específico, al mismo tiempo se convierte en un aporte desde su capacidad, habilidad y conocimientos adquiridos, cuya meta es producir algún producto o aporte significativo dentro de la institución. '),0);
