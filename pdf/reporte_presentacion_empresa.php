@@ -54,8 +54,8 @@ $resultado = mysqli_query($connection, $sqltabla);
         $pdf->ln(5);
     $pdf->ln(5);
 	$pdf->Cell(100,5,utf8_decode(' '.$row['titulo_jefe_inmediato'].'.'.' '.$row['jefe_inmediato'].' '),0,1,'C');
-	$pdf->Cell(100,5,utf8_decode(' '.'Cargo: '.$row['cargo_jefe_inmediato'].'  '),0,1,'L');
-	$pdf->Cell(150,5,utf8_decode(' '.'Empresa: '.$row['nombre_empresa'].' '),0,1,'L');
+	$pdf->Cell(100,5,utf8_decode(' '.'Cargo: '.$row['cargo_jefe_inmediato'].'  '),0,1,'C');
+	$pdf->Cell(150,5,utf8_decode(' '.'Empresa: '.$row['nombre_empresa'].' '),0,1,'C');
 	$pdf->ln(5);
 
 
