@@ -324,7 +324,7 @@ ob_end_flush();
                    <div class="col-sm-6">
                   <div class="form-group">
                   <label>Teléfono  </label>
-                    <input class="form-control" type="text" id="txt_telefono_jefe_inmediato" onkeypress="return Numeros(event)" required name="txt_telefono_jefe_inmediato" value="<?php
+                    <input class="form-control" type="text" id="txt_telefono_jefe_inmediato" maxlength="8" onkeypress="return Numeros(event)" required name="txt_telefono_jefe_inmediato" value="<?php
                     if(isset($_SESSION['Modificar_empresa']) and $_SESSION['Modificar_empresa']=="SI")
                     {
                       echo $_SESSION['telefono'];
