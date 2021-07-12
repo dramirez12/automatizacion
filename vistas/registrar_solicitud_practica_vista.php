@@ -196,14 +196,14 @@ ob_end_flush();
                  <div class="col-sm-4">
                   <div class="form-group">
                   <label>Teléfono Fijo</label>
-                    <input class="form-control" type="text" id="txt_telefono_solicitud" name="txt_telefono_solicitud"  value="" data-inputmask='"mask": " 9999-9999"' data-mask  > 
+                    <input class="form-control" type="text" id="txt_telefono_solicitud" name="txt_telefono_solicitud" value="" required="" maxlength="8" pattern="[2]{2}[0-9]{6}" onkeypress="return Numeros(event)"> 
                 </div>
                  </div>
 
                  <div class="col-sm-4">
                   <div class="form-group">
                   <label>Celular</label>
-                    <input class="form-control" type="text" id="txt_celular_solicitud" name="txt_celular_solicitud"  value="" data-inputmask='"mask": " 9999-9999"' data-mask >
+                    <input class="form-control" type="text" id="txt_celular_solicitud" name="txt_celular_solicitud"  value="" required="" maxlength="8" pattern="[3|8|9|2][0-9]{7}}" onkeypress="return Numeros(event)">
                 </div>
                  </div>
 
