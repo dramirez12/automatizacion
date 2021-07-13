@@ -399,51 +399,56 @@ function cancelar() {
 $("#guardar_nueva_equi").click(function () {
   var cbm_asignaturas = $("#cbm_asignaturas_vigentes").val();
   var cbm_equivalencias = $("#cbm_asignaturas_equivalencia").val();
+  var plan = $("#cbm_plan_crear").val();
 
-  if (cbm_asignaturas == null || cbm_equivalencias.length == 0) {
-    alert("no se permiten campos vacios");
-  } else if (cbm_asignaturas == 0) {
+  if (cbm_asignaturas == null || cbm_equivalencias == null) {
+    alert("Seleccione los campos correctamente");
+  } else if (cbm_asignaturas == 0 ||plan==0) {
     alert("seleccione una opcion valida");
   } else {
-    $.post(
-      "../Controlador/plan_estudio_controlador.php?op=consAsigEqui",
-      {
-        Id_asignatura: cbm_asignaturas,
-        id_equivalencias: cbm_equivalencias,
-      },
-      function (data, status) {
-        data = JSON.parse(data);
+    if (cbm_asignaturas==cbm_equivalencias) {
+      
+      alert("la asignatura no puede equivaler a si misma!");
+    } else {
+        $.post(
+          "../Controlador/plan_estudio_controlador.php?op=consAsigEqui",
+          {
+            Id_asignatura: cbm_asignaturas,
+            id_equivalencias: cbm_equivalencias,
+          },
+          function (data, status) {
+            data = JSON.parse(data);
 
-        if (data.suma > 0) {
-          alert("La asignatura ya cuenta con esa equivalencia!");
-        } else {
-         
-           $.ajax({
-             url: "../Controlador/equivalencia_asignatura_plan_controlador.php",
-             type: "POST",
-             data: {
-               Id_asignatura: cbm_asignaturas,
-               id_equivalencias: cbm_equivalencias,
-             },
-           }).done(function (resp) {
-             if (resp > 0) {
-               swal(
-                 "Buen trabajo!",
-                 "datos insertados correctamente!",
-                 "success"
-               );
-               $("#modal_nueva_equi").modal("hide");
-               cancelar();
-               //  document.getElementById("txt_registro").value = "";
-               table.ajax.reload();
-             } else {
-               swal("Alerta!", "No se pudo completar", "warning");
-               //document.getElementById("txt_registro").value = "";
-             }
-           });
-
-        }
-      }
-    );
+            if (data.suma > 0) {
+              alert("La asignatura ya cuenta con esa equivalencia!");
+            } else {
+              $.ajax({
+                url: "../Controlador/equivalencia_asignatura_plan_controlador.php",
+                type: "POST",
+                data: {
+                  Id_asignatura: cbm_asignaturas,
+                  id_equivalencias: cbm_equivalencias,
+                },
+              }).done(function (resp) {
+                if (resp > 0) {
+                  swal(
+                    "Buen trabajo!",
+                    "datos insertados correctamente!",
+                    "success"
+                  );
+                  $("#modal_nueva_equi").modal("hide");
+                  cancelar();
+                  //  document.getElementById("txt_registro").value = "";
+                  table.ajax.reload();
+                } else {
+                  swal("Alerta!", "No se pudo completar", "warning");
+                  //document.getElementById("txt_registro").value = "";
+                }
+              });
+            }
+          }
+        );
+    }
+  
   }
 });
