@@ -209,17 +209,78 @@ ob_end_flush();
 
                         </div>
 
-                        <div class="container-fluid h-100">
-                            <div class="row w-100 align-items-center">
-                                <div class="col text-center">
-                                    <button class="btn btn-primary" id="guardar_asig_servicio" <?php echo $_SESSION['btn_crear_asignatura_servicio']; ?>>Guardar </button>
-                                </div>
-                            </div>
 
+
+                    </div>
+
+                </div>
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">ASIGNAR EQUIVALENCIA Y REQUISITO</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
 
                         </div>
 
                     </div>
+
+                    <div class="card-body">
+
+                        <div class=" row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label>Plan para equivalencia:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan1" id="cbm_plan1">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Equivalencia</label>
+                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label>Plan para requisito:</label>
+                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan_requisito" id="cbm_plan_requisito">
+                                        </select></td>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Requisito</label>
+                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_requisito">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="container-fluid h-100">
+                                <div class="row w-100 align-items-center">
+                                    <div class="col text-center">
+                                        <button class="btn btn-primary" id="guardar_asig_servicio" <?php echo $_SESSION['btn_crear_asignatura_servicio']; ?>>Guardar </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
                 </div>
             </div>
 
@@ -233,6 +294,14 @@ ob_end_flush();
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 
 </body>
-
+<script>
+    $(document).ready(function() {
+        $(".mul-select").select2({
+            placeholder: "SELECCIONE ASIGNATURAS", //placeholder
+            tags: true,
+            tokenSeparators: ['/', ',', ';', " "]
+        });
+    })
+</script>
 
 </html>
