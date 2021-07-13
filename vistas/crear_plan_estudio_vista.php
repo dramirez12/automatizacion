@@ -8,6 +8,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 require_once('../clases/conexion_mantenimientos.php');
+require_once('../clases/Conexion.php');
 //$registro = controlador_registro_docente::ctrRegistro();
 $Id_objeto = 96;
 
@@ -45,8 +46,24 @@ if ($visualizacion == 0) {
     }
 }
 
+
+
+//parametro min de creditos
+$sql3 = $mysqli->prepare("SELECT Valor FROM tbl_parametros where Parametro = 'CREDITOS_PLAN_MIN' ");
+$sql3->execute();
+$resultado3 = $sql3->get_result();
+$row3 = $resultado3->fetch_array(MYSQLI_ASSOC);
+
+//parametros 
+
+$sql2 = $mysqli->prepare("SELECT Valor FROM tbl_parametros where Parametro = 'CREDITOS_PLAN_MAX' ");
+$sql2->execute();
+$resultado2 = $sql2->get_result();
+$row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
+
 $nombre = $_SESSION['usuario'];
 ob_end_flush();
+
 
 
 ?>
@@ -103,6 +120,8 @@ ob_end_flush();
 
                 <input type="text" id="id_sesion" name="id_sesion" value="<?php echo $nombre; ?>" hidden readonly>
 
+                <input type="text" id="creditos_max" name="creditos_max" value="<?php echo $row2['Valor'] ?>" readonly hidden>
+                <input type="text" id="creditos_min" name="creditos_min" value="<?php echo $row3['Valor'] ?>" readonly hidden>
 
                 <!-- Main content -->
                 <section class="content">
@@ -171,7 +190,7 @@ ob_end_flush();
 
                                             <label>Nombre de Plan</label>
 
-                                            <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="25" value="" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre');" onkeypress="return sololetras(event)">
+                                            <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="200" value="" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre');" onkeypress="return sololetras(event)">
 
 
                                         </div>
@@ -255,7 +274,11 @@ ob_end_flush();
             <script type="text/javascript" src="../js/plan.js"></script>
             <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 
+
+
+
 </body>
+
 
 
 
