@@ -16,43 +16,42 @@ $("#guardar").click(function () {
    
       console.log(cbm_tipo_plan);
       
-    if (
-      cbm_tipo_plan == null ||
-      txt_num_acta.length == 0 ||
-      txt_nombre.length == 0 ||
-      txt_codigo_plan.length == 0 ||
-      txt_num_clases.length == 0 ||
-      txt_creditos_plan.length == 0 ||
-      fecha_acta.length == 0 ||
-      fecha_emision.length == 0 ||
-      fechacreacion.length==0
-    ) {
-      alert("Llene todos los campos");
-    } else if(cbm_tipo_plan==0) {
-      alert("Seleccione tipo de plan valido")
-    } else {
+  if (
+    cbm_tipo_plan == null ||
+    txt_num_acta.length == 0 ||
+    txt_nombre.length == 0 ||
+    txt_codigo_plan.length == 0 ||
+    txt_num_clases.length == 0 ||
+    txt_creditos_plan.length == 0 ||
+    fecha_acta.length == 0 ||
+    fecha_emision.length == 0 ||
+    fechacreacion.length == 0
+  ) {
+    alert("Llene todos los campos");
+  } else if (cbm_tipo_plan == 0) {
+    alert("Seleccione tipo de plan valido")
+  } else {
         
     
-      if (txt_creditos_plan<credito_min ||txt_creditos_plan>credito_max) {
-        alert("Los créditos del plan no puede ser menor o sobrepasar lo establecido para una licenciatura");
-        
-        //document.getElementById("txt_creditos_plan").value = "";
-      } else {
-         insertar(
-           cbm_tipo_plan,
-           txt_num_acta,
-           fecha_acta,
-           fecha_emision,
-           txt_nombre,
-           txt_codigo_plan,
-           txt_num_clases,
-           txt_creditos_plan,
-           fechacreacion,
-           vigencia,
-           usuario,
-           activo
-         );
-      }
+    if (txt_creditos_plan < credito_min||txt_creditos_plan > credito_max) {
+      alert("Los créditos del plan no puede ser menor o exceder lo establecido para una licenciatura");
+  
+    } else {
+      insertar(
+        cbm_tipo_plan,
+        txt_num_acta,
+        fecha_acta,
+        fecha_emision,
+        txt_nombre,
+        txt_codigo_plan,
+        txt_num_clases,
+        txt_creditos_plan,
+        fechacreacion,
+        vigencia,
+        usuario,
+        activo
+      );
+    }
 
        
 
@@ -179,6 +178,3 @@ function limpiarInputs() {
 
 
 //
-window.onload = function () {
-  
-}

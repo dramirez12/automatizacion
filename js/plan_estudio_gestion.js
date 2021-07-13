@@ -314,14 +314,16 @@ $("#guardar").click(function () {
   var txt_codigo_plan = $("#txt_codigo_plan_edita").val();
   var txt_creditos_plan = $("#txt_creditos_plan").val();
 
-  // var txt_nombre2 = $("#txt_nombre_edita2").val();
-  // var txt_num_clases2 = $("#txt_num_clases_edita2").val();
-  // var txt_codigo_plan2 = $("#txt_codigo_plan_edita2").val();
-  // var txt_id_tipo_plan = $("#txt_id_tipo_plan").val();
+  var txt_nombre2 = $("#txt_nombre_edita2").val();
+  var txt_num_clases2 = $("#txt_num_clases_edita2").val();
+  var txt_codigo_plan2 = $("#txt_codigo_plan_edita2").val();
+  var txt_id_tipo_plan = $("#txt_id_tipo_plan").val();
 
   var fecha_modificado = $("#fecha_hoy").val();
   var nombre_usuario = $("#id_sesion").val();
   var id_plan_estudio = $("#id_plan_estudio").val();
+   var credito_min = $("#creditos_min").val();
+   var credito_max = $("#creditos_max").val();
 
   if (
     cbm_tipo_plan == null ||
@@ -342,39 +344,52 @@ $("#guardar").click(function () {
    
 
   } else {
-    if (txt_creditos_plan < 160 || txt_creditos_plan > 210) {
-     
+    if (txt_codigo_plan2!=txt_codigo_plan||txt_nombre!=txt_nombre2 ||txt_num_clases!=txt_num_clases2||txt_id_tipo_plan!=cbm_tipo_plan) {
       
-      swal(
-        "Alerta!",
-        "Los créditos del plan no puede ser menor o sobrepasar lo establecido para una licenciatura",
-        "warning"
-      );
+     swal("Alerta!", "No se han modificado datos", "warning");
+
     } else {
-      $.ajax({
-        url: "../Controlador/modificar_plan_estudio_controlador.php",
-        type: "POST",
-        data: {
-          nombre: txt_nombre,
-          codigo_plan: txt_codigo_plan,
-          num_clases: txt_num_clases,
-          id_tipo_plan: cbm_tipo_plan,
-          fecha_modificacion: fecha_modificado,
-          modificado_por: nombre_usuario,
-          id_plan_estudio: id_plan_estudio,
-          creditos_plan:txt_creditos_plan
-        },
-      }).done(function (resp) {
-        if (resp > 0) {
-          swal("Buen trabajo!", "datos actualizados correctamente!", "success");
-        $("#modal_editar").modal("hide");
-          //  document.getElementById("txt_registro").value = "";
-          table.ajax.reload();
-        } else {
-          swal("Alerta!", "No se pudo completar la actualización", "warning");
-          //document.getElementById("txt_registro").value = "";
-        }
-      });
+       if (txt_creditos_plan < credito_min || txt_creditos_plan > credito_max) {
+         swal(
+           "Alerta!",
+           "Los créditos del plan no puede ser menor o sobrepasar lo establecido para una licenciatura",
+           "warning"
+         );
+       } else {
+         $.ajax({
+           url: "../Controlador/modificar_plan_estudio_controlador.php",
+           type: "POST",
+           data: {
+             nombre: txt_nombre,
+             codigo_plan: txt_codigo_plan,
+             num_clases: txt_num_clases,
+             id_tipo_plan: cbm_tipo_plan,
+             fecha_modificacion: fecha_modificado,
+             modificado_por: nombre_usuario,
+             id_plan_estudio: id_plan_estudio,
+             creditos_plan: txt_creditos_plan,
+           },
+         }).done(function (resp) {
+           if (resp > 0) {
+             swal(
+               "Buen trabajo!",
+               "datos actualizados correctamente!",
+               "success"
+             );
+             $("#modal_editar").modal("hide");
+             //  document.getElementById("txt_registro").value = "";
+             table.ajax.reload();
+           } else {
+             swal(
+               "Alerta!",
+               "No se pudo completar la actualización",
+               "warning"
+             );
+             //document.getElementById("txt_registro").value = "";
+           }
+         });
+       }
     }
+   
   }
 });
