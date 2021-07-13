@@ -472,6 +472,16 @@ function cancelar() {
   document.getElementById("cbm_asignaturas_requisito").value = "";
   document.getElementById("cbm_plan_crear").value = "";
 }
+//
+var boton = document.getElementById("guardar_nueva_equi");
+boton.addEventListener("click", bloquea, false);
+
+function bloquea() {
+  if (boton.disabled == false) {
+    boton.disabled = true;
+
     setTimeout(function () {
+      boton.disabled = false;
+    }, 5000);
   }
 }
