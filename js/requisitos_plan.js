@@ -411,6 +411,8 @@ $("#cbm_plan_crear").change(function () {
 // });
 
 $("#guardar_nueva_requi").click(function () {
+
+  bloquea();
   var cbm_asignaturas = $("#cbm_asignaturas_vigentes").val();
   var cbm_requisito = $("#cbm_asignaturas_requisito").val();
   var plan = $("#cbm_plan_crear").val();
@@ -469,4 +471,7 @@ function cancelar() {
   document.getElementById("cbm_asignaturas_vigentes").value = "";
   document.getElementById("cbm_asignaturas_requisito").value = "";
   document.getElementById("cbm_plan_crear").value = "";
+}
+    setTimeout(function () {
+  }
 }

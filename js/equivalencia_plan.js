@@ -395,6 +395,9 @@ function cancelar() {
 // });
 
 $("#guardar_nueva_equi").click(function () {
+
+  bloquea();
+
   var cbm_asignaturas = $("#cbm_asignaturas_vigentes").val();
   var cbm_equivalencias = $("#cbm_asignaturas_equivalencia").val();
   var plan = $("#cbm_plan_crear").val();
@@ -450,3 +453,17 @@ $("#guardar_nueva_equi").click(function () {
   
   }
 });
+
+//
+var boton = document.getElementById("guardar_nueva_equi");
+boton.addEventListener("click", bloquea, false);
+
+function bloquea() {
+  if (boton.disabled == false) {
+    boton.disabled = true;
+
+    setTimeout(function () {
+      boton.disabled = false;
+    }, 5000);
+  }
+}
