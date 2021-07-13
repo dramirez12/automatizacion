@@ -191,8 +191,8 @@ ob_end_flush();
 
                                             <!--comisiones-->
                                             <div class="card-body">
-                                                <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Equivalencias</button>
-
+<!--                                                 <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Equivalencias</button>
+ -->
                                                 <br>
 
                                                 <div class="card-text">
@@ -225,7 +225,8 @@ ob_end_flush();
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
+                        <!-- modal antiguo equivalencia -->
+                       <!--  <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -259,7 +260,7 @@ ob_end_flush();
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- modal para nueva equivalencia -->
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal_nueva_equi">

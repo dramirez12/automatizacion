@@ -175,8 +175,8 @@ ob_end_flush();
 
                                             <!--comisiones-->
                                             <div class="card-body">
-                                                <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Requisitos</button>
-
+<!--                                                 <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Requisitos</button>
+ -->
                                                 <br>
 
                                                 <div class="card-text">
@@ -209,7 +209,8 @@ ob_end_flush();
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
+                       <!--  modal antiguo requisitos -->
+                      <!--   <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -243,7 +244,7 @@ ob_end_flush();
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
 

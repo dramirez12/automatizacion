@@ -152,7 +152,7 @@ function equivalencias() {
 }
 
 //equivalencias
-var sendData3 = {};
+/* var sendData3 = {};
 var list3 = [];
 var asignatura = document.getElementById("cbm_asignaturas");
 var id_asignatura1 = document.getElementById("txt_id_asignatura1");
@@ -190,14 +190,14 @@ var viewlist3 = () => {
 
     $("#ModalTask2").modal("hide");
   }
-};
+}; */
 function limpiar_arreglo() {
   list3.pop();
 }
 function actualizar_tabla() {
   table.ajax.reload();
 }
-function saveAll3() {
+/* function saveAll3() {
   var id_asignatura1_ = id_asignatura1.value;
   var equivalencia1_ = asignatura1.value;
   var select = $("#cbm_plan1").val();
@@ -210,11 +210,9 @@ function saveAll3() {
       { id_asignatura: id_asignatura1_, id_equivalencia: equivalencia1_ },
 
       function (data, status) {
-        //console.log(data);
+       
         data = JSON.parse(data);
-        /* 	$("#id").val(data.suma);
-			var id=$("#id").val();
-			console.log(id); */
+      
 
         if (id_asignatura1_ == equivalencia1_) {
           swal({
@@ -242,8 +240,8 @@ function saveAll3() {
       }
     );
   }
-}
-function insert_equivalencias() {
+} */
+/* function insert_equivalencias() {
   var id_asignatura = document.getElementById("txt_id_asignatura1");
   var equivalencia1 = document.getElementById("cbm_asignaturas");
   var equivalencia1_ = equivalencia1.value;
@@ -261,10 +259,10 @@ function insert_equivalencias() {
       swal("Buen trabajo!", "¡ Se insertaron nuevas equivalencias!", "success");
       limpiar_arreglo();
       equivalencias();
-      /* tbl_comisiones.reload(); */
+      
     }
   );
-}
+} */
 /* function eliminar() {
   // let i = ContarTel();
   var confirmLeave = confirm(
