@@ -196,7 +196,8 @@ ob_end_flush();
                                                     <th >Asignatura</th>
                                                     <th >Codigo</th> 
                                                     <th >UV</th>
-                                                    <th b>Requisitos</th>
+                                                    <th >Requisitos</th>
+                                                    <th >Silabo</th>
 
                                                 </tr>
                                             </thead>

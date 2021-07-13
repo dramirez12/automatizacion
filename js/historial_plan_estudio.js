@@ -64,6 +64,10 @@ function Tabla3cargar_plan(nombre_, codigo) {
       { data: "codigo_asig" },
       { data: "uv" },
       { data: "requisitos" },
+      {
+        "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>"
+      
+      } 
     ],
 
     language: idioma_espanol,
@@ -291,7 +295,9 @@ table3 = $("#tabla4_historial_plan").DataTable({
     { data: "codigo_asig" },
     { data: "uv" },
     { data: "requisitos" },
+    
   ],
+
 
   language: idioma_espanol,
   select: true,
