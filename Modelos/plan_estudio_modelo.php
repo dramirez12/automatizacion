@@ -54,6 +54,7 @@ class modelo_plan{
             return $arreglo;
         }
     }
+    //selecccionar datos plan en historial
     function historial_plan_estudio_datos()
     {
         global $instancia_conexion;
@@ -66,6 +67,7 @@ class modelo_plan{
             return $arreglo;
         }
     }
+    //buscar el plan en historial 
     function buscar_historial_plan($nombre,$codigo)
     {
         global $instancia_conexion;

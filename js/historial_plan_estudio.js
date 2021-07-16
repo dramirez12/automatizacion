@@ -65,7 +65,7 @@ function Tabla3cargar_plan(nombre_, codigo) {
       { data: "uv" },
       { data: "requisitos" },
       {
-        "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary '><i class='fas fa-edit'></i></button>"
+        "defaultContent": "<button class='editar btn btn-primary ' id='descargar_curriculum' name=''> <a href='' target='_blank' id='curriculum' style='color:white;font-weight: bold;'>Descargar Sílabo</a></button>"
       
       } 
     ],
@@ -75,6 +75,19 @@ function Tabla3cargar_plan(nombre_, codigo) {
   });
  
 }
+
+$("#tabla3_historial_plan").on("click", ".editar", function () {
+  var data = table3.row($(this).parents("tr")).data();
+  if (table3.row(this).child.isShown()) {
+    var data = table3.row(this).data();
+  }
+  $("#curriculum").attr("href", data.silabo);
+  var silabo=$("#curriculum").val();
+  console.log(silabo);
+  
+
+
+});
 //cargar primer tabla
 var table;
 function Tabla1_historial_plan() {
