@@ -146,6 +146,16 @@ $("#cbm_plan").change(function () {
       //   console.log(a);
     }
   );
+  $.post(
+    "../Controlador/plan_estudio_controlador.php?op=contarCreditosPlan",
+    { id_plan_estudio: id_plan },
+    function (data, status) {
+      data = JSON.parse(data);
+      $("#suma_unidades_plan").val(data.suma);
+      // var a = $("#suma_clases_plan").val();
+      //   console.log(a);
+    }
+  );
 });
 
 //validar que solo acepte archivos pdf
@@ -258,62 +268,77 @@ $("#guardar_asig").click(function () {
   ) {
     alert("seleccione una opcion valida");
   } else {
-    var clases_plan = $("suma_clases_plan").val();
-    var num_clases_plan = $("num_clases_plan").val();
+  var clases_plan = $("#suma_clases_plan").val();
+  var num_clases_plan = $("#num_clases_plan").val();
+  var suma_unidades_plan = $("#suma_unidades_plan").val();
+  var txt_uv_plan = $("#txt_uv_plan").val();
 
-    if (clases_plan + 1 > num_clases_plan) {
-      alert("La asignatura excede el numero de clases asignadas al plan!");
-    } else {
-      $.post(
-        "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
-        { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
-        function (data, status) {
-          data = JSON.parse(data);
+  // var suma_unidades_plan = document.getElementById("suma_unidades_plan").value();
+  // var txt_uv_plan = document.getElementById("txt_uv_plan").value();
 
-          if (data.suma > 0) {
-            alert("Ya existe una asignatura con ese nombre!");
-          } else {
-            $.post(
-              "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
-              {
-                id_plan_estudio: cbm_plan,
-                id_periodo_plan: cbm_periodo,
-                id_area: cbm_area,
-                uv: txt_uv,
-                codigo: txt_codigo_asignatura,
-                asignatura: txt_nombre_asignatura,
-                reposicion: cbm_reposicion,
-                suficiencia: cbm_suficiencia,
-                estado: estado,
-                id_tipo_asignatura: tipo_asignatura,
-              },
+  var suma = parseInt(suma_unidades_plan) + parseInt(txt_uv);
 
-              function (e) {
-                RegistrarSilabo();
-                
-                 if ($("#cbm_asignaturas").val().length != 0) {
-                   insertarEquivalencias();
-                 }
-                 if ($("#cbm_asignaturas_requisito").val().length != 0) {
-                   insertarRequisitos();
-                 }
+ // alert(suma);
+
+  if (clases_plan + 1 > num_clases_plan) {
+    alert("La asignatura excede el numero de clases asignadas al plan!");
+  } else if (suma > txt_uv_plan) {
+    alert("La uv de la asignatura excede el numero de unidades para el plan!");
+  } else {
+  //  alert("no exce");
+    $.post(
+      "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
+      { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
+      function (data, status) {
+        data = JSON.parse(data);
+
+        if (data.suma > 0) {
+          alert("Ya existe una asignatura con ese nombre!");
+        } else {
+          $.post(
+            "../Controlador/plan_estudio_controlador.php?op=registrarAsignatura",
+            {
+              id_plan_estudio: cbm_plan,
+              id_periodo_plan: cbm_periodo,
+              id_area: cbm_area,
+              uv: txt_uv,
+              codigo: txt_codigo_asignatura,
+              asignatura: txt_nombre_asignatura,
+              reposicion: cbm_reposicion,
+              suficiencia: cbm_suficiencia,
+              estado: estado,
+              id_tipo_asignatura: tipo_asignatura,
+            },
+
+            function (e) {
+              RegistrarSilabo();
+
+              if ($("#cbm_asignaturas").val().length != 0) {
+                insertarEquivalencias();
               }
-            );
-            swal({
-              title: "alerta",
-              text: "Por favor espere un momento",
-              type: "warning",
-              showConfirmButton: false,
-              timer: 11000,
-            });
-            refrescar(14000);
-            mensaje();
-          }
+              if ($("#cbm_asignaturas_requisito").val().length != 0) {
+                insertarRequisitos();
+              }
+            }
+          );
+          swal({
+            title: "alerta",
+            text: "Por favor espere un momento",
+            type: "warning",
+            showConfirmButton: false,
+            timer: 11000,
+          });
+          refrescar(14000);
+          mensaje();
         }
-      );
+      }
+    );
+      }
     }
   }
-});
+
+)
+// );
 
 //FUNCION PARA ACTUALIZAR PAGINA DESPUES DE 10 SEGUNDOS DE HABER GUARDADO
 function refrescar(tiempo) {
@@ -361,11 +386,22 @@ $("#guardar_asig_servicio").click(function () {
   ) {
     alert("seleccione una opcion valida");
   } else {
-    var clases_plan = $("suma_clases_plan").val();
-    var num_clases_plan = $("num_clases_plan").val();
+    var clases_plan = $("#suma_clases_plan").val();
+    var num_clases_plan = $("#num_clases_plan").val();
+    var suma_unidades_plan = $("#suma_unidades_plan").val();
+    var txt_uv_plan = $("#txt_uv_plan").val();
+
+    // var suma_unidades_plan = document.getElementById("suma_unidades_plan").value();
+    // var txt_uv_plan = document.getElementById("txt_uv_plan").value();
+
+    var suma = parseInt(suma_unidades_plan) + parseInt(txt_uv);
 
     if (clases_plan + 1 > num_clases_plan) {
       alert("La asignatura excede el numero de clases asignadas al plan!");
+
+     } else if (suma > txt_uv_plan) {
+    
+      alert("La uv de la asignatura excede el numero de unidades para el plan!");
     } else {
       $.post(
         "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",

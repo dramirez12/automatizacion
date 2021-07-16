@@ -126,6 +126,7 @@ ob_end_flush();
                                     <input class="form-control" type="text" id="txt_uv_plan" name="txt_uv_plan" readonly hidden>
                                     <input class="form-control" type="text" id="num_clases_plan" name="num_clases_plan" readonly hidden>
                                     <input class="form-control" type="text" id="suma_clases_plan" name="suma_clases_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="suma_unidades_plan" name="suma_unidades_plan" readonly hidden>
 
                                 </div>
                             </div>

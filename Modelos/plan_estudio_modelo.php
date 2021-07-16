@@ -220,6 +220,14 @@ class modelo_plan{
         "SELECT COUNT(Id_asignatura) as suma FROM tbl_asignaturas where id_plan_estudio= '$id_plan_estudio'";
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
     }
+    function contarCreditosPlan($id_plan_estudio)
+    {
+
+        global $instancia_conexion;
+        $sql6 =
+        "SELECT SUM(uv) as suma FROM tbl_asignaturas where id_plan_estudio= '$id_plan_estudio'";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
     function tabla_equivalencias()
     {
         global $instancia_conexion;

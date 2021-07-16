@@ -126,8 +126,13 @@ switch ($_GET["op"]) {
         $respuesta = $instancia_modelo->contarAsignaturas($id_plan_estudio);
         echo json_encode($respuesta);
         break;
+    case 'contarCreditosPlan':
 
+        $respuesta = $instancia_modelo->contarCreditosPlan($id_plan_estudio);
+        echo json_encode($respuesta);
+        break;
 
+        
     case 'registrarAsignatura':
         
             $respuesta = $instancia_modelo->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
