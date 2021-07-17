@@ -55,7 +55,7 @@ ob_end_flush();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+    <script src="https://kit.fontawesome.com/dff4a4ada1.js" crossorigin="anonymous"></script>
     <title></title>
 
 
@@ -197,6 +197,7 @@ ob_end_flush();
                                                     <th >Codigo</th> 
                                                     <th >UV</th>
                                                     <th >Requisitos</th>
+                                                    
                                                     <th >Sílabo</th>
 
                                                 </tr>
@@ -218,6 +219,22 @@ ob_end_flush();
 
                 </section>
             </section>
+            <!--Modal para correo-->
+            <div class="modal fade" tabindex="-1" role="dialog" id="Modalsilabo">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                           
+
+                                            <div class="modal-body">
+
+                                            <button class="btn btn-info " id="descargar_curriculum" name=""> <a href="" target="_blank" id="curriculum" style="color:white;font-weight: bold;">Descargar Curriculum</a></button>
+
+                                            </div>
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
 
         </div>
 

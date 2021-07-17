@@ -64,10 +64,12 @@ function Tabla3cargar_plan(nombre_, codigo) {
       { data: "codigo_asig" },
       { data: "uv" },
       { data: "requisitos" },
+     
       {
-        "defaultContent": "<button class='editar btn btn-primary ' id='descargar_curriculum' name=''> <a href='' target='_blank' id='curriculum' style='color:white;font-weight: bold;'>Descargar Sílabo</a></button>"
-      
-      } 
+        defaultContent:
+          
+          "<div class='text-center'><div class='btn-group'><button class='ver1 btn btn-primary btn-m '><i class='fas fa-arrow-down'></i></button> </div></div>",
+      },
     ],
 
     language: idioma_espanol,
@@ -75,15 +77,22 @@ function Tabla3cargar_plan(nombre_, codigo) {
   });
  
 }
+{/* <a href='' target='_blank' id='curriculum' style='color:white;font-weight: bold;'>Descargar Sílabo</a> */}
 
-$("#tabla3_historial_plan").on("click", ".editar", function () {
+$("#tabla3_historial_plan").on("click", ".ver1", function () {
   var data = table3.row($(this).parents("tr")).data();
   if (table3.row(this).child.isShown()) {
     var data = table3.row(this).data();
+    
   }
-  $("#curriculum").attr("href", data.silabo);
-  var silabo=$("#curriculum").val();
-  console.log(silabo);
+  /* $('#Modalsilabo').modal({ backdrop: 'static', keyboard: false }); */
+	$('#Modalsilabo').modal('show');
+  var id_asignatura=(data.id_asignatura);
+   $("#curriculum").attr("href", data.silabo);
+   $('#Modalsilabo').modal('hide');
+  /* var silabo=$("#curriculum").val(); */
+ /*  alert(id_asignatura); */
+/*   console.log(silabo); */
   
 
 
