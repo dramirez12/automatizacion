@@ -69,4 +69,35 @@ class correo
 		}
 	}
 
+	function correo_aprobacion_prac($cuerpo_aprobacion, $asunto_aprobacion, $correo_aprobacion, $estudiante_aprobacion)
+	{
+
+		$mail = new PHPMailer\PHPMailer\PHPMailer();
+		$mail->isSMTP();
+
+		$correo = "unahvinc@informaticaunah.com";
+		$Password = "N5y*%U(Ofb+T";
+		$mail->SMTPDebug = 0;
+		$mail->Host = 'informaticaunah.com';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';
+		$mail->SMTPAuth = true;
+		$mail->Username = $correo;
+		$mail->Password = $Password;
+		$mail->setFrom($correo, 'Unidad de Vinculación Departamento de Informática');
+		$mail->addAddress($correo_aprobacion, $estudiante_aprobacion);
+		$mail->Subject = $asunto_aprobacion;
+		$mail->Body = $cuerpo_aprobacion;
+		$mail->CharSet = 'UTF-8';
+		$mail->IsHTML(true);
+
+		if (!$mail->send()) {
+			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
+		} else {
+			
+		}
+
+		
+	}
+
 }//cierre class
