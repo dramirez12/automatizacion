@@ -158,10 +158,11 @@ $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE v
                 </body>
                 </html>
                 ';
-    
+
+                $cuerpo_aproba = "prueba cuerpo";
                 $asunto_estudiante="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
     
-    $correo->correo_aprobacion_prac($cuerpo, $asunto_estudiante, $ecorreo, $estudiante);
+    $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante, $ecorreo, $estudiante);
 
 
 
