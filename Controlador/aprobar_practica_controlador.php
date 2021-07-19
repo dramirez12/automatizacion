@@ -20,7 +20,6 @@ $horario_fin_prac = $_POST['horario_fin_prac'];
 $dias_prac = $_POST['dias_prac'];
 $id_objeto = 21;
 
-$nombre_destino = "Luis Pacheco";
 
 // $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
 //     $sql2->execute();
@@ -45,10 +44,13 @@ $nombre_destino = "Luis Pacheco";
 $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
 echo $consulta;
 
+$estudiante = "Luis Pacheco";
 $cuerpo_aproba = "prueba cuerpo";
-    $asunto_estudiante="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
-    
-    $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante, $ecorreo, $estudiante);
+$asunto_estudiante="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
+$correo_Estud = "luis_davipacheco@hotmail.com";
+
+$correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante, $correo_Estud, $estudiante);
+
 
 if ($consulta === 1) {
     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
