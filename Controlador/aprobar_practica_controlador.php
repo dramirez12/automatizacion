@@ -1,5 +1,6 @@
 
 <?php
+ob_start();
 session_start();
 require_once("../Modelos/calculo_fecha_pps_modelos.php");
 require_once "../Modelos/asignar_docente_supervisor_modelo.php";
@@ -27,7 +28,7 @@ echo $consulta;
 
 if ($consulta === 1) {
     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
-    
+
     $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
     $sql2->execute();
     $id_persona_estud = $sql2->get_result();
@@ -174,5 +175,5 @@ if ($consulta === 1) {
 }
 
 
-
+ob_end_flush();
 ?>

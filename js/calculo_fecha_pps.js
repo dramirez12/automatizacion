@@ -62,7 +62,7 @@ $(document).ready(function () {
                     "No se pudo completar la aprobacion de PPS",
                     "warning"
                 );
-                location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
+                // location.href = '../vistas/aprobar_practica_coordinacion_vista.php';
             }
         });
     });
