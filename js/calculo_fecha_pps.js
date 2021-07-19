@@ -99,24 +99,6 @@ $(document).ready(function () {
                 horario_fin_prac: horario_fin_prac,
                 dias_prac: dias_prac,
             },
-        }).done(function (resp) {
-            if (resp > 0) {
-
-                swal(
-                    "Buen trabajo!",
-                    "correos enviados correctamenten",
-                    "success"
-                );
-                
-
-            } else {
-                swal(
-                    "Alerta!",
-                    "correos no enviados",
-                    "warning"
-                );
-               
-            }
         });
     });
 });

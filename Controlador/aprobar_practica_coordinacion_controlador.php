@@ -22,7 +22,8 @@ $dias_prac = $_POST['dias_prac'];
 	$sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
     $sql2->execute();
     $id_persona_estud = $sql2->get_result();
-    
+
+    echo $id_persona_estud;
     
     $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
     foreach ($rspta1 as $key => $value) {
@@ -38,6 +39,8 @@ $dias_prac = $_POST['dias_prac'];
         $jefe = $value[8];
         $titulo = $value[9];
     }
+
+	var_dump($rspta1);
 
 
 $asunto_estudiante="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
