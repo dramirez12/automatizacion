@@ -2,10 +2,9 @@
 ob_start();
 session_start();
 require_once ('../clases/Conexion.php');
-require_once "../Modelos/asignar_docente_supervisor_modelo.php";
-require_once('corre_supervisor.php');
-require_once('../clases/conexion_mantenimientos.php');
-
+require_once ("../Modelos/asignar_docente_supervisor_modelo.php");
+require_once ('../clases/conexion_mantenimientos.php');
+require_once ('corre_supervisor.php');
 $correo = new correo();
 
 $cuenta_estud = $_POST['cuenta_estud'];
@@ -23,9 +22,9 @@ $dias_prac = $_POST['dias_prac'];
     $sql2->execute();
     $id_persona_estud = $sql2->get_result();
 
-    echo $id_persona_estud;
+	$id_persona_prueba = 157;
     
-    $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
+    $rspta1 = $modelo->mostrar_datos_alumno($id_persona_prueba)->fetch_all();
     foreach ($rspta1 as $key => $value) {
     
         $estudiante = $value[1];
@@ -41,6 +40,7 @@ $dias_prac = $_POST['dias_prac'];
     }
 
 	var_dump($rspta1);
+	echo $rspta1;
 
 
 $asunto_estudiante="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
@@ -168,7 +168,7 @@ $nombre_estud = "Luis David";
 
 $correo->correo_aprobacion_prac($cuerpo, $asunto_estudiante, $correo_estud, $nombre_estud);
 
-echo $correo;
+
 
 ob_end_flush();
 ?>
