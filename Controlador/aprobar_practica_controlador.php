@@ -3,7 +3,6 @@
 ob_start();
 session_start();
 require_once("../Modelos/calculo_fecha_pps_modelos.php");
-require_once "../Modelos/asignar_docente_supervisor_modelo.php";
 require_once('../clases/funcion_bitacora.php');
 require_once('corre_supervisor.php');
 
@@ -42,15 +41,14 @@ $nombre_destino = "Luis Pacheco";
 //         $jefe = $value[8];
 //         $titulo = $value[9];
 //     }
-    $cuerpo_aproba = "prueba cuerpo";
+    
+$consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
+echo $consulta;
+
+$cuerpo_aproba = "prueba cuerpo";
     $asunto_estudiante="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
     
     $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante, $ecorreo, $estudiante);
-
-
-
-$consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
-echo $consulta;
 
 if ($consulta === 1) {
     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
