@@ -4,6 +4,7 @@ session_start();
 require_once ('../clases/Conexion.php');
 require_once "../Modelos/asignar_docente_supervisor_modelo.php";
 require_once('corre_supervisor.php');
+require_once('../clases/conexion_mantenimientos.php');
 
 $correo = new correo();
 
@@ -164,7 +165,7 @@ $nombre_estud = "Luis David";
 
 $correo->correo_aprobacion_prac($cuerpo, $asunto_estudiante, $correo_estud, $nombre_estud);
 
-
+echo $correo;
 
 ob_end_flush();
 ?>
