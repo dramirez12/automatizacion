@@ -2,9 +2,9 @@
 <?php
 ob_start();
 session_start();
-require_once("../Modelos/calculo_fecha_pps_modelos.php");
-require_once('../clases/funcion_bitacora.php');
-
+require_once ("../Modelos/calculo_fecha_pps_modelos.php");
+require_once ('../clases/funcion_bitacora.php');
+require_once ('corre_supervisor.php');
 
 $db = new pruebas();
 $correo = new correo();
