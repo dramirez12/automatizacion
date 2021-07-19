@@ -160,7 +160,7 @@ Comité de Vinculación Universidad Sociedad 
 ';
 
 $correo_estud = "luis_davipacheco@hotmail.com";
-$nombre_estud = "Luis David"
+$nombre_estud = "Luis David";
 
 $correo->correo_aprobacion_prac($cuerpo, $asunto_estudiante, $correo_estud, $nombre_estud);
 
