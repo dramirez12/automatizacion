@@ -17,6 +17,7 @@ $id_asignatura = isset($_POST["Id_asignatura"]) ? limpiarCadena1($_POST["Id_asig
 $id_equivalencias = isset($_POST["id_equivalencias"]) ? limpiarCadena1($_POST["id_equivalencias"]) : "";
 $id_asignatura_requisito = isset($_POST["id_asignatura_requisito"]) ? limpiarCadena1($_POST["id_asignatura_requisito"]) : "";
 $estado = isset($_POST["estado"]) ? limpiarCadena1($_POST["estado"]) : "";
+$id_plan_estudio= isset($_POST["id_plan_estudio"]) ? limpiarCadena1($_POST["id_plan_estudio"]) : "";
 
 $instancia_modelo = new modelo_plan();
 switch ($_GET["op"]) {
@@ -177,7 +178,7 @@ switch ($_GET["op"]) {
         break;
 
         case 'datos_plan':
-            $rspta = $instancia_modelo->consultar_plan_vigente_docentes();
+            $rspta = $instancia_modelo->datos_plan($id_plan_estudio);
             //Codificar el resultado utilizando json
             echo json_encode($rspta);
             break;

@@ -276,6 +276,7 @@ $("#tabla_plan_estudio").on("click", ".editar", function () {
   $("#txt_num_clases_edita2").val(data.num_clases);
   $("#txt_codigo_plan_edita2").val(data.codigo_plan);
   $("#txt_id_tipo_plan").val(data.id_tipo_plan);
+  $("#txt_creditos_plan2").val(data.creditos_plan);
 
   var vigencia = data.plan_vigente;
   var activo = data.activo;
@@ -318,6 +319,7 @@ $("#guardar").click(function () {
   var txt_num_clases2 = $("#txt_num_clases_edita2").val();
   var txt_codigo_plan2 = $("#txt_codigo_plan_edita2").val();
   var txt_id_tipo_plan = $("#txt_id_tipo_plan").val();
+  var txt_creditos_plan2 = $("#txt_creditos_plan2").val();
 
   var fecha_modificado = $("#fecha_hoy").val();
   var nombre_usuario = $("#id_sesion").val();
@@ -344,11 +346,12 @@ $("#guardar").click(function () {
    
 
   } else {
-    if (txt_codigo_plan2!=txt_codigo_plan||txt_nombre!=txt_nombre2 ||txt_num_clases!=txt_num_clases2||txt_id_tipo_plan!=cbm_tipo_plan) {
+    /* if (txt_codigo_plan2==txt_codigo_plan||txt_nombre==txt_nombre2 ||txt_num_clases==txt_num_clases2||txt_id_tipo_plan==cbm_tipo_plan||txt_creditos_plan==txt_creditos_plan2
+      ) {
       
      swal("Alerta!", "No se han modificado datos", "warning");
 
-    } else {
+    } else { */
        if (txt_creditos_plan < credito_min || txt_creditos_plan > credito_max) {
          swal(
            "Alerta!",
@@ -391,5 +394,5 @@ $("#guardar").click(function () {
        }
     }
    
-  }
+  /* } */
 });

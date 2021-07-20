@@ -470,6 +470,16 @@ class modelo_plan{
              return $arreglo;
          }
      }
+     function datos_plan($id_plan_estudio)
+    {
+
+        global $instancia_conexion;
+        $sql6 = "SELECT plan.id_plan_estudio AS id_plan_estudio, plan.nombre AS nombre, plan.num_clases AS num_clases,
+        plan.fecha_creacion AS fecha_vigencia
+        FROM tbl_plan_estudio plan
+        WHERE plan.id_plan_estudio = '$id_plan_estudio';";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
 }
 
 

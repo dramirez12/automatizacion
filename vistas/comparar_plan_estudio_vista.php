@@ -38,6 +38,13 @@ if ($visualizacion == 0) {
     //   $_SESSION['btn_guardar_registro_docentes'] = "disabled";
     // }
 }
+$sql2 = $mysqli->prepare("SELECT plan.id_plan_estudio AS id_plan_estudio, plan.nombre AS nombre, plan.num_clases AS num_clases,
+plan.fecha_creacion AS fecha_vigencia
+FROM tbl_plan_estudio plan
+ WHERE plan.plan_vigente='SI'");
+$sql2->execute();
+$resultado2 = $sql2->get_result();
+$row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
 
 ob_end_flush();
 
@@ -75,7 +82,7 @@ ob_end_flush();
                         <div class="col-sm-6">
                             <h1>Tabla de Equivalencias</h1>
                         </div>
-                        
+
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
@@ -102,18 +109,21 @@ ob_end_flush();
                                 <div class="card card-primary">
                                     <div class="card-header">
                                         <h3 class="card-title">Plan de Estudios Vigente</h3>
-
+                                      
                                     </div>
-                                    <div class="col-md-4" style="width:75px">
-                            <div class="input-group mb-3 input-group">
-                                <span class=" input-group-text" style="font-weight: bold;">Nombre</span>
-                                <input type="text" class="form-control" id="nombre_" name="nombre_" value="<?php echo $row2['nombre'] ?>" readonly>
+                                   
 
-                            </div>
-                                    
-                                    
+                                    <div class="col-md-10">
+                                    <br>
+                                        <div class="input-group mb-3 input-group">
+                                            <span class=" input-group-text" style="font-weight: bold;">Nombre</span>
+                                            <input type="text" class="form-control" id="nombre_" name="nombre_" value="<?php echo $row2['nombre'] ?>" readonly>
+
+                                        </div>
+                                    </div>
+
+
                                     <div class="card-body">
-
                                         <div class="form-group">
                                             <label></label>
                                             <div class="table-responsive" style="width: auto;">
@@ -161,8 +171,19 @@ ob_end_flush();
  -->
 
                                                 </div>
-                                                <button class="btn btn-primary " id="limpiar" onclick="limpiar_()"><i class="fas fa-sync-alt"></i> <a style="font-weight: bold;">limpiar tabla</a></button>
+                                               
+                                                <div class="col-md-12">
+                                                   
+                                                        <label>Nombre</label>
+                                                        <input type="text" class="form-control" id="nombre1_" name="nombre1_" readonly>
+                                                        <br>
 
+                                                   
+                                                </div>
+                                                
+                                                <div class="col-md-5">
+                                                <button class="btn btn-primary " id="limpiar" onclick="limpiar_()"><i class="fas fa-sync-alt"></i> <a style="font-weight: bold;">limpiar tabla</a></button>
+                                                </div>
                                             </div>
                                             <br>
                                             <br>

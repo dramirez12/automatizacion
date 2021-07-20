@@ -216,7 +216,7 @@ ob_end_flush();
                                     <label>Créditos del Plan</label>
 
                                     <input class="form-control" type="text" id="txt_creditos_plan" name="txt_creditos_plan" maxlength="3" onkeypress="return solonumeros(event)">
-                                    <!-- <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden> -->
+                                    <input class="form-control" type="text" id="txt_creditos_plan2" name="txt_creditos_plan2" maxlength="25" value="" readonly hidden> 
 
 
                                 </div>

@@ -66,14 +66,4 @@ $("#tabla_consultar_plan_docente").on("click", ".ver1", function () {
 
 
 });
-/* function mostrar() {
-    $.post(
-      "../Controlador/plan_estudio_controlador.php?op=datos_plan",
-      function (data, status) {
-        data = JSON.parse(data);
-        console.log(data);
-        $("#nombre_").val(data.nombre);
-    
-      }
-    );
-  } */
+

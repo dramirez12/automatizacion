@@ -326,5 +326,28 @@ table3 = $("#tabla4_historial_plan").DataTable({
 });
 
 }
+$("#cbm_nombre_plan").change(function () {
+  var id_plan_estudio = $(this).val();
+ 
+  if (id_plan_estudio == 0) {
+    alert("Seleccione una opción válida");
+    document.getElementById("cbm_nombre_plan").value = "";
+  }
+  else{
+    mostrar(id_plan_estudio);
+  }
+});
 
+function mostrar(id_plan_estudio) {
+  $.post(
+    "../Controlador/plan_estudio_controlador.php?op=datos_plan",
+    { id_plan_estudio: id_plan_estudio },
+    function (data, status) {
+      data = JSON.parse(data);
+      console.log(data);
+      $("#nombre1_").val(data.nombre);
+  
+    }
+  );
+} 
 
