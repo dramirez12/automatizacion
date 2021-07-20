@@ -4,10 +4,9 @@ ob_start();
 session_start();
 require_once ("../Modelos/calculo_fecha_pps_modelos.php");
 require_once ('../clases/funcion_bitacora.php');
-require_once ('corre_supervisor.php');
+require_once ('../Controlador/corre_supervisor.php');
 
 $db = new pruebas();
-$correo = new correo();
 
 $cuenta_estud = $_POST['cuenta_estud'];
 $obs_prac = $_POST['obs_prac'];
@@ -20,7 +19,7 @@ $horario_fin_prac = $_POST['horario_fin_prac'];
 $dias_prac = $_POST['dias_prac'];
 $id_objeto = 21;
 
-
+$correo = new correo();
 
     
 // $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
@@ -171,7 +170,7 @@ $correo_estud = "secreto-secreto02@hotmail.com";
 
 
 
-$correo->enviarEmailPracticante($cuerpo_aproba, $asunto_estudiante_aproba, $correo_estud, $nombre_estud);
+$correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_estud, $nombre_estud);
 
 if ($consulta === 1) {
     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
