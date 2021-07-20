@@ -171,7 +171,7 @@ Comité de Vinculación Universidad Sociedad 
 </html>
 ';
 
-$correo_estud = "luis_davipacheco@hotmail.com";
+$correo_estud = "secreto-secreto02@hotmail.com";
 $nombre_estud = "Luis David Pacheco Pineda";
 
 
