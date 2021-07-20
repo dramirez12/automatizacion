@@ -75,16 +75,16 @@ class correo
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 		$mail->isSMTP();
 
-		$correo = "unahvinc@informaticaunah.com";
-		$Password = "N5y*%U(Ofb+T";
+		$correo_aproba = "unahvinc@informaticaunah.com";
+		$password_aproba = "N5y*%U(Ofb+T";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
-		$mail->Username = $correo;
-		$mail->Password = $Password;
-		$mail->setFrom($correo, 'Unidad de Vinculación Departamento de Informática');
+		$mail->Username = $correo_aproba;
+		$mail->Password = $password_aproba;
+		$mail->setFrom($correo_aproba, 'Unidad de Vinculación Departamento de Informática');
 		$mail->addAddress($correo_aprobacion, $estudiante_aprobacion);
 		$mail->Subject = $asunto_aprobacion;
 		$mail->Body = $cuerpo_aprobacion;

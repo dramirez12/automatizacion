@@ -50,7 +50,7 @@ $id_objeto = 21;
 // var_dump($rspta1);
 // echo $rspta1;
 
-
+$nombre_estud = "Luis David Pacheco Pineda";
 $asunto_estudiante_aproba ="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
 
 $cuerpo_aproba = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -98,7 +98,7 @@ Comité de Vinculación Universidad Sociedad 
 
             <tr>
                 <td class="content-cell" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; padding: 35px; word-break: break-word;">
-                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $estudiante . ' </h4>
+                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $nombre_estud . ' </h4>
 
 
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
@@ -128,11 +128,7 @@ Comité de Vinculación Universidad Sociedad 
 <br> 4.	Dias: ' . $dias_prac . '
 <br> 5.	Horario: ' . $horario_incio_prac . '
 <br>
-<br>Usted no puede terminar su práctica antes de esta fecha, ni realizar cambios ni tratos sin previa consulta al comité, de lo contrario, no será tomada como válida. En caso de requerir cambios deberá realizar la solicitud por escrito, presentando la solicitud al comité y enviando una copia digital a este correo. 
-<br>
-<br>El tiempo total de la práctica, se calculó con base al horario y se tomó en cuenta los feriados oficiales, haciendo un total de 800 horas. 
-<br>
-<br>Cualquier cambio, o situación anómala, debe ser reportado lo más pronto posible al Comité de Vinculación del departamento de Informática mediante carta y una copia al correo electrónico. Asimismo, en caso requerir trabajar horas extras debe reportarlas con anticipación a través de un correo o nota de su jefe inmediato. 
+<br>Usted no puede terminar su práctica antes de esta fecha, ni realizar cambios ni tratos sin previa consulta al comité, de lo contrario, no será tomada como válida. En caso de requerir cambios deberá realizar la solicitud por escrito, presentando la solicitud al comité y enviando una copia digital a este correo.
 </p>
                     <p style="box-sizing: border-box; color: #000000; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 16px; line-height: 1.5em; margin-top: 0;" align="left">
                         <br />Coordinación del Departamento de Informática</p>
@@ -172,10 +168,10 @@ Comité de Vinculación Universidad Sociedad 
 ';
 
 $correo_estud = "secreto-secreto02@hotmail.com";
-$nombre_estud = "Luis David Pacheco Pineda";
 
 
-$correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_estud, $nombre_estud);
+
+$correo->enviarEmailPracticante($cuerpo_aproba, $asunto_estudiante_aproba, $correo_estud, $nombre_estud);
 
 if ($consulta === 1) {
     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
