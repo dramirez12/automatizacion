@@ -22,8 +22,8 @@ $id_objeto = 21;
 $correo = new correo();
 
     
-// $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
-// echo $consulta;
+$consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
+echo $consulta;
 
 // $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
 // $sql2->execute();
