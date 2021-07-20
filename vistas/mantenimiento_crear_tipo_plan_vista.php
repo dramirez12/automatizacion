@@ -47,7 +47,6 @@ if ($visualizacion == 0) {
     } else {
         $_SESSION['btn_guardar_tipo_plan'] = "disabled";
     }
-   
 }
 
 
@@ -114,15 +113,15 @@ ob_end_flush();
 
                         <!-- /.card-header -->
                         <div class="card-body ">
-                        
-                                    <div class="col-md-1">
-                                            <div class="form-group">
-                                                <input class="form-control" hidden type="text" id="txt_hidden" name="txt_hidden" value="" readonly>
 
-                                            </div>
-                                        </div> 
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <input class="form-control" hidden type="text" id="txt_hidden" name="txt_hidden" value="" readonly>
+
+                                </div>
+                            </div>
                             <div class="row">
-                            <div class="col-md-4">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="hidden">
 
@@ -131,10 +130,10 @@ ob_end_flush();
                                 <div class="col-md-4">
                                     <div class="form-group ">
                                         <label>Nombre</label>
-                                        <input class="form-control" type="text" id="tipo_plan" name="tipo_plan" maxlength="25" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('tipo_plan');" onkeypress="return sololetras(event)" required ">
+                                        <input class="form-control" type="text" id="tipo_plan" name="tipo_plan" maxlength="25" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('tipo_plan');" onkeypress="return LetrasyNumeros(event)" required>
                                     </div>
 
-                                
+
 
                                     <p class="text-center" style="margin-top: 20px;">
                                         <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_plan" name="btn_guardar_tipo_plan" <?php echo $_SESSION['btn_guardar_tipo_plan']; ?>><i class="zmdi zmdi-floppy"></i>Guardar</button>
@@ -174,4 +173,4 @@ ob_end_flush();
 <script src="../Reporte/validar.js"></script> -->
 <!-- <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script> -->
-  <script src="../js/validaciones_plan.js"></script> 
+<script src="../js/validaciones_plan.js"></script>
