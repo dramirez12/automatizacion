@@ -205,22 +205,22 @@ ob_end_flush();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                    <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
                             <tr>
-                                <td><?php echo $row['id_periodo_plan']; ?></td>
+                                <td ><?php echo $row['id_periodo_plan']; ?></td>
                                 <td><?php echo $row['periodo']; ?></td>
 
 
                                 <td style="text-align: center;">
 
                                     <a href="../vistas/mantenimiento_periodo_plan_vista.php?periodo=<?php echo $row['periodo']; ?>" class="btn btn-primary btn-raised btn-xs">
-                                        <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_periodo']; ?> "></i>
+                                        <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_periodo'];?> "></i>
                                     </a>
                                 </td>
 
                                 <td style="text-align: center;">
 
-                                    <form action="Location:http://desarrollo.informaticaunah.com/automatizacion/Controlador/eliminar_periodo_plan_controlador.php?id_periodo_plan=<?php echo $row['id_periodo_plan']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
+                                    <form action="../Controlador/eliminar_periodo_plan_controlador.php?id_periodo_plan=<?php echo $row['id_periodo_plan']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
                                         <button type="submit" class="btn btn-danger btn-raised btn-xs">
 
                                             <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_periodo'] ?> "></i>
@@ -252,56 +252,56 @@ ob_end_flush();
 
 -->
 
-    <form action="../Controlador/actualizar_periodo_plan_controlador.php?id_periodo_plan=<?php echo $_SESSION['id_periodo_plan']; ?>" method="post" data-form="update" autocomplete="off">
+<form action="../Controlador/actualizar_periodo_plan_controlador.php?id_periodo_plan=<?php echo $_SESSION['id_periodo_plan']; ?>" method="post" data-form="update" autocomplete="off">
 
 
 
-        <div class="modal fade" id="modal_modificar_periodo_plan">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title"> Actualizar Período</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+<div class="modal fade" id="modal_modificar_periodo_plan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> Actualizar Período</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
 
-                    <!--Cuerpo del modal-->
-                    <div class="modal-body">
+            <!--Cuerpo del modal-->
+            <div class="modal-body">
 
 
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Período</label>
-                                        <input class="form-control" type="text" id="periodo" name="periodo" style="text-transform: uppercase" value="<?php echo $_SESSION['periodo']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('periodo');" onkeypress="return letrasynumeros(event)">
-                                    </div>
-                                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Período</label>
+                                <input class="form-control" type="text" id="periodo" name="periodo" style="text-transform: uppercase" value="<?php echo $_SESSION['periodo']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('periodo');" onkeypress="return letrasynumeros(event)">
                             </div>
                         </div>
-
-                    </div>
-
-                    <!--Footer del modal-->
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="" class="btn btn-primary" id="btn_modificar_periodo_plan" name="btn_modificar_periodo_plan" <?php echo $_SESSION['btn_modificar_periodo_plan']; ?>>Guardar Cambios</button>
                     </div>
                 </div>
-                <!-- /.modal-content -->
+
             </div>
-            <!-- /.modal-dialog -->
+
+            <!--Footer del modal-->
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="" class="btn btn-primary" id="btn_modificar_periodo_plan" name="btn_modificar_periodo_plan" <?php echo $_SESSION['btn_modificar_periodo_plan']; ?>>Guardar Cambios</button>
+            </div>
         </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
-        <!-- /.  finaldel modal -->
+<!-- /.  finaldel modal -->
 
-        <!--mosdal crear -->
+<!--mosdal crear -->
 
 
 
-    </form>
+</form>
 
 
 
@@ -379,7 +379,7 @@ ob_end_flush();
 
 <script type="text/javascript" src="../js/ca2.js"></script>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 
 <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
