@@ -1,9 +1,10 @@
 <?php 
+session_start();
+ob_start();
+
 require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_permisos.php');
 require_once ('../clases/funcion_bitacora.php');
-
-
 
 
 $id="";
@@ -24,7 +25,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/gestion_preguntas_vista.php";
+                                               window.location = "../vistas/menu_mantenimiento_plan.php";
 
                             </script>';
 }

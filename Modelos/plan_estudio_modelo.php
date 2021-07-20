@@ -457,6 +457,19 @@ class modelo_plan{
             return $arreglo;
         }
     }
+     //selecccionar plan vigente docentes
+     function consultar_plan_vigente_docentes()
+     {
+         global $instancia_conexion;
+         $sql = "call sel_plan_vigente_docentes()";
+         $arreglo = array();
+         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+             while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                 $arreglo["data"][] = $consulta_VU;
+             }
+             return $arreglo;
+         }
+     }
 }
 
 

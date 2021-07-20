@@ -383,7 +383,7 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['docentes_vista'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '50' or $_SESSION['pantalla'] == '54' or $_SESSION['pantalla'] == '53' or $_SESSION['pantalla'] == '51') {
+   if ($_SESSION['pantalla'] == '50' or $_SESSION['pantalla'] == '54' or $_SESSION['pantalla'] == '53' or $_SESSION['pantalla'] == '51' or $_SESSION['pantalla'] == '113') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['docentes_vista'] = "block";
       }
@@ -422,7 +422,7 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
       }
    }
 
-   if ($_SESSION['pantalla'] == '96' or $_SESSION['pantalla'] == '97' or $_SESSION['pantalla'] == '98' or $_SESSION['pantalla'] == '106' or $_SESSION['pantalla'] == '105' or $_SESSION['pantalla'] == '112') {
+   if ($_SESSION['pantalla'] == '96' or $_SESSION['pantalla'] == '97' or $_SESSION['pantalla'] == '98' or $_SESSION['pantalla'] == '106' or $_SESSION['pantalla'] == '105' or $_SESSION['pantalla'] == '112' ) {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['plan_estudio_vista'] = "block";
       }

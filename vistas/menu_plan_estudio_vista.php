@@ -58,6 +58,7 @@ if (permiso_ver('112') == '1') {
 
 
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -162,7 +163,7 @@ if (permiso_ver('112') == '1') {
                         <div class="col-12 col-sm-6 col-md-4">
                             <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h4>Equivalencias </h4>
+                                    <h4>Agregar Equivalencias </h4>
                                     <p><?php echo $_SESSION['equivalencias_vista']; ?></p>
                                 </div>
                                 <div class="icon">
@@ -176,7 +177,7 @@ if (permiso_ver('112') == '1') {
                         <div class="col-12 col-sm-6 col-md-4">
                             <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h4>Requisitos</h4>
+                                    <h4>Agregar Requisitos</h4>
                                     <p><?php echo $_SESSION['requisitos_vista']; ?></p>
                                 </div>
                                 <div class="icon">
@@ -202,6 +203,8 @@ if (permiso_ver('112') == '1') {
                                 </a>
                             </div>
                         </div>
+
+                        
 
                         <!-- /.row -->
                     </div>

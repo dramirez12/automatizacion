@@ -176,6 +176,12 @@ switch ($_GET["op"]) {
         echo json_encode($respuesta);
         break;
 
+        case 'datos_plan':
+            $rspta = $instancia_modelo->consultar_plan_vigente_docentes();
+            //Codificar el resultado utilizando json
+            echo json_encode($rspta);
+            break;
+
 
 
         
