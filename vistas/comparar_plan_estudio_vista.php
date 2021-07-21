@@ -121,6 +121,14 @@ ob_end_flush();
 
                                         </div>
                                     </div>
+                                    <div class="col-md-8">
+                                   
+                                        <div class="input-group mb-3 input-group">
+                                            <span class=" input-group-text" style="font-weight: bold;">Fecha Vigencia</span>
+                                            <input type="text" class="form-control" id="nombre_" name="nombre_" value="<?php echo $row2['fecha_vigencia'] ?>" readonly>
+
+                                        </div>
+                                    </div>
 
 
                                     <div class="card-body">
@@ -136,6 +144,7 @@ ob_end_flush();
                                                             <th>Codigo</th>
                                                             <th>U.V</th>
                                                             <th>Requisitos</th>
+                                                            <th>Equivalencias</th>
 
                                                         </tr>
 
@@ -198,6 +207,7 @@ ob_end_flush();
                                                             <th>Codigo</th>
                                                             <th>UV</th>
                                                             <th>Requisitos</th>
+                                                            <th>Equivalencias</th>
 
                                                         </tr>
 

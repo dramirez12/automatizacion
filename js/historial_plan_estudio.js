@@ -30,7 +30,7 @@ function cargartablaabajo(nombre_plan,codigo_plan) {
   
     Tabla3cargar_plan(a, p);
   }
-//cargar tercer tabla
+//cargar tercer tabla busca en historial
 var table3;
 function Tabla3cargar_plan(nombre_, codigo) {
   table3 = $("#tabla3_historial_plan").DataTable({
@@ -64,6 +64,7 @@ function Tabla3cargar_plan(nombre_, codigo) {
       { data: "codigo_asig" },
       { data: "uv" },
       { data: "requisitos" },
+      { data: "equivalencia" },
      
       {
         defaultContent:
@@ -86,9 +87,17 @@ $("#tabla3_historial_plan").on("click", ".ver1", function () {
     
   }
   /* $('#Modalsilabo').modal({ backdrop: 'static', keyboard: false }); */
-	$('#Modalsilabo').modal('show');
+	
   var id_asignatura=(data.id_asignatura);
-   $("#curriculum").attr("href", data.silabo);
+  if (data.silabo==null) {
+    
+    alert("No tiene silabo")
+    
+  }else{
+    $('#Modalsilabo').modal('show');
+    $("#curriculum").attr("href", data.silabo);
+    
+  }
    $('#Modalsilabo').modal('hide');
   /* var silabo=$("#curriculum").val(); */
  /*  alert(id_asignatura); */
@@ -97,7 +106,7 @@ $("#tabla3_historial_plan").on("click", ".ver1", function () {
 
 
 });
-//cargar primer tabla
+//cargar primer tabla de historial
 var table;
 function Tabla1_historial_plan() {
   table = $("#tabla1_historial_plan").DataTable({
@@ -207,6 +216,7 @@ function Tabla2cargar_plan() {
       { data: "codigo_asig" },
       { data: "uv" },
       { data: "requisitos" },
+      { data: "equivalencia" },
     ],
 
     language: idioma_espanol,
@@ -317,6 +327,7 @@ table3 = $("#tabla4_historial_plan").DataTable({
     { data: "codigo_asig" },
     { data: "uv" },
     { data: "requisitos" },
+    { data: "equivalencia" },
     
   ],
 
