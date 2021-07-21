@@ -473,7 +473,7 @@ function cancelar() {
   document.getElementById("cbm_plan_crear").value = "";
 }
 //
-var boton = document.getElementById("guardar_nueva_equi");
+var boton = document.getElementById("guardar_nueva_requi");
 boton.addEventListener("click", bloquea, false);
 
 function bloquea() {
