@@ -31,6 +31,8 @@ function Tabla_consulta_plan(nombre_, codigo) {
       { data: "codigo_asig" },
       { data: "uv" },
       { data: "requisitos" },
+      { data: "equivalencia" },
+     
      
       {
         defaultContent:
@@ -53,15 +55,18 @@ $("#tabla_consultar_plan_docente").on("click", ".ver1", function () {
     var data = table3.row(this).data();
     
   }
-
-  /* $('#Modalsilabo').modal({ backdrop: 'static', keyboard: false }); */
-	$('#Modalsilabo').modal('show');
   var id_asignatura=(data.id_asignatura);
-   $("#curriculum").attr("href", data.silabo);
+  if (data.silabo==null) {
+    
+    alert("No tiene silabo")
+    
+  }else{
+    $('#Modalsilabo').modal('show');
+    $("#curriculum").attr("href", data.silabo);
+    
+  }
    $('#Modalsilabo').modal('hide');
-  /* var silabo=$("#curriculum").val(); */
- /*  alert(id_asignatura); */
-/*   console.log(silabo); */
+  
   
 
 

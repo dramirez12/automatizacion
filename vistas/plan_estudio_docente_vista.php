@@ -167,6 +167,7 @@ ob_end_flush();
                                         <th>Codigo</th>
                                         <th>UV</th>
                                         <th>Requisitos</th>
+                                        <th>Equivalencias</th>
                                         <th>Sílabo</th>
 
                                     </tr>
@@ -200,7 +201,7 @@ ob_end_flush();
 
                     <div class="modal-body">
 
-                        <button class="btn btn-info " id="descargar_curriculum" name=""> <a href="" target="_blank" id="curriculum" style="color:white;font-weight: bold;">Descargar Curriculum</a></button>
+                        <button class="btn btn-info " id="descargar_curriculum" name=""> <a href="" target="_blank" id="curriculum" style="color:white;font-weight: bold;">Descargar Sílabo</a></button>
 
                     </div>
 
