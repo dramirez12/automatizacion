@@ -161,6 +161,21 @@ ob_end_flush();
                   <hr>
                   </div>
 
+                  <div class="col-sm-4">
+                  <div class="form-group">
+                  <label>Modalidad de Práctica</label>
+                    <select class="form-control" name="cb_modalidad" id="cb_modalidad">
+          <option value="0">Seleccione una opcion:</option>
+                <?php
+                      $query = $mysqli->query("SELECT * FROM tbl_modalidad");
+                      while ($resultado = mysqli_fetch_array($query)) {
+                        echo '<option value="' . $resultado['id_modalidad'] . '"> ' . $resultado['modalidad'] . '</option>';
+                      }
+                      ?>
+                </select>
+                </div>
+                 </div>
+
 
                  <div class="col-sm-4">
                   <div class="form-group">

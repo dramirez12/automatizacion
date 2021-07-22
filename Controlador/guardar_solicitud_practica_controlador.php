@@ -6,7 +6,7 @@ session_start();
 require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
 
-
+$modalidad_practica=strtoupper ($_POST['cb_modalidad']);
 $identidad_estudiante=strtoupper ($_POST['txt_identidad']);
 $nacimiento_estudiante=strtoupper ($_POST['txt_fecha_nacimiento']);
 $telefono_estudiante=strtoupper ($_POST['txt_telefono_solicitud']);
@@ -22,7 +22,7 @@ $fecha_inicio_estimada=strtoupper ($_POST['txt_fecha_inicio_estimada']);
        $result= mysqli_fetch_assoc($mysqli->query($id));
        $id_persona=$result['id_persona'];
 
-$sql_guardar_solicitud_practica = "Call proc_guardar_solicitud_practica (".$id_persona.",'".$telefono_estudiante."','".$celular_estudiante."','".$direccion_estudiante."','".$nacimiento_estudiante."','".$tipo_empresa."','".$labora_empresa."','".$fecha_inicio_estimada."','".$fecha_final_estimada."' ,'".$identidad_estudiante."'); ";
+$sql_guardar_solicitud_practica = "Call proc_guardar_solicitud_practica (".$id_persona.",'".$telefono_estudiante."','".$celular_estudiante."','".$direccion_estudiante."','".$nacimiento_estudiante."','".$tipo_empresa."','".$labora_empresa."','".$fecha_inicio_estimada."','".$fecha_final_estimada."' ,'".$identidad_estudiante."','".$modalidad_practica."'); ";
 $resultado = $mysqli->query($sql_guardar_solicitud_practica);
 
 
