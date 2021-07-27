@@ -597,7 +597,7 @@ ob_end_flush();
 
                     <div class="modal-header">
                         <h5 class="modal-title">Nueva Carga Académica</h5>
-                        <button class="close" data-dismiss="modal" onclick="limpiar();">
+                        <button class="close" data-dismiss="modal" >
                             &times;
                         </button>
                     </div>
@@ -865,7 +865,7 @@ ob_end_flush();
 
                         <div class="modal-footer">
                             <button class="btn btn-primary" onclick="crear_carga_academica();" id="guardar" name="guardar">Guardar</button>
-                            <button class="btn btn-secondary" data-dismiss="modal" onclick="limpiar();">Close</button>
+                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
