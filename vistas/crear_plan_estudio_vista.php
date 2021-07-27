@@ -190,7 +190,7 @@ ob_end_flush();
 
                                             <label>Nombre de Plan</label>
 
-                                            <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="200" value="" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre');" onkeypress="return sololetras(event)">
+                                            <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="150" value="" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre');" onkeypress="return sololetras(event)">
 
 
                                         </div>
