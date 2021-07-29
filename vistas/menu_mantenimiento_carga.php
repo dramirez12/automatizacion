@@ -66,21 +66,9 @@ if (permiso_ver('82') == '1') {
     $_SESSION['mantenimiento_crear_aula_vista'] = "No 
   tiene permisos para visualizar";
 }
-if (permiso_ver('111') == '1') {
 
-    $_SESSION['mantenimiento_crear_areas'] = "...";
-} else {
-    $_SESSION['mantenimiento_crear_areas'] = "No 
-  tiene permisos para visualizar";
-}
 
-if (permiso_ver('93') == '1') {
 
-    $_SESSION['mantenimiento_area_vista'] = "...";
-} else {
-    $_SESSION['mantenimiento_area_vista'] = "No 
-  tiene permisos para visualizar";
-}
 
 
 ?>
@@ -343,53 +331,7 @@ if (permiso_ver('93') == '1') {
 
 
                             <!-- /.info-box -->
-                            <section class="content">
-                                <div class="container-fluid">
-                                    <!-- Info boxes -->
-                                    <div class="row" style="  display: flex;
-    align-items: center;
-    justify-content: center;">
-                                        <div class="col-6 col-sm-6 col-md-4">
-                                            <div class="small-box bg-light">
-                                                <div class="inner">
-                                                    <h4>Crear Áreas</h4>
-                                                    <p><?php echo $_SESSION['mantenimiento_crear_areas']; ?></p>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-plus-square"></i>
-                                                </div>
-
-                                                <a href="../vistas/mantenimiento_crear_areas.php" class="small-box-footer">
-                                                    Ir <i class="fas fa-arrow-circle-right"></i>
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                        <!-- fix for small devices only -->
-                                        <div class="clearfix hidden-md-up"></div>
-                                        <!-- /.info-box -->
-                                        <div class="col-6 col-sm-6 col-md-4">
-                                            <div class="small-box bg-primary">
-                                                <div class="inner">
-                                                    <h4>Mantenimiento Área </h4>
-                                                    <p><?php echo $_SESSION['mantenimiento_area_vista']; ?></p>
-                                                </div>
-                                                <div class="icon">
-                                                    <i class="fas fa-edit"></i>
-                                                </div>
-
-                                                <a href="../vistas/mantenimiento_area_vista.php" class="small-box-footer">
-                                                    Ir <i class="fas fa-arrow-circle-right"></i>
-                                                </a>
-                                            </div>
-
-                                        </div>
-                                        <!-- /.row -->
-                                    </div>
-                                    <!--/. container-fluid -->
-                                </div>
-                            </section>
-
+                          
 
                             <!-- /.form-group -->
                         </div>

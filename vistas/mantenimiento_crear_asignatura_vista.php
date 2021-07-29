@@ -257,33 +257,39 @@ ob_end_flush();
 
                         </div>
                         <div class=" row">
-                            <div class="col-md-4">
+                            <!--   <div class="col-md-4">
                                 <div class="form-group">
 
                                     <label>Plan para requisito:</label>
                                     <td><select class="form-control" style="width: 100%;" name="cbm_plan_requisito" id="cbm_plan_requisito">
                                         </select></td>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label>Requisito</label>
+                                    <label>Seleccione Requisito de la asignatura </label>
                                     <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_requisito">
 
                                     </select>
                                 </div>
                             </div>
-
+                        
                             <br><br><br>
-                            <p style="display: center; margin: 0 auto;">
-                                <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar</button>
-                            </p>
+                        
+
+
+                        </div>
+                        <div class="container-fluid h-100">
+                            <div class="row w-100 align-items-center">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary" id="guardar_asig" <?php echo $_SESSION['btn_crear_asignatura']; ?>>Guardar </button>
+                                </div>
+                            </div>
+
 
                         </div>
 
-
-
-
+                       
                     </div>
 
                 </div>

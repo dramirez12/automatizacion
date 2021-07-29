@@ -105,7 +105,7 @@ $("#cbm_plan1").change(function () {
 });
 
 //llena las asignaturas para requisito de ella
-$("#cbm_plan_requisito").change(function () {
+$("#cbm_plan").change(function () {
   var id_plan_estudio = $(this).val();
   // console.log(id_plan_estudio);
   //  document.getElementById("txt_capacidad_edita").value = "";
