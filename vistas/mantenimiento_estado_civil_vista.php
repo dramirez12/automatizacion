@@ -150,8 +150,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -199,47 +199,48 @@ ob_end_flush();
         </div>
       </div>
       <div class="card-body">
+        <div class="table-responsive" style="width: 100%;">
+          <table id="tabla7" class="table table-bordered table-striped" style="width:99%">
 
-        <table id="tabla7" class="table table-bordered table-striped">
 
 
-
-          <thead>
-            <tr>
-              <th>ESTADO CIVIL</th>
-              <th>DESCRIPCIÓN </th>
-              <th>MODIFICAR</th>
-              <th>ELIMINAR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+            <thead>
               <tr>
-                <td><?php echo $row['estado_civil']; ?></td>
-                <td><?php echo $row['descripcion']; ?></td>
-
-                <td style="text-align: center;">
-
-                  <a href="../vistas/mantenimiento_estado_civil_vista.php?estado_civil=<?php echo $row['estado_civil']; ?>" class="btn btn-primary btn-raised btn-xs">
-                    <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_estado_civil'] ?> "></i>
-                  </a>
-                </td>
-
-                <td style="text-align: center;">
-
-                  <form action="../Controlador/eliminar_estado_civil_controlador.php?estado_civil=<?php echo $row['estado_civil']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
-                    <button type="submit" class="btn btn-danger btn-raised btn-xs">
-
-                      <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_estado_civil'] ?> "></i>
-                    </button>
-                    <div class="RespuestaAjax"></div>
-                  </form>
-                </td>
-
+                <th>ESTADO CIVIL</th>
+                <th>DESCRIPCIÓN </th>
+                <th>MODIFICAR</th>
+                <th>ELIMINAR</th>
               </tr>
-            <?php } ?>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                <tr>
+                  <td><?php echo $row['estado_civil']; ?></td>
+                  <td><?php echo $row['descripcion']; ?></td>
+
+                  <td style="text-align: center;">
+
+                    <a href="../vistas/mantenimiento_estado_civil_vista.php?estado_civil=<?php echo $row['estado_civil']; ?>" class="btn btn-primary btn-raised btn-xs">
+                      <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_estado_civil'] ?> "></i>
+                    </a>
+                  </td>
+
+                  <td style="text-align: center;">
+
+                    <form action="../Controlador/eliminar_estado_civil_controlador.php?estado_civil=<?php echo $row['estado_civil']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
+                      <button type="submit" class="btn btn-danger btn-raised btn-xs">
+
+                        <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_estado_civil'] ?> "></i>
+                      </button>
+                      <div class="RespuestaAjax"></div>
+                    </form>
+                  </td>
+
+                </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
       </div>
       <!-- /.card-body -->
     </div>
@@ -334,22 +335,38 @@ ob_end_flush();
     }
   </script>
 
+<script>
+    var idioma_espanol = {
+        select: {
+            rows: "%d fila seleccionada"
+        },
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "Ning&uacute;n dato disponible en esta tabla",
+        "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+        "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
+        "sLoadingRecords": "<b>No se encontraron datos</b>",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
 
+    }
+</script>
 
-  <script type="text/javascript">
-    $(function() {
-
-      $('#tabla7').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-      });
-    });
-  </script>
+ 
 
 
 </body>
@@ -357,12 +374,12 @@ ob_end_flush();
 </html>
 
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
-  <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

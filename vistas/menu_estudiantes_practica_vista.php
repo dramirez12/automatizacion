@@ -144,23 +144,6 @@ $_SESSION['gestion_solicitud_practica_menu']="No
           <!-- /.col -->
 
 
- <div class="col-6 col-sm-6 col-md-4">
-  <div class="small-box bg-light">
-  <div class="inner">
-    <h5>Registro de Empresas para PPS</h5>
-   <p><?php  echo $_SESSION['registrar_empresas_practica_menu'];?></p>
-  </div>
-  <div class="icon">
-
-    <i class="fas fa-user-plus"></i>
-  </div>
-  <a href="../vistas/registrar_empresa_practica_vista.php" class="small-box-footer">
-   Ir <i class="fas fa-arrow-circle-right"></i>
-  </a>
-  </div>
-   <!-- /.info-box -->
-  </div>
-
 
     <div class="col-6 col-sm-6 col-md-4">
   <div class="small-box bg-light">

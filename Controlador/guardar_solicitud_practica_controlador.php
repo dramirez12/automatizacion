@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 
 session_start();
 
@@ -12,32 +12,47 @@ $nacimiento_estudiante=strtoupper ($_POST['txt_fecha_nacimiento']);
 $telefono_estudiante=strtoupper ($_POST['txt_telefono_solicitud']);
 $celular_estudiante=strtoupper ($_POST['txt_celular_solicitud']);
 $direccion_estudiante=strtoupper ($_POST['txt_direccion_solicitud']);
-$labora_empresa=strtoupper ($_POST['cb_trabaja']);
+$labora_empresa=strtoupper ($_POST['trabaja']);
 $tipo_empresa=strtoupper ($_POST['cb_tipo_empresa']);
 $fecha_final_estimada=strtoupper ($_POST['txt_fecha_final_estimada']);
 $fecha_inicio_estimada=strtoupper ($_POST['txt_fecha_inicio_estimada']);
+
+//DATOS DE EMPRESA
+$nombre_empresa_practica=strtoupper ($_POST['txt_institucion_solicitud']);
+$direccion_empresa_practica=strtoupper ($_POST['txt_institucion_direccion_solicitud']);
+$nombre_jefe_inmediato=strtoupper ($_POST['txt_jefe_solicitud']);
+$departamento_practica=strtoupper ($_POST['txt_depto_empresa']);
+$titulo_jefe_inmediato=strtoupper ($_POST['txt_titulo_profesional']);
+$telefono_jefe_inmediato=strtoupper ($_POST['txt_telefono_jefe_solicitud']);
+$correo_jefe_inmediato=strtoupper ($_POST['txt_correo_prof']);
+$cargo_jefe_inmediato=strtoupper ($_POST['txt_cargo_prof']);
+
 
   $usuario=$_SESSION['id_usuario'];
         $id=("select id_persona from tbl_usuarios where id_usuario='$usuario'");
        $result= mysqli_fetch_assoc($mysqli->query($id));
        $id_persona=$result['id_persona'];
 
-$sql_guardar_solicitud_practica = "Call proc_guardar_solicitud_practica (".$id_persona.",'".$telefono_estudiante."','".$celular_estudiante."','".$direccion_estudiante."','".$nacimiento_estudiante."','".$tipo_empresa."','".$labora_empresa."','".$fecha_inicio_estimada."','".$fecha_final_estimada."' ,'".$identidad_estudiante."','".$modalidad_practica."'); ";
+$sql_guardar_solicitud_practica = "Call proc_guardar_solicitud_practica (".$id_persona.",'".$telefono_estudiante."','".$celular_estudiante."','".$direccion_estudiante."','".$nacimiento_estudiante."','".$fecha_inicio_estimada."','".$fecha_final_estimada."' ,'".$identidad_estudiante."','".$modalidad_practica."'); ";
 $resultado = $mysqli->query($sql_guardar_solicitud_practica);
 
+//PROCEDIMIENTO PARA ALMACENAR LA EMPRESA DEL PRACTICANTE
+$sql = "call proc_insertar_empresa_practica('$nombre_empresa_practica', '$direccion_empresa_practica', '$tipo_empresa', $labora_empresa, '$departamento_practica', '$nombre_jefe_inmediato', '$titulo_jefe_inmediato', '$cargo_jefe_inmediato', '$correo_jefe_inmediato', '$telefono_jefe_inmediato','$id_persona');";
+$resultado2 = $mysqli->query($sql);
 
-if (isset($identidad_estudiante) and isset($nacimiento_estudiante) and isset($direccion_estudiante) and isset($labora_empresa) and isset($tipo_empresa) and isset($fecha_final_estimada) and isset($fecha_inicio_estimada))
+
+if (isset($identidad_estudiante) and isset($nacimiento_estudiante) and isset($direccion_estudiante) and isset($labora_empresa) and isset($tipo_empresa) and isset($fecha_final_estimada) and isset($fecha_inicio_estimada)      and isset($nombre_empresa_practica) and isset($direccion_empresa_practica) and isset($departamento_practica) and isset($nombre_jefe_inmediato) and isset($titulo_jefe_inmediato) and isset($cargo_jefe_inmediato) and isset($correo_jefe_inmediato) and isset($telefono_jefe_inmediato))
 {
 
 
   
 
-       if($resultado === TRUE /*and $resultado_estudiante===TRUE*/)
+       if($resultado === TRUE and $resultado2 === TRUE)
                          {
 
 
                          	$Id_objeto=39; 
-                          bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INSERTO' , 'DATOS DEL ESTUDIANTE '.$identidad_estudiante.'');
+                          bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INSERTO' , 'UNA SOLICITUD PPS EL ESTUDIANTE '.$identidad_estudiante.'');
 
                           /*header('location: ../contenidos/crearPregunta-view.php?msj=1');*/
                           echo '<script type="text/javascript">
@@ -83,5 +98,5 @@ else
    </script>';
  }
 
-
+ ob_end_flush();
 ?>
