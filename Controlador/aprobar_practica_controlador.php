@@ -125,7 +125,7 @@ Comité de Vinculación Universidad Sociedad 
 <br> 2.	Fecha de inicio: ' . $fecha_inicio_prac . '
 <br> 3.	Fecha de Finalización: ' . $fecha_final_prac . '
 <br> 4.	Dias: ' . $dias_prac . '
-<br> 5.	Horario: ' . $horario_incio_prac . '
+<br> 5.	Horario: ' . $horario_incio_prac . ' a '.$horario_fin_prac.'
 <br>
 <br>Usted no puede terminar su práctica antes de esta fecha, ni realizar cambios ni tratos sin previa consulta al comité, de lo contrario, no será tomada como válida. En caso de requerir cambios deberá realizar la solicitud por escrito, presentando la solicitud al comité y enviando una copia digital a este correo.
 </p>
@@ -166,19 +166,19 @@ Comité de Vinculación Universidad Sociedad 
 </html>
 ';
 
-$correo_estud = "secreto-secreto02@hotmail.com";
+$correo_estud = "secreto-secreto02@hotmail.com"; 
 
 
 
 $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_estud, $nombre_estud);
 
-if ($consulta === 1) {
-    bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
+// if ($consulta === 1) {
+//     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
 
     
     
-} else {
-}
+// } else {
+// }
 
 
 ob_end_flush();

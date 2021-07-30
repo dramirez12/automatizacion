@@ -267,10 +267,10 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                       <tr>
                        <th>NOMBRE COMPLETO</th>
                        <th>CUENTA</th>   
-                       <th>PROCESO</th>                
-
+                       <th>PROCESO</th>
                        <th>EXPEDIENTE</th>                
-                       <th>APROBAR PRACTICA</th>                
+                       <th>APROBAR PRACTICA</th>  
+                       <th>CHECKBOX</th>               
 
                      </tr>
                    </thead>
@@ -298,6 +298,8 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                       </a>
                     </td>
 
+                    <td><label class="checkbox-inline"><input id="" type="checkbox"class="ch" value="">Adjuntar</label></td>
+                    
 
                   </tr>
                 <?php  } 
