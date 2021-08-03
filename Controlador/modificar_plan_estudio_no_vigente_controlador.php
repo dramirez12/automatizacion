@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 require '../Modelos/plan_estudio_modelo.php';
 require_once('../clases/funcion_bitacora.php');
 $Id_objeto = 98;

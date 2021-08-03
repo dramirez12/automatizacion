@@ -1,9 +1,11 @@
 
 <?php
+ob_start();
 session_start();
+
 require ('../Modelos/tabla_carga_modelo.php');
 require_once('../clases/funcion_bitacora.php');
-$Id_objeto = 46;
+$Id_objeto = 47;
 $MU = new modeloCarga();
 
 $control = $_POST['control'];
@@ -24,7 +26,6 @@ echo $consulta;
 if ($consulta === 1) {
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESÓ', 'UNA NUEVA CARGA ACADÉMICA');
 
-} else {
 
 }
 
