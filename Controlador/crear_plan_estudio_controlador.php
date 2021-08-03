@@ -22,5 +22,5 @@ $activo = $_POST['activo'];
 
 if ($consulta == 1) {
     # code...
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'UNA NUEVO PLAN DE ESTUDIO' .$nombre.'');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'UNA NUEVO PLAN DE ESTUDIO' . $nombre.'');
 }

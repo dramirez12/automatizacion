@@ -17,5 +17,5 @@ echo $consulta;
 
 if ($consulta == 1) {
     # code...
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA VIGENCIA DE UN PLAN DE ESTUDIO' . $nombre . '');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA VIGENCIA DE UN PLAN DE ESTUDIO DE NOMBRE: ' . $nombre . ' VIGENCIA NUEVA: ' . $vigencia_no. '');
 }

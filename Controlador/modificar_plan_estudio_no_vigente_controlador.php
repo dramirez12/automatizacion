@@ -20,7 +20,8 @@ $nombre = $_POST['nombre'];
 $consulta = $MU->modificar_plan_estudio_no($vigencia_si, $id_plan, $vigencia_no, $estado_activo_asig, $estado_inactivo_asig, $activo_plan_pasado, $modificado_por, $fecha_primer_vigencia, $fecha_modificacion);
 echo $consulta;
 
+
 if ($consulta == 1) {
     # code...
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA VIGENCIA DE UN PLAN DE ESTUDIO' . $nombre . '');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA VIGENCIA DE UN PLAN DE ESTUDIO DE NOMBRE: ' . $nombre . ' VIGENCIA NUEVA: ' . $vigencia_si . '');
 }
