@@ -331,39 +331,55 @@ ob_end_flush();
 
                         <div class="row">
 
-                            <input type="hidden">
-                            <div class="col-sm-8">
+                            <!-- <input type="hidden"> -->
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <input type="text" id="txt_carga_id" readonly hidden>
                                     <label>Docente:</label>
                                     <input class="form-control" type="text" id="txt_nombre_doc_edita" name="txt_nombre_doc_edita" value="" readonly>
 
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input type="text" id="txt_id_docente" readonly hidden>
+                                <!-- <div class="col-md-3">
+                                    <div class="form-group"> -->
+                                <input type="text" id="txt_id_docente" readonly hidden>
 
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input type="text" id="txt_registro" readonly hidden>
+                                <!-- </div>
+                                </div> -->
+                                <!-- <div class="col-md-3">
+                                    <div class="form-group"> -->
+                                <input type="text" id="txt_registro" readonly hidden>
 
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input type="text" id="txt_descripcion_aula" hidden readonly>
+                                <!-- </div>
+                                </div> -->
+                                <!-- <div class="col-md-3">
+                                    <div class="form-group"> -->
+                                <input type="text" id="txt_descripcion_aula" hidden readonly>
 
-                                    </div>
-                                </div>
+                                <!-- </div>
+                                </div> -->
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>N# Docente:</label>
                                     <input class="form-control" type="text" id="txt_num_doc_edita" name="txt_num_doc_edita" value="" readonly>
 
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+
+                                    <label>Hi</label>
+                                    <input class="form-control" type="text" id="txtentrada" readonly>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Hf</label>
+                                    <input class="form-control" type="text" id="txtsalida" readonly>
 
                                 </div>
                             </div>
@@ -469,25 +485,13 @@ ob_end_flush();
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <div class="form-group">
                                     <input type="hidden">
 
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="text" id="txtentrada" readonly hidden>
+                            </div> -->
 
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="text" id="txtsalida" readonly hidden>
-
-                                </div>
-                            </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
