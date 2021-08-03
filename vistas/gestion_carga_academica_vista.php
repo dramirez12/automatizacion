@@ -260,7 +260,7 @@ ob_end_flush();
                                 <thead>
                                     <tr>
                                         <th>Acción</th>
-                                        <th>#</th>
+                                        <!-- <th>#</th> -->
                                         <th>N# Empleado</th>
                                         <th>Nombre</th>
                                         <th>Código</th>
@@ -280,7 +280,7 @@ ob_end_flush();
                                 <tfoot>
                                     <tr>
                                         <th>Acción</th>
-                                        <th>#</th>
+                                        <!-- <th>#</th> -->
                                         <th>N# Empleado</th>
                                         <th>Nombre</th>
                                         <th>Código</th>
@@ -597,7 +597,7 @@ ob_end_flush();
 
                     <div class="modal-header">
                         <h5 class="modal-title">Nueva Carga Académica</h5>
-                        <button class="close" data-dismiss="modal" >
+                        <button class="close" data-dismiss="modal">
                             &times;
                         </button>
                     </div>
@@ -630,35 +630,31 @@ ob_end_flush();
 
                                 </div>
                             </div>
-                            <div class="col-md-3" hidden>
-                                <div class="form-group">
-                                    <input type="text" id="txt_hra_salida" readonly>
 
-                                </div>
-                            </div>
 
-                            <div class="col-md-3" hidden>
-                                <div class="form-group">
-                                    <input type="text" id="txt_registro_crear" readonly>
 
-                                </div>
-                            </div>
 
-                            <div class="col-md-3" hidden>
-                                <div class="form-group">
-                                    <input type="text" id="txt_contar_carga" readonly>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label>N# Docente:</label>
                                     <input class="form-control" type="text" id="txt_num_doc" name="txt_num_doc" value="" readonly>
 
                                 </div>
                             </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Hi:</label>
+                                    <input class="form-control" type="text" id="txt_hra_entrada2" name="txt_hra_entrada2" value="" readonly>
 
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Hf:</label>
+                                    <input class="form-control" type="text" id="txt_hra_salida" name="txt_hra_salida" value="" readonly>
+
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="hidden">

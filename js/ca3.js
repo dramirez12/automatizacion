@@ -514,7 +514,7 @@ function TablaCarga() {
 
           "<div class='text-center'><div class='btn-group'><button class='editar btn btn-primary btn-m '><i class='fas fa-edit'></i></button> <button id='borrar' class='borrar btn btn-danger btn-m '><i class='fas fa-trash-alt'></i></button></div></div>",
       },
-      { data: "id_carga_academica" },
+      // { data: "id_carga_academica" },
       { data: "num_empleado" },
       { data: "nombres" },
       { data: "codigo" },
