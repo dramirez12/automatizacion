@@ -11,7 +11,7 @@ $("#guardar").click(function () {
     var vigencia = "NO";
     var activo = 0;
     var usuario = $("#id_sesion").val();
-    var credito_min = $("#creditos_min").val();
+    // var credito_min = $("#creditos_min").val();
     var credito_max = $("#creditos_max").val();
    
       console.log(cbm_tipo_plan);
@@ -33,9 +33,11 @@ $("#guardar").click(function () {
   } else {
         
     
-    if (txt_creditos_plan < credito_min||txt_creditos_plan > credito_max) {
-      alert("Los créditos del plan no puede ser menor o exceder lo establecido para una licenciatura");
-  
+     if ( txt_creditos_plan != credito_max) {
+      
+      alert(
+        "Los créditos del plan no puede ser distinto a lo establecido para una licenciatura"
+      );
     } else {
       insertar(
         cbm_tipo_plan,

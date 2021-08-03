@@ -121,7 +121,7 @@ ob_end_flush();
                 <input type="text" id="id_sesion" name="id_sesion" value="<?php echo $nombre; ?>" hidden readonly>
 
                 <input type="text" id="creditos_max" name="creditos_max" value="<?php echo $row2['Valor'] ?>" readonly hidden>
-                <input type="text" id="creditos_min" name="creditos_min" value="<?php echo $row3['Valor'] ?>" readonly hidden>
+                <!-- <input type="text" id="creditos_min" name="creditos_min" value="<?php echo $row3['Valor'] ?>" readonly > -->
 
                 <!-- Main content -->
                 <section class="content">
