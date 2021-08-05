@@ -134,11 +134,11 @@ switch ($_GET["op"]) {
         break;
 
         
-    case 'registrarAsignatura':
+    // case 'registrarAsignatura':
         
-            $respuesta = $instancia_modelo->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
+    //         $respuesta = $instancia_modelo->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
         
-        break;
+    //     break;
 
     case 'actualizarAsignatura':
       
