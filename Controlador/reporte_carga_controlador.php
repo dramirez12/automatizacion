@@ -21,7 +21,7 @@ $hora_inicial = isset($_POST["hora_inicial"]) ? limpiarCadena1($_POST["hora_inic
 $dias = isset($_POST["dias"]) ? limpiarCadena1($_POST["dias"]) : "";
 $hora_inicial = isset($_POST["hora_inicial"]) ? limpiarCadena1($_POST["hora_inicial"]) : "";
 $hora_final = isset($_POST["hora_final"]) ? limpiarCadena1($_POST["hora_final"]) : "";
-
+$nombre_docente=isset($_POST["txt_nombre_docente"])? limpiarCadena1($_POST["hora_final"]):"";
 
 
 $instancia_modelo = new modelo_modal();
@@ -246,5 +246,8 @@ switch ($_GET["op"]) {
         echo json_encode($rspta);
         break;
 
-   
+    case 'mostrar_asignados':
+        $rspta = $instancia_modelo->mostrar_asignados($nombre_docente);
+        echo json_encode($rspta);
+        break;
 }

@@ -1,4 +1,7 @@
 <?php
+ob_start();
+session_start();
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
@@ -9,7 +12,14 @@ require_once ('../clases/Conexion.php');
 
 if(isset($_GET['alumno'])){
     $alumno= $_GET['alumno'];
-    if ($R = $mysqli->query("call sel_cancelar_clases_unica('$alumno')")) {
+    //"call sel_cancelar_clases_unica('$alumno')"
+    $sql="SELECT valor, nombres, apellidos, correo, Id_cancelar_clases, motivo, observacion, cambio, Fecha_creacion, tbl_cancelar_clases.Id_cancelar_clases, tbl_personas.id_persona
+    FROM tbl_cancelar_clases INNER JOIN tbl_personas
+    ON tbl_cancelar_clases.id_persona=tbl_personas.id_persona INNER JOIN tbl_personas_extendidas
+    ON tbl_personas.id_persona=tbl_personas_extendidas.id_persona
+    WHERE tbl_cancelar_clases.Id_cancelar_clases='$alumno'";
+    
+    if ($R = $mysqli->query($sql)) {
         $items = [];
 
         while ($row = $R->fetch_assoc()) {
@@ -21,7 +31,18 @@ if(isset($_GET['alumno'])){
     }
     echo json_encode($result);
 }else{
-    if ($R = $mysqli->query("call sel_cancelar_clases()")) {
+    //"call sel_cancelar_clases()"
+    $consulta="SELECT nombres, apellidos, correo, tbl_personas.id_persona, motivo, observacion, cambio, documento, Fecha_creacion, Id_cancelar_clases FROM 
+    tbl_personas INNER JOIN tbl_cancelar_clases ON tbl_personas.id_persona = tbl_cancelar_clases.id_persona";
+    if ($R = $mysqli->query($consulta)) {
+        //$items = [];
+
+        //while ($row = $R->fetch_assoc()) {
+
+            //array_push($items, $row);
+        //}
+        //$R->close();
+        //$result["ROWS"] = $items;
         $items = [];
 
         while ($row = $R->fetch_assoc()) {
@@ -30,6 +51,10 @@ if(isset($_GET['alumno'])){
         }
         $R->close();
         $result["ROWS"] = $items;
+    
     }
     echo json_encode($result);
 }
+
+ob_end_flush();
+?>

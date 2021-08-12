@@ -92,7 +92,7 @@ ob_end_flush();
                   <div class="form-group">
                     <input Type="hidden" name="id_supervisor" id="id_supervisor" value="<?php echo $id_persona ?>">
                     <label>Docente supervisor</label>
-                    <select class="form-control" name="docente" id="docente">
+                    <select class="form-control" name="docente" id="docente" onchange="mostrar_asignados($('#txt_nombre_docente').val());">
                       <option value="" selected hidden>Seleccione</option>
                       <?php
                       $query = $mysqli->query("SELECT id_persona, CONCAT(nombres,' ', apellidos) nombres FROM tbl_personas WHERE id_tipo_persona = 1 AND Estado = 'ACTIVO'");
@@ -104,7 +104,22 @@ ob_end_flush();
                   </div>
                 </div>
 
+                <div class="col-md-2" >
+                        <div class="form-group">
+                            <label>Estudiantes asignados al docente:</label>
+                            <input class="form-control" readonly type="text" id="txt_asignados" name="txt_asignados">
 
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <div class="form-group" hidden>
+                            <label>nombre docente:</label>
+                            <input class="form-control" readonly type="text" id="txt_nombre_docente" name="txt_nombre_docente">
+
+                        </div>
+                    </div>
 
 
 

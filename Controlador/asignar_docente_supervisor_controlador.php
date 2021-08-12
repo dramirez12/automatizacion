@@ -8,6 +8,7 @@ $id_supervisor=isset($_POST["id_supervisor"])? $instancia_conexion->limpiarCaden
 $nombre_alumno=isset($_POST["nombre_alumno"]);
 $cuenta=isset($_POST["cuenta"]);
 $docente=isset($_POST["docente"])? $instancia_conexion->limpiarCadena($_POST["docente"]):"";
+
 $correo= new correo();
 
 
@@ -288,21 +289,9 @@ switch ($_GET["op"]){
 		';
 
 
-		// $cuerpo_estudi = "prueba cuerpo";
+		
 		$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
 		$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
-		
-
-		// try {
-		// 	$correo->enviarEmailPracticante($cuerpo_estudiante,$asunto_estudiante,$ecorreo,$estudiante);
-		// 	$correo->enviarEmailDocente($cuerpo,$asunto_docente,$destino,$nombre_destino);
-
-			
-
-		// } catch (\Throwable $th) {
-		// 	echo ($th->getMessage());
-		// }
-
 		
 		
 
@@ -359,6 +348,7 @@ switch ($_GET["op"]){
  		echo json_encode($results);
 
 	break;
+
 }
 
 ob_end_flush();

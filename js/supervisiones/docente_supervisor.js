@@ -23,9 +23,6 @@ function limpiar()
 }
 
 
-
-
-
 //Función Listar
 function listar()
 {
@@ -165,5 +162,25 @@ function activar(idclase)
 }
 
 
-
 listar();
+
+
+function mostrar_asignados(asignados) {
+	$.post(
+	  "../Controlador/reporte_carga_controlador.php?op=mostrar_asignados",
+	  { docente_supervisor: asignados },
+	  function (data, status) {
+		data = JSON.parse(data);
+		console.log(data);
+		$("#txt_asignados").val(data.nombre_docente);
+		
+	  }
+	);
+  }
+
+
+  $("#docente").change(function () {
+	var id_tipo_periodo = $("#docente option:selected").text();
+  
+	$("#txt_nombre_docente").val(id_tipo_periodo);
+  });

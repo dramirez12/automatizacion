@@ -20,20 +20,18 @@ $id = ("select id_persona from tbl_usuarios where id_usuario='$usuario'");
 $result = mysqli_fetch_assoc($mysqli->query($id));
 $id_persona = $result['id_persona'];
 $sql_estudiante = ("SELECT px.valor, concat(a.nombres,' ',a.apellidos) as nombre, c.valor Correo
-FROM
-
-  tbl_empresas_practica AS ep
-JOIN tbl_personas AS a
-ON ep.id_persona = a.id_persona
+FROM tbl_personas AS a
 JOIN tbl_contactos c ON a.id_persona = c.id_persona
 JOIN tbl_tipo_contactos d ON c.id_tipo_contacto = d.id_tipo_contacto AND d.descripcion = 'CORREO'
             join tbl_personas_extendidas as px on px.id_atributo=12 and px.id_persona=a.id_persona
-            WHERE a.id_persona='$id_persona'");
+            WHERE a.id_persona = '$id_persona'");
 //Obtener la fila del query
 $datos_estudiante = mysqli_fetch_assoc($mysqli->query($sql_estudiante));
 
 
-
+$_SESSION['nombre_completo_estudiante']=$datos_estudiante['nombre'];
+$_SESSION['cuenta_estudiante']=$datos_estudiante['valor'];
+$_SESSION['Correo_Electronico_estudiante']=$datos_estudiante['Correo'];
 
 
 
@@ -179,14 +177,14 @@ ob_end_flush();
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label>Teléfono Fijo</label>
-                    <input class="form-control" type="text" id="txt_telefono_solicitud" name="txt_telefono_solicitud" value="" required="" maxlength="9" pattern="[2]{2}[0-9]{6}" onkeypress="return Numeros(event)" data-inputmask='"mask": "9999-9999"' data-mask>
+                    <input class="form-control" type="text" id="txt_telefono_solicitud" name="txt_telefono_solicitud" value="" required="" maxlength="9" onkeypress="return Numeros(event)" data-inputmask='"mask": "9999-9999"' data-mask>
                   </div>
                 </div>
 
                 <div class="col-sm-4">  
                   <div class="form-group">
                     <label>Celular</label>
-                    <input class="form-control" type="text" id="txt_celular_solicitud" name="txt_celular_solicitud" value="" required="" maxlength="9" pattern="[3|8|9|2][0-9]{7}}" onkeypress="return Numeros(event)" data-inputmask='"mask": "9999-9999"' data-mask>
+                    <input class="form-control" type="text" id="txt_celular_solicitud" name="txt_celular_solicitud" value="" required="" maxlength="9" onkeypress="return Numeros(event)" data-inputmask='"mask": "9999-9999"' data-mask>
                   </div>
                 </div>
 
@@ -199,7 +197,7 @@ ob_end_flush();
 
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <label>Correo electrónico</label>
+                    <label>Correo Electrónico</label>
                     <input class="form-control" type="email" id="txt_correo_solicitud" name="txt_correo_solicitud" value="<?php echo $_SESSION['Correo_Electronico_estudiante']; ?>" readonly>
                   </div>
                 </div>

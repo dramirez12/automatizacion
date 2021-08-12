@@ -212,7 +212,14 @@ class modelo_modal
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
     }
 
-   
+    function mostrar_asignados($nombre_docente)
+    {
+        global $instancia_conexion;
+        
+        $sql = "call sel_estud_asignados('$nombre_docente')";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
+
+    }
     
 }
    
