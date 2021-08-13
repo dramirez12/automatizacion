@@ -806,19 +806,11 @@ function crear_carga_academica() {
                         ",Hora Final: " +
                         hora_final,
                       type: "warning",
-                      showConfirmButton: true,
-                      timer: 6000,
-                    });
-
-                    swal({
-                      title: "Alerta",
-                      text: "Solo se permiten 2 dias como maximo ",
-                      icon: "warning",
                       buttons: {
-                        cancel: "Cancelar",
                         confirm: "Aceptar",
                       },
-                    })
+                    });
+                    
                     document.getElementById("txt_registro_crear").value = "";
                   } else {
                     $.ajax({

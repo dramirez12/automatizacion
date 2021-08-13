@@ -662,9 +662,6 @@ ob_end_flush();
                             </div>
                         </div>
 
-
-
-
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>N# Docente:</label>
@@ -672,6 +669,15 @@ ob_end_flush();
 
                             </div>
                         </div>
+
+                        <div class="col-md-2" hidden>
+                            <div class="form-group">
+                                <label>txt_registro_crear:</label>
+                                <input class="form-control" type="text" id="txt_registro_crear" name="txt_registro_crear" value="" readonly>
+
+                            </div>
+                        </div>
+
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>Hi:</label>
