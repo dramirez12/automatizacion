@@ -196,7 +196,7 @@ ob_end_flush();
                     </div>
 
                     <div class=" px-12">
-                        <button class="btn btn-info " id="btn1" name="btn1" data-toggle="modal" onclick="abrirmodalinformaciondocente();"><i class="fas fa-info"></i> <a style="font-weight: bold;">Información Docente</a></button>
+                        <button class="btn btn-info " id="btn1" name="btn1" data-toggle="modal" onclick="abrirmodalinformaciondocente();"><i class="fas fa-chalkboard-teacher"></i> <a style="font-weight: bold;">Información Docente</a></button>
                     </div>
                     <div class=" px-6">
                         <button class="btn btn-warning btn-lg" hidden> <a></a></button>
@@ -865,7 +865,8 @@ ob_end_flush();
 
                         <div class="modal-footer">
                             <button class="btn btn-primary" onclick="crear_carga_academica();" id="guardar" name="guardar">Guardar</button>
-                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <!-- <button class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                            <button class="btn btn-secondary" onclick="cerrar_modal();" id="cerrar_modal">Cerrar</button>
                         </div>
                     </div>
                 </div>

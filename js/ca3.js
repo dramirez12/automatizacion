@@ -7,11 +7,12 @@ $(document)
 
     if (unid_valorativas == "4" && checked == "5") {
       swal({
-        title: "Alerta",
-        text: "Solo se permiten 4 dias como maximo ",
-        type: "warning",
-        showConfirmButton: true,
-        timer: 10000,
+        title: "Alerta!",
+        text: "Solo se permiten 4 días como máximo",
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
       });
 
       document.getElementById("Lu1").checked = false;
@@ -25,11 +26,12 @@ $(document)
     }
     if (unid_valorativas == "5" && checked == "6") {
       swal({
-        title: "Alerta",
-        text: "Solo se permiten 5 dias como maximo ",
-        type: "warning",
-        showConfirmButton: true,
-        timer: 10000,
+        title: "Alerta!",
+        text: "Solo se permiten 5 días como máximo",
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
       });
 
       document.getElementById("Lu1").checked = false;
@@ -44,11 +46,12 @@ $(document)
 
     if (unid_valorativas == "3" && checked == "4") {
       swal({
-        title: "Alerta",
-        text: "Solo se permiten 3 dias como maximo ",
-        type: "warning",
-        showConfirmButton: true,
-        timer: 10000,
+        title: "Alerta!",
+        text: "Solo se permiten 3 días como máximo",
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
       });
 
       document.getElementById("Lu1").checked = false;
@@ -63,11 +66,12 @@ $(document)
 
     if (unid_valorativas == "2" && checked == "3") {
       swal({
-        title: "Alerta",
-        text: "Solo se permiten 2 dias como maximo ",
-        type: "warning",
-        showConfirmButton: true,
-        timer: 10000,
+        title: "Alerta!",
+        text: "Solo se permiten 2 dias como máximo",
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
       });
 
       document.getElementById("Lu1").checked = false;
@@ -151,8 +155,9 @@ function validaentrada_edita() {
         hrEntrada +
         "",
       type: "warning",
-      showConfirmButton: true,
-      timer: 10000,
+      buttons: {
+        confirm: "Aceptar",
+      },
     });
   }
 }
@@ -172,11 +177,13 @@ function validahoraperiodo_edita() {
     hora_final - hora_inicial > horas_validas * 100 != 4
   ) {
     swal({
-      title: "Alerta",
-      text: "Sobrepasa el horario establecido para el tipo de periodo!",
+      title: "Alerta!",
+      text: "Sobrepasa el horario establecida para el tipo de periodo!",
       icon: "warning",
-      buttons: true,
-      dangerMode: true,
+      buttons: {
+        cancel: "Cancelar",
+        confirm: "Aceptar",
+      },
     }).then((willDelete) => {
       if (willDelete) {
       } else {
@@ -184,7 +191,6 @@ function validahoraperiodo_edita() {
       }
     });
   }
-
   if (hora_final > hrSalida) {
     swal({
       title: "Alerta",
@@ -195,8 +201,10 @@ function validahoraperiodo_edita() {
         hrSalida +
         "",
       icon: "warning",
-      buttons: true,
-      dangerMode: true,
+      buttons: {
+        cancel: "Cancelar",
+        confirm: "Aceptar",
+      },
     }).then((willDelete) => {
       if (willDelete) {
       } else {
@@ -314,7 +322,7 @@ function eliminarRegistro() {
 
     if (resp > 0) {
       if (resp == 1) {
-        swal("buen trabajo!", "Se elimino correctamente!", "success");
+        swal("Buen trabajo!", "Se elimino correctamente!", "success");
         table.ajax.reload();
       }
     } else {
@@ -587,11 +595,13 @@ function valida_matriculados_edita() {
   var matriculados = document.getElementById("txt_matriculados_edita").value;
   if (matriculados > capacidad) {
     swal({
-      title: "Alerta",
-      text: "Esta excediendo la capacidad, desea continuar?",
+      title: "Alerta!",
+      text: "Está excediendo la capacidad, desea continuar?",
       icon: "warning",
-      buttons: true,
-      dangerMode: true,
+      buttons: {
+        cancel: "Cancelar",
+        confirm: "Aceptar",
+      },
     }).then((willDelete) => {
       if (willDelete) {
       } else {
@@ -619,14 +629,14 @@ function modificar_carga_academica() {
   var control = $("#txt_control_edita").val();
   var idPersona = $("#txt_id_docente").val();
   var idPeriodo = $("#txt_id_periodo").val();
-  var selected_modalidad =cbm_modalidad_edita.options[cbm_modalidad_edita.selectedIndex].text;
+  var selected_modalidad = cbm_modalidad_edita.options[cbm_modalidad_edita.selectedIndex].text;
   //para validar que modifico
 
   var entradatabla = $("#txthrentradatabla").val();
   var salidatabla = $("#txthrsalidatabla").val();
   var aulatabla = $("#txtaulatabla").val();
 
- 
+
   if (selected_modalidad == 'Virtual') {
     var id_aula_v = 'NULL';
 
@@ -638,12 +648,12 @@ function modificar_carga_academica() {
     //    timer: 20000,
     //  });
 
-    var hora_inicial = $("#cbm_hi_edita").value; 
-    var hora_final = $("#cbm_hf_edita").value; 
-    
+    var hora_inicial = $("#cbm_hi_edita").value;
+    var hora_final = $("#cbm_hf_edita").value;
+
     console.log(hora_inicial);
     console.log(hora_final);
-      var horas_validas = document.getElementById("txt_hras_validas").value;
+    var horas_validas = document.getElementById("txt_hras_validas").value;
 
     if (
       idcarga.length == 0 ||
@@ -656,37 +666,40 @@ function modificar_carga_academica() {
       cb_hf == null ||
       dias.length == 0 ||
       // cb_edif.length == 0 ||
-     // cb_aula == null ||
+      // cb_aula == null ||
       matriculados.length == 0 ||
       cb_modalidad == null
     ) {
 
-     swal({
-       title: "alerta",
-       text: "Llene o seleccione los campos vacios",
-       type: "warning",
-       showConfirmButton: true,
-       timer: 15000,
-     });
+      swal({
+        title: "Alerta!",
+        text: "Llene o seleccione los campos vacios",
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
+      });
 
     } else {
       if (hora_inicial > hora_final) {
         swal({
-          title: "alerta",
+          title: "Alerta!",
           text: "Hora inicial incorrecta",
-          type: "warning",
-          showConfirmButton: true,
-          timer: 20000,
+          icon: "warning",
+          buttons: {
+            confirm: "Aceptar",
+          },
         });
         document.getElementById("cbm_hi_edita").value = "";
         document.getElementById("cbm_hf_edita").value = "";
       } else if (hora_inicial == hora_final) {
         swal({
-          title: "alerta",
+          title: "Alerta!",
           text: "Las horas son iguales",
-          type: "warning",
-          showConfirmButton: true,
-          timer: 20000,
+          icon: "warning",
+          buttons: {
+            confirm: "Aceptar",
+          },
         });
         // alert("Las horas son iguales");
         // document.getElementById("cbm_hi_edita").value = "";
@@ -728,7 +741,7 @@ function modificar_carga_academica() {
         });
       }
     }
-    
+
 
   } else {
 
@@ -750,19 +763,21 @@ function modificar_carga_academica() {
       // control.length == 0
     ) {
       swal({
-        title: "alerta",
+        title: "Alerta!",
         text: "Llene o seleccione los campos vacios",
-        type: "warning",
-        showConfirmButton: true,
-        timer: 15000,
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
       });
     } else {
       swal({
-        title: "alerta",
-        text: "Por favor espere",
-        type: "warning",
-        showConfirmButton: false,
-        timer: 20000,
+        title: "Alerta!",
+        text: "Por favor, espere",
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
       });
 
       var hora_inicial = document.getElementById("cbm_hi_edita").value;
@@ -771,27 +786,29 @@ function modificar_carga_academica() {
 
       if (hora_inicial > hora_final) {
         swal({
-          title: "alerta",
+          title: "Alerta!",
           text: "Hora inicial incorrecta",
-          type: "warning",
-          showConfirmButton: true,
-          timer: 20000,
+          icon: "warning",
+          buttons: {
+            confirm: "Aceptar",
+          },
         });
         document.getElementById("cbm_hi_edita").value = "";
         document.getElementById("cbm_hf_edita").value = "";
       } else if (hora_inicial == hora_final) {
         swal({
-          title: "alerta",
+          title: "Alerta!",
           text: "Las horas son iguales",
-          type: "warning",
-          showConfirmButton: true,
-          timer: 20000,
+          icon: "warning",
+          buttons: {
+            confirm: "Aceptar",
+          },
         });
         // alert("Las horas son iguales");
         // document.getElementById("cbm_hi_edita").value = "";
         document.getElementById("cbm_hf_edita").value = "";
       } else {
-      
+
 
         if (
           entradatabla != cb_hi ||
@@ -939,16 +956,16 @@ $("#cbm_modalidad_edita").change(function () {
     $("#cbm_aula_edita").prop("disabled", true);
 
     $("#cbm_aula_edita").empty();
-    
-    
+
+
     document.getElementById("txt_capacidad_edita").value = "";
-  
-    
+
+
   } else {
 
     $("#cbm_edificio_edita").prop("disabled", false);
     $("#cbm_aula_edita").prop("disabled", false);
-   
+
   }
 
 });
