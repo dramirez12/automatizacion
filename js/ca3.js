@@ -454,7 +454,7 @@ function TablaCarga() {
         titleAttr: "Exportar a Excel",
         className: "btn btn-success",
         exportOptions: {
-          columns: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
         },
         title: " Departamento De Informática ",
         messageTop:
@@ -464,7 +464,6 @@ function TablaCarga() {
       },
       {
         extend: "pdfHtml5",
-
         download: "open",
 
         customize: function (doc) {

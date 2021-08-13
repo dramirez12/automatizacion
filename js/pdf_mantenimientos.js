@@ -1618,8 +1618,7 @@ $(document).ready(function() {
   autoWidth: true,
   responsive: true,
   ordering: true,
-  // LengthChange: false,
-  searching: { regex: true },
+  searching: { regex: true},
   lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
   sortable: false,
   pageLength: 15,
@@ -1720,7 +1719,19 @@ $(document).ready(function() {
             },
       ]
   } );
+
+  document.getElementById("tabla14_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal14();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
 } );
+
+function filterGlobal14() {
+  $("#tabla14").DataTable().search($("#global_filter").val()).draw();
+}
 
 //REPORTE DE CARRERAS
 ///////////////////////////////////////////////////////////////////////////////////////////////////

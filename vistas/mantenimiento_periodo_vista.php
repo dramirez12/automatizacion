@@ -172,8 +172,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
 </head>
 
@@ -221,6 +221,32 @@ ob_end_flush();
             </div>
             <div class="card-body">
 
+                <div class="input-group">
+                    <div class="col-md-3">
+                        <div class="input-group mb-3 input-group" hidden>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-3 input-group" hidden>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group mb-3 input-group" hidden>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+                        </div>
+
+                    </div>
+                </div>
                 <table id="tabla14" class="table table-bordered table-striped">
 
 
@@ -252,7 +278,7 @@ ob_end_flush();
 
                                 <td style="text-align: center;">
 
-                                <a href="../vistas/mantenimiento_periodo_vista.php?fecha_inicio=<?php echo $row['fecha_inicio'];?>" class="btn btn-primary btn-raised btn-xs">
+                                    <a href="../vistas/mantenimiento_periodo_vista.php?fecha_inicio=<?php echo $row['fecha_inicio']; ?>" class="btn btn-primary btn-raised btn-xs">
                                         <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_periodo'] ?> "></i>
                                     </a>
                                 </td>
@@ -344,36 +370,30 @@ ob_end_flush();
                                     </div>
 
                                     <div class="form-group ">
-                          <label class="control-label">Tipo de Período</label>
-                          <select class="form-control" name="tipo_p" required="">
-        <option value="0"  >Seleccione una opción:</option>
-                  <?php
+                                        <label class="control-label">Tipo de Período</label>
+                                        <select class="form-control" name="tipo_p" required="">
+                                            <option value="0">Seleccione una opción:</option>
+                                            <?php
 
-          if(isset($_SESSION['id_tipo_periodo']))
-          {
-                $query = $mysqli -> query ("select * FROM tbl_tipo_periodo  where id_tipo_periodo<>$_SESSION[id_tipo_periodo] ");
-                while ($resultado = mysqli_fetch_array($query)) 
-                {
-                echo '<option value="'.$resultado['id_tipo_periodo'].'"  > '.$resultado['descripcion'].'</option>' ;
-                }
+                                            if (isset($_SESSION['id_tipo_periodo'])) {
+                                                $query = $mysqli->query("select * FROM tbl_tipo_periodo  where id_tipo_periodo<>$_SESSION[id_tipo_periodo] ");
+                                                while ($resultado = mysqli_fetch_array($query)) {
+                                                    echo '<option value="' . $resultado['id_tipo_periodo'] . '"  > ' . $resultado['descripcion'] . '</option>';
+                                                }
 
-                        echo '<option value="'.$_SESSION['id_tipo_periodo'].'" selected="" >  '.$_SESSION['descripcion'].'</option>' ;
-          } 
-          else
-          {
-              $query = $mysqli -> query ("select * FROM tbl_tipo_periodo ");
-              while ($resultado = mysqli_fetch_array($query))
-               {
-               echo '<option value="'.$resultado['id_tipo_periodo'].'"  > '.$resultado['descripcion'].'</option>' ;
-               }
+                                                echo '<option value="' . $_SESSION['id_tipo_periodo'] . '" selected="" >  ' . $_SESSION['descripcion'] . '</option>';
+                                            } else {
+                                                $query = $mysqli->query("select * FROM tbl_tipo_periodo ");
+                                                while ($resultado = mysqli_fetch_array($query)) {
+                                                    echo '<option value="' . $resultado['id_tipo_periodo'] . '"  > ' . $resultado['descripcion'] . '</option>';
+                                                }
+                                            }
 
-          }
-          
 
-        ?>
-        
-      </select>
-                          </div>
+                                            ?>
+
+                                        </select>
+                                    </div>
 
 
                                 </div>
@@ -423,6 +443,8 @@ ob_end_flush();
 </body>
 
 </html>
+
+<script src="../js/validaciones_plan.js"></script>
 <script type="text/javascript" language="javascript">
     function ventana() {
         window.open("../Controlador/reporte_mantenimiento_periodo_controlador.php", "REPORTE");
@@ -447,10 +469,9 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-
