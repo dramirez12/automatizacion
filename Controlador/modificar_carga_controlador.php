@@ -24,6 +24,6 @@ $id_modalidad = $_POST['id_modalidad'];
 
 if($consulta == 1) {
     # code...
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'UNA CARGA ACADÉMICA REGISTRO #' .$id_carga_academica.'');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'UNA CARGA ACADÉMICA REGISTRO #' .$id_carga_academica. ' SECCION: ' . $seccion . '');
 }
 ?>
