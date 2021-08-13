@@ -404,20 +404,6 @@ ob_end_flush();
 
 
 
-  <script type="text/javascript">
-    $(function() {
-
-      $('#tabla12').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-      });
-    });
-  </script>
 <script src="../js/validaciones_plan.js"></script>
   <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>

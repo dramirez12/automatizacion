@@ -421,21 +421,6 @@ ob_end_flush();
 
 
 
-  <script type="text/javascript">
-    $(function() {
-
-      $('#tabla').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-      });
-    });
-  </script>
-
 
 </body>
 
