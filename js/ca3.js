@@ -431,7 +431,7 @@ function TablaCarga() {
     autoWidth: true,
     responsive: true,
     // LengthChange: false,
-    searching: { regex: true },
+    searching: { regex: false },
     lengthMenu: [
       [10, 25, 50, 100, -1],
       [10, 25, 50, 100, "All"],
@@ -542,6 +542,16 @@ function TablaCarga() {
     language: idioma_espanol,
     select: true,
   });
+  document.getElementById("tabla_carga_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
+}
+function filterGlobal() {
+  $("#tabla_carga").DataTable().search($("#global_filter").val()).draw();
 }
 
 // ----------------- COMBOBOX DE ASIGNATURA----------------
