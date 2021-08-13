@@ -85,7 +85,6 @@ ob_end_flush();
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/menu_carga_academica_vista.php">Menu Carga Académica</a></li>
-                            <li class="breadcrumb-item">Historial de Carga Académica</li>
                             <li class="breadcrumb-item"><a href="../vistas/gestion_carga_academica_vista.php">Ir a Carga Académica</a></li>
 
                         </ol>

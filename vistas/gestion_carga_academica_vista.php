@@ -32,11 +32,11 @@ if ($visualizacion == 0) {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', ' A GESTIONAR CARGA ACADEMICA');
 
-    // if (permisos::permiso_modificar($Id_objeto) == '1') {
-    //     $_SESSION['btn_gestionar_guardar_carga'] = "";
-    // } else {
-    //     $_SESSION['btn_gestionar_guardar_carga'] = "disabled";
-    // }
+    if (permisos::permiso_modificar($Id_objeto) == '1') {
+        $_SESSION['btn_crear_nueva_guardar_carga'] = "";
+    } else {
+        $_SESSION['btn_crear_nueva_guardar_carga'] = "disabled";
+    }
 }
 
 $sql2 = $mysqli->prepare("SELECT tbl_periodo.id_periodo AS id_periodo, tbl_periodo.num_periodo AS num_periodo, tbl_periodo.num_anno AS num_anno, tbl_periodo.fecha_adic_canc AS fecha_adic_canc, tbl_periodo.fecha_desbloqueo AS fecha_desbloqueo,
@@ -85,7 +85,6 @@ ob_end_flush();
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/menu_carga_academica_vista.php">Menu Carga Académica</a></li>
-                            <li class="breadcrumb-item">Gestión Carga Académica</li>
                             <li class="breadcrumb-item"><a href="../vistas/historial_carga_academica_vista.php">Ir a Historial Carga Académica</a></li>
                         </ol>
                     </div>
@@ -185,7 +184,7 @@ ob_end_flush();
 
                 <div class="btn-group">
                     <div class=" px-12">
-                        <button class="btn btn-danger " data-toggle="modal" onclick="abrirmodalcarga();" id="nueva_carga"><i class="fas fa-plus"></i> <a style="font-weight: bold;">Nueva Carga</a></button>
+                        <button class="btn btn-danger " data-toggle="modal" onclick="abrirmodalcarga();" id="nueva_carga"><i class="fas fa-plus"></i> <a style="font-weight: bold;" <?php echo $_SESSION['btn_crear_nueva_guardar_carga']; ?>>Nueva Carga</a></button>
                     </div>
                     <br><br>
                     <div class=" px-6">
