@@ -148,8 +148,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -197,6 +197,33 @@ ob_end_flush();
         </div>
       </div>
       <div class="card-body">
+
+        <div class="input-group">
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+            </div>
+
+          </div>
+        </div>
 
         <table id="tabla10" class="table table-bordered table-striped">
 
@@ -326,6 +353,9 @@ ob_end_flush();
 
 
   </form>
+
+  <script src="../js/validaciones_plan.js"></script>
+
   <script type="text/javascript" language="javascript">
     function ventana() {
       window.open("../Controlador/reporte_mantenimiento_horarios_controlador.php", "REPORTE");
@@ -347,16 +377,16 @@ ob_end_flush();
     });
   </script>
 
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
-<script src="../plugins/select2/js/select2.min.js"></script>
-<!-- datatables JS -->
-<script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
+  <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+  <script src="../plugins/select2/js/select2.min.js"></script>
+  <!-- datatables JS -->
+  <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
   <!-- para usar botones en datatables JS -->
-<script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
-<script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-<script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-<script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+  <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
 
 
 

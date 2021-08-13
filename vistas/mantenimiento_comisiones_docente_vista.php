@@ -170,8 +170,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
 </head>
 
@@ -220,9 +220,34 @@ ob_end_flush();
             </div>
             <div class="card-body">
 
+                <div class="input-group">
+                    <div class="col-md-3">
+                        <div class="input-group mb-3 input-group" hidden>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group mb-3 input-group" hidden>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group mb-3 input-group" hidden>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+                        </div>
+
+                    </div>
+                </div>
+
                 <table id="tabla4" class="table table-bordered table-striped">
-
-
 
                     <thead>
                         <tr>
@@ -297,10 +322,6 @@ ob_end_flush();
                     <!--Cuerpo del modal-->
                     <div class="modal-body">
 
-
-
-
-
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -309,49 +330,41 @@ ob_end_flush();
                                         <label>Modificar Comisión</label>
 
 
-                                        <input class="form-control" type="text" id="txtcomision" name="txtcomision" value="<?php echo $_SESSION['comision']; ?>" required style="text-transform: uppercase"onkeyup="DobleEspacio(this, event); MismaLetra('txtcomision');" onkeypress="return sololetras(event)" maxlength="30">
+                                        <input class="form-control" type="text" id="txtcomision" name="txtcomision" value="<?php echo $_SESSION['comision']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txtcomision');" onkeypress="return sololetras(event)" maxlength="30">
 
                                     </div>
 
 
                                     <div class="form-group ">
-                                    <label class="control-label">Carrera</label>
-                                 <select class="form-control" name="carrera1" required="">
-                                <option value="0"  >Seleccione una opción:</option>
-                                <?php
+                                        <label class="control-label">Carrera</label>
+                                        <select class="form-control" name="carrera1" required="">
+                                            <option value="0">Seleccione una opción:</option>
+                                            <?php
 
-                                    if(isset($_SESSION['id_carrera']))
-                                    {
-                                            $query = $mysqli -> query ("select * FROM tbl_carrera  where id_carrera<>$_SESSION[id_carrera] ");
-                                            while ($resultado = mysqli_fetch_array($query)) 
-                                            {
-                                            echo '<option value="'.$resultado['id_carrera'].'"  > '.$resultado['Descripcion'].'</option>' ;
+                                            if (isset($_SESSION['id_carrera'])) {
+                                                $query = $mysqli->query("select * FROM tbl_carrera  where id_carrera<>$_SESSION[id_carrera] ");
+                                                while ($resultado = mysqli_fetch_array($query)) {
+                                                    echo '<option value="' . $resultado['id_carrera'] . '"  > ' . $resultado['Descripcion'] . '</option>';
+                                                }
+
+                                                echo '<option value="' . $_SESSION['id_carrera'] . '" selected="" >  ' . $_SESSION['Descripcion'] . '</option>';
+                                            } else {
+                                                $query = $mysqli->query("select * FROM tbl_carrera ");
+                                                while ($resultado = mysqli_fetch_array($query)) {
+                                                    echo '<option value="' . $resultado['id_carrera'] . '"  > ' . $resultado['Descripcion'] . '</option>';
+                                                }
                                             }
 
-                                                    echo '<option value="'.$_SESSION['id_carrera'].'" selected="" >  '.$_SESSION['Descripcion'].'</option>' ;
-                                    } 
-                                    else
-                                    {
-                                        $query = $mysqli -> query ("select * FROM tbl_carrera ");
-                                        while ($resultado = mysqli_fetch_array($query))
-                                        {
-                                        echo '<option value="'.$resultado['id_carrera'].'"  > '.$resultado['Descripcion'].'</option>' ;
-                                        }
 
-                                    }
-                        
-
-                                ?>
-                                </select>
+                                            ?>
+                                        </select>
                                     </div>
-                                  
+
                                 </div>
                             </div>
                         </div>
 
                     </div>
-
-
 
 
                     <!--Footer del modal-->
@@ -398,7 +411,7 @@ ob_end_flush();
 </body>
 
 </html>
-
+<script src="../js/validaciones_plan.js"></script>
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
 <script type="text/javascript" language="javascript">
     $(document).ready(function() {
@@ -415,7 +428,7 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
