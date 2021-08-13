@@ -334,20 +334,7 @@ ob_end_flush();
     }
   </script>
 
-  <script type="text/javascript">
-    $(function() {
-
-      $('#tabla8').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-      });
-    });
-  </script>
+ 
 
 </body>
 

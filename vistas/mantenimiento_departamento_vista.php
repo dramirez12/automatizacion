@@ -342,21 +342,7 @@ ob_end_flush();
   <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 
-  <script type="text/javascript">
-    $(function() {
-
-      $('#tabla5').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-        
-      });
-    });
-  </script>
+  
 
   <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
   <script src="../plugins/select2/js/select2.min.js"></script>

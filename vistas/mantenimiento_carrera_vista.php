@@ -402,17 +402,7 @@ ob_end_flush();
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
-<script type="text/javascript" language="javascript">
-    $(document).ready(function() {
 
-        $('.select2').select2({
-            placeholder: 'Seleccione una opcion',
-            theme: 'bootstrap4',
-            tags: true,
-        });
-
-    });
-</script>
 
 <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>

@@ -362,20 +362,6 @@ ob_end_flush();
     }
   </script>
 
-  <script type="text/javascript">
-    $(function() {
-
-      $('#tabla10').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
-      });
-    });
-  </script>
 
   <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
   <script src="../plugins/select2/js/select2.min.js"></script>
