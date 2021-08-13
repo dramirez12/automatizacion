@@ -451,7 +451,8 @@ function TablaCarga() {
       {
         extend: "excelHtml5",
         text: '<i class="fas fa-file-excel"></i> ',
-        titleAttr: "Exportar a Excel",
+        filename: "REPORTE DE CARGA ACADÉMICA " + fecha,
+
         className: "btn btn-success",
         exportOptions: {
           columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -464,7 +465,6 @@ function TablaCarga() {
       },
       {
         extend: "pdfHtml5",
-        download: "open",
 
         customize: function (doc) {
           doc.content[1].margin = [100, 0, 100, 0]; //left, top, right, bottom
@@ -494,7 +494,8 @@ function TablaCarga() {
         },
 
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+        filename: "REPORTE DE CARGA ACADÉMICA " + fecha,
+
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",

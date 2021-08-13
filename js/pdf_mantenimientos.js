@@ -296,10 +296,10 @@ $(document).ready(function () {
         }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+       filename: "REPORTE DE AULAS " + fecha,
 
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+       
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
@@ -427,14 +427,14 @@ $(document).ready(function () {
         extend: "pdfHtml5",
         download: 'open',
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+         filename: "REPORTE DE CATEGORIAS " + fecha,
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
         exportOptions: {
           columns: [0, 1],
         },
-        title: "REPORTE DE CATEGORIAS",
+        title : "REPORTE DE CATEGORIAS",
 
         messageTop: "FECHA: " + fechaYHora,
         customize: function (doc) {
@@ -681,7 +681,7 @@ $(document).ready(function () {
          }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+        filename: "REPORTE DE DEPARTAMENTOS " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
         
         className: "btn btn-danger",
@@ -809,9 +809,9 @@ $(document).ready(function () {
          }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+        filename: "REPORTE DE EDIFICIOS " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+        
         className: "btn btn-danger",
         orientation: "lanscape",
         pageSize: "letter",
@@ -943,9 +943,9 @@ $(document).ready(function () {
          }, */
       {
         extend: "pdfHtml5",
-        download: "open",
+       filename: "REPORTE DE ESTADO CIVIL " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+        
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
@@ -1093,16 +1093,16 @@ $(document).ready(function () {
          }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+        filename: "REPORTE DE GÉNERO " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+        
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
         exportOptions: {
           columns: [0],
         },
-        title: "REPORTE DE GENERO",
+        title: "REPORTE DE GÉNERO",
 
         messageTop: "FECHA: " + fechaYHora,
         customize: function (doc) {
@@ -1219,9 +1219,9 @@ $(document).ready(function () {
         }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+        filename: "REPORTE DE GRADOS ACADÉMICOS " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+        
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
@@ -1344,10 +1344,10 @@ $(document).ready(function () {
         }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+        filename: "REPORTE DE HORARIOS DOCENTE " + fecha,
 
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+       
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
@@ -1473,9 +1473,9 @@ $(document).ready(function () {
          }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+        filename: "REPORTE DE JORNADAS " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+       
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
@@ -1604,9 +1604,9 @@ $(document).ready(function () {
          }, */
       {
         extend: "pdfHtml5",
-        download: 'open',
+        filename: "REPORTE DE MUNICIPIOS " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
-        titleAttr: "Exportar a PDF",
+        
         className: "btn btn-danger",
         orientation: "landscape",
         pageSize: "letter",
@@ -1731,7 +1731,7 @@ $(document).ready(function () {
          }, */
       {
         extend: "pdfHtml5",
-       filename: "REPORTE DE CATEGORIAS DOCENTE " + fecha,
+       filename: "REPORTE DE NACIONALIDADES " + fecha,
         text: '<i class="fas fa-file-pdf"></i> ',
         
         className: "btn btn-danger",
