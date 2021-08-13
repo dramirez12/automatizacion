@@ -388,7 +388,7 @@ ob_end_flush();
 
 
 
-  <script type="text/javascript">
+ <!--  <script type="text/javascript">
     $(function() {
 
       $('#tabla1').DataTable({
@@ -401,7 +401,7 @@ ob_end_flush();
         "responsive": true,
       });
     });
-  </script>
+  </script> -->
 
 
 </body>
@@ -417,7 +417,8 @@ ob_end_flush();
 </script>
 
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<!--<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>-->
+<script type="text/javascript" src="../js/pdf_prueba.js"></script>
 <script type="text/javascript" language="javascript">
   $(document).ready(function() {
 
@@ -439,3 +440,5 @@ ob_end_flush();
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+
+
