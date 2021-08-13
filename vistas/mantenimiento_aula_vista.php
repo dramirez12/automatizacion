@@ -210,7 +210,32 @@ ob_end_flush();
         </div>
       </div>
       <div class="card-body">
+        <div class="input-group">
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
 
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+            </div>
+
+          </div>
+        </div>
         <table id="tabla2" class="table table-bordered table-striped">
 
 
@@ -247,7 +272,7 @@ ob_end_flush();
 
                 <td style="text-align: center;">
 
-                 
+
 
                   <form action="../Controlador/eliminar_aula_controlador.php?id_aula=<?php echo $row['id_aula']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
                     <button type="submit" class="btn btn-danger btn-raised btn-xs">
@@ -451,6 +476,7 @@ ob_end_flush();
 
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
+<script src="../js/validaciones_plan.js"></script>
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 <script type="text/javascript" language="javascript">
   function ventana() {

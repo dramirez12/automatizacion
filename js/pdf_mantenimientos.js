@@ -116,7 +116,18 @@ $(document).ready(function () {
       },
     ]
   });
+  document.getElementById("tabla_filter").style.display = "none";
+  $('input.global_filter').on('keyup click', function () {
+    filterGlobala();
+  });
+  $('input.column_filter').on('keyup click', function () {
+    filterColumn($(this).parents('tr').attr('data-column'));
+  });
+
 });
+function filterGlobala() {
+  $("#tabla").DataTable().search($("#global_filter").val()).draw();
+}
 
 //REPORTE DE ATRIBUTOS
 /////////////////////////////////////
@@ -361,7 +372,18 @@ $(document).ready(function () {
       },
     ]
   });
+  document.getElementById("tabla2_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal2();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
+
 });
+function filterGlobal2() {
+  $("#tabl2").DataTable().search($("#global_filter").val()).draw();
+}
 
 //REPORTE DE CATEGORIAS
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -856,7 +878,18 @@ $(document).ready(function () {
       },
     ]
   });
+  document.getElementById("tabla6_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal6();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
+
 });
+function filterGlobal6() {
+  $("#tabla6").DataTable().search($("#global_filter").val()).draw();
+}
 
 //REPORTE DE ESTADO CIVIL
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -970,8 +1003,18 @@ $(document).ready(function () {
       },
     ]
   });
-});
+document.getElementById("tabla7_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal7();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
 
+});
+function filterGlobal7() {
+  $("#tabla7").DataTable().search($("#global_filter").val()).draw();
+}
 //REPORTE DE GÉNERO
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function () {
@@ -1209,8 +1252,18 @@ $(document).ready(function () {
       },
     ]
   });
-});
+document.getElementById("tabla9_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal9();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
 
+});
+function filterGlobal9() {
+  $("#tabla9").DataTable().search($("#global_filter").val()).draw();
+}
 //REPORTE DE HORARIOS
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function () {
@@ -1456,7 +1509,18 @@ $(document).ready(function () {
       },
     ]
   });
+document.getElementById("tabla11_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal11();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
+
 });
+function filterGlobal11() {
+  $("#tabla11").DataTable().search($("#global_filter").val()).draw();
+}
 
 //REPORTE DE MUNICIPIOS
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1571,7 +1635,18 @@ $(document).ready(function () {
       },
     ]
   });
+document.getElementById("tabla12_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal12();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
+
 });
+function filterGlobal12() {
+  $("#tabla12").DataTable().search($("#global_filter").val()).draw();
+}
 
 //REPORTE DE NACIONALIDADES
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1672,7 +1747,18 @@ $(document).ready(function () {
       },
     ]
   });
+document.getElementById("tabla13_filter").style.display = "none";
+   $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal3();
+    } );
+    $('input.column_filter').on( 'keyup click', function () {
+        filterColumn( $(this).parents('tr').attr('data-column') );
+    });
+
 });
+function filterGlobal3() {
+  $("#tabla13").DataTable().search($("#global_filter").val()).draw();
+}
 
 //REPORTE DE PERIODOS
 ///////////////////////////////////////////////////////////////////////////////////////////////////

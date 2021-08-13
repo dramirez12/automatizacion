@@ -43,8 +43,8 @@ if (isset($_REQUEST['msj'])) {
     $sqltabla = "SELECT *,
     (SELECT c.comision FROM tbl_comisiones as c where c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS comision
     FROM tbl_actividades";
-//     "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
-// (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades";
+    //     "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
+    // (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades";
     $resultadotabla = $mysqli->query($sqltabla);
   }
   if ($msj == 3) {
@@ -97,8 +97,8 @@ if ($visualizacion == 0) {
   $sqltabla = "SELECT *,
   (SELECT c.comision FROM tbl_comisiones as c where c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS comision
   FROM tbl_actividades";
-//   "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
-// (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades";
+  //   "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
+  // (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades";
   $resultadotabla = $mysqli->query($sqltabla);
 
 
@@ -108,8 +108,8 @@ if ($visualizacion == 0) {
     $sqltabla = "SELECT *,
     (SELECT c.comision FROM tbl_comisiones as c where c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS comision
     FROM tbl_actividades";
-//     "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
-// (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades";
+    //     "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
+    // (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades";
     $resultadotabla = $mysqli->query($sqltabla);
 
     /* Esta variable recibe el estado de modificar */
@@ -121,9 +121,9 @@ if ($visualizacion == 0) {
     $sql = "SELECT *,
     (SELECT c.comision FROM tbl_comisiones as c where c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS comision
     FROM tbl_actividades WHERE actividad = '$actividad'";
-//     "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
-// (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades WHERE actividad = '$actividad'";
-    
+    //     "SELECT tbl_actividades.id_actividad AS id_actividad,tbl_actividades.actividad AS actividad,tbl_actividades.descripcion AS descripcion,tbl_actividades.nombre_proyecto AS nombre_proyecto,tbl_actividades.horas_semanales AS horas_semanales,tbl_actividades.id_comisiones AS id_comisiones,
+    // (SELECT c.comision FROM tbl_comisiones c WHERE c.id_comisiones=tbl_actividades.id_comisiones LIMIT 1) AS tipo_comision FROM tbl_actividades WHERE actividad = '$actividad'";
+
     $resultado = $mysqli->query($sql);
     /* Manda a llamar la fila */
     $row = $resultado->fetch_array(MYSQLI_ASSOC);
@@ -167,8 +167,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"> 
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -216,6 +216,32 @@ ob_end_flush();
         </div>
       </div>
       <div class="card-body">
+        <div class="input-group">
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+            </div>
+
+          </div>
+        </div>
 
         <table id="tabla" class="table table-bordered table-striped">
 
@@ -340,59 +366,53 @@ ob_end_flush();
                   </div>
 
                   <div class="form-group ">
-                          <label class="control-label">Tipo Comision</label>
-                          <select class="form-control" name="comision1" required="">
-        <option value="0"  >Seleccione una opción:</option>
-                  <?php
+                    <label class="control-label">Tipo Comision</label>
+                    <select class="form-control" name="comision1" required="">
+                      <option value="0">Seleccione una opción:</option>
+                      <?php
 
-          if(isset($_SESSION['id_comisiones']))
-          {
-                $query = $mysqli -> query ("select * FROM tbl_comisiones  where id_comisiones<>$_SESSION[id_comisiones] ");
-                while ($resultado = mysqli_fetch_array($query)) 
-                {
-                echo '<option value="'.$resultado['id_comisiones'].'"  > '.$resultado['comision'].'</option>' ;
-                }
+                      if (isset($_SESSION['id_comisiones'])) {
+                        $query = $mysqli->query("select * FROM tbl_comisiones  where id_comisiones<>$_SESSION[id_comisiones] ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_comisiones'] . '"  > ' . $resultado['comision'] . '</option>';
+                        }
 
-                        echo '<option value="'.$_SESSION['id_comisiones'].'" selected="" >  '.$_SESSION['comision'].'</option>' ;
-          } 
-          else
-          {
-              $query = $mysqli -> query ("select * FROM tbl_comisiones ");
-              while ($resultado = mysqli_fetch_array($query))
-               {
-               echo '<option value="'.$resultado['id_comisiones'].'"  > '.$resultado['comision'].'</option>' ;
-               }
+                        echo '<option value="' . $_SESSION['id_comisiones'] . '" selected="" >  ' . $_SESSION['comision'] . '</option>';
+                      } else {
+                        $query = $mysqli->query("select * FROM tbl_comisiones ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_comisiones'] . '"  > ' . $resultado['comision'] . '</option>';
+                        }
+                      }
 
-          }
-          
 
-        ?>
-        
-      </select>
-                  
+                      ?>
+
+                    </select>
+
+                  </div>
                 </div>
               </div>
+
             </div>
 
+
+
+
+            <!--Footer del modal-->
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary" id="btn_modificar_actividad" name="btn_modificar_actividad" <?php echo $_SESSION['btn_modificar_actividad']; ?>>Guardar Cambios</button>
+            </div>
           </div>
-
-
-
-
-          <!--Footer del modal-->
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" id="btn_modificar_actividad" name="btn_modificar_actividad" <?php echo $_SESSION['btn_modificar_actividad']; ?>>Guardar Cambios</button>
-          </div>
+          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal-dialog -->
-    </div>
 
-    <!-- /.  finaldel modal -->
+      <!-- /.  finaldel modal -->
 
-    <!--mosdal crear -->
+      <!--mosdal crear -->
 
 
 
@@ -420,6 +440,7 @@ ob_end_flush();
 </body>
 
 </html>
+<script src="../js/validaciones_plan.js"></script>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 <script type="text/javascript" language="javascript">
@@ -430,22 +451,22 @@ ob_end_flush();
 
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
 <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
-  <script type="text/javascript" language="javascript">
-    $(document).ready(function() {
+<script type="text/javascript" language="javascript">
+  $(document).ready(function() {
 
-      $('.select2').select2({
-        placeholder: 'Seleccione una opcion',
-        theme: 'bootstrap4',
-        tags: true,
-      });
-
+    $('.select2').select2({
+      placeholder: 'Seleccione una opcion',
+      theme: 'bootstrap4',
+      tags: true,
     });
-  </script>
+
+  });
+</script>
 
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

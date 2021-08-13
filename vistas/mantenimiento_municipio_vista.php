@@ -93,7 +93,7 @@ if ($visualizacion == 0) {
 
   /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
   /*$sqltabla = "select  municipio, codigo, id_departamento FROM tbl_municipios_hn";*/
-  $sqltabla="SELECT *,
+  $sqltabla = "SELECT *,
 (SELECT d.departamento FROM tbl_departamentos as d WHERE d.id_departamento= tbl_municipios_hn.id_departamento LIMIT 1) AS departamento
 FROM tbl_municipios_hn";
   $resultadotabla = $mysqli->query($sqltabla);
@@ -125,8 +125,8 @@ FROM tbl_municipios_hn WHERE municipio = '$municipio'";
     $_SESSION['municipio'] = $row['municipio'];
     $_SESSION['codigo'] = $row['codigo'];
     $_SESSION['id_departamento'] = $row['id_departamento'];
-     $_SESSION['departamento'] = $row['departamento'];
-    
+    $_SESSION['departamento'] = $row['departamento'];
+
 
 
     /*Aqui levanto el modal*/
@@ -160,8 +160,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -209,6 +209,33 @@ ob_end_flush();
         </div>
       </div>
       <div class="card-body">
+        <div class="input-group">
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+            </div>
+
+          </div>
+        </div>
+
 
         <table id="tabla12" class="table table-bordered table-striped">
 
@@ -216,7 +243,7 @@ ob_end_flush();
 
           <thead>
             <tr>
-            
+
               <th>MUNICIPIOS</th>
               <th>CÓDIGO </th>
               <th>DEPARTAMENTO </th>
@@ -315,38 +342,32 @@ ob_end_flush();
 
                   </div>
 
-                 <div class="form-group ">
-                          <label class="control-label">Departamentos</label>
-                          <select class="form-control" name="departamento1" required="">
-        <option value="0"  >Seleccione un Departamento:</option>
-                  <?php
+                  <div class="form-group ">
+                    <label class="control-label">Departamentos</label>
+                    <select class="form-control" name="departamento1" required="">
+                      <option value="0">Seleccione un Departamento:</option>
+                      <?php
 
-          if(isset($_SESSION['id_departamento']))
-          {
-                $query = $mysqli -> query ("select * FROM tbl_departamentos  where id_departamento<>$_SESSION[id_departamento] ");
-                while ($resultado = mysqli_fetch_array($query)) 
-                {
-                echo '<option value="'.$resultado['id_departamento'].'"  > '.$resultado['departamento'].'</option>' ;
-                }
+                      if (isset($_SESSION['id_departamento'])) {
+                        $query = $mysqli->query("select * FROM tbl_departamentos  where id_departamento<>$_SESSION[id_departamento] ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_departamento'] . '"  > ' . $resultado['departamento'] . '</option>';
+                        }
 
-                        echo '<option value="'.$_SESSION['id_departamento'].'" selected="" >  '.$_SESSION['departamento'].'</option>' ;
-          } 
-          else
-          {
-              $query = $mysqli -> query ("select * FROM tbl_departamentos ");
-              while ($resultado = mysqli_fetch_array($query))
-               {
-               echo '<option value="'.$resultado['id_departamento'].'"  > '.$resultado['departamento'].'</option>' ;
-               }
+                        echo '<option value="' . $_SESSION['id_departamento'] . '" selected="" >  ' . $_SESSION['departamento'] . '</option>';
+                      } else {
+                        $query = $mysqli->query("select * FROM tbl_departamentos ");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_departamento'] . '"  > ' . $resultado['departamento'] . '</option>';
+                        }
+                      }
 
-          }
-          
 
-        ?>
-        
-      </select>
-                          </div>
-                          
+                      ?>
+
+                    </select>
+                  </div>
+
 
                 </div>
               </div>
@@ -397,7 +418,7 @@ ob_end_flush();
       });
     });
   </script>
-
+<script src="../js/validaciones_plan.js"></script>
   <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 </body>
@@ -420,7 +441,7 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

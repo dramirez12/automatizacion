@@ -200,6 +200,33 @@ ob_end_flush();
       </div>
       <div class="card-body">
         <div class="table-responsive" style="width: 100%;">
+          <div class="input-group">
+            <div class="col-md-3">
+              <div class="input-group mb-3 input-group" hidden>
+
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="input-group mb-3 input-group" hidden>
+
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="input-group mb-3 input-group" hidden>
+
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-search"></i></span>
+                </div>
+                <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+              </div>
+
+            </div>
+          </div>
+
           <table id="tabla7" class="table table-bordered table-striped" style="width:99%">
 
 
@@ -335,44 +362,44 @@ ob_end_flush();
     }
   </script>
 
-<script>
+  <script>
     var idioma_espanol = {
-        select: {
-            rows: "%d fila seleccionada"
-        },
-        "sProcessing": "Procesando...",
-        "sLengthMenu": "Mostrar _MENU_ registros",
-        "sZeroRecords": "No se encontraron resultados",
-        "sEmptyTable": "Ning&uacute;n dato disponible en esta tabla",
-        "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
-        "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
-        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix": "",
-        "sSearch": "Buscar:",
-        "sUrl": "",
-        "sInfoThousands": ",",
-        "sLoadingRecords": "<b>No se encontraron datos</b>",
-        "oPaginate": {
-            "sFirst": "Primero",
-            "sLast": "Último",
-            "sNext": "Siguiente",
-            "sPrevious": "Anterior"
-        },
-        "oAria": {
-            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-        }
+      select: {
+        rows: "%d fila seleccionada"
+      },
+      "sProcessing": "Procesando...",
+      "sLengthMenu": "Mostrar _MENU_ registros",
+      "sZeroRecords": "No se encontraron resultados",
+      "sEmptyTable": "Ning&uacute;n dato disponible en esta tabla",
+      "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+      "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+      "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+      "sInfoPostFix": "",
+      "sSearch": "Buscar:",
+      "sUrl": "",
+      "sInfoThousands": ",",
+      "sLoadingRecords": "<b>No se encontraron datos</b>",
+      "oPaginate": {
+        "sFirst": "Primero",
+        "sLast": "Último",
+        "sNext": "Siguiente",
+        "sPrevious": "Anterior"
+      },
+      "oAria": {
+        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+      }
 
     }
-</script>
+  </script>
 
- 
+
 
 
 </body>
 
 </html>
-
+<script src="../js/validaciones_plan.js"></script>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>

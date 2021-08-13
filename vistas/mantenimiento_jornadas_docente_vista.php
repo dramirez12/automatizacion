@@ -88,7 +88,7 @@ if ($visualizacion == 0) {
   } else {
     $_SESSION['btn_modificar_jornada'] = "disabled";
   }
-  
+
 
   /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
   $sqltabla = "select jornada, descripcion FROM tbl_jornadas";
@@ -131,7 +131,7 @@ FROM tbl_jornadas";
 
         })
       </script>;
-      
+
       <?php
       ?>
 
@@ -150,8 +150,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -194,11 +194,38 @@ ob_end_flush();
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
         <br>
-         <div class=" px-12">
+        <div class=" px-12">
           <!-- <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button> -->
         </div>
       </div>
       <div class="card-body">
+
+        <div class="input-group">
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="input-group mb-3 input-group" hidden>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+            </div>
+
+          </div>
+        </div>
 
         <table id="tabla11" class="table table-bordered table-striped">
 
@@ -328,7 +355,7 @@ ob_end_flush();
 
 
   </form>
- <script type="text/javascript" language="javascript">
+  <script type="text/javascript" language="javascript">
     function ventana() {
       window.open("../Controlador/reporte_mantenimiento_jornadas_controlador.php", "REPORTE");
     }
@@ -355,14 +382,15 @@ ob_end_flush();
 </body>
 
 </html>
+<script src="../js/validaciones_plan.js"></script>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 
-  <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
