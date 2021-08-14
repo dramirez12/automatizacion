@@ -105,7 +105,7 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menu mantenimiento</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/mantenimiento_municipio_vista.php"> Mantenimiento municipio</a></li>
                         </ol>
                     </div>
@@ -125,7 +125,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nuevo Municipio</h3>
+                            <h3 class="card-title">Nuevo municipio</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -138,7 +138,7 @@ ob_end_flush();
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Ingrese el Municipio</label>
+                                        <label>Ingrese el municipio</label>
                                         
                                         <input class="form-control " type="text" id="txt_municipio1" name="txt_municipio1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_municipio1');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>

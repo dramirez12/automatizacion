@@ -173,8 +173,8 @@ ob_end_flush();
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimiento</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_departamento_vista.php">Nuevo Departamento</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu mantenimiento</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_departamento_vista.php">Nuevo departamento</a></li>
             </ol>
           </div>
 
@@ -189,7 +189,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Departamentos Existentes</h3>
+        <h3 class="card-title">Departamentos existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -231,10 +231,10 @@ ob_end_flush();
 
           <thead>
             <tr>
-              <th>DEPARTAMENTOS</th>
+              <th>Departamentos</th>
 
-              <th>MODIFICAR</th>
-              <th>ELIMINAR</th>
+              <th>Modificar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -285,7 +285,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar Departamento</h4>
+            <h4 class="modal-title"> Actualizar departamento</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -300,7 +300,7 @@ ob_end_flush();
                 <div class="col-md-12">
                   <div class="form-group">
 
-                    <label>Modificar Departamento</label>
+                    <label>Modificar departamento</label>
 
 
                     <input class="form-control" type="text" id="txtdepartamento" name="txtdepartamento" value="<?php echo $_SESSION['departamento']; ?>" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txtdepartamento');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
@@ -318,7 +318,7 @@ ob_end_flush();
           <!--Footer del modal-->
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" id="btn_modificar_departamento" name="btn_modificar_departamento" <?php echo $_SESSION['btn_modificar_departamento']; ?>>Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary" id="btn_modificar_departamento" name="btn_modificar_departamento" <?php echo $_SESSION['btn_modificar_departamento']; ?>>Guardar cambios</button>
           </div>
         </div>
         <!-- /.modal-content -->

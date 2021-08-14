@@ -42,7 +42,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['genero'] <> $genero ) {
 
         $Id_objeto = 84;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL GÉNERO ' . $valor_viejo['genero'] . 'Y POR ' . $genero . ', LA DESCRIPCION DEL GÉNERO ' . $genero . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL GÉNERO ' . $valor_viejo['genero'] . ' POR ' . $genero . ', LA DESCRIPCION DEL GÉNERO ' . $genero . ' ');
 
 
 
@@ -57,7 +57,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['genero'] <> $genero) {
 
         $Id_objeto = 71;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL GÉNERO ' . $valor_viejo['genero'] . ' POR ' . $genero . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', 'EL GÉNERO ' . $valor_viejo['genero'] . ' POR ' . $genero . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

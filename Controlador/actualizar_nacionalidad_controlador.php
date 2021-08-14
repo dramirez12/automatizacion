@@ -43,7 +43,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['nacionalidad'] <> $nacionalidad and $valor_viejo['PAIS_NAC'] <> $PAIS_NAC) {
 
         $Id_objeto = 73;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA NACIONALIDAD ' . $valor_viejo['nacionalidad'] . 'Y POR ' . $nacionalidad. ', EL PAIS DE LA NACIONALIDAD ' . $nacionalidad . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA NACIONALIDAD ' . $valor_viejo['nacionalidad'] . ' POR ' . $nacionalidad. ', EL PAIS DE LA NACIONALIDAD ' . $nacionalidad . ' ');
 
 
 
@@ -58,7 +58,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['nacionalidad'] <> $nacionalidad) {
 
         $Id_objeto = 90;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA NACIONALIDAD ' . $valor_viejo['nacionalidad'] . ' POR ' . $nacionalidad . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', 'LA NACIONALIDAD ' . $valor_viejo['nacionalidad'] . ' POR ' . $nacionalidad . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -72,7 +72,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 73;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL PAIS DE LA NACIONALIDAD ' . $nacionalidad . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', ' EL PAIS DE LA NACIONALIDAD ' . $nacionalidad . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

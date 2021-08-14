@@ -43,7 +43,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['Descripcion'] <> $Descripcion and $valor_viejo['Id_facultad'] <> $Id_facultad) {
 
         $Id_objeto = 89;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA CARRERA ' . $valor_viejo['Descripcion'] . 'Y POR ' . $Descripcion . ', LA FACULTAD DE LA COMISION ' . $Descripcion . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA CARRERA ' . $valor_viejo['Descripcion'] . ' POR ' . $Descripcion . ', LA FACULTAD DE LA COMISION ' . $Descripcion . ' ');
 
 
 
@@ -58,7 +58,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['Descripcion'] <> $Descripcion) {
 
         $Id_objeto = 89;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA CARRERA ' . $valor_viejo['Descripcion'] . ' POR ' . $Descripcion . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', 'LA CARRERA ' . $valor_viejo['Descripcion'] . ' POR ' . $Descripcion . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -71,7 +71,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['Id_facultad'] <> $Id_facultad) {
 
         $Id_objeto = 89;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA FACULTAD DE LA CARRERA ' . $Descripcion . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA FACULTAD DE LA CARRERA ' . $Descripcion . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

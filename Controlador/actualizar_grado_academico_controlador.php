@@ -43,7 +43,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['grado_academico'] <> $grado_academico and $valor_viejo['descripcion'] <> $descripcion) {
 
         $Id_objeto = 61;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL GRADO ACADEMICO' . $valor_viejo['grado_academico'] . 'Y POR ' . $grado_academico . ', LA DESCRIPCION DEL GRADO ACADEMICO ' . $grado_academico . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', ' EL GRADO ACADEMICO' . $valor_viejo['grado_academico'] . ' POR ' . $grado_academico . ', LA DESCRIPCION DEL GRADO ACADEMICO ' . $grado_academico . ' ');
 
 
 
@@ -58,7 +58,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['grado_academico'] <> $grado_academico) {
 
         $Id_objeto = 61;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL GRADO  ACADEMICO ' . $valor_viejo['grado_academico'] . ' POR ' . $grado_academico . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL GRADO  ACADEMICO ' . $valor_viejo['grado_academico'] . ' POR ' . $grado_academico . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -71,7 +71,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['descripcion'] <> $descripcion) {
 
         $Id_objeto = 61;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA DESCRIPCION DEL GRADO ACADEMICO ' . $grado_academico . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA DESCRIPCION DEL GRADO ACADEMICO ' . $grado_academico . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

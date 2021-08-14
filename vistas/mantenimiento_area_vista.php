@@ -166,8 +166,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_areas.php">Nueva Área</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menú mantenimiento</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_areas.php">Nueva área</a></li>
                         </ol>
                     </div>
 
@@ -200,8 +200,8 @@ ob_end_flush();
                         <tr>
                             <th># </th>
                             <th>Área</th>
-                            <th>MODIFICAR</th>
-                            <th>ELIMINAR</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -260,7 +260,7 @@ ob_end_flush();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"> Actualizar Área</h4>
+                <h4 class="modal-title"> Actualizar área</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -287,7 +287,7 @@ ob_end_flush();
             <!--Footer del modal-->
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="" class="btn btn-primary" id="btn_modificar_area" name="btn_modificar_area" <?php echo $_SESSION['btn_modificar_area']; ?>>Guardar Cambios</button>
+                <button type="" class="btn btn-primary" id="btn_modificar_area" name="btn_modificar_area" <?php echo $_SESSION['btn_modificar_area']; ?>>Guardar cambios</button>
             </div>
         </div>
         <!-- /.modal-content -->

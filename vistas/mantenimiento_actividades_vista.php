@@ -183,15 +183,15 @@ ob_end_flush();
           <div class="col-sm-6">
 
 
-            <h1>ACTIVIDADES
+            <h1>Actividades
             </h1>
           </div>
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimiento</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_actividades_vista.php">Nueva Actividad</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menú mantenimiento</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_actividades_vista.php">Nueva actividad</a></li>
             </ol>
           </div>
 
@@ -206,7 +206,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Actividades Existentes</h3>
+        <h3 class="card-title">Actividades existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -249,13 +249,13 @@ ob_end_flush();
 
           <thead>
             <tr>
-              <th>ACTIVIDADES</th>
-              <th>DESCRIPCION </th>
-              <th>NOMBRE PROYECTO </th>
-              <th>HORAS SEMANALES</th>
-              <th>TIPO COMISION </th>
-              <th>MODIFICAR</th>
-              <th>ELIMINAR</th>
+              <th>Actividades</th>
+              <th>Descripción</th>
+              <th>Nombre proyecto </th>
+              <th>Horas semanales</th>
+              <th>Tipo comisión </th>
+              <th>Modificar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -317,7 +317,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar Actividad</h4>
+            <h4 class="modal-title"> Actualizar actividad</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -336,7 +336,7 @@ ob_end_flush();
                 <div class="col-md-12">
                   <div class="form-group">
 
-                    <label>Modificar Actividad</label>
+                    <label>Modificar actividad</label>
 
 
                     <input class="form-control" type="text" id="txt_actividad" name="txt_actividad" value="<?php echo $_SESSION['actividad']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_actividad');" onkeypress="return sololetras(event)" maxlength="30">
@@ -366,7 +366,7 @@ ob_end_flush();
                   </div>
 
                   <div class="form-group ">
-                    <label class="control-label">Tipo Comision</label>
+                    <label class="control-label">Tipo comision</label>
                     <select class="form-control" name="comision1" required="">
                       <option value="0">Seleccione una opción:</option>
                       <?php

@@ -194,7 +194,7 @@ ob_end_flush();
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimiento</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menú mantenimiento</a></li>
               <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_atributo_vista.php">Nuevo atributo</a></li>
             </ol>
           </div>
@@ -210,7 +210,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Atributos Existentes</h3>
+        <h3 class="card-title">Atributos existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -252,11 +252,11 @@ ob_end_flush();
 
           <thead>
             <tr>
-              <th>ATRIBUTOS</th>
-              <th>REQUERIDO </th>
-              <th>TIPO PERSONA </th>
-              <th>MODIFICAR</th>
-              <th>ELIMINAR</th>
+              <th>Atributos</th>
+              <th>Requerido </th>
+              <th>Tipo persona </th>
+              <th>Modificar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -308,7 +308,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar Atributo</h4>
+            <h4 class="modal-title"> Actualizar atributo</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -338,7 +338,7 @@ ob_end_flush();
                   </div>
 
                   <div class="form-group">
-                    <label class="control-label">Tipo Persona</label>
+                    <label class="control-label">Tipo persona</label>
                     <select class="form-control" name="persona1" required="">
                       <option value="0">Seleccione una opción</option>
 
@@ -370,7 +370,7 @@ ob_end_flush();
         <!--Footer del modal-->
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" id="btn_modificar_atributo" name="btn_modificar_atributo" <?php echo $_SESSION['btn_modificar_atributo']; ?>>Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary" id="btn_modificar_atributo" name="btn_modificar_atributo" <?php echo $_SESSION['btn_modificar_atributo']; ?>>Guardar cambios</button>
           </div>
         </div>
         <!-- /.modal-content -->

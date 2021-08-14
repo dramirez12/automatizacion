@@ -97,7 +97,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>ACTIVIDADES</h1>
+                        <h1>Actividades</h1>
                     </div>
 
 
@@ -105,8 +105,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_actividades_vista.php"> Mantenimiento Actividad</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menú mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_actividades_vista.php"> Mantenimiento actividad</a></li>
                         </ol>
                     </div>
 
@@ -125,7 +125,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nueva Actividad</h3>
+                            <h3 class="card-title">Nueva actividad</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>

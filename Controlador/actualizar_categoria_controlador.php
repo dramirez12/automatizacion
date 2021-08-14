@@ -37,7 +37,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['categoria'] <> $categoria and $valor_viejo['descripcion'] <> $descripcion) {
 
         $Id_objeto = 59;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA CATEGORIA ' . $valor_viejo['categoria'] . 'Y POR ' . $categoria . ', LA DESCRIPCION DE LA CATEGORIA ' . $categoria . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA CATEGORIA ' . $valor_viejo['categoria'] . ' POR ' . $categoria . ', LA DESCRIPCION DE LA CATEGORIA ' . $categoria . ' ');
 
 
 
@@ -52,7 +52,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['categoria'] <> $categoria) {
 
         $Id_objeto = 59;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA CATEGORIA ' . $valor_viejo['categoria'] . ' POR ' . $categoria . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA CATEGORIA ' . $valor_viejo['categoria'] . ' POR ' . $categoria . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -65,7 +65,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['descripcion'] <> $descripcion) {
 
         $Id_objeto = 59;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA DESCRIPCION DE LA CATEGORIA ' . $categoria . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA DESCRIPCION DE LA CATEGORIA ' . $categoria . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

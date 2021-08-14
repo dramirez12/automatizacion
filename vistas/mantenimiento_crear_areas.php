@@ -79,13 +79,13 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Areas para Asignaturas</h1>
+                        <h1>áreas para asignaturas</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_area_vista.php"> Mantenimiento Areas</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menú mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_area_vista.php"> Mantenimiento áreas</a></li>
                         </ol>
                     </div>
 
@@ -104,7 +104,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nueva Área</h3>
+                            <h3 class="card-title">Nueva área</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>

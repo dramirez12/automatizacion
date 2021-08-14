@@ -35,7 +35,7 @@ if ($_POST['area'] <> '')
         
 	        if($resultado === TRUE) 
           {
-                    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , 'EL AREA  '. $area.'');
+                    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],' MODIFICO' , ' EL AREA  A '. $area.'');
 
                 header("location:../vistas/mantenimiento_area_vista.php?msj=2");
            

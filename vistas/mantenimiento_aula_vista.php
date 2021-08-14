@@ -184,8 +184,8 @@ ob_end_flush();
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menu Mantenimiento</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_aula_vista.php">Nueva Aula</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menú mantenimiento</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_aula_vista.php">Nueva aula</a></li>
             </ol>
           </div>
 
@@ -243,13 +243,13 @@ ob_end_flush();
           <thead>
             <tr>
               <th hidden>ID </th>
-              <th>CÓDIGO AULAS</th>
-              <th>DESCRIPCIÓN </th>
-              <th>CAPACIDAD </th>
-              <th>EDIFICIO</th>
-              <th>TIPO AULA </th>
-              <th>MODIFICAR</th>
-              <th>ELIMINAR</th>
+              <th>Código aulas</th>
+              <th>Descripción </th>
+              <th>Capacidad </th>
+              <th>Edificio</th>
+              <th>Tipo aula </th>
+              <th>Modificar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -314,7 +314,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar Aula</h4>
+            <h4 class="modal-title"> Actualizar aula</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -344,7 +344,7 @@ ob_end_flush();
                   </div>
                   <div class="form-group">
 
-                    <label>Modificar Código Aula</label>
+                    <label>Modificar código aula</label>
 
 
                     <input class="form-control" type="text" id="txt_codigo" name="txt_codigo" value="<?php echo $_SESSION['codigo']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" maxlength="60">
@@ -401,7 +401,7 @@ ob_end_flush();
                   </div>
 
                   <div class="form-group ">
-                    <label class="control-label">Tipo Aula</label>
+                    <label class="control-label">Tipo aula</label>
                     <select class="form-control" name="aula" required="">
                       <option value="0">Seleccione una opción:</option>
                       <?php
@@ -437,7 +437,7 @@ ob_end_flush();
           <!--Footer del modal-->
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="" class="btn btn-primary" id="btn_modificar_aula" name="btn_modificar_aula" <?php echo $_SESSION['btn_modificar_aula']; ?>>Guardar Cambios</button>
+            <button type="" class="btn btn-primary" id="btn_modificar_aula" name="btn_modificar_aula" <?php echo $_SESSION['btn_modificar_aula']; ?>>Guardar cambios</button>
           </div>
         </div>
         <!-- /.modal-content -->

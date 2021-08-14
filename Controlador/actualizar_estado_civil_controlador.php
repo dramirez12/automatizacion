@@ -43,7 +43,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['estado_civil'] <> $estado_civil and $valor_viejo['descripcion'] <> $descripcion) {
 
         $Id_objeto = 62;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL ESTADO CIVIL ' . $valor_viejo['estado_civil'] . 'Y POR ' . $estado_civil . ', LA DESCRIPCION DEL ESTADO CIVIL ' . $estado_civil . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL ESTADO CIVIL ' . $valor_viejo['estado_civil'] . ' POR ' . $estado_civil . ', LA DESCRIPCION DEL ESTADO CIVIL ' . $estado_civil . ' ');
 
 
 
@@ -58,7 +58,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['estado_civil'] <> $estado_civil) {
 
         $Id_objeto = 62;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL ESTADO CIVIL ' . $valor_viejo['estado_civil'] . ' POR ' . $estado_civil . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', 'EL ESTADO CIVIL ' . $valor_viejo['estado_civil'] . ' POR ' . $estado_civil . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -72,7 +72,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 62;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA DESCRIPCION DEL ESTADO CIVIL ' . $estado_civil . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA DESCRIPCION DEL ESTADO CIVIL ' . $estado_civil . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

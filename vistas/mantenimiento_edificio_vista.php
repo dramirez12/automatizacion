@@ -186,7 +186,7 @@ ob_end_flush();
 
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Edificios Existentes</h3>
+                <h3 class="card-title">Edificios existentes</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -229,10 +229,10 @@ ob_end_flush();
 
                     <thead>
                         <tr>
-                            <th>NOMBRE</th>
-                            <th>CÓDIGO</th>
-                            <th>MODIFICAR</th>
-                            <th>ELIMINAR</th>
+                            <th>Nombre</th>
+                            <th>Código</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -290,7 +290,7 @@ ob_end_flush();
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"> Actualizar Edificio</h4>
+                        <h4 class="modal-title"> Actualizar edificio</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -309,7 +309,7 @@ ob_end_flush();
                                 <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <label>Modificar Edificio</label>
+                                        <label>Modificar edificio</label>
 
 
                                         <input class="form-control" type="text" id="txtedificio" name="txtedificio" value="<?php echo $_SESSION['nombre']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txtedificio');" onkeypress="return LetrasyNumeroos(event)" maxlength="30">
@@ -336,7 +336,7 @@ ob_end_flush();
                     <!--Footer del modal-->
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="" class="btn btn-primary" id="btn_modificar_edificio" name="btn_modificar_edificio" <?php echo $_SESSION['btn_modificar_edificio']; ?>>Guardar Cambios</button>
+                        <button type="" class="btn btn-primary" id="btn_modificar_edificio" name="btn_modificar_edificio" <?php echo $_SESSION['btn_modificar_edificio']; ?>>Guardar cambios</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

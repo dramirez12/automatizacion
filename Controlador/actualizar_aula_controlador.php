@@ -35,7 +35,7 @@ if($codigo1==$codigo){
     if ($valor_viejo['codigo'] <> $codigo and $valor_viejo['descripcion'] <> $descripcion and $valor_viejo['capacidad'] <> $capacidad and $valor_viejo['id_edificio'] <> $edificio and $valor_viejo['id_tipo_aula'] <> $tipoaula) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL AULA ' . $valor_viejo['codigo'] . 'Y POR ' . $codigo . ', LA DESCRIPCION DEL AULA A ' . $codigo . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL AULA ' . $valor_viejo['codigo'] . ' Y POR ' . $codigo . ', LA DESCRIPCION DEL AULA A ' . $codigo . ' ');
 
 
 
@@ -53,7 +53,7 @@ if($codigo1==$codigo){
     } elseif ($valor_viejo['codigo'] <> $codigo) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL AULA' . $valor_viejo['codigo'] . ' POR ' . $codigo . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL AULA ' . $valor_viejo['codigo'] . ' POR ' . $codigo . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -66,7 +66,7 @@ if($codigo1==$codigo){
     } elseif ($valor_viejo['descripcion'] <> $descripcion) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA DESCRIPCION DEL AULA A ' . $descripcion . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA DESCRIPCION DEL AULA A ' . $descripcion . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -79,7 +79,7 @@ if($codigo1==$codigo){
     } elseif ($valor_viejo['capacidad'] <> $capacidad) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' lA CAPACIDAD DEL AULA A  ' . $capacidad . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' lA CAPACIDAD DEL AULA A  ' . $capacidad . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -92,7 +92,7 @@ if($codigo1==$codigo){
     } elseif ($valor_viejo['id_edificio'] <> $edificio) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL EDIFICIO DEL AULA A  ' . $edificio . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL EDIFICIO DEL AULA A  ' . $edificio . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -105,7 +105,7 @@ if($codigo1==$codigo){
     } elseif ($valor_viejo['id_tipo_aula'] <> $tipoaula) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL TIPO DE AULA A ' . $tipoaula . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL TIPO DE AULA A ' . $tipoaula . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -152,7 +152,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['codigo'] <> $codigo and $valor_viejo['descripcion'] <> $descripcion and $valor_viejo['capacidad'] <> $capacidad and $valor_viejo['id_edificio'] <> $edificio and $valor_viejo['id_tipo_aula'] <> $tipoaula) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL AULA ' . $valor_viejo['codigo'] . 'Y POR ' . $codigo . ', LA DESCRIPCION DEL AULA A ' . $codigo . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL AULA ' . $valor_viejo['codigo'] . ' Y POR ' . $codigo . ', LA DESCRIPCION DEL AULA A ' . $codigo . ' ');
 
 
 
@@ -170,7 +170,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['codigo'] <> $codigo) {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL AULA' . $valor_viejo['codigo'] . ' POR ' . $codigo. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', ' EL AULA ' . $valor_viejo['codigo'] . ' POR ' . $codigo. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -184,7 +184,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA DESCRIPCION DEL AULA A ' . $descripcion. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', ' LA DESCRIPCION DEL AULA A ' . $descripcion. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -198,7 +198,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' lA CAPACIDAD DEL AULA A  ' . $capacidad. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' lA CAPACIDAD DEL AULA A  ' . $capacidad. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -212,7 +212,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL EDIFICIO DEL AULA A  ' . $edificio. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL EDIFICIO DEL AULA A  ' . $edificio. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -226,7 +226,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 60;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL TIPO DE AULA A ' . $tipoaula. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL TIPO DE AULA A ' . $tipoaula. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

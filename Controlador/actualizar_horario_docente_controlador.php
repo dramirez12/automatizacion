@@ -40,7 +40,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['hora'] <> $hora) {
 
         $Id_objeto = 69;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' LA HORA ' . $valor_viejo['hora']  . 'Y POR ' . $hora .  ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA HORA ' . $valor_viejo['hora']  . ' POR ' . $hora .  ' ');
 
 
 
@@ -55,7 +55,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['hora'] <> $hora) {
 
         $Id_objeto = 85;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA HORA ' . $valor_viejo['hora'] . ' POR ' . $hora . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' LA HORA ' . $valor_viejo['hora'] . ' POR ' . $hora . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

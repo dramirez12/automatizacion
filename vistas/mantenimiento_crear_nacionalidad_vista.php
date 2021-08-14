@@ -97,7 +97,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>NACIONALIDAD</h1>
+                        <h1>Nacionalidad</h1>
                     </div>
 
 
@@ -105,8 +105,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_nacionalidad_vista.php"> Mantenimiento Nacionalidad</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menu mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_nacionalidad_vista.php"> Mantenimiento nacionalidad</a></li>
                         </ol>
                     </div>
 
@@ -125,7 +125,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nueva Nacionalidad</h3>
+                            <h3 class="card-title">Nueva nacionalidad</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -138,7 +138,7 @@ ob_end_flush();
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Ingrese La Nacionalidadd</label>
+                                        <label>Ingrese la nacionalidadd</label>
                                         <input class="form-control " type="text" id="txt_nacionalidad1" name="txt_nacionalidad1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nacionalidad1');" onkeypress="return sololetras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 

@@ -188,15 +188,15 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>PERÍODO
+                        <h1>Período
                         </h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_periodo_vista.php">Nuevo Período</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menu mantenimiento</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_periodo_vista.php">Nuevo período</a></li>
                         </ol>
                     </div>
 
@@ -253,15 +253,15 @@ ob_end_flush();
 
                     <thead>
                         <tr>
-                            <th hidden>ID </th>
-                            <th>N. PERÍODO</th>
-                            <th>AÑO</th>
-                            <th>FECHA INICIO </th>
-                            <th>FECHA FINAL</th>
-                            <th>TIPO PERÍODO </th>
-                            <th>ADICIONES/CANCELACIONES</th>
-                            <th>MODIFICAR</th>
-                            <th>ELIMINAR</th>
+                            <th hidden>Id </th>
+                            <th>N. período</th>
+                            <th>Año</th>
+                            <th>Fecha Inicio </th>
+                            <th>Fecha Final</th>
+                            <th>Tipo Período </th>
+                            <th>Adiciones/Cancelaciones</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -341,36 +341,36 @@ ob_end_flush();
                                 <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <label>Número Período</label>
+                                        <label>Número período</label>
                                         <input class="form-control" readonly type="text" id="num_periodo" name="num_periodo" style="text-transform: uppercase" onkeypress="return Numeros(event)" value="<?php echo $_SESSION['num_periodo']; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label>Año Académico</label>
+                                        <label>Año académico</label>
                                         <input class="form-control" readonly type="text" id="num_anno" name="num_anno" style="text-transform: uppercase" onkeypress="return Numeros(event)" value="<?php echo $_SESSION['num_anno']; ?>">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Inicio del Período</label>
+                                        <label>Inicio del período</label>
                                         <input class="form-control" type="date" id="fecha_inicio" name="fecha_inicio" value="<?php echo $_SESSION['fecha_inicio']; ?>">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Finalización del Período</label>
+                                        <label>Finalización del período</label>
                                         <input class="form-control" type="date" id="fecha_final" name="fecha_final" value="<?php echo $_SESSION['fecha_final']; ?>">
                                     </div>
 
                                     <div class="form-group" hidden>
-                                        <label>Finalización del Período</label>
+                                        <label>Finalización del período</label>
                                         <input class="form-control" hidden type="date" id="final_modificar" name="final_modificar" value="<?php echo $_SESSION['fecha_final']; ?>">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Adiciones/Cancelaciones</label>
+                                        <label>Adiciones/cancelaciones</label>
                                         <input class="form-control" type="date" id="fecha_adic_canc" name="fecha_adic_canc" value="<?php echo $_SESSION['fecha_adic_canc']; ?>">
                                     </div>
 
                                     <div class="form-group ">
-                                        <label class="control-label">Tipo de Período</label>
+                                        <label class="control-label">Tipo de período</label>
                                         <select class="form-control" name="tipo_p" required="">
                                             <option value="0">Seleccione una opción:</option>
                                             <?php
@@ -405,7 +405,7 @@ ob_end_flush();
                     <!--Footer del modal-->
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="" class="btn btn-primary" id="btn_modificar_periodo" name="btn_modificar_periodo" <?php echo $_SESSION['btn_modificar_periodo']; ?>>Guardar Cambios</button>
+                        <button type="" class="btn btn-primary" id="btn_modificar_periodo" name="btn_modificar_periodo" <?php echo $_SESSION['btn_modificar_periodo']; ?>>Guardar cambios</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

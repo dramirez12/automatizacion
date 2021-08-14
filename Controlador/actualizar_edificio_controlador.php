@@ -35,7 +35,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['nombre'] <> $edificio and $valor_viejo['codigo'] <> $codigo) {
 
         $Id_objeto = 58;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL EDIFICIO ' . $valor_viejo['nombre'] . 'Y POR ' . $edificio . ', EL CODIGO DEL EDIFICIO ' . $edificio . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL EDIFICIO ' . $valor_viejo['nombre'] . ' Y POR ' . $edificio . ', EL CODIGO DEL EDIFICIO ' . $edificio . ' ');
 
 
 
@@ -50,7 +50,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['nombre'] <> $edificio) {
 
         $Id_objeto = 58;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL EDIFICIO ' . $valor_viejo['nombre'] . ' POR ' . $edificio . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL EDIFICIO ' . $valor_viejo['nombre'] . ' POR ' . $edificio . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -64,7 +64,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 58;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL CODIGO DEL EDIFICIO  ' . $edificio . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL CODIGO DEL EDIFICIO  ' . $edificio . ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

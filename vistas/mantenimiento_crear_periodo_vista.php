@@ -110,8 +110,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_periodo_vista.php"> Mantenimiento Período</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menu mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_periodo_vista.php"> Mantenimiento período</a></li>
                         </ol>
                     </div>
 
@@ -130,7 +130,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nuevo Período</h3>
+                            <h3 class="card-title">Nuevo período</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -144,7 +144,7 @@ ob_end_flush();
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Período Académico</label>
+                                        <label>Período académico</label>
                                         <input class="form-control" type="text" minlength="1" maxlength="1" min="1" max="3" size="3" id="num_periodo" name="num_periodo" style="text-transform: uppercase" onkeypress="return Numeros(event)" onblur="comprobar()">
                                     </div>
 
@@ -155,16 +155,16 @@ ob_end_flush();
                                         
                                     </div>
                                     <div class="form-group">
-                                        <label>Inicio del Período</label>
+                                        <label>Inicio del período</label>
                                         <input class="form-control" type="date" id="fecha_inicio" name="fecha_inicio">
                                     </div>
                                     <div class="form-group">
-                                        <label>Finalización del Período</label>
+                                        <label>Finalización del período</label>
                                         <input class="form-control" type="date" id="fecha_final" name="fecha_final">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Adiciones y Cancelaciones</label>
+                                        <label>Adiciones y cancelaciones</label>
                                         <input class="form-control" type="date" id="fecha_adic_canc" name="fecha_adic_canc">
                                     </div>
 
@@ -173,7 +173,7 @@ ob_end_flush();
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Tipo de Período:</label>
+                                            <label>Tipo de período:</label>
                                             <td><select class="form-control" onchange="mostrar_tipo_periodo($('#tipo_periodo').val());" id="tipo_periodo" class="" name="">
                                                     <option value="">Seleccionar</option>
                                                 </select></td>

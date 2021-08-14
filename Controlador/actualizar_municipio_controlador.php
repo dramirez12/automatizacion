@@ -45,7 +45,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     if ($valor_viejo['municipio'] <> $municipio and $valor_viejo['codigo'] <> $codigo and $valor_viejo['id_departamento'] <> $departamento) {
 
         $Id_objeto = 79;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL MUNICIPIO ' . $valor_viejo['municipio'] . 'Y POR ' . $municipio . ', EL MUNICIPIO ' . $municipio . ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO', ' EL MUNICIPIO ' . $valor_viejo['municipio'] . ' POR ' . $municipio . ', EL MUNICIPIO ' . $municipio . ' ');
 
 
 
@@ -60,7 +60,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     } elseif ($valor_viejo['municipio'] <> $municipio) {
 
         $Id_objeto = 79;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL MUNICIPIO ' . $valor_viejo['municipio'] . ' POR ' . $municipio. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', 'EL MUNICIPIO ' . $valor_viejo['municipio'] . ' POR ' . $municipio. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -74,7 +74,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 79;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL MUNICIPIO ' . $codigo. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', ' EL MUNICIPIO ' . $codigo. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);
@@ -88,7 +88,7 @@ header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
     {
 
         $Id_objeto = 79;
-        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', ' EL MUNICIPIO ' . $municipio. ' ');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', ' EL MUNICIPIO ' . $municipio. ' ');
         /* Hace el query para que actualize*/
 
         $resultado = $mysqli->query($sql);

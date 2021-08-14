@@ -47,7 +47,7 @@ if ($_POST['num_periodo']  <> ' ' and  $_POST['num_anno'] <> '' and  $_POST['fec
 
 
         if ($resultado === TRUE) {
-            bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL PERIODO  ' . $num_periodo . ' EN EL AÑO ' . $num_anno . '');
+            bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], ' MODIFICO ', ' EL PERIODO  ' . $num_periodo . ' EN EL AÑO ' . $num_anno . '');
 
             header("location:../vistas/mantenimiento_periodo_vista.php?msj=2");
         } else {
