@@ -1,8 +1,9 @@
+// atr
 $(document).ready(function() {
 $("#tabla1").DataTable({
 
-  
-   
+
+ 
     "language": {
   
   
@@ -14,7 +15,7 @@ $("#tabla1").DataTable({
       "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
       "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
       "sInfoPostFix":    "",
-      "sSearch":         "Buscar:",
+      "sSearch":         "Buscar:", 
       "sUrl":            "",
       "sInfoThousands":  ",",
       "sLoadingRecords": "Cargando...",
@@ -31,12 +32,13 @@ $("#tabla1").DataTable({
   
     },
     dom: 'Bfrtip',
+    
   
      
           "buttons": [
   
   
-         {
+         /* {
   
               "extend":'excelHtml5',
               "text":   'Excel  <i class = "fa fa-print"></i>',
@@ -125,13 +127,13 @@ $("#tabla1").DataTable({
   
   
               
-        },
+        }, */
   
           {
             
               "extend":'pdfHtml5',
-               "download": 'open',
-              "pageSize": 'LETTER',
+               /* "download": 'open', */
+              "pageSize": 'legal',
               "orientation": 'portrait',
               "title": 'Reporte de Actividades',  
               "text":   'PDF <i class = "fa fa-print"></i>',
@@ -141,14 +143,20 @@ $("#tabla1").DataTable({
              
               "exportOptions": {
                               columns: [ 0,1,2],
+  
+                             
+
                               modifier: {
                               page: 'current'
                                       }
+                                      
   
                                },
                               
+                              
                                messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                               ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString(), 
+                               ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                     REPORTE DE ATRIBUTOS ', 
+                              
                                
                                
 
@@ -162,6 +170,10 @@ $("#tabla1").DataTable({
   
   
     customize: function(doc) {
+      doc.content[2].margin = [ 180, 0, 150, 0 ], //left, top, right, bottom
+
+     
+      
 
   
   // Eliminar el título creado por datatTables
@@ -182,11 +194,12 @@ $("#tabla1").DataTable({
   // Establecer márgenes de página [izquierda, arriba, derecha, abajo] u [horizontal, vertical]
   // o un número para un diferencial igual
   // ¡Es importante crear suficiente espacio en la parte superior para un encabezado!
-              doc.pageMargins = [40,140,60,80];
+              doc.pageMargins = [30,100,20,25];
               // Establece el tamaño de fuente para todo el documento
-              doc.defaultStyle.fontSize = 7;
+              doc.defaultStyle.fontSize = 10;
               // Establecer el tamaño de fuente para el encabezado de la tabla
               doc.styles.tableHeader.fontSize =10;
+            
               
   // Crear un objeto de encabezado con 3 columnas
   // Lado izquierdo: logotipo
@@ -243,13 +256,14 @@ $("#tabla1").DataTable({
   
   
                   ],
-                  /* title: ['Fecha: ', { text: jsDate.toString() },'    Hora: ', {text: tiempo.toString() }], */
+                  
   
    
                   margin:[15, 30], 
                 }
                 
               });
+            
               
   
   // Crear un objeto de pie de página con 2 columnas
@@ -262,10 +276,10 @@ $("#tabla1").DataTable({
                     {
                       alignment: 'center',
                       fontSize: 11,
-                      text: ['página ', { text: page.toString() },  ' de ', { text: pages.toString() }]
+                      text: ['página ', { text: page.toString() },  ' de ', { text: pages.toString() },]
                     }
                   ],
-                  margin:30
+                  margin: [10, 0],
                 }
                   });
               
@@ -280,7 +294,8 @@ $("#tabla1").DataTable({
               objLayout['vLineColor'] = function(i) { return '#aaa'; };
               objLayout['paddingLeft'] = function(i) { return 4; };
               objLayout['paddingRight'] = function(i) { return 4; };
-              doc.content[0].layout = objLayout;
+              doc.content[1].layout = objLayout;
+              
           
   
     },
@@ -289,9 +304,25 @@ $("#tabla1").DataTable({
   
       
      
-          ]
+          ],
+          
   
   
   
   });
-} );
+ 
+
+ 
+  document.getElementById("tabla1_filter").style.display = "none";
+  $('input.global_filter').on('keyup click', function () {
+    filterGlobal1();
+  });
+  $('input.column_filter').on('keyup click', function () {
+    filterColumn($(this).parents('tr').attr('data-column'));
+  });
+
+});
+
+function filterGlobal1() {
+  $("#tabla1").DataTable().search($("#global_filter").val()).draw();
+}
