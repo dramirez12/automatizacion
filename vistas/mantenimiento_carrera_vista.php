@@ -379,7 +379,7 @@ ob_end_flush();
         }
     </script>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(function() {
 
             $('#tabla15').DataTable({
@@ -393,7 +393,7 @@ ob_end_flush();
             });
         });
     </script>
-
+ -->
 </body>
 
 </html>
