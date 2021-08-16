@@ -1,4 +1,4 @@
-// atributos
+// REPORTE DE ATRIBUTOS
 $(document).ready(function() {
 $("#tabla1").DataTable({
 
@@ -154,8 +154,8 @@ $("#tabla1").DataTable({
                                },
                               
                               
-                               messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                               ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                     REPORTE DE ATRIBUTOS ', 
+                               messageTop: '         FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                               ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                     REPORTE DE ATRIBUTOS ', 
                               
                                
                                
@@ -171,6 +171,10 @@ $("#tabla1").DataTable({
   
     customize: function(doc) {
       doc.content[2].margin = [ 180, 0, 150, 0 ], //left, top, right, bottom
+      doc.content[2].margin = [35, 15, 50, 40];
+      doc.content[2].table.widths = ["40%", "32%", "30%"];
+      doc.styles.tableBodyEven.alignment = 'center';
+      doc.styles.tableBodyOdd.alignment = 'center'; 
 
      
       
@@ -325,7 +329,7 @@ $("#tabla1").DataTable({
 
 
 
-// actividades
+// REPORTE DE ACTIVIDADES
 $(document).ready(function() {
   $("#tabla").DataTable({
   
@@ -358,6 +362,8 @@ $(document).ready(function() {
         }
     
       },
+      
+      
       dom: 'Bfrtip',
       
     
@@ -481,8 +487,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                     REPORTE DE ACTIVIDADES ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                               REPORTE DE ACTIVIDADES ', 
                                 
                                  
                                  
@@ -498,6 +504,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 120, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [20, 15, 50, 50];
+        doc.content[2].table.widths = ["30%", "20%", "20%", "15%", "20%"];
+        doc.styles.tableBodyEven.alignment = 'center';
+        doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -808,8 +818,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                           REPORTE DE AULAS ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                           REPORTE DE AULAS ', 
                                 
                                  
                                  
@@ -825,6 +835,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 170, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [20, 15, 50, 50];
+        doc.content[2].table.widths = ["25%", "20%", "20%", "20%", "20%"];
+        doc.styles.tableBodyEven.alignment = 'center';
+        doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -1135,13 +1149,13 @@ $(document).ready(function() {
                                    },
                                   
                                   
-                                   messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                   ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE CATEGORIAS ', 
+                                   messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                   ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                  REPORTE DE CATEGORIAS ', 
                                   
                                    
                                    
     
-                                
+                                  
                                    
     
       
@@ -1152,6 +1166,10 @@ $(document).ready(function() {
       
         customize: function(doc) {
           doc.content[2].margin = [ 235, 0, 150, 0 ], //left, top, right, bottom
+          doc.content[2].margin = [20, 0, 100, 50];
+          doc.content[2].table.widths = ["60%", "52%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center';
     
          
           
@@ -1463,8 +1481,8 @@ $(document).ready(function() {
                                    },
                                   
                                   
-                                   messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                   ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE COMISIONES ', 
+                                   messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                   ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                 REPORTE DE COMISIONES ', 
                                   
                                    
                                    
@@ -1480,6 +1498,10 @@ $(document).ready(function() {
       
         customize: function(doc) {
           doc.content[2].margin = [ 200, 0, 150, 0 ], //left, top, right, bottom
+          doc.content[2].margin = [20, 0, 100, 50];
+          doc.content[2].table.widths = ["60%", "52%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center';
     
          
           
@@ -1790,8 +1812,8 @@ $(document).ready(function() {
                                    },
                                   
                                   
-                                   messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                   ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE DEPARTAMENTOS ', 
+                                   messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                   ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE DEPARTAMENTOS ', 
                                   
                                    
                                    
@@ -1807,6 +1829,10 @@ $(document).ready(function() {
       
         customize: function(doc) {
           doc.content[2].margin = [ 250, 0, 150, 0 ], //left, top, right, bottom
+          doc.content[2].margin = [40, 10, 100, 30];
+          doc.content[2].table.widths = ["110%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center';
     
          
           
@@ -2117,8 +2143,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE EDIFICIOS ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                      REPORTE DE EDIFICIOS ', 
                                 
                                  
                                  
@@ -2134,6 +2160,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 230, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [20, 15, 100, 50];
+        doc.content[2].table.widths = ["60%", "60%"];
+        doc.styles.tableBodyEven.alignment = 'center';
+        doc.styles.tableBodyOdd.alignment = 'center';
   
        
         
@@ -2444,8 +2474,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE ESTADO CIVIL ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                     REPORTE DE ESTADO CIVIL ', 
                                 
                                  
                                  
@@ -2461,6 +2491,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 230, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [20, 15, 100, 50];
+        doc.content[2].table.widths = ["60%", "54%"];
+        doc.styles.tableBodyEven.alignment = 'center';
+        doc.styles.tableBodyOdd.alignment = 'center';
   
        
         
@@ -2619,7 +2653,6 @@ $(document).ready(function() {
 $(document).ready(function() {
   $("#tabla8").DataTable({
   
-  
    
       "language": {
     
@@ -2648,6 +2681,7 @@ $(document).ready(function() {
         }
     
       },
+      
       dom: 'Bfrtip',
       
     
@@ -2771,8 +2805,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE GÉNERO ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                        REPORTE DE GÉNERO ', 
                                 
                                  
                                  
@@ -2788,6 +2822,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 256, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [40, 15, 100, 30];
+        doc.content[2].table.widths = ["110%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -3098,8 +3136,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE GRADO ACADÉMICO ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE GRADO ACADÉMICO ', 
                                 
                                  
                                  
@@ -3115,6 +3153,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 220, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [40, 15, 100, 30];
+        doc.content[2].table.widths = ["50%", "60%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -3425,8 +3467,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE HORARIOS ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE HORARIOS ', 
                                 
                                  
                                  
@@ -3442,6 +3484,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 275, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [40, 15, 100, 30];
+        doc.content[2].table.widths = ["110%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -3752,8 +3798,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE JORNADAS ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE JORNADAS ', 
                                 
                                  
                                  
@@ -3769,6 +3815,11 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 200, 0, 150, 0 ], //left, top, right, bottom
+     
+        doc.content[2].margin = [35, 15, 50, 40];
+        doc.content[2].table.widths = ["50%", "50%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -4078,8 +4129,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE MUNICIPIOS ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE MUNICIPIOS ', 
                                 
                                  
                                  
@@ -4095,6 +4146,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 180, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [35, 15, 50, 40];
+        doc.content[2].table.widths = ["40%", "32%", "30%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -4404,8 +4459,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE NACIONALIDAD ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                     REPORTE DE NACIONALIDAD ', 
                                 
                                  
                                  
@@ -4421,6 +4476,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 225, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [20, 15, 100, 50];
+        doc.content[2].table.widths = ["60%", "54%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
@@ -4730,8 +4789,8 @@ $(document).ready(function() {
                                  },
                                 
                                 
-                                 messageTop: '    Fecha: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-                                 ) +'    Hora: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE PERIODO ', 
+                                 messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
+                                 ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                   REPORTE DE PERIODO ', 
                                 
                                  
                                  
@@ -4747,6 +4806,10 @@ $(document).ready(function() {
     
       customize: function(doc) {
         doc.content[2].margin = [ 150, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [10, 15, 50, 50];
+        doc.content[2].table.widths = ["18%", "18%", "18%", "18%", "18%", "18%"];
+          doc.styles.tableBodyEven.alignment = 'center';
+          doc.styles.tableBodyOdd.alignment = 'center'; 
   
        
         
