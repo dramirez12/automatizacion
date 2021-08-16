@@ -289,7 +289,7 @@ ob_end_flush();
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-success" onclick="addTask(); ">Agregar</button>
-                          <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                          <button class="btn btn-danger" onclick="limpiarTEL()"; data-dismiss="modal">Cerrar</button>
                         </div>
                       </div>
                     </div>
@@ -343,7 +343,7 @@ ob_end_flush();
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-success" id="gcorreo1" onclick="addTask5()">Agregar</button>
-                          <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                          <button class="btn btn-danger" onclick="limpiarCOR()" data-dismiss="modal">Cerrar</button>
                         </div>
                       </div>
                     </div>
@@ -394,7 +394,7 @@ ob_end_flush();
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-success" onclick="addTask2()">Agregar</button>
-                          <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                          <button class="btn btn-danger" onclick="limpiarESP()" data-dismiss="modal">Cerrar</button>
                         </div>
                       </div>
                     </div>
@@ -556,7 +556,7 @@ ob_end_flush();
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-success" onclick="addTask3()">Agregar</button>
-                          <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                          <button class="btn btn-danger" onclick="limpiarACT()" data-dismiss="modal">Cerrar</button>
                         </div>
                       </div>
                     </div>

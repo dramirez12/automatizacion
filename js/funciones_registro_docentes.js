@@ -456,6 +456,9 @@ function limpiarCOR() {
 function limpiarTEL() {
 	document.getElementById('tel').value = '';
 }
+function limpiarACT() {
+	document.getElementById('actividades').value = '';
+}
 
 var viewlist5 = () => {
 	if (list5.length <= 2) {

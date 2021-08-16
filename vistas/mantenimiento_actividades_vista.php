@@ -435,7 +435,8 @@ ob_end_flush();
 </script>
 
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<!-- <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script> -->
+<script type="text/javascript" src="../js/pdf_prueba.js"></script>
 <script type="text/javascript" language="javascript">
   $(document).ready(function() {
 

@@ -404,7 +404,7 @@ ob_end_flush();
 
 
 
-<script src="../js/validaciones_plan.js"></script>
+  <script src="../js/validaciones_plan.js"></script>
   <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 </body>
@@ -423,7 +423,8 @@ ob_end_flush();
 
   });
 </script>
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<script type="text/javascript" src="../js/pdf_prueba.js"></script>
+<!-- <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script> -->
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
