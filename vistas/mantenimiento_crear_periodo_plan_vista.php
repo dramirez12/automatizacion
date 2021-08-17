@@ -147,7 +147,7 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Nuevo Período </label>
-                                        <input class="form-control" type="text"  maxlength="10" id="periodo_plan" name="periodo_plan" style="text-transform: uppercase"  onkeypress=" return DobleEspacio(this, event);" onkeyup="MismaLetra('periodo_plan');" onkeypress="return letrasynumeros(event)"  onkeypress="return comprobar(this.value, event, this.id)" >
+                                        <input class="form-control" type="text"  maxlength="25" id="periodo_plan" name="periodo_plan"  onkeyup="MismaLetra('periodo_plan');" >
                                     </div>
 
                                 

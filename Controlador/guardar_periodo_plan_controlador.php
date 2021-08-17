@@ -7,7 +7,7 @@ require_once('../clases/funcion_bitacora.php');
 $Id_objeto = 99;
 
 //obtener el valor del input mediante metodo post
-$periodo_plan = strtoupper($_POST['periodo_plan']);
+$periodo_plan = $_POST['periodo_plan'];
 
 
 

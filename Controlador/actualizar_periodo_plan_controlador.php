@@ -8,7 +8,7 @@ ob_start();
         $Id_objeto = 100 ;
 
 
-    $periodo = strtoupper ($_POST['periodo']);
+    $periodo = $_POST['periodo'];
     $id_periodo_plan = $_GET['id_periodo_plan'];
 
  

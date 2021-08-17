@@ -276,7 +276,7 @@ ob_end_flush();
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Período</label>
-                                <input class="form-control" type="text" id="periodo" name="periodo" style="text-transform: uppercase" value="<?php echo $_SESSION['periodo']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('periodo');" onkeypress="return letrasynumeros(event)">
+                                <input class="form-control" type="text" id="periodo" name="periodo"  value="<?php echo $_SESSION['periodo']; ?>" onkeyup=" MismaLetra('periodo');" >
                             </div>
                         </div>
                     </div>
