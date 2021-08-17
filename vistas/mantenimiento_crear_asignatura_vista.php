@@ -124,10 +124,10 @@ ob_end_flush();
                                     <label>Plan que pertenece:</label>
                                     <td><select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan">
                                         </select></td>
-                                    <input class="form-control" type="text" id="txt_uv_plan" name="txt_uv_plan" readonly >
-                                    <input class="form-control" type="text" id="num_clases_plan" name="num_clases_plan" readonly >
-                                    <input class="form-control" type="text" id="suma_clases_plan" name="suma_clases_plan" readonly >
-                                    <input class="form-control" type="text" id="suma_unidades_plan" name="suma_unidades_plan" readonly >
+                                    <input class="form-control" type="text" id="txt_uv_plan" name="txt_uv_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="num_clases_plan" name="num_clases_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="suma_clases_plan" name="suma_clases_plan" readonly hidden>
+                                    <input class="form-control" type="text" id="suma_unidades_plan" name="suma_unidades_plan" readonly hidden>
 
                                 </div>
                             </div>
