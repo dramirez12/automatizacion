@@ -416,8 +416,9 @@ $("#guardar_asig_servicio").click(function () {
     // var txt_uv_plan = document.getElementById("txt_uv_plan").value();
 
     var suma = parseInt(suma_unidades_plan) + parseInt(txt_uv);
+    var sum_clases = parseInt(clases_plan) + 1;
 
-    if (clases_plan + 1 > num_clases_plan) {
+    if (sum_clases > num_clases_plan) {
       alert("La asignatura excede el numero de clases asignadas al plan!");
     } else if (suma > txt_uv_plan) {
       alert(
@@ -461,15 +462,15 @@ $("#guardar_asig_servicio").click(function () {
               if (resp > 0) {
                 if (resp == 1) {
                   // alert("si");
-                  // swal({
-                  //   title: "alerta",
-                  //   text: "Por favor espere un momento",
-                  //   type: "warning",
-                  //   showConfirmButton: false,
-                  //   timer: 11000,
-                  // });
+                  swal({
+                    title: "alerta",
+                    text: "Por favor espere un momento",
+                    type: "warning",
+                    showConfirmButton: false,
+                    timer: 11000,
+                  });
 
-                  refrescar(14000);
+                  refrescar(15000);
 
                   RegistrarSilabo();
                   if ($("#cbm_asignaturas").val().length != 0) {
