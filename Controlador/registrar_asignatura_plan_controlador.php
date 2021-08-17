@@ -6,15 +6,15 @@ require_once('../clases/funcion_bitacora.php');
 $Id_objeto = 107;
 $MU = new modelo_plan();
 
-$id_plan_estudio = $_POST["id_plan_estudio"] ;
+$id_plan_estudio = strtoupper($_POST["id_plan_estudio"]) ;
 $id_periodo_plan = $_POST["id_periodo_plan"];
 $id_area = $_POST["id_area"];
 $uv = $_POST["uv"];
-$codigo = $_POST["codigo"];
-$asignatura = $_POST["asignatura"];
-$reposicion = $_POST["reposicion"];
-$suficiencia = $_POST["suficiencia"];
-$id_tipo_asignatura =$_POST["id_tipo_asignatura"];
+$codigo = strtoupper($_POST["codigo"]);
+$asignatura = strtoupper($_POST["asignatura"]);
+$reposicion = strtoupper($_POST["reposicion"]);
+$suficiencia = strtoupper($_POST["suficiencia"]);
+$id_tipo_asignatura = $_POST["id_tipo_asignatura"];
 $estado = $_POST["estado"];
 
 $consulta = $MU->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
