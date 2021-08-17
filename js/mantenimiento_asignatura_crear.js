@@ -247,114 +247,117 @@ $("#guardar_asig").click(function () {
   var estado = 0;
   var tipo_asignatura = 1;
 
-  if (
-    cbm_plan == null ||
-    txt_uv.length == 0 ||
-    cbm_periodo == null ||
-    txt_codigo_asignatura.length == 0 ||
-    cbm_area == null ||
-    txt_nombre_asignatura.length == 0 ||
-    cbm_reposicion == null ||
-    txt_silabo.length == 0 ||
-    cbm_suficiencia == null
-  ) {
-    alert("no se permiten campos vacios");
-  } else if (
-    cbm_plan == 0 ||
-    cbm_periodo == 0 ||
-    cbm_area == 0 ||
-    cbm_reposicion == 0 ||
-    cbm_suficiencia == 0
-  ) {
-    alert("seleccione una opcion valida");
-  } else {
-    var clases_plan = $("#suma_clases_plan").val();
-    var num_clases_plan = $("#num_clases_plan").val();
-    var suma_unidades_plan = $("#suma_unidades_plan").val();
-    var txt_uv_plan = $("#txt_uv_plan").val();
+  // if (
+  //   cbm_plan == null ||
+  //   txt_uv.length == 0 ||
+  //   cbm_periodo == null ||
+  //   txt_codigo_asignatura.length == 0 ||
+  //   cbm_area == null ||
+  //   txt_nombre_asignatura.length == 0 ||
+  //   cbm_reposicion == null ||
+  //   txt_silabo.length == 0 ||
+  //   cbm_suficiencia == null
+  // ) {
+  //   alert("no se permiten campos vacios");
+  // } else if (
+  //   cbm_plan == 0 ||
+  //   cbm_periodo == 0 ||
+  //   cbm_area == 0 ||
+  //   cbm_reposicion == 0 ||
+  //   cbm_suficiencia == 0
+  // ) {
+  //   alert("seleccione una opcion valida");
+  // } else {
+  var clases_plan = $("#suma_clases_plan").val();
+  var num_clases_plan = $("#num_clases_plan").val();
+  var suma_unidades_plan = $("#suma_unidades_plan").val();
+  var txt_uv_plan = $("#txt_uv_plan").val();
 
-    //  var suma_unidades_plan = document.getElementById("suma_unidades_plan").value();
-   // var txt_uv_plan = document.getElementById("txt_uv_plan").val();
+  //  var suma_unidades_plan = document.getElementById("suma_unidades_plan").value();
+  // var txt_uv_plan = document.getElementById("txt_uv_plan").val();
 
-    var suma = parseInt(suma_unidades_plan) + parseInt(txt_uv);
-    var sum_clases = parseInt(clases_plan) + 1;
+  var suma = parseInt(suma_unidades_plan) + parseInt(txt_uv);
+  var sum_clases = parseInt(clases_plan) + 1;
+
+  // alert(suma);
+
+  if (sum_clases > num_clases_plan) {
     console.log(sum_clases);
-    // alert(suma);
-
-    // if (clases_plan + 1 > num_clases_plan) {
-    //   alert("La asignatura excede el numero de clases asignadas al plan!");
-    // } else if (suma > txt_uv_plan) {
-    //   alert(
-    //     "La uv de la asignatura excede el numero de unidades para el plan!"
-    //   );
-    // } else {
-    //   //  alert("no exce");
-    //   $.post(
-    //     "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
-    //     { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
-    //     function (data, status) {
-    //       data = JSON.parse(data);
-
-    //       if (data.suma > 0) {
-    //         alert("Ya existe una asignatura con ese nombre!");
-    //       } else {
-    //         swal({
-    //           title: "alerta",
-    //           text: "Por favor espere un momento",
-    //           type: "warning",
-    //           showConfirmButton: false,
-    //           timer: 13000,
-    //         });
-    //         $.ajax({
-    //           url: "../Controlador/registrar_asignatura_plan_controlador.php",
-    //           type: "POST",
-    //           data: {
-    //             id_plan_estudio: cbm_plan,
-    //             id_periodo_plan: cbm_periodo,
-    //             id_area: cbm_area,
-    //             uv: txt_uv,
-    //             codigo: txt_codigo_asignatura,
-    //             asignatura: txt_nombre_asignatura,
-    //             reposicion: cbm_reposicion,
-    //             suficiencia: cbm_suficiencia,
-    //             estado: estado,
-    //             id_tipo_asignatura: tipo_asignatura,
-    //           },
-    //         }).done(function (resp) {
-    //           console.log(resp);
-
-    //           if (resp > 0) {
-    //             if (resp == 1) {
-    //              // alert("si");
-    //               // swal({
-    //               //   title: "alerta",
-    //               //   text: "Por favor espere un momento",
-    //               //   type: "warning",
-    //               //   showConfirmButton: false,
-    //               //   timer: 11000,
-    //               // });
-
-    //               refrescar(14000);
-
-    //               RegistrarSilabo();
-    //               if ($("#cbm_asignaturas").val().length != 0) {
-    //                 insertarEquivalencias();
-    //               }
-    //               if ($("#cbm_asignaturas_requisito").val().length != 0) {
-    //                 insertarRequisitos();
-    //               }
-    //               mensaje();
-    //             } else {
-    //               swal("Alerta!", "No se pudo completar la acción", "warning");
-    //             }
-    //           }
-    //         });
-    //       }
-    //     }
-    //   );
-    // }
+    console.log(num_clases_plan);
+    alert("La asignatura excede el numero de clases asignadas al plan!");
   }
+  //else if (suma > txt_uv_plan) {
+  //   alert(
+  //     "La uv de la asignatura excede el numero de unidades para el plan!"
+  //   );
+  // } else {
+  //   //  alert("no exce");
+  //   $.post(
+  //     "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura",
+  //     { id_plan_estudio: cbm_plan, asignatura: txt_nombre_asignatura },
+  //     function (data, status) {
+  //       data = JSON.parse(data);
+
+  //       if (data.suma > 0) {
+  //         alert("Ya existe una asignatura con ese nombre!");
+  //       } else {
+  //         swal({
+  //           title: "alerta",
+  //           text: "Por favor espere un momento",
+  //           type: "warning",
+  //           showConfirmButton: false,
+  //           timer: 13000,
+  //         });
+  //         $.ajax({
+  //           url: "../Controlador/registrar_asignatura_plan_controlador.php",
+  //           type: "POST",
+  //           data: {
+  //             id_plan_estudio: cbm_plan,
+  //             id_periodo_plan: cbm_periodo,
+  //             id_area: cbm_area,
+  //             uv: txt_uv,
+  //             codigo: txt_codigo_asignatura,
+  //             asignatura: txt_nombre_asignatura,
+  //             reposicion: cbm_reposicion,
+  //             suficiencia: cbm_suficiencia,
+  //             estado: estado,
+  //             id_tipo_asignatura: tipo_asignatura,
+  //           },
+  //         }).done(function (resp) {
+  //           console.log(resp);
+
+  //           if (resp > 0) {
+  //             if (resp == 1) {
+  //              // alert("si");
+  //               // swal({
+  //               //   title: "alerta",
+  //               //   text: "Por favor espere un momento",
+  //               //   type: "warning",
+  //               //   showConfirmButton: false,
+  //               //   timer: 11000,
+  //               // });
+
+  //               refrescar(14000);
+
+  //               RegistrarSilabo();
+  //               if ($("#cbm_asignaturas").val().length != 0) {
+  //                 insertarEquivalencias();
+  //               }
+  //               if ($("#cbm_asignaturas_requisito").val().length != 0) {
+  //                 insertarRequisitos();
+  //               }
+  //               mensaje();
+  //             } else {
+  //               swal("Alerta!", "No se pudo completar la acción", "warning");
+  //             }
+  //           }
+  //         });
+  //       }
+  //     }
+  //   );
+  // }
 });
+//});
 //);
 
 //FUNCION PARA ACTUALIZAR PAGINA DESPUES DE 10 SEGUNDOS DE HABER GUARDADO
