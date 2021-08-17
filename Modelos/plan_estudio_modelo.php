@@ -113,7 +113,7 @@ class modelo_plan{
     function plan_sel()
     {
         global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio ');
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio where id_plan_estudio !=17');
 
         return $consulta;
     }
