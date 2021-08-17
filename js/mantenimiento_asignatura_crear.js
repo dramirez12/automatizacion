@@ -284,7 +284,13 @@ $("#guardar_asig").click(function () {
   // if (sum_clases > num_clases_plan) {
     console.log(sum_clases);
     console.log(num_clases_plan);
-    alert("La asignatura excede el numero de clases asignadas al plan!");
+ // alert("La asignatura excede el numero de clases asignadas al plan!");
+  
+  if (sum_clases > num_clases_plan) {
+    alert(si)
+  } else {
+    alert(no)
+  }
   // }
   //else if (suma > txt_uv_plan) {
   //   alert(
