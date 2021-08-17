@@ -161,7 +161,7 @@ ob_end_flush();
 
                                     <label>Nombre de Asignatura</label>
 
-                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_asignatura');" onkeypress="return sololetras(event)">
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); " onkeypress="return sololetras(event)">
 
 
                                 </div>
