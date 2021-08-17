@@ -130,7 +130,7 @@ ob_end_flush();
                                 <div class="col-md-4">
                                     <div class="form-group ">
                                         <label>Nombre</label>
-                                        <input class="form-control" type="text" id="tipo_plan" name="tipo_plan" maxlength="25" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('tipo_plan');" onkeypress="return LetrasyNumeros(event)" required>
+                                        <input class="form-control" type="text" id="tipo_plan" name="tipo_plan" maxlength="25" value=""  onkeyup="DobleEspacio(this, event); MismaLetra('tipo_plan');"  required>
                                     </div>
 
 

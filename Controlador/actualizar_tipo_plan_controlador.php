@@ -8,7 +8,7 @@ ob_start();
         $Id_objeto = 102 ;
 
 
-    $nombre = strtoupper ($_POST['nombre']);
+    $nombre =($_POST['nombre']);
     $id_tipo_plan = $_GET['id_tipo_plan'];
 
  
