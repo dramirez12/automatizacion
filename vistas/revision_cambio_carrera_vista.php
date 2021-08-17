@@ -25,7 +25,7 @@ if($visualizacion==0){
 }
 $tipo= $_GET['tipo'];
 $counter = 0;
-$sql_tabla = json_decode( file_get_contents('http://informaticaunah.com/automatizacion/api/cambio_carrera.php?tipo='.$tipo), true );
+$sql_tabla = json_decode( file_get_contents('http://desarrollo.informaticaunah.com/api/cambio_carrera.php'), true );
 
 
 ?>
@@ -78,7 +78,21 @@ $sql_tabla = json_decode( file_get_contents('http://informaticaunah.com/automati
               <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
             </div>
-            </div>
+            <!----->
+            <br>
+          <div class=" px-12">
+            <!-- <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button> -->
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="dt-buttons btn-group">
+            <button class="btn btn-secondary buttons-pdf buttons-html5 btn-danger" tabindex="0" aria-controls="tabla" type="buttton" onclick="ventana()" title="Exportar a PDF">
+            <i class="fas fa-file-pdf">
+  </i>
+          </button>
+          </div>
+          <br></br>
+           
             <!-- /.card-header -->
             <div class="card-body">
               <table id="tabla" class="table table-bordered table-striped">
@@ -87,20 +101,46 @@ $sql_tabla = json_decode( file_get_contents('http://informaticaunah.com/automati
                   <th>NOMBRE</th>
                   <th># DE CUENTA</th>
                   <th>CORREO</th>
+                  <th>APROBADO</th>
+                  <th>TIPO</th>
+                  <th>OBSERVACION</th>
                   <th>REVISAR SOLICITUD</th>
                   </tr>
                 </thead>
                 <tbody>
+                
                   <?php 
                   if($sql_tabla["ROWS"]!=""){
-                  while($counter< count($sql_tabla["ROWS"])) { ?>
+                  while($counter< count($sql_tabla["ROWS"])) {
+                  $estado=$sql_tabla["ROWS"][$counter]["Id_cambio"];
+                        
+                  if ($estado==2) {
+                    $banner ="Aprobado";
+                    $mostrarEstado= "<span class='badge badge-pill badge-success d-block'>$banner</span>";
+                  }
+                  elseif($estado==1){
+                    $banner ="Nuevo";
+                    $mostrarEstado= "<span class='badge badge-pill badge-info d-block'>$banner</span>";  
+
+                  }else{
+                    $banner ="Desaprobado";
+                    $mostrarEstado= "<span class='badge badge-pill badge-warning d-block'>$banner</span>";  
+                  }
+                  
+                  ?>
                 <tr>
                 <td><?php echo $sql_tabla["ROWS"][$counter]["nombres"].' '.$sql_tabla["ROWS"][$counter]["apellidos"] ?></td>
                 <td><?php echo $sql_tabla["ROWS"][$counter]["valor"]?></td>
-                <td><?php echo $sql_tabla["ROWS"][$counter]["correo"] ?></td>         
+                <td><?php echo $sql_tabla["ROWS"][$counter]["correo"] ?></td>  
+                <td><?php echo $sql_tabla["ROWS"][$counter]["aprobado"] ?></td>  
+                <td><?php echo $sql_tabla["ROWS"][$counter]["tipo"] ?></td>  
+                <td><?php echo $sql_tabla["ROWS"][$counter]["observacion"] ?></td>     
                 <td style="text-align: center;">                    
-                    <a href="../vistas/revision_cambio_carrera_unico_vista.php?alumno=<?php echo $sql_tabla["ROWS"][$counter]["valor"] ?>&tipo=<?php echo $tipo?>" class="btn btn-primary btn-raised btn-xs">
+                    <a href="../vistas/revision_cambio_carrera_unico_vista.php?alumno=<?php echo $sql_tabla["ROWS"][$counter]["Id_cambio"] ?>&tipo=<?php echo $tipo?>" class="btn btn-primary btn-raised btn-xs">
                     <i class="far fa-check-circle"></i>
+                    </a>
+                    <a href="../Controlador/reporte_revision_cambio_interno_unica_controlador.php?alumno=<?php echo base64_encode($sql_tabla["ROWS"][$counter]["Id_cambio"]); ?>" target="_blank" class="btn btn-danger btn-raised btn-xs">
+                      <i class="fas fa-file-pdf    "></i>
                     </a>
                 </td>
                </tr>
@@ -151,3 +191,17 @@ $sql_tabla = json_decode( file_get_contents('http://informaticaunah.com/automati
 </script>
 </body>
 </html>
+<script type="text/javascript" language="javascript">
+    function ventana() {
+      window.open("../Controlador/reporte_revision_cambio_interno_general_controlador.php", "REPORTE");
+    }
+  </script>
+  
+  <!-- <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script> -->
+  
+  <!-- para usar botones en datatables JS -->
+  <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+  <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>

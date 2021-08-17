@@ -24,7 +24,9 @@ if($visualizacion==0){
 }
 if (isset($_GET['alumno'])){
 
-    $sqltabla = json_decode( file_get_contents("http://informaticaunah.com/automatizacion/api/cancelar_clases.php?alumno=".$_GET['alumno']), true );
+    //$sqltabla = json_decode( file_get_contents("http://informaticaunah.com/automatizacion/api/cancelar_clases.php?alumno=".$_GET['alumno']), true );
+    
+    $sqltabla = json_decode( file_get_contents("http://desarrollo.informaticaunah.com/api/cancelar_clases.php?alumno=".$_GET['alumno']), true );
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A REVISION CANCELAR CLASES ALUMNO '.$sqltabla["ROWS"][0]['nombres'].'');
 }
 
@@ -37,6 +39,7 @@ ob_end_flush();
 <html>
 <head>
   <title></title>
+  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 </head>
 <body >
 
@@ -94,7 +97,8 @@ ob_end_flush();
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Número de Cuenta</label>
-                            <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['valor'] ?>" type="text" id="txt_cuenta" name="txt_cuenta1" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
+                            <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['valor'] ?>" type="text" id="txt_cuenta" name="txt_cuenta" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
+                            <input class="form-control d-none" value="<?php echo $sqltabla["ROWS"][0]['Id_cancelar_clases']  ?>" type="text"  name="Id_cancelar_clases">
                         </div>
                 </div>
                 <div class="col-md-6">
@@ -106,7 +110,7 @@ ob_end_flush();
                 <div class="col-md-12">
                         <div class="form-group">
                             <label>Motivo de cancelación</label>
-                            <textarea class="form-control"  id="txt_motivo" name="txt_motivo" rows="3" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;"><?php echo $sqltabla["ROWS"][0]['motivo']; ?> </textarea>
+                            <textarea class="form-control"  id="txt_razon" name="txt_razon" rows="3" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;"><?php echo $sqltabla["ROWS"][0]['motivo']; ?> </textarea>
                         </div>
                 </div>
                 <div class="col-md-12">
@@ -119,13 +123,13 @@ ob_end_flush();
                 <div class="col-md-6">
                         <div class="form-group">
                         <label>Observación</label>
-                        <textarea class="form-control" id="txt_observacion" name="txt_observacion" rows="3"></textarea>
+                        <textarea class="form-control" id="observacion" name="txt_observacion" rows="3"></textarea>
                         </div>
                 </div>
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Seleccione su aprobación</label>
-                            <select class="form-control" id="aprobado" name="aprobado" onchange="Mostrarlink();" >
+                            <select class="form-control" id="cambio" name="cambio" onchange="Mostrarlink();" >
                               <option disabled selected>Aprobar</option>
                               <option value="aprobado">SI</option>
                               <option value="desaprobar">NO</option>
@@ -135,14 +139,16 @@ ob_end_flush();
                 <div class="col-md-12">
                         <div class="form-group">
                           <p class="text-center form-group" >
-                            <a class="btn  btn-warning" href="https://registro.unah.edu.hn/co_login.aspx" id="verifica" name="verifica" target="_blank">Verificar en el sistema</a>
+                            
+                            <<a class="btn  btn-warning" href="https://registro.unah.edu.hn/co_login.aspx" id="verifica" name="verifica" target="_blank">Verificar en el sistema</a>
+                            
                           </p>
                         </div>
                 </div>
                 
             </div>
             <p class="text-center form-group" style="margin-top: 20px;">
-                <button type="submit" class="btn btn-primary" id="btn_guardar_cambio" ><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                <button type="submit" class="btn btn-primary" id="btn_guardar_cambio" disable><i class="zmdi zmdi-floppy"></i> Guardar</button>
             </p>
           </div>
 
@@ -266,6 +272,7 @@ var maestrias = document.getElementById("aprobado").value;
 }
 
 </script>
-
+<script src="../plugins/toastr/toastr.min.js"></script>
+<script src="../js/Validaciones_solicitudes.js"></script>
 </body>
 </html>

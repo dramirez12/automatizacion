@@ -238,18 +238,14 @@ if (session_status() === PHP_SESSION_NONE) {
                     <p> Cambio de Carrera </p>
                   </a>
                 </li>
+
                 <li class="nav-item" style="display:<?php echo $_SESSION['carta_egresado'] ?>">
                   <a href="../vistas/revision_carta_egresado_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Carta de Egresado</p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:<?php echo $_SESSION['equivalencias'] ?>">
-                  <a href="../vistas/menu_revison_equivalencias.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Equivalencias </p>
-                  </a>
-                </li>
+               
                 <li class="nav-item" style="display:<?php echo $_SESSION['cancelar_clases'] ?>">
                   <a href="../vistas/revision_cancelar_clases.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -268,6 +264,41 @@ if (session_status() === PHP_SESSION_NONE) {
                   <a href="../vistas/menu_plan_estudio_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Plan de Estudio </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['expediente_graduacion'] ?>">
+                  <a href="../vistas/revision_expediente_graduacion.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Expediente Graduación </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['equivalencias'] ?>">
+                  <a href="../vistas/menu_revison_equivalencias.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pre Equivalencias </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['suficiencia'] ?>">
+                  <a href="../vistas/menu_revision_suficiencia.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Examen de Suficiencia</p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['revision_servicio_comunitario'] ?>">
+                  <a href="../vistas/revision_servicio_comunitario_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Servicio Comunitario</p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['reactivacion_cuenta'] ?>">
+                  <a href="../vistas/revision_reactivacion_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reactivacion de cuenta</p>
                   </a>
                 </li>
               </ul>
@@ -336,13 +367,69 @@ if (session_status() === PHP_SESSION_NONE) {
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_equivalencias'] ?>">
                   <a href="../vistas/equivalencias_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Equivalencias </p>
+                    <p> Pre Equivalencias </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_cancelar_clases'] ?>">
                   <a href="../vistas/cancelar_clases_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Cancelacion de clases</p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_equivalencias'] ?>">
+                  <a href="../vistas/expediente_graduacion_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Expediente Graduación</p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_servicio_comunitario'] ?>">
+                  <a href="../vistas/servicio_comunitario_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Servicio Comunitario </p>
+                  </a>
+                </li>
+                
+                <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_examensuficiencia'] ?>">
+                  <a href="../vistas/menu_suficiencia_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Examen de Suficiencia </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['reactivacion_cuenta'] ?>">
+                  <a href="../vistas/reactivacion_cuenta_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Reactivacion de Cuenta </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['Historial_de_solicitudes'] ?>">
+                  <a href="../vistas/historial_solicitudes_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Historial solicitudes </p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_perfil_estudiantil'] ?>">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file-signature"></i>
+                <p>
+                  Perfil 360 Estudiantil
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+              <!-- Actualizar o modificarrrrrrrrr -->
+                <li class="nav-item" style="display:<?php echo $_SESSION['perfil360_vista'] ?>">
+                  <a href="../vistas/menu_perfil360_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Perfil 360 Estudiantil </p>
                   </a>
                 </li>
               </ul>
@@ -396,16 +483,25 @@ if (session_status() === PHP_SESSION_NONE) {
                     <p> Mantenimientos Docentes</p>
                   </a>
                 </li>
+                
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantemiento_carga_academica1'] ?>">
                   <a href="../vistas/menu_mantenimiento_carga.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Carga </p>
                   </a>
                 </li>
+
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_plan'] ?>">
                   <a href="../vistas/menu_mantenimiento_plan.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos de Plan </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_perfil360'] ?>">
+                  <a href="../vistas/menu_mantenimiento_perfil360.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Mantenimientos Perfil360 Estudiantil</p>
                   </a>
                 </li>
 

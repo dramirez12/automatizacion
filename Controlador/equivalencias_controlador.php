@@ -1,5 +1,7 @@
 <?php
-    
+ob_start();
+session_start();
+
 require_once ('../clases/Conexion.php');
 
     if(isset($_POST['txt_nombre']) && $_POST['txt_nombre']!==""  && $_POST['txt_cuenta']!=="" && $_POST['txt_correo']!=="" 
@@ -10,11 +12,12 @@ require_once ('../clases/Conexion.php');
         $verificado1 = $_POST['txt_verificado1'];
         $verificado2 = $_POST['txt_verificado2'];
 
-        $sql="SELECT p.nombres,p.apellidos,pe.valor
+        $sql="SELECT p.id_persona, p.nombres,p.apellidos,pe.valor
              FROM tbl_personas p, tbl_personas_extendidas pe
              WHERE pe.id_persona = p.id_persona
              AND pe.valor = $cuenta";
         $resultado = $mysqli->query($sql);
+        $data= $resultado->fetch_assoc();
 
         if($resultado->num_rows>=1){
             if($_FILES['txt_solicitud']['name']!=null && $_FILES['txt_historial']['name']!=null){
@@ -43,26 +46,51 @@ require_once ('../clases/Conexion.php');
                 }
                 $documento = json_encode($direccion);
 
-                if($verificado1!=="" && $verificado2!==""){
-                    $insertanombre ="call upd_nombre('$cuenta','$verificado1','$verificado2')";
-                    $resultadon = $mysqli->query($insertanombre);
-                    $resultadon->free();
-                    $mysqli->next_result();
-                }
+                // if($verificado1!=="" && $verificado2!==""){
+                //     $insertanombre ="call upd_nombre('$cuenta','$verificado1','$verificado2')";
+                //     $resultadon = $mysqli->query($insertanombre);
+                //    $resultadon->free();
+                //     $mysqli->next_result();
+                // }
 
-                $sqlp = "call ins_equivalencias('$cuenta','$documento','CODIGO','$correo')";
+                // $sqlp = "call ins_equivalencias('$cuenta','$documento','CODIGO','$correo')";
+                $id_persona=$data['id_persona'];
+               
+               $sqlp= "INSERT INTO tbl_equivalencias (id_persona, observacion, Fecha_creacion, aprobado, documento,tipo,correo)
+                VALUES ('$id_persona', 'revisión pendiente', current_timestamp(),'Nueva', '$documento','CODIGO','$correo')";
+               
                 $resultadop = $mysqli->query($sqlp);
                 if($resultadop == true){
+                    $Ultimo_id= $mysqli->insert_id;
+                    $ultimo_id_hash= base64_encode($Ultimo_id);
                     echo '<script type="text/javascript">
-                            swal({
-                                title:"",
-                                text:"Solicitud enviada...",
-                                type: "success",
-                                showConfirmButton: false,
-                                timer: 1500
-                                });
-                                $(".FormularioAjax")[0].reset();
-                            </script>'; 
+                    swal({
+                        title:"¿Deseas ver reporte en PDF?",
+                        text:"Solicitud enviada...",
+                        type: "question",
+                        allowOutsideClick:false,
+                        showConfirmButton: true,
+                        showCancelButton: true,
+                        confirmButtonText:"Sí",
+                        cancelButtonText:"No",
+                        })
+                        
+                        .then(function(isConfirm) {
+                       
+                            if (isConfirm)  {
+                               
+                                window.open("../Controlador/Reporte_especialidades.php?id_equivalencia='.$ultimo_id_hash.'");
+                                window.location.href="../vistas/historial_solicitudes_vista.php";
+
+                              }    
+                        })
+                        .catch(function(){
+                            window.location.href="../vistas/historial_solicitudes_vista.php";
+                            $(".FormularioAjax")[0].reset();
+
+                        });
+                        
+                    </script>'; 
                         } 
                     else {
                         echo "Error: " . $sqlp;
@@ -99,11 +127,12 @@ require_once ('../clases/Conexion.php');
         $verificado2 = $_POST['txt_verificado2'];
         $correo = $_POST['txt_correo'];
 
-        $sql="SELECT p.nombres,p.apellidos,pe.valor
+        $sql="SELECT p.id_persona,p.nombres,p.apellidos,pe.valor
              FROM tbl_personas p, tbl_personas_extendidas pe
              WHERE pe.id_persona = p.id_persona
              AND pe.valor = $cuenta";
         $resultado = $mysqli->query($sql);
+        $data= $resultado->fetch_assoc();
 
         if($resultado->num_rows>=1){
 
@@ -132,14 +161,20 @@ require_once ('../clases/Conexion.php');
                 }
                 $documento = json_encode($direccion);
 
-                if($verificado1!=="" && $verificado2!==""){
-                    $insertanombre ="call upd_nombre('$cuenta','$verificado2','$verificado2')";
-                    $resultadon = $mysqli->query($insertanombre);
-                    $resultadon->free();
-                    $mysqli->next_result();
-                }
+                // if($verificado1!=="" && $verificado2!==""){
+                //     $insertanombre ="call upd_nombre('$cuenta','$verificado2','$verificado2')";
+                //     $resultadon = $mysqli->query($insertanombre);
+                //     $resultadon->free();
+                //     $mysqli->next_result();
+                // }
     
-                $sqlp = "call ins_equivalencias('$cuenta','$documento','CONTENIDO','$correo')";
+                // $sqlp = "call ins_equivalencias('$cuenta','$documento','CONTENIDO','$correo')";
+               
+                $id_persona=$data['id_persona'];
+               
+                $sqlp= "INSERT INTO tbl_equivalencias (id_persona, observacion, Fecha_creacion, aprobado, documento,tipo,correo)
+                 VALUES ('$id_persona', 'revisión pendiente', current_timestamp(),'Nueva', '$documento','CONTENIDO','$correo')";
+
                 $resultadop = $mysqli->query($sqlp);
                 if($resultadop == true){
                     echo '<script type="text/javascript">
@@ -264,5 +299,5 @@ require_once ('../clases/Conexion.php');
               </script>'; 
     }
 
+ob_end_flush();
 ?>
-

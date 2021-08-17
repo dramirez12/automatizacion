@@ -64,7 +64,7 @@ ob_end_flush();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admisión a la Carrera</h1>
+            <h1>Admisión a Carrera Interna</h1>
           </div>
 
          
@@ -72,7 +72,7 @@ ob_end_flush();
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="../vistas/menu_cambio_carrera.php">Admisión a la Carrera</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/menu_cambio_carrera.php">Admisión Carrera Interna</a></li>
               <li class="breadcrumb-item"><a href="../pdf/cambio_carrera.php" target="_blank">Requisitos</a></li>
             </ol>
           </div>
@@ -119,7 +119,7 @@ ob_end_flush();
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Verifiqué su Apellido</label>
-                            <input class="form-control" type="text" id="txt_verificado" name="txt_verificado2"  onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" maxlength="50" placeholder="Colocar acentos en los apellidos si los lleva">
+                            <input class="form-control" type="text" id="verificado" name="txt_verificado2"  onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" maxlength="50" placeholder="Colocar acentos en los apellidos si los lleva">
                         </div>
                 </div>
                 <div class="col-md-6">
@@ -160,42 +160,47 @@ ob_end_flush();
                             <textarea class="form-control" type="text" id="txt_razon" name="txt_razon" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" ></textarea>
                         </div>
                 </div>
-
+                <div class="alert alert-info alert-dismissible fade show  col-12" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>NOTA:</strong> LOS DOCUMENTOS ADJUNTOS TIENEN QUE SER EXTENSION PDF.  EJEMPLO:  <span> midocumento.pdf</span>
+                </div>
                 <!-- legend -->
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Historial académico vigente.</label>             
-                            <input class="form-control" type="file" id="txt_historial" name="txt_historial">
+                            <input class="form-control" type="file" id="historial" name="txt_historial">
                         </div>
                 </div>
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Constancia extendida por la VOAE</label>             
-                            <input class="form-control" type="file" id="txt_voae" name="txt_voae">
+                            <input class="form-control" type="file" id="voae" name="txt_voae">
                         </div>
                 </div>
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Copia de la tarjeta de identidad.</label>             
-                            <input class="form-control" type="file" id="txt_identidad" name="txt_identidad">
+                            <input class="form-control" type="file" id="identidad" name="txt_identidad">
                         </div>
                 </div>
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Fotografía tamaño carné.</label>             
-                            <input class="form-control" type="file" id="txt_foto" name="txt_foto">
+                            <input class="form-control" type="file" id="foto" name="txt_foto">
                         </div>
                 </div>
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Copia del Carné Estudiantil</label>             
-                            <input class="form-control" type="file" id="txt_carne" name="txt_carne">
+                            <input class="form-control" type="file" id="carne" name="txt_carne">
                         </div>
                 </div>
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Constancia de conducta de la Carrera que cursa Actualmente.</label>             
-                            <input class="form-control" type="file" id="txt_conducta" name="txt_conducta">
+                            <input class="form-control" type="file" id="conducta" name="txt_conducta">
                         </div>
                 </div>
                 <!--fin legend-->
@@ -255,6 +260,7 @@ $('input[type="file"]').on('change', function(){
   }
 });
 </script>
-
+  <script src="../plugins/toastr/toastr.min.js"></script>
+  <script src="../js/Validaciones_solicitudes.js" ></script>
 </body>
 </html>

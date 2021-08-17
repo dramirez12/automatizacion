@@ -25,6 +25,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['btn_docentes']='none';
    $_SESSION['btn_ayuda']='none';
    $_SESSION['btn_mantenimiento']='none';
+   $_SESSION['btn_perfil_estudiantil']='none';
 
 
    /*Menu laterales*/
@@ -55,7 +56,15 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['mantemiento_carga_academica1'] = 'none';
    $_SESSION['plan_estudio_vista'] = 'none';
    $_SESSION['mantenimiento_plan'] = 'none';
-
+   $_SESSION['perfil360_vista'] = 'none';
+   $_SESSION['expediente_graduacion'] = 'none';
+   $_SESSION['solicitud_servicio_comunitario'] = 'none';
+   $_SESSION['revision_servicio_comunitario'] = 'none';
+   $_SESSION['mantenimiento_perfil360'] = 'none';
+   $_SESSION['suficiencia'] = 'none';
+   $_SESSION['reactivacion_cuenta'] = 'none';
+   $_SESSION['historial_solicitudes'] = 'none';
+   $_SESSION['cancelar_solicitud'] = 'none';
    
 
 
@@ -427,6 +436,99 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['plan_estudio_vista'] = "block";
       }
    }
+
+
+
+   //MODULO VISTA 360 ESTUDIANTIL
+   if ($_SESSION['pantalla'] = '115') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_perfil_estudiantil'] = "block";
+      }
+   }  
+   if ($_SESSION['pantalla'] = '115') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['perfil360_vista'] = "block";
+      }
+   } 
+
+   if ($_SESSION['pantalla'] = '118') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['expediente_graduacion'] = "block";
+      }
+   } 
+   if ($_SESSION['pantalla'] = '123' or $_SESSION['pantalla'] == '120') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['solicitud_examensuficiencia'] = "block";
+      }
+   } 
+   
+   if ($_SESSION['pantalla'] = '122') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['suficiencia'] = "block";
+      }
+   }  
+   if ($_SESSION['pantalla'] = '121') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['reactivacion_cuenta'] = "block";
+      }
+   } 
+
+   if ($_SESSION['pantalla'] = '124') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['reactivacion_cuenta_unica'] = "block";
+      }
+   } 
+
+   if ($_SESSION['pantalla'] = '125') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['revision_reactivacion'] = "block";
+      }
+   } 
+   if ($_SESSION['pantalla'] = '126') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['revision_suficiencia_unica'] = "block";
+      }
+   } 
+
+
+   if ($_SESSION['pantalla']=='127')
+   {
+    if ( $_SESSION['confirmacion']=='block') 
+    {
+      $_SESSION['menu_revision_suficiencia']="block";
+
+    }
+   }
+   if ($_SESSION['pantalla'] = '128') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['solicitud_servicio_comunitario'] = "block";
+      }
+   } 
+   if ($_SESSION['pantalla'] = '129') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['revision_servicio_comunitario'] = "block";
+      }
+   } 
+   if ($_SESSION['pantalla'] = '130') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['revision_coordinacion_servicio_comunitario'] = "block";
+      }
+   } 
+   if ($_SESSION['pantalla'] = '132') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_perfil360'] = "block";
+      }
+   } 
+   if ($_SESSION['pantalla'] = '132') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['Historial_de_solicitudes'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '143') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['cancelar_solicitud'] = "block";
+      }
+   } 
 
 
    

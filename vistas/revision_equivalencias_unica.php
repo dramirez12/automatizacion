@@ -24,9 +24,11 @@ if($visualizacion==0){
 }
 if (isset($_GET['alumno'])){
  
-    $sqltabla = json_decode( file_get_contents("http://34.203.186.135/Automatizacion/api/equivalencias.php?alumno=".$_GET['alumno']), true );
+  // $sqltabla = json_decode( file_get_contents("http://34.203.186.135/Automatizacion/api/equivalencias.php?alumno=".$_GET['alumno']), true );
+    $sqltabla = json_decode( file_get_contents("http://desarrollo.informaticaunah.com/api/equivalencias.php?alumno=".$_GET['alumno']), true );
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A REVISION DE EQUIVALENCIAS ALUMNO '.$sqltabla["ROWS"][0]['nombres'].'');
 }
+
 
 ob_end_flush();
 
@@ -37,6 +39,7 @@ ob_end_flush();
 <html>
 <head>
   <title></title>
+  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 </head>
 <body >
 
@@ -95,7 +98,7 @@ ob_end_flush();
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Número de Cuenta</label>
-                            <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['valor'] ?>" type="text" id="txt_cuenta1" name="txt_cuenta1" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
+                            <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['cuenta'] ?>" type="text" id="txt_cuenta1" name="txt_cuenta1" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
                         </div>
                 </div>
                 <div class="col-md-6">
@@ -114,16 +117,16 @@ ob_end_flush();
                 <div class="col-md-6">
                         <div class="form-group">
                         <label>Observación</label>
-                        <textarea class="form-control" id="txt_observacion" name="txt_observacion" rows="3"></textarea>
+                        <textarea class="form-control" id="observacion" name="txt_observacion" rows="3"></textarea>
                         </div>
                 </div>
                 <div class="col-md-6">
                         <div class="form-group">
                             <label>Seleccione su aprobación</label>
                             <select class="form-control" id="aprobado" name="aprobado" onchange="Mostrarlink();" >
-                              <option disabled selected>Aprobar</option>
-                              <option value="aprobado">SI</option>
-                              <option value="desaprobar">NO</option>
+                              <!-- <option disabled selected>Aprobar</option> -->
+                              <option selected value="aprobado">SI</option>
+                              <option value="desaprobado">NO</option>
                             </select>
                         </div>
                 </div>
@@ -137,7 +140,7 @@ ob_end_flush();
                 
             </div>
             <p class="text-center form-group" style="margin-top: 20px;">
-                <button type="submit" class="btn btn-primary" id="btn_guardar_cambio" ><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                <button type="submit" class="btn btn-primary" id="btn_guardar_cambio" disabled><i class="zmdi zmdi-floppy"></i> Guardar</button>
             </p>
           </div>
 
@@ -187,7 +190,7 @@ ob_end_flush();
                         <label class="control-label">Nombre Completo</label>
                         <input class="form-control" type="text"  maxlength="60" id="txt_nombre_alumno" name="txt_nombre_alumno"  value="<?php echo $sqltabla["ROWS"][0]['nombres'].' '.$sqltabla["ROWS"][0]['apellidos'] ?>" required style="text-transform: uppercase"   onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly>
                         <?php 
-                        $cuenta = $sqltabla["ROWS"][0]['valor'];
+                        $cuenta = $sqltabla["ROWS"][0]['cuenta'];
                         $tipo = $_GET['tipo'];
                          
                          $listar=null;
@@ -262,6 +265,8 @@ var maestrias = document.getElementById("aprobado").value;
 }
 
 </script>
+<script src="../plugins/toastr/toastr.min.js"></script>
+<script src="../js/Validaciones_solicitudes.js"></script>
 
 </body>
 </html>
