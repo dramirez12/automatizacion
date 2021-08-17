@@ -148,7 +148,7 @@ ob_end_flush();
 
                                     <label>Código</label>
 
-                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required>
+                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required style="text-transform: uppercase">
 
 
                                 </div>
