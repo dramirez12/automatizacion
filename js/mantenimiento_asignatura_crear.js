@@ -337,7 +337,7 @@ $("#guardar_asig").click(function () {
                     timer: 11000,
                   });
 
-                  refrescar(14000);
+                 // refrescar(14000);
 
                   RegistrarSilabo();
                   if ($("#cbm_asignaturas").val().length != 0) {
@@ -346,7 +346,7 @@ $("#guardar_asig").click(function () {
                   if ($("#cbm_asignaturas_requisito").val().length != 0) {
                     insertarRequisitos();
                   }
-                  mensaje();
+                 // mensaje();
                 } else {
                   swal("Alerta!", "No se pudo completar la acción", "warning");
                 }
