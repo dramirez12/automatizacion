@@ -130,15 +130,15 @@ ob_end_flush();
 
                         <!-- /.card-header -->
                         <div class="card-body ">
-                        
-                                    <div class="col-md-1">
-                                            <div class="form-group">
-                                                <input class="form-control" hidden type="text" id="txt_hidden" name="txt_hidden" value="" readonly>
 
-                                            </div>
-                                        </div> 
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <input class="form-control" hidden type="text" id="txt_hidden" name="txt_hidden" value="" readonly>
+
+                                </div>
+                            </div>
                             <div class="row">
-                            <div class="col-md-3">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <input type="hidden">
 
@@ -147,10 +147,10 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Nuevo Período </label>
-                                        <input class="form-control" type="text"  maxlength="25" id="periodo_plan" name="periodo_plan"  onkeyup="MismaLetra('periodo_plan');" >
+                                        <input class="form-control" type="text" maxlength="25" id="periodo_plan" name="periodo_plan" onkeyup="MismaLetra('periodo_plan'); DobleEspacio(this, event)">
                                     </div>
 
-                                
+
 
                                     <p class="text-center" style="margin-top: 20px;">
                                         <button type="submit" class="btn btn-primary" id="btn_guardar_periodo_plan" name="btn_guardar_periodo_plan" <?php echo $_SESSION['btn_guardar_periodo_plan']; ?>><i class="zmdi zmdi-floppy"></i>Guardar</button>
@@ -189,5 +189,5 @@ ob_end_flush();
 <!-- <script src="../js/ca2.js"></script>
 <script src="../Reporte/validar.js"></script> -->
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
-  <!-- <script src="../js/validaciones_plan.js"></script>  -->
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<!-- <script src="../js/validaciones_plan.js"></script>  -->

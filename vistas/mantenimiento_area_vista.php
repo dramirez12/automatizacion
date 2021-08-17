@@ -205,9 +205,9 @@ ob_end_flush();
                         </tr>
                     </thead>
                     <tbody>
-                    <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                        <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
                             <tr>
-                                <td ><?php echo $row['id_area']; ?></td>
+                                <td><?php echo $row['id_area']; ?></td>
                                 <td><?php echo $row['area']; ?></td>
 
 
@@ -252,56 +252,56 @@ ob_end_flush();
 
 -->
 
-<form action="../Controlador/actualizar_area_controlador.php?id_area=<?php echo $_SESSION['id_area']; ?>" method="post" data-form="update" autocomplete="off">
+    <form action="../Controlador/actualizar_area_controlador.php?id_area=<?php echo $_SESSION['id_area']; ?>" method="post" data-form="update" autocomplete="off">
 
 
 
-<div class="modal fade" id="modal_modificar_area">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"> Actualizar área</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <div class="modal fade" id="modal_modificar_area">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"> Actualizar área</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
 
-            <!--Cuerpo del modal-->
-            <div class="modal-body">
+                    <!--Cuerpo del modal-->
+                    <div class="modal-body">
 
 
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Área</label>
-                                <input class="form-control" type="text" id="area" name="area" style="text-transform: uppercase" value="<?php echo $_SESSION['area']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('area');" onkeypress="return sololetras(event)">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Área</label>
+                                        <input class="form-control" type="text" id="area" name="area" value="<?php echo $_SESSION['area']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('area');" >
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                    </div>
+
+                    <!--Footer del modal-->
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="" class="btn btn-primary" id="btn_modificar_area" name="btn_modificar_area" <?php echo $_SESSION['btn_modificar_area']; ?>>Guardar cambios</button>
                     </div>
                 </div>
-
+                <!-- /.modal-content -->
             </div>
-
-            <!--Footer del modal-->
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="" class="btn btn-primary" id="btn_modificar_area" name="btn_modificar_area" <?php echo $_SESSION['btn_modificar_area']; ?>>Guardar cambios</button>
-            </div>
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
 
-<!-- /.  finaldel modal -->
+        <!-- /.  finaldel modal -->
 
-<!--mosdal crear -->
+        <!--mosdal crear -->
 
 
 
-</form>
+    </form>
 
 
 

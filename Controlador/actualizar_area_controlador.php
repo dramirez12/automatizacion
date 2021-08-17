@@ -8,7 +8,7 @@
         $Id_objeto = 93 ;
 
 
-    $area = strtoupper ($_POST['area']);
+    $area = $_POST['area'];
     $id_area = $_GET['id_area'];
 
  

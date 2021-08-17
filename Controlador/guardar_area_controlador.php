@@ -7,7 +7,7 @@ require_once('../clases/funcion_bitacora.php');
 $Id_objeto = 111;
 
 
-$area_asignatura = strtoupper($_POST['area_asignatura']);
+$area_asignatura = $_POST['area_asignatura'];
 
 
 ///     EXISTE AREA
