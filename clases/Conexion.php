@@ -15,7 +15,7 @@ $base= "informat_desarrollo_automatizacion";
 		die('Error en la conexion' . $mysqli->connect_error);
 		exit();	
 	}
-$connect = new PDO("mysql:host=167.114.169.207;dbname=informat_automatizacion", "informat_informaticaunah2", "dF%&(M6tJL?P");
+$connect = new PDO("mysql:host=167.114.169.207;dbname=informat_desarrollo_automatizacion", "informat_desarrollo", "!fuRCr3XR-tz");
 
 if (!mysqli_set_charset($mysqli, "utf8")) {
         printf("Error cargando el conjunto de caracteres utf8: %s\n", mysqli_error($mysqli));
