@@ -161,7 +161,34 @@ ob_end_flush();
 
 
                 <div class="card-body">
+
                     <div class="table-responsive" style="width: 100%;">
+                    <div class="input-group">
+                            <div class="col-md-3">
+                                <div class="input-group mb-3 input-group" hidden>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group mb-3 input-group" hidden>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group mb-3 input-group" hidden>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" maxlength="30" onkeypress="return letrasynumeros(event)">
+                                </div>
+
+                            </div>
+                        </div>
 
                         <table id="tabladocentes" class="table table-bordered table-striped">
                             <thead>

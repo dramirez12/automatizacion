@@ -75,7 +75,7 @@ class myPDF extends FPDF{
         $this->Cell(75, 7, "NOMBRE DOCENTE", 1, 0, 'C');
         // $this->Cell(23, 7, "#EMPLEADO", 1, 0, 'C');
         $this->Cell(20, 7, utf8_decode("CÓDIGO"), 1, 0, 'C');
-        $this->Cell(90, 7, "ASIGNATURA", 1, 0, 'C');
+        $this->Cell(110, 7, "ASIGNATURA", 1, 0, 'C');
         $this->Cell(19, 7, utf8_decode("SECCIÓN"), 1, 0, 'C');
         $this->Cell(15, 7, "HI", 1, 0, 'C');
         $this->Cell(15, 7, "HF", 1, 0, 'C');
@@ -95,7 +95,7 @@ class myPDF extends FPDF{
             $this->Cell(75, 7, utf8_decode($reg->nombres), 1, 0, 'C');
             // $this->Cell(23, 7, $reg->num_empleado, 1, 0, 'C');
             $this->Cell(20, 7, utf8_decode($reg->codigo), 1, 0, 'C');
-            $this->Cell(90, 7, utf8_decode( $reg->asignatura), 1, 0, 'C');
+            $this->Cell(110, 7, utf8_decode( $reg->asignatura), 1, 0, 'C');
             $this->Cell(19, 7, $reg->seccion, 1, 0, 'C');
             $this->Cell(15, 7, $reg->hra_inicio, 1, 0, 'C');
             $this->Cell(15, 7, $reg->hra_final, 1, 0, 'C');

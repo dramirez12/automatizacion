@@ -4962,7 +4962,7 @@ $(document).ready(function() {
   
   });
 
-  //REPORTE DE PERIODOS
+  //REPORTE DE CARRERA
 $(document).ready(function() {
   $("#tabla15").DataTable({
   
@@ -5099,7 +5099,7 @@ $(document).ready(function() {
                  /* "download": 'open', */
                 "pageSize": 'legal',
                 "orientation": 'portrait',
-                "title": 'Reporte de periodos',  
+                "title": 'Reporte de carrera',  
                 "text":   'PDF <i class = "fa fa-print"></i>',
                 "titleAttr":'Exportar a PDF',
                 "className":'btn btn-danger',
