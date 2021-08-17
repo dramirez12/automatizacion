@@ -328,7 +328,7 @@ $("#guardar_asig").click(function () {
 
               if (resp > 0) {
                 if (resp == 1) {
-                  alert("si");
+                  //alert("si");
                   swal({
                     title: "alerta",
                     text: "Por favor espere un momento",
