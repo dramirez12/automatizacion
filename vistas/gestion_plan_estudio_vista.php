@@ -182,7 +182,7 @@ ob_end_flush();
 
                                     <label>Nombre de Plan</label>
 
-                                    <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="150" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required>
+                                    <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="150" value=""  onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required>
 
                                     <!-- <input class=" form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden> -->
 
@@ -194,7 +194,7 @@ ob_end_flush();
 
                                     <label>Código de Plan</label>
 
-                                    <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_codigo_plan_edita');">
+                                    <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" required  onkeyup="DobleEspacio(this, event); MismaLetra('txt_codigo_plan_edita');">
                                     <!-- <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden> -->
 
 
