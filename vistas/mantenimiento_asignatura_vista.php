@@ -318,7 +318,6 @@ ob_end_flush();
 
         <script type="text/javascript" src="../js/mantenimiento_asignatura.js"></script>
         <script type="text/javascript" src="../js/validaciones_plan.js"></script>
-        <script type="text/javascript" src="../js/pdf_mantenimientos_plan.js"></script>
 </body>
 
 
@@ -334,7 +333,7 @@ ob_end_flush();
 
 
 
-<!-- <script>
+<script>
     var idioma_espanol = {
         select: {
             rows: "%d fila seleccionada"
@@ -362,4 +361,4 @@ ob_end_flush();
             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
     }
-</script> -->
+</script>
