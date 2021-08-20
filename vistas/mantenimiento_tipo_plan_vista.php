@@ -192,7 +192,7 @@ ob_end_flush();
             </div>
             <div class="card-body">
 
-                <table id="tabla1" class="table table-bordered table-striped">
+                <table id="tabla2" class="table table-bordered table-striped">
 
 
 
@@ -380,7 +380,7 @@ ob_end_flush();
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<script type="text/javascript" src="../js/pdf_mantenimientos_plan.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
