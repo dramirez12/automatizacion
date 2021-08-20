@@ -166,7 +166,7 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menú mantenimiento</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_plan.php">Menú mantenimiento</a></li>
                             <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_areas.php">Nueva área</a></li>
                         </ol>
                     </div>
@@ -307,7 +307,7 @@ ob_end_flush();
 
 
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(function() {
 
             $('#tabla16').DataTable({
@@ -321,7 +321,7 @@ ob_end_flush();
             });
         });
     </script>
-
+ -->
 
 </body>
 
@@ -391,7 +391,7 @@ ob_end_flush();
 
 <script type="text/javascript" src="../js/ca2.js"></script>
 
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<script type="text/javascript" src="../js/pdf_mantenimientos_plan.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
