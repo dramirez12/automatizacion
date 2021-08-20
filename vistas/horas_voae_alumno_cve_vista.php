@@ -21,9 +21,9 @@ $_SESSION['cuenta'] = $cuenta;
 $_SESSION['nombre'] = $nombre;
 
 
-$valor = "select nombre_alumno from view_horas_voae WHERE cuenta='$cuenta'";
-				$result_valor = $mysqli->query($valor);
-				$valor_viejo = $result_valor->fetch_array(MYSQLI_ASSOC);
+// $valor = "select nombre_alumno from view_horas_voae WHERE cuenta='$cuenta'";
+// 				$result_valor = $mysqli->query($valor);
+// 				$valor_viejo = $result_valor->fetch_array(MYSQLI_ASSOC);
 
 $visualizacion= permiso_ver($Id_objeto);
 

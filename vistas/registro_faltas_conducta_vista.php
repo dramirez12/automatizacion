@@ -153,7 +153,7 @@ ob_end_flush();
                                   <?php
                                     $query = $mysqli -> query ("select tbl_personas.id_persona, concat(tbl_personas.nombres,' ',tbl_personas.apellidos) AS nombres, tbl_personas_extendidas.valor from tbl_personas join tbl_personas_extendidas on tbl_personas.id_persona = tbl_personas_extendidas.id_persona Where id_tipo_persona=2 and id_atributo=12;");
                                     while ($resultado = mysqli_fetch_array($query)) {
-                                      echo '<option value="'.$resultado['id_persona'].'"> '.$resultado['nombres'].'</option>' ;
+                                      echo '<option value="'.$resultado['id_persona'].'"> '.$resultado['nombres'].'-----'.$resultado['valor'].'</option>' ;
                                     }
                                   ?>
                               </select>
@@ -181,7 +181,7 @@ ob_end_flush();
                 
                 <div class="card card-default">
                 <div class="card-header bg-gradient-dark">
-                  <h3 class="card-title">Sección Alumno (SE ENLISTAN SOLO LOS ALUMNOS QUE TIENEN UNA O MAS FALTAS) </h3>
+                  <h3 class="card-title">Sección Alumno </h3>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                       <i class="fas fa-minus"></i>
@@ -195,9 +195,9 @@ ob_end_flush();
                   <select class="form-control-lg select2" id= "id_persona" style="width: 100%;" name="id_persona" required="">
                                 <option  value="0" disabled="disabled">Seleccione un Alumno:</option>
                                   <?php
-                                    $query = $mysqli -> query ("select count(tbl_voae_faltas_conductas.id_falta) as faltas, tbl_personas.id_persona, concat(tbl_personas.nombres,' ',tbl_personas.apellidos) AS nombres, tbl_personas_extendidas.valor from tbl_personas join tbl_personas_extendidas on tbl_personas.id_persona = tbl_personas_extendidas.id_persona join tbl_voae_faltas_conductas on tbl_personas.id_persona = tbl_voae_faltas_conductas.id_persona_alumno Where id_tipo_persona=2 and id_atributo=12 group by tbl_voae_faltas_conductas.id_persona_alumno;");
+                                    $query = $mysqli -> query ("select tbl_personas.id_persona, concat(tbl_personas.nombres,' ',tbl_personas.apellidos) AS nombres, tbl_personas_extendidas.valor from tbl_personas join tbl_personas_extendidas on tbl_personas.id_persona = tbl_personas_extendidas.id_persona Where id_tipo_persona=2 and id_atributo=12;");
                                     while ($resultado = mysqli_fetch_array($query)) {
-                                      echo '<option value="'.$resultado['id_persona'].'"> '.$resultado['nombres'].' ---- Faltas Acumuladas: '.$resultado['faltas'].'</option>' ;
+                                      echo '<option value="'.$resultado['id_persona'].'"> '.$resultado['nombres'].'-----'.$resultado['valor'].'</option>' ;
                                     }
                                   ?>
                               </select>

@@ -68,7 +68,8 @@ switch ($_GET["op"]){
 			$id_estado=13;
 
 			$rspta=$informe_actividad->insertar($nombre_archivo,$dir_repositorio,$id_actividad,$introduccion,$objetivos,$desarrollo,$conclusiones,$id_usuario_registro,$id_estado);
-			echo $rspta ? "Informe  Registrado" : "El informe no se pudo registrar ";
+			echo $rspta ? "Informe  Registrado" : "El informe no se pudo registrar";
+			
 			bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'EL INFORME CON ID: "' . $id_informe . '"');
 		}
 		else {

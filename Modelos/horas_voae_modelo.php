@@ -4,7 +4,7 @@
 
 require_once ('../clases/Conexion.php');
 require_once ('../clases/Conexionvoae.php');
-// require "../clases/Conexionvoae.php";
+
 
 
 
@@ -38,9 +38,9 @@ Class Horas
 	}
 
 	//Implementar un método para listar los registros
-	public function listar()
+	public function listar($parametro)
 	{
-		$sql="SELECT vhv.id_asistencia, vhv.cuenta, vhv.nombre_alumno, vhv.total_actividades, vhv.total_horas FROM view_horas_voae AS vhv";
+		$sql="CALL vista_horas3('$parametro')";
 		return ejecutarConsulta($sql);	
 			
 	}

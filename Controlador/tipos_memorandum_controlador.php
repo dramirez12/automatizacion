@@ -33,7 +33,7 @@ switch ($_GET["op"]){
 			} else {
 				//SE MANDA A LA BITACORA LA ACCION DE INSERTAR
 				$rspta=$memorandum->insertar($nombre_tipo_memorandum,$descripcion_memorandum);
-				echo $rspta ? "TIPO DE MEMORANDUM REGUISTRADO" : "EL TIPO DE MEMORANDUM NO SE PUEDE REGISTRAR";
+				echo $rspta ? "TIPO DE MEMORANDUM REGISTRADO" : "EL TIPO DE MEMORANDUM NO SE PUEDE REGISTRAR";
 				bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'EL TIPO DE memorandum "' . $nombre_tipo_memorandum . '"');
 			}
 
