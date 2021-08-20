@@ -26,6 +26,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['btn_ayuda']='none';
    $_SESSION['btn_mantenimiento']='none';
    $_SESSION['btn_perfil_estudiantil']='none';
+   $_SESSION['btn_comite_vida_estudiantil']='none';
 
 
    /*Menu laterales*/
@@ -65,7 +66,11 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['reactivacion_cuenta'] = 'none';
    $_SESSION['historial_solicitudes'] = 'none';
    $_SESSION['cancelar_solicitud'] = 'none';
-   
+   $_SESSION['administracion_cve']='none';
+   $_SESSION['actividades_cve']='none';
+   $_SESSION['faltas_cve']='none';
+   $_SESSION['horas_cve']='none';
+   $_SESSION['memos_cve']='none';
 
 
   while ($fila = $resultado_permisos->fetch_row())
@@ -438,7 +443,6 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
    }
 
 
-
    //MODULO VISTA 360 ESTUDIANTIL
    if ($_SESSION['pantalla'] = '115') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -529,6 +533,69 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['cancelar_solicitud'] = "block";
       }
    } 
+
+   //AGREGANDO MODULO CVE
+
+if ($_SESSION['pantalla'] = '219' or $_SESSION['pantalla'] == '220' or $_SESSION['pantalla'] == '221' or $_SESSION['pantalla'] == '222' or $_SESSION['pantalla'] == '223' or $_SESSION['pantalla'] == '224' or $_SESSION['pantalla'] == '225' or $_SESSION['pantalla'] == '226' or $_SESSION['pantalla'] == '227' or $_SESSION['pantalla'] == '228' or $_SESSION['pantalla'] == '229' or $_SESSION['pantalla'] == '230' or $_SESSION['pantalla'] == '231' or $_SESSION['pantalla'] == '232' or $_SESSION['pantalla'] == '233' or $_SESSION['pantalla'] == '234' or $_SESSION['pantalla'] == '235') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['btn_comite_vida_estudiantil'] = "block";
+   }
+}   
+if ($_SESSION['pantalla'] == '219') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['administracion_cve'] = "block";
+      }
+   }
+if ($_SESSION['pantalla'] == '220' or $_SESSION['pantalla'] == '221' or $_SESSION['pantalla'] == '222' or $_SESSION['pantalla'] == '223') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['administracion_cve'] = "block";
+   }
+}    
+if ($_SESSION['pantalla'] = '224') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['actividades_cve'] = "block";
+   }
+}  
+if ($_SESSION['pantalla'] = '225') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['actividades_cve'] = "block";
+   }
+}
+if ($_SESSION['pantalla'] = '226') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['faltas_cve'] = "block";
+   }
+}
+if ($_SESSION['pantalla'] = '227') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['faltas_cve'] = "block";
+   }
+}
+if ($_SESSION['pantalla'] = '228') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['horas_cve'] = "block";
+   }
+}
+if ($_SESSION['pantalla'] = '229') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['actividades_cve'] = "block";
+   }
+}
+if ($_SESSION['pantalla'] = '232') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['informe_actividad_cve'] = "block";
+   }
+}
+if ($_SESSION['pantalla'] = '233') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['memos_cve'] = "block";
+   }
+}
+if ($_SESSION['pantalla'] = '234') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['memos_cve'] = "block";
+   }
+}
 
 
    

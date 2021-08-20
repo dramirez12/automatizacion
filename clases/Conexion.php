@@ -1,7 +1,5 @@
 <?php
 
-
-
 $servidor= "167.114.169.207";
 $usuario= "informat_desarrollo";
 $password = "!fuRCr3XR-tz";
