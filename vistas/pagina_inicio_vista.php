@@ -324,7 +324,56 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
+            <!-- AGREGANDO CONTROL DE ACTAS -->
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_control_actas'] ?>">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-paste"></i>
+                <p>
+                  Control de Actas
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
 
+                <li class="nav-item" style="display:<?php echo $_SESSION['gestion_reunion'] ?>">
+                  <a href="../vistas/menu_reunion_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Gestión Reunión
+                    </p>
+                  </a>
+                </li>
+                <!--- Gestión Reunión  -->
+                <li class="nav-item" style="display:<?php echo $_SESSION['gestion_actas'] ?>">
+                  <a href="../vistas/menu_acta_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Gestión Acta
+                    </p>
+                  </a>
+                </li>
+                <!--- Gestión acta  -->
+                <li class="nav-item" style="display:<?php echo $_SESSION['gestion_acuerdos_seguimientos'] ?>">
+                  <a href="../vistas/menu_acuerdo_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Acuerdo y Seguimiento
+                    </p>
+                  </a>
+                </li>
+                <!--- Gestión acuerdos  -->
+                <li class="nav-item" style="display:<?php echo $_SESSION['gestion_lista_asistencia'] ?>">
+                  <a href="../vistas/menu_asistencia_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Lista Asistencia
+                    </p>
+                  </a>
+                </li>
+                <!--- Gestión asistencia  -->
+              </ul>
+            </li>
 
 
             <!---- solicitudes ----->
@@ -546,6 +595,15 @@ if (session_status() === PHP_SESSION_NONE) {
                   <a href="../vistas/menu_administracion_cve_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Mantenimiento CVE</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="../vistas/menu_mantenimientoacta_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Mantenimientos Actas
+                    </p>
                   </a>
                 </li>
 

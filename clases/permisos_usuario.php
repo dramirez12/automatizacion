@@ -27,7 +27,7 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['btn_mantenimiento']='none';
    $_SESSION['btn_perfil_estudiantil']='none';
    $_SESSION['btn_comite_vida_estudiantil']='none';
-
+   $_SESSION['btn_control_actas']='none';
 
    /*Menu laterales*/
    $_SESSION['pregunta_vista']='none';
@@ -71,7 +71,11 @@ $resultado_permisos = $mysqli->query($sql_permisos);
    $_SESSION['faltas_cve']='none';
    $_SESSION['horas_cve']='none';
    $_SESSION['memos_cve']='none';
-
+   $_SESSION['gestion_reunion'] = 'none';
+   $_SESSION['gestion_actas'] = 'none';
+   $_SESSION['gestion_acuerdos_seguimientos'] = 'none';
+   $_SESSION['gestion_lista_asistencia'] = 'none';
+   $_SESSION['mantenimiento_actas'] = 'none';
 
   while ($fila = $resultado_permisos->fetch_row())
    {
@@ -596,6 +600,42 @@ if ($_SESSION['pantalla'] = '234') {
       $_SESSION['memos_cve'] = "block";
    }
 }
+
+if ($_SESSION['pantalla']=='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146' or $_SESSION['pantalla']='147' or $_SESSION['pantalla']='148' or $_SESSION['pantalla']='149' or $_SESSION['pantalla']='150' or $_SESSION['pantalla']='151' or $_SESSION['pantalla']='152' or $_SESSION['pantalla']='153' ){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['btn_control_actas'] = "block";
+   }
+}
+
+if ($_SESSION['pantalla']='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['gestion_reunion'] = "block";
+   }
+}
+
+if ($_SESSION['pantalla']='147' or $_SESSION['pantalla']='148'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['gestion_actas'] = "block";
+   }
+} 
+
+if ($_SESSION['pantalla']='149' or $_SESSION['pantalla']='150' or $_SESSION['pantalla']='151'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['gestion_acuerdos_seguimientos'] = "block";
+   }
+} 
+
+if ($_SESSION['pantalla']='152' or $_SESSION['pantalla']='153'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['gestion_lista_asistencia'] = "block";
+   }
+} 
+
+if ($_SESSION['pantalla']='154' or $_SESSION['pantalla']='155' or $_SESSION['pantalla']='156' or $_SESSION['pantalla']='157' or $_SESSION['pantalla']='158' or $_SESSION['pantalla']='159'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['mantenimiento_actas'] = "block";
+   }
+} 
 
 
    
