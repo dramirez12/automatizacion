@@ -521,6 +521,45 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
               </ul>
             </li>
+
+            <!---- Jefatura ----->
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_Jefatura'] ?>">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-tie"></i>
+                <p>
+                  Jefatura
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_cargajefatura'] ?>">
+                  <a href="../vistas/g_cargajefatura_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Gestión Carga Academica</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_reasignacionjefatura'] ?>">
+                  <a href="../vistas/g_reasignacionjefatura_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Gestón Reasignacion Academica </p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item" style="display:<?php echo $_SESSION['g_planificacionjefatura'] ?>">
+                  <a href="../vistas/g_planificacionjefatura_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Gestión Administracion Y Planificacion Academica </p>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+            
+
             <!---- Ayuda ----->
 
             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
@@ -604,6 +643,13 @@ if (session_status() === PHP_SESSION_NONE) {
                     <p>
                       Mantenimientos Actas
                     </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['menu_mantenimientos_jefatura_principal'] ?>">
+                  <a href="../vistas/menu_mantenimientos_jefatura_principal.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Mantenimientos Jefatura</p>
                   </a>
                 </li>
 
@@ -708,7 +754,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <script src="../js/main.js"></script>
 
 
-<!-- HORAS VOEA -->
+  <!-- HORAS VOEA -->
   <script src="../public/datatables/dataTables.buttons.min.js"></script>
   <script src="../public/datatables/buttons.html5.min.js"></script>
   <script src="../public/datatables/buttons.colVis.min.js"></script>
