@@ -240,10 +240,8 @@ ob_end_flush();
 
             <!-- /.card-header -->
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="container-fluid" style="width: 100%;">
-                <div class="box-body">
 
-                    <!-- <div class="row">
+            <!-- <div class="row">
                         <div class="col-lg-10">
                             <div class="input-group">
                                 <input type="text" class="global_filter form-control" id="global_filter" placeholder="Ingresar dato a buscar" style="width: 90%;">
@@ -253,11 +251,11 @@ ob_end_flush();
 
                     </div> -->
 
-                    <div class="card-body">
+            <div class="card-body">
 
-                    </div>
-                    <div class="table-responsive" style="width: 100%;">
-                        <div class="input-group">
+
+                <div class="table-responsive" style="width: 100%;">
+                    <!-- <div class="input-group">
                             <div class="col-md-3">
                                 <div class="input-group mb-3 input-group" hidden>
 
@@ -282,60 +280,60 @@ ob_end_flush();
                                 </div>
 
                             </div>
-                        </div>
-                        <table id="tabla_carga" class="table table-bordered table-striped" style="width:99%">
-                            <thead>
-                                <tr>
-                                    <th>Acción</th>
-                                    <!-- <th>#</th> -->
-                                    <th>N# Empleado</th>
-                                    <th>Nombre</th>
-                                    <th>Código</th>
-                                    <th>Asignatura</th>
-                                    <th>Unidades Val.</th>
-                                    <th>Sección</th>
-                                    <th>Hi</th>
-                                    <th>Hf</th>
-                                    <th>Dia</th>
-                                    <th>Aula</th>
-                                    <th>Edificio</th>
-                                    <th>N. Alumnos</th>
-                                    <th>Control</th>
-                                    <th>Modalidad</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Acción</th>
-                                    <!-- <th>#</th> -->
-                                    <th>N# Empleado</th>
-                                    <th>Nombre</th>
-                                    <th>Código</th>
-                                    <th>Asignatura</th>
-                                    <th>Unidades Val.</th>
-                                    <th>Sección</th>
-                                    <th>Hi</th>
-                                    <th>Hf</th>
-                                    <th>Día</th>
-                                    <th>Aula</th>
-                                    <th>Edificio</th>
-                                    <th>N. Alumnos</th>
-                                    <th>Control</th>
-                                    <th>Modalidad</th>
-                                </tr>
-                            </tfoot>
+                        </div> -->
+                    <table id="tabla_carga" class="table table-bordered table-striped" style="width:99%">
+                        <thead>
+                            <tr>
+                                <th>Acción</th>
+                                <!-- <th>#</th> -->
+                                <th>N# Empleado</th>
+                                <th>Nombre</th>
+                                <th>Código</th>
+                                <th>Asignatura</th>
+                                <th>Unidades Val.</th>
+                                <th>Sección</th>
+                                <th>Hi</th>
+                                <th>Hf</th>
+                                <th>Dia</th>
+                                <th>Aula</th>
+                                <th>Edificio</th>
+                                <th>N. Alumnos</th>
+                                <th>Control</th>
+                                <th>Modalidad</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Acción</th>
+                                <!-- <th>#</th> -->
+                                <th>N# Empleado</th>
+                                <th>Nombre</th>
+                                <th>Código</th>
+                                <th>Asignatura</th>
+                                <th>Unidades Val.</th>
+                                <th>Sección</th>
+                                <th>Hi</th>
+                                <th>Hf</th>
+                                <th>Día</th>
+                                <th>Aula</th>
+                                <th>Edificio</th>
+                                <th>N. Alumnos</th>
+                                <th>Control</th>
+                                <th>Modalidad</th>
+                            </tr>
+                        </tfoot>
 
-                        </table>
-                        <br>
+                    </table>
+                    <br>
 
 
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <h1></h1>
                 </div>
             </div>
+            <div class="card-footer">
+                <h1></h1>
+            </div>
         </div>
+    </div>
     </div>
 
 

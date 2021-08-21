@@ -114,158 +114,36 @@ ob_end_flush();
 
                     </div>
 
-                    <div class="card-body" style="display: block;">
-                        <div class="card-body">
-                            <div class="card-body">
-                                <div class="table-responsive" style="width: 100%;">
-                                    <table id="tabla_asignatura_servicio" class="table table-bordered table-striped" style="width:99%">
-                                        <thead>
-                                            <tr>
+                    <div class="card-body">
+                        <div class="table-responsive" style="width: 100%;">
+                            <table id="tabla_asignatura_servicio" class="table table-bordered table-striped" style="width:99%">
+                                <thead>
+                                    <tr>
 
-                                                <th>Acción</th>
-                                                <th>Asignatura</th>
-                                                <th>Código</th>
-                                                <th>UV</th>
-                                                <th>Plan</th>
-                                                <th>Área</th>
-                                                <!--   <th>Tipo Asignatura</th> -->
-                                                <th>Periodo</th>
-                                                <!--  <th>Plan de estudio</th> -->
-                                                <th>Suficiencia</th>
-                                                <th>Reposición</th>
-                                                <th>Sílabo</th>
+                                        <th>Acción</th>
+                                        <th>Asignatura</th>
+                                        <th>Código</th>
+                                        <th>UV</th>
+                                        <th>Área</th>
+                                        <th>Suficiencia</th>
+                                        <th>Reposición</th>
+                                        <th>Sílabo</th>
 
-                                            </tr>
-                                        </thead>
+                                    </tr>
+                                </thead>
 
 
-                                    </table>
-                                    <br>
-
-
-                                </div>
-                            </div>
-
-
-
-                            <!-- modal modificar carga -->
-
-                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal_editar" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Editar Asignatura</h5>
-                                            <button onclick="limpiarSilabo()" class="close" data-dismiss="modal">
-                                                &times;
-                                            </button>
-
-                                        </div>
-
-                                        <input class="form-control" type="text" id="id_asig" name="id_asig" readonly hidden>
-
-                                        <div class="modal-body">
-
-                                            <div class="row">
-
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-
-                                                        <input class="form-control" type="text" id="txt_nombre1" name="txt_nombre1" readonly hidden>
-                                                        <label>Nombre Asignatura:</label>
-                                                        <input class="form-control" type="text" id="txt_nombre" name="txt_nombre">
-
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-
-                                                        <input class="form-control" type="text" id="txt_codigo1" name="txt_codigo1" readonly hidden>
-                                                        <label>Código:</label>
-                                                        <input class="form-control" type="text" id="txt_codigo" name="txt_codigo">
-
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <input type="hidden">
-                                                        <label>UV:</label>
-
-                                                        <input class="form-control" type="text" id="txt_uv1" name="txt_uv1" readonly hidden>
-                                                        <input class="form-control" type="text" id="txt_uv" name="txt_uv">
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-
-                                                        <input class="form-control" type="text" id="cbm_area1" name="cbm_area1" readonly hidden>
-                                                        <label>Área:</label>
-                                                        <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
-                                                            </select></td>
-                                                    </div>
-                                                </div>
-
-
-
-
-
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Reposición:</label>
-
-                                                        <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden>
-                                                        <td> <select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
-                                                                <option value="0">SELECCIONAR</option>
-                                                                <option value="SI">SI</option>
-                                                                <option value="NO">NO</option>
-                                                            </select>
-                                                        </td>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Suficiencia:</label>
-                                                        <input class="form-control" type="text" id="cbm_suficiencia1" name="cbm_suficiencia1" readonly hidden>
-                                                        <td> <select class="form-control" style="width: 100%;" name="cbm_suficiencia" id="cbm_suficiencia">
-                                                                <option value="0">SELECCIONAR</option>
-                                                                <option value="SI">SI</option>
-                                                                <option value="NO">NO</option>
-                                                            </select>
-                                                        </td>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <label>Actualizar Sílabo:</label>
-                                                        <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required accept="application/pdf" onchange="Validar();">
-                                                        </td>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button class="btn btn-primary" id="guardar_servicio" name="guardar_servicio" <?php echo $_SESSION['btn_modificar_asignatura_servicio']; ?>>Guardar</button>
-
-                                            <button class="btn btn-secondary" data-dismiss="modal" id="salir" onclick="limpiarSilabo()">Cancelar</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                            </table>
+                            <br>
 
 
                         </div>
                     </div>
+
+
+
+
+
                 </div>
             </div>
 
@@ -279,6 +157,120 @@ ob_end_flush();
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 
 </body>
+<!-- modal modificar carga -->
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal_editar" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Asignatura</h5>
+                <button onclick="limpiarSilabo()" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+
+            </div>
+
+            <input class="form-control" type="text" id="id_asig" name="id_asig" readonly hidden>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <div class="form-group">
+
+                            <input class="form-control" type="text" id="txt_nombre1" name="txt_nombre1" readonly hidden>
+                            <label>Nombre Asignatura:</label>
+                            <input class="form-control" type="text" id="txt_nombre" name="txt_nombre">
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+
+                            <input class="form-control" type="text" id="txt_codigo1" name="txt_codigo1" readonly hidden>
+                            <label>Código:</label>
+                            <input class="form-control" type="text" id="txt_codigo" name="txt_codigo">
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <input type="hidden">
+                            <label>UV:</label>
+
+                            <input class="form-control" type="text" id="txt_uv1" name="txt_uv1" readonly hidden>
+                            <input class="form-control" type="text" id="txt_uv" name="txt_uv">
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <input class="form-control" type="text" id="cbm_area1" name="cbm_area1" readonly hidden>
+                            <label>Área:</label>
+                            <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
+                                </select></td>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Reposición:</label>
+
+                            <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden>
+                            <td> <select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
+                                    <option value="0">SELECCIONAR</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </td>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Suficiencia:</label>
+                            <input class="form-control" type="text" id="cbm_suficiencia1" name="cbm_suficiencia1" readonly hidden>
+                            <td> <select class="form-control" style="width: 100%;" name="cbm_suficiencia" id="cbm_suficiencia">
+                                    <option value="0">SELECCIONAR</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </td>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>Actualizar Sílabo:</label>
+                            <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required accept="application/pdf" onchange="Validar();">
+                            </td>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="guardar_servicio" name="guardar_servicio" <?php echo $_SESSION['btn_modificar_asignatura_servicio']; ?>>Guardar</button>
+
+                <button class="btn btn-secondary" data-dismiss="modal" id="salir" onclick="limpiarSilabo()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 
 </html>

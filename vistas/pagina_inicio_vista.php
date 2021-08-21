@@ -754,7 +754,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <script src="../js/main.js"></script>
 
 
-  <!-- HORAS VOEA -->
+  <!-- HORAS VOEA
   <script src="../public/datatables/dataTables.buttons.min.js"></script>
   <script src="../public/datatables/buttons.html5.min.js"></script>
   <script src="../public/datatables/buttons.colVis.min.js"></script>
@@ -773,7 +773,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <script type="text/javascript" src="../public/Buttons-1.7.1/js/buttons.bootstrap4.min.js"></script>
   <script type="text/javascript" src="../public/Buttons-1.7.1/js/buttons.html5.min.js"></script>
 
-
+ -->
 
 
   <script type="text/javascript">

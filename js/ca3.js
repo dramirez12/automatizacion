@@ -760,17 +760,17 @@ doc.content[2].table.widths = ["10%", "15%","6%","20%","10%","8%","4%","4%","3%"
 
 
 
-document.getElementById("tabla_carga_filter").style.display = "none";
-$('input.global_filter').on( 'keyup click', function () {
-     filterGlobal();
- } );
- $('input.column_filter').on( 'keyup click', function () {
-     filterColumn( $(this).parents('tr').attr('data-column') );
- });
+// document.getElementById("tabla_carga_filter").style.display = "none";
+// $('input.global_filter').on( 'keyup click', function () {
+//      filterGlobal();
+//  } );
+//  $('input.column_filter').on( 'keyup click', function () {
+//      filterColumn( $(this).parents('tr').attr('data-column') );
+//  });
 } 
-function filterGlobal() {
-$("#tabla_carga").DataTable().search($("#global_filter").val()).draw();
-}
+// function filterGlobal() {
+// $("#tabla_carga").DataTable().search($("#global_filter").val()).draw();
+// }
 
 
 // ----------------- COMBOBOX DE ASIGNATURA----------------
