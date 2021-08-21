@@ -187,7 +187,7 @@ ob_end_flush();
                                                 <div style="padding: 0px 0 0px 0; margin: 15px 0px 5px 10px;">
                                                     <input type="hidden" name="estado" value="1">
                                                     <input type="hidden" name="reunion" value="nuevo">
-                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled onclick="return Llamarswal()">Agendar</button>
+                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled >Agendar</button>
                                                 </div>
                                                 <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
                                                     <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
