@@ -23,7 +23,7 @@ if (is_array($_FILES) && count($_FILES) > 0) {
         if (move_uploaded_file($_FILES["c"]["tmp_name"], "../silabos_asignaturas/" . $_FILES["c"]["name"])) {
             $nombrearchivo2 = '../silabos_asignaturas/' . $_FILES["c"]["name"];
             $consulta = $MP->Actualizar_silabo_asignatura($nombrearchivo2,$Id_asignatura);
-            echo 11;
+            echo 1;
         } else {
             echo 0;
         }
