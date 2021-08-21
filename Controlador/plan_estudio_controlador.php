@@ -184,6 +184,13 @@ switch ($_GET["op"]) {
             break;
 
 
+    case 'nombreAsignatura_servicio':
+
+        $respuesta = $instancia_modelo->nombreAsignaturaServicio($asignatura,$id_area);
+        echo json_encode($respuesta);
+        break;
+
+        
 
         
         

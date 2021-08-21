@@ -445,10 +445,10 @@ class modelo_plan{
         }
     }
 
-    function listar_asignaturas_vigentes_servicio()
+    function listar_asignaturas_servicio()
     {
         global $instancia_conexion;
-        $sql = " call sel_asignaturas_vigentes_servicio()";
+        $sql = " call sel_asignaturas_servicio()";
         $arreglo = array();
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
             while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
@@ -479,6 +479,33 @@ class modelo_plan{
         FROM tbl_plan_estudio plan
         WHERE plan.id_plan_estudio = '$id_plan_estudio';";
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
+
+
+    function nombreAsignaturaServicio($asignatura,$id_area)
+    {
+
+        global $instancia_conexion;
+        $sql6 = "SELECT COUNT(Id_asignatura) AS  suma FROM tbl_asignaturas WHERE  asignatura='$asignatura' AND id_area='$id_area'";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
+    }
+
+    function registrarAsignaturaServicio($id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura)
+    {
+        global $instancia_conexion;
+        $sql = "call proc_insertar_asignatura_servicio('$id_area', '$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia', '$id_tipo_asignatura')";
+
+
+        return $instancia_conexion->ejecutarConsulta($sql);
+    }
+
+    function ActualizarAsignaturaServicio($id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura)
+    {
+        global $instancia_conexion;
+        $sql = "call proc_actualizar_asignatura_servicio('$id_area', '$uv', '$codigo',  '$asignatura', '$reposicion', '$suficiencia','$id_asignatura')";
+
+
+        return $instancia_conexion->ejecutarConsulta($sql);
     }
 }
 

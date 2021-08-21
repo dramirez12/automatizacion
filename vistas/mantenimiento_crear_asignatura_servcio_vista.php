@@ -120,27 +120,6 @@ ob_end_flush();
                             <div class="col-md-4">
                                 <div class="form-group">
 
-                                    <label>Plan que pertenece:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan">
-                                        </select></td>
-                                    <input class="form-control" type="text" id="txt_uv_plan" name="txt_uv_plan" readonly hidden>
-                                    <input class="form-control" type="text" id="num_clases_plan" name="num_clases_plan" readonly hidden>
-                                    <input class="form-control" type="text" id="suma_clases_plan" name="suma_clases_plan" readonly hidden>
-                                    <input class="form-control" type="text" id="suma_unidades_plan" name="suma_unidades_plan" readonly hidden>
-
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-
-                                    <label>Periodo que pertenece:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_periodo" id="cbm_periodo">
-                                        </select></td>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-
                                     <label> Área que pertenece:</label>
                                     <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
                                         </select></td>
@@ -161,7 +140,7 @@ ob_end_flush();
 
                                     <label>Nombre de Asignatura</label>
 
-                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required  onkeyup="DobleEspacio(this, event); " onkeypress="return sololetras(event)">
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required onkeyup="DobleEspacio(this, event); " onkeypress="return sololetras(event)">
 
 
                                 </div>
@@ -209,80 +188,21 @@ ob_end_flush();
 
 
                         </div>
+                        <div class="container-fluid h-100">
+                            <div class="row w-100 align-items-center">
+                                <div class="col text-center">
+                                    <button class="btn btn-primary" id="guardar_asig_servicio" <?php echo $_SESSION['btn_crear_asignatura_servicio']; ?>>Guardar </button>
+                                </div>
+                            </div>
 
+
+                        </div>
 
 
                     </div>
 
                 </div>
-                <div class="card card-default">
-                    <div class="card-header">
-                        <h3 class="card-title">ASIGNAR EQUIVALENCIA Y REQUISITO</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
 
-                        </div>
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <div class=" row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-
-                                    <label>Plan para equivalencia:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan1" id="cbm_plan1">
-                                        </select></td>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <label>Equivalencia</label>
-                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas">
-
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class=" row">
-                            <!-- <div class="col-md-4">
-                                <div class="form-group">
-
-                                    <label>Plan para requisito:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_plan_requisito" id="cbm_plan_requisito">
-                                        </select></td>
-                                </div>
-                            </div> -->
-                            <div class="col-md-8">
-                                <div class="form-group">
-                                    <label>Seleccione Requisito de la asignatura</label>
-                                    <select class="mul-select" multiple="true" style="width: 100%;" id="cbm_asignaturas_requisito">
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="container-fluid h-100">
-                                <div class="row w-100 align-items-center">
-                                    <div class="col text-center">
-                                        <button class="btn btn-primary" id="guardar_asig_servicio" <?php echo $_SESSION['btn_crear_asignatura_servicio']; ?>>Guardar </button>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
-
-
-
-                    </div>
-
-                </div>
             </div>
 
 
@@ -295,14 +215,5 @@ ob_end_flush();
     <script type="text/javascript" src="../js/validaciones_plan.js"></script>
 
 </body>
-<script>
-    $(document).ready(function() {
-        $(".mul-select").select2({
-            placeholder: "SELECCIONE ASIGNATURAS", //placeholder
-            tags: true,
-            tokenSeparators: ['/', ',', ';', " "]
-        });
-    })
-</script>
 
 </html>

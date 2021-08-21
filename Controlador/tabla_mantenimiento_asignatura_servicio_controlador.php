@@ -4,7 +4,7 @@ require '../Modelos/plan_estudio_modelo.php';
 $MU = new modelo_plan();
 
 
-$consulta = $MU->listar_asignaturas_vigentes_servicio();
+$consulta = $MU->listar_asignaturas_servicio();
 if ($consulta) {
     echo json_encode($consulta);
 } else {

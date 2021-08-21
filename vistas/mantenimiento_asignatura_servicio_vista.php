@@ -167,34 +167,15 @@ ob_end_flush();
 
                                             <div class="row">
 
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <input class="form-control" type="text" id="cbm_plan1" name="cbm_plan1" readonly hidden>
-
-                                                        <label>Plan de estudio:</label>
-                                                        <td> <select class="form-control" style="width: 100%;" name="cbm_plan" id="cbm_plan"></select>
-                                                        </td>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <input class="form-control" type="text" id="cbm_periodo1" name="cbm_periodo1" readonly hidden>
-                                                        <label>Periodo:</label>
-                                                        <td><select class="form-control" style="width: 100%;" name="cbm_periodo" id="cbm_periodo">
-                                                            </select></td>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
+                                                <div class="col-md-8">
                                                     <div class="form-group">
 
-                                                        <input class="form-control" type="text" id="cbm_area1" name="cbm_area1" readonly hidden>
-                                                        <label>Área:</label>
-                                                        <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
-                                                            </select></td>
+                                                        <input class="form-control" type="text" id="txt_nombre1" name="txt_nombre1" readonly hidden>
+                                                        <label>Nombre Asignatura:</label>
+                                                        <input class="form-control" type="text" id="txt_nombre" name="txt_nombre">
+
                                                     </div>
+
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
@@ -207,19 +188,6 @@ ob_end_flush();
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-
-                                                        <input class="form-control" type="text" id="txt_nombre1" name="txt_nombre1" readonly hidden>
-                                                        <label>Nombre Asignatura:</label>
-                                                        <input class="form-control" type="text" id="txt_nombre" name="txt_nombre">
-
-                                                    </div>
-
-                                                </div>
-
-
-
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <input type="hidden">
@@ -230,7 +198,23 @@ ob_end_flush();
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-2">
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+
+                                                        <input class="form-control" type="text" id="cbm_area1" name="cbm_area1" readonly hidden>
+                                                        <label>Área:</label>
+                                                        <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
+                                                            </select></td>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label>Reposición:</label>
 
@@ -243,7 +227,7 @@ ob_end_flush();
                                                         </td>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label>Suficiencia:</label>
                                                         <input class="form-control" type="text" id="cbm_suficiencia1" name="cbm_suficiencia1" readonly hidden>
@@ -264,21 +248,12 @@ ob_end_flush();
                                                 </div>
 
 
-
-
-
-
-
-
-
-
-
                                             </div>
 
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button class="btn btn-primary" id="guardar" name="guardar" <?php echo $_SESSION['btn_modificar_asignatura_servicio']; ?>>Guardar</button>
+                                            <button class="btn btn-primary" id="guardar_servicio" name="guardar_servicio" <?php echo $_SESSION['btn_modificar_asignatura_servicio']; ?>>Guardar</button>
 
                                             <button class="btn btn-secondary" data-dismiss="modal" id="salir" onclick="limpiarSilabo()">Cancelar</button>
                                         </div>
