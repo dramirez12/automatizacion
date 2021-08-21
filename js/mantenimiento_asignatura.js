@@ -148,11 +148,38 @@ function RegistrarSilabo() {
   var formData = new FormData();
   var curriculum = $("#txt_silabo")[0].files[0];
   formData.append("c", curriculum);
-  formData.append("Id_asignatura", $("#id_asig").val());
-  //formData.append('nombrearchivo',nombrearchivo);
+  //formData.append("Id_asignatura", $("#id_asig").val());
+  formData.append("nombrearchivo", curriculum);
 
   $.ajax({
     url: "../Controlador/silabo_asignatura_controlador.php",
+    type: "post",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (respuesta) {
+      if (respuesta != 0) {
+        // Swal(
+        //   "Mensaje De Confirmacion",
+        //   "Se subio el curriculum con exito",
+        //   "success"
+        // );
+        //console.log("silabo");
+      }
+    },
+  });
+  return false;
+}
+//el documento de la asignatura silabo
+function actualizarSilabo() {
+  var formData = new FormData();
+  var curriculum = $("#txt_silabo")[0].files[0];
+  formData.append("c", curriculum);
+  formData.append("Id_asignatura", $("#id_asig").val());
+  formData.append("nombrearchivo2", curriculum);
+
+  $.ajax({
+    url: "../Controlador/actualizar_silabo_asignatura_controlador.php",
     type: "post",
     data: formData,
     contentType: false,
@@ -327,7 +354,7 @@ function actualizar_asignatura(
 
           // refrescar(15000);
 
-          RegistrarSilabo();
+          actualizarSilabo();
 
           mensaje1();
         } else {
@@ -552,7 +579,7 @@ function actualizar_asignatura_servicio(
 
           // refrescar(15000);
 
-           RegistrarSilabo();
+           actualizarSilabo();
            
            mensaje();
          } else {
