@@ -1420,3 +1420,28 @@ function Registrarcurriculum() {
 	});
 	return false;
 }
+//validar pdf
+var c = document.getElementById("curriculum");
+
+c.onchange = function () {
+  var archivo = $("#curriculum").val();
+  var extensiones = archivo.substring(archivo.lastIndexOf("."));
+  // console.log(extensiones);
+  if (extensiones != ".pdf" && extensiones != ".docx") {
+    alert("El archivo de tipo " + extensiones + " no es válido");
+    document.getElementById("curriculum").value = "";
+  }
+};
+
+// validar imagen
+var d = document.getElementById("seleccionararchivo");
+
+d.onchange = function () {
+  var archivo = $("#seleccionararchivo").val();
+  var extensiones = archivo.substring(archivo.lastIndexOf("."));
+  // console.log(extensiones);
+  if (extensiones != ".jpg" && extensiones != ".png" && extensiones != ".jpeg") {
+    alert("El archivo de tipo " + extensiones + " no es válido");
+    document.getElementById("seleccionararchivo").value = "";
+  }
+};

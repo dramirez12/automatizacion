@@ -125,11 +125,11 @@ ob_end_flush();
                 <div class="row">
 
                   <div class="col-sm-12" style="text-align: center">
-                      <img src="../Imagenes_Perfil_Docente/default-avatar.png" class="brand-image img-circle elevation-3" id="mostrarimagen" height="175" width="175">
-                      <input class="form-control-file" type="file" style="text-align: center" accept="image/x-png,image/gif,image/jpeg" id="seleccionararchivo" name="seleccionararchivo" required><br><br>
-                    
+                    <img src="../Imagenes_Perfil_Docente/default-avatar.png" class="brand-image img-circle elevation-3" id="mostrarimagen" height="175" width="175">
+                    <input class="form-control-file" type="file" style="text-align: center" accept="image/jpg/png/jpeg" id="seleccionararchivo" name="seleccionararchivo" required><br><br>
+
                   </div>
-             <div class="col-sm-3">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <!-- NOMBRES -->
 
@@ -165,7 +165,7 @@ ob_end_flush();
                   </div>
 
                   <div class="col-sm-3">
-                    <label id="label1"for="">Nº Identidad:</label>
+                    <label id="label1" for="">Nº Identidad:</label>
                     <label hidden id="label2" for="">Nº Pasaporte:</label>
 
                     <div class="form-group">
@@ -173,7 +173,7 @@ ob_end_flush();
 
                         <input name="identidad" type="text" data-inputmask="'mask': '9999-9999-99999'" data-mask class="form-control" id="identidad" onkeyup="ValidarIdentidad($('#identidad').val());" onblur="ExisteIdentidad();">
 
-                        <input type="text" id="pasaporte" class="form-control" maxlength="15" onkeypress="return solonumeros(event)" onblur="Existepasaporte();" hidden >
+                        <input type="text" id="pasaporte" class="form-control" maxlength="15" onkeypress="return solonumeros(event)" onblur="Existepasaporte();" hidden>
 
                       </div>
                     </div>
@@ -218,7 +218,7 @@ ob_end_flush();
                     <div class="form-group">
                       <!-- CURRICULUM -->
                       <label>Curriculum</label>
-                      <input class="form-control" type="file" accept=".doc, .docx, .pdf" id="curriculum" name="curriculum" value="" required>
+                      <input class="form-control" type="file" accept=application/pdf/docx id="curriculum" name="curriculum" required >
 
                     </div>
                   </div>
@@ -283,24 +283,24 @@ ob_end_flush();
                             <div class="form-group">
                               <label for="">Teléfono</label>
                               <input type="text" name="tel" id="tel" class="form-control name_list" data-inputmask="'mask': '9999-9999'" data-mask required>
-                              
+
                             </div>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <button class="btn btn-success" onclick="addTask(); ">Agregar</button>
-                          <button class="btn btn-danger" onclick="limpiarTEL()"; data-dismiss="modal">Cerrar</button>
+                          <button class="btn btn-danger" onclick="limpiarTEL()" ; data-dismiss="modal">Cerrar</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
 
-                      <!-- copia del input telefonos -->
-                      <input hidden type="text" name="telefonox" id="telefonox" class="form-control name_list" data-inputmask="'mask': '9999-9999'" data-mask required readonly>
-                      <input hidden type="email" class="form-control" id="correosx" name="correosx" maxlength="30" readonly>
-                      <input hidden type="text" name="especialidadx" id="especialidadx" class="form-control " readonly required>
-                      
+                  <!-- copia del input telefonos -->
+                  <input hidden type="text" name="telefonox" id="telefonox" class="form-control name_list" data-inputmask="'mask': '9999-9999'" data-mask required readonly>
+                  <input hidden type="email" class="form-control" id="correosx" name="correosx" maxlength="30" readonly>
+                  <input hidden type="text" name="especialidadx" id="especialidadx" class="form-control " readonly required>
+
                   <div class="col-sm-4">
                     <div class="form-group">
 
@@ -436,20 +436,20 @@ ob_end_flush();
                       <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="6" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
                     </div>
                   </div>
-                  
-                  <div class="col-sm-3">
-                                <label>Docente SUED</label>
-                                <div class="form-group">
-                                <input hidden class="form-control" id="tipo_docente" name="tipo_docente" type="text">
-                                        <span class="form-control">
-                                            <label class="checkbox-inline"><input class="CheckedAK" id="si" type="checkbox" name="check[]" class="ch" value="si">Si</label>
-                                            <label class="checkbox-inline"><input class="CheckedAK" id="no" type="checkbox" name="check[]" class="ch" value="no">No</label>
-                                      
 
-                                        </span>
-                                    </div>
-                               
-                            </div>
+                  <div class="col-sm-3">
+                    <label>Docente SUED</label>
+                    <div class="form-group">
+                      <input hidden class="form-control" id="tipo_docente" name="tipo_docente" type="text">
+                      <span class="form-control">
+                        <label class="checkbox-inline"><input class="CheckedAK" id="si" type="checkbox" name="check[]" class="ch" value="si">Si</label>
+                        <label class="checkbox-inline"><input class="CheckedAK" id="no" type="checkbox" name="check[]" class="ch" value="no">No</label>
+
+
+                      </span>
+                    </div>
+
+                  </div>
 
                   <div class="col-sm-3">
                     <div class="form-group">
@@ -464,7 +464,7 @@ ob_end_flush();
                     <div class="form-group">
                       <!-- CATEGORIAS -->
                       <label>Categoría</label>
-                      <select class="form-control"  name="categoria" id="categoria" value="" style="text-transform: uppercase">
+                      <select class="form-control" name="categoria" id="categoria" value="" style="text-transform: uppercase">
                       </select>
                     </div>
                   </div>
@@ -586,7 +586,7 @@ ob_end_flush();
           <p class="text-center" style="margin-top: 10px;">
             <button type="submit" class="btn btn-primary btn-lg" id="btn_guardar_registro_docentes" name="btn_guardar_registro_docentes" onclick="RegistarDocente($('#txt_nombres').val(), $('#txt_apellidos').val(), $('#cb_genero').val(), $('#identidad').val(), $('#cb_nacionalidad').val(), $('#cb_ecivil').val(), $('#txt_fecha_nacimiento').val(), $('#txt_hi').val(), $('#txt_hf').val(), $('#txt_n_empleado').val(), $('#tipo_docente').val(), $('#txt_fecha_ingreso').val());   ">
               <i class="zmdi zmdi-floppy"></i>GUARDAR</button>
-              <button hidden type="submit" class="btn btn-primary btn-lg" id="btn_guardar_registro_docentes2" name="btn_guardar_registro_docentes2" onclick="RegistarDocente2($('#txt_nombres').val(), $('#txt_apellidos').val(), $('#cb_genero').val(), $('#pasaporte').val(), $('#cb_nacionalidad').val(), $('#cb_ecivil').val(), $('#txt_fecha_nacimiento').val(), $('#txt_hi').val(), $('#txt_hf').val(), $('#txt_n_empleado').val(), $('#tipo_docente').val(), $('#txt_fecha_ingreso').val());   ">
+            <button hidden type="submit" class="btn btn-primary btn-lg" id="btn_guardar_registro_docentes2" name="btn_guardar_registro_docentes2" onclick="RegistarDocente2($('#txt_nombres').val(), $('#txt_apellidos').val(), $('#cb_genero').val(), $('#pasaporte').val(), $('#cb_nacionalidad').val(), $('#cb_ecivil').val(), $('#txt_fecha_nacimiento').val(), $('#txt_hi').val(), $('#txt_hf').val(), $('#txt_n_empleado').val(), $('#tipo_docente').val(), $('#txt_fecha_ingreso').val());   ">
               <i class="zmdi zmdi-floppy"></i>GUARDAR</button>
           </p>
 
@@ -600,13 +600,10 @@ ob_end_flush();
 
   <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
- <!-- <script type="text/javascript" src="../js/registro_docente.js"></script> -->
+  <!-- <script type="text/javascript" src="../js/registro_docente.js"></script> -->
 
 
 </body>
 
 
-
 </html>
-
-
