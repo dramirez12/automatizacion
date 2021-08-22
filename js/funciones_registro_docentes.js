@@ -1336,10 +1336,10 @@ function RegistarDocente2(
 			text: "Por favor espere un momento",
 			type: "warning",
 			showConfirmButton: false,
-			timer: 13000,
+			timer: 8000,
 			
 			});
-			refrescar(15000);
+			refrescar(10000);
 			mensaje();
 	}
 
@@ -1357,7 +1357,7 @@ function refrescar(tiempo) {
 function mensaje() {
 	setTimeout(function() {
 		swal('Buen trabajo!', 'Los datos se insertaron correctamente!', 'success');
-	 }, 14000);
+	 }, 9000);
 }
 
 //FUNCION DE PREVISUALIZACION DE IMAGEN
