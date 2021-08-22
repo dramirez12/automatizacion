@@ -1427,7 +1427,7 @@ c.onchange = function () {
   var archivo = $("#curriculum").val();
   var extensiones = archivo.substring(archivo.lastIndexOf("."));
   // console.log(extensiones);
-  if (extensiones != ".pdf" || extensiones != ".docx") {
+  if (extensiones != ".pdf" && extensiones != ".docx") {
     alert("El archivo de tipo " + extensiones + " no es válido");
     document.getElementById("curriculum").value = "";
   }
