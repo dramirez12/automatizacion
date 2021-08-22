@@ -1336,10 +1336,10 @@ function RegistarDocente2(
 			text: "Por favor espere un momento",
 			type: "warning",
 			showConfirmButton: false,
-			timer: 8000,
+			timer: 13000,
 			
 			});
-			refrescar(10000);
+			refrescar(15000);
 			mensaje();
 	}
 
@@ -1357,7 +1357,7 @@ function refrescar(tiempo) {
 function mensaje() {
 	setTimeout(function() {
 		swal('Buen trabajo!', 'Los datos se insertaron correctamente!', 'success');
-	 }, 9000);
+	 }, 14000);
 }
 
 //FUNCION DE PREVISUALIZACION DE IMAGEN
@@ -1427,7 +1427,7 @@ c.onchange = function () {
   var archivo = $("#curriculum").val();
   var extensiones = archivo.substring(archivo.lastIndexOf("."));
   // console.log(extensiones);
-  if (extensiones != ".pdf" && extensiones != ".docx") {
+  if (extensiones != ".pdf" || extensiones != ".docx") {
     alert("El archivo de tipo " + extensiones + " no es válido");
     document.getElementById("curriculum").value = "";
   }
