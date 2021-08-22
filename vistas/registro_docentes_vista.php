@@ -218,7 +218,7 @@ ob_end_flush();
                     <div class="form-group">
                       <!-- CURRICULUM -->
                       <label>Curriculum</label>
-                      <input class="form-control" type="file" accept=application/pdf/docx id="curriculum" name="curriculum" required >
+                      <input class="form-control" type="file" accept=application/pdf id="curriculum" name="curriculum" required >
 
                     </div>
                   </div>
