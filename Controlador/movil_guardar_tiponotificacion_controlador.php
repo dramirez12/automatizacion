@@ -35,7 +35,7 @@ if ($opcion == 'editar') {
   header('location: ../vistas/movil_mantenimiento_tipo_notificacion_vista.php?msj=2');
 
 }else{
-  $tipo_notificacion = isset($_POST['tipo_notificacion']) ? strtoupper($_POST['tipo_notificaion']) : '';
+  $tipo_notificacion = isset($_POST['tipo_notificacion']) ? strtoupper($_POST['tipo_notificacion']) : '';
   $descripcion = isset($_POST["descripcion"]) ? strtoupper($_POST["descripcion"]) : "";
 //Logica para el que se repite
 $sqlexiste = ("select count(tipo_notificacion) as notificacion from tbl_movil_tipo_notificaciones where tipo_notificacion='$tipo_notificacion'");

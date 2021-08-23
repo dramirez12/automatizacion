@@ -191,8 +191,9 @@ if (isset($_REQUEST['msj'])) {
                       </div>
 
                       <div class="form-group">
+
                         <label for="Contenido">Contenido:</label>
-                        <input class="form-control" type="text" value="<?php echo $_SESSION['txtDescripcion'] ?>" maxlength="1000" id="Contenido" name="Contenido" required onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)">
+                        <textarea class="form-control" cols="150" rows="5" maxlength="1000" id="Contenido" name="Contenido" required onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)"><?php echo $_SESSION['txtDescripcion']; ?></textarea>
                       </div>
 
                       <div class="form-group">
@@ -216,12 +217,12 @@ if (isset($_REQUEST['msj'])) {
                       <div class="form-group">
                         <!-- FECHA DE PUBLICACION txt_fecha_Publicacion -->
                         <label for="txt_fecha_Publicacion">Fecha y Hora de Publicación:</label>
-                        <input class="form-control" type="datetime-local" id="txt_fecha_Publicacion" name="txt_fecha_Publicacion" value="<?php echo date("Y-m-d\TH:i",$_SESSION['txtFecha']);?>" min="<?php echo date("Y-m-d\TH:i"); ?>" onkeydown="return false">
+                        <input class="form-control" type="datetime-local" id="txt_fecha_Publicacion" name="txt_fecha_Publicacion" value="<?php echo date("Y-m-d\TH:i",$_SESSION['txtFecha']);?>" min="<?php echo date("Y-m-d\TH:i",$_SESSION['txtFecha']); ?>" onkeydown="return false">
                       </div>
                       <div class="form-group">
                         <!-- FECHA DE PUBLICACION txt_fecha_Publicacion -->
                         <label for="txt_fecha_vencimiento">Fecha y Hora de Vencimiento:</label>
-                        <input class="form-control" type="datetime-local" id="txt_fecha_vencimiento" name="txt_fecha_vencimiento" value="<?php echo date("Y-m-d\TH:i",$_SESSION['txtFecha_vencimiento']);?>" min="<?php echo date("Y-m-d\TH:i",strtotime(date("Y-m-d\TH:i")."+ 1 month"));?>" max="<?php echo date("Y-m-d\TH:i",strtotime(date("Y-m-d\TH:i")."+ 3 month"));?>" onkeydown="return false">
+                        <input class="form-control" type="datetime-local" id="txt_fecha_vencimiento" name="txt_fecha_vencimiento" value="<?php echo date("Y-m-d\TH:i",$_SESSION['txtFecha_vencimiento']);?>" min="<?php echo date("Y-m-d\TH:i",strtotime($_SESSION['txtFecha_vencimiento']."+ 1 month"));?>" max="<?php echo date("Y-m-d\TH:i",strtotime(date("Y-m-d\TH:i")."+ 3 month"));?>" onkeydown="return false">
                       </div>
                       <div class="form-group">
                         <!-- archivos adjuntos -->
@@ -241,7 +242,7 @@ if (isset($_REQUEST['msj'])) {
                                 $rspta = $mysqli->query($sql_archivos);
                               while ($row2 = $rspta->fetch_array(MYSQLI_ASSOC)) { ?>
                                 <tr>
-                                  <td><?php echo str_replace('https://apiappinfomatica.000webhostapp.com','..',$row2['url']); ?></td>
+                                  <td><?php echo str_replace('http://desarrollo.informaticaunah.com','..',$row2['url']); ?></td>
                                   <td><a onclick="eliminar_archivos(<?php echo $row2['noticia'] ?>,<?php echo $row2['recurso'] ?>)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                               <?php } ?>
@@ -269,7 +270,8 @@ if (isset($_REQUEST['msj'])) {
         </div>
         <!-- /.  finaldel modal -->
       </form>
-
+<script>
+</script>
 </body>
 </html>
 <?php ob_end_flush() ?>

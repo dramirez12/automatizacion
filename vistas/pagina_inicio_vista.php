@@ -605,11 +605,86 @@ if (session_status() === PHP_SESSION_NONE) {
               <a href="../vistas/movil_menu_gestion_vista.php" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
-                  Gestión  App 
+                  Gestión App
                   <i class="fas fa-angle-left right"></i>
                   <span class="badge badge-info right"></span>
                 </p>
               </a>
+            </li>
+
+             <!----GESTION LABORATORIO ----->
+             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_gestion_laboratorio'] ?>">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Gestión Laboratorio
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+             
+                <li class="nav-item" style="display:<?php echo $_SESSION['producto_vista'] ?>">
+                  <a href="../vistas/gestion_producto_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Producto </p>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:<?php echo $_SESSION['adquisicion_vista'] ?>">
+                  <a href="../vistas/gestion_adquisicion_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Adquisición </p>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:<?php echo $_SESSION['salida_vista'] ?>">
+                  <a href="../vistas/gestion_salida_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Salida </p>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:<?php echo $_SESSION['asignacion_vista'] ?>">
+                  <a href="../vistas/gestion_asignacion_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Asignación </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['transaccion_kardex'] ?>">
+                  <a href="../vistas/transaccion_kardex_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Transacciones </p>
+                  </a>
+                </li>
+
+                    <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['reportes_vista'] ?>">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Reportes
+                      <i class="fas fa-angle-left right"></i>
+                      <span class="badge badge-info right"></span>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item" style="display:<?php echo $_SESSION['reportes_existencias_vista'] ?>">
+                      <a href="../vistas/reportes_existencias_vista.php" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p> Existencias</p>
+                      </a>
+                    </li>
+
+                    <li class="nav-item" style="display:<?php echo $_SESSION['reportes_ubicacion_vista'] ?>">
+                      <a href="../vistas/reportes_ubicacion_vista.php" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p> Ubicación</p>
+                      </a>
+                    </li>
+                  </ul>
+                  
+                   
+                  </li>
+              </ul>
             </li>
 
 
@@ -714,6 +789,13 @@ if (session_status() === PHP_SESSION_NONE) {
                       <i class="fas fa-angle-left right"></i>
                       <span class="badge badge-info right"></span>
                     </p>
+                  </a>
+                </li>
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['mantemiento_laboratorio'] ?>">
+                  <a href="../vistas/menu_mantenimiento_laboratorio.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Mantenimientos Laboratorio</p>
                   </a>
                 </li>
 

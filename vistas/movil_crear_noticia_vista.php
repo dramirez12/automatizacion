@@ -79,11 +79,11 @@ bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="titulo"> Título </label>
-                    <input autofocus class="form-control" type="text" maxlength="60" id="titulo" name="titulo" required onpaste="return false"  onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
+                    <input autofocus class="form-control" type="text" maxlength="90" id="titulo" name="titulo" required onpaste="return false"  onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                   </div>
                   <div class="form-group">
                     <label for="subtitulo"> Subtítulo </label>
-                    <input autofocus class="form-control" type="text" maxlength="60" id="subtitulo" name="subtitulo" required onpaste="return false"  onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
+                    <input autofocus class="form-control" type="text" maxlength="90" id="subtitulo" name="subtitulo" required onpaste="return false"  onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                   </div>
                   <div class="form-group">
                     <label for="Contenido">Contenido:</label>

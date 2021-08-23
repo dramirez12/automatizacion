@@ -41,9 +41,7 @@ if ($opcion == 'eliminar') {
 }elseif ($opcion == 'editar') {
   //funcionalidad para ejecutar el update
   $id_parametros= isset($_GET["id"]) ? ($_GET["id"]) : "";
- // $parametro= isset($_POST["parametro"]) ? strtoupper($_POST["parametro"]) : "";
- //$descripcion = isset($_POST["descripcion"]) ? strtoupper($_POST["descripcion"]) : "";
-  $valor = isset($_POST["valor"]) ? strtoupper($_POST["valor"]) : "";
+  $valor = isset($_POST["valor"]) ? $_POST["valor"] : "";
   $usuario_mod = $_SESSION['id_usuario'];
   if (!empty($valor) and $valor != 0 ) {
     $sql = "UPDATE tbl_movil_parametros set  valor= '$valor', fecha_modificacion = sysdate(), modificado_por = '$usuario_mod' WHERE id = $id_parametros";
@@ -60,12 +58,12 @@ if ($opcion == 'eliminar') {
   //se almacenan los valores para realizar el insert
   $parametro = isset($_POST["parametro"]) ? strtoupper($_POST["parametro"]) : "";
   $descripcion = isset($_POST["descripcion"]) ? strtoupper($_POST["descripcion"]) : "";
-  $valor = isset($_POST["valor"]) ? strtoupper($_POST["valor"]) : "";
+  $valor = isset($_POST["valor"]) ? $_POST["valor"] : "";
   $usuario_id = isset($_SESSION['id_usuario']) ? ($_SESSION['id_usuario']) : "";
   
 /* Logica para que no acepte campos vacios */
-    if( !empty($_POST['valor']) and $_POST['valor'] != 0){
-      if ($_POST['parametro'] <>  ' ' and  $_POST['descripcion'] <>' ') {
+    if( !empty($_POST['valor']) and ($_POST['valor'] != 0 or $_POST['valor'] != '0')){
+      if (!empty($_POST['parametro']) and  !empty($_POST['descripcion'])) {
     
         /* Query para que haga el insert*/
         //query para traer el nombre del usuario que creo el parametro
@@ -73,7 +71,7 @@ if ($opcion == 'eliminar') {
         $resultado_nombre = $mysqli->query($nombreUser);
         $nombre = $resultado_nombre->fetch_assoc();
         $user = $nombre['Usuario'];
-        $sql = "INSERT into tbl_movil_parametros (parametro,descripcion,valor,fecha_modificacion,creado_por,modificado_por) VALUES ('$parametro', '$descripcion', '$valor',sysdate(),'$user',1)";
+        $sql = "INSERT into tbl_movil_parametros (parametro,descripcion,valor,fecha_modificacion,creado_por,modificado_por) VALUES ('$parametro', '$descripcion', '$valor',sysdate(),'$user',$usuario_id)";
         $resultado = $mysqli->query($sql);
         bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INSERTO',strtoupper("$sql"));
         if ($resultado) {//-----------------------

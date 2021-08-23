@@ -94,7 +94,7 @@ function subirDocumentos($i){
     $name = $_FILES['txt_documentos']['name']["$i"];
     if(is_array($_FILES) && count($_FILES)>0){
         if(move_uploaded_file($tmp_name,"../archivos/movil/".$name)){
-          $ext_url = 'https://apiappinfomatica.000webhostapp.com';
+          $ext_url = 'http://desarrollo.informaticaunah.com';
           $nombrearchivo= '/archivos/movil/'.$name;
           $MP->Registrar_foto($ext_url.$nombrearchivo);  
           $idRecurso = $MP->buscar_id_recurso($ext_url.$nombrearchivo);

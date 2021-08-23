@@ -8,7 +8,7 @@ require_once('../clases/funcion_bitacora_movil.php');
 require_once('../Controlador/movil_api_controlador.php');
 require_once('../Controlador/movil_transacciones_controlador.php');
 if (isset($_GET['op'])) {
-$url ='https://apiappinfomatica.000webhostapp.com/modulos/notificaciones/envioNotificaciones.php';
+$url ='http://desarrollo.informaticaunah.com/ApiRestAppInformatica/modulos/notificaciones/envioNotificaciones.php';
 $datos = array();
 //id_objeto vista notificaciones
 $Id_objeto = 169;
@@ -162,7 +162,7 @@ function subirImagen(){
     $name = $_FILES['subir_archivo']['name'];
     if(is_array($_FILES) && count($_FILES) > 0){
         if(move_uploaded_file($tmp_name,"../archivos/movil/notificacion/".$name)){
-            $ext_url = 'https://apiappinfomatica.000webhostapp.com';
+            $ext_url = 'http://desarrollo.informaticaunah.com';
           $nombrearchivo= '/archivos/movil/notificacion/'.$name;
           return $ext_url.$nombrearchivo;
         }else{

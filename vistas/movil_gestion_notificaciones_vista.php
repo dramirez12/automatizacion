@@ -272,7 +272,7 @@ if (isset($_REQUEST['msj'])) {
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td><?php echo str_replace('https://apiappinfomatica.000webhostapp.com','..',$_SESSION['txtUrl']) ; ?></td>
+                                                            <td><?php echo str_replace('http://desarrollo.informaticaunah.com','..',$_SESSION['txtUrl']) ; ?></td>
                                                             <?php if ($_SESSION['txtUrl'] != 'null') :?>
                                                             <td><a onclick="eliminar_img(<?php echo $id; ?>);"
                                                                     class="btn btn-danger btn-xs"><i

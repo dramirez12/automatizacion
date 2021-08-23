@@ -164,15 +164,15 @@ if (isset($_REQUEST['msj'])) {
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="descripcion"> Nombre del Parámetro </label>
-                    <input autofocus class="form-control" type="text" maxlength="60" id="parametro" name="parametro" required style="text-transform: uppercase" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
+                    <input autofocus class="form-control" type="text" maxlength="200" id="parametro" name="parametro" required style="text-transform: uppercase" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                   </div>
                     <label for="ubicacion url">Descripción del Parámetro</label>
-                    <input class="form-control" type="text"  maxlength="60" id="descripcion" name="descripcion" required style="text-transform: uppercase" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
+                    <input class="form-control" type="text"  maxlength="200" id="descripcion" name="descripcion" required style="text-transform: uppercase" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                   </div> 
                   </div>
                   <div class="form-group">
                     <label for="txt_valorparametro">Valor del Parámetro</label>
-                    <input class="form-control" type="text" id="valor" name="valor" required style="text-transform: uppercase" onpaste="return false"  maxlength="30"  onkeyup="DobleEspacio(this, event)">
+                    <input class="form-control" type="text" id="valor" name="valor" required onpaste="return false"  maxlength="45"  onkeyup="DobleEspacio(this, event)">
                   </div>
 
                 </div>
