@@ -2,8 +2,6 @@
 require_once "../Modelos/perfil_docente_modelo.php";
 $id_empleado = isset($_POST["id_empleado"]) ? limpiarCadena1($_POST["id_empleado"]) : "";
 $identidad = isset($_POST["identidad"]) ? limpiarCadena1($_POST["identidad"]) : "";
-$nombre = isset($_POST["Nombre"]) ? limpiarCadena1($_POST["Nombre"]) : "";
-$apellido = isset($_POST["apellido"]) ? limpiarCadena1($_POST["apellido"]) : "";
 $correo = isset($_POST["correo"]) ? limpiarCadena1($_POST["correo"]) : "";
 $grado = isset($_POST["grado"]) ? limpiarCadena1($_POST["grado"]) : "";
 $especialidad = isset($_POST["especialidad"]) ? limpiarCadena1($_POST["especialidad"]) : "";
@@ -12,7 +10,6 @@ $eliminar_tel = isset($_POST["eliminar_tel"]) ? limpiarCadena1($_POST["eliminar_
 $eliminar_formacion = isset($_POST["eliminar_formacion"]) ? limpiarCadena1($_POST["eliminar_formacion"]) : "";
 $eliminar_correo = isset($_POST["eliminar_correo"]) ? limpiarCadena1($_POST["eliminar_correo"]) : "";
 $id_persona = isset($_POST["id_persona"]) ? limpiarCadena1($_POST["id_persona"]) : "";
-$nacionalidad = isset($_POST["nacionalidad"]) ? limpiarCadena1($_POST["nacionalidad"]) : "";
 $estado_civil = isset($_POST["id_estado_civil"]) ? limpiarCadena1($_POST["id_estado_civil"]) : "";
 $valor = isset($_POST["valor"]) ? limpiarCadena1($_POST["valor"]) : "";
 $curriculum = isset($_POST["curriculum"]) ? limpiarCadena1($_POST["curriculum"]) : "";
@@ -20,9 +17,8 @@ $estado = isset($_POST["estado_civil"]) ? limpiarCadena1($_POST["estado_civil"])
 $codigo = isset($_POST["codigo"]) ? limpiarCadena1($_POST["codigo"]) : "";
 $id_genero = isset($_POST["id_genero"]) ? limpiarCadena1($_POST["id_genero"]) : "";
 $genero = isset($_POST["genero"]) ? limpiarCadena1($_POST["genero"]) : "";
-$sexo = isset($_POST["sexo"]) ? limpiarCadena1($_POST["sexo"]) : "";
 
-$id_persona_prueba = '10';
+
 
 
 $instancia_modelo = new modelo_perfil_docentes();
@@ -57,10 +53,10 @@ if (isset($_GET['op'])) {
 
             break;
 
-        case 'EditarPerfil':
+        // case 'EditarPerfil':
 
-            $rspta = $instancia_modelo->Actualizar($nombre, $apellido, $identidad, $id_persona, $nacionalidad, $estado, $sexo);
-            break;
+        //     $rspta = $instancia_modelo->Actualizar($nombre, $apellido, $identidad, $id_persona, $nacionalidad, $estado, $sexo);
+        //     break;
 
         case 'AgregarEpecialidad':
 

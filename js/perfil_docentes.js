@@ -121,7 +121,8 @@ function EditarPerfil(nombre, apellido, identidad, nacionalidad, estado) {
     apellido == "" ||
     nacionalidad == "" ||
     estado_civil == "" ||
-    genero == ""
+    genero == "" ||
+    identidad==""
   ) {
     swal({
       title: "Campos Vacios!",
@@ -131,9 +132,18 @@ function EditarPerfil(nombre, apellido, identidad, nacionalidad, estado) {
       timer: 10000,
     });
   } else {
-    $.post(
-      "../Controlador/perfil_docente_controlador.php?op=EditarPerfil",
-      {
+   
+    swal({
+      title: "alerta",
+      text: "Por favor espere un momento",
+      type: "warning",
+      showConfirmButton: false,
+      timer: 11000,
+    });
+    $.ajax({
+      url: "../Controlador/actualizar_perfil_docente_controlador.php",
+      type: "POST",
+      data: {
         Nombre: nombre,
         apellido: apellido,
         identidad: identidad,
@@ -142,17 +152,26 @@ function EditarPerfil(nombre, apellido, identidad, nacionalidad, estado) {
         estado_civil: estado_civil,
         sexo: genero,
       },
-      function (e) {}
-    );
-    swal({
-      title: "Actualizado!",
-      text: "Datos actualizados correctamente",
-      type: "success",
-      showConfirmButton: true,
-      timer: 10000,
+    }).done(function (resp) {
+      console.log(resp);
+
+      if (resp > 0) {
+        if (resp == 1) {
+          swal({
+            title: "Actualizado!",
+            text: "Datos actualizados correctamente",
+            type: "success",
+            showConfirmButton: true,
+            timer: 10000,
+          });
+          window.location = "../vistas/perfil_docentes_vista.php";
+        } else {
+          swal("Alerta!", "No se pudo completar la acción", "warning");
+        }
+      }
     });
-    window.location = "../vistas/perfil_docentes_vista.php";
   }
+
 }
 
 //Convertir inputs a Mayusculas
@@ -476,36 +495,43 @@ function correovalido(correo1) {
 
 // Cambiar Imagen de Perfil
 function imagen() {
-  var frmData = new FormData();
-  var imagen = $("#imagen").val();
+    var imagen = document.getElementById("imagen").value;
   if (imagen == "") {
-    document.getElementById("imagen").hidden = true;
-    document.getElementById("btn_foto").hidden = true;
-    document.getElementById("btn_mostrar").hidden = false;
+    alert("No ha seleccionado un archivo");
   } else {
-    frmData.append("imagen", $("input[name=imagen]")[0].files[0]);
-    frmData.append("id_persona", $("#id_persona").val());
+  
+    var frmData = new FormData();
+    var imagen = $("#imagen").val();
+    if (imagen == "") {
+      document.getElementById("imagen").hidden = true;
+      document.getElementById("btn_foto").hidden = true;
+      document.getElementById("btn_mostrar").hidden = false;
+    } else {
+      frmData.append("imagen", $("input[name=imagen]")[0].files[0]);
+      frmData.append("id_persona", $("#id_persona").val());
 
-    $.ajax({
-      url: "../Controlador/perfil_docente_controlador.php?op=CambiarFoto",
-      type: "post",
-      data: frmData,
-      processData: false,
-      contentType: false,
-      cache: false,
+      $.ajax({
+        url: "../Controlador/perfil_docente_controlador.php?op=CambiarFoto",
+        type: "post",
+        data: frmData,
+        processData: false,
+        contentType: false,
+        cache: false,
 
-      success: function (data) {
-        data = JSON.parse(data);
+        success: function (data) {
+          data = JSON.parse(data);
 
-        $("#foto").attr("src", data);
-        $("#imagen").val("");
-        $("#btn_mostrar").removeAttr("hidden");
-        $("#imagen").attr("hidden", "hidden");
-        $("#btn_foto").attr("hidden", "hidden");
-      },
-    });
+          $("#foto").attr("src", data);
+          $("#imagen").val("");
+          $("#btn_mostrar").removeAttr("hidden");
+          $("#imagen").attr("hidden", "hidden");
+          $("#btn_foto").attr("hidden", "hidden");
+          $("#btn_foto_cancelar").attr("hidden", "hidden");
+        },
+      });
 
-    return false;
+      return false;
+    }
   }
 }
 
@@ -619,7 +645,15 @@ function MostrarBoton() {
   $("#imagen").removeAttr("hidden");
   $("#btn_foto").removeAttr("hidden");
   $("#btn_mostrar").attr("hidden", "hidden");
+  $("#btn_foto_cancelar").removeAttr("hidden");
+  
 }
+ $("#btn_foto_cancelar").click(function () {
+   $("#btn_foto_cancelar").attr("hidden", "hidden");
+   $("#btn_foto").attr("hidden", "hidden");
+   $("#imagen").attr("hidden", "hidden");
+  $("#btn_mostrar").removeAttr("hidden");
+ });
 
 function ValidarIdentidad(identidad) {
   //console.log(n);
@@ -779,73 +813,73 @@ function MismaLetra(id_input) {
 }
 
 
-$("#btn_editar_curri").click(function () {
-  // document.getElementById('parrafo_numEmpleado').hidden = true;
-  document.getElementById('parrafo_boton_editar').hidden = true;
-  // document.getElementById('parrafo_curriculum').hidden = true;
-  document.getElementById('parrafo_encuesta').hidden = true;
-  // document.getElementById('parrafo_sued').hidden = true;
-  document.getElementById('curriculum_parrafo').hidden = true;
-  document.getElementById('icono_nombre').hidden = true;
-  document.getElementById('icono_apellido').hidden = true;
-  document.getElementById('icono_jornada').hidden = true;
-  document.getElementById('icono_genero').hidden = true;
-  document.getElementById('icono_identidad').hidden = true;
-  document.getElementById('icono_nacionalidad').hidden = true;
-  document.getElementById('icono_nacimiento').hidden = true;
-  document.getElementById('icono_estado').hidden = true;
-  document.getElementById('icono_categoria').hidden = true;
-  // document.getElementById('boton_colapse').hidden = true;
-  // document.getElementById('datos_docente').hidden = true;
-  document.getElementById("titulo_1").hidden = false;
-  // document.getElementById('eliminar_telefono_tabla').hidden = true;
-  // document.getElementById('eliminar_correo_tabla').hidden = true;
-  document.getElementById("foto_carrera").hidden = false;
-  document.getElementById("fecha_actual").hidden = false;
-  document.getElementById('btn_foto').hidden = true;
-  document.getElementById('btn_editar').hidden = true;
-  document.getElementById('btn_curriculum').hidden = true;
-  document.getElementById('btn_guardar_edicion').hidden = true;
-  // $('button').attr('hidden','hidden');
+// $("#btn_editar_curri").click(function () {
+//   // document.getElementById('parrafo_numEmpleado').hidden = true;
+//   document.getElementById('parrafo_boton_editar').hidden = true;
+//   // document.getElementById('parrafo_curriculum').hidden = true;
+//   document.getElementById('parrafo_encuesta').hidden = true;
+//   // document.getElementById('parrafo_sued').hidden = true;
+//   document.getElementById('curriculum_parrafo').hidden = true;
+//   document.getElementById('icono_nombre').hidden = true;
+//   document.getElementById('icono_apellido').hidden = true;
+//   document.getElementById('icono_jornada').hidden = true;
+//   document.getElementById('icono_genero').hidden = true;
+//   document.getElementById('icono_identidad').hidden = true;
+//   document.getElementById('icono_nacionalidad').hidden = true;
+//   document.getElementById('icono_nacimiento').hidden = true;
+//   document.getElementById('icono_estado').hidden = true;
+//   document.getElementById('icono_categoria').hidden = true;
+//   // document.getElementById('boton_colapse').hidden = true;
+//   // document.getElementById('datos_docente').hidden = true;
+//   document.getElementById("titulo_1").hidden = false;
+//   // document.getElementById('eliminar_telefono_tabla').hidden = true;
+//   // document.getElementById('eliminar_correo_tabla').hidden = true;
+//   document.getElementById("foto_carrera").hidden = false;
+//   document.getElementById("fecha_actual").hidden = false;
+//   document.getElementById('btn_foto').hidden = true;
+//   document.getElementById('btn_editar').hidden = true;
+//   document.getElementById('btn_curriculum').hidden = true;
+//   document.getElementById('btn_guardar_edicion').hidden = true;
+//   // $('button').attr('hidden','hidden');
 
-  window.print();
-  // document.getElementById('parrafo_numEmpleado').hidden = false;
-  // document.getElementById('parrafor_jornada').hidden = false;
-  // document.getElementById('parrafo_boton_editar').hidden = false;
-  // document.getElementById('parrafo_genero').hidden = false;
-  // document.getElementById('parrafo_identidad').hidden = false;
-  // document.getElementById('parrafo_nacionalidad').hidden = false;
-  // document.getElementById('parrafo_categoria').hidden = false;
-  // document.getElementById('parrafo_nacimiento').hidden = false;
-  // document.getElementById('parrafo_estadoC').hidden = false;
-  // document.getElementById('parrafo_curriculum').hidden = false;
-  document.getElementById('curriculum_parrafo').hidden = false;
-  // document.getElementById('parrafo_encuesta').hidden = false;
-  // document.getElementById('parrafo_comisiones').hidden = false;
-  // document.getElementById('parrafo_formacion').hidden = false;
-  // document.getElementById('parrafo_sued').hidden = false;
-  document.getElementById('icono_nombre').hidden = false;
-  document.getElementById('icono_apellido').hidden = false;
-  document.getElementById('icono_jornada').hidden = false;
-  document.getElementById('icono_genero').hidden = false;
-  document.getElementById('icono_identidad').hidden = false;
-  document.getElementById('icono_nacionalidad').hidden = false;
-  document.getElementById('icono_nacimiento').hidden = false;
-  document.getElementById('icono_estado').hidden = false;
-  document.getElementById('icono_categoria').hidden = false;
-  // document.getElementById('boton_colapse').hidden = false;
-  // document.getElementById('datos_docente').hidden = false;
-  document.getElementById("titulo_1").hidden = true;
-  // document.getElementById('eliminar_telefono_tabla').hidden = false;
-  // document.getElementById('eliminar_correo_tabla').hidden = false;
-  document.getElementById("foto_carrera").hidden = true;
-  document.getElementById("fecha_actual").hidden = true;
-  // $('button').removeAttr('hidden');
-  // document.getElementById('btn_foto').hidden = true;
-  // document.getElementById('btn_editar').hidden = true;
-  // document.getElementById('btn_curriculum').hidden = true;
-  // document.getElementById('btn_guardar_edicion').hidden = true;
-});
+//   window.print();
+//   // document.getElementById('parrafo_numEmpleado').hidden = false;
+//   // document.getElementById('parrafor_jornada').hidden = false;
+//   // document.getElementById('parrafo_boton_editar').hidden = false;
+//   // document.getElementById('parrafo_genero').hidden = false;
+//   // document.getElementById('parrafo_identidad').hidden = false;
+//   // document.getElementById('parrafo_nacionalidad').hidden = false;
+//   // document.getElementById('parrafo_categoria').hidden = false;
+//   // document.getElementById('parrafo_nacimiento').hidden = false;
+//   // document.getElementById('parrafo_estadoC').hidden = false;
+//   // document.getElementById('parrafo_curriculum').hidden = false;
+//   document.getElementById('curriculum_parrafo').hidden = false;
+//   // document.getElementById('parrafo_encuesta').hidden = false;
+//   // document.getElementById('parrafo_comisiones').hidden = false;
+//   // document.getElementById('parrafo_formacion').hidden = false;
+//   // document.getElementById('parrafo_sued').hidden = false;
+//   document.getElementById('icono_nombre').hidden = false;
+//   document.getElementById('icono_apellido').hidden = false;
+//   document.getElementById('icono_jornada').hidden = false;
+//   document.getElementById('icono_genero').hidden = false;
+//   document.getElementById('icono_identidad').hidden = false;
+//   document.getElementById('icono_nacionalidad').hidden = false;
+//   document.getElementById('icono_nacimiento').hidden = false;
+//   document.getElementById('icono_estado').hidden = false;
+//   document.getElementById('icono_categoria').hidden = false;
+//   // document.getElementById('boton_colapse').hidden = false;
+//   // document.getElementById('datos_docente').hidden = false;
+//   document.getElementById("titulo_1").hidden = true;
+//   // document.getElementById('eliminar_telefono_tabla').hidden = false;
+//   // document.getElementById('eliminar_correo_tabla').hidden = false;
+//   document.getElementById("foto_carrera").hidden = true;
+//   document.getElementById("fecha_actual").hidden = true;
+//   // $('button').removeAttr('hidden');
+//   // document.getElementById('btn_foto').hidden = true;
+//   // document.getElementById('btn_editar').hidden = true;
+//   // document.getElementById('btn_curriculum').hidden = true;
+//   // document.getElementById('btn_guardar_edicion').hidden = true;
+// });
 
 //TIPO DE CONTACTOS
 function TipoContacto() {
@@ -940,27 +974,64 @@ function alerta() {
 }
 
 function Registrarcurriculum() {
-  var formData = new FormData();
-  var curriculum = $("#c_vitae")[0].files[0];
-  formData.append("c", curriculum);
-  formData.append("id_persona", $("#id_persona").val());
+  
+  var c_vitae = document.getElementById("c_vitae").value;
+  if (c_vitae == "") {
+    alert("No ha seleccionado un archivo");
+  } else {
+      var formData = new FormData();
+      var curriculum = $("#c_vitae")[0].files[0];
+      formData.append("c", curriculum);
+      formData.append("id_persona", $("#id_persona").val());
 
-  $.ajax({
-    url: "../Controlador/perfil_docente_controlador.php?op=cambiarCurriculum",
-    type: "post",
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function (respuesta) {
-      if ((respuesta = 1)) {
-        swal("Actualizado!", "Datos actualizados correctamente!", "success");
+      $.ajax({
+        url: "../Controlador/perfil_docente_controlador.php?op=cambiarCurriculum",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (respuesta) {
+          if ((respuesta = 1)) {
+            swal(
+              "Actualizado!",
+              "Datos actualizados correctamente!",
+              "success"
+            );
 
-        window.location = "../vistas/perfil_docentes_vista.php";
-      }
-    },
-  });
-  return false;
+           $("#btn_curriculu_cancelar").attr("hidden", "hidden");
+            window.location = "../vistas/perfil_docentes_vista.php";
+          }
+        },
+      });
+      return false;
+  }
+
 }
+//validar que solo acepte archivos pdf
+//validar pdf
+var c = document.getElementById("c_vitae");
+
+c.onchange = function () {
+  var archivo = $("#c_vitae").val();
+  var extensiones = archivo.substring(archivo.lastIndexOf("."));
+  // console.log(extensiones);
+  if (extensiones != ".pdf") {
+    alert("El archivo de tipo " + extensiones + " no es válido");
+    document.getElementById("c_vitae").value = "";
+  }
+};
+//validar que solo acepte archivos imagen
+var d = document.getElementById("imagen");
+
+d.onchange = function () {
+  var archivo = $("#imagen").val();
+  var extensiones = archivo.substring(archivo.lastIndexOf("."));
+  // console.log(extensiones);
+  if (extensiones != ".jpg" && extensiones != ".png" && extensiones != ".jpeg" && extensiones != ".PNG") {
+    alert("El archivo de tipo " + extensiones + " no es válido");
+    document.getElementById("imagen").value = "";
+  }
+};
 
 function AgregarCorreo(correo) {
   var id_persona = $("#id_persona").val();
@@ -1035,8 +1106,17 @@ function MostrarBotonCurriculum() {
   $("#c_vitae").removeAttr("hidden");
   $("#btn_curriculum").removeAttr("hidden");
   $("#btn_mostrar_curriculum").attr("hidden", "hidden");
+  $("#btn_curriculu_cancelar").removeAttr("hidden");
 }
 
+ $("#btn_curriculu_cancelar").click(function () {
+   $("#btn_curriculu_cancelar").attr("hidden", "hidden");
+   $("#c_vitae").attr("hidden", "hidden");
+   $("#btn_curriculum").attr("hidden", "hidden");
+   $("#btn_mostrar_curriculum").removeAttr("hidden");
+   
+ });
+ 
 //      COMBOBOX ESTADO CIVIL----------------
 function llenar_estado_civil() {
   var cadena = "&activar=activar";
@@ -1163,16 +1243,39 @@ function habilitar_editar() {
 }
 
 function desabilitar() {
-  document.getElementById("estado_civil").hidden = true;
-  document.getElementById("ver_estado").hidden = false;
-  document.getElementById("Nombre").disabled = true;
-  document.getElementById("txt_apellido").disabled = true;
-  document.getElementById("identidad").disabled = true;
-  document.getElementById("editar_info").hidden = false;
-  document.getElementById("btn_editar").hidden = true;
-  document.getElementById("btn_guardar_edicion").hidden = true;
-  document.getElementById("genero").hidden = true;
-  document.getElementById("ver_genero").hidden = false;
+  var nombre = $("#Nombre").val();
+  var apellido = $("#txt_apellido").val();
+  var identidad = $("#identidad").val();
+  var nacionalidad = $("#nacionalidad").val();
+  var estado_civil = $("#ver_estado").val();
+  var genero = $("#ver_genero").val();
+  if (
+    nombre == "" ||
+    apellido == "" ||
+    nacionalidad == "" ||
+    estado_civil == "" ||
+    genero == "" ||
+    identidad == ""
+  ) {
+    swal({
+      title: "Campos Vacios!",
+      text: "Tiene campos en blanco",
+      type: "warning",
+      showConfirmButton: true,
+      timer: 10000,
+    });
+  } else {
+    document.getElementById("estado_civil").hidden = true;
+    document.getElementById("ver_estado").hidden = false;
+    document.getElementById("Nombre").disabled = true;
+    document.getElementById("txt_apellido").disabled = true;
+    document.getElementById("identidad").disabled = true;
+    document.getElementById("editar_info").hidden = false;
+    document.getElementById("btn_editar").hidden = true;
+    document.getElementById("btn_guardar_edicion").hidden = true;
+    document.getElementById("genero").hidden = true;
+    document.getElementById("ver_genero").hidden = false;
+  }
 }
 
 function ver_estado_civil() {
