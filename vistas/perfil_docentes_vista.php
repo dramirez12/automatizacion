@@ -44,7 +44,7 @@ ob_end_flush();
 
 
 // SELECT A LAS TABLAS PARA ENCUESTA
-$sql = "SELECT * FROM tbl_asignaturas where id_plan_estudio !=17";
+$sql = "SELECT * FROM tbl_asignaturas where estado=1";
 $consulta = $mysqli->query($sql);
 $row = $consulta->fetch_all(MYSQLI_ASSOC);
 
@@ -56,7 +56,7 @@ $sql4 = "SELECT * FROM tbl_areas";
 $consulta4 = $mysqli->query($sql4);
 $row4 = $consulta4->fetch_all(MYSQLI_ASSOC);
 
-$sql9 = "SELECT * FROM tbl_asignaturas";
+$sql9 = "SELECT * FROM tbl_asignaturas where estado=1";
 $consulta9 = $mysqli->query($sql9);
 $row9 = $consulta9->fetch_all(MYSQLI_ASSOC);
 
