@@ -236,6 +236,7 @@ function RegistrarSilabo() {
 //insertar asignatura
 $("#guardar_asig").click(function () {
   var cbm_plan = $("#cbm_plan").val();
+  var cbm_usada_carga = $("#cbm_usada_carga").val();
   var cbm_periodo = $("#cbm_periodo").val();
   var cbm_area = $("#cbm_area").val();
   var txt_uv = $("#txt_uv").val();
@@ -256,7 +257,8 @@ $("#guardar_asig").click(function () {
     txt_nombre_asignatura.length == 0 ||
     cbm_reposicion == null ||
     txt_silabo.length == 0 ||
-    cbm_suficiencia == null
+    cbm_suficiencia == null||
+    cbm_usada_carga == null 
   ) {
     alert("no se permiten campos vacios");
   } else if (
@@ -264,7 +266,8 @@ $("#guardar_asig").click(function () {
     cbm_periodo == 0 ||
     cbm_area == 0 ||
     cbm_reposicion == 0 ||
-    cbm_suficiencia == 0
+    cbm_suficiencia == 0 ||
+    cbm_usada_carga == 0
   ) {
     alert("seleccione una opcion valida");
   } else {
@@ -281,9 +284,6 @@ $("#guardar_asig").click(function () {
 
     // alert(suma);
 
-   
-    
-      
     if (sum_clases > num_clases_plan) {
       alert("La asignatura excede el numero de clases asignadas al plan!");
     } else if (suma > txt_uv_plan) {
@@ -321,6 +321,7 @@ $("#guardar_asig").click(function () {
                 reposicion: cbm_reposicion,
                 suficiencia: cbm_suficiencia,
                 estado: estado,
+                carga: cbm_usada_carga,
                 id_tipo_asignatura: tipo_asignatura,
               },
             }).done(function (resp) {
@@ -356,8 +357,6 @@ $("#guardar_asig").click(function () {
         }
       );
     }
-
-
   }
 });
 

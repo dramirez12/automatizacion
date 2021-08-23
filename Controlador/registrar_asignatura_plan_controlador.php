@@ -16,8 +16,9 @@ $reposicion = $_POST["reposicion"];
 $suficiencia = $_POST["suficiencia"];
 $id_tipo_asignatura = $_POST["id_tipo_asignatura"];
 $estado = $_POST["estado"];
+$carga = $_POST["carga"];
 
-$consulta = $MU->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
+$consulta = $MU->registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $carga,$id_tipo_asignatura);
 echo $consulta;
 
 if ($consulta == 1) {

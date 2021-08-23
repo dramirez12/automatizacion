@@ -114,7 +114,6 @@ class modelo_plan{
     {
         global $instancia_conexion;
         $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_plan_estudio,nombre FROM tbl_plan_estudio where id_plan_estudio !=17');
-        
         return $consulta;
     }
     function area_sel()
@@ -313,20 +312,20 @@ class modelo_plan{
         return $instancia_conexion->ejecutarConsulta($sql);
     }
     //Insertar registros
-    function registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura)
+    function registrarAsignatura($id_plan_estudio, $id_periodo_plan, $id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia,$carga, $id_tipo_asignatura)
     {
         global $instancia_conexion;
-        $sql = "call proc_insertar_asignatura('$id_plan_estudio', '$id_periodo_plan', '$id_area', '$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia', '$id_tipo_asignatura')";
+        $sql = "call proc_insertar_asignatura('$id_plan_estudio', '$id_periodo_plan', '$id_area', '$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia','$carga', '$id_tipo_asignatura')";
 
 
         return $instancia_conexion->ejecutarConsulta($sql);
     }
 
     function
-    ActualizarAsignatura($id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura, $id_periodo_plan, $id_plan_estudio)
+    ActualizarAsignatura($id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura, $id_periodo_plan,$carga, $id_plan_estudio)
     {
         global $instancia_conexion;
-        $sql = "call proc_actualizar_asignatura( '$id_area', '$uv', '$codigo','$asignatura', '$reposicion', '$suficiencia','$id_asignatura', '$id_periodo_plan','$id_plan_estudio')";
+        $sql = "call proc_actualizar_asignatura( '$id_area', '$uv', '$codigo','$asignatura', '$reposicion', '$suficiencia','$id_asignatura', '$id_periodo_plan','$carga','$id_plan_estudio')";
 
 
         return $instancia_conexion->ejecutarConsulta($sql);

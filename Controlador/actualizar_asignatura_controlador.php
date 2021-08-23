@@ -16,8 +16,9 @@ $suficiencia = $_POST["suficiencia"];
 $id_asignatura = $_POST["Id_asignatura"];
 $id_plan_estudio = $_POST["id_plan_estudio"];
 $id_periodo_plan = $_POST["id_periodo_plan"];
+$carga = $_POST["carga"];
 
-$consulta = $MU->ActualizarAsignatura($id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura,$id_periodo_plan,$id_plan_estudio);
+$consulta = $MU->ActualizarAsignatura($id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura,$id_periodo_plan,$carga,$id_plan_estudio);
 echo $consulta;
 
 if ($consulta == 1) {

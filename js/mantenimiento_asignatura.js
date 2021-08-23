@@ -39,6 +39,7 @@ function TablaManteniAsignatura() {
       //{ data: "nombre_plan" },
       { data: "suficiencia" },
       { data: "reposicion" },
+      { data: "carga" },
       { data: "silabo" },
     ],
 
@@ -128,6 +129,8 @@ $("#tabla_asignatura").on("click", ".editar", function () {
   $("#cbm_suficiencia1").val(data.suficiencia);
   $("#cbm_reposicion").val(data.reposicion).trigger("change");
   $("#cbm_reposicion1").val(data.reposicion);
+  $("#cbm_usada_carga").val(data.carga).trigger("change");
+  $("#cbm_usada_carga1").val(data.carga);
 
   //  $("#txt_silabo").val(data.silabo);
 });
@@ -202,6 +205,7 @@ function actualizarSilabo() {
 
 $("#guardar").click(function () {
   var cbm_plan = $("#cbm_plan").val();
+  var cbm_usada_carga = $("#cbm_usada_carga").val();
   var cbm_periodo = $("#cbm_periodo").val();
   var cbm_area = $("#cbm_area").val();
   var txt_uv = $("#txt_uv").val();
@@ -221,6 +225,7 @@ $("#guardar").click(function () {
   var txt_nombre_asignatura1 = $("#txt_nombre1").val();
   var cbm_reposicion1 = $("#cbm_reposicion1").val();
   var cbm_suficiencia1 = $("#cbm_suficiencia1").val();
+  var cbm_usada_carga1 = $("#cbm_usada_carga1").val();
 
   if (
     cbm_plan == null ||
@@ -230,7 +235,8 @@ $("#guardar").click(function () {
     cbm_area == null ||
     txt_nombre_asignatura.length == 0 ||
     cbm_reposicion == null ||
-    cbm_suficiencia == null
+    cbm_suficiencia == null ||
+    cbm_usada_carga == null
   ) {
     alert("no se permiten campos vacios");
   } else if (
@@ -238,7 +244,8 @@ $("#guardar").click(function () {
     cbm_periodo == 0 ||
     cbm_area == 0 ||
     cbm_reposicion == 0 ||
-    cbm_suficiencia == 0
+    cbm_suficiencia == 0 ||
+    cbm_usada_carga == 0
   ) {
     alert("seleccione una opcion valida");
   } else {
@@ -251,23 +258,22 @@ $("#guardar").click(function () {
       txt_nombre_asignatura != txt_nombre_asignatura1 ||
       cbm_reposicion != cbm_reposicion1 ||
       cbm_suficiencia != cbm_suficiencia1 ||
-     txt_silabo.length != 0
+      cbm_usada_carga != cbm_usada_carga1 ||
+      txt_silabo.length != 0
     ) {
-      
-          actualizar_asignatura(
-            cbm_plan,
-            txt_nombre_asignatura,
-            cbm_periodo,
-            cbm_area,
-            txt_uv,
-            txt_codigo_asignatura,
-            cbm_reposicion,
-            cbm_suficiencia,
-            id_asignatura,
-            txt_silabo
-          );
-        
-      
+      actualizar_asignatura(
+        cbm_plan,
+        txt_nombre_asignatura,
+        cbm_periodo,
+        cbm_area,
+        txt_uv,
+        txt_codigo_asignatura,
+        cbm_reposicion,
+        cbm_suficiencia,
+        id_asignatura,
+        txt_silabo,
+        cbm_usada_carga
+      );
     } else {
       alert("No se han modificado datos");
     }
@@ -285,9 +291,9 @@ function actualizar_asignatura(
   cbm_reposicion,
   cbm_suficiencia,
   id_asignatura,
-  txt_silabo
-){
-
+  txt_silabo,
+  cbm_usada_carga
+) {
   if (txt_silabo == "") {
     // alert("vacio");
 
@@ -303,10 +309,11 @@ function actualizar_asignatura(
         asignatura: txt_nombre_asignatura,
         reposicion: cbm_reposicion,
         suficiencia: cbm_suficiencia,
+        carga:cbm_usada_carga,
         Id_asignatura: id_asignatura,
       },
     }).done(function (resp) {
-     // console.log(resp);
+      // console.log(resp);
 
       if (resp > 0) {
         if (resp == 1) {
@@ -323,14 +330,14 @@ function actualizar_asignatura(
       }
     });
   } else {
-   // alert("si trae");
-      swal({
-        title: "alerta",
-        text: "Por favor espere un momento",
-        type: "warning",
-        showConfirmButton: false,
-        timer: 11000,
-      });
+    // alert("si trae");
+    swal({
+      title: "alerta",
+      text: "Por favor espere un momento",
+      type: "warning",
+      showConfirmButton: false,
+      timer: 11000,
+    });
     $.ajax({
       url: "../Controlador/actualizar_asignatura_controlador.php",
       type: "POST",
@@ -343,15 +350,14 @@ function actualizar_asignatura(
         asignatura: txt_nombre_asignatura,
         reposicion: cbm_reposicion,
         suficiencia: cbm_suficiencia,
+        carga: cbm_usada_carga,
         Id_asignatura: id_asignatura,
       },
     }).done(function (resp) {
-     // console.log(resp);
+      // console.log(resp);
 
       if (resp > 0) {
         if (resp == 1) {
-        
-
           // refrescar(15000);
 
           actualizarSilabo();
@@ -365,7 +371,6 @@ function actualizar_asignatura(
       }
     });
   }
-
 }
 
 //limpia el campo de silabo sin guardar

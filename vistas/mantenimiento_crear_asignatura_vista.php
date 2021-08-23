@@ -158,7 +158,7 @@ ob_end_flush();
 
                                     <label>Nombre de Asignatura</label>
 
-                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required  onkeyup="DobleEspacio(this, event); " onkeypress="return sololetras(event)">
+                                    <input class="form-control" type="text" id="txt_nombre_asignatura" name="txt_nombre_asignatura" maxlength="45" required onkeyup="DobleEspacio(this, event); " onkeypress="return sololetras(event)">
 
 
                                 </div>
@@ -187,6 +187,14 @@ ob_end_flush();
                             <div class="col-md-2">
                                 <label>Suficiencia</label>
                                 <td><select class="form-control" style="width: 100%;" name="cbm_suficiencia" id="cbm_suficiencia">
+                                        <option value="0">SELECCIONAR</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select></td>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Uso en carga</label>
+                                <td><select class="form-control" style="width: 100%;" name="cbm_usada_carga" id="cbm_usada_carga">
                                         <option value="0">SELECCIONAR</option>
                                         <option value="SI">SI</option>
                                         <option value="NO">NO</option>

@@ -131,29 +131,30 @@ ob_end_flush();
                     </div>
 
                     <div class="card-body">
-                       
-                            <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
-                                <thead>
-                                    <tr>
 
-                                        <th>Acción</th>
-                                        <th>Asignatura</th>
-                                        <th>Código</th>
-                                        <th>UV</th>
-                                        <th>Plan</th>
-                                        <th>Área</th>
-                                        <!--   <th>Tipo Asignatura</th> -->
-                                        <th>Periodo</th>
-                                        <!--  <th>Plan de estudio</th> -->
-                                        <th>Suficiencia</th>
-                                        <th>Reposición</th>
-                                        <th>Sílabo</th>
+                        <table id="tabla_asignatura" class="table table-bordered table-striped" style="width:99%">
+                            <thead>
+                                <tr>
 
-                                    </tr>
-                                </thead>
+                                    <th>Acción</th>
+                                    <th>Asignatura</th>
+                                    <th>Código</th>
+                                    <th>UV</th>
+                                    <th>Plan</th>
+                                    <th>Área</th>
+                                    <!--   <th>Tipo Asignatura</th> -->
+                                    <th>Periodo</th>
+                                    <!--  <th>Plan de estudio</th> -->
+                                    <th>Suficiencia</th>
+                                    <th>Reposición</th>
+                                    <th>Uso en Carga</th>
+                                    <th>Sílabo</th>
+
+                                </tr>
+                            </thead>
 
 
-                            </table>
+                        </table>
 
 
 
@@ -269,7 +270,16 @@ ob_end_flush();
                                     </td>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-2">
+                                <label>Usada en carga</label>
+                                <input class="form-control" type="text" id="cbm_usada_carga1" name="cbm_usada_carga1" readonly hidden>
+                                <td><select class="form-control" style="width: 100%;" name="cbm_usada_carga" id="cbm_usada_carga">
+                                        <option value="0">SELECCIONAR</option>
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select></td>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Actualizar Sílabo:</label>
                                     <input class="form-control" type="file" id="txt_silabo" name="txt_silabo" value="" required accept="application/pdf" onchange="Validar();">
