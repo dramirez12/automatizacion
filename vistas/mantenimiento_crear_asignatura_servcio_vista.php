@@ -116,25 +116,6 @@ ob_end_flush();
 
                     <div class="card-body" style="display: block;">
                         <div class="row">
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-
-                                    <label> Área que pertenece:</label>
-                                    <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
-                                        </select></td>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-
-                                    <label>Código</label>
-
-                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required style="text-transform: uppercase">
-
-
-                                </div>
-                            </div>
                             <div class="col-md-5">
                                 <div class="form-group">
 
@@ -145,6 +126,18 @@ ob_end_flush();
 
                                 </div>
                             </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+
+                                    <label>Código</label>
+
+                                    <input class="form-control" type="text" id="txt_codigo_asignatura" name="txt_codigo_asignatura" maxlength="45" required style="text-transform: uppercase">
+
+
+                                </div>
+                            </div>
+
 
                             <div class="col-md-1">
                                 <div class="form-group">

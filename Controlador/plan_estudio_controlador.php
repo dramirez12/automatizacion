@@ -5,7 +5,6 @@ require_once "../Modelos/plan_estudio_modelo.php";
 
 $nombre_plan = isset($_POST["nombre"]) ? limpiarCadena1($_POST["nombre"]) : "";
 $id_plan_estudio = isset($_POST["id_plan_estudio"]) ? limpiarCadena1($_POST["id_plan_estudio"]) : "";
-$id_area = isset($_POST["id_area"]) ? limpiarCadena1($_POST["id_area"]) : "";
 $asignatura = isset($_POST["asignatura"]) ? limpiarCadena1($_POST["asignatura"]) : "";
 $id_tipo_asignatura = isset($_POST["id_tipo_asignatura"]) ? limpiarCadena1($_POST["id_tipo_asignatura"]) : "";
 $id_asignatura = isset($_POST["Id_asignatura"]) ? limpiarCadena1($_POST["Id_asignatura"]) : "";
@@ -169,7 +168,7 @@ switch ($_GET["op"]) {
 
     case 'nombreAsignatura_servicio':
 
-        $respuesta = $instancia_modelo->nombreAsignaturaServicio($asignatura,$id_area);
+        $respuesta = $instancia_modelo->nombreAsignaturaServicio($asignatura);
         echo json_encode($respuesta);
         break;
 

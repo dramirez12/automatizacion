@@ -377,7 +377,6 @@ function mensaje() {
 //insertar asignatura de servicio
 $("#guardar_asig_servicio").click(function () {
   
-  var cbm_area = $("#cbm_area").val();
   var txt_uv = $("#txt_uv").val();
   var txt_codigo_asignatura = $("#txt_codigo_asignatura").val();
   var txt_nombre_asignatura = $("#txt_nombre_asignatura").val();
@@ -391,7 +390,6 @@ $("#guardar_asig_servicio").click(function () {
    
     txt_uv.length == 0 ||
     txt_codigo_asignatura.length == 0 ||
-    cbm_area == null ||
     txt_nombre_asignatura.length == 0 ||
     cbm_reposicion == null ||
     txt_silabo.length == 0 ||
@@ -400,7 +398,7 @@ $("#guardar_asig_servicio").click(function () {
     alert("no se permiten campos vacios");
   } else if (
     
-    cbm_area == 0 ||
+    
     cbm_reposicion == 0 ||
     cbm_suficiencia == 0
   ) {
@@ -410,7 +408,7 @@ $("#guardar_asig_servicio").click(function () {
 
     $.post(
       "../Controlador/plan_estudio_controlador.php?op=nombreAsignatura_servicio",
-      { asignatura: txt_nombre_asignatura, id_area: cbm_area },
+      { asignatura: txt_nombre_asignatura},
       function (data, status) {
         data = JSON.parse(data);
 
@@ -429,7 +427,6 @@ $("#guardar_asig_servicio").click(function () {
             type: "POST",
             data: {
               
-              id_area: cbm_area,
               uv: txt_uv,
               codigo: txt_codigo_asignatura,
               asignatura: txt_nombre_asignatura,

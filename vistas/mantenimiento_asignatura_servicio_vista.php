@@ -89,7 +89,7 @@ ob_end_flush();
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_plan.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_crear_asignatura_servicio_vista.php"> Mantenimiento crear Asignatura de servicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_crear_asignatura_servcio_vista.php"> Mantenimiento crear Asignatura de servicio</a></li>
                         </ol>
                     </div>
 
@@ -199,22 +199,6 @@ ob_end_flush();
                                 <input class="form-control" type="text" id="txt_uv" name="txt_uv">
                             </div>
                         </div>
-
-
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-
-                                <input class="form-control" type="text" id="cbm_area1" name="cbm_area1" readonly hidden>
-                                <label>Área:</label>
-                                <td><select class="form-control" style="width: 100%;" name="cbm_area" id="cbm_area">
-                                    </select></td>
-                            </div>
-                        </div>
-
-
-
-
 
                         <div class="col-md-3">
                             <div class="form-group">

@@ -7,7 +7,7 @@ $Id_objeto = 109;
 $MU = new modelo_plan();
 
 
-$id_area = $_POST["id_area"];
+
 $uv = $_POST["uv"];
 $codigo = strtoupper($_POST["codigo"]);
 $asignatura = $_POST["asignatura"];
@@ -16,7 +16,7 @@ $suficiencia = $_POST["suficiencia"];
 $id_tipo_asignatura = $_POST["id_tipo_asignatura"];
 $estado = $_POST["estado"];
 
-$consulta = $MU->registrarAsignaturaServicio($id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
+$consulta = $MU->registrarAsignaturaServicio($uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura);
 echo $consulta;
 
 if ($consulta == 1) {

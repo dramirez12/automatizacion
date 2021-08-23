@@ -482,27 +482,27 @@ class modelo_plan{
     }
 
 
-    function nombreAsignaturaServicio($asignatura,$id_area)
+    function nombreAsignaturaServicio($asignatura)
     {
 
         global $instancia_conexion;
-        $sql6 = "SELECT COUNT(Id_asignatura) AS  suma FROM tbl_asignaturas WHERE  asignatura='$asignatura' AND id_area='$id_area'";
+        $sql6 = "SELECT COUNT(Id_asignatura) AS  suma FROM tbl_asignaturas WHERE  asignatura='$asignatura'";
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql6);
     }
 
-    function registrarAsignaturaServicio($id_area, $uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura)
+    function registrarAsignaturaServicio($uv, $codigo, $estado, $asignatura, $reposicion, $suficiencia, $id_tipo_asignatura)
     {
         global $instancia_conexion;
-        $sql = "call proc_insertar_asignatura_servicio('$id_area', '$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia', '$id_tipo_asignatura')";
+        $sql = "call proc_insertar_asignatura_servicio('$uv', '$codigo', '$estado', '$asignatura', '$reposicion', '$suficiencia', '$id_tipo_asignatura')";
 
 
         return $instancia_conexion->ejecutarConsulta($sql);
     }
 
-    function ActualizarAsignaturaServicio($id_area, $uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura)
+    function ActualizarAsignaturaServicio($uv, $codigo, $asignatura, $reposicion, $suficiencia, $id_asignatura)
     {
         global $instancia_conexion;
-        $sql = "call proc_actualizar_asignatura_servicio('$id_area', '$uv', '$codigo',  '$asignatura', '$reposicion', '$suficiencia','$id_asignatura')";
+        $sql = "call proc_actualizar_asignatura_servicio('$uv', '$codigo',  '$asignatura', '$reposicion', '$suficiencia','$id_asignatura')";
 
 
         return $instancia_conexion->ejecutarConsulta($sql);

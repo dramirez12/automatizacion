@@ -441,8 +441,6 @@ $("#tabla_asignatura_servicio").on("click", ".editar1", function () {
   $("#txt_nombre1").val(data.nombre_asig);
   $("#txt_uv").val(data.uv);
   $("#txt_uv1").val(data.uv);
-  $("#cbm_area").val(data.id_area).trigger("change");
-  $("#cbm_area1").val(data.id_area);
   $("#cbm_suficiencia").val(data.suficiencia).trigger("change");
   $("#cbm_suficiencia1").val(data.suficiencia);
   $("#cbm_reposicion").val(data.reposicion).trigger("change");
@@ -452,7 +450,6 @@ $("#tabla_asignatura_servicio").on("click", ".editar1", function () {
 });
 
 $("#guardar_servicio").click(function () {
-  var cbm_area = $("#cbm_area").val();
   var txt_uv = $("#txt_uv").val();
   var txt_codigo_asignatura = $("#txt_codigo").val();
   var txt_nombre_asignatura = $("#txt_nombre").val();
@@ -462,7 +459,6 @@ $("#guardar_servicio").click(function () {
   var id_asignatura = $("#id_asig").val();
   //var tipo_asignatura = 1;
 
-  var cbm_area1 = $("#cbm_area1").val();
   var txt_uv1 = $("#txt_uv1").val();
   var txt_codigo_asignatura1 = $("#txt_codigo1").val();
   var txt_nombre_asignatura1 = $("#txt_nombre1").val();
@@ -472,17 +468,15 @@ $("#guardar_servicio").click(function () {
   if (
     txt_uv.length == 0 ||
     txt_codigo_asignatura.length == 0 ||
-    cbm_area == null ||
     txt_nombre_asignatura.length == 0 ||
     cbm_reposicion == null ||
     cbm_suficiencia == null
   ) {
     alert("no se permiten campos vacios");
-  } else if (cbm_area == 0 || cbm_reposicion == 0 || cbm_suficiencia == 0) {
+  } else if (cbm_reposicion == 0 || cbm_suficiencia == 0) {
     alert("seleccione una opcion valida");
   } else {
     if (
-      cbm_area != cbm_area1 ||
       txt_uv != txt_uv1 ||
       txt_codigo_asignatura != txt_codigo_asignatura1 ||
       txt_nombre_asignatura != txt_nombre_asignatura1 ||
@@ -496,7 +490,6 @@ $("#guardar_servicio").click(function () {
 
       // }
       actualizar_asignatura_servicio(
-        cbm_area,
         txt_uv,
         txt_codigo_asignatura,
         txt_nombre_asignatura,
@@ -514,7 +507,6 @@ $("#guardar_servicio").click(function () {
 });
 //
 function actualizar_asignatura_servicio(
-  cbm_area,
   txt_uv,
   txt_codigo_asignatura,
   txt_nombre_asignatura,
@@ -530,7 +522,6 @@ function actualizar_asignatura_servicio(
       url: "../Controlador/actualizar_asignatura_servicio_controlador.php",
       type: "POST",
       data: {
-        id_area: cbm_area,
         uv: txt_uv,
         codigo: txt_codigo_asignatura,
         asignatura: txt_nombre_asignatura,
