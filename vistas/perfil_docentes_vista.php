@@ -82,7 +82,7 @@ $row5 = $consulta5->fetch_all(MYSQLI_ASSOC);
 
 //PREGUNTA 3
 $sql7 = "SELECT id_pref_asig_docen,
-        (SELECT a.asignatura FROM tbl_asignaturas AS a WHERE a.Id_asignatura = tbl_pref_asig_docen.Id_asignatura where a.estado=1 LIMIT 8) asig_docente
+        (SELECT a.asignatura FROM tbl_asignaturas AS a WHERE a.Id_asignatura = tbl_pref_asig_docen.Id_asignatura LIMIT 8) asig_docente
         FROM tbl_pref_asig_docen
         WHERE id_persona = '$usuario';";
 $consulta7 = $mysqli->query($sql7);
@@ -90,7 +90,7 @@ $row7 = $consulta7->fetch_all(MYSQLI_ASSOC);
 
 //PREGUNTA 4
 $sql10 = "SELECT id_desea_asig_doce,
-        (SELECT a.asignatura FROM tbl_asignaturas AS a WHERE a.Id_asignatura = tbl_desea_asig_doce.Id_asignatura where a.estado=1 LIMIT 8) desea_asig
+        (SELECT a.asignatura FROM tbl_asignaturas AS a WHERE a.Id_asignatura = tbl_desea_asig_doce.Id_asignatura LIMIT 8) desea_asig
         FROM tbl_desea_asig_doce
         WHERE id_persona = '$usuario';";
 $consulta10 = $mysqli->query($sql10);
