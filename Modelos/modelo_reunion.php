@@ -5,12 +5,12 @@ require '../plugins/phpmailer/Exception.php';
 require '../plugins/phpmailer/PHPMailer.php';
 require '../plugins/phpmailer/SMTP.php';
 $enlace = $_POST['enlace'];
-if ($_POST['enlace'] == '') {
-    $enlace = $_POST['NULL'];
-}else{
-    $enlace = $_POST['enlace'];
-}
-$enlace = $_POST['NULL'];
+// if ($_POST['enlace'] == '') {
+//     $enlace = $_POST['NULL'];
+// }else{
+//     $enlace = $_POST['enlace'];
+// }
+// $enlace = $_POST['NULL'];
 $agenda = $_POST['agenda'];
 $asunto = $_POST['asunto'];
 $enlace = $_POST['enlace'];
@@ -24,8 +24,8 @@ $lugar = $_POST['lugar'];
 $nombre = $_POST['nombre'];
 $tipo = $_POST['tipo'];
 $participante = $_POST['chk'];
-$invitados = $_POST['invitados'];
-$id_registro = $_POST['id_registro'];
+// $invitados = $_POST['invitados'];
+// $id_registro = $_POST['id_registro'];
 $anio_formateada = date('Y', strtotime($fecha));
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -37,8 +37,8 @@ use PHPMailer\PHPMailer\Exception;
 if ($_POST['reunion'] == 'nuevo') {
     $mail = new PHPMailer(true);
     try {
-        $stmt = $mysqli->prepare("INSERT INTO tbl_reunion (id_tipo, id_estado, fecha, nombre_reunion, lugar, enlace, hora_inicio, hora_final, asunto, agenda_propuesta) VALUES (?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("iissssssss", $tipo, $estado, $fecha_formateada, $nombre, $lugar, $enlace, $horainicio, $horafinal, $asunto, $agenda);
+        $stmt = $mysqli->prepare("INSERT INTO tbl_reunion (id_tipo, id_estado, fecha, nombre_reunion, lugar, hora_inicio, hora_final, asunto, agenda_propuesta, enlace) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("iissssssss", $tipo, $estado, $fecha_formateada, $nombre, $lugar, $horainicio, $horafinal, $asunto, $agenda, $enlace);
         $stmt->execute();
         $id_registro = $stmt->insert_id;
         $id_reunion = $id_registro;
@@ -199,57 +199,57 @@ if ($_POST['reunion'] == 'actualizar') {
 }
 
 /* ----------------------------------------------- */
-if ($_POST['invitados']) {
-    $mail = new PHPMailer(true);
-    //Server settings
-    $mail->SMTPDebug = 0;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-    $mail->Password   = 'informaticaunah2021';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;
-    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-    //Recipients
-    $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
-    foreach($_POST['invitados'] as $inv) {
-        $sql = "SELECT t1.valor FROM tbl_contactos t1 WHERE t1.id_tipo_contacto = 4 AND t1.id_persona = $inv";
-        $res = $mysqli->query($sql);
-        while ($destino = $res->fetch_assoc()) {
-            $email = $destino['valor'];
-            $mail->addAddress($email);
-        }
-    }
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Modificacion de la reunión';
-    $body  = "Por medio de la presente se le notifica que la reunion $nombre";
-    $body .= "<strong> ha recibido cambios por favor verificar las nuevas modificaciones.</strong><br>";
-    $body .= "<br>";
-    $body .= "Nombre de la Reunión: <strong>$nombre</strong><br>";
-    $body .= "Lugar: <strong>$lugar</strong><br>";
-    $body .= "Fecha: <strong>$fecha</strong><br>";
-    $body .= "Hora de Inicio: <strong>$horainicio</strong><br>";
-    $body .= "Hora Final: <strong>$horafinal</strong><br>";
-    $body .= "Enlace: <strong>$enlace</strong><br>";
-    $body .= "<br>";
-    $body .= "Por medio de la presente se notifica que el <strong>$fecha</strong>";
-    $body .= " se realizará la reunión con asunto <strong>$asunto</strong>,";
-    $body .= " lugar: <strong>$lugar</strong><br>";
-    $body .= " en el horario de <strong>$horainicio</strong>";
-    $body .= " a <strong>$horafinal</strong> con los siguientes puntos a tratar: <br><br>";
-    $body .= "<strong>$agenda</strong><br>";
-    $body .= "<br>";
-    $body .= "Este es un correo automático favor no responder a esta dirección<br> si quiere contactarse con nosotros por algún motivo escribanos a:<br>";
-    $body .= "iaunah@unah.edu.hn";
-    $body .= "<br>";
-    $body .= "<br>";
-    $body .= "Saludos, <strong>Depto. IA</strong><br>";
-    $mail->Body = $body;
-    $mail->CharSet = 'UTF-8';
-    $mail->send();
-}
+// if ($_POST['invitados']) {
+//     $mail = new PHPMailer(true);
+//     //Server settings
+//     $mail->SMTPDebug = 0;                      //Enable verbose debug output
+//     $mail->isSMTP();                                            //Send using SMTP
+//     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+//     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+//     $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
+//     $mail->Password   = 'informaticaunah2021';                               //SMTP password
+//     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+//     $mail->Port       = 465;
+//     //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+//     //Recipients
+//     $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
+//     foreach($_POST['invitados'] as $inv) {
+//         $sql = "SELECT t1.valor FROM tbl_contactos t1 WHERE t1.id_tipo_contacto = 4 AND t1.id_persona = $inv";
+//         $res = $mysqli->query($sql);
+//         while ($destino = $res->fetch_assoc()) {
+//             $email = $destino['valor'];
+//             $mail->addAddress($email);
+//         }
+//     }
+//     //Content
+//     $mail->isHTML(true);                                  //Set email format to HTML
+//     $mail->Subject = 'Modificacion de la reunión';
+//     $body  = "Por medio de la presente se le notifica que la reunion $nombre";
+//     $body .= "<strong> ha recibido cambios por favor verificar las nuevas modificaciones.</strong><br>";
+//     $body .= "<br>";
+//     $body .= "Nombre de la Reunión: <strong>$nombre</strong><br>";
+//     $body .= "Lugar: <strong>$lugar</strong><br>";
+//     $body .= "Fecha: <strong>$fecha</strong><br>";
+//     $body .= "Hora de Inicio: <strong>$horainicio</strong><br>";
+//     $body .= "Hora Final: <strong>$horafinal</strong><br>";
+//     $body .= "Enlace: <strong>$enlace</strong><br>";
+//     $body .= "<br>";
+//     $body .= "Por medio de la presente se notifica que el <strong>$fecha</strong>";
+//     $body .= " se realizará la reunión con asunto <strong>$asunto</strong>,";
+//     $body .= " lugar: <strong>$lugar</strong><br>";
+//     $body .= " en el horario de <strong>$horainicio</strong>";
+//     $body .= " a <strong>$horafinal</strong> con los siguientes puntos a tratar: <br><br>";
+//     $body .= "<strong>$agenda</strong><br>";
+//     $body .= "<br>";
+//     $body .= "Este es un correo automático favor no responder a esta dirección<br> si quiere contactarse con nosotros por algún motivo escribanos a:<br>";
+//     $body .= "iaunah@unah.edu.hn";
+//     $body .= "<br>";
+//     $body .= "<br>";
+//     $body .= "Saludos, <strong>Depto. IA</strong><br>";
+//     $mail->Body = $body;
+//     $mail->CharSet = 'UTF-8';
+//     $mail->send();
+// }
 /* ----------------------------------------------- */
 
 if ($_POST['reunion'] == 'cancelar') {

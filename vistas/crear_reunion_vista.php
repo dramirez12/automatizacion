@@ -82,7 +82,7 @@ ob_end_flush();
                                 <a class="nav-link active" id="datosgenerales-tab" data-toggle="pill" href="#datosgenerales" role="tab" aria-controls="datosgenerales" aria-selected="false">Datos Generales y Datos Reunion</a>
                             </li>
                             <li class="nav-item">
-                                <a style="display: none;" class="nav-link " id="datosreunion-tab" data-toggle="pill" href="#datosreunion" role="tab" aria-controls="datosreunion" aria-selected="true">Participantes</a>
+                                <a class="nav-link " id="datosreunion-tab" data-toggle="pill" href="#datosreunion" role="tab" aria-controls="datosreunion" aria-selected="true">Participantes</a>
                             </li>
                             <li class="nav-item">
                                 <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista.php">Cancelar</a>
@@ -187,7 +187,7 @@ ob_end_flush();
                                                 <div style="padding: 0px 0 0px 0; margin: 15px 0px 5px 10px;">
                                                     <input type="hidden" name="estado" value="1">
                                                     <input type="hidden" name="reunion" value="nuevo">
-                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled >Agendar</button>
+                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> >Agendar</button>
                                                 </div>
                                                 <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
                                                     <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
@@ -328,32 +328,32 @@ LIMIT 1";
             }
         }
 
-        $(function() {
-            $('input:checkbox').change(function() {
-                $('button:submit').prop({
-                    disabled: $('input:checkbox:checked').length < 2
-                });
-            });
-        });
+        // $(function() {
+        //     $('input:checkbox').change(function() {
+        //         $('button:submit').prop({
+        //             disabled: $('input:checkbox:checked').length < 2
+        //         });
+        //     });
+        // });
 
-        function showdatos() {
-            getnombre = document.getElementById("nombre").value;
-            getlugar = document.getElementById("lugar").value;
-            getagenda = document.getElementById("agenda").value;
-            getasunto = document.getElementById("asunto").value;
-            getfecha = document.getElementById("fecha").value;
-            gettipo = document.getElementById("tipo").value;
-            getinicio = document.getElementById("horainicio").value;
-            getfinal = document.getElementById("horafinal").value;
+        // function showdatos() {
+        //     getnombre = document.getElementById("nombre").value;
+        //     getlugar = document.getElementById("lugar").value;
+        //     getagenda = document.getElementById("agenda").value;
+        //     getasunto = document.getElementById("asunto").value;
+        //     getfecha = document.getElementById("fecha").value;
+        //     gettipo = document.getElementById("tipo").value;
+        //     getinicio = document.getElementById("horainicio").value;
+        //     getfinal = document.getElementById("horafinal").value;
 
-            if (getnombre == "" || getlugar == "" || getagenda == "" || getasunto == "" || getfecha == "" || gettipo == "0" || getinicio == "" || getfinal == "") {
-                document.getElementById("datosreunion-tab").style.display = "none";
-                document.getElementById("archivos-tab").style.display = "none";
-            } else {
-                document.getElementById("datosreunion-tab").style.display = "block";
-                document.getElementById("archivos-tab").style.display = "block";
-            }
-        }
+        //     if (getnombre == "" || getlugar == "" || getagenda == "" || getasunto == "" || getfecha == "" || gettipo == "0" || getinicio == "" || getfinal == "") {
+        //         document.getElementById("datosreunion-tab").style.display = "none";
+        //         document.getElementById("archivos-tab").style.display = "none";
+        //     } else {
+        //         document.getElementById("datosreunion-tab").style.display = "block";
+        //         document.getElementById("archivos-tab").style.display = "block";
+        //     }
+        // }
 
         function showInp() {
             getSelectValue = document.getElementById("tipo").value;

@@ -56,6 +56,8 @@ if (session_status() === PHP_SESSION_NONE) {
   <link rel="stylesheet" type="text/css" href="../plugins/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="../dist/css/sweetalert2.css">
   <script src="../js/funciones.js"></script>
+  <script src="../dist//js/jspdf.min.js"></script>
+  <script src="../dist//js/jspdf.plugin.autotable.min.js"></script>
 
 
 </head>
@@ -558,7 +560,58 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
 
             </li>
-            
+
+            <!----Modulo Administrativo App ----->
+            <li class="nav-item has-treeview" style="display:block">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fab fa-buysellads"></i>
+                <p>
+                  Administración App
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+                <li class="nav-item" style="display:block">
+                  <a href="../vistas/movil_menu_notificaciones_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Notificaciones </p>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:block">
+                  <a href="../vistas/movil_menu_noticias_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Noticias </p>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:block">
+                  <a href="../vistas/movil_chat_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Chat </p>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:block">
+                  <a href="../vistas/movil_bitacora_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Bitácora </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- APP INFORMATICA -->
+            <li class="nav-item has-treeview" style="display:block">
+              <a href="../vistas/movil_menu_gestion_vista.php" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Gestión  App 
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
+
 
             <!---- Ayuda ----->
 
@@ -650,6 +703,17 @@ if (session_status() === PHP_SESSION_NONE) {
                   <a href="../vistas/menu_mantenimientos_jefatura_principal.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Jefatura</p>
+                  </a>
+                </li>
+
+                <li class="nav-item has-treeview" style="display:block">
+                  <a href="../vistas/movil_menu_mantenimiento_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Mantenimiento App
+                      <i class="fas fa-angle-left right"></i>
+                      <span class="badge badge-info right"></span>
+                    </p>
                   </a>
                 </li>
 
