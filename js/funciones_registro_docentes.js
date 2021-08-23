@@ -1440,7 +1440,12 @@ d.onchange = function () {
   var archivo = $("#seleccionararchivo").val();
   var extensiones = archivo.substring(archivo.lastIndexOf("."));
   // console.log(extensiones);
-  if (extensiones != ".jpg" && extensiones != ".png" && extensiones != ".jpeg") {
+  if (
+    extensiones != ".jpg" &&
+    extensiones != ".png" &&
+    extensiones != ".jpeg" &&
+    extensiones != ".PNG"
+  ) {
     alert("El archivo de tipo " + extensiones + " no es válido");
     document.getElementById("seleccionararchivo").value = "";
   }

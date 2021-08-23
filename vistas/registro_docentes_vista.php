@@ -126,7 +126,7 @@ ob_end_flush();
 
                   <div class="col-sm-12" style="text-align: center">
                     <img src="../Imagenes_Perfil_Docente/default-avatar.png" class="brand-image img-circle elevation-3" id="mostrarimagen" height="175" width="175">
-                    <input class="form-control-file" type="file" style="text-align: center" accept="image/jpg/png/jpeg" id="seleccionararchivo" name="seleccionararchivo" required><br><br>
+                    <input class="form-control-file" type="file" style="text-align: center" accept="image/jpg/png/jpeg/PNG" id="seleccionararchivo" name="seleccionararchivo" required><br><br>
 
                   </div>
                   <div class="col-sm-3">
