@@ -13,10 +13,6 @@ if ($_POST['tipo-actareunion'] == 'nuevo') {
                 'respuesta' => 'exito',
                 'id_registro' => $id_registro
             );
-            echo '<script type="text/javascript">
-            $(".FormularioAjax")[0].reset();
-        });
-    </script>';
         } else {
             $respuesta = array(
                 'respuesta' => 'error'

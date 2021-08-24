@@ -99,7 +99,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se editó correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../Vistas/reuniones_pendientes_vista.php";
+                        location.href = "../vistas/reuniones_pendientes_vista.php";
                     }
                     );
                 } else {
@@ -129,7 +129,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../Vistas/mantenimiento_estadoparticipante_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoparticipante_vista.php";
                     }
                     );
                 } else {
@@ -160,7 +160,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../Vistas/mantenimiento_estadonoti_vista.php";
+                        location.href = "../vistas/mantenimiento_estadonoti_vista.php";
                     }
                     );
                 } else {
@@ -192,7 +192,7 @@ $(document).ready(function () {
                         text: "Se guardo correctamente!",
                         type: "success"
                     }).then(function () {
-                        location.href = "../Vistas/mantenimiento_actareunion_vista.php";
+                        location.href = "../vistas/mantenimiento_actareunion_vista.php";
                     }
                     );
                 } else {
@@ -227,7 +227,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../Vistas/mantenimiento_estadoacta_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoacta_vista.php";
                     }
                     );
                 } else {
@@ -258,7 +258,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../Vistas/mantenimiento_estadoreunion_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoreunion_vista.php";
                     }
                     );
                 } else {
@@ -289,7 +289,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../Vistas/mantenimiento_estadoacuerdo_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoacuerdo_vista.php";
                     }
                     );
                 } else {
@@ -376,7 +376,7 @@ $(document).ready(function () {
                             text: "cancelada con Exito!",
                             type: "success"
                         }).then(function () {
-                            location.href = "../Vistas/reuniones_pendientes_vista.php";
+                            location.href = "../vistas/reuniones_pendientes_vista.php";
                         }
                         );
                     } else {
@@ -747,7 +747,7 @@ $(document).ready(function () {
                             text: 'Finalizada con Exito!',
                             type: 'success'
                         }).then(function () {
-                            location.href = "../Vistas/acuerdos_pendientes_vista.php";
+                            location.href = "../vistas/acuerdos_pendientes_vista.php";
                         }
                         );
                     } else {
@@ -795,7 +795,7 @@ $(document).ready(function () {
                             text: 'acuerdo cancelado con Exito!',
                             type: 'success'
                         }).then(function () {
-                            location.href = "../Vistas/acuerdos_pendientes_vista.php";
+                            location.href = "../vistas/acuerdos_pendientes_vista.php";
                         }
                         );
                     } else {
