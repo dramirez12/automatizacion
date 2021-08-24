@@ -731,7 +731,7 @@ doc.content[2].table.widths = ["10%", "15%","6%","20%","10%","8%","4%","4%","3%"
         defaultContent:
           // "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fas fa-edit'></i></button><button style='font-size:10px;' type='button' class='eliminar btn btn-primary'><i class='fas fa-trash-alt'></i></button>",
 
-          "<div class='text-center'><div class='btn-group'><button class='editar btn btn-primary btn-m '><i class='fas fa-edit'></i></button> <button id='borrar' class='borrar btn btn-danger btn-m '><i class='fas fa-trash-alt'></i></button></div></div>",
+          "<div class='btn-group'><button class='editar btn btn-primary'><i class='fas fa-edit'></i></button>&nbsp;&nbsp;&nbsp;&nbsp; <button id='borrar' class='borrar btn btn-danger'><i class='fas fa-trash-alt'></i></button></div>",
       },
       // { data: "id_carga_academica" },
       { data: "num_empleado" },

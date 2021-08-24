@@ -754,7 +754,7 @@ function crear_carga_academica() {
                             $("#ModalTask").modal("hide");
                             swal(
                               "Buen trabajo!",
-                              "datos actualizados correctamente!",
+                              "Se Guardó correctamente!",
                               "success"
                             );
                             document.getElementById("txt_registro_crear").value = "";
@@ -764,7 +764,7 @@ function crear_carga_academica() {
                           } else {
                             swal(
                               "Alerta!",
-                              "No se pudo completar la actualización",
+                              "No se pudo completar la acción",
                               "warning"
                             );
                             document.getElementById("txt_registro_crear").value = "";

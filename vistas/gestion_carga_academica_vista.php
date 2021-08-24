@@ -327,624 +327,245 @@ ob_end_flush();
                     <br>
 
 
-                </div>
-            </div>
-            <div class="card-footer">
-                <h1></h1>
-            </div>
-        </div>
-    </div>
-    </div>
+                    <!-- modal crear carga -->
 
-
-
-    <!-- modal modificar carga -->
-
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal_editar" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Editar Datos de Carga</h5>
-                    <button onclick="cerrar();" class="close" data-dismiss="modal">
-                        &times;
-                    </button>
-
-                </div>
-
-
-                <div class="modal-body">
-
-                    <div class="row">
-
-                        <!-- <input type="hidden"> -->
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input type="text" id="txt_carga_id" readonly hidden>
-                                <label>Docente:</label>
-                                <input class="form-control" type="text" id="txt_nombre_doc_edita" name="txt_nombre_doc_edita" value="" readonly>
-
-                            </div>
-                            <!-- <div class="col-md-3">
-                                    <div class="form-group"> -->
-                            <input type="text" id="txt_id_docente" readonly hidden>
-
-                            <!-- </div>
-                                </div> -->
-                            <!-- <div class="col-md-3">
-                                    <div class="form-group"> -->
-                            <input type="text" id="txt_registro" readonly hidden>
-
-                            <!-- </div>
-                                </div> -->
-                            <!-- <div class="col-md-3">
-                                    <div class="form-group"> -->
-                            <input type="text" id="txt_descripcion_aula" hidden readonly>
-
-                            <!-- </div>
-                                </div> -->
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>N# Docente:</label>
-                                <input class="form-control" type="text" id="txt_num_doc_edita" name="txt_num_doc_edita" value="" readonly>
-
-
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-
-                                <label>Hi</label>
-                                <input class="form-control" type="text" id="txtentrada" readonly>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Hf</label>
-                                <input class="form-control" type="text" id="txtsalida" readonly>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <label>Asignatura:</label>
-
-                                <td><select class="form-control-lg select2" style="width: 100%;" id="cbm_asignatura_edita" name="cbm_asignatura_edita"></td>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <label>Modalidad:</label>
-
-                                <td><select class="form-control-lg select2" style="width: 100%;" onchange="mostrar2($('#cbm_modalidad_edita').val());" id="cbm_modalidad_edita" name="cbm_modalidad_edita"></td>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="hidden">
-
-                                <label>Cod. Asignatura:</label>
-                                <td><input class="form-control" type="text" id="txt_cod_asignatura_edita" name="txt_cod_asignatura_edita" readonly></td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="hidden">
-
-                                <label>Unidades Valorativas:</label>
-                                <td><input class="form-control" type="text" id="txt_unidades_edita" name="txt_unidades_edita" readonly></td>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <label>Edificio:</label>
-                                <td> <select class="form-control" style="width: 100%;" name="cbm_edificio_edita" id="cbm_edificio_edita">
-                                </td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="hidden">
-
-                                <label>Aulas:</label>
-                                <td><select class="form-control" style="width: 100%;" name="cbm_aula_edita" id="cbm_aula_edita">
-                                </td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="hidden">
-
-                                <label>Capacidad:</label>
-                                <td><input class="form-control" type="text" id="txt_capacidad_edita" name="capacidad_edita" readonly></td>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <label>Cupos:</label>
-
-                                <td> <input maxlength="2" class="form-control" type="text" onblur="valida_matriculados_edita()" id="txt_matriculados_edita" name="txt_matriculados_edita" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)"></td>
-                            </div>
-                        </div>
-
-                        <!-- <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden">
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="ModalTask" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Nueva Carga Académica</h5>
+                                    <button class="close" data-dismiss="modal">
+                                        &times;
+                                    </button>
 
                                 </div>
-                            </div> -->
 
+                                <div class="modal-body">
 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="text" id="txthrentradatabla" readonly hidden>
+                                    <div class="row">
+                                        <input class="form-control" type="text" id="txt_registro_crear" name="txt_registro_crear" value="" readonly hidden>
+                                        <input class="form-control" type="text" id="txt_contar_carga" name="txt_contar_carga" readonly hidden>
 
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="text" id="txthrsalidatabla" readonly hidden>
+                                        <input type="text" id="txt_hra_entrada" readonly hidden>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
 
-                            </div>
-                        </div>
+                                                <label>Docente:</label>
+                                                <select class="form-control select2" onchange="mostrar($('#id_select').val());" id="id_select" name=""></select>
+                                            </div>
 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="text" id="txtaulatabla" readonly hidden>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
 
-                            </div>
-                        </div>
-                        <td> <input hidden></td>
+                                                <label>N# Docente:</label>
+                                                <input class="form-control" type="text" id="txt_num_doc" name="txt_num_doc" value="" readonly>
 
 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="hidden">
+                                                <label>Hi:</label>
+                                                <input class="form-control" type="text" id="txt_hra_entrada2" name="txt_hra_entrada2" value="" readonly>
 
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Sección:</label>
-                                <td><input maxlength="4" class="form-control" type="text" id="txt_seccion_edita" name="txt_seccion" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)"></td>
 
-                            </div>
-                        </div>
+                                            </div>
+                                        </div>
 
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Hi:</label>
-                                <td> <select class="form-control" style="width: 100%;" name="cbm_hi_edita" id="cbm_hi_edita" onblur="validaentrada_edita()"></select>
-                                </td>
-                            </div>
-                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hf:</label>
+                                                <input class="form-control" type="text" id="txt_hra_salida" name="txt_hra_salida" value="" readonly>
 
-                        <div class="col-md-2">
-                            <div class="form-group">
+                                            </div>
+                                        </div>
 
-                                <label>Hf:</label>
-                                <td><select class="form-control" style="width: 100%;" name="cbm_hf_edita" id="cbm_hf_edita" onblur="validahoraperiodo_edita();">
-                                    </select></td>
-                            </div>
-                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Tipo:</label>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Control:</label>
-                                <td> <input maxlength="6" class="form-control" onkeypress="return Numeros(event)" type="text" id="txt_control_edita" name="txt_control" value="" onkeyup="Espacio(this, event)" required></td>
+                                                <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden>
+                                                <td> <select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
+                                                        <option value="0">SELECCIONAR</option>
+                                                        <option value="SI">SI</option>
+                                                        <option value="NO">NO</option>
+                                                    </select>
+                                                </td>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Asignatura:</label>
+                                                <select class="form-control select2" onchange="mostrar2($('#select2').val());" id="select2" name="select2"></select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+                                                <label>Código:</label>
+                                                <input class="form-control" type="text" id="txt_cod_asignatura" name="txt_cod_asignatura" readonly>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+                                                <label>UV:</label>
+                                                <input class="form-control" type="text" id="txt_unid_valora" name="txt_unid_valora" readonly>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Modalidad:</label>
+                                                <select class="form-control-lg select2" onchange="mostrar_modalidad($('#modalidad').val());" id="modalidad" name="modalidad"> </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Edificio:</label>
+                                                <select class="form-control" name="edificio" id="edificio"></select>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Aulas:</label>
+                                                <select class="form-control" name="aula" id="aula"></select>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Capacidad:</label>
+                                                <input class="form-control" type="text" id="capacidad" name="capacidad" readonly>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Cupos:</label>
+
+                                                <input maxlength="2" class="form-control" type="text" onblur="valida_matriculados()" id="txt_matriculados" name="txt_matriculados" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Sección:</label>
+                                                <input maxlength="4" class="form-control" type="text" id="txt_seccion" name="txt_seccion" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hi:</label>
+
+                                                <select class="form-control" onblur="valida_entrada_crear();" onchange="mostrar_hora($('#hora_inicial').val());" id="hora_inicial" name="hora_inicial"></select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hf:</label>
+                                                <select class="form-control" onchange="mostrar_hora($('#hora_final').val());" id="hora_final" name="hora_final" onblur="valida_horario_crear()"></select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Control:</label>
+                                                <input maxlength="6" class="form-control" onkeypress="return Numeros(event)" type="text" id="txt_control" name="txt_control" value="" onkeyup="Espacio(this, event)" required>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Seleccione dias:</label>
+                                                <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:260px; height:39px;">
+
+                                                    <input class="form-control" id="dias" name="dias" type="text" value="" hidden>
+                                                    <span class="checkbox-inline">
+                                                        <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Lu" type="checkbox" value="Lu">Lu</label>
+                                                        <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Ma" type="checkbox" value="Ma">Ma</label>
+                                                        <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Mi" type="checkbox" value="Mi">Mi</label>
+                                                        <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Ju" type="checkbox" value="Ju">Ju</label>
+                                                        <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Vi" type="checkbox" value="Vi">Vi</label>
+                                                        <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Sa" type="checkbox" value="Sa">Sa</label>
+                                                        <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Do" type="checkbox" value="Do">Do</label>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            </div>
-                        </div>
 
-                        <td><input class="" id="txt_dias_edita" name="txt_dias_edita" type="text" value="" readonly onblur="limpiardias_edita();" hidden></td>
-
-
-                        <div class="col-md-6">
-                            <label>Seleccione dias:</label>
-                            <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:270px; height:39px;">
-
-                                <div class="form-group">
-
-
-                                    <span class="checkbox-inline">
-                                        <label class="checkbox-inline"><input id="Lu1" type="checkbox" name="check[]" class="ch" value="Lu">Lu</label>
-                                        <label class="checkbox-inline"><input id="Ma1" type="checkbox" name="check[]" class="ch" value="Ma">Ma</label>
-                                        <label class="checkbox-inline"><input id="Mi1" type="checkbox" name="check[]" class="ch" value="Mi">Mi</label>
-                                        <label class="checkbox-inline"><input id="Ju1" type="checkbox" name="check[]" class="ch" value="Ju">Ju</label>
-                                        <label class="checkbox-inline"><input id="Vi1" type="checkbox" name="check[]" class="ch" value="Vi">Vi</label>
-                                        <label class="checkbox-inline"><input id="Sa1" type="checkbox" name="check[]" class="ch" value="Sa">Sa</label>
-                                        <label class="checkbox-inline"><input id="Do1" type="checkbox" name="check[]" class="ch" value="Do">Do</label>
-
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button class="btn btn-primary" id="guardar" name="guardar" onclick="modificar_carga_academica();">Guardar</button>
-
-                    <button class="btn btn-secondary" data-dismiss="modal" onclick="cerrar();" id="salir">Cancelar</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- modal crear carga -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="ModalTask">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title">Nueva Carga Académica</h5>
-                    <button class="close" data-dismiss="modal">
-                        &times;
-                    </button>
-                </div>
-
-
-                <div class="modal-body">
-
-                    <div class="row">
-
-                        <input type="hidden">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Docente:</label>
-                                <td><select class="form-control-lg select2" onchange="mostrar($('#id_select').val());" id="id_select" class="" name="">
-                                        <option value="">Seleccionar Docente</option>
-                                    </select></td>
-
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input class="form-control" hidden type="text" id="" name="" value="" readonly>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3" hidden>
-                            <div class="form-group">
-                                <input type="text" id="txt_hra_entrada" readonly>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>N# Docente:</label>
-                                <input class="form-control" type="text" id="txt_num_doc" name="txt_num_doc" value="" readonly>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-2" hidden>
-                            <div class="form-group">
-                                <label>txt_registro_crear:</label>
-                                <input class="form-control" type="text" id="txt_registro_crear" name="txt_registro_crear" value="" readonly>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Hi:</label>
-                                <input class="form-control" type="text" id="txt_hra_entrada2" name="txt_hra_entrada2" value="" readonly>
-
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label>Hf:</label>
-                                <input class="form-control" type="text" id="txt_hra_salida" name="txt_hra_salida" value="" readonly>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <label>Asignatura:</label>
-                                <td><select class="form-control-lg select2" onchange="mostrar2($('#select2').val());" id="select2" name="select2"></td>
-                            </div>
-                        </div>
-
-                        <!-- //modalidad -->
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <label>Modalidad:</label>
-                                <td><select class="form-control-lg select2" onchange="mostrar_modalidad($('#modalidad').val());" id="modalidad" name="modalidad"></td>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="hidden">
-
-                                <label>Cod. Asignatura:</label>
-                                <td><input class="form-control" type="text" id="txt_cod_asignatura" name="txt_cod_asignatura" readonly></td>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input type="hidden">
-
-                                <label>Unds.V:</label>
-                                <td><input class="form-control" type="text" id="txt_unid_valora" name="txt_unid_valora" readonly></td>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="hidden">
-                                <label>Edificio:</label>
-                                <td> <select class="form-control" name="edificio" id="edificio">
-                                        <option value="0"></option>
-                                </td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <td><input class="form-control" hidden type="text"></td>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="hidden">
-
-                                <label>Aulas:</label>
-                                <td><select class="form-control" name="aula" id="aula">
-                                        <option value="0"></option>
-                                </td>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <td><input class="form-control" hidden type="text"></td>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="hidden">
-
-                                    <label>Capacidad:</label>
-                                    <td><input class="form-control" type="text" id="capacidad" name="capacidad" readonly></td>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="hidden">
-                                    <label>Cupos:</label>
-
-                                    <td> <input maxlength="2" class="form-control" type="text" onblur="valida_matriculados()" id="txt_matriculados" name="txt_matriculados" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)"></td>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden">
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden">
-
-                                </div>
-                            </div>
-
-                            <td> <input hidden></td>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden">
-
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden">
-
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Sección:</label>
-                                    <td><input maxlength="4" class="form-control" type="text" id="txt_seccion" name="txt_seccion" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)"></td>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <input type="hidden">
-                                    <label>HI:</label>
-
-                                    <td><select class="form-control" onblur="valida_entrada_crear();" onchange="mostrar_hora($('#hora_inicial').val());" id="hora_inicial" name="hora_inicial"></td>
-
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden">
-
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <input type="hidden">
-                                    <label>HF:</label>
-                                    <td><select class="form-control" onchange="mostrar_hora($('#hora_final').val());" id="hora_final" name="hora_final" onblur="valida_horario_crear()"></td>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="hidden">
-
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Control:</label>
-                                    <td> <input maxlength="6" class="form-control" onkeypress="return Numeros(event)" type="text" id="txt_control" name="txt_control" value="" onkeyup="Espacio(this, event)" required></td>
-
-                                </div>
-                            </div>
-
-                            <!-- '[name="checks[]" -->
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Seleccione dias:</label>
-                                    <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:270px; height:39px;">
-
-                                        <td><input class="form-control" id="dias" name="dias" type="text" value="" hidden></td>
-                                        <span class="checkbox-inline">
-                                            <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Lu" type="checkbox" value="Lu">Lu</label>
-                                            <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Ma" type="checkbox" value="Ma">Ma</label>
-                                            <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Mi" type="checkbox" value="Mi">Mi</label>
-                                            <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Ju" type="checkbox" value="Ju">Ju</label>
-                                            <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Vi" type="checkbox" value="Vi">Vi</label>
-                                            <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Sa" type="checkbox" value="Sa">Sa</label>
-                                            <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Do" type="checkbox" value="Do">Do</label>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <p></p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" onclick="crear_carga_academica();" id="guardar" name="guardar">Guardar</button>
-                        <!-- <button class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                        <button class="btn btn-secondary" onclick="cerrar_modal();" id="cerrar_modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- modal informacion docente -->
-    <div id="modal2" class="modal fade" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <!--      Para centrado-->
-        <div class="modal-dialog modal-lg">
-
-            <!--  <div class="modal-dialog" role="document">-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Información Docente</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card-body">
-                        <div class="row">
-
-                            <!-- CAPTURAMOS EL ID EN UN INPUT -->
-
-                            <input id="id" class="form control" type="text" name="id" value="" readonly hidden>
-
-                            <!-- -------------------------- -->
-
-                            <div class="col-sm-8">
-                                <div class="form-group">
-                                    <label>Docente:</label>
-                                    <td><select class="form-control-lg select2" onchange="mostrar_docente($('#id_select2').val());" id="id_select2" name="">
-                                            <option value="">Seleccionar Docente</option>
-                                        </select></td>
-
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input class="form-control" hidden type="text" id="" name="" value="" readonly>
 
                                     </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" onclick="crear_carga_academica();" id="guardar" name="guardar">Guardar</button>
+                                    <!-- <button class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                    <button class="btn btn-secondary" onclick="cerrar_modal();" id="cerrar_modal">Cerrar</button>
+
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- <div class="col-md-8">
+                    </div>
+
+                    <!-- modal informacion docente -->
+                    <div id="modal2" class="modal fade bd-example-modal-lg" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1">
+                        <!--      Para centrado-->
+                        <div class="modal-dialog modal-lg">
+
+                            <!--  <div class="modal-dialog" role="document">-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Información Docente</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                            <!-- CAPTURAMOS EL ID EN UN INPUT -->
+
+                                            <input id="id" class="form control" type="text" name="id" value="" readonly hidden>
+
+                                            <!-- -------------------------- -->
+
+                                            <div class="col-sm-8">
+                                                <div class="form-group">
+                                                    <label>Docente:</label>
+                                                    <td><select class="form-control-lg select2" onchange="mostrar_docente($('#id_select2').val());" id="id_select2" name="">
+                                                            <option value="">Seleccionar Docente</option>
+                                                        </select></td>
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <input class="form-control" hidden type="text" id="" name="" value="" readonly>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="control-label">Nombre Completo</label>
                                         <input class="form-control" type="text" id="input8" name="input8" value="" style="text-transform: uppercase" readonly>
@@ -952,116 +573,372 @@ ob_end_flush();
                                     </div>
                                 </div> -->
 
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label class="control-label">Horario de Entrada</label>
-                                    <input class="form-control" type="text" id="input6" name="input6" value="" style="text-transform: uppercase" readonly>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">Horario de Entrada</label>
+                                                    <input class="form-control" type="text" id="input6" name="input6" value="" style="text-transform: uppercase" readonly>
 
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">Horario de Salida</label>
+                                                    <input class="form-control" type="text" id="input5" name="input5" value="" style="text-transform: uppercase" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">Categoria</label>
+                                                    <input class="form-control" type="text" id="input2" name="input2" value="" style="text-transform: uppercase" readonly>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="control-label">Jornada</label>
+                                                    <input class="form-control" type="text" id="input7" name="input7" value="" style="text-transform: uppercase" readonly>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="card-body">
+                                                <table id="dynamic_field" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <!-- <th>#</th> -->
+                                                            <th>Información Profesional</th>
+                                                            <th>Preferencia Área</th>
+                                                            <th>Experiencia Académica</th>
+                                                            <th>Preferencia Asignatura</th>
+                                                            <th>Desea impartir</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="id_profe">
+
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label class="control-label">Horario de Salida</label>
-                                    <input class="form-control" type="text" id="input5" name="input5" value="" style="text-transform: uppercase" readonly>
-                                </div>
-                            </div>
-
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label class="control-label">Categoria</label>
-                                    <input class="form-control" type="text" id="input2" name="input2" value="" style="text-transform: uppercase" readonly>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label class="control-label">Jornada</label>
-                                    <input class="form-control" type="text" id="input7" name="input7" value="" style="text-transform: uppercase" readonly>
-
-                                </div>
-                            </div>
-
-                            <div class="card-body">
-                                <table id="dynamic_field" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <!-- <th>#</th> -->
-                                            <th>Información Profesional</th>
-                                            <th>Preferencia Área</th>
-                                            <th>Experiencia Académica</th>
-                                            <th>Preferencia Asignatura</th>
-                                            <th>Desea impartir</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="id_profe">
-
-                                    </tbody>
-
-                                </table>
-                            </div>
-
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                    <!-- modal eliminar 2 -->
+
+                    <div class="modal fade" id="modal_borrar">
+                        <div class="modal-dialog modal-sm ">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Estas seguro de eliminar la carga?</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <input class="" type="text" id="txt_carga_id_eliminar" name="" value="" readonly hidden>
+                                    <div class="input-group mb-3 input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="font-weight: bold;">Docente</span>
+                                        </div>
+                                        <input class="form-control" type="text" id="txt_docente_eliminar" name="txt_docente_eliminar" readonly>
+                                    </div>
+
+
+                                    <div class="input-group mb-3 input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="font-weight: bold;">Asignatura</span>
+                                        </div>
+                                        <input class="form-control" type="text" id="txt_asignatura_eliminar" name="txt_asignatura_eliminar" readonly>
+                                    </div>
+
+
+                                    <div class="input-group mb-3 input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="font-weight: bold;">Sección</span>
+                                        </div>
+                                        <input class="form-control" type="text" id="txt_seccion_eliminar" name="txt_seccion_eliminar" readonly>
+                                    </div>
+
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limpiar_registro_eliminar();">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="aceptar_eliminar" onclick="eliminarRegistro();">Aceptar</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- modal modificar carga -->
+
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="modal_editar" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Nueva Carga Académica</h5>
+                                    <button class="close" data-dismiss="modal">
+                                        &times;
+                                    </button>
+
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <div class="row">
+
+                                        <input type="text" id="txt_carga_id" readonly hidden>
+                                        <input type="text" id="txt_id_docente" readonly hidden>
+                                        <input type="text" id="txt_registro" readonly hidden>
+                                        <input type="text" id="txt_descripcion_aula" hidden readonly>
+                                        <input type="text" id="txthrentradatabla" readonly hidden>
+                                        <input type="text" id="txthrsalidatabla" readonly hidden>
+                                        <input type="text" id="txtaulatabla" readonly hidden>
+                                        <input id="txt_dias_edita" name="txt_dias_edita" type="text" readonly onblur="limpiardias_edita();" hidden>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+
+                                                <label>Docente:</label>
+                                                <input class="form-control" type="text" id="txt_nombre_doc_edita" name="txt_nombre_doc_edita" value="" readonly>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>N# Docente:</label>
+                                                <input class="form-control" type="text" id="txt_num_doc_edita" name="txt_num_doc_edita" value="" readonly>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+                                                <label>Hi:</label>
+                                                <input class="form-control" type="text" id="txtentrada" readonly>
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hf:</label>
+                                                <input class="form-control" type="text" id="txtsalida" readonly>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Tipo:</label>
+
+                                                <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden>
+                                                <td> <select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
+                                                        <option value="0">SELECCIONAR</option>
+                                                        <option value="SI">SI</option>
+                                                        <option value="NO">NO</option>
+                                                    </select>
+                                                </td>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Asignatura:</label>
+                                                <select class="form-control select2" style="width: 100%;" id="cbm_asignatura_edita" name="cbm_asignatura_edita">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" hidden>
+                                            <div class="form-group">
+                                                <input type="text" readonly hidden>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+                                                <label>Código:</label>
+                                                <input class="form-control" type="text" id="txt_cod_asignatura_edita" name="txt_cod_asignatura_edita" readonly>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+
+                                                <label>UV:</label>
+                                                <input class="form-control" type="text" id="txt_unidades_edita" name="txt_unidades_edita" readonly>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Modalidad:</label>
+
+                                                <select class="form-control-lg select2" style="width: 100%;" onchange="mostrar2($('#cbm_modalidad_edita').val());" id="cbm_modalidad_edita" name="cbm_modalidad_edita">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" hidden>
+                                            <div class="form-group">
+                                                <input type="text" readonly hidden>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Edificio:</label>
+                                                <select class="form-control" style="width: 100%;" name="cbm_edificio_edita" id="cbm_edificio_edita">
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" hidden>
+                                            <div class="form-group">
+                                                <input type="text" readonly hidden>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Aulas:</label>
+                                                <select class="form-control" style="width: 100%;" name="cbm_aula_edita" id="cbm_aula_edita">
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" hidden>
+                                            <div class="form-group">
+                                                <input type="text" readonly hidden>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Capacidad:</label>
+                                                <input class="form-control" type="text" id="txt_capacidad_edita" name="capacidad_edita" readonly>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Cupos:</label>
+
+                                                <input maxlength="2" class="form-control" type="text" onblur="valida_matriculados_edita()" id="txt_matriculados_edita" name="txt_matriculados_edita" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Sección:</label>
+                                                <input maxlength="4" class="form-control" type="text" id="txt_seccion_edita" name="txt_seccion" value="" onkeypress="return Numeros(event)" onkeyup="Espacio(this, event)">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hi:</label>
+                                                <select class="form-control" style="width: 100%;" name="cbm_hi_edita" id="cbm_hi_edita" onblur="validaentrada_edita()"></select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hf:</label>
+                                                <select class="form-control" style="width: 100%;" name="cbm_hf_edita" id="cbm_hf_edita" onblur="validahoraperiodo_edita();">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Control:</label>
+                                                <input maxlength="6" class="form-control" onkeypress="return Numeros(event)" type="text" id="txt_control_edita" name="txt_control" value="" onkeyup="Espacio(this, event)" required>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Seleccione dias:</label>
+                                                <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:260px; height:39px;">
+
+                                                    <input class="form-control" id="dias" name="dias" type="text" value="" hidden>
+                                                    <span class="checkbox-inline">
+                                                        <label class="checkbox-inline"><input id="Lu1" type="checkbox" name="check[]" class="ch" value="Lu">Lu</label>
+                                                        <label class="checkbox-inline"><input id="Ma1" type="checkbox" name="check[]" class="ch" value="Ma">Ma</label>
+                                                        <label class="checkbox-inline"><input id="Mi1" type="checkbox" name="check[]" class="ch" value="Mi">Mi</label>
+                                                        <label class="checkbox-inline"><input id="Ju1" type="checkbox" name="check[]" class="ch" value="Ju">Ju</label>
+                                                        <label class="checkbox-inline"><input id="Vi1" type="checkbox" name="check[]" class="ch" value="Vi">Vi</label>
+                                                        <label class="checkbox-inline"><input id="Sa1" type="checkbox" name="check[]" class="ch" value="Sa">Sa</label>
+                                                        <label class="checkbox-inline"><input id="Do1" type="checkbox" name="check[]" class="ch" value="Do">Do</label>
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" id="guardar" name="guardar" onclick="modificar_carga_academica();">Guardar</button>
+
+                                    <button class="btn btn-secondary" data-dismiss="modal" onclick="cerrar();" id="salir">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- modal eliminar 2 -->
-
-    <div class="modal fade" id="modal_borrar">
-        <div class="modal-dialog modal-sm ">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Estas seguro de eliminar la carga?</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <input class="" type="text" id="txt_carga_id_eliminar" name="" value="" readonly hidden>
-                    <div class="input-group mb-3 input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="font-weight: bold;">Docente</span>
-                        </div>
-                        <input class="form-control" type="text" id="txt_docente_eliminar" name="txt_docente_eliminar" readonly>
-                    </div>
-
-
-                    <div class="input-group mb-3 input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="font-weight: bold;">Asignatura</span>
-                        </div>
-                        <input class="form-control" type="text" id="txt_asignatura_eliminar" name="txt_asignatura_eliminar" readonly>
-                    </div>
-
-
-                    <div class="input-group mb-3 input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="font-weight: bold;">Sección</span>
-                        </div>
-                        <input class="form-control" type="text" id="txt_seccion_eliminar" name="txt_seccion_eliminar" readonly>
-                    </div>
-
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limpiar_registro_eliminar();">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="aceptar_eliminar" onclick="eliminarRegistro();">Aceptar</button>
-                </div>
-
+            <div class="card-footer">
+                <h1></h1>
             </div>
         </div>
-    </div>
+
+
+
+
+
 
     </div>
 
+
+
+
+
+
+
+    <script src="../js/ca2.js"></script>
+    <script src="../js/ca3.js"></script>
+    <script src="../js/validaciones_plan.js"></script>
 
 </body>
 
@@ -1080,9 +957,6 @@ ob_end_flush();
 
 
 
-<script src="../js/ca2.js"></script>
-<script src="../js/ca3.js"></script>
-<script src="../js/validaciones_plan.js"></script>
 
 
 <!-- para datatable -->
@@ -1130,7 +1004,7 @@ ob_end_flush();
 <!-- datatables JS -->
 <!-- <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script> -->
 
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<!-- <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script> -->
 <!-- datatables JS -->
 <!-- <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script> -->
 <!-- para usar botones en datatables JS -->
