@@ -808,7 +808,7 @@ function TablaManteniAsignaturaServicio() {
 								 
 								 
 								  messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-								  ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                     REPORTE DE ASIGNATURAS DE SERVICIO ', 
+								  ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                       REPORTE DE ASIGNATURAS DE SERVICIO ', 
 								 
 								  
 								  
