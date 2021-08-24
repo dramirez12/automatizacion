@@ -5,7 +5,7 @@ class conexion2
     private const DBUSER = 'informat_desarrollo';
     private const DBPASS = '!fuRCr3XR-tzv';
     private const DBNAME = 'informat_desarrollo_automatizacion';
-    private $dsn = 'mysql:host=' . self::DBHOST . ';dbname=' . self::DBNAME . self::DBUSER. self::DBPASS.'';
+    private $dsn = 'mysql:host=' . self::DBHOST . ';dbname=' . self::DBNAME .'';
     protected $conn = null;
 
     function __construct()
