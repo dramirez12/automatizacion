@@ -112,7 +112,7 @@ ob_end_flush();
                     </div>
 
                     <div class="card-body">
-                        <div class="card-body">
+                        <!-- <div class="card-body"> -->
                             <div class="row">
                                 <div class="col-sm-3">
 
@@ -127,7 +127,7 @@ ob_end_flush();
                             </div> -->
 
 
-                        </div>
+                      <!--   </div> -->
 
 
 
@@ -135,6 +135,7 @@ ob_end_flush();
 
                         <div class="table-responsive" style="width: 100%;">
                             <table id="tabla_equivalencia" class="table table-bordered table-striped">
+                            <br>
                                 <thead>
                                     <tr>
                                         <th>Editar Equivalencias</th>
@@ -371,3 +372,14 @@ ob_end_flush();
         });
     })
 </script>
+<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+<script src="../plugins/select2/js/select2.min.js"></script>
+<!-- datatables JS -->
+<script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
+<!-- para usar botones en datatables JS -->
+<script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
