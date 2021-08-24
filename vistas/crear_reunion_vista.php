@@ -82,7 +82,7 @@ ob_end_flush();
                                 <a class="nav-link active" id="datosgenerales-tab" data-toggle="pill" href="#datosgenerales" role="tab" aria-controls="datosgenerales" aria-selected="false">Datos Generales y Datos Reunion</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " id="datosreunion-tab" data-toggle="pill" href="#datosreunion" role="tab" aria-controls="datosreunion" aria-selected="true">Participantes</a>
+                                <a style="display: none;" class="nav-link " id="datosreunion-tab" data-toggle="pill" href="#datosreunion" role="tab" aria-controls="datosreunion" aria-selected="true">Participantes</a>
                             </li>
                             <li class="nav-item">
                                 <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista.php">Cancelar</a>
@@ -108,7 +108,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="tipo">Tipo de Reunión</label>
-                                                        <select class="form-control" onChange="showInp();showdatos()" style="width: 50%;" id="tipo" name="tipo">
+                                                        <select class="form-control" onChange="showInp(); showdatos();" style="width: 50%;" id="tipo" name="tipo">
                                                             <option value="0">-- Selecione un Tipo --</option>
                                                             <?php
                                                             try {
@@ -187,7 +187,7 @@ ob_end_flush();
                                                 <div style="padding: 0px 0 0px 0; margin: 15px 0px 5px 10px;">
                                                     <input type="hidden" name="estado" value="1">
                                                     <input type="hidden" name="reunion" value="nuevo">
-                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> >Agendar</button>
+                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled >Agendar</button>
                                                 </div>
                                                 <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
                                                     <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
@@ -328,32 +328,32 @@ LIMIT 1";
             }
         }
 
-        // $(function() {
-        //     $('input:checkbox').change(function() {
-        //         $('button:submit').prop({
-        //             disabled: $('input:checkbox:checked').length < 2
-        //         });
-        //     });
-        // });
+        $(function() {
+            $('input:checkbox').change(function() {
+                $('button:submit').prop({
+                    disabled: $('input:checkbox:checked').length < 2
+                });
+            });
+        });
 
-        // function showdatos() {
-        //     getnombre = document.getElementById("nombre").value;
-        //     getlugar = document.getElementById("lugar").value;
-        //     getagenda = document.getElementById("agenda").value;
-        //     getasunto = document.getElementById("asunto").value;
-        //     getfecha = document.getElementById("fecha").value;
-        //     gettipo = document.getElementById("tipo").value;
-        //     getinicio = document.getElementById("horainicio").value;
-        //     getfinal = document.getElementById("horafinal").value;
+        function showdatos() {
+            getnombre = document.getElementById("nombre").value;
+            getlugar = document.getElementById("lugar").value;
+            getagenda = document.getElementById("agenda").value;
+            getasunto = document.getElementById("asunto").value;
+            getfecha = document.getElementById("fecha").value;
+            gettipo = document.getElementById("tipo").value;
+            getinicio = document.getElementById("horainicio").value;
+            getfinal = document.getElementById("horafinal").value;
 
-        //     if (getnombre == "" || getlugar == "" || getagenda == "" || getasunto == "" || getfecha == "" || gettipo == "0" || getinicio == "" || getfinal == "") {
-        //         document.getElementById("datosreunion-tab").style.display = "none";
-        //         document.getElementById("archivos-tab").style.display = "none";
-        //     } else {
-        //         document.getElementById("datosreunion-tab").style.display = "block";
-        //         document.getElementById("archivos-tab").style.display = "block";
-        //     }
-        // }
+            if (getnombre == "" || getlugar == "" || getagenda == "" || getasunto == "" || getfecha == "" || gettipo == "0" || getinicio == "" || getfinal == "") {
+                document.getElementById("datosreunion-tab").style.display = "none";
+                document.getElementById("archivos-tab").style.display = "none";
+            } else {
+                document.getElementById("datosreunion-tab").style.display = "block";
+                document.getElementById("archivos-tab").style.display = "block";
+            }
+        }
 
         function showInp() {
             getSelectValue = document.getElementById("tipo").value;
@@ -395,34 +395,15 @@ LIMIT 1";
         inicio.addEventListener("change", comparaHoras);
         final.addEventListener("change", comparaHoras);
     </script>
-    <script>
-        if (document.getElementById('nombre').value === '' || document.getElementById('lugar').value === '') {
-            swal({
-                title: 'Oooops...',
-                text: 'Llena todos los campos!',
-                type: 'error',
-            });
-            return false;
-        }
-    </script>
 </body>
 
 </html>
-<script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
-
-<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- Select2 -->
 <script src="../plugins/select2/js/select2.full.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
 <!-- para usar botones en datatables JS -->
-<script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
-<script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-<script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
 <script src="../js/tipoacta-ajax.js"></script>
