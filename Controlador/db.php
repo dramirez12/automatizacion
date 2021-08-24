@@ -1,7 +1,4 @@
 <?php
-require_once('../clases/conexion_mantenimientos.php');
-
-$instancia_conexion = new conexion();
 require_once("../clases/conexion2.php");
 class db extends conexion2
 {
@@ -141,10 +138,15 @@ class db extends conexion2
 
     public function insertTipoGasto($descripcion, $estado, $fecha, $nombre_gasto)
     {
-        global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsulta("INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES ('$descripcion, $estado, '$fecha', '$nombre_gasto')");
-        
-        return $consulta;
+        $sql = "INSERT INTO tbl_tipo_gastos(descripcion,estado, fecha, nombre_gasto)  VALUES (:descripcion, :estado, :fecha, :nombre_gasto) ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'descripcion' => $descripcion,
+            'estado' => $estado,
+            'fecha' => $fecha,
+            'nombre_gasto' => $nombre_gasto
+        ]);
+        return 'exito';
     }
     //eliminar los gastos
     public function eliminarGastos($id)
