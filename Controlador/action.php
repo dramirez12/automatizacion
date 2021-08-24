@@ -86,7 +86,7 @@ function subirBase_academica($nombre_archivo, $id_ca)
     // $respuesta = $db->contarArchivo($id);
     // $cantidad = $respuesta['cuenta'];
 
-    $conexion = new mysqli('167.114.169.207', 'informat_desarrollo', '!fuRCr3XR-tz', 'informat_desarrollo_automatizacion');
+    $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
     //$ruta = '../archivos/file_academica/' . $nombre_archivo;
     class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
     {
@@ -134,7 +134,7 @@ function subirBase_craed($nombre_archivo_cr, $id_cr)
 {
 
 
-    $conexion = new mysqli('167.114.169.207', 'informat_desarrollo', '!fuRCr3XR-tz', 'informat_desarrollo_automatizacion');
+    $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
     class MyReadFilte implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
     {
         public function readCell($column, $row, $worksheetName = '')
@@ -379,7 +379,7 @@ if (isset($_POST['subir_excel_ca'])) {
     if ($cantidad >= 1) {
         echo json_encode('archivo_subido');
     } else {
-        $conexion = new mysqli('167.114.169.207', 'informat_desarrollo', '!fuRCr3XR-tz', 'informat_desarrollo_automatizacion');
+        $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
         //$ruta = '../archivos/file_academica/' . $nombre_archivo;
 
         class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
@@ -434,7 +434,7 @@ if (isset($_POST['subir_excel_cr'])) {
     if ($cantidad >= 1) {
         echo json_encode('archivo_subidoCR');
     } else {
-        $conexion = new mysqli('167.114.169.207', 'informat_desarrollo', '!fuRCr3XR-tz', 'informat_desarrollo_automatizacion');
+        $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
 
 
         //$ruta = '../archivos/file_academica/' . $nombre_archivo;
