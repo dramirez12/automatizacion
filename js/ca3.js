@@ -257,6 +257,7 @@ $("#tabla_carga").on("click", ".editar", function () {
   $("#txt_control_edita").val(data.control);
   $("#txt_unidades_edita").val(data.unidades_valorativas);
   $("#cbm_modalidad_edita").val(data.id_modalidad).trigger("change");
+  $("#cbm_tipo_asignatura_edita").val(data.id_tipo_asignatura).trigger("change");
 
   id_aula = data.id_aula;
   id_edificio = data.id_edificio;
@@ -774,20 +775,74 @@ doc.content[2].table.widths = ["10%", "15%","6%","20%","10%","8%","4%","4%","3%"
 
 
 // ----------------- COMBOBOX DE ASIGNATURA----------------
-function llenar_selectasignatura() {
+// function llenar_selectasignatura() {
+//   var cadena = "&activar=activar";
+//   $.ajax({
+//     url: "../Controlador/reporte_carga_controlador.php?op=select2",
+//     type: "POST",
+//     data: cadena,
+//     success: function (r) {
+//       // console.log(r);
+
+//       $("#cbm_asignatura_edita").html(r).fadeIn();
+//     },
+//   });
+// }
+// llenar_selectasignatura();
+
+// ------------------------- COMBOBOX tipo_asig ------------------
+function llenar_tipo_asignatura_editar() {
   var cadena = "&activar=activar";
   $.ajax({
-    url: "../Controlador/reporte_carga_controlador.php?op=select2",
+    url: "../Controlador/reporte_carga_controlador.php?op=tipo_asignatura",
     type: "POST",
     data: cadena,
     success: function (r) {
-      // console.log(r);
+      $("#cbm_tipo_asignatura_edita").html(r).fadeIn();
+      var o = new Option("Seleccionar", 0);
 
-      $("#cbm_asignatura_edita").html(r).fadeIn();
+      $("#cbm_tipo_asignatura_edita").append(o);
+      $("#cbm_tipo_asignatura_edita").val(0);
     },
   });
 }
-llenar_selectasignatura();
+llenar_tipo_asignatura_editar();
+
+$("#cbm_tipo_asignatura_edita").change(function () {
+  var id_tipo_asig = $(this).val();
+  //console.log(id_tipo_asig);
+
+  if (id_tipo_asig == 1) {
+    $.post(
+      "../Controlador/reporte_carga_controlador.php?op=asig_normal_carga",
+      {
+        id_tipo_asignatura: id_tipo_asig,
+      }
+    ).done(function (respuesta) {
+      $("#cbm_asignatura_edita").html(respuesta);
+
+      // $("#cbm_requisito_asignaturas").html(respuesta);
+      // console.log(respuesta);
+    });
+  } else if (id_tipo_asig == 2) {
+    $.post(
+      "../Controlador/reporte_carga_controlador.php?op=asig_servicio_carga",
+      {
+        id_tipo_asignatura: id_tipo_asig,
+      }
+    ).done(function (respuesta) {
+      $("#cbm_asignatura_edita").html(respuesta);
+
+      // $("#cbm_requisito_asignaturas").html(respuesta);
+      // console.log(respuesta);
+    });
+  } else {
+    $("#cbm_asignatura_edita").empty();
+    document.getElementById("txt_cod_asignatura_edita").value = "";
+    document.getElementById("txt_unidades_edita").value = "";
+  
+  }
+});
 
 function mostrarasignaturacodigo(codigo) {
   $.post(
@@ -999,6 +1054,8 @@ function modificar_carga_academica() {
           confirm: "Aceptar",
         },
       });
+
+
     } else {
       swal({
         title: "Alerta!",

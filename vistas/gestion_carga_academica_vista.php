@@ -290,7 +290,7 @@ ob_end_flush();
                                 <th>Nombre</th>
                                 <th>Código</th>
                                 <th>Asignatura</th>
-                                <th>Unidades Val.</th>
+                                <th>UV</th>
                                 <th>Sección</th>
                                 <th>Hi</th>
                                 <th>Hf</th>
@@ -310,7 +310,7 @@ ob_end_flush();
                                 <th>Nombre</th>
                                 <th>Código</th>
                                 <th>Asignatura</th>
-                                <th>Unidades Val.</th>
+                                <th>UV</th>
                                 <th>Sección</th>
                                 <th>Hi</th>
                                 <th>Hf</th>
@@ -387,7 +387,7 @@ ob_end_flush();
                                                 <label>Tipo:</label>
 
                                                 <!-- <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden> -->
-                                                <td> <select class="form-control" style="width: 100%;" name="cbm_tipo_asignatura" id="cbm_tipo_asignatura">
+                                                <td> <select class="form-control select2" style="width: 100%;" name="cbm_tipo_asignatura" id="cbm_tipo_asignatura">
                                                         <option value="0">SELECCIONAR</option>
                                                     </select>
                                                 </td>
@@ -429,7 +429,7 @@ ob_end_flush();
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Edificio:</label>
-                                                <select class="form-control" name="edificio" id="edificio"></select>
+                                                <select class="form-control select2" name="edificio" id="edificio"></select>
 
 
 
@@ -438,7 +438,7 @@ ob_end_flush();
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Aulas:</label>
-                                                <select class="form-control" name="aula" id="aula"></select>
+                                                <select class="form-control select2" name="aula" id="aula"></select>
 
 
 
@@ -685,7 +685,7 @@ ob_end_flush();
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Nueva Carga Académica</h5>
+                                    <h5 class="modal-title">Editar Carga Académica</h5>
                                     <button class="close" data-dismiss="modal">
                                         &times;
                                     </button>
@@ -742,11 +742,10 @@ ob_end_flush();
 
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label>Tipo:</label>
+                                                <label>Tipo asignatura:</label>
                                                 <!-- 
                                                 <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden> -->
                                                 <td> <select class="form-control" style="width: 100%;" name="cbm_tipo_asignatura_edita" id="cbm_tipo_asignatura_edita">
-                                                        <option value="0">SELECCIONAR</option>
                                                     </select>
                                                 </td>
                                             </div>
