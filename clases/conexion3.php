@@ -1,12 +1,12 @@
 <?php
 //generando la conexion a la base de datos
 function conexion(){ 
-    $db_host="167.114.169.207";
- 	$db_nombre="informat_desarrollo_automatizacion";
- 	$db_usuario="informat_desarrollo";
- 	$db_contra="!fuRCr3XR-tz";
+	$servidor= "167.114.169.207";
+	$usuario= "informat_desarrollo";
+	$password = "!fuRCr3XR-tz";
+	$base= "informat_desarrollo_automatizacion";
 
- 	$conexion = mysqli_connect($db_host,$db_usuario,$db_contra);
+ 	$conexion = mysqli_connect($servidor, $usuario,$password,$base);
 
  	//error al buscar la direccion del host
  	if(mysqli_connect_errno()){
@@ -16,7 +16,7 @@ function conexion(){
 
 	 
  	//Error al conectar con la base de datos
- 	mysqli_select_db($conexion,$db_nombre) or die("No se encuentra la base de datos");
+ 	mysqli_select_db($conexion,$base) or die("No se encuentra la base de datos");
 
  	mysqli_set_charset($conexion, "utf8");
 
