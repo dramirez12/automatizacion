@@ -32,6 +32,12 @@ switch ($_GET["op"]) {
         //Codificar el resultado utilizando json
         echo json_encode($rspta);
         break;
+
+    case 'mostrardocente':
+        $rspta = $instancia_modelo->mostrardocente($id_persona);
+        //Codificar el resultado utilizando json
+        echo json_encode($rspta);
+        break;
     case 'select1':
 
         $data = array();

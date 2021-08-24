@@ -14,6 +14,20 @@ function mostrar(id_persona_valor) {
     }
   );
 }
+function mostrardocente(id_persona_valor) {
+  $.post(
+    "../Controlador/reporte_carga_controlador.php?op=mostrardocente",
+    { id_persona: id_persona_valor },
+    function (data, status) {
+      data = JSON.parse(data);
+      console.log(data);
+      $("#txt_hra_salida").val(data.Hora_Salida);
+      $("#txt_hra_entrada").val(data.Hora_Entrada);
+      $("#txt_hra_entrada2").val(data.Hora_Entrada);
+      $("#txt_num_doc").val(data.numero_empleado);
+    }
+  );
+}
 
 function llenar_select1() {
   var cadena = "&activar=activar";

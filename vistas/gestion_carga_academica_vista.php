@@ -351,7 +351,7 @@ ob_end_flush();
                                             <div class="form-group">
 
                                                 <label>Docente:</label>
-                                                <select class="form-control select2" onchange="mostrar($('#id_select').val());" id="id_select" name=""></select>
+                                                <select class="form-control select2" onchange="mostrardocente($('#id_select').val());" id="id_select" name=""></select>
                                             </div>
 
                                         </div>
@@ -384,7 +384,7 @@ ob_end_flush();
 
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label>Tipo:</label>
+                                                <label>Tipo asignatura:</label>
 
                                                 <!-- <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden> -->
                                                 <td> <select class="form-control select2" style="width: 100%;" name="cbm_tipo_asignatura" id="cbm_tipo_asignatura">

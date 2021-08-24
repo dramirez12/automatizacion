@@ -23,6 +23,13 @@ class modelo_modal
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
     }
 
+    public function mostrardocente($id_persona_valor)
+    {
+        global $instancia_conexion;
+        $sql = "call sel_info_docente($id_persona_valor)";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
+    }
+
     function listar_select1()
     {
         global $instancia_conexion;
