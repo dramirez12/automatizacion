@@ -5,7 +5,7 @@ function conexion(){
 	$usuario= "informat_desarrollo";
 	$password = "!fuRCr3XR-tz";
 	$base= "informat_desarrollo_automatizacion";
-
+	$mysqli = new mysqli($servidor, $usuario,$password,$base);
  	$conexion = mysqli_connect($servidor, $usuario,$password,$base);
 
  	//error al buscar la direccion del host
