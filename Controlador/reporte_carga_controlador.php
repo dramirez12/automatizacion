@@ -21,7 +21,8 @@ $hora_inicial = isset($_POST["hora_inicial"]) ? limpiarCadena1($_POST["hora_inic
 $dias = isset($_POST["dias"]) ? limpiarCadena1($_POST["dias"]) : "";
 $hora_inicial = isset($_POST["hora_inicial"]) ? limpiarCadena1($_POST["hora_inicial"]) : "";
 $hora_final = isset($_POST["hora_final"]) ? limpiarCadena1($_POST["hora_final"]) : "";
-$nombre_docente=isset($_POST["txt_nombre_docente"])? limpiarCadena1($_POST["hora_final"]):"";
+$nombre_docente=isset($_POST["txt_nombre_docente"])? limpiarCadena1($_POST["txt_nombre_docente"]):"";
+$id_tipo_asignatura = isset($_POST["id_tipo_asignatura"]) ? limpiarCadena1($_POST["id_tipo_asignatura"]) : "";
 
 
 $instancia_modelo = new modelo_modal();
@@ -250,4 +251,36 @@ switch ($_GET["op"]) {
         $rspta = $instancia_modelo->mostrar_asignados($nombre_docente);
         echo json_encode($rspta);
         break;
+    case 'tipo_asignatura':
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_tipo_asig();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_tipo_asignatura . "'> " . $r2->descripcion . " </option>";
+        }
+        break;
+    case 'asig_normal_carga':
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_asig_normal_carga($id_tipo_asignatura);
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
+        }
+        break;
+    case 'asig_servicio_carga':
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_asig_servicio_carga($id_tipo_asignatura);
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
+        }
+        break;
 }
+
+

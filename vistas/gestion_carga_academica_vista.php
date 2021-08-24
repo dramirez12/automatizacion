@@ -386,11 +386,9 @@ ob_end_flush();
                                             <div class="form-group">
                                                 <label>Tipo:</label>
 
-                                                <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden>
-                                                <td> <select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
+                                                <!-- <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden> -->
+                                                <td> <select class="form-control" style="width: 100%;" name="cbm_tipo_asignatura" id="cbm_tipo_asignatura">
                                                         <option value="0">SELECCIONAR</option>
-                                                        <option value="SI">SI</option>
-                                                        <option value="NO">NO</option>
                                                     </select>
                                                 </td>
                                             </div>
@@ -398,7 +396,7 @@ ob_end_flush();
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Asignatura:</label>
-                                                <select class="form-control select2" onchange="mostrar2($('#select2').val());" id="select2" name="select2"></select>
+                                                <select class="form-control select2" id="select2" name="select2" onchange="mostrar2($('#select2').val());"></select>
 
                                             </div>
                                         </div>
@@ -745,12 +743,10 @@ ob_end_flush();
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Tipo:</label>
-
-                                                <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden>
-                                                <td> <select class="form-control" style="width: 100%;" name="cbm_reposicion" id="cbm_reposicion">
+                                                <!-- 
+                                                <input class="form-control" type="text" id="cbm_reposicion1" name="cbm_reposicion1" readonly hidden> -->
+                                                <td> <select class="form-control" style="width: 100%;" name="cbm_tipo_asignatura_edita" id="cbm_tipo_asignatura_edita">
                                                         <option value="0">SELECCIONAR</option>
-                                                        <option value="SI">SI</option>
-                                                        <option value="NO">NO</option>
                                                     </select>
                                                 </td>
                                             </div>

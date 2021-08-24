@@ -46,11 +46,11 @@ function mostrar_docente(id_persona_valor) {
       $("#input8").val(data.nombre);
       // $("#txt_num_doc").val(data.num_empleado);
       var tr = "<tr>";
-      (tr += "<th>" + data.formacion_academica + "</th>");
-      (tr += "<th>" + data.pregunta1 + "</th>");
-      (tr += "<th>" + data.pregunta2 + "</th>");
-      (tr += "<th>" + data.pregunta3 + "</th>");
-      (tr += "<th>" + data.pregunta4 + "</th>");
+      tr += "<th>" + data.formacion_academica + "</th>";
+      tr += "<th>" + data.pregunta1 + "</th>";
+      tr += "<th>" + data.pregunta2 + "</th>";
+      tr += "<th>" + data.pregunta3 + "</th>";
+      tr += "<th>" + data.pregunta4 + "</th>";
       tr += "</tr>";
       $("#id_profe").html(tr);
       // console.log(tr);
@@ -100,20 +100,20 @@ function valida_horario() {
   }
 }
 // ----------------- COMBOBOX DE ASIGNATURA----------------
-function llenar_select2() {
-  var cadena = "&activar=activar";
-  $.ajax({
-    url: "../Controlador/reporte_carga_controlador.php?op=select2",
-    type: "POST",
-    data: cadena,
-    success: function (r) {
-      // console.log(r);
+// function llenar_select2() {
+//   var cadena = "&activar=activar";
+//   $.ajax({
+//     url: "../Controlador/reporte_carga_controlador.php?op=select2",
+//     type: "POST",
+//     data: cadena,
+//     success: function (r) {
+//       // console.log(r);
 
-      $("#select2").html(r).fadeIn();
-    },
-  });
-}
-llenar_select2();
+//       $("#select2").html(r).fadeIn();
+//     },
+//   });
+// }
+// llenar_select2();
 
 function mostrar2(codigo) {
   $.post(
@@ -145,6 +145,58 @@ function llenar_modalidad() {
   });
 }
 llenar_modalidad();
+// ------------------------- COMBOBOX tipo_asig ------------------
+function llenar_tipo_asignatura_crear() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/reporte_carga_controlador.php?op=tipo_asignatura",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_tipo_asignatura").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+
+      $("#cbm_tipo_asignatura").append(o);
+      $("#cbm_tipo_asignatura").val(0);
+    },
+  });
+}
+llenar_tipo_asignatura_crear();
+
+$("#cbm_tipo_asignatura").change(function () {
+  var id_tipo_asig = $(this).val();
+  console.log(id_tipo_asig);
+
+  if (id_tipo_asig == 1) {
+    $.post(
+      "../Controlador/reporte_carga_controlador.php?op=asig_normal_carga",
+      {
+        id_tipo_asignatura: id_tipo_asig,
+      }
+    ).done(function (respuesta) {
+      $("#select2").html(respuesta);
+
+      // $("#cbm_requisito_asignaturas").html(respuesta);
+      // console.log(respuesta);
+    });
+  } else if (id_tipo_asig == 2) {
+      $.post(
+        "../Controlador/reporte_carga_controlador.php?op=asig_servicio_carga",
+        {
+          id_tipo_asignatura: id_tipo_asig,
+        }
+      ).done(function (respuesta) {
+        $("#select2").html(respuesta);
+
+        // $("#cbm_requisito_asignaturas").html(respuesta);
+        // console.log(respuesta);
+      });
+  
+  } else {
+    $("#select2").empty();
+  }
+
+});
 
 function mostrar_modalidad(modalidad) {
   $.post(
@@ -367,12 +419,10 @@ $(document).ready(function () {
   });
 });
 
-
 $("#modalidad").change(function () {
   var selected_modalidad = modalidad.options[modalidad.selectedIndex].text;
 
   if (selected_modalidad == "Virtual") {
-
     $("#edificio").prop("disabled", true);
     $("#aula").prop("disabled", true);
 
@@ -385,8 +435,6 @@ $("#modalidad").change(function () {
     });
 
     document.getElementById("capacidad").value = "";
-
-
   } else {
     $("#edificio").prop("disabled", false);
     $("#aula").prop("disabled", false);
@@ -401,9 +449,7 @@ $("#modalidad").change(function () {
 
     document.getElementById("capacidad").value = "";
   }
-
 });
-
 
 // GUARDAR CARGA NUEVO
 function crear_carga_academica() {
@@ -425,7 +471,6 @@ function crear_carga_academica() {
   var selected_modalidad = modalidad.options[modalidad.selectedIndex].text;
 
   if (selected_modalidad == "Virtual") {
-
     if (
       $("#txt_seccion").val().length == 0 ||
       hora_inicial.value == 0 ||
@@ -445,7 +490,6 @@ function crear_carga_academica() {
           confirm: "Aceptar",
         },
       });
-
     } else {
       var hora_inicial = document.getElementById("hora_inicial").value;
       var hora_final = document.getElementById("hora_final").value;
@@ -474,7 +518,6 @@ function crear_carga_academica() {
         // alert("Las horas son iguales");
         document.getElementById("hora_final").value = "";
       } else {
-
         $.post(
           "../Controlador/reporte_carga_controlador.php?op=contar_carga",
           {
@@ -537,7 +580,8 @@ function crear_carga_academica() {
                           "datos actualizados correctamente!",
                           "success"
                         );
-                        document.getElementById("txt_registro_crear").value = "";
+                        document.getElementById("txt_registro_crear").value =
+                          "";
 
                         limpiar();
                         table.ajax.reload();
@@ -547,13 +591,13 @@ function crear_carga_academica() {
                           "No se pudo completar la actualización",
                           "warning"
                         );
-                        document.getElementById("txt_registro_crear").value = "";
+                        document.getElementById("txt_registro_crear").value =
+                          "";
                       }
                     });
                   }
                 } else {
                   swal("Cancelado!");
-
                 }
               });
 
@@ -613,14 +657,11 @@ function crear_carga_academica() {
                 });
               }
             }
-
           }
         );
       }
     }
-
   } else {
-
     if (
       $("#txt_seccion").val().length == 0 ||
       hora_inicial.value == 0 ||
@@ -632,17 +673,15 @@ function crear_carga_academica() {
       $("#capacidad").val().length == 0 ||
       $("#aula").val().length == 0 ||
       $("#edificio").val().length == 0
-
     ) {
-
       swal({
-          title: "Alerta!",
-          text:"Llene o seleccione los campos vacios",
-          icon: "warning",
-          buttons: {
-            confirm: "Aceptar",
-          },
-        });
+        title: "Alerta!",
+        text: "Llene o seleccione los campos vacios",
+        icon: "warning",
+        buttons: {
+          confirm: "Aceptar",
+        },
+      });
     } else {
       swal({
         title: "Alerta",
@@ -659,7 +698,7 @@ function crear_carga_academica() {
       if (hora_inicial > hora_final) {
         swal({
           title: "Alerta!",
-          text:"Hora inicial incorrecta",
+          text: "Hora inicial incorrecta",
           icon: "warning",
           buttons: {
             confirm: "Aceptar",
@@ -670,7 +709,7 @@ function crear_carga_academica() {
       } else if (hora_inicial == hora_final) {
         swal({
           title: "Alerta!",
-          text:"Las horas son iguales",
+          text: "Las horas son iguales",
           icon: "warning",
           buttons: {
             confirm: "Aceptar",
@@ -680,7 +719,6 @@ function crear_carga_academica() {
         // alert("Las horas son iguales");
         document.getElementById("hora_final").value = "";
       } else {
-
         $.post(
           "../Controlador/reporte_carga_controlador.php?op=contar_carga",
           {
@@ -696,7 +734,7 @@ function crear_carga_academica() {
             if (contar >= 3) {
               swal({
                 title: "Alerta!",
-                text:"Este docente tiene 3 cargas asignadas, desea continuar?",
+                text: "Este docente tiene 3 cargas asignadas, desea continuar?",
                 icon: "warning",
                 buttons: {
                   cancel: "Cancelar",
@@ -710,7 +748,7 @@ function crear_carga_academica() {
                       hora_inicial: hora_inicial,
                       id_periodo: id_periodo,
                       hora_final: hora_final,
-                      id_aula: aula
+                      id_aula: aula,
                     },
 
                     function (data, status) {
@@ -732,7 +770,8 @@ function crear_carga_academica() {
                           showConfirmButton: true,
                           timer: 6000,
                         });
-                        document.getElementById("txt_registro_crear").value = "";
+                        document.getElementById("txt_registro_crear").value =
+                          "";
                       } else {
                         $.ajax({
                           url: "../Controlador/crear_carga_controlador.php",
@@ -757,7 +796,9 @@ function crear_carga_academica() {
                               "Se Guardó correctamente!",
                               "success"
                             );
-                            document.getElementById("txt_registro_crear").value = "";
+                            document.getElementById(
+                              "txt_registro_crear"
+                            ).value = "";
 
                             limpiar();
                             table.ajax.reload();
@@ -767,7 +808,9 @@ function crear_carga_academica() {
                               "No se pudo completar la acción",
                               "warning"
                             );
-                            document.getElementById("txt_registro_crear").value = "";
+                            document.getElementById(
+                              "txt_registro_crear"
+                            ).value = "";
                           }
                         });
                       }
@@ -775,7 +818,6 @@ function crear_carga_academica() {
                   );
                 } else {
                   swal("Cancelado!");
-
                 }
               });
 
@@ -787,7 +829,7 @@ function crear_carga_academica() {
                   hora_inicial: hora_inicial,
                   id_periodo: id_periodo,
                   hora_final: hora_final,
-                  id_aula: aula
+                  id_aula: aula,
                 },
 
                 function (data, status) {
@@ -810,7 +852,7 @@ function crear_carga_academica() {
                         confirm: "Aceptar",
                       },
                     });
-                    
+
                     document.getElementById("txt_registro_crear").value = "";
                   } else {
                     $.ajax({
@@ -836,7 +878,8 @@ function crear_carga_academica() {
                           "Datos actualizados correctamente!",
                           "success"
                         );
-                        document.getElementById("txt_registro_crear").value = "";
+                        document.getElementById("txt_registro_crear").value =
+                          "";
 
                         limpiar();
                         table.ajax.reload();
@@ -846,7 +889,8 @@ function crear_carga_academica() {
                           "No se pudo completar la actualización",
                           "warning"
                         );
-                        document.getElementById("txt_registro_crear").value = "";
+                        document.getElementById("txt_registro_crear").value =
+                          "";
                       }
                     });
                   }
@@ -888,7 +932,6 @@ function limpiar() {
 }
 
 //--------------------------------------
-
 
 //--------------------------------------
 
@@ -1027,98 +1070,95 @@ function horario_docente_crear(id) {
   );
 }
 
-$(document).click(function () {
-  var checked = $(".CheckedAK:checked").length;
-  var unid_valorativas = document.getElementById("txt_unid_valora").value;
+$(document)
+  .click(function () {
+    var checked = $(".CheckedAK:checked").length;
+    var unid_valorativas = document.getElementById("txt_unid_valora").value;
 
-  if (unid_valorativas == '5' && checked == '6') {
-    swal({
-      title: "Alerta",
-      text: "Solo se permiten 5 dias como maximo ",
-      icon: "warning",
-      buttons: {
-        cancel: "Cancelar",
-        confirm: "Aceptar",
-      },
-    });
+    if (unid_valorativas == "5" && checked == "6") {
+      swal({
+        title: "Alerta",
+        text: "Solo se permiten 5 dias como maximo ",
+        icon: "warning",
+        buttons: {
+          cancel: "Cancelar",
+          confirm: "Aceptar",
+        },
+      });
 
-    document.getElementById("Lu").checked = false;
-    document.getElementById("Ma").checked = false;
-    document.getElementById("Mi").checked = false;
-    document.getElementById("Ju").checked = false;
-    document.getElementById("Vi").checked = false;
-    document.getElementById("Sa").checked = false;
-    document.getElementById("Do").checked = false;
-  } else {
+      document.getElementById("Lu").checked = false;
+      document.getElementById("Ma").checked = false;
+      document.getElementById("Mi").checked = false;
+      document.getElementById("Ju").checked = false;
+      document.getElementById("Vi").checked = false;
+      document.getElementById("Sa").checked = false;
+      document.getElementById("Do").checked = false;
+    } else {
+    }
 
-  }
+    if (unid_valorativas == "4" && checked == "5") {
+      swal({
+        title: "Alerta",
+        text: "Solo se permiten 4 dias como maximo ",
+        icon: "warning",
+        buttons: {
+          cancel: "Cancelar",
+          confirm: "Aceptar",
+        },
+      });
 
-  if (unid_valorativas == '4' && checked == '5') {
-    swal({
-      title: "Alerta",
-      text: "Solo se permiten 4 dias como maximo ",
-      icon: "warning",
-      buttons: {
-        cancel: "Cancelar",
-        confirm: "Aceptar",
-      },
-    });
+      document.getElementById("Lu").checked = false;
+      document.getElementById("Ma").checked = false;
+      document.getElementById("Mi").checked = false;
+      document.getElementById("Ju").checked = false;
+      document.getElementById("Vi").checked = false;
+      document.getElementById("Sa").checked = false;
+      document.getElementById("Do").checked = false;
+    } else {
+    }
 
-    document.getElementById("Lu").checked = false;
-    document.getElementById("Ma").checked = false;
-    document.getElementById("Mi").checked = false;
-    document.getElementById("Ju").checked = false;
-    document.getElementById("Vi").checked = false;
-    document.getElementById("Sa").checked = false;
-    document.getElementById("Do").checked = false;
-  } else {
+    if (unid_valorativas == "3" && checked == "4") {
+      swal({
+        title: "Alerta",
+        text: "Solo se permiten 3 dias como maximo ",
+        icon: "warning",
+        buttons: {
+          cancel: "Cancelar",
+          confirm: "Aceptar",
+        },
+      });
 
-  }
+      document.getElementById("Lu").checked = false;
+      document.getElementById("Ma").checked = false;
+      document.getElementById("Mi").checked = false;
+      document.getElementById("Ju").checked = false;
+      document.getElementById("Vi").checked = false;
+      document.getElementById("Sa").checked = false;
+      document.getElementById("Do").checked = false;
+    } else {
+    }
 
-  if (unid_valorativas == '3' && checked == '4') {
-    swal({
-      title: "Alerta",
-      text: "Solo se permiten 3 dias como maximo ",
-      icon: "warning",
-      buttons: {
-        cancel: "Cancelar",
-        confirm: "Aceptar",
-      },
-    });
+    if (unid_valorativas == "2" && checked == "3") {
+      swal({
+        title: "Alerta",
+        text: "Solo se permiten 2 dias como maximo ",
+        icon: "warning",
+        buttons: {
+          cancel: "Cancelar",
+          confirm: "Aceptar",
+        },
+      });
 
-    document.getElementById("Lu").checked = false;
-    document.getElementById("Ma").checked = false;
-    document.getElementById("Mi").checked = false;
-    document.getElementById("Ju").checked = false;
-    document.getElementById("Vi").checked = false;
-    document.getElementById("Sa").checked = false;
-    document.getElementById("Do").checked = false;
-  } else {
-
-  }
-
-  if (unid_valorativas == '2' && checked == '3') {
-    swal({
-      title: "Alerta",
-      text: "Solo se permiten 2 dias como maximo ",
-      icon: "warning",
-      buttons: {
-        cancel: "Cancelar",
-        confirm: "Aceptar",
-      },
-    });
-
-    document.getElementById("Lu").checked = false;
-    document.getElementById("Ma").checked = false;
-    document.getElementById("Mi").checked = false;
-    document.getElementById("Ju").checked = false;
-    document.getElementById("Vi").checked = false;
-    document.getElementById("Sa").checked = false;
-    document.getElementById("Do").checked = false;
-  } else {
-
-  }
-})
+      document.getElementById("Lu").checked = false;
+      document.getElementById("Ma").checked = false;
+      document.getElementById("Mi").checked = false;
+      document.getElementById("Ju").checked = false;
+      document.getElementById("Vi").checked = false;
+      document.getElementById("Sa").checked = false;
+      document.getElementById("Do").checked = false;
+    } else {
+    }
+  })
   .trigger("click");
 
 function valida_horario_crear() {
@@ -1142,14 +1182,11 @@ function valida_horario_crear() {
         confirm: "Aceptar",
       },
     }).then((willDelete) => {
-        if (willDelete) {
-
-
-        } else {
-
-          document.getElementById("hora_final").value = "";
-        }
-      });
+      if (willDelete) {
+      } else {
+        document.getElementById("hora_final").value = "";
+      }
+    });
   }
 
   if (hora_final > hra_salida) {
@@ -1162,17 +1199,13 @@ function valida_horario_crear() {
         confirm: "Aceptar",
       },
     }).then((willDelete) => {
-        if (willDelete) {
-
-
-        } else {
-
-          document.getElementById("hora_final").value = "";
-        }
-      });
+      if (willDelete) {
+      } else {
+        document.getElementById("hora_final").value = "";
+      }
+    });
   }
 }
-
 
 function valida_matriculados() {
   var capacidad = document.getElementById("capacidad").value;
@@ -1194,8 +1227,6 @@ function valida_matriculados() {
       }
     });
   }
-
-
 }
 
 // function prueba() {
@@ -1219,30 +1250,23 @@ function valida_matriculados() {
 // }
 
 $(document).ready(function () {
-
-  $('.select2').select2({
-    placeholder: 'Select una opcion',
-    theme: 'bootstrap4',
+  $(".select2").select2({
+    placeholder: "Select una opcion",
+    theme: "bootstrap4",
     tags: true,
   });
-
 });
 
 function comprobar() {
-
-  var periodo_num = document.getElementById('num_periodo').value;
-  var max_periodo = document.getElementById('max_periodo').value;
+  var periodo_num = document.getElementById("num_periodo").value;
+  var max_periodo = document.getElementById("max_periodo").value;
   if (periodo_num > max_periodo) {
-    document.getElementById('num_periodo').value = max_periodo;
-
+    document.getElementById("num_periodo").value = max_periodo;
   } else {
-
   }
-
 }
 
 function cerrar_modal() {
-
   swal({
     title: "Alerta",
     text: "Desea cerrar esta ventana?",
@@ -1256,9 +1280,6 @@ function cerrar_modal() {
       $("#ModalTask").modal("hide");
       limpiar();
     } else {
-
-
     }
-  })
-
+  });
 }

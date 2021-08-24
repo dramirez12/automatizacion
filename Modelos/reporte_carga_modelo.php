@@ -220,7 +220,27 @@ class modelo_modal
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
 
     }
-    
+    function listar_tipo_asig()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT id_tipo_asignatura,descripcion  FROM tbl_tipo_asignatura');
+
+        return $consulta;
+    }
+    function listar_asig_normal_carga($id_tipo_asignatura)
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta("SELECT Id_asignatura,asignatura  FROM tbl_asignaturas where id_tipo_asignatura='$id_tipo_asignatura' and estado=1 AND carga='SI'");
+
+        return $consulta;
+    }
+    function listar_asig_servicio_carga($id_tipo_asignatura)
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta("SELECT Id_asignatura,asignatura  FROM tbl_asignaturas where id_tipo_asignatura='$id_tipo_asignatura'");
+
+        return $consulta;
+    }
 }
    
 
