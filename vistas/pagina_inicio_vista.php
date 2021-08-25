@@ -612,8 +612,8 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
             </li>
 
-             <!----GESTION LABORATORIO ----->
-             <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_gestion_laboratorio'] ?>">
+            <!----GESTION LABORATORIO ----->
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_gestion_laboratorio'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -624,7 +624,6 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
 
-             
                 <li class="nav-item" style="display:<?php echo $_SESSION['producto_vista'] ?>">
                   <a href="../vistas/gestion_producto_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -657,7 +656,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
 
-                    <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['reportes_vista'] ?>">
+                <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['reportes_vista'] ?>">
                   <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
@@ -667,6 +666,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
+
                     <li class="nav-item" style="display:<?php echo $_SESSION['reportes_existencias_vista'] ?>">
                       <a href="../vistas/reportes_existencias_vista.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -681,9 +681,8 @@ if (session_status() === PHP_SESSION_NONE) {
                       </a>
                     </li>
                   </ul>
-                  
-                   
-                  </li>
+
+                </li>
               </ul>
             </li>
 
@@ -792,7 +791,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
 
-                <li class="nav-item" style="display:<?php echo $_SESSION['mantemiento_laboratorio'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_laboratorio'] ?>">
                   <a href="../vistas/menu_mantenimiento_laboratorio.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Laboratorio</p>

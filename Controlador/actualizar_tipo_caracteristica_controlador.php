@@ -5,7 +5,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-
+$Id_objeto = 200;
 $tipo_caracteristica = mb_strtoupper($_POST['txt_tipocaracteristica']);
 $id_tipo_caracteristica = $_GET['id_tipo_caracteristica'];
 $tipo_dato = $_POST['cb_tipo_dato'];
@@ -56,7 +56,7 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
 
                             if ($valor_viejo['tipo_caracteristica'] <> $tipo_caracteristica and $valor_viejo['validacion'] <> $tipo_dato  )
                             {
-                                $Id_objeto = 218;
+                                
                                 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL TIPO caracteristica ' . $valor_viejo['tipo_caracteristica'] . ' POR ' . $tipo_caracteristica . ' Y EL TIPO DE DATO A: '.$nuevo. '  ');
                                 /* Hace el query para que actualize*/
 
@@ -71,7 +71,6 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
                             }elseif($valor_viejo['tipo_caracteristica'] <> $tipo_caracteristica )
                             {
 
-                                $Id_objeto = 218;
                                 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL TIPO caracteristica ' . $valor_viejo['tipo_caracteristica'] . ' POR ' . $tipo_caracteristica .'  ');
                                 /* Hace el query para que actualize*/
 
@@ -88,7 +87,7 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
                             elseif ($valor_viejo['validacion'] <> $tipo_dato  )
 
                             {
-                                $Id_objeto = 218;
+                             
                                 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO',  '  EL TIPO DE DATO A: '.$nuevo. ' ,DE LA CARACTERISTICA '.$tipo_caracteristica. ' '   );
                                 /* Hace el query para que actualize*/
 

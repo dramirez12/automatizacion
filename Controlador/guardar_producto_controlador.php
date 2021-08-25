@@ -13,8 +13,14 @@ require_once ('../clases/funcion_bitacora.php');
 
 $Producto=mb_strtoupper ($_POST['txt_nombre_producto']);
 $Descripcion=mb_strtoupper ($_POST['txt_descripcion']);
-$tipo_producto=$_POST['cmb_tipoproducto'];	
-$stock=$_POST['stock'];
+$tipo_producto=$_POST['cmb_tipoproducto'];
+
+if ($tipo_producto==1){
+  $stock=0;
+}else{
+  $stock=$_POST['stock'];
+}	
+
 $_SESSION['nombrePrueba']=$_POST['txt_nombre_producto'];
          		
 $var=0;

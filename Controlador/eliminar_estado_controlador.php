@@ -28,7 +28,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/mantenimiento_estado_vista.php";
+                                               window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
 
                             </script>';
 }
@@ -52,7 +52,7 @@ else
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-               window.location = "../vistas/mantenimiento_estado_vista.php";
+               window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
 
                             </script>'
                             ;                      

@@ -65,7 +65,7 @@ if( preg_match($patron_texto, $_POST['txt_estado1']) )
                                             timer: 3000
                                           });
                                           $(".FormularioAjax")[0].reset();
-                                          window.location = "../vistas/mantenimiento_estado_vista.php";
+                                          window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
                                       </script>';
                     
                 } 

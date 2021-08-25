@@ -27,7 +27,7 @@ if( preg_match($patron_texto, $_POST['txt_estado']) )
             if ($existe['estado'] == 1) {/*
             header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
 
-                header("location:../vistas/mantenimiento_estado_vista.php?msj=1");
+                header("location:../vistas/mantenimiento_tipo_estado_vista.php?msj=1");
             } else {
 
                 $sql = "call proc_actualizar_estado('$estado','$id_estado' )";
@@ -58,11 +58,11 @@ if( preg_match($patron_texto, $_POST['txt_estado']) )
                             timer: 6000
                           });
                           $(".FormularioAjax")[0].reset();
-                          window.location = "../vistas/mantenimiento_estado_vista.php";
+                          window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
                       </script>';
 
                     } else {
-                        header("location:../vistas/mantenimiento_estado_vista.php?msj=3");
+                        header("location:../vistas/mantenimiento_tipo_estado_vista.php?msj=3");
                     }
                 } else {
                     /*header("location: ../contenidos/editarRoles-view.php?msj=3&Rol=$Rol2 ");*/
@@ -75,7 +75,7 @@ if( preg_match($patron_texto, $_POST['txt_estado']) )
                         timer: 3000
                     });
                     $(".FormularioAjax")[0].reset();
-                    window.location = "../vistas/mantenimiento_estado_vista.php";
+                    window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
                     </script>';
                     } 
             }
