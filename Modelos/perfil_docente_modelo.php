@@ -76,13 +76,12 @@ WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 11;
         return $consulta;
     }
 
-    function Actualizar($nombre, $apellido, $identidad,  $nacionalidad, $estado_civil, $genero, $id_persona)
+    function Actualizar($nombre, $apellido, $identidad,  $nacionalidad, $estado_civil, $genero, $fecha_nacimiento, $id_persona)
     {
         global $instancia_conexion;
-        $consult = $instancia_conexion->ejecutarConsulta("CALL proc_actualizar_persona_perfil_doc('$nombre', '$apellido', '$identidad','$nacionalidad','$estado_civil','$genero','$id_persona')");
+        $consult = $instancia_conexion->ejecutarConsulta("CALL proc_actualizar_persona_perfil_doc('$nombre', '$apellido', '$identidad','$nacionalidad','$estado_civil','$genero','$fecha_nacimiento','$id_persona')");
 
         return $consult;
-        
     }
 
     public function Registrar_curriculum($curriculum, $id_persona)
@@ -132,18 +131,18 @@ WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 11;
         return $consulta;
     }
 
-    function Num_Empleado($id_persona)
-    {
-        global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT PEX.valor
+    // function Num_Empleado($id_persona)
+    // {
+    //     global $instancia_conexion;
+    //     $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT PEX.valor
 
-        FROM tbl_personas AS PER 
+    //     FROM tbl_personas AS PER 
          
-           JOIN tbl_personas_extendidas AS PEX ON PEX.id_persona=PER.id_persona
-        WHERE PER.id_persona = $id_persona AND PEX.id_atributo=1 LIMIT 1;");
+    //        JOIN tbl_personas_extendidas AS PEX ON PEX.id_persona=PER.id_persona
+    //     WHERE PER.id_persona = $id_persona AND PEX.id_atributo=1 LIMIT 1;");
 
-        return $consulta;
-    }
+    //     return $consulta;
+    // }
 
     function ver_estado_c($id_persona)
     {
@@ -273,21 +272,37 @@ WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 11;
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql2);
     }
 
-    function ver_genero($id_persona)
+    // function ver_genero($id_persona)
+    // {
+    //     global $instancia_conexion;
+    //     $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT sexo
+
+    //     FROM tbl_personas
+    //     WHERE id_persona = $id_persona LIMIT 1;");
+
+    //     return $consulta;
+    // }
+
+    // function ver_sued($id_persona)
+    // {
+    //     global $instancia_conexion;
+    //     $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT valor FROM tbl_personas_extendidas where id_persona = $id_persona and id_atributo = 14 LIMIT 1;");
+
+    //     return $consulta;
+    // }
+    function ver_hi($id_persona)
     {
         global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT sexo
+        $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT hr_inicial,hr_final,
+            (SELECT valor FROM tbl_personas_extendidas AS px WHERE px.id_persona=tbl_horario_docentes.id_persona and id_atributo =3 LIMIT 1) AS fecha_ingreso,
+            (SELECT valor FROM tbl_personas_extendidas AS px WHERE px.id_persona=tbl_horario_docentes.id_persona and id_atributo =1 LIMIT 1) AS num_empleado,
+            (SELECT valor FROM tbl_personas_extendidas AS px WHERE px.id_persona=tbl_horario_docentes.id_persona and id_atributo =14 LIMIT 1) AS SUED,
+            (SELECT sexo FROM tbl_personas AS px WHERE px.id_persona=tbl_horario_docentes.id_persona  LIMIT 1) AS genero,
+            (SELECT estado_civil FROM tbl_personas AS px WHERE px.id_persona=tbl_horario_docentes.id_persona  LIMIT 1) AS estado_civil
+           
 
-        FROM tbl_personas
-        WHERE id_persona = $id_persona LIMIT 1;");
 
-        return $consulta;
-    }
-
-    function ver_sued($id_persona)
-    {
-        global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsultaSimpleFila("SELECT valor FROM tbl_personas_extendidas where id_persona = $id_persona and id_atributo = 14 LIMIT 1;");
+            FROM tbl_horario_docentes where id_persona=$id_persona LIMIT 1");
 
         return $consulta;
     }

@@ -131,13 +131,13 @@ if (isset($_GET['op'])) {
 
             break;
 
-        case 'Num_Empleado':
+        // case 'Num_Empleado':
 
 
-            $rspta = $instancia_modelo->Num_Empleado($id_persona);
-            echo json_encode($rspta);
+        //     $rspta = $instancia_modelo->Num_Empleado($id_persona);
+        //     echo json_encode($rspta);
 
-            break;
+        //     break;
 
         case 'ver_estado_c':
 
@@ -147,21 +147,37 @@ if (isset($_GET['op'])) {
 
             break;
 
-        case 'ver_genero':
+        // case 'ver_genero':
 
 
-            $rspta = $instancia_modelo->ver_genero($id_persona);
+        //     $rspta = $instancia_modelo->ver_genero($id_persona);
+        //     echo json_encode($rspta);
+
+        //     break;
+
+        // case 'ver_sued':
+
+
+        //     $rspta = $instancia_modelo->ver_sued($id_persona);
+        //     echo json_encode($rspta);
+
+        //     break;
+
+        case 'ver_hi':
+
+
+            $rspta = $instancia_modelo->ver_hi($id_persona);
             echo json_encode($rspta);
 
             break;
+        // case 'ver_hf':
 
-        case 'ver_sued':
 
+        //     $rspta = $instancia_modelo->ver_hf($id_persona);
+        //     echo json_encode($rspta);
 
-            $rspta = $instancia_modelo->ver_sued($id_persona);
-            echo json_encode($rspta);
+        //     break;
 
-            break;
 
         case 'ExisteIdentidad':
 

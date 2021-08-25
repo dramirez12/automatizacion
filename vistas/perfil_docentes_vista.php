@@ -235,6 +235,22 @@ $fechaActual = date('d-m-Y h:i:s');
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+                                                                <input class="form-control" readonly hidden id="age" name="age" maxlength="25" value="" required style="text-transform: uppercase">
+
+                                                                <div class="col-sm-3" id="parrafo_nacimiento">
+                                                                    <label for="">Fecha Nacimiento:</label>
+
+                                                                    <div class="form-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="icono_nacimiento"><i class="far fa-calendar-alt"></i></span>
+                                                                            <input disabled="true" value="" type="date" name="fecha" id="fecha" class="form-control" onblur="valida_mayoria()">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <p hidden id="Textofecha" style="color:red;">¡El docente debe ser mayor de edad! </p>
+
+                                                                </div>
                                                                 <input type="text" name="mayoria_edad" id="mayoria_edad" hidden readonly onload="mayoria_edad()">
                                                                 <div class="col-sm-3" id="parrafo_identidad">
                                                                     <label for="">Nº Identidad:</label>
@@ -267,21 +283,21 @@ $fechaActual = date('d-m-Y h:i:s');
                                                                     </div>
                                                                 </div>
 
-
-
-
-
-                                                                <div class="col-sm-3" id="parrafor_jornada">
-                                                                    <label for="">Jornada:</label>
+                                                                <div class="col-sm-3" id="parrafo_nacionalidad">
+                                                                    <label for="">Nacionalidad:</label>
 
                                                                     <div class="form-group">
                                                                         <div class="input-group-prepend">
-                                                                            <span class="input-group-text" id="icono_jornada"><i class="fas fa-user icon"></i></span>
-                                                                            <input disabled name="" type="text" class="form-control" id="jornada">
+                                                                            <span class="input-group-text" id="icono_nacionalidad"><i class="fas fa-flag"></i></span>
+                                                                            <input disabled name="" type="text" onkeyup="Mayuscula('nacionalidad');" class="form-control" id="nacionalidad">
 
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+
+
+
                                                                 <div class="col-sm-2" id="parrafo_sued">
                                                                     <label for="">Sued:</label>
 
@@ -294,17 +310,7 @@ $fechaActual = date('d-m-Y h:i:s');
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-sm-3" id="parrafo_nacionalidad">
-                                                                    <label for="">Nacionalidad:</label>
 
-                                                                    <div class="form-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text" id="icono_nacionalidad"><i class="fas fa-flag"></i></span>
-                                                                            <input disabled name="" type="text" onkeyup="Mayuscula('nacionalidad');" class="form-control" id="nacionalidad">
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="col-sm-4" id="parrafo_categoria">
                                                                     <label for="">Categoría:</label>
 
@@ -316,22 +322,51 @@ $fechaActual = date('d-m-Y h:i:s');
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <input class="form-control" readonly hidden id="age" name="age" maxlength="25" value="" required style="text-transform: uppercase">
 
-                                                                <div class="col-sm-3" id="parrafo_nacimiento">
-                                                                    <label for="">Fecha Nacimiento:</label>
+                                                                <div class="col-sm-3" id="parrafor_jornada">
+                                                                    <label for="">Jornada:</label>
+
+                                                                    <div class="form-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="icono_jornada"><i class="fas fa-user icon"></i></span>
+                                                                            <input disabled name="" type="text" class="form-control" id="jornada">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2" id="parrafor_hi">
+                                                                    <label for="">H. entrada:</label>
+
+                                                                    <div class="form-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="icono_jornada"><i class="fas fa-user-clock"></i></span>
+                                                                            <input disabled name="" type="text" class="form-control" id="hi">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2" id="parrafor_hf">
+                                                                    <label for="">H. salida:</label>
+
+                                                                    <div class="form-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="icono_jornada"><i class="fas fa-user-clock"></i></span>
+                                                                            <input disabled name="" type="text" class="form-control" id="hf">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3" id="parrafo_fechaentradatrabajo">
+                                                                    <label for="">Fecha Ingreso :</label>
 
                                                                     <div class="form-group">
                                                                         <div class="input-group-prepend">
                                                                             <span class="input-group-text" id="icono_nacimiento"><i class="far fa-calendar-alt"></i></span>
-                                                                            <input disabled="true" value="" type="date" name="Fecha" id="fecha" class="form-control" onblur="valida_mayoria()" onkeydown="return false">
+                                                                            <input disabled="true" value="" type="date" name="fechaentrada" id="fechaentrada" class="form-control">
                                                                         </div>
 
                                                                     </div>
-                                                                    <p hidden id="Textofecha" style="color:red;">¡El docente debe ser mayor de edad! </p>
-
                                                                 </div>
-
                                                                 <div class=" col-sm-12" style="text-align: right">
                                                                     <div class="btn-group ">
                                                                         <button style="color:white;font-weight: bold;" class="btn btn-info" onclick="habilitar_editar();" id="editar_info" name="editar_info">Editar Información</button>

@@ -971,7 +971,7 @@ function TablaManteniAsignaturaServicio() {
       { data: "nombre_asig" },
       { data: "codigo" },
       { data: "uv" },
-      { data: "nombre_area" },
+     // { data: "nombre_area" },
       { data: "suficiencia" },
       { data: "reposicion" },
       { data: "silabo" },
@@ -1109,7 +1109,7 @@ function actualizar_asignatura_servicio(
        url: "../Controlador/actualizar_asignatura_servicio_controlador.php",
        type: "POST",
        data: {
-         id_area: cbm_area,
+        //  id_area: cbm_area,
          uv: txt_uv,
          codigo: txt_codigo_asignatura,
          asignatura: txt_nombre_asignatura,

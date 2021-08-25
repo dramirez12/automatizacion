@@ -124,7 +124,7 @@ ob_end_flush();
                                         <th>Asignatura</th>
                                         <th>Código</th>
                                         <th>UV</th>
-                                        <th>Área</th>
+                                        <!-- <th>Área</th> -->
                                         <th>Suficiencia</th>
                                         <th>Reposición</th>
                                         <th>Sílabo</th>
@@ -184,7 +184,7 @@ ob_end_flush();
 
                                 <input class="form-control" type="text" id="txt_codigo1" name="txt_codigo1" readonly hidden>
                                 <label>Código:</label>
-                                <input class="form-control" type="text" id="txt_codigo" name="txt_codigo">
+                                <input class="form-control" type="text" id="txt_codigo" name="txt_codigo" maxlength="10">
 
 
                             </div>
@@ -196,7 +196,7 @@ ob_end_flush();
                                 <label>UV:</label>
 
                                 <input class="form-control" type="text" id="txt_uv1" name="txt_uv1" readonly hidden>
-                                <input class="form-control" type="text" id="txt_uv" name="txt_uv">
+                                <input class="form-control" type="text" id="txt_uv" name="txt_uv" maxlength="10">
                             </div>
                         </div>
 

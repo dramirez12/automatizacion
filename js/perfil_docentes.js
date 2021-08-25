@@ -115,62 +115,68 @@ function EditarPerfil(nombre, apellido, identidad, nacionalidad, estado) {
   var nacionalidad = $("#nacionalidad").val();
   var estado_civil = $("#ver_estado").val();
   var genero = $("#ver_genero").val();
+  var fecha = $("#fecha").val();
 
-  if (
-    nombre == "" ||
-    apellido == "" ||
-    nacionalidad == "" ||
-    estado_civil == "" ||
-    genero == "" ||
-    identidad==""
-  ) {
-    swal({
-      title: "Campos Vacios!",
-      text: "Tiene campos en blanco",
-      type: "warning",
-      showConfirmButton: true,
-      timer: 10000,
-    });
-  } else {
-   
-    swal({
-      title: "alerta",
-      text: "Por favor espere un momento",
-      type: "warning",
-      showConfirmButton: false,
-      timer: 11000,
-    });
-    $.ajax({
-      url: "../Controlador/actualizar_perfil_docente_controlador.php",
-      type: "POST",
-      data: {
-        Nombre: nombre,
-        apellido: apellido,
-        identidad: identidad,
-        id_persona: id_persona,
-        nacionalidad: nacionalidad,
-        estado_civil: estado_civil,
-        sexo: genero,
-      },
-    }).done(function (resp) {
-      console.log(resp);
+  //console.log(fecha);
 
-      if (resp > 0) {
-        if (resp == 1) {
-          swal({
-            title: "Actualizado!",
-            text: "Datos actualizados correctamente",
-            type: "success",
-            showConfirmButton: true,
-            timer: 10000,
-          });
-          window.location = "../vistas/perfil_docentes_vista.php";
-        } else {
-          swal("Alerta!", "No se pudo completar la acción", "warning");
+    if (
+      nombre == "" ||
+      apellido == "" ||
+      nacionalidad == "" ||
+      estado_civil == "" ||
+      genero == "" ||
+      identidad == "" ||
+      fecha==""
+    ) {
+      swal({
+        title: "Campos Vacios!",
+        text: "Tiene campos en blanco",
+        type: "warning",
+        showConfirmButton: true,
+        timer: 10000,
+      });
+    } else {
+      desabilitar();
+    
+      swal({
+        title: "alerta",
+        text: "Por favor espere un momento",
+        type: "warning",
+        showConfirmButton: false,
+        timer: 11000,
+      });
+      $.ajax({
+        url: "../Controlador/actualizar_perfil_docente_controlador.php",
+        type: "POST",
+        data: {
+          Nombre: nombre,
+          apellido: apellido,
+          identidad: identidad,
+          id_persona: id_persona,
+          nacionalidad: nacionalidad,
+          estado_civil: estado_civil,
+          sexo: genero,
+          fecha_nacimiento:fecha,
+        },
+      }).done(function (resp) {
+        console.log(resp);
+
+        if (resp > 0) {
+          if (resp == 1) {
+            swal({
+              title: "Actualizado!",
+              text: "Datos actualizados correctamente",
+              type: "success",
+              showConfirmButton: true,
+              timer: 10000,
+            });
+            window.location = "../vistas/perfil_docentes_vista.php";
+          } else {
+            swal("Alerta!", "No se pudo completar la acción", "warning");
+          }
         }
-      }
-    });
-  }
+      });
+    }
 
 }
 
@@ -306,10 +312,11 @@ function TraerDatos() {
       MostrarEspecialidad();
       Actividades();
       Curriculum();
-      Num_Empleado();
-      ver_estado();
-      ver_genero();
-      ver_sued();
+     // Num_Empleado();
+     // ver_estado();
+    //  ver_genero();
+      //ver_sued();
+      ver_hi();
     }
   );
 }
@@ -611,19 +618,19 @@ function Curriculum() {
 }
 
 //CARGAR NUMERO DE EMPLEADO
-function Num_Empleado() {
-  var id_persona = $("#id_persona").val();
+// function Num_Empleado() {
+//   var id_persona = $("#id_persona").val();
 
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=Num_Empleado",
-    { id_persona: id_persona },
-    function (data, status) {
-      data = JSON.parse(data);
+//   $.post(
+//     "../Controlador/perfil_docente_controlador.php?op=Num_Empleado",
+//     { id_persona: id_persona },
+//     function (data, status) {
+//       data = JSON.parse(data);
 
-      $("#empleado").val(data.valor);
-    }
-  );
-}
+//       $("#empleado").val(data.valor);
+//     }
+//   );
+// }
 
 //CARGAR ESTADO CIVIL
 function ver_estado() {
@@ -1144,19 +1151,19 @@ function mostrar_estado_civil(id_estado_civil) {
 }
 
 //CARGAR ESTADO CIVIL
-function ver_estado() {
-  var id_persona = $("#id_persona").val();
+// function ver_estado() {
+//   var id_persona = $("#id_persona").val();
 
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=ver_estado_c",
-    { id_persona: id_persona },
-    function (data, status) {
-      data = JSON.parse(data);
+//   $.post(
+//     "../Controlador/perfil_docente_controlador.php?op=ver_estado_c",
+//     { id_persona: id_persona },
+//     function (data, status) {
+//       data = JSON.parse(data);
 
-      $("#ver_estado").val(data.estado_civil);
-    }
-  );
-}
+//       $("#ver_estado").val(data.estado_civil);
+//     }
+//   );
+// }
 
 //      PARA CUANDO CAMBIA EL VALOR DEL COMBOBOX E.C.
 $("#estado_civil").change(function () {
@@ -1192,19 +1199,19 @@ function mostrar_genero(id_genero) {
 }
 
 //CARGAR GENERO
-function ver_genero() {
-  var id_persona = $("#id_persona").val();
+// function ver_genero() {
+//   var id_persona = $("#id_persona").val();
 
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=ver_genero",
-    { id_persona: id_persona },
-    function (data, status) {
-      data = JSON.parse(data);
+//   $.post(
+//     "../Controlador/perfil_docente_controlador.php?op=ver_genero",
+//     { id_persona: id_persona },
+//     function (data, status) {
+//       data = JSON.parse(data);
 
-      $("#ver_genero").val(data.sexo);
-    }
-  );
-}
+//       $("#ver_genero").val(data.sexo);
+//     }
+//   );
+// }
 
 $("#genero").change(function () {
   var id_tipo_periodo = $("#genero option:selected").text();
@@ -1213,19 +1220,56 @@ $("#genero").change(function () {
 });
 
 //VER SUED
-function ver_sued() {
+// function ver_sued() {
+//   var id_persona = $("#id_persona").val();
+
+//   $.post(
+//     "../Controlador/perfil_docente_controlador.php?op=ver_sued",
+//     { id_persona: id_persona },
+//     function (data, status) {
+//       data = JSON.parse(data);
+
+//       $("#sued").val(data.valor);
+//     }
+//   );
+// }
+//VER entrada
+function ver_hi() {
   var id_persona = $("#id_persona").val();
 
   $.post(
-    "../Controlador/perfil_docente_controlador.php?op=ver_sued",
+    "../Controlador/perfil_docente_controlador.php?op=ver_hi",
     { id_persona: id_persona },
     function (data, status) {
       data = JSON.parse(data);
 
-      $("#sued").val(data.valor);
+      $("#hi").val(data.hr_inicial);
+      $("#hf").val(data.hr_final);
+      $("#fechaentrada").val(data.fecha_ingreso);
+      $("#empleado").val(data.num_empleado);
+      $("#sued").val(data.SUED);
+      $("#ver_estado").val(data.estado_civil);
+      $("#ver_genero").val(data.genero);
+   //   $("#fecha_nacimiento").val(data.genero);
     }
   );
 }
+
+// salida de docente
+function ver_hf() {
+  var id_persona = $("#id_persona").val();
+
+  $.post(
+    "../Controlador/perfil_docente_controlador.php?op=ver_hf",
+    { id_persona: id_persona },
+    function (data, status) {
+      data = JSON.parse(data);
+
+      $("#hf").val(data.valor);
+    }
+  );
+}
+
 
 //       -------------------------
 
@@ -1240,6 +1284,10 @@ function habilitar_editar() {
   document.getElementById("btn_editar").hidden = false;
   document.getElementById("genero").hidden = false;
   document.getElementById("ver_genero").hidden = true;
+  document.getElementById("fecha").disabled = false;
+  
+  
+  
 }
 
 function desabilitar() {
@@ -1275,6 +1323,7 @@ function desabilitar() {
     document.getElementById("btn_guardar_edicion").hidden = true;
     document.getElementById("genero").hidden = true;
     document.getElementById("ver_genero").hidden = false;
+    document.getElementById("fecha").disabled = true;
   }
 }
 

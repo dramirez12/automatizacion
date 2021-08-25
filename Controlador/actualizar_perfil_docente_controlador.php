@@ -16,9 +16,10 @@ $estado = isset($_POST["estado_civil"]) ? limpiarCadena1($_POST["estado_civil"])
 $sexo = isset($_POST["sexo"]) ? limpiarCadena1($_POST["sexo"]) : "";
 
 $identidad = isset($_POST["identidad"]) ? limpiarCadena1($_POST["identidad"]) : "";
+$fecha_nacimiento = isset($_POST["fecha_nacimiento"]) ? limpiarCadena1($_POST["fecha_nacimiento"]) : "";
 
 
-$consulta = $MU->Actualizar($nombre, $apellido, $identidad, $nacionalidad, $estado, $sexo, $id_persona);
+$consulta = $MU->Actualizar($nombre, $apellido, $identidad, $nacionalidad, $estado, $sexo, $fecha_nacimiento, $id_persona);
 echo $consulta;
 
 
