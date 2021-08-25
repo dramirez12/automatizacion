@@ -127,8 +127,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
 </head>
 
 
@@ -263,9 +263,9 @@ ob_end_flush();
                       <option value="">Seleccione el producto:</option>
                       <?php
 
-                      $servidor = "localhost";
-                      $usuario = "root";
-                      $password = "";
+                      $servidor = "167.114.169.207";
+                      $usuario = "informat_desarrollo";
+                      $password = "!fuRCr3XR-tz";
                       $base = "informat_desarrollo_automatizacion";
 
                       $mysqli2 = new mysqli($servidor, $usuario, $password, $base);
