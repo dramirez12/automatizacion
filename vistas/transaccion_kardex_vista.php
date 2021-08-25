@@ -1,4 +1,3 @@
-
 <?php
 ob_start();
 
@@ -29,10 +28,9 @@ if (isset($_REQUEST['msj'])) {
                                             });
                                     
                                         </script>';
-
   }
 
-  if ($msj==3) {
+  if ($msj == 3) {
 
     echo '<script type="text/javascript">
                                               swal({
@@ -43,13 +41,11 @@ if (isset($_REQUEST['msj'])) {
                                                 timer: 3000
                                               });
                                           </script>';
-
-
   }
 
 
 
-  if ($msj==4) {
+  if ($msj == 4) {
 
     echo '<script type="text/javascript">
     swal({
@@ -60,13 +56,11 @@ if (isset($_REQUEST['msj'])) {
       timer: 3000
     });
   </script>';
-
-
   }
 
 
-  
-  if ($msj==5) {
+
+  if ($msj == 5) {
 
     echo '<script type="text/javascript">
                                               swal({
@@ -77,13 +71,11 @@ if (isset($_REQUEST['msj'])) {
                                                 timer: 3000
                                               });
                                           </script>';
-
-
   }
 
 
 
-  if ($msj==6) {
+  if ($msj == 6) {
 
     echo '<script type="text/javascript">
                                               swal({
@@ -94,8 +86,6 @@ if (isset($_REQUEST['msj'])) {
                                                 timer: 3000
                                               });
                                           </script>';
-
-
   }
 }
 
@@ -127,8 +117,6 @@ if ($visualizacion == 0) {
   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A transaccion');
   $sqltabla = "call sel_transacciones_kardex()";
   $resultadotabla = $mysqli->query($sqltabla);
-
-  
 }
 
 ob_end_flush();
@@ -189,40 +177,40 @@ ob_end_flush();
 
 
 
-      <div style="padding: 6px;"><button data-toggle="modal" data-target="#nueva_transaccion" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nueva Transacción</button></div>
+        <div style="padding: 6px;"><button data-toggle="modal" data-target="#nueva_transaccion" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nueva Transacción</button></div>
         <table id="tblTransaccion_kardex" class="table table-bordered table-striped">
 
 
-<!-- m  -->
+          <!-- m  -->
           <thead>
             <tr>
               <!-- <th>NO</th> -->
               <th>NOMBRE PRODUCTO</th>
               <th>TIPO TRANSACCIÓN</th>
-           
 
-             
+
+
               <th>CANTIDAD</th>
               <th>FECHA</th>
             </tr>
           </thead>
           <tbody>
-             <?php $acum=0; ?>
-             <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+            <?php $acum = 0; ?>
+            <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
-                <!-- <?php $acum=$acum+1; ?> -->
+                <!-- <?php $acum = $acum + 1; ?> -->
                 <!-- <td><?php echo $acum; ?></td> -->
                 <td><?php echo $row['nombre_producto']; ?></td>
-               
+
                 <td><?php echo $row['tipo_transaccion']; ?></td>
-                
+
                 <td><?php echo $row['cantidad']; ?></td>
                 <td><?php echo $row['fecha_transaccion']; ?></td>
 
-          
+
 
               </tr>
-            <?php } ?> 
+            <?php } ?>
           </tbody>
         </table>
       </div>
@@ -236,14 +224,14 @@ ob_end_flush();
     </div>
   </div>
 
-  <form action="../Controlador/guardar_transaccion_controlador.php" method="post"  autocomplete="off">
-  <div class="modal fade" id="nueva_transaccion">
+  <form action="../Controlador/guardar_transaccion_controlador.php" method="post" autocomplete="off">
+    <div class="modal fade" id="nueva_transaccion">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Nueva Transacción</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            
+
             </button>
           </div>
 
@@ -257,45 +245,44 @@ ob_end_flush();
                   <div class="form-group">
 
                     <label>Tipo Transacción</label>
-                     
-                    <select class="form-control" name="cb_tipo_transaccion" id="cb_tipo_transaccion" onchange=""> 
-                                        <option value="0">Seleccione una opción:</option>
-                                        <option value="3">ENTRADA</option>
-                                        <option value="2">SALIDA</option>
-                                       
-                    </select>
-                     
 
-                    
+                    <select class="form-control" name="cb_tipo_transaccion" id="cb_tipo_transaccion" onchange="">
+                      <option value="0">Seleccione una opción:</option>
+                      <option value="3">ENTRADA</option>
+                      <option value="2">SALIDA</option>
+
+                    </select>
+
+
+
 
 
                     <label>Productos</label>
-                    <select class="form-control" name="cb_producto"  onchange="" required="">
-                                                <option value=""  >Seleccione el producto:</option>
-                                                <?php
+                    <select class="form-control" name="cb_producto" onchange="" required="">
+                      <option value="">Seleccione el producto:</option>
+                      <?php
 
-                                                      $servidor= "localhost";
-                                                      $usuario= "root";
-                                                      $password = "";
-                                                      $base= "informat_desarrollo_automatizacion";
+                      $servidor = "localhost";
+                      $usuario = "root";
+                      $password = "";
+                      $base = "informat_desarrollo_automatizacion";
 
-                                                      $mysqli2 = new mysqli($servidor,$usuario,$password,$base);
+                      $mysqli2 = new mysqli($servidor, $usuario, $password, $base);
 
-                                                $query = $mysqli2->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
-                                                while ($resultado = mysqli_fetch_array($query)) {
-                                                echo '<option value="'.$resultado['id_producto'].'"> '.$resultado['nombre_producto'].'</option>' ;
-                                                
-                                                }
-                                                ?>
-                     </select>
-
+                      $query = $mysqli2->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
+                      while ($resultado = mysqli_fetch_array($query)) {
+                        echo '<option value="' . $resultado['id_producto'] . '"> ' . $resultado['nombre_producto'] . '</option>';
+                      }
+                      ?>
+                    </select>
 
 
 
-                     <label>Cantidad</label>
-                    <input class="form-control" type="text" id="txt_cantidad" name="txt_cantidad"  required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_genero');" onkeypress="return solonumeros(event)" maxlength="30">
-                    
-                    
+
+                    <label>Cantidad</label>
+                    <input class="form-control" type="text" id="txt_cantidad" name="txt_cantidad" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_genero');" onkeypress="return solonumeros(event)" maxlength="30">
+
+
 
                   </div>
 
@@ -320,16 +307,16 @@ ob_end_flush();
       <!-- /.modal-dialog -->
     </div>
 
-    div class="RespuestaAjax"></div>
+    <div class="RespuestaAjax"></div>
 
-</form>
-
-
+  </form>
 
 
 
-  
-  
+
+
+
+
   <!-- <script type="text/javascript" language="javascript">
     function ventana() {
       window.open("../Controlador/reporte_mantenimiento_tipocaracteristicaes_controlador.php", "REPORTE");
@@ -362,10 +349,9 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-
