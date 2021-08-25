@@ -1,7 +1,8 @@
 <?php
 require_once "../Modelos/registro_docente_modelo.php";
 $MP = new modelo_registro_docentes();
-$nombrearchivo = htmlspecialchars($_POST['nombrearchivo'],ENT_QUOTES,'UIF-8');
+$nombrearchivo =
+$nombrearchivo = isset($_POST["nombrearchivo"]) ? limpiarCadena1($_POST["nombrearchivo"]) : "";
 
 if(is_array($_FILES) && count($_FILES)>0){
 
