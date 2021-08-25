@@ -1,4 +1,3 @@
-
 <?php
 ob_start();
 
@@ -85,7 +84,7 @@ if (isset($_REQUEST['msj'])) {
 
 </script>';
   }
-  if($msj == 7){
+  if ($msj == 7) {
     echo '<script type="text/javascript">
     swal({
       title:"",
@@ -94,9 +93,9 @@ if (isset($_REQUEST['msj'])) {
       showConfirmButton: false,
       timer: 3000
     });
-</script>';   
+</script>';
   }
-  if($msj == 8){
+  if ($msj == 8) {
     echo '<script type="text/javascript">
     swal({
       title:"",
@@ -105,7 +104,7 @@ if (isset($_REQUEST['msj'])) {
       showConfirmButton: false,
       timer: 3000
     });
-</script>';   
+</script>';
   }
 }
 
@@ -152,7 +151,7 @@ if ($visualizacion == 0) {
 
     /* Esta variable recibe el estado de modificar */
     $tipo_caracteristica = $_GET['tipo_caracteristica'];
-    $validacion=$_GET['validacion'];
+    $validacion = $_GET['validacion'];
 
     /* Iniciar la variable de sesion y la crea */
     /* Hace un select para mandar a traer todos los datos de la 
@@ -199,8 +198,8 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -238,7 +237,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Tipos de Características  Existentes</h3>
+        <h3 class="card-title">Tipos de Características Existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -248,7 +247,7 @@ ob_end_flush();
         </div>
       </div>
       <div class="card-body">
-      <div style="padding: 2px;"><a href="mantenimiento_crear_tipo_caracteristica_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+        <div style="padding: 2px;"><a href="mantenimiento_crear_tipo_caracteristica_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
 
         <table id="tblCaracteristica" class="table table-bordered table-striped">
 
@@ -263,19 +262,19 @@ ob_end_flush();
             </tr>
           </thead>
           <tbody>
-          <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+            <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
                 <td><?php echo $row['tipo_caracteristica']; ?></td>
-                <?php if ($row['validacion']==1){ ?>
-                <td><?php echo 'LETRAS'; 
-                 $_SESSION['validacion']=$row['validacion']; ?></td>
-                <?php } elseif ($row['validacion']==2){ ?>
-                <td><?php echo 'NÚMEROS'; 
-                $_SESSION['validacion']=$row['validacion']; ;  ?></td>
+                <?php if ($row['validacion'] == 1) { ?>
+                  <td><?php echo 'LETRAS';
+                      $_SESSION['validacion'] = $row['validacion']; ?></td>
+                <?php } elseif ($row['validacion'] == 2) { ?>
+                  <td><?php echo 'NÚMEROS';
+                      $_SESSION['validacion'] = $row['validacion'];;  ?></td>
                 <?php } else { ?>
-                  <td><?php echo 'LETRAS Y NÚMEROS'; 
-                  $_SESSION['validacion']=$row['validacion']; ; ?></td>
-                  <?php } ?>
+                  <td><?php echo 'LETRAS Y NÚMEROS';
+                      $_SESSION['validacion'] = $row['validacion'];; ?></td>
+                <?php } ?>
                 <td style="text-align: center;">
                   <a href="../vistas/mantenimiento_tipo_caracteristica_vista.php?tipo_caracteristica=<?php echo $row['tipo_caracteristica']; ?>&validacion=<?php echo $_SESSION['validacion']; ?>" class="btn btn-primary btn-raised btn-xs">
                     <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_tipo_caracteristica'] ?> "></i>
@@ -340,100 +339,85 @@ ob_end_flush();
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Modificar Tipo de Característica </label>
-                    <input class="form-control" class="tf w-input" type="text" id="txt_tipocaracteristica"  onkeypress="return validacion_para_nombre(event)"  name="txt_tipocaracteristica" value="<?php echo $_SESSION['tipo_caracteristica'];   ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipocaracteristica');"  maxlength="50">
+                    <input class="form-control" class="tf w-input" type="text" id="txt_tipocaracteristica" onkeypress="return validacion_para_nombre(event)" name="txt_tipocaracteristica" value="<?php echo $_SESSION['tipo_caracteristica'];   ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipocaracteristica');" maxlength="50">
                   </div>
                 </div>
               </div>
             </div>
 
             <?php
-            $vali=$_SESSION['tipo_caracteristica'];
-                              
-                              $sql= "select validacion from tbl_tipo_caracteristica where tipo_caracteristica='$vali'";
-              
-                              $resultado = $mysqli->query($sql);
-                              /* Manda a llamar la fila */
-                              $row = $resultado->fetch_array(MYSQLI_ASSOC);
-                              
-                   //         variable               viene de la BD
-                   $_SESSION['validacion'] = $row['validacion'];
-                   //print_r($_SESSION['validacion']);
+            $vali = $_SESSION['tipo_caracteristica'];
 
-              
-                    if ($_SESSION['validacion']==1)
-                    {
-                  
-                      $_SESSION['tipo']='LETRAS';
-                      
-                      $_SESSION['validacion2']=2;
-                      $_SESSION['tipo2']='NUMEROS';
+            $sql = "select validacion from tbl_tipo_caracteristica where tipo_caracteristica='$vali'";
 
-                      $_SESSION['validacion3']=3;
-                      $_SESSION['tipo3']='LETRAS Y NUMEROS';
+            $resultado = $mysqli->query($sql);
+            /* Manda a llamar la fila */
+            $row = $resultado->fetch_array(MYSQLI_ASSOC);
 
-                     }elseif ( $_SESSION['validacion']==2)
-                     {
-                      $_SESSION['tipo']='NUMEROS';
-                      
-                      $_SESSION['validacion2']=1;
-                      $_SESSION['tipo2']='LETRAS';
+            //         variable               viene de la BD
+            $_SESSION['validacion'] = $row['validacion'];
+            //print_r($_SESSION['validacion']);
 
-                      $_SESSION['validacion3']=3;
-                      $_SESSION['tipo3']='LETRAS Y NUMEROS';
-                     }else
-                     {
-                      $_SESSION['tipo']='LETRAS Y NUMEROS';
-                      
-                      $_SESSION['validacion2']=1;
-                      $_SESSION['tipo2']='LETRAS';
 
-                      $_SESSION['validacion3']=2;
-                      $_SESSION['tipo3']='NUMEROS';
-                     }
-                      ?>
+            if ($_SESSION['validacion'] == 1) {
 
+              $_SESSION['tipo'] = 'LETRAS';
+
+              $_SESSION['validacion2'] = 2;
+              $_SESSION['tipo2'] = 'NUMEROS';
+
+              $_SESSION['validacion3'] = 3;
+              $_SESSION['tipo3'] = 'LETRAS Y NUMEROS';
+            } elseif ($_SESSION['validacion'] == 2) {
+              $_SESSION['tipo'] = 'NUMEROS';
+
+              $_SESSION['validacion2'] = 1;
+              $_SESSION['tipo2'] = 'LETRAS';
+
+              $_SESSION['validacion3'] = 3;
+              $_SESSION['tipo3'] = 'LETRAS Y NUMEROS';
+            } else {
+              $_SESSION['tipo'] = 'LETRAS Y NUMEROS';
+
+              $_SESSION['validacion2'] = 1;
+              $_SESSION['tipo2'] = 'LETRAS';
+
+              $_SESSION['validacion3'] = 2;
+              $_SESSION['tipo3'] = 'NUMEROS';
+            }
+            ?>
+          </div>
 
 
           <div class="card-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
 
                   <label>Tipo de dato de la Característica</label>
-                  <select class="form-control" name="cb_tipo_dato" id="cb_tipo_dato" onchange=""> 
-                  <option value="0">Seleccione una opción:</option>
-                  <?php
-                                
-
-                                        if(isset($_SESSION['validacion']))
-                                        {
-
-                                         
-                                            echo '<option value="'.$_SESSION['validacion'].'" selected="" > '.$_SESSION['tipo'].'</option>' ;
-                                            echo '<option value="'.$_SESSION['validacion2'].'"  >  '.$_SESSION['tipo2'].'</option>' ;
-                                            echo '<option value="'.$_SESSION['validacion3'].'"  >  '.$_SESSION['tipo3'].'</option>' ;
-
-                                          
-                                      
-                                        
-                                        
-                                        } 
-                                        else
-                                        {
-                                     
-                                    
-                                       
-                                        }
-                                       
-                                ?>
-                 
-              </select>
-                  </div>
+                  <select class="form-control" name="cb_tipo_dato" id="cb_tipo_dato" onchange="">
+                    <option value="0">Seleccione una opción:</option>
+                    <?php
 
 
+                    if (isset($_SESSION['validacion'])) {
+
+
+                      echo '<option value="' . $_SESSION['validacion'] . '" selected="" > ' . $_SESSION['tipo'] . '</option>';
+                      echo '<option value="' . $_SESSION['validacion2'] . '"  >  ' . $_SESSION['tipo2'] . '</option>';
+                      echo '<option value="' . $_SESSION['validacion3'] . '"  >  ' . $_SESSION['tipo3'] . '</option>';
+                    } else {
+                    }
+
+                    ?>
+
+                  </select>
                 </div>
+
+
               </div>
             </div>
+          </div>
 
 
 
@@ -456,8 +440,8 @@ ob_end_flush();
     <div class="RespuestaAjax"></div>
 
   </form>
-  
-  
+
+
   <!-- <script type="text/javascript" language="javascript">
     function ventana() {
       window.open("../Controlador/reporte_mantenimiento_tipocaracteristicaes_controlador.php", "REPORTE");
@@ -490,10 +474,9 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-
