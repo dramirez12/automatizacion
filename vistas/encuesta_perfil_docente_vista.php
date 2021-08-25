@@ -119,9 +119,11 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
                             <div class="card-body">
                                 <h4 class="card-title">Preferencia Docente en Base a Experiencias Profesionales</h4>
                                 <div class="card-text">
-                                    <button type="button" id="btn_modal1" class="btn btn-info " onclick="pregunta1();">Pregunta 1</button>
-                                    <button type="button" id="btn_modal2" class="btn btn-info " onclick="pregunta2();">Pregunta 2</button>
-                                    <button type="button" id="btn_modal3" class="btn btn-info " onclick="pregunta3();">Pregunta 3</button>
+                                    <button type="button" id="btn_modal1" class="btn btn-info " onclick="pregunta1();">1. Identifique las Áreas que imparte clases</button>
+                                    <br><br>
+                                    <button type="button" id="btn_modal2" class="btn btn-info " onclick="pregunta2();">2. Identifique las Áreas de Preferencia y Experencia Profesional</button>
+                                    <br><br>
+                                    <button type="button" id="btn_modal3" class="btn btn-info " onclick="pregunta3();">3. Identifique las Asignaturas de Preferencia y Experiencia Profesional</button>
                                 </div>
                             </div>
 
