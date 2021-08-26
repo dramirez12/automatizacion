@@ -36,11 +36,33 @@
 		}
 	});
 } */
-var hoy = new Date();
+/* //FECHA MAXIMA HOY
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth() + 1; //January is 0!
+let yyyy = today.getFullYear();
+if (dd < 10) {
+	dd = '0' + dd;
+}
+if (mm < 10) {
+	mm = '0' + mm;
+}
+
+today = yyyy + '-' + mm + '-' + dd;
+
+let minimum = '1970-01-01';
+
+let search_date = document.getElementById('fecha_ingreso');
+
+search_date.max = today;
+search_date.min = minimum; */
+
+
+/* var hoy = new Date();
 fecha = hoy.getDate() + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getFullYear();
 hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
 fechaYHora = fecha + ' ' + hora;
-var table;
+var table; */
 
 /* function select_periodo() {
 	$.post(
@@ -361,6 +383,7 @@ function TablaDocente() {
 				{ data: 'numero_empleado' },
 				{ data: 'nombre' },
 				{ data: 'identidad' },
+				{ data: 'fecha_ingreso' },
 				{ data: 'jornada' },
 				{ data: 'hr_inicial' },
 				{ data: 'hr_final' },
@@ -709,6 +732,7 @@ $('#tabladocentes').on('click', '.editar', function() {
 	$("#hr_inicio_edita").val(data.hr_inicial).trigger("change");
 	$("#hr_final_edita").val(data.hr_final).trigger("change");
 	$("#sued").val(data.sued).trigger("change");
+	$("#fecha_ingreso").val(data.fecha_ingreso);
 	$("#identidad_edita").val(data.identidad);
 	$("#nacionalidad_edita").val(data.nacionalidad).trigger("change");
 	
@@ -1038,6 +1062,9 @@ function actualizar_pagina() {
 	$("#txt_actividad").val(id_tipo_periodo);
 }); */
 function modificar_gestion() {
+	var fecha_ingreso = $('#fecha_ingreso').val();
+	console.log(fecha_ingreso);
+
 	var identidad = $('#identidad_edita').val();
 	console.log(identidad);
 	
@@ -1072,7 +1099,7 @@ function modificar_gestion() {
 		hra_final == null ||
 		jornada1 == null ||
 		categoria1 == null ||
-		identidad.length == 0 ||
+		fecha_ingreso.length == 0 |
 		num_empleado.length == 0 ||
 		sued == null
 
@@ -1105,6 +1132,7 @@ function modificar_gestion() {
 					data: {
 						sued:sued,
 						num_empleado: num_empleado,
+						fecha_ingreso: fecha_ingreso,
 						identidad: identidad,
 						hra_inicio: hra_inicio,
 						hra_final: hra_final,

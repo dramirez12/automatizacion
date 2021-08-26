@@ -227,7 +227,7 @@ break;
       
     break;
     
-    case 'TipoContacto':
+   /*  case 'TipoContacto':
            
            
       $data=array();
@@ -241,7 +241,7 @@ break;
             // echo "<option value='1'> 1 </option>";
          }
       
-  break;
+  break; */
 
   case 'mayoria_edad':
     $rspta = $instancia_modelo->mayoria_edad();

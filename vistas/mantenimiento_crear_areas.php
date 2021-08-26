@@ -113,11 +113,29 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
+
+                                <div class="col-md-3">
+                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Área</label>
                                         <input class="form-control" type="text" id="area_asignatura" name="area_asignatura" onkeyup="DobleEspacio(this, event); MismaLetra('area_asignatura');">
                                     </div>
+
+                                    <div class="form-group ">
+                                        <label>Descripción</label>
+                                        <input class="form-control" type="text" id="descripcion_area" name="descripcion_area" onkeyup="DobleEspacio(this, event); MismaLetra('descripcion_area');">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Ingrese la Carrera</label>
+                                        <select class="form-control select2" type="text" id="cbm_carrera" name="cmb_carrera" style="width: 100%;">
+                                            <option value="">Seleccione una opción</option>
+                                        </select>
+                                    </div>
+                                    <input hidden class="form-control"  id="carrera1" name="carrera1" value="0" readonly>
+
 
 
                                     <p class="text-center" style="margin-top: 20px;">
@@ -194,4 +212,33 @@ ob_end_flush();
         }
 
     }
+
+    // llenar select nombre de plan
+function llenar_carrera() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=carreras",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_carrera").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+      
+
+      $("#cbm_carrera").append(o);
+      $("#cbm_carrera").val(0);
+      
+    },
+  });
+}
+llenar_carrera();
+$('#cbm_carrera').change(function() {
+	var carrera = $(this).val();
+	console.log(carrera);
+    $('#carrera1').val(carrera);
+    if (carrera == 0) {
+    alert("Seleccione una opción válida");
+    document.getElementById("cbm_carrera").value = "";
+  }
+});
 </script>

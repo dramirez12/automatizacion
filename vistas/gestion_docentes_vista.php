@@ -193,23 +193,24 @@ ob_end_flush();
                         <table id="tabladocentes" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID PERSONA</th>
-                                    <th>N EMPLEADO</th>
-                                    <th>NOMBRE</th>
-                                    <th>IDENTIDAD</th>
-                                    <th>JORNADA</th>
-                                    <th>H_INICIAL</th>
-                                    <th>H_FINAL</th>
-                                    <th>CATEGORIA</th>
+                                    <th>#</th>
+                                    <th>N# Empleado</th>
+                                    <th>Nombre</th>
+                                    <th>Identidad</th>
+                                    <th>Fecha ingreso</th>
+                                    <th>Jornada</th>
+                                    <th>H_inicial</th>
+                                    <th>H_final</th>
+                                    <th>Categoria</th>
                                     <th>SUED</th>
-                                    <th>COMISIÓNES</th>
-                                    <th>CORREOS</th>
-                                    <th>TELÉFONOS</th>
+                                    <th>Comisiónes</th>
+                                    <th>Correos</th>
+                                    <th>Teléfonos</th>
                                     <!--  <th>FOTO</th>
                                     <th>CURRICULUM</th> -->
-                                    <th>ESTADO</th>
-                                    <th>MODIFICAR ESTADO</th>
-                                    <th>MODIFICAR INFORMACIÓN</th>
+                                    <th>Eestado</th>
+                                    <th>Modificar Estado</th>
+                                    <th>Modificar Información</th>
 
 
 
@@ -263,11 +264,18 @@ ob_end_flush();
 
                                         </div>
                                     </div> -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Fecha de ingreso</label>
+                                            <input class="form-control" type="date" name="fecha_ingreso"  id="fecha_ingreso" required  >
+
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Identificación</label>
-                                            <input class="form-control" name="identidad_edita" data-inputmask="'mask': '9999-9999-99999'" data-mask id="identidad_edita" onkeyup="ValidarIdentidad($('#identidad_edita').val());">
+                                            <input class="form-control" name="identidad_edita" data-inputmask="'mask': '9999-9999-99999'" data-mask id="identidad_edita" onkeyup="ValidarIdentidad($('#identidad_edita').val());" readonly>
 
                                         </div>
                                     </div>
@@ -476,8 +484,31 @@ ob_end_flush();
 
 </body>
 <html>
-<script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
+
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+
+<script language="javascript">
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth() + 1; //January is 0!
+let yyyy = today.getFullYear();
+if (dd < 10) {
+	dd = '0' + dd;
+}
+if (mm < 10) {
+	mm = '0' + mm;
+}
+
+today = yyyy + '-' + mm + '-' + dd;
+
+let minimum = '1970-01-01';
+
+let search_date = document.getElementById('fecha_ingreso');
+
+search_date.max = today;
+search_date.min = minimum;
+</script>
+
 
 <script language="javascript">
     function ventana1() {

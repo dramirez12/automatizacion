@@ -9,6 +9,7 @@ $id_persona1 = isset($_POST["id_persona1"]) ? limpiarCadena1($_POST["id_persona1
 $id_actividad = isset($_POST["id_actividad"]) ? limpiarCadena1($_POST["id_actividad"]) : "";
 $id_jornada = isset($_POST["id_jornada"]) ? limpiarCadena1($_POST["id_jornada"]) : "";
 $sued = isset($_POST["sued"]) ? limpiarCadena1($_POST["sued"]) : "";
+$fecha_ingreso= isset($_POST["fecha_ingreso"]) ? limpiarCadena1($_POST["fecha_ingreso"]) : "";
 $identidad = isset($_POST["identidad"]) ? limpiarCadena1($_POST["identidad"]) : "";
 $num_empleado = isset($_POST["num_empleado"]) ? limpiarCadena1($_POST["num_empleado"]) : "";
 $jornada_=isset($_POST["jornada_"]) ? limpiarCadena1($_POST["jornada_"]) : "";
@@ -164,7 +165,7 @@ break;
     echo json_encode($rspta);
     break;
   case 'modificar_gestion':
-    $rspta = $instancia_modelo->modificar_gestion($sued, $num_empleado, $identidad, $jornada_, $categoria_, $hra_inicio, $hra_final, $id_persona__);
+    $rspta = $instancia_modelo->modificar_gestion($sued, $num_empleado, $fecha_ingreso, $identidad, $jornada_, $categoria_, $hra_inicio, $hra_final, $id_persona__);
     //Codificar el resultado utilizando json
     echo json_encode($rspta);
     break;

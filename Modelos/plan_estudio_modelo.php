@@ -507,6 +507,14 @@ class modelo_plan{
 
         return $instancia_conexion->ejecutarConsulta($sql);
     }
+    function sel_carreras()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('SELECT * FROM tbl_carrera');
+
+        return $consulta;
+    }
+  
 }
 
 

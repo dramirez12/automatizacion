@@ -126,12 +126,12 @@ function descripcion_jornada($id_jornada)
     }
 
 
-  function modificar_gestion($sued, $num_empleado, $identidad, $id_jornada_, $id_categoria_, $hr_inicial_, $hr_final_, $id_persona_)
+  function modificar_gestion($sued, $num_empleado, $fecha_ingreso,$identidad, $id_jornada_, $id_categoria_, $hr_inicial_, $hr_final_, $id_persona_)
   {
 
     global $instancia_conexion;
 
-    $sql = "call proc_modificar_gestion('$sued', '$num_empleado', '$identidad', '$id_jornada_','$id_categoria_','$hr_inicial_','$hr_final_','$id_persona_')";
+    $sql = "call proc_modificar_gestion('$sued', '$num_empleado', '$fecha_ingreso', '$identidad', '$id_jornada_','$id_categoria_','$hr_inicial_','$hr_final_','$id_persona_')";
 
     if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
       return 1;

@@ -11,6 +11,8 @@ $id_asignatura = isset($_POST["Id_asignatura"]) ? limpiarCadena1($_POST["Id_asig
 $id_equivalencias = isset($_POST["id_equivalencias"]) ? limpiarCadena1($_POST["id_equivalencias"]) : "";
 $id_asignatura_requisito = isset($_POST["id_asignatura_requisito"]) ? limpiarCadena1($_POST["id_asignatura_requisito"]) : "";
 $estado = isset($_POST["estado"]) ? limpiarCadena1($_POST["estado"]) : "";
+$id_carrera = isset($_POST["id_carrera"]) ? limpiarCadena1($_POST["id_carrera"]) : "";
+
 
 $instancia_modelo = new modelo_plan();
 switch ($_GET["op"]) {
@@ -126,7 +128,7 @@ switch ($_GET["op"]) {
         echo json_encode($respuesta);
         break;
 
-        
+
 
     case 'nombreAsignatura':
 
@@ -134,7 +136,7 @@ switch ($_GET["op"]) {
         echo json_encode($respuesta);
         break;;
 
-        
+
 
     case 'asignaturaVigente':
 
@@ -159,11 +161,11 @@ switch ($_GET["op"]) {
         echo json_encode($respuesta);
         break;
 
-        case 'datos_plan':
-            $rspta = $instancia_modelo->datos_plan($id_plan_estudio);
-            //Codificar el resultado utilizando json
-            echo json_encode($rspta);
-            break;
+    case 'datos_plan':
+        $rspta = $instancia_modelo->datos_plan($id_plan_estudio);
+        //Codificar el resultado utilizando json
+        echo json_encode($rspta);
+        break;
 
 
     case 'nombreAsignatura_servicio':
@@ -171,9 +173,17 @@ switch ($_GET["op"]) {
         $respuesta = $instancia_modelo->nombreAsignaturaServicio($asignatura);
         echo json_encode($respuesta);
         break;
+    case 'carreras':
 
-        
+        $data = array();
+        $respuesta2 = $instancia_modelo->sel_carreras();
 
-        
-        
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_carrera . "'> " . $r2->Descripcion . " </option>";
+        }
+        break;
+
+       
 }

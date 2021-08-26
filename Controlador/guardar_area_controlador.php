@@ -8,13 +8,25 @@ $Id_objeto = 111;
 
 
 $area_asignatura = $_POST['area_asignatura'];
+$descripcion_area = $_POST['descripcion_area'];
+$id_carrera = ($_POST['carrera1']);
 
 
 ///     EXISTE AREA
 $sqlexiste = ("select area from tbl_areas where area = '$area_asignatura'");
 $existe_area = mysqli_fetch_assoc($mysqli->query($sqlexiste));
-
-/* VERIFICAR CAMPOS VACIOS*/
+if ($id_carrera==0) {
+    echo '<script type="text/javascript">
+    swal({
+       title:"",
+       text:"Seleccione una Carrera Valida",
+       type: "error",
+       showConfirmButton: false,
+       timer: 3000
+    });
+</script>';
+}else {
+    /* VERIFICAR CAMPOS VACIOS*/
 if ($_POST['area_asignatura'] <> '')
 {
    
@@ -30,7 +42,7 @@ if ($_POST['area_asignatura'] <> '')
                 });
             </script>';
              }else{
-                $sql = "call proc_insert_area('$area_asignatura', '$area_asignatura')";
+                $sql = "call proc_insert_area('$area_asignatura', '$descripcion_area','$_SESSION[usuario]','$id_carrera')";
         $resultado = $mysqli->query($sql);
 
             if ($resultado === TRUE) {
@@ -77,3 +89,6 @@ else
                                     });
                                 </script>';
 }
+    # code...
+}
+
