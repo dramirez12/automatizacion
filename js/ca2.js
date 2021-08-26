@@ -180,6 +180,9 @@ llenar_tipo_asignatura_crear();
 $("#cbm_tipo_asignatura").change(function () {
   var id_tipo_asig = $(this).val();
   console.log(id_tipo_asig);
+  
+      document.getElementById("txt_cod_asignatura").value = "";
+      document.getElementById("txt_unid_valora").value = "";
 
   if (id_tipo_asig == 1) {
     $.post(
@@ -208,6 +211,8 @@ $("#cbm_tipo_asignatura").change(function () {
   
   } else {
     $("#select2").empty();
+      document.getElementById("txt_cod_asignatura").value = "";
+      document.getElementById("txt_unid_valora").value = "";
   }
 
 });

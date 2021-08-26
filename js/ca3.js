@@ -812,6 +812,9 @@ $("#cbm_tipo_asignatura_edita").change(function () {
   var id_tipo_asig = $(this).val();
   //console.log(id_tipo_asig);
 
+  
+    // document.getElementById("txt_cod_asignatura_edita").value = "";
+    // document.getElementById("txt_unidades_edita").value = "";
   if (id_tipo_asig == 1) {
     $.post(
       "../Controlador/reporte_carga_controlador.php?op=asig_normal_carga",
@@ -840,7 +843,6 @@ $("#cbm_tipo_asignatura_edita").change(function () {
     $("#cbm_asignatura_edita").empty();
     document.getElementById("txt_cod_asignatura_edita").value = "";
     document.getElementById("txt_unidades_edita").value = "";
-  
   }
 });
 
