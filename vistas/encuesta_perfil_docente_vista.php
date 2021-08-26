@@ -117,13 +117,17 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
                     <div class="d-flex justify-content-around flex-row bd-highlight row">
                         <div class="card " style="width:420px;border-color:gray;" id="parrafo_encuesta">
                             <div class="card-body">
-                                <h4 class="card-title">Preferencia Docente en Base a Experiencias Profesionales</h4>
+                                <h4 class="card-title">Preferéncia Docente en Base a Éxperiencias Profesionales</h4>
                                 <div class="card-text">
                                     <button type="button" id="btn_modal1" class="btn btn-info " onclick="pregunta1();">1. Identifique las Áreas que imparte clases</button>
                                     <br><br>
-                                    <button type="button" id="btn_modal2" class="btn btn-info " onclick="pregunta2();">2. Identifique las Áreas de Preferencia y Experencia Profesional</button>
+                                    <button type="button" id="btn_modal2" class="btn btn-info " onclick="pregunta2();">
+                                        <h6 style="text-align: left;font-size:10;">2. Identifique las Áreas de Preferéncia y Éxperencia Profesional</h6>
+                                    </button>
                                     <br><br>
-                                    <button type="button" id="btn_modal3" class="btn btn-info " onclick="pregunta3();">3. Identifique las Asignaturas de Preferencia y Experiencia Profesional</button>
+                                    <button type="button" id="btn_modal3" class="btn btn-info " onclick="pregunta3();">
+                                        <h6 style="text-align: left; font-size:10;">3. Identifique las Asignaturas de Preferéncia y Éxperiencia Profesional</h6>
+                                    </button>
                                 </div>
                             </div>
 
