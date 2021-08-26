@@ -116,7 +116,7 @@ function TablaDocente() {
 				 
 				 
 				 "exportOptions": {
-					columns: [1, 2, 3, 4, 7, 8, 9, 10],
+					columns: [1, 2, 3, 4,5,6, 7, 8, 9, 10],
 								 modifier: {
 								 page: 'current'
 										 }
@@ -211,7 +211,7 @@ function TablaDocente() {
 				
 				
 				 "exportOptions": {
-					columns: [1, 2, 3, 4, 7, 8, 9, 10],
+					columns: [1, 2, 3, 4,5,6, 7, 8, 9, 10],
 		 
 								
 		 
@@ -224,7 +224,7 @@ function TablaDocente() {
 								 
 								 
 								  messageTop: '    FECHA: '+  ((new Date().getDate()+'-'+(new Date().getMonth()+1)+'-'+new Date().getFullYear()).toString()
-								  ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                                                                                                        REPORTE DE DOCENTES ', 
+								  ) +'    HORA: '+ (new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()).toString() + '                                                                                                                     REPORTE DE DOCENTES ', 
 								 
 								  
 								  
@@ -241,7 +241,7 @@ function TablaDocente() {
 		 customize: function(doc) {
 		 doc.content[2].margin = [ 150, 0, 150, 0 ], //left, top, right, bottom
 		 doc.content[2].margin = [0, 15, 100, 0]
-		 doc.content[2].table.widths = ["15%", "20%","11%","10%","10%","7%","22%","16%"];
+		 doc.content[2].table.widths = ["8%", "20%","11%","10%","10%","8%","7%","10%","9%","17%"];
 		   doc.styles.tableBodyEven.alignment = 'center';
 		   doc.styles.tableBodyOdd.alignment = 'center'; 
 		 
