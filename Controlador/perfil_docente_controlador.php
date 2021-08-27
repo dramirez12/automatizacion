@@ -275,12 +275,7 @@ if (isset($_GET['op'])) {
             }
             break;
 
-        case 'EliminarPregunta1':
-
-
-            $rspta = $instancia_modelo->EliminarPregunta1($id_persona);
-
-            break;
+       
 
         case 'contarPregunta1':
 
@@ -289,39 +284,23 @@ if (isset($_GET['op'])) {
 
             break;
 
-        case 'EliminarPregunta2':
-
-
-            $rspta = $instancia_modelo->EliminarPregunta2($id_persona);
-
-            break;
-
+        
         case 'contarPregunta2':
 
             $rspta = $instancia_modelo->Existepregunta2($id_persona);
             echo json_encode($rspta);
 
             break;
-        case 'EliminarPregunta3':
-
-
-            $rspta = $instancia_modelo->EliminarPregunta3($id_persona);
-
-            break;
+      
 
         case 'contarPregunta3':
 
             $rspta = $instancia_modelo->Existepregunta3($id_persona);
-            echo json_encode($rspta);
+            echo($rspta);
 
             break;
 
-        case 'EliminarPregunta4':
-
-
-            $rspta = $instancia_modelo->EliminarPregunta4($id_persona);
-
-            break;
+        
 
         case 'contarPregunta4':
 

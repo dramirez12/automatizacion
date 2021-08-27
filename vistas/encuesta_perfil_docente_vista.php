@@ -126,7 +126,11 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
                                     </button>
                                     <br><br>
                                     <button type="button" id="btn_modal3" class="btn btn-info " onclick="pregunta3();">
-                                        <h6 style="text-align: left; font-size:10;">3. Identifique las Asignaturas de Preferéncia y Éxperiencia Profesional</h6>
+                                        <h6 style="text-align: left; font-size:10;">3. Identifique las Asignaturas de Preferéncia Profesional</h6>
+                                    </button>
+                                    <br><br>
+                                    <button type="button" id="btn_modal3" class="btn btn-info " onclick="pregunta4();">
+                                        <h6 style="text-align: left; font-size:10;">4. Identifique las Asignaturas de Éxperiencia Profesional</h6>
                                     </button>
                                 </div>
                             </div>
@@ -292,9 +296,37 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
 
                                         ?>
                                     </div>
-                                    <br><br>
+                                   
 
-                                    <h5 style="font-weight: bold; font-size: 15px"> 4. ¿Selecciones la(s) Asignatura(s) en la que desea de impartir? </h5>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="cancelar4" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" onclick="enviarpregunta3();">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal fade" id="modalencuesta4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalencuesta">Pregunta 4</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <!--  <div class="card " style="width:420px;border-color:gray;"> -->
+
+                                <div style="text-align:left">
+
+                                     <h5 style="font-weight: bold; font-size: 15px"> 4. ¿Selecciones la(s) Asignatura(s) en la que desea de impartir? </h5>
                                     <div class="form-check">
 
                                         <?php
@@ -303,18 +335,18 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
 
                                             foreach ($row10 as $id) {
                                                 echo '<br>';
-                                                echo '<input class="pregunta4" type="checkbox" checked = "checked" name="asignatura4[]" value="' . $id["id_desea_asig_doce"] . '">' . $id["desea_asig"];
+                                                echo '<input class="pregunta4" type="checkbox"  checked = "checked" name="asignatura4[]" value="' . $id["id_desea_asig_doce"] . '">' . $id["desea_asig"];
                                             }
 
                                             foreach ($row11 as $id) {
 
                                                 echo '<br>';
-                                                echo '<input class="pregunta4" type="checkbox" name="asignatura4[]" value="' . $id["id_asignatura"] . '">' . $id["asig_vacias"];
+                                                echo '<input class="pregunta4" type="checkbox"  name="asignatura4[]" value="' . $id["id_asignatura"] . '">' . $id["asig_vacias"];
                                             }
                                         } else {
                                             foreach ($row9 as $id) {
                                                 echo '<br>';
-                                                echo '<input required class="pregunta4" type="checkbox" name="asignatura4[]" value="' . $id["Id_asignatura"] . '">' . $id["asignatura"];
+                                                echo '<input required class="pregunta4" type="checkbox"  name="asignatura4[]" value="' . $id["Id_asignatura"] . '">' . $id["asignatura"];
                                             }
                                         };
 
@@ -324,8 +356,8 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" onclick="enviarpregunta3();enviarpregunta4();">Guardar</button>
+                                    <button type="button" id="cancelar4" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" onclick="enviarpregunta4();">Guardar</button>
                                 </div>
                             </div>
                         </div>

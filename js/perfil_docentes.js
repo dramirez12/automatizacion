@@ -58,7 +58,6 @@ $(document).ready(function () {
           function (e) {}
         );
         i--;
-     
       }
     });
   }
@@ -74,7 +73,6 @@ $(document).ready(function () {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-       
         var id = $(this).attr("id");
         var eliminar_correo = document.getElementById("correo" + id).value;
         console.log(eliminar_correo);
@@ -86,7 +84,6 @@ $(document).ready(function () {
           function (e) {}
         );
         i--;
-     
       }
     });
   }
@@ -119,65 +116,64 @@ function EditarPerfil(nombre, apellido, identidad, nacionalidad, estado) {
 
   //console.log(fecha);
 
-    if (
-      nombre == "" ||
-      apellido == "" ||
-      nacionalidad == "" ||
-      estado_civil == "" ||
-      genero == "" ||
-      identidad == "" ||
-      fecha==""
-    ) {
-      swal({
-        title: "Campos Vacios!",
-        text: "Tiene campos en blanco",
-        type: "warning",
-        showConfirmButton: true,
-        timer: 10000,
-      });
-    } else {
-      desabilitar();
-    
-      swal({
-        title: "alerta",
-        text: "Por favor espere un momento",
-        type: "warning",
-        showConfirmButton: false,
-        timer: 11000,
-      });
-      $.ajax({
-        url: "../Controlador/actualizar_perfil_docente_controlador.php",
-        type: "POST",
-        data: {
-          Nombre: nombre,
-          apellido: apellido,
-          identidad: identidad,
-          id_persona: id_persona,
-          nacionalidad: nacionalidad,
-          estado_civil: estado_civil,
-          sexo: genero,
-          fecha_nacimiento:fecha,
-        },
-      }).done(function (resp) {
-        console.log(resp);
+  if (
+    nombre == "" ||
+    apellido == "" ||
+    nacionalidad == "" ||
+    estado_civil == "" ||
+    genero == "" ||
+    identidad == "" ||
+    fecha == ""
+  ) {
+    swal({
+      title: "Campos Vacios!",
+      text: "Tiene campos en blanco",
+      type: "warning",
+      showConfirmButton: true,
+      timer: 10000,
+    });
+  } else {
+    desabilitar();
 
-        if (resp > 0) {
-          if (resp == 1) {
-            swal({
-              title: "Actualizado!",
-              text: "Datos actualizados correctamente",
-              type: "success",
-              showConfirmButton: true,
-              timer: 10000,
-            });
-            window.location = "../vistas/perfil_docentes_vista.php";
-          } else {
-            swal("Alerta!", "No se pudo completar la acción", "warning");
-          }
+    swal({
+      title: "alerta",
+      text: "Por favor espere un momento",
+      type: "warning",
+      showConfirmButton: false,
+      timer: 11000,
+    });
+    $.ajax({
+      url: "../Controlador/actualizar_perfil_docente_controlador.php",
+      type: "POST",
+      data: {
+        Nombre: nombre,
+        apellido: apellido,
+        identidad: identidad,
+        id_persona: id_persona,
+        nacionalidad: nacionalidad,
+        estado_civil: estado_civil,
+        sexo: genero,
+        fecha_nacimiento: fecha,
+      },
+    }).done(function (resp) {
+      console.log(resp);
+
+      if (resp > 0) {
+        if (resp == 1) {
+          swal({
+            title: "Actualizado!",
+            text: "Datos actualizados correctamente",
+            type: "success",
+            showConfirmButton: true,
+            timer: 10000,
+          });
+          window.location = "../vistas/perfil_docentes_vista.php";
+        } else {
+          swal("Alerta!", "No se pudo completar la acción", "warning");
         }
-      });
-    }
-
+      }
+    });
+  }
 }
 
 //Convertir inputs a Mayusculas
@@ -312,9 +308,9 @@ function TraerDatos() {
       MostrarEspecialidad();
       Actividades();
       Curriculum();
-     // Num_Empleado();
-     // ver_estado();
-    //  ver_genero();
+      // Num_Empleado();
+      // ver_estado();
+      //  ver_genero();
       //ver_sued();
       ver_hi();
     }
@@ -490,7 +486,8 @@ function addTel() {
   }
 }
 function correovalido(correo1) {
-  var expresion1 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  var expresion1 =
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   //console.log(expresion1.test(correo1));
   if (expresion1.test(correo1)) {
@@ -502,11 +499,10 @@ function correovalido(correo1) {
 
 // Cambiar Imagen de Perfil
 function imagen() {
-    var imagen = document.getElementById("imagen").value;
+  var imagen = document.getElementById("imagen").value;
   if (imagen == "") {
     alert("No ha seleccionado un archivo");
   } else {
-  
     var frmData = new FormData();
     var imagen = $("#imagen").val();
     if (imagen == "") {
@@ -542,35 +538,33 @@ function imagen() {
   }
 }
 
-
-
 //============================
 //      TAMAÑO DE FOTO       =
 //============================
-var uploadField = document.getElementById('imagen');
+var uploadField = document.getElementById("imagen");
 
-uploadField.onchange = function() {
-	if (this.files[0].size >5242880) {
-		//alert("Archivo muy grande!");
-		swal('Error', 'Archivo muy grande!', 'warning');
+uploadField.onchange = function () {
+  if (this.files[0].size > 5242880) {
+    //alert("Archivo muy grande!");
+    swal("Error", "Archivo muy grande!", "warning");
 
-		this.value = '';
-	}
+    this.value = "";
+  }
 };
 
 //============================
 //      TAMAÑO DE CURRICULUM =
 //============================
- var uploadField = document.getElementById('c_vitae');
+var uploadField = document.getElementById("c_vitae");
 
-uploadField.onchange = function() {
-	if (this.files[0].size > 15728640) {
-		//alert("Archivo muy grande!");
-		swal('Error', 'Archivo muy grande!', 'warning');
+uploadField.onchange = function () {
+  if (this.files[0].size > 15728640) {
+    //alert("Archivo muy grande!");
+    swal("Error", "Archivo muy grande!", "warning");
 
-		this.value = '';
-	}
-}; 
+    this.value = "";
+  }
+};
 
 //CARGAR TABLA DE ACTIVIDADES
 function Actividades() {
@@ -653,14 +647,13 @@ function MostrarBoton() {
   $("#btn_foto").removeAttr("hidden");
   $("#btn_mostrar").attr("hidden", "hidden");
   $("#btn_foto_cancelar").removeAttr("hidden");
-  
 }
- $("#btn_foto_cancelar").click(function () {
-   $("#btn_foto_cancelar").attr("hidden", "hidden");
-   $("#btn_foto").attr("hidden", "hidden");
-   $("#imagen").attr("hidden", "hidden");
+$("#btn_foto_cancelar").click(function () {
+  $("#btn_foto_cancelar").attr("hidden", "hidden");
+  $("#btn_foto").attr("hidden", "hidden");
+  $("#imagen").attr("hidden", "hidden");
   $("#btn_mostrar").removeAttr("hidden");
- });
+});
 
 function ValidarIdentidad(identidad) {
   //console.log(n);
@@ -819,7 +812,6 @@ function MismaLetra(id_input) {
   }
 }
 
-
 // $("#btn_editar_curri").click(function () {
 //   // document.getElementById('parrafo_numEmpleado').hidden = true;
 //   document.getElementById('parrafo_boton_editar').hidden = true;
@@ -944,6 +936,10 @@ function pregunta3() {
   $("#modalencuesta3").modal({ backdrop: "static", keyboard: false });
   $("#modalencuesta3").modal("show");
 }
+function pregunta4() {
+  $("#modalencuesta4").modal({ backdrop: "static", keyboard: false });
+  $("#modalencuesta4").modal("show");
+}
 function ventana() {
   window.open("../vistas/encuesta_docente_vista.php", "Encuesta");
 }
@@ -975,44 +971,38 @@ $("#btn_modal1").click(function () {
   // });
 });
 
-function alerta() {
-  var chk = document.getElementById("c").value;
-  alert(chk);
-}
+// function alerta() {
+//   var chk = document.getElementById("c").value;
+//   alert(chk);
+// }
 
 function Registrarcurriculum() {
-  
   var c_vitae = document.getElementById("c_vitae").value;
   if (c_vitae == "") {
     alert("No ha seleccionado un archivo");
   } else {
-      var formData = new FormData();
-      var curriculum = $("#c_vitae")[0].files[0];
-      formData.append("c", curriculum);
-      formData.append("id_persona", $("#id_persona").val());
+    var formData = new FormData();
+    var curriculum = $("#c_vitae")[0].files[0];
+    formData.append("c", curriculum);
+    formData.append("id_persona", $("#id_persona").val());
 
-      $.ajax({
-        url: "../Controlador/perfil_docente_controlador.php?op=cambiarCurriculum",
-        type: "post",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (respuesta) {
-          if ((respuesta = 1)) {
-            swal(
-              "Actualizado!",
-              "Datos actualizados correctamente!",
-              "success"
-            );
+    $.ajax({
+      url: "../Controlador/perfil_docente_controlador.php?op=cambiarCurriculum",
+      type: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (respuesta) {
+        if ((respuesta = 1)) {
+          swal("Actualizado!", "Datos actualizados correctamente!", "success");
 
-           $("#btn_curriculu_cancelar").attr("hidden", "hidden");
-            window.location = "../vistas/perfil_docentes_vista.php";
-          }
-        },
-      });
-      return false;
+          $("#btn_curriculu_cancelar").attr("hidden", "hidden");
+          window.location = "../vistas/perfil_docentes_vista.php";
+        }
+      },
+    });
+    return false;
   }
-
 }
 //validar que solo acepte archivos pdf
 //validar pdf
@@ -1034,7 +1024,12 @@ d.onchange = function () {
   var archivo = $("#imagen").val();
   var extensiones = archivo.substring(archivo.lastIndexOf("."));
   // console.log(extensiones);
-  if (extensiones != ".jpg" && extensiones != ".png" && extensiones != ".jpeg" && extensiones != ".PNG") {
+  if (
+    extensiones != ".jpg" &&
+    extensiones != ".png" &&
+    extensiones != ".jpeg" &&
+    extensiones != ".PNG"
+  ) {
     alert("El archivo de tipo " + extensiones + " no es válido");
     document.getElementById("imagen").value = "";
   }
@@ -1116,14 +1111,13 @@ function MostrarBotonCurriculum() {
   $("#btn_curriculu_cancelar").removeAttr("hidden");
 }
 
- $("#btn_curriculu_cancelar").click(function () {
-   $("#btn_curriculu_cancelar").attr("hidden", "hidden");
-   $("#c_vitae").attr("hidden", "hidden");
-   $("#btn_curriculum").attr("hidden", "hidden");
-   $("#btn_mostrar_curriculum").removeAttr("hidden");
-   
- });
- 
+$("#btn_curriculu_cancelar").click(function () {
+  $("#btn_curriculu_cancelar").attr("hidden", "hidden");
+  $("#c_vitae").attr("hidden", "hidden");
+  $("#btn_curriculum").attr("hidden", "hidden");
+  $("#btn_mostrar_curriculum").removeAttr("hidden");
+});
+
 //      COMBOBOX ESTADO CIVIL----------------
 function llenar_estado_civil() {
   var cadena = "&activar=activar";
@@ -1250,7 +1244,7 @@ function ver_hi() {
       $("#sued").val(data.SUED);
       $("#ver_estado").val(data.estado_civil);
       $("#ver_genero").val(data.genero);
-   //   $("#fecha_nacimiento").val(data.genero);
+      //   $("#fecha_nacimiento").val(data.genero);
     }
   );
 }
@@ -1270,7 +1264,6 @@ function ver_hf() {
   );
 }
 
-
 //       -------------------------
 
 function habilitar_editar() {
@@ -1285,9 +1278,6 @@ function habilitar_editar() {
   document.getElementById("genero").hidden = false;
   document.getElementById("ver_genero").hidden = true;
   document.getElementById("fecha").disabled = false;
-  
-  
-  
 }
 
 function desabilitar() {
@@ -1349,6 +1339,8 @@ function insertar_pregunta1() {
     data: { array_prefe: JSON.stringify(id_area), id_persona: id_persona },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
+      
+    $("#modalencuesta").modal("hide");
     },
   });
 }
@@ -1370,6 +1362,8 @@ function insertar_pregunta2() {
     data: { array_prefe1: JSON.stringify(id_area), id_persona: id_persona },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
+       $("#modalencuesta2").modal("hide");
+      
     },
   });
 }
@@ -1394,6 +1388,7 @@ function insertar_pregunta3() {
     },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
+       $("#modalencuesta3").modal("hide");
     },
   });
 }
@@ -1418,88 +1413,110 @@ function insertar_pregunta4() {
     },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
+       $("#modalencuesta4").modal("hide");
     },
   });
 }
 
-function eliminar_pregunta1(persona) {
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=EliminarPregunta1",
-    { id_persona: persona },
-    function (e) {}
-  );
-}
-function eliminar_pregunta2(persona) {
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=EliminarPregunta2",
-    { id_persona: persona },
-    function (e) {}
-  );
-}
-function eliminar_pregunta3(persona) {
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=EliminarPregunta3",
-    { id_persona: persona },
-    function (e) {}
-  );
-}
-function eliminar_pregunta4(persona) {
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=EliminarPregunta4",
-    { id_persona: persona },
-    function (e) {}
-  );
-}
 
 function enviarpregunta1() {
   var id_persona = $("#id_persona").val();
+  var id_area = $('[name="areas[]"]:checked')
+    .map(function () {
+      return this.value;
+    })
+    .get();
 
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=contarPregunta1",
-    { id_persona: id_persona },
+  if (id_area == "") {
+    alert("Debe seleccionar al menos una opción");
+  } else {
+    $.post(
+      "../Controlador/perfil_docente_controlador.php?op=contarPregunta1",
+      { id_persona: id_persona },
 
-    function (data, status) {
-      console.log(data);
-      data = JSON.parse(data);
-      /*si no tiene datos va copiar  */
+      function (data, status) {
+        console.log(data);
+        data = JSON.parse(data);
+        /*si no tiene datos va copiar  */
 
-      if (data.registro == 0) {
-        insertar_pregunta1();
-      } else {
-        // if (data.registro > 0) {
-        eliminar_pregunta1(id_persona);
+        if (data.registro == 0) {
+          insertar_pregunta1();
+        } else {
+          // eliminar_pregunta4(id_persona);
 
-        insertar_pregunta1();
+          $.ajax({
+            url: "../Controlador/eliminar_pregunta1_controlador.php",
+            type: "POST",
+            data: {
+              id_persona: id_persona,
+            },
+          }).done(function (resp) {
+            if (resp > 0) {
+              insertar_pregunta1();
+            } else {
+              swal("Alerta!", "No se pudo completar la acción", "warning");
+            }
+          });
+        }
       }
-    }
-  );
+    );
+  }
 }
 function enviarpregunta2() {
-  var id_persona = $("#id_persona").val();
+   var id_persona = $("#id_persona").val();
+   var id_area = $('[name="areas2[]"]:checked')
+     .map(function () {
+       return this.value;
+     })
+     .get();
 
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=contarPregunta2",
-    { id_persona: id_persona },
+   if (id_area == "") {
+     alert("Debe seleccionar al menos una opción");
+   } else {
+     $.post(
+       "../Controlador/perfil_docente_controlador.php?op=contarPregunta2",
+       { id_persona: id_persona },
 
-    function (data, status) {
-      console.log(data);
-      data = JSON.parse(data);
-      /*si no tiene datos va copiar  */
+       function (data, status) {
+         console.log(data);
+         data = JSON.parse(data);
+         /*si no tiene datos va copiar  */
 
-      if (data.registro == 0) {
-        insertar_pregunta2();
-      } else {
-        eliminar_pregunta2(id_persona);
+         if (data.registro == 0) {
+           insertar_pregunta2();
+         } else {
+           // eliminar_pregunta4(id_persona);
 
-        insertar_pregunta2();
-      }
-    }
-  );
+           $.ajax({
+             url: "../Controlador/eliminar_pregunta2_controlador.php",
+             type: "POST",
+             data: {
+               id_persona: id_persona,
+             },
+           }).done(function (resp) {
+             if (resp > 0) {
+               insertar_pregunta2();
+             } else {
+               swal("Alerta!", "No se pudo completar la acción", "warning");
+             }
+           });
+         }
+       }
+     );
+   }
 }
 function enviarpregunta3() {
-  var id_persona = $("#id_persona").val();
+   var id_persona = $("#id_persona").val();
+  var id_asignatura = $('[name="asignatura3[]"]:checked')
+    .map(function () {
+      return this.value;
+    })
+    .get();
 
-  $.post(
+  if (id_asignatura=="") {
+    alert("Debe seleccionar al menos una opción");
+  } else {
+     $.post(
     "../Controlador/perfil_docente_controlador.php?op=contarPregunta3",
     { id_persona: id_persona },
 
@@ -1511,17 +1528,38 @@ function enviarpregunta3() {
       if (data.registro == 0) {
         insertar_pregunta3();
       } else {
-        eliminar_pregunta3(id_persona);
+        // eliminar_pregunta4(id_persona);
 
-        insertar_pregunta3();
+        $.ajax({
+          url: "../Controlador/eliminar_pregunta3_controlador.php",
+          type: "POST",
+          data: {
+            id_persona: id_persona,
+          },
+        }).done(function (resp) {
+          if (resp >0) {
+             insertar_pregunta3();
+          } else {
+            swal("Alerta!", "No se pudo completar la acción", "warning");
+          }
+        });
       }
     }
   );
+  }
 }
 function enviarpregunta4() {
   var id_persona = $("#id_persona").val();
+  var id_asignatura = $('[name="asignatura4[]"]:checked')
+    .map(function () {
+      return this.value;
+    })
+    .get();
 
-  $.post(
+  if (id_asignatura=="") {
+    alert("Debe seleccionar al menos una opción");
+  } else {
+     $.post(
     "../Controlador/perfil_docente_controlador.php?op=contarPregunta4",
     { id_persona: id_persona },
 
@@ -1533,14 +1571,42 @@ function enviarpregunta4() {
       if (data.registro == 0) {
         insertar_pregunta4();
       } else {
-        eliminar_pregunta4(id_persona);
+        // eliminar_pregunta4(id_persona);
 
-        insertar_pregunta4();
+        $.ajax({
+          url: "../Controlador/eliminar_pregunta4_controlador.php",
+          type: "POST",
+          data: {
+            id_persona: id_persona,
+          },
+        }).done(function (resp) {
+          if (resp >0) {
+             insertar_pregunta4();
+          } else {
+            swal("Alerta!", "No se pudo completar la acción", "warning");
+          }
+        });
       }
     }
   );
+  }
+ 
 }
 
+function si() {
+  var id_asignatura = $('[name="asignatura4[]"]:checked')
+    .map(function () {
+      return this.value;
+    })
+    .get();
+  var boton = document.getElementById("cancelar4");
+
+  if (id_asignatura == "") {
+    boton.disabled = false;
+  } else {
+    boton.disabled = true;
+  }
+}
 function especialidad() {
   var id_persona = $("#id_persona").val();
 
