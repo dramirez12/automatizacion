@@ -1,5 +1,7 @@
 <?php
+ ob_start();
  session_start();
+ 
  
 
 
@@ -9,7 +11,7 @@
         $Id_objeto=195 ;
 
 
-$tipo_caracteristica=strtoupper ($_POST['txt_tipo_caracteristica1']);
+$tipo_caracteristica=mb_strtoupper ($_POST['txt_tipo_caracteristica1']);
 $tipo_dato=$_POST['cb_tipo_dato'];
 
 $patron_texto = "/^[a-zA-ZáéíóúÁÉÍÓÚ_äëïöüÄËÏÖÜàèìòùÀÈÌÒÙÑ_\s]+$/";
@@ -63,21 +65,11 @@ if( preg_match($patron_texto, $_POST['txt_tipo_caracteristica1']) )
             }
 
 
-               
-
-
-
-
-
         }    
         else
         {
             header("location:../vistas/crear_caracteristicas_producto_vista.php?msj=4");
         }
-
-
-
-
 
 
 }
@@ -87,5 +79,5 @@ else{
 }        
 
 
-
+ob_end_flush();
 ?>
