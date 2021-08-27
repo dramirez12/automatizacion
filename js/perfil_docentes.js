@@ -22,7 +22,7 @@ $(document).ready(function () {
     } else {
       i++;
     }
-    console.log(i);
+    //////console.log(i);
   });
 
   $("#add_correo1").click(function () {
@@ -49,9 +49,9 @@ $(document).ready(function () {
       if (willDelete) {
         var id = $(this).attr("id");
         var eliminar_tel = document.getElementById("tel1" + id).value;
-        console.log(eliminar_tel);
+        //////console.log(eliminar_tel);
         $("#row" + id).remove();
-        console.log(id);
+        //////console.log(id);
         $.post(
           "../Controlador/perfil_docente_controlador.php?op=EliminarTelefono",
           { eliminar_tel: eliminar_tel },
@@ -75,9 +75,9 @@ $(document).ready(function () {
       if (willDelete) {
         var id = $(this).attr("id");
         var eliminar_correo = document.getElementById("correo" + id).value;
-        console.log(eliminar_correo);
+        //////console.log(eliminar_correo);
         $("#row2" + id).remove();
-        console.log(id);
+        //////console.log(id);
         $.post(
           "../Controlador/perfil_docente_controlador.php?op=EliminarCorreo",
           { eliminar_correo: eliminar_correo },
@@ -114,7 +114,7 @@ function EditarPerfil(nombre, apellido, identidad, nacionalidad, estado) {
   var genero = $("#ver_genero").val();
   var fecha = $("#fecha").val();
 
-  //console.log(fecha);
+  //////////console.log(fecha);
 
   if (
     nombre == "" ||
@@ -156,7 +156,7 @@ function EditarPerfil(nombre, apellido, identidad, nacionalidad, estado) {
         fecha_nacimiento: fecha,
       },
     }).done(function (resp) {
-      console.log(resp);
+      ////console.log(resp);
 
       if (resp > 0) {
         if (resp == 1) {
@@ -231,9 +231,9 @@ function TraerDatos() {
     "../Controlador/perfil_docente_controlador.php?op=CargarDatos",
     { id_persona: id_persona },
     function (data, status) {
-      //console.log(data);
+      //////console.log(data);
       data = JSON.parse(data);
-      console.log(data);
+      ////console.log(data);
       for (var i = 0; i < data.all.length; ++i) {
         if (data["all"][i].sexo == "M") {
           $("#genero").val(1);
@@ -313,6 +313,7 @@ function TraerDatos() {
       //  ver_genero();
       //ver_sued();
       ver_hi();
+      especialidad();
     }
   );
 }
@@ -431,7 +432,7 @@ function MostrarEspecialidad() {
 //FUNCION QUE VALIDA QUE LOS NUMEROS DE TELEFONO SEAN LOCALES
 function valtel(tel) {
   var expresion3 = /(9|8|3|2)\d{3}[-]\d{4}/;
-  console.log(expresion3.test(tel));
+  ////console.log(expresion3.test(tel));
   if (expresion3.test(tel)) {
     return 1;
   } else {
@@ -481,7 +482,7 @@ function addTel() {
       AgregarTelefono(telefono.value);
       telefono.value = "";
       $("#ModalTel").modal("hide");
-      console.log(n);
+      ////console.log(n);
     }
   }
 }
@@ -489,7 +490,7 @@ function correovalido(correo1) {
   var expresion1 =
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-  //console.log(expresion1.test(correo1));
+  //////console.log(expresion1.test(correo1));
   if (expresion1.test(correo1)) {
     return 1;
   } else {
@@ -656,14 +657,14 @@ $("#btn_foto_cancelar").click(function () {
 });
 
 function ValidarIdentidad(identidad) {
-  //console.log(n);
+  //////console.log(n);
   var n = identidad.search("_");
-  console.log(n);
+  ////console.log(n);
   var mayor_edad = $("#mayoria_edad").val();
   var depto = identidad.substring(0, 4);
   var contar = depto;
 
-  console.log(contar);
+  ////console.log(contar);
 
   if (n == 5) {
     var ver = false;
@@ -671,9 +672,9 @@ function ValidarIdentidad(identidad) {
       "../Controlador/perfil_docente_controlador.php?op=validar_depto",
       { codigo: contar },
       function (data, status) {
-        console.log(data);
+        ////console.log(data);
         data = JSON.parse(data);
-        console.log(data);
+        ////console.log(data);
         /*si no tiene datos va copiar  */
         //$("#contar_depto").val(data.regis);
 
@@ -699,7 +700,7 @@ function ValidarIdentidad(identidad) {
     var currentTime = new Date();
     var year = currentTime.getFullYear();
     var anio = identidad.substring(5, 9);
-    //console.log(year-anio);
+    //////console.log(year-anio);
     if (year - anio < mayor_edad) {
       //swal("Aviso", "Debe ser mayor de edad", "warning");
       $("#Textomayor").removeAttr("hidden");
@@ -719,7 +720,7 @@ function ValidarIdentidad(identidad) {
 
   if (n == -1) {
     var ultimo = identidad.substring(10, 15);
-    // console.log(anio);
+    // ////console.log(anio);
     if (ultimo == "00000") {
       swal("Aviso", "no se permiten 5 ceros", "warning");
       $("#identidad").val("");
@@ -734,7 +735,7 @@ $(document).ready(function () {
     "../Controlador/perfil_docente_controlador.php?op=mayoria_edad",
     function (data) {
       data = JSON.parse(data);
-      // console.log(data);
+      // ////console.log(data);
       $("#mayoria_edad").val(data.valor);
     }
   );
@@ -778,9 +779,9 @@ function ExisteIdentidad() {
     "../Controlador/perfil_docente_controlador.php?op=ExisteIdentidad",
     { identidad: identidad },
     function (data, status) {
-      //console.log(data);
+      //////console.log(data);
       data = JSON.parse(data);
-      console.log(data);
+      ////console.log(data);
       if (data.existe == 1) {
         $("#TextoIdentidad").removeAttr("hidden");
       } else {
@@ -793,7 +794,7 @@ function ExisteIdentidad() {
 function MismaLetra(id_input) {
   var valor = $("#" + id_input).val();
   var longitud = valor.length;
-  console.log(valor + longitud);
+  ////console.log(valor + longitud);
   if (longitud > 2) {
     var str1 = valor.substring(longitud - 3, longitud - 2);
     var str2 = valor.substring(longitud - 2, longitud - 1);
@@ -920,7 +921,7 @@ $("#tipo_contacto").change(function () {
     }
 
     var type = $("#txt_contacto").attr("type");
-    console.log(type);
+    ////console.log(type);
   }
 });
 
@@ -946,16 +947,16 @@ function ventana() {
 
 $("#btn_modal1").click(function () {
   var persona = $("#id_persona").val();
-  console.log(persona);
+  ////console.log(persona);
   $.post(
     "../Controlador/respuesta1_carga_controlador.php",
     { id_persona: persona },
 
     function (data, status) {
-      console.log(data);
+      ////console.log(data);
       data = JSON.parse(data);
 
-      console.log(data.id_area);
+      ////console.log(data.id_area);
     }
   );
 
@@ -967,7 +968,7 @@ $("#btn_modal1").click(function () {
   //     id_persona: persona,
   //   },
   // }).done(function (resp) {
-  //   console.log(resp.id_area);
+  //   ////console.log(resp.id_area);
   // });
 });
 
@@ -1011,7 +1012,7 @@ var c = document.getElementById("c_vitae");
 c.onchange = function () {
   var archivo = $("#c_vitae").val();
   var extensiones = archivo.substring(archivo.lastIndexOf("."));
-  // console.log(extensiones);
+  // ////console.log(extensiones);
   if (extensiones != ".pdf") {
     alert("El archivo de tipo " + extensiones + " no es válido");
     document.getElementById("c_vitae").value = "";
@@ -1023,7 +1024,7 @@ var d = document.getElementById("imagen");
 d.onchange = function () {
   var archivo = $("#imagen").val();
   var extensiones = archivo.substring(archivo.lastIndexOf("."));
-  // console.log(extensiones);
+  // ////console.log(extensiones);
   if (
     extensiones != ".jpg" &&
     extensiones != ".png" &&
@@ -1037,7 +1038,7 @@ d.onchange = function () {
 
 function AgregarCorreo(correo) {
   var id_persona = $("#id_persona").val();
-  console.log(correo);
+  ////console.log(correo);
 
   $.post(
     "../Controlador/perfil_docente_controlador.php?op=AgregarCorreo",
@@ -1066,7 +1067,7 @@ function addCorreo() {
   let n = 1 + l;
   var correo = $("#correo").val();
 
-  console.log(correo);
+  ////console.log(correo);
 
   if (correo.length == 0) {
     alert("Completar El Campo correo Por Favor");
@@ -1126,7 +1127,7 @@ function llenar_estado_civil() {
     type: "POST",
     data: cadena,
     success: function (r) {
-      // console.log(r);
+      // ////console.log(r);
 
       $("#estado_civil").html(r).fadeIn();
     },
@@ -1330,8 +1331,8 @@ function insertar_pregunta1() {
     })
     .get();
 
-  console.log(id_area);
-  console.log(id_persona);
+  ////console.log(id_area);
+  ////console.log(id_persona);
   $.ajax({
     type: "POST",
     url: "../Controlador/encuesta1_docente_controlador.php",
@@ -1353,8 +1354,8 @@ function insertar_pregunta2() {
     })
     .get();
 
-  console.log(id_area);
-  console.log(id_persona);
+  ////console.log(id_area);
+  ////console.log(id_persona);
   $.ajax({
     type: "POST",
     url: "../Controlador/encuesta2_docente_controlador.php",
@@ -1376,8 +1377,8 @@ function insertar_pregunta3() {
     })
     .get();
 
-  console.log(id_asignatura);
-  console.log(id_persona);
+  ////console.log(id_asignatura);
+  ////console.log(id_persona);
   $.ajax({
     type: "POST",
     url: "../Controlador/encuesta3_docente_controlador.php",
@@ -1401,8 +1402,8 @@ function insertar_pregunta4() {
     })
     .get();
 
-  console.log(id_asignatura);
-  console.log(id_persona);
+  ////console.log(id_asignatura);
+  ////console.log(id_persona);
   $.ajax({
     type: "POST",
     url: "../Controlador/encuesta4_docente_controlador.php",
@@ -1435,7 +1436,7 @@ function enviarpregunta1() {
       { id_persona: id_persona },
 
       function (data, status) {
-        console.log(data);
+        ////console.log(data);
         data = JSON.parse(data);
         /*si no tiene datos va copiar  */
 
@@ -1478,7 +1479,7 @@ function enviarpregunta2() {
        { id_persona: id_persona },
 
        function (data, status) {
-         console.log(data);
+         ////console.log(data);
          data = JSON.parse(data);
          /*si no tiene datos va copiar  */
 
@@ -1521,7 +1522,7 @@ function enviarpregunta3() {
     { id_persona: id_persona },
 
     function (data, status) {
-      console.log(data);
+      ////console.log(data);
       data = JSON.parse(data);
       /*si no tiene datos va copiar  */
 
@@ -1564,7 +1565,7 @@ function enviarpregunta4() {
     { id_persona: id_persona },
 
     function (data, status) {
-      console.log(data);
+      ////console.log(data);
       data = JSON.parse(data);
       /*si no tiene datos va copiar  */
 
@@ -1615,7 +1616,7 @@ function especialidad() {
     { id_persona: id_persona },
     function (data, status) {
       data = JSON.parse(data);
-      console.log(data);
+      ////console.log(data);
       for (i = 0; i < data.especialidad.length; i++) {
         $("#tbl_especialidad").append(
           '<tr id="rowe' +
@@ -1655,22 +1656,39 @@ $(document).ready(function () {
     if (confirmLeave == true) {
       var id = $(this).attr("id");
       var eliminar_formacion = document.getElementById("tel1" + id).value;
-      console.log(eliminar_formacion);
+      ////console.log(eliminar_formacion);
       $("#rowe" + id).remove();
-      console.log(id);
-      $.post(
-        "../Controlador/perfil_docente_controlador.php?op=eliminar_formacion",
-        { eliminar_formacion: eliminar_formacion, id_persona: id_persona },
-        function (e) {}
-      );
+      ////console.log(id);
+      // $.post(
+      //   "../Controlador/perfil_docente_controlador.php?op=eliminar_formacion",
+      //   { eliminar_formacion: eliminar_formacion, id_persona: id_persona },
+      //   function (e) {}
+      // );
 
-      swal("Buen trabajo!", "¡ Se eliminaron !", "success");
+       $.ajax({
+         url: "../Controlador/perfil_docente_controlador.php?op=eliminar_formacion",
+         type: "POST",
+         data: {
+           eliminar_formacion: eliminar_formacion,
+           id_persona: id_persona,
+         },
+       }).done(function (resp) {
+         if (resp > 0) {
+           swal("Buen trabajo!", "¡ Se eliminaron !", "success");
+          // especialidad();
+         } else {
+           swal("Alerta!", "No se pudo completar la acción", "warning");
+            // especialidad();
+         }
+       });
+
+    
     }
   }
 
   $(document).on("click", ".btn_remove_espe", eliminar_espe);
 
-  especialidad();
+//  especialidad();
 });
 
 // var table2;

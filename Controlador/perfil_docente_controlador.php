@@ -319,7 +319,11 @@ if (isset($_GET['op'])) {
 
 
             $rspta = $instancia_modelo->eliminar_formacion($eliminar_formacion, $id_persona);
+            echo $rspta;
 
             break;
+
+           
+
     }
 }
