@@ -296,7 +296,7 @@ if (isset($_GET['op'])) {
         case 'contarPregunta3':
 
             $rspta = $instancia_modelo->Existepregunta3($id_persona);
-            echo($rspta);
+            echo json_encode($rspta);
 
             break;
 
