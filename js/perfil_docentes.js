@@ -185,20 +185,31 @@ function Mayuscula(text) {
 //Funcion para ingresar grados y especialidades academicas
 function AgregarEspecialidad(grado, especialidad) {
   var id_persona = $("#id_persona").val();
-  $.post(
-    "../Controlador/perfil_docente_controlador.php?op=AgregarEpecialidad",
-    { grado: grado, especialidad: especialidad, id_persona: id_persona },
-    function (e) {
+
+  $.ajax({
+    url: "../Controlador/perfil_docente_controlador.php?op=AgregarEpecialidad",
+    type: "POST",
+    data: {
+      grado: grado,
+      especialidad: especialidad,
+      id_persona: id_persona,
+    },
+  }).done(function (resp) {
+    if (resp > 0) {
       swal(
         "Buen trabajo!",
         "se agrego correctamente, asegurate de actualizar tu curriculum",
         "success"
       );
-
       limpiartext();
       especialidad();
+      // especialidad();
+    } else {
+      swal("Alerta!", "No se pudo completar la acción", "warning");
+      // especialidad();
     }
-  );
+  });
+ 
 }
 
 function limpiartext() {
@@ -813,73 +824,7 @@ function MismaLetra(id_input) {
   }
 }
 
-// $("#btn_editar_curri").click(function () {
-//   // document.getElementById('parrafo_numEmpleado').hidden = true;
-//   document.getElementById('parrafo_boton_editar').hidden = true;
-//   // document.getElementById('parrafo_curriculum').hidden = true;
-//   document.getElementById('parrafo_encuesta').hidden = true;
-//   // document.getElementById('parrafo_sued').hidden = true;
-//   document.getElementById('curriculum_parrafo').hidden = true;
-//   document.getElementById('icono_nombre').hidden = true;
-//   document.getElementById('icono_apellido').hidden = true;
-//   document.getElementById('icono_jornada').hidden = true;
-//   document.getElementById('icono_genero').hidden = true;
-//   document.getElementById('icono_identidad').hidden = true;
-//   document.getElementById('icono_nacionalidad').hidden = true;
-//   document.getElementById('icono_nacimiento').hidden = true;
-//   document.getElementById('icono_estado').hidden = true;
-//   document.getElementById('icono_categoria').hidden = true;
-//   // document.getElementById('boton_colapse').hidden = true;
-//   // document.getElementById('datos_docente').hidden = true;
-//   document.getElementById("titulo_1").hidden = false;
-//   // document.getElementById('eliminar_telefono_tabla').hidden = true;
-//   // document.getElementById('eliminar_correo_tabla').hidden = true;
-//   document.getElementById("foto_carrera").hidden = false;
-//   document.getElementById("fecha_actual").hidden = false;
-//   document.getElementById('btn_foto').hidden = true;
-//   document.getElementById('btn_editar').hidden = true;
-//   document.getElementById('btn_curriculum').hidden = true;
-//   document.getElementById('btn_guardar_edicion').hidden = true;
-//   // $('button').attr('hidden','hidden');
 
-//   window.print();
-//   // document.getElementById('parrafo_numEmpleado').hidden = false;
-//   // document.getElementById('parrafor_jornada').hidden = false;
-//   // document.getElementById('parrafo_boton_editar').hidden = false;
-//   // document.getElementById('parrafo_genero').hidden = false;
-//   // document.getElementById('parrafo_identidad').hidden = false;
-//   // document.getElementById('parrafo_nacionalidad').hidden = false;
-//   // document.getElementById('parrafo_categoria').hidden = false;
-//   // document.getElementById('parrafo_nacimiento').hidden = false;
-//   // document.getElementById('parrafo_estadoC').hidden = false;
-//   // document.getElementById('parrafo_curriculum').hidden = false;
-//   document.getElementById('curriculum_parrafo').hidden = false;
-//   // document.getElementById('parrafo_encuesta').hidden = false;
-//   // document.getElementById('parrafo_comisiones').hidden = false;
-//   // document.getElementById('parrafo_formacion').hidden = false;
-//   // document.getElementById('parrafo_sued').hidden = false;
-//   document.getElementById('icono_nombre').hidden = false;
-//   document.getElementById('icono_apellido').hidden = false;
-//   document.getElementById('icono_jornada').hidden = false;
-//   document.getElementById('icono_genero').hidden = false;
-//   document.getElementById('icono_identidad').hidden = false;
-//   document.getElementById('icono_nacionalidad').hidden = false;
-//   document.getElementById('icono_nacimiento').hidden = false;
-//   document.getElementById('icono_estado').hidden = false;
-//   document.getElementById('icono_categoria').hidden = false;
-//   // document.getElementById('boton_colapse').hidden = false;
-//   // document.getElementById('datos_docente').hidden = false;
-//   document.getElementById("titulo_1").hidden = true;
-//   // document.getElementById('eliminar_telefono_tabla').hidden = false;
-//   // document.getElementById('eliminar_correo_tabla').hidden = false;
-//   document.getElementById("foto_carrera").hidden = true;
-//   document.getElementById("fecha_actual").hidden = true;
-//   // $('button').removeAttr('hidden');
-//   // document.getElementById('btn_foto').hidden = true;
-//   // document.getElementById('btn_editar').hidden = true;
-//   // document.getElementById('btn_curriculum').hidden = true;
-//   // document.getElementById('btn_guardar_edicion').hidden = true;
-// });
 
 //TIPO DE CONTACTOS
 function TipoContacto() {
@@ -1340,8 +1285,8 @@ function insertar_pregunta1() {
     data: { array_prefe: JSON.stringify(id_area), id_persona: id_persona },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
-      
-    $("#modalencuesta").modal("hide");
+
+      $("#modalencuesta").modal("hide");
     },
   });
 }
@@ -1363,8 +1308,7 @@ function insertar_pregunta2() {
     data: { array_prefe1: JSON.stringify(id_area), id_persona: id_persona },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
-       $("#modalencuesta2").modal("hide");
-      
+      $("#modalencuesta2").modal("hide");
     },
   });
 }
@@ -1389,7 +1333,7 @@ function insertar_pregunta3() {
     },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
-       $("#modalencuesta3").modal("hide");
+      $("#modalencuesta3").modal("hide");
     },
   });
 }
@@ -1414,11 +1358,10 @@ function insertar_pregunta4() {
     },
     success: function (data) {
       swal("Ingresado!", "Datos ingresados correctamente!", "success");
-       $("#modalencuesta4").modal("hide");
+      $("#modalencuesta4").modal("hide");
     },
   });
 }
-
 
 function enviarpregunta1() {
   var id_persona = $("#id_persona").val();
@@ -1464,89 +1407,89 @@ function enviarpregunta1() {
   }
 }
 function enviarpregunta2() {
-   var id_persona = $("#id_persona").val();
-   var id_area = $('[name="areas2[]"]:checked')
-     .map(function () {
-       return this.value;
-     })
-     .get();
+  var id_persona = $("#id_persona").val();
+  var id_area = $('[name="areas2[]"]:checked')
+    .map(function () {
+      return this.value;
+    })
+    .get();
 
-   if (id_area == "") {
-     alert("Debe seleccionar al menos una opción");
-   } else {
-     $.post(
-       "../Controlador/perfil_docente_controlador.php?op=contarPregunta2",
-       { id_persona: id_persona },
+  if (id_area == "") {
+    alert("Debe seleccionar al menos una opción");
+  } else {
+    $.post(
+      "../Controlador/perfil_docente_controlador.php?op=contarPregunta2",
+      { id_persona: id_persona },
 
-       function (data, status) {
-         ////console.log(data);
-         data = JSON.parse(data);
-         /*si no tiene datos va copiar  */
+      function (data, status) {
+        ////console.log(data);
+        data = JSON.parse(data);
+        /*si no tiene datos va copiar  */
 
-         if (data.registro == 0) {
-           insertar_pregunta2();
-         } else {
-           // eliminar_pregunta4(id_persona);
+        if (data.registro == 0) {
+          insertar_pregunta2();
+        } else {
+          // eliminar_pregunta4(id_persona);
 
-           $.ajax({
-             url: "../Controlador/eliminar_pregunta2_controlador.php",
-             type: "POST",
-             data: {
-               id_persona: id_persona,
-             },
-           }).done(function (resp) {
-             if (resp > 0) {
-               insertar_pregunta2();
-             } else {
-               swal("Alerta!", "No se pudo completar la acción", "warning");
-             }
-           });
-         }
-       }
-     );
-   }
+          $.ajax({
+            url: "../Controlador/eliminar_pregunta2_controlador.php",
+            type: "POST",
+            data: {
+              id_persona: id_persona,
+            },
+          }).done(function (resp) {
+            if (resp > 0) {
+              insertar_pregunta2();
+            } else {
+              swal("Alerta!", "No se pudo completar la acción", "warning");
+            }
+          });
+        }
+      }
+    );
+  }
 }
 function enviarpregunta3() {
-   var id_persona = $("#id_persona").val();
+  var id_persona = $("#id_persona").val();
   var id_asignatura = $('[name="asignatura3[]"]:checked')
     .map(function () {
       return this.value;
     })
     .get();
 
-  if (id_asignatura=="") {
+  if (id_asignatura == "") {
     alert("Debe seleccionar al menos una opción");
   } else {
-     $.post(
-    "../Controlador/perfil_docente_controlador.php?op=contarPregunta3",
-    { id_persona: id_persona },
+    $.post(
+      "../Controlador/perfil_docente_controlador.php?op=contarPregunta3",
+      { id_persona: id_persona },
 
-    function (data, status) {
-      ////console.log(data);
-      data = JSON.parse(data);
-      /*si no tiene datos va copiar  */
+      function (data, status) {
+        ////console.log(data);
+        data = JSON.parse(data);
+        /*si no tiene datos va copiar  */
 
-      if (data.registro == 0) {
-        insertar_pregunta3();
-      } else {
-        // eliminar_pregunta4(id_persona);
+        if (data.registro == 0) {
+          insertar_pregunta3();
+        } else {
+          // eliminar_pregunta4(id_persona);
 
-        $.ajax({
-          url: "../Controlador/eliminar_pregunta3_controlador.php",
-          type: "POST",
-          data: {
-            id_persona: id_persona,
-          },
-        }).done(function (resp) {
-          if (resp >0) {
-             insertar_pregunta3();
-          } else {
-            swal("Alerta!", "No se pudo completar la acción", "warning");
-          }
-        });
+          $.ajax({
+            url: "../Controlador/eliminar_pregunta3_controlador.php",
+            type: "POST",
+            data: {
+              id_persona: id_persona,
+            },
+          }).done(function (resp) {
+            if (resp > 0) {
+              insertar_pregunta3();
+            } else {
+              swal("Alerta!", "No se pudo completar la acción", "warning");
+            }
+          });
+        }
       }
-    }
-  );
+    );
   }
 }
 function enviarpregunta4() {
@@ -1557,41 +1500,40 @@ function enviarpregunta4() {
     })
     .get();
 
-  if (id_asignatura=="") {
+  if (id_asignatura == "") {
     alert("Debe seleccionar al menos una opción");
   } else {
-     $.post(
-    "../Controlador/perfil_docente_controlador.php?op=contarPregunta4",
-    { id_persona: id_persona },
+    $.post(
+      "../Controlador/perfil_docente_controlador.php?op=contarPregunta4",
+      { id_persona: id_persona },
 
-    function (data, status) {
-      ////console.log(data);
-      data = JSON.parse(data);
-      /*si no tiene datos va copiar  */
+      function (data, status) {
+        ////console.log(data);
+        data = JSON.parse(data);
+        /*si no tiene datos va copiar  */
 
-      if (data.registro == 0) {
-        insertar_pregunta4();
-      } else {
-        // eliminar_pregunta4(id_persona);
+        if (data.registro == 0) {
+          insertar_pregunta4();
+        } else {
+          // eliminar_pregunta4(id_persona);
 
-        $.ajax({
-          url: "../Controlador/eliminar_pregunta4_controlador.php",
-          type: "POST",
-          data: {
-            id_persona: id_persona,
-          },
-        }).done(function (resp) {
-          if (resp >0) {
-             insertar_pregunta4();
-          } else {
-            swal("Alerta!", "No se pudo completar la acción", "warning");
-          }
-        });
+          $.ajax({
+            url: "../Controlador/eliminar_pregunta4_controlador.php",
+            type: "POST",
+            data: {
+              id_persona: id_persona,
+            },
+          }).done(function (resp) {
+            if (resp > 0) {
+              insertar_pregunta4();
+            } else {
+              swal("Alerta!", "No se pudo completar la acción", "warning");
+            }
+          });
+        }
       }
-    }
-  );
+    );
   }
- 
 }
 
 function si() {
@@ -1665,63 +1607,26 @@ $(document).ready(function () {
       //   function (e) {}
       // );
 
-       $.ajax({
-         url: "../Controlador/perfil_docente_controlador.php?op=eliminar_formacion",
-         type: "POST",
-         data: {
-           eliminar_formacion: eliminar_formacion,
-           id_persona: id_persona,
-         },
-       }).done(function (resp) {
-         if (resp > 0) {
-           swal("Buen trabajo!", "¡ Se eliminaron !", "success");
+      $.ajax({
+        url: "../Controlador/perfil_docente_controlador.php?op=eliminar_formacion",
+        type: "POST",
+        data: {
+          eliminar_formacion: eliminar_formacion,
+          id_persona: id_persona,
+        },
+      }).done(function (resp) {
+        if (resp > 0) {
+          swal("Buen trabajo!", "¡ Se eliminaron !", "success");
           // especialidad();
-         } else {
-           swal("Alerta!", "No se pudo completar la acción", "warning");
-            // especialidad();
-         }
-       });
-
-    
+        } else {
+          swal("Alerta!", "No se pudo completar la acción", "warning");
+          // especialidad();
+        }
+      });
     }
   }
 
   $(document).on("click", ".btn_remove_espe", eliminar_espe);
 
-//  especialidad();
+  //  especialidad();
 });
-
-// var table2;
-// function TablaEspecialidad() {
-
-//   var id_persona_ = $("#id_persona").val();
-//   table2 = $("#tabla_especialidad_grado").DataTable({
-
-//     autoWidth: true,
-//     responsive: true,
-
-//     destroy: true,
-//     async: false,
-//     processing: true,
-//     ajax: {
-//       url: "../Controlador/tabla_especialidad_controlador.php",
-//       type: "POST",
-//       data: { id_persona: id_persona_},
-//     },
-//     columns: [
-//       {
-//         defaultContent:
-//           " <button id='borrar' class='borrar btn btn-danger btn-m '><i class='fas fa-trash-alt'></i></button></div></div>",
-//       },
-//       { data: "id_grado_aca_personas" },
-//       { data: "grado_academico" },
-//       { data: "especialidad" },
-//     ],
-
-//     language: idioma_espanol,
-//     select: true,
-//   });
-// }
-// $("#tabla_especialidad_grado").dataTable({
-//   paging: false, //Ocultar paginación
-// });

@@ -62,6 +62,7 @@ if (isset($_GET['op'])) {
 
 
             $rspta = $instancia_modelo->AgregarEspecialidad($grado, $especialidad, $id_persona);
+            echo $rspta;
             break;
 
         case 'MostrarEspecialidad':
