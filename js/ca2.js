@@ -1041,6 +1041,7 @@ function RegistrarAula(codigo, descripcion, capacidad, select5, select6) {
   );
 }
 
+
 function abrirmodalcarga() {
   $("#ModalTask").modal({ backdrop: "static", keyboard: false });
   $("#ModalTask").modal("show");
