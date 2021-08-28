@@ -1259,6 +1259,43 @@ $("#cbm_modalidad_edita").change(function () {
   }
 
 });
+//
+function borraTodosDatos() {
+  swal({
+  title: "Alerta",
+  text: "Al continuar se eliminarán los datos de carga en el periodo actual, desea continuar?",
+  icon: "warning",
+  buttons: {
+    cancel: "Cancelar",
+    confirm: "Aceptar",
+  },
+}).then((willDelete) => {
+  if (willDelete) {
+    
+    var id_periodo = $("#txt_id_periodo").val();
+    $.ajax({
+      url: "../Controlador/eliminar_carga_periodo_controlador.php",
+      type: "POST",
+      data: {
+        id_periodo: id_periodo,
+      },
+    }).done(function (resp) {
+      if (resp > 0) {
+        swal(
+              "Bien!",
+              "Se completó correctamente",
+              "success"
+            );
+        table.ajax.reload();
+      } else {
+        swal("Alerta!", "No se pudo completar la intenta de nuevo", "warning");
+      }
+    });
+  } else {
+    swal("Advertencia!", "cancelado!", "Success");
+  }
+});
+}
 
 
 

@@ -214,17 +214,8 @@ ob_end_flush();
                         <button class="btn btn-warning btn-lg" hidden> <a></a></button>
                     </div>
 
-                    <!-- <div class=" px-12">
-                        <form method="post" action="../Controlador/reporte_carga_gestion_controlador.php">
-                            <button class="btn btn-success " id="pdf"> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;">Exportar a PDF</a> </button>
-                            
-                        </form>
-                    </div> -->
-                    <div class=" px-6">
-                        <button class="btn btn-warning btn-lg" hidden> <a></a></button>
-                    </div>
-                    <div class=" px-4">
-                        <button class="btn btn-warning btn-lg" hidden> <a></a></button>
+                    <div class=" px-12">
+                        <button class="btn btn-warning" id="" name="" style="color:white;font-weight: bold;" onclick="borraTodosDatos();"><i class="fas fa-trash-alt"></i> Eliminar todos los datos</button>
                     </div>
 
 
