@@ -257,8 +257,8 @@ $("#tabla_carga").on("click", ".editar", function () {
   $("#txt_control_edita").val(data.control);
   $("#txt_unidades_edita").val(data.unidades_valorativas);
   $("#cbm_modalidad_edita").val(data.id_modalidad).trigger("change");
-  $("#txtentrada").val(data.hra_inicio);
-  $("#txtsalida").val(data.hra_final);
+  $("#txtentrada").val(data.hr_entrada);
+  $("#txtsalida").val(data.hr_salida);
   $("#cbm_tipo_asignatura_edita").val(data.id_tipo_asignatura).trigger("change");
 
   id_aula = data.id_aula;
