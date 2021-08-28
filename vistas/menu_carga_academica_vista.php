@@ -45,6 +45,14 @@ if (permiso_ver('104') == '1') {
   $_SESSION['importar_carga_final_vista'] = "No 
   tiene permisos para visualizar";
 }
+if (permiso_ver('275') == '1') {
+
+  $_SESSION['importar_carga_preliminar_vista'] = "...";
+} else {
+  $_SESSION['importar_carga_preliminar_vista'] = "No 
+  tiene permisos para visualizar";
+}
+
 
 
 ?>
@@ -156,6 +164,20 @@ if (permiso_ver('104') == '1') {
                   <i class="fas fa-user-edit"></i>
                 </div>
                 <a href="../vistas/importar_carga_final_vista.php" class="small-box-footer">
+                  Ir <i class="fas fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="small-box bg-primary">
+                <div class="inner">
+                  <h4>Importar Carga Preliminar </h4>
+                  <p><?php echo $_SESSION['importar_carga_preliminar_vista']; ?></p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-user-edit"></i>
+                </div>
+                <a href="../vistas/importar_carga_preliminar_vista.php" class="small-box-footer">
                   Ir <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>

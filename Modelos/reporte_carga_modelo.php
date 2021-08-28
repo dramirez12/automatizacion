@@ -248,6 +248,14 @@ class modelo_modal
 
         return $consulta;
     }
+
+    function eliminarcargaPeriodo($id_periodo)
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta("DELETE from tbl_carga_academica where id_periodo=$id_periodo");
+
+        return $consulta;
+    }
 }
    
 

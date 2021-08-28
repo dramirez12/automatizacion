@@ -385,7 +385,7 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['btn_coordinacion'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] =='48' or $_SESSION['pantalla'] == '104') {
+   if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] =='48' or $_SESSION['pantalla'] =='104' or $_SESSION['pantalla'] == '275') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['carga_academica_vista'] = "block";
       }
