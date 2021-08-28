@@ -1624,9 +1624,9 @@ function especialidad() {
             '">' +
             '<td id="celda' +
             i +
-            '"><input maxlength="9" id="tel1' +
+            '"><input maxlength="9" id="tel2' +
             i +
-            '" type="tel" name="tel"readonly hidden class="form-control name_list" value="' +
+            '" type="tel" name="tel2"readonly hidden class="form-control name_list" value="' +
             data["especialidad"][i].id_grado_aca_personas +
             '" placeholder="___-___"/></td>' +
             "<td>" +
@@ -1655,7 +1655,7 @@ $(document).ready(function () {
     var confirmLeave = confirm("¿Desea eliminar la formación del docente?");
     if (confirmLeave == true) {
       var id = $(this).attr("id");
-      var eliminar_formacion = document.getElementById("tel1" + id).value;
+      var eliminar_formacion = document.getElementById("tel2" + id).value;
       ////console.log(eliminar_formacion);
       $("#rowe" + id).remove();
       ////console.log(id);
