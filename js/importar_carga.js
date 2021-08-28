@@ -125,7 +125,7 @@ function registrar_excel() {
 }
 //aqui comienza la carga preliminar
 
-function cargar_excel_preliminar() {
+function cargar_excel_preliminar1() {
   var excel = $("#archivo_excel_preliminar").val();
 
   if (excel === "") {

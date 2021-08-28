@@ -133,7 +133,7 @@ ob_end_flush();
 
                             </div>
                             <div class="col-lg-2">
-                                <button class="btn btn-danger" style="width: 100%;" id="importar_preliminar" onclick="cargar_excel_preliminar();">Cargar Excel</button><br>
+                                <button class="btn btn-danger" style="width: 100%;" id="importar_preliminar" onclick="cargar_excel_preliminar1();">Cargar Excel</button><br>
 
 
                             </div>
