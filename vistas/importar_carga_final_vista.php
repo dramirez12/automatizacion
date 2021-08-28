@@ -40,6 +40,13 @@ if ($visualizacion == 0) {
     // }
 }
 
+$sql2 = $mysqli->prepare("SELECT tbl_periodo.id_periodo AS id_periodo, tbl_periodo.num_periodo AS num_periodo, tbl_periodo.num_anno AS num_anno
+FROM tbl_periodo
+ORDER BY id_periodo DESC LIMIT 1;");
+$sql2->execute();
+$resultado2 = $sql2->get_result();
+$row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
+
 ob_end_flush();
 
 
@@ -50,6 +57,8 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -96,6 +105,8 @@ ob_end_flush();
             <div class="container-fluid">
                 <!-- pantalla  -->
 
+                <input class="" type="text" id="txt_id_periodo" name="txt_id_periodo" value="<?php echo $row2['id_periodo'] ?>" readonly hidden>
+
                 <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">Seleccione el archivo</h3>
@@ -116,32 +127,32 @@ ob_end_flush();
 
 
 
-                        
-
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <input type="file" class="form-control" id="archivo_excel" accept=".xls, .xlsx"><br>
-
-                                </div>
-                                <div class="col-lg-2">
-                                    <button class="btn btn-danger" style="width: 100%;" id="importar" onclick="cargar_excel();">Cargar Excel</button><br>
 
 
-                                </div>
-                                <div class="col-lg-2">
-                                    <button class="btn btn-primary" style="width: 100%;" disabled id="btn_guardar" onclick="registrar_excel();">Guardar Datos</button><br>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <input type="file" class="form-control" id="archivo_excel" accept=".xls, .xlsx"><br>
 
-                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-danger" style="width: 100%;" id="importar" onclick="cargar_excel();">Cargar Excel</button><br>
 
-                                <div class="col-lg-12" id="div_tabla">
-                                    <tr>
 
-                                    </tr>
-                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-primary" style="width: 100%;" disabled id="btn_guardar" onclick="registrar_excel();">Guardar Datos</button><br>
 
                             </div>
 
-                     
+                            <div class="col-lg-12" id="div_tabla">
+                                <tr>
+
+                                </tr>
+                            </div>
+
+                        </div>
+
+
 
                     </div>
                 </div>
@@ -163,8 +174,6 @@ ob_end_flush();
             }
         }
     });
-
-    
 </script>
 
 <script src="../js/importar_carga.js"></script>
