@@ -154,7 +154,7 @@ function cargar_excel_preliminar1() {
 function registrar_excel_preliminar() {
   // swal("Advertencia!", "Espera un momento", "warning");
   var contador = 0;
-  // var arreglo_control = new Array();
+  var arreglo_control = new Array();
   var arreglo_cod_asig = new Array();
   var arreglo_asignatura = new Array();
   var arreglo_seccion = new Array();
@@ -167,7 +167,7 @@ function registrar_excel_preliminar() {
 
   $("#tabla_detalle_preliminar tbody#tbody_tabla_detalle_preliminar tr").each(
     function () {
-      // arreglo_control.push($(this).find('td').eq(0).text());
+      
       arreglo_cod_asig.push($(this).find("td").eq(0).text());
       arreglo_asignatura.push($(this).find("td").eq(1).text());
       arreglo_seccion.push($(this).find("td").eq(2).text());
@@ -177,6 +177,7 @@ function registrar_excel_preliminar() {
       arreglo_aula.push($(this).find("td").eq(6).text());
       arreglo_profesor.push($(this).find("td").eq(7).text());
       arreglo_matriculados.push($(this).find("td").eq(8).text());
+       arreglo_control.push($(this).find("td").eq(9).text());
       contador++;
     }
   );
@@ -189,6 +190,7 @@ function registrar_excel_preliminar() {
   var aula = arreglo_aula.toString();
   var profesor = arreglo_profesor.toString();
   var matriculados = arreglo_matriculados.toString();
+    var control = arreglo_control.toString();
 
   if (contador == 0) {
     return swal(
@@ -224,7 +226,8 @@ function registrar_excel_preliminar() {
               dias,
               aula,
               profesor,
-              matriculados
+              matriculados,
+              control
             );
           } else {
             swal(
@@ -249,7 +252,7 @@ function llamarregistrarPreliminar(
   dias,
   aula,
   profesor,
-  matriculados
+  matriculados,control
 ) {
   //  var control = arreglo_control.toString();
   //   var cod_asig = arreglo_cod_asig.toString();
@@ -268,12 +271,12 @@ function llamarregistrarPreliminar(
       prof: profesor,
       aula: aula,
       cod: cod_asig,
-      // control: control,
       seccion: seccion,
       matri: matriculados,
       dias: dias,
       hra_inicio: hra_inicio,
       hra_final: hra_final,
+      control: control
     },
   }).done(function (resp) {
     // alert(resp);

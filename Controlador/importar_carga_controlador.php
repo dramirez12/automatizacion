@@ -133,7 +133,6 @@ if (isset($_GET['op'])) {
                     $row++
                 ) {
 
-                    // $control = $hoja->getCell('A' . $row);
                     $cod_asig = $hoja->getCell('B' . $row);
                     $asignatura = $hoja->getCell('C' . $row);
                     $seccion = $hoja->getCell('D' . $row);
@@ -143,11 +142,11 @@ if (isset($_GET['op'])) {
                     $aula = $hoja->getCell('H' . $row);
                     $profesor = $hoja->getCell('K' . $row);
                     $matriculados = $hoja->getCell('L' . $row);
+                    $control = $hoja->getCell('M' . $row);
 
-                    // if ($control == "") {
-                    // } else {
+                    if ($control == "") {
+                    } else {
                         echo "<tr>";
-                        // echo "<td>" . $control . "</td>";
                         echo "<td>" . $cod_asig . "</td>";
                         echo "<td>" . $asignatura . "</td>";
                         echo "<td>" . $seccion . "</td>";
@@ -157,8 +156,9 @@ if (isset($_GET['op'])) {
                         echo "<td>" . $aula . "</td>";
                         echo "<td>" . $profesor . "</td>";
                         echo "<td>" . $matriculados . "</td>";
+                        echo "<td>" . $control . "</td>";
                         echo "</tr>";
-                    // }
+                    }
                 }
 
                 echo "</tbody></table>";
