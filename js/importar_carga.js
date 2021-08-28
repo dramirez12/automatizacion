@@ -177,7 +177,7 @@ function registrar_excel_preliminar() {
       arreglo_aula.push($(this).find("td").eq(6).text());
       arreglo_profesor.push($(this).find("td").eq(7).text());
       arreglo_matriculados.push($(this).find("td").eq(8).text());
-       arreglo_control.push($(this).find("td").eq(9).text());
+      // arreglo_control.push($(this).find("td").eq(9).text());
       contador++;
     }
   );
@@ -190,7 +190,7 @@ function registrar_excel_preliminar() {
   var aula = arreglo_aula.toString();
   var profesor = arreglo_profesor.toString();
   var matriculados = arreglo_matriculados.toString();
-    var control = arreglo_control.toString();
+  //  var control = arreglo_control.toString();
 
   if (contador == 0) {
     return swal(
@@ -227,7 +227,7 @@ function registrar_excel_preliminar() {
               aula,
               profesor,
               matriculados,
-              control
+             // control
             );
           } else {
             swal(
@@ -252,7 +252,7 @@ function llamarregistrarPreliminar(
   dias,
   aula,
   profesor,
-  matriculados,control
+  matriculados
 ) {
   //  var control = arreglo_control.toString();
   //   var cod_asig = arreglo_cod_asig.toString();
@@ -276,7 +276,7 @@ function llamarregistrarPreliminar(
       dias: dias,
       hra_inicio: hra_inicio,
       hra_final: hra_final,
-      control: control
+     // control: control
     },
   }).done(function (resp) {
     // alert(resp);

@@ -121,7 +121,7 @@ if (isset($_GET['op'])) {
                         <td>Aulas</td>
                         <td>Profesor</td>
                         <td>Matriculados</td>
-                        <td>Control</td>
+                       
             
                     </tr>
                 </thead>
@@ -143,9 +143,9 @@ if (isset($_GET['op'])) {
                     $aula = $hoja->getCell('H' . $row);
                     $profesor = $hoja->getCell('K' . $row);
                     $matriculados = $hoja->getCell('L' . $row);
-                    $control = $hoja->getCell('M' . $row);
+                  //  $control = $hoja->getCell('M' . $row);
 
-                    if ($control == "") {
+                    if ($cod_asig == "") {
                     } else {
                         echo "<tr>";
                         echo "<td>" . $cod_asig . "</td>";
@@ -157,7 +157,6 @@ if (isset($_GET['op'])) {
                         echo "<td>" . $aula . "</td>";
                         echo "<td>" . $profesor . "</td>";
                         echo "<td>" . $matriculados . "</td>";
-                        echo "<td>" . $control . "</td>";
                         echo "</tr>";
                     }
                 }
