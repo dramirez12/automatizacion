@@ -36,7 +36,12 @@ class modelo_excel{
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
 
 
-            echo $sql;
+            echo // $sql;
+            '<script type="text/javascript">
+                             alert(sql);
+                          
+
+                            </script>';
             
             return 1;
         } else {
