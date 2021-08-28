@@ -33,11 +33,11 @@ if ($visualizacion == 0) {
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A IMPORTAR UNA CARGA.');
 
 
-    // if (permisos::permiso_insertar($Id_objeto) == '1') {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "";
-    // } else {
-    //   $_SESSION['btn_guardar_registro_docentes'] = "disabled";
-    // }
+    if (permisos::permiso_insertar($Id_objeto) == '1') {
+        $_SESSION['btn_guardar_datos_final'] = "";
+    } else {
+        $_SESSION['btn_guardar_datos_final'] = "disabled";
+    }
 }
 
 $sql2 = $mysqli->prepare("SELECT tbl_periodo.id_periodo AS id_periodo, tbl_periodo.num_periodo AS num_periodo, tbl_periodo.num_anno AS num_anno
@@ -140,7 +140,7 @@ ob_end_flush();
 
                             </div>
                             <div class="col-lg-2">
-                                <button class="btn btn-primary" style="width: 100%;" disabled id="btn_guardar" onclick="registrar_excel();">Guardar Datos</button><br>
+                                <button class="btn btn-primary" style="width: 100%;" disabled id="btn_guardar" onclick="registrar_excel();" <?php echo $_SESSION['btn_guardar_datos_preliminar']; ?>>Guardar Datos</button><br>
 
                             </div>
 

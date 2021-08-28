@@ -141,7 +141,7 @@ if (permiso_ver('275') == '1') {
 
 
             <div class="col-12 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
+              <div class="small-box bg-light">
                 <div class="inner">
                   <h4>Historial Carga Académica </h4>
                   <p><?php echo $_SESSION['historial_carga_academica_vista']; ?></p>
@@ -169,7 +169,7 @@ if (permiso_ver('275') == '1') {
               </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
+              <div class="small-box bg-light">
                 <div class="inner">
                   <h4>Importar Carga Preliminar </h4>
                   <p><?php echo $_SESSION['importar_carga_preliminar_vista']; ?></p>

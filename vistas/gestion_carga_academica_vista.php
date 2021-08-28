@@ -493,7 +493,7 @@ ob_end_flush();
                                                 <label>Seleccione dias:</label>
                                                 <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:260px; height:39px;">
 
-                                                    <input class="form-control" id="dias" name="dias" type="text" value="" hidden>
+                                                    <input class="form-control" id="dias" name="dias" type="text" value="" hidden readonly>
                                                     <span class="checkbox-inline">
                                                         <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Lu" type="checkbox" value="Lu">Lu</label>
                                                         <label class="checkbox-inline"><input class="CheckedAK" name="checks[]" id="Ma" type="checkbox" value="Ma">Ma</label>
@@ -879,7 +879,7 @@ ob_end_flush();
                                                 <label>Seleccione dias:</label>
                                                 <div style="padding: 3px 5px; border: #c3c3c3  1px solid;  border-radius:5px; width:260px; height:39px;">
 
-                                                    <input class="form-control" id="dias" name="dias" type="text" value="" hidden>
+                                                    <input class="form-control" id="dias" name="dias" type="text" value="" hidden readonly>
                                                     <span class="checkbox-inline">
                                                         <label class="checkbox-inline"><input id="Lu1" type="checkbox" name="check[]" class="ch" value="Lu">Lu</label>
                                                         <label class="checkbox-inline"><input id="Ma1" type="checkbox" name="check[]" class="ch" value="Ma">Ma</label>
