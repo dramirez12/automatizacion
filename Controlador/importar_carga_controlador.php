@@ -121,6 +121,7 @@ if (isset($_GET['op'])) {
                         <td>Aulas</td>
                         <td>Profesor</td>
                         <td>Matriculados</td>
+                        <td>Control</td>
             
                     </tr>
                 </thead>
