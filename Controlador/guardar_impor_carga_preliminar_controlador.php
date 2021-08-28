@@ -27,7 +27,7 @@ $array_matri = explode(",",$matriculados);
 
 
 
-for ($i=1; $i< count($array_hra_inicio); $i++) { 
+for ($i=0; $i< count($array_hra_inicio); $i++) { 
     
     $consulta = $ME->registrar_excel_preliminar($array_profesor[$i], $array_aula[$i], $array_cod[$i], $array_seccion[$i], $array_matri[$i], $array_dias[$i], $array_hra_inicio[$i], $array_hra_final[$i]);
 

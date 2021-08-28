@@ -36,6 +36,10 @@ class modelo_excel{
         if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
 
 
+           
+            return 1;
+        } else {
+            return 0;
             echo // $sql;
             '<script type="text/javascript">
                              alert(sql);
@@ -43,9 +47,6 @@ class modelo_excel{
 
                             </script>';
             
-            return 1;
-        } else {
-            return 0;
         }
     }
 }
