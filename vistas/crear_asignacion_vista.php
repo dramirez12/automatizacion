@@ -5,6 +5,8 @@ ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
+require_once('../clases/conexion_mantenimientos.php');
+require_once "../Modelos/detalle_existencias_modelo.php";
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
@@ -54,15 +56,6 @@ if ($visualizacion == 0) {
 
                           </script>';
 } else {
-
-
-    $servidor = "167.114.169.207";
-    $usuario = "informat_desarrollo";
-    $password = "!fuRCr3XR-tz";
-    $base = "informat_desarrollo_automatizacion";
-
-    $mysqli2 = new mysqli($servidor, $usuario, $password, $base);
-
 
 
     if (permisos::permiso_insertar($Id_objeto) == '1') {
@@ -255,8 +248,10 @@ ob_end_flush();
 
                     <!-- Salida PHP para seleccionar productos no coincidentes (pasar a procedimiento) -->
                     <?php
-                    $sqlRespUser = "SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'";
-                    $sqlRespUserResult = $mysqli2->query($sqlRespUser);
+                        $modelo=new respuesta();
+                        $sqlRespUserResult=$modelo->asignacion();
+                        //   $sqlRespUser = "SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'";
+                        //  $sqlRespUserResult = $->query($sqlRespUser);        
                     ?>
 
                     <div class="modal-body">

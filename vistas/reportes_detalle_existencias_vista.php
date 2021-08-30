@@ -5,6 +5,8 @@ session_start();
 
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
+require_once "../Modelos/detalle_existencias_modelo.php";
+require_once('../clases/conexion_mantenimientos.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
@@ -52,22 +54,6 @@ if ($visualizacion == 0) {
 
   $resultadotabla = $mysqli->query($sqltabla);
 
-  // mysqli_close($mysqli);
-  // cerrarConexion($mysqli);
-  // require_once('../clases/Conexion.php');
-  $servidor = "167.114.169.207";
-  $usuario = "informat_desarrollo";
-  $password = "!fuRCr3XR-tz";
-  $base = "informat_desarrollo_automatizacion";
-
-  $mysqli2 = new mysqli($servidor, $usuario, $password, $base);
-
-
-  $sqltabla1 = "CALL sel_reportes_existencia_asignados3('$id_producto')";
-
-  $resultadotabla1 = $mysqli2->query($sqltabla1);
-
-  /*Esta condicion sirve para  verificar el valor que se esta enviando al momento de dar click en el icono modicar */
 }
 
 
@@ -167,7 +153,10 @@ ob_end_flush();
 
             <?php } ?>
             <!-- echo var_dump($resultadotabla1); -->
-            <?php while ($row = $resultadotabla1->fetch_array(MYSQLI_ASSOC)) { ?>
+            <?php  $modelo=new respuesta();
+            $respuesta=$modelo->producto($id_producto);
+          
+            while ($row = $respuesta->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
 
                 <!-- <td><?php echo $row['id_inventario'] ?></td> -->

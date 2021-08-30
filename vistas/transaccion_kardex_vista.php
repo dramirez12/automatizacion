@@ -5,6 +5,8 @@ session_start();
 
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
+require_once('../clases/conexion_mantenimientos.php');
+require_once "../Modelos/detalle_existencias_modelo.php";
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
@@ -263,18 +265,23 @@ ob_end_flush();
                       <option value="">Seleccione el producto:</option>
                       <?php
 
-                      $servidor = "167.114.169.207";
-                      $usuario = "informat_desarrollo";
-                      $password = "!fuRCr3XR-tz";
-                      $base = "informat_desarrollo_automatizacion";
 
-                      $mysqli2 = new mysqli($servidor, $usuario, $password, $base);
+                              $modelo=new respuesta();
+                              $query=$modelo->transaccion();
 
-                      $query = $mysqli2->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
-                      while ($resultado = mysqli_fetch_array($query)) {
-                        echo '<option value="' . $resultado['id_producto'] . '"> ' . $resultado['nombre_producto'] . '</option>';
-                      }
-                      ?>
+                              // $servidor= "localhost";
+                              // $usuario= "root";
+                              // $password = "";
+                              // $base= "informat_desarrollo_automatizacion";
+
+                              // $mysqli2 = new mysqli($servidor,$usuario,$password,$base);
+
+                              // $query = $mysqli2->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
+                              while ($resultado = mysqli_fetch_array($query)) {
+                              echo '<option value="'.$resultado['id_producto'].'"> '.$resultado['nombre_producto'].'</option>' ;
+
+                              }
+                     ?>
                     </select>
 
 
