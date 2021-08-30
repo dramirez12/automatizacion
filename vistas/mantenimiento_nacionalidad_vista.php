@@ -164,14 +164,14 @@ ob_end_flush();
           <div class="col-sm-6">
 
 
-            <h1>Nacionalidad docentes</h1>
+            <h1>Mantenimiento Nacionalidad Docentes</h1>
           </div>
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu mantenimiento</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_nacionalidad_vista.php">Crear nacionalidad</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menú Mantenimientos de Docentes</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_nacionalidad_vista.php">Crear Nacionalidad</a></li>
             </ol>
           </div>
 
@@ -186,7 +186,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Nacionalidad existentes</h3>
+        <h3 class="card-title">Nacionalidades Existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -290,7 +290,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar nacionalidad</h4>
+            <h4 class="modal-title"> Actualizar Nacionalidad</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -336,7 +336,7 @@ ob_end_flush();
           <!--Footer del modal-->
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" id="btn_modificar_nacionalidad" name="btn_modificar_nacionalidad" <?php echo $_SESSION['btn_modificar_nacionalidad']; ?>>Guardar cambios</button>
+            <button type="submit" class="btn btn-primary" id="btn_modificar_nacionalidad" name="btn_modificar_nacionalidad" <?php echo $_SESSION['btn_modificar_nacionalidad']; ?>>Guardar Cambios</button>
           </div>
         </div>
         <!-- /.modal-content -->

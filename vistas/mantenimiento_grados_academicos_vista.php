@@ -165,15 +165,15 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Grados académicos docentes
+                        <h1>Grados Académicos 
                         </h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu mantenimiento</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_grados_academicos_vista.php">Nuevo grado académico</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimientos de Docentes</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_grados_academicos_vista.php">Nuevo Grado Académico</a></li>
                         </ol>
                     </div>
 
@@ -188,7 +188,7 @@ ob_end_flush();
 
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Grados académicos existentes</h3>
+                <h3 class="card-title">Grados Académicos Existentes</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -232,7 +232,7 @@ ob_end_flush();
 
                     <thead>
                         <tr>
-                            <th>Grado académico</th>
+                            <th>Grado Académico</th>
                             <th>Descripción </th>
                             <th>Modificar</th>
                             <th>Eliminar</th>
@@ -293,7 +293,7 @@ ob_end_flush();
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"> Actualizar grado académico</h4>
+                        <h4 class="modal-title"> Actualizar gGrado Académico</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -312,7 +312,7 @@ ob_end_flush();
                                 <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <label>Modificar grado académico</label>
+                                        <label>Modificar Grado Académico</label>
 
 
                                         <input class="form-control" type="text" id="txtgrado_academico" name="txtgrado_academico" value="<?php echo $_SESSION['grado_academico']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txtgrado_academico');" onkeypress="return sololetras(event)" maxlength="30">
@@ -339,7 +339,7 @@ ob_end_flush();
                     <!--Footer del modal-->
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" id="btn_modificar_grado" name="btn_modificar_grado" <?php echo $_SESSION['btn_modificar_grado']; ?>>Guardar cambios</button>
+                        <button type="submit" class="btn btn-primary" id="btn_modificar_grado" name="btn_modificar_grado" <?php echo $_SESSION['btn_modificar_grado']; ?>>Guardar Cambios</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

@@ -17,7 +17,7 @@ if (isset($_REQUEST['msj'])) {
     echo '<script type="text/javascript">
     swal({
         title: "",
-        text: "Lo sentimos la actividad ya existe",
+        text: "Lo sentimos la actividad ya existe para esa comisión",
         type: "info",
         showConfirmButton: false,
         timer: 3000
@@ -31,7 +31,7 @@ if (isset($_REQUEST['msj'])) {
     echo '<script type="text/javascript">
     swal({
         title: "",
-        text: "Los datos  se almacenaron correctamente",
+        text: "Los datos se almacenaron correctamente",
         type: "success",
         showConfirmButton: false,
         timer: 3000
@@ -132,7 +132,6 @@ if ($visualizacion == 0) {
     $_SESSION['id_actividad'] = $row['id_actividad'];
     $_SESSION['actividad'] = $row['actividad'];
     $_SESSION['descripcion'] = $row['descripcion'];
-    $_SESSION['nombre_proyecto'] = $row['nombre_proyecto'];
     $_SESSION['horas_semanales'] = $row['horas_semanales'];
     $_SESSION['id_comisiones'] = $row['id_comisiones'];
     $_SESSION['comision'] = $row['comision'];
@@ -183,15 +182,15 @@ ob_end_flush();
           <div class="col-sm-6">
 
 
-            <h1>Actividades
+            <h1>Mantenimiento Actividades
             </h1>
           </div>
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menú mantenimiento</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_actividades_vista.php">Nueva actividad</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menú Mantenimientos Docentes</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_actividades_vista.php">Nueva Actividad</a></li>
             </ol>
           </div>
 
@@ -206,7 +205,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Actividades existentes</h3>
+        <h3 class="card-title">Actividades Existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -249,11 +248,10 @@ ob_end_flush();
 
           <thead>
             <tr>
+              <th>Tipo Comisión </th>
               <th>Actividades</th>
               <th>Descripción</th>
-              <th>Nombre proyecto </th>
-              <th>Horas semanales</th>
-              <th>Tipo comisión </th>
+              <th>Horas Semanales</th>
               <th>Modificar</th>
               <th>Eliminar</th>
             </tr>
@@ -261,11 +259,11 @@ ob_end_flush();
           <tbody>
             <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
+                <td><?php echo $row['comision']; ?></td>
                 <td><?php echo $row['actividad']; ?></td>
                 <td><?php echo $row['descripcion']; ?></td>
-                <td><?php echo $row['nombre_proyecto']; ?></td>
                 <td><?php echo $row['horas_semanales']; ?></td>
-                <td><?php echo $row['comision']; ?></td>
+
 
 
                 <td style="text-align: center;">
@@ -317,7 +315,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar actividad</h4>
+            <h4 class="modal-title"> Actualizar Actividad</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -334,39 +332,8 @@ ob_end_flush();
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
-                  <div class="form-group">
-
-                    <label>Modificar actividad</label>
-
-
-                    <input class="form-control" type="text" id="txt_actividad" name="txt_actividad" value="<?php echo $_SESSION['actividad']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_actividad');" onkeypress="return sololetras(event)" maxlength="30">
-
-                  </div>
-
-
-                  <div class="form-group">
-                    <label class="control-label">Descripcion</label>
-
-                    <input class="form-control" type="text" id="txt_descripcion" name="txt_descripcion" value="<?php echo $_SESSION['descripcion']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');" onkeypress="return sololetras(event)" maxlength="30" onkeypress="return comprobar(this.value, event, this.id)">
-
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label">Nombre proyecto</label>
-
-                    <input class="form-control" type="text" id="txt_proyecto" name="txt_proyecto" value="<?php echo $_SESSION['nombre_proyecto']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_proyecto');" onkeypress="return sololetras(event)" maxlength="30" onkeypress="return comprobar(this.value, event, this.id)">
-
-                  </div>
-
-                  <div class="form-group">
-                    <label class="control-label">Horas semanales</label>
-
-                    <input class="form-control" type="text" id="txt_horas" name="txt_horas" value="<?php echo $_SESSION['horas_semanales']; ?>" required style="text-transform: uppercase" onkeypress="return Numeros(event)" onkeyup="DobleEspacio(this, event)" maxlength="30" onkeypress="return comprobar(this.value, event, this.id)">
-
-                  </div>
-
                   <div class="form-group ">
-                    <label class="control-label">Tipo comision</label>
+                    <label class="control-label">Tipo Comisión</label>
                     <select class="form-control" name="comision1" required="">
                       <option value="0">Seleccione una opción:</option>
                       <?php
@@ -391,6 +358,32 @@ ob_end_flush();
                     </select>
 
                   </div>
+                  <div class="form-group">
+
+                    <label>Modificar Actividad</label>
+
+
+                    <input class="form-control" type="text" id="txt_actividad" name="txt_actividad" value="<?php echo $_SESSION['actividad']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_actividad');" onkeypress="return sololetras(event)" maxlength="30">
+
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="control-label">Descripción</label>
+
+                    <input class="form-control" type="text" id="txt_descripcion" name="txt_descripcion" value="<?php echo $_SESSION['descripcion']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');" onkeypress="return sololetras(event)" maxlength="30" onkeypress="return comprobar(this.value, event, this.id)">
+
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="control-label">Horas semanales</label>
+
+                    <input class="form-control" type="text" id="txt_horas" name="txt_horas" value="<?php echo $_SESSION['horas_semanales']; ?>" required style="text-transform: uppercase" onkeypress="return Numeros(event)" onkeyup="DobleEspacio(this, event)" maxlength="30" onkeypress="return comprobar(this.value, event, this.id)">
+
+                  </div>
+
+
                 </div>
               </div>
 

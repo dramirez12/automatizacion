@@ -273,11 +273,25 @@ ob_end_flush();
 
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12">
+                            <div class="col-md-2">
+                                </div>
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Área</label>
                                         <input class="form-control" type="text" id="area" name="area" value="<?php echo $_SESSION['area']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('area');" >
                                     </div>
+                                    <div class="form-group ">
+                                        <label>Descripción</label>
+                                        <input class="form-control" type="text" id="descripcion_area" name="descripcion_area" onkeyup="DobleEspacio(this, event); MismaLetra('descripcion_area');">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Ingrese la Carrera</label>
+                                        <select class="form-control select2" type="text" id="cbm_carrera" name="cmb_carrera" style="width: 100%;">
+                                            <option value="">Seleccione una opción</option>
+                                        </select>
+                                    </div>
+                                    <input hidden class="form-control"  id="carrera1" name="carrera1" value="0" readonly>
                                 </div>
                             </div>
                         </div>

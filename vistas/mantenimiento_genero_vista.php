@@ -165,15 +165,15 @@ ob_end_flush();
           <div class="col-sm-6">
 
 
-            <h1>Genero docente
+            <h1>Género Docente
             </h1>
           </div>
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu mantenimiento</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_genero_vista.php">Nuevo género</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menú Mantenimientos de Docentes </a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_genero_vista.php">Nuevo Género</a></li>
             </ol>
           </div>
 
@@ -188,7 +188,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Géneros existentes</h3>
+        <h3 class="card-title">Géneros Existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -284,7 +284,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar género</h4>
+            <h4 class="modal-title"> Actualizar Género</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -298,7 +298,7 @@ ob_end_flush();
                 <div class="col-md-12">
                   <div class="form-group">
 
-                    <label>Modificar género</label>
+                    <label>Modificar Género</label>
 
 
                     <input class="form-control" type="text" id="txt_genero" name="txt_genero" value="<?php echo $_SESSION['genero']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_genero');" onkeypress="return sololetras(event)" maxlength="30">
@@ -315,7 +315,7 @@ ob_end_flush();
           <!--Footer del modal-->
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" id="btn_modificar_genero" name="btn_modificar_genero" <?php echo $_SESSION['btn_modificar_genero']; ?>>Guardar cambios</button>
+            <button type="submit" class="btn btn-primary" id="btn_modificar_genero" name="btn_modificar_genero" <?php echo $_SESSION['btn_modificar_genero']; ?>>Guardar Cambios</button>
           </div>
         </div>
         <!-- /.modal-content -->

@@ -9,7 +9,7 @@
 
 $actividad=strtoupper ($_POST['txt_actividad1']);
 $descripcion=strtoupper ($_POST['txt_descripcion1']);
-$proyecto=strtoupper ($_POST['txt_proyecto1']);
+/* $proyecto=strtoupper ($_POST['txt_proyecto1']); */
 $horas=strtoupper ($_POST['txt_horas1']);
 $comision=strtoupper ($_POST['comision1']);
 
@@ -23,7 +23,7 @@ $existe = mysqli_fetch_assoc($mysqli->query($sqlexiste));
 
 
 /* Logica para que no acepte campos vacios */
-if ($_POST['txt_actividad1']  <>' ' and  $_POST['txt_descripcion1']<> '' and  $_POST['txt_proyecto1']<> '' and  $_POST['txt_horas1']<> '' and  $_POST['comision1']<> '')
+if ($_POST['txt_actividad1']  <> ' ' and  $_POST['txt_descripcion1']<> '' and  $_POST['txt_horas1']<> '' and  $_POST['comision1']<> '')
 {
 
  
@@ -45,7 +45,7 @@ if ($_POST['txt_actividad1']  <>' ' and  $_POST['txt_descripcion1']<> '' and  $_
     {
        
     			/* Query para que haga el insert*/
-				$sql = "call proc_insertar_actividades('$actividad','$descripcion','$proyecto', '$horas', '$comision','$_SESSION[usuario]')";
+				$sql = "call proc_insertar_actividades('$actividad','$descripcion', '$horas', '$comision','$_SESSION[usuario]')";
                 $resultado = $mysqli->query($sql);
        
         

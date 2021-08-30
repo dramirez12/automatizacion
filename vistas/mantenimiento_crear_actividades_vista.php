@@ -97,7 +97,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Actividades</h1>
+                        <h1>Crear Actividades</h1>
                     </div>
 
 
@@ -105,8 +105,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menú mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_actividades_vista.php"> Mantenimiento actividad</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menú Mantenimientos de Docentes</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_actividades_vista.php"> Mantenimiento de Actividades</a></li>
                         </ol>
                     </div>
 
@@ -136,34 +136,38 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
+                                <div class="col-md-3">
+                                </div>
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Comisión</label>
+                                        <select class="form-control-lg select2" type="text" id="cbm_comision1" name="cbm_comision1" style="width: 100%;">
+                                            <option value="">Seleccione una opción</option>
+                                        </select>
+                                    </div>
+                                    <input class="form-control" id="comision1" name="comision1" hidden readonly>
+
                                     <div class="form-group ">
-                                        <label>Ingrese la actividad</label>
-                                        <input class="form-control " type="text" id="txt_actividad1" name="txt_actividad1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_actividad1');" onkeypress="return LetrasyNumeros(event)" onkeypress="return comprobar(this.value, event, this.id)">
+                                        <label>Ingrese la Actividad de la Comisión</label>
+                                        <input class="form-control " type="text" id="txt_actividad1" name="txt_actividad1" required="" maxlength="300" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_actividad1');" onkeypress="return LetrasyNumeros(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Descripcion</label>
-                                        <input class="form-control" type="text" id="txt_descripcion1" name="txt_descripcion1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion1');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
+                                        <label>Descripción</label>
+                                        <input class="form-control" type="text" id="txt_descripcion1" name="txt_descripcion1" required="" maxlength="250" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion1');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
-                                    <div class="form-group">
+                                    <!--      <div class="form-group">
                                         <label>Nombre del proyecto</label>
                                         <input class="form-control" type="text" id="txt_proyecto1" name="txt_proyecto1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_proyecto1');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label>Horas Semanales</label>
-                                        <input class="form-control" type="text" id="txt_horas1" name="txt_horas1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Numeros(event)" onkeypress="return comprobar(this.value, event, this.id)">
+                                        <input class="form-control" type="text" id="txt_horas1" name="txt_horas1" required="" maxlength="3" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Numeros(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Comision</label>
-                                        <select class="form-control-lg select2" type="text" id="cbm_comision1" name="cbm_comision1" style="width: 100%;">
-                                        <option value="">Seleccione una opción</option>
-                                        </select>
-                                    </div>
-                                    <input class="form-control"  id="comision1" name="comision1" hidden >
+
 
 
                                     <p class="text-center" style="margin-top: 20px;">
@@ -200,7 +204,7 @@ ob_end_flush();
 
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
 <script type="text/javascript" language="javascript">
     $(document).ready(function() {

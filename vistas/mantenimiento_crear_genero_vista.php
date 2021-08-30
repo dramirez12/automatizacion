@@ -16,7 +16,7 @@ require_once('../clases/funcion_permisos.php');
 
 $Id_objeto = 73;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento/Crear genero');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento/Crear Genero');
 
 
 
@@ -97,7 +97,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Género docente</h1>
+                        <h1>Crear Género Docente</h1>
                     </div>
 
 
@@ -105,8 +105,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menú mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_genero_vista.php"> Mantenimiento género</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menú Mantenimientos de Docentes</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_genero_vista.php"> Mantenimiento Género</a></li>
                         </ol>
                     </div>
 
@@ -125,7 +125,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nuevo género docente</h3>
+                            <h3 class="card-title">Nuevo Género Docente</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -136,9 +136,11 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
+                            <div class="col-md-3">
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Ingrese el género</label>
+                                        <label>Ingrese el Género</label>
                                         <input class="form-control " type="text" id="txt_genero1" name="txt_genero1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_genero1');" onkeypress="return sololetras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 

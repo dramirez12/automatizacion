@@ -166,7 +166,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Mantenimiento categorías
+                        <h1>Mantenimiento Categorías
                         </h1>
                     </div>
 
@@ -174,8 +174,8 @@ ob_end_flush();
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menú
-                                    mantenimiento</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_categoria_vista.php">Nueva categoría</a></li>
+                                    Mantenimientos de Docentes</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_categoria_vista.php">Nueva Categoría</a></li>
                         </ol>
                     </div>
 
@@ -190,7 +190,7 @@ ob_end_flush();
 
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Categorías existentes</h3>
+                <h3 class="card-title">Categorías Existentes</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -291,7 +291,7 @@ ob_end_flush();
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"> Actualizar categoría</h4>
+                        <h4 class="modal-title"> Actualizar Categoría</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -305,7 +305,7 @@ ob_end_flush();
                                 <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <label>Modificar categoría</label>
+                                        <label>Modificar Categoría</label>
 
 
                                         <input class="form-control" type="text" id="txtcategoria" name="txtcategoria" value="<?php echo $_SESSION['categoria']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_categoria');" onkeypress="return LetrasyNumeros(event)" maxlength="30">
