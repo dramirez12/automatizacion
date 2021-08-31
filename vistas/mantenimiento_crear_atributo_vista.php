@@ -97,7 +97,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Atributos</h1>
+                        <h1>Crear Atributos</h1>
                     </div>
 
 
@@ -105,8 +105,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menú mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_atributos_vista.php"> Mantenimiento atributo</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento.php">Menú Mantenimientos de Docentes</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_atributos_vista.php"> Mantenimiento Atributo</a></li>
                         </ol>
                     </div>
 
@@ -125,7 +125,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nuevo atributo</h3>
+                            <h3 class="card-title">Nuevo Atributo</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -136,9 +136,11 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
+                            <div class="col-md-3">
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Ingrese el atributo</label>
+                                        <label>Ingrese el Atributo</label>
                                         <input class="form-control " type="text" id="txt_atributo1" name="txt_atributo1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_atributo1');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
@@ -148,7 +150,7 @@ ob_end_flush();
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Tipo persona</label>
+                                        <label>Tipo Persona</label>
                                         <select class="form-control-lg select2" type="text" id="cbm_persona" name="txt_persona1" style="width: 100%;">
                                         <option value="">Seleccione una opción</option>
                                         </select>

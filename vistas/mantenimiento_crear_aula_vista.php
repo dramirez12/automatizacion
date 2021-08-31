@@ -94,7 +94,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>AULAS</h1>
+                        <h1>Crear Aulas</h1>
                     </div>
 
 
@@ -102,7 +102,7 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menú mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menú Mantenimientos de Carga</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/mantenimiento_aula_vista.php"> Mantenimiento aula</a></li>
                         </ol>
                     </div>
@@ -122,7 +122,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title">Nueva aula</h3>
+                            <h3 class="card-title">Nueva Aula</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -133,10 +133,12 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
+                                <div class="col-md-3">
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Ingrese el código de aula</label>
-                                        <input class="form-control " type="text" id="txt_codigo1" name="txt_codigo1" required="" maxlength="60" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" >
+                                        <label>Ingrese el Código de Aula</label>
+                                        <input class="form-control " type="text" id="txt_codigo1" name="txt_codigo1" required="" maxlength="60" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)">
                                     </div>
 
                                     <div class="form-group">
@@ -152,19 +154,19 @@ ob_end_flush();
                                     <div class="form-group">
                                         <label>Edificio</label>
                                         <select class="form-control-lg select2" type="text" id="cbm_edificio" name="cbm_edificio" style="width: 100%;">
-                                        <option value="">Seleccione una opción</option>
+                                            <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input class="form-control"  id="edificio" name="edificio" hidden >
+                                    <input class="form-control" id="edificio" name="edificio" hidden>
 
 
                                     <div class="form-group">
-                                        <label>Tipo de aula</label>
+                                        <label>Tipo de Aula</label>
                                         <select class="form-control-lg select2" type="text" id="cbm_aula" name="cbm_aula" style="width: 100%;">
-                                        <option value="">Seleccione una opción</option>
+                                            <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input class="form-control"  id="aula" name="aula" hidden >
+                                    <input class="form-control" id="aula" name="aula" hidden>
 
 
                                     <p class="text-center" style="margin-top: 20px;">
@@ -201,7 +203,7 @@ ob_end_flush();
 
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
 <script type="text/javascript" language="javascript">
     $(document).ready(function() {
@@ -214,6 +216,3 @@ ob_end_flush();
 
     });
 </script>
-
-
-

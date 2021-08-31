@@ -94,7 +94,7 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Nuevo Edificio</h1>
+                        <h1>Crear Edificio</h1>
                     </div>
 
 
@@ -102,8 +102,8 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menú mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_edificio_vista.php"> Mantenimiento edificios</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_carga.php">Menú Mantenimientos de Carga</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_edificio_vista.php"> Mantenimiento Edificios</a></li>
                         </ol>
                     </div>
 
@@ -122,7 +122,8 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h3 class="card-title"></h3>
+                        
+                            <h3 class="card-title">Nuevo Edificio</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -133,9 +134,11 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
+                            <div class="col-md-3">
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label>Ingrese el edificio</label>
+                                        <label>Ingrese el Edificio</label>
                                         <input class="form-control " type="text" id="txt_edificio" name="txt_edificio" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_edificio');" onkeypress="return LetrasyNumeros(event)"  onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 

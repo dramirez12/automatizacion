@@ -163,14 +163,14 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Edificios
+                        <h1>Mantenimiento Edificios
                         </h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menu Mantenimiento</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menú Mantenimientos de Carga</a></li>
                             <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_edificio_vista.php">Nuevo Edificio</a></li>
                         </ol>
                     </div>
@@ -186,7 +186,7 @@ ob_end_flush();
 
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Edificios existentes</h3>
+                <h3 class="card-title">Edificios Existentes</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -309,7 +309,7 @@ ob_end_flush();
                                 <div class="col-md-12">
                                     <div class="form-group">
 
-                                        <label>Modificar edificio</label>
+                                        <label>Modificar Edificio</label>
 
 
                                         <input class="form-control" type="text" id="txtedificio" name="txtedificio" value="<?php echo $_SESSION['nombre']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txtedificio');" onkeypress="return LetrasyNumeroos(event)" maxlength="30">

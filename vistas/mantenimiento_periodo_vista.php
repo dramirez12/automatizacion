@@ -188,15 +188,15 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Período
+                        <h1>Mantenimiento Período
                         </h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menu mantenimiento</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_periodo_vista.php">Nuevo período</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_carga.php">Menú Mantenimientos de Carga</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_periodo_vista.php">Nuevo Período</a></li>
                         </ol>
                     </div>
 
