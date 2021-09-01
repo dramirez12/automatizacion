@@ -117,7 +117,7 @@ $_SESSION['gestion_solicitud_practica_menu']="No
     <div class="container-fluid">
         <!-- pantalla  -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Pasos a seguir:</h3>
@@ -126,20 +126,17 @@ $_SESSION['gestion_solicitud_practica_menu']="No
                    
 
                     <div class="col-md-10">
-                    <br>
-                        <div class="input-group mb-3 input-group">
-                            <p>1. Solicitar la constancia de charla académica
-                              <br>
-                              <br>2. Una vez obtenida la constancia de charla, registrar la solicitud para PPS
-                              <br>
-                              <br>3. Ya registrada la solitud de PPS, tendrá que esperar a que se le notifique mediante un correo si se le a aprobado la práctica profesional o ah sido rechazada.
-                              <br>
-                              <br>4. Ya registrada su solicitud, podrán enviar la documentación que se les este exigiendo (de preferencia en formato pdf). Para insertar mas de 1 documento a la vez utilizar el comando cntrl + clic derecho.
-                              <br>
-                              <br>5. Estos pasos deben seguir este orden, ya que no podran adelantar solicitudes si asi lo quisieran.
-
-
+                        <div>
+                            <p  class="my-2">1. Solicitar la constancia de charla académica 
                             </p>
+                              <p class="my-2">2. Una vez obtenida la constancia de charla, registrar la solicitud para PPS
+                              </p>
+                              <p class="my-2">3. Ya registrada la solitud de PPS, tendrá que esperar a que se le notifique mediante un correo si se le a aprobado la práctica profesional o ah sido rechazada.
+                              </p>
+                              <p class="my-2">4. Ya registrada su solicitud, podrán enviar la documentación que se les este exigiendo (de preferencia en formato pdf). Para insertar mas de 1 documento a la vez utilizar el comando cntrl + clic derecho.
+                              </p>
+                              <p class="my-2">5. Estos pasos deben seguir este orden, ya que no podran adelantar solicitudes si asi lo quisieran.
+                              </p>
 
                         </div>
                     </div>
