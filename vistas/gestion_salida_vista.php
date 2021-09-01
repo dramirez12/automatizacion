@@ -255,7 +255,7 @@ ob_end_flush();
                 <!-- anular -->
                 <td style="text-align: center;">
 
-                  <form action="../Controlador/anular_salida_controlador.php?motivo=<?php echo $row['motivo']; ?>&estado=<?php echo $row['estado']; ?>&inventario=<?php echo $row['inventario']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
+                  <form action="../Controlador/anular_salida_controlador.php?estado=<?php echo $row['estado']; ?>&inventario=<?php echo $row['inventario']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
                     <button type="submit" class="btn btn-danger btn-raised btn-xs">
 
                       <i  class="fas fa-times-circle" style="display:<?php echo $_SESSION['eliminar_producto'] ?> "></i>

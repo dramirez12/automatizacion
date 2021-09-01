@@ -176,15 +176,15 @@ ob_end_flush();
           <div class="col-sm-6">
 
 
-            <h1>MUNICIPIOS
+            <h1>Mantenimiento Municipio
             </h1>
           </div>
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu mantenimiento</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_municipio_vista.php">Nuevo municipio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento.php">Menu Mantenimientos de Docentes</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_municipio_vista.php">Nuevo Municipio</a></li>
             </ol>
           </div>
 
@@ -199,7 +199,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Municipios existentes</h3>
+        <h3 class="card-title">Municipios Existentes</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
@@ -307,7 +307,7 @@ ob_end_flush();
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> Actualizar municipio</h4>
+            <h4 class="modal-title"> Actualizar Municipio</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -326,7 +326,7 @@ ob_end_flush();
                 <div class="col-md-12">
                   <div class="form-group">
 
-                    <label>Modificar municipio</label>
+                    <label>Modificar Municipio</label>
                     <input class="form-control" type="text" id="txt_municipio" name="txt_municipio" value="<?php echo $_SESSION['municipio']; ?>" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_municipio');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
 
 

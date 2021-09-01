@@ -15,7 +15,7 @@ $id="";
 // if (isset($_GET['inventario'])) {
 //     $inventario = $_GET['inventario'];
 // }
-$motivo = $_GET['motivo'];
+$motivo = 2;
 $estado=$_GET['estado'];
 $inventario=$_GET['inventario'];
 $Id_objeto=208;
@@ -102,10 +102,6 @@ elseif ($estado=='PROCESADO'){
                                       $(".FormularioAjax")[0].reset();
                                  </script>';
                          }
-
-
-
-  
 }
 ob_end_flush();
 ?>

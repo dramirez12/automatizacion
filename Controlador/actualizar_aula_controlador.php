@@ -124,7 +124,7 @@ if($codigo1==$codigo){
 
     
 ///Logica para el rol que se repite
-$sqlexiste = ("select count(codigo) as codigo  from tbl_aula where codigo='$codigo' and id_aula='$id_aula'and id_edificio='$edificio' and id_tipo_aula='$tipoaula';");
+$sqlexiste = ("select count(codigo) as codigo  from tbl_aula where codigo='$codigo' and id_edificio='$edificio';");
 //Obtener la fila del query
 $existe = mysqli_fetch_assoc($mysqli->query($sqlexiste));
 
