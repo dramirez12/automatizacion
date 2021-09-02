@@ -19,7 +19,7 @@ $instancia_conexion = new conexion();
         <td style="font-weight: bold;text-align: center; background-color:#fff; color: black;" colspan="12"><?php echo utf8_decode("DEPARTAMENTO DE INFORMÁTICA "); ?></td>
     </tr>
     <tr>
-        <td style="font-weight: bold;text-align: center; background-color:#fff; color: black;" colspan="12"><?php echo utf8_decode("PROGRAMACIÓN ACADÉMICA"); ?></td>
+        <td style="font-weight: bold;text-align: center; background-color:#fff; color: black;" colspan="12"><?php echo utf8_decode("CARGA ACADÉMICA"); ?></td>
     </tr>
     <!--  <tr>
         <td colspan="10"></td>
@@ -52,8 +52,7 @@ $instancia_conexion = new conexion();
     <thead>
         <!--   <tr></tr> -->
         <tr>
-
-            <th colspan="1" style="text-align: center; background-color:darksalmon; ">#</th>
+            <th colspan="1" style="text-align: center; background-color:darksalmon; ">Control</th>
             <th colspan="1" style="text-align: center; background-color:darksalmon; "><?php echo utf8_decode("CÓD"); ?></th>
             <th colspan="1" style="text-align: center; background-color:darksalmon; ">Asignatura</th>
             <th colspan="1" style="text-align: center; background-color:darksalmon;"><?php echo utf8_decode("Sección"); ?></th>
@@ -77,7 +76,7 @@ $instancia_conexion = new conexion();
         ?>
 
             <tr>
-                <td colspan="1" style="text-align: center;"><?php echo $reg['numero']; ?></td>
+                <td colspan="1" style="text-align: center;"><?php echo $reg['control']; ?></td>
                 <td colspan="1" style="text-align: center;"><?php echo $reg['codigo']; ?></td>
                 <td colspan="1" style="text-align: center;"><?php echo utf8_decode($reg['asignatura']); ?></td>
                 <td colspan="1" style="text-align: center;"><?php echo $reg['seccion']; ?></td>
