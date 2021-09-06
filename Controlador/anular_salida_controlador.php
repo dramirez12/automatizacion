@@ -9,15 +9,6 @@ require_once ('../clases/funcion_permisos.php');
 require_once ('../clases/funcion_bitacora.php');
 
 
-
-
-$id="";
-// if (isset($_GET['inventario'])) {
-//     $inventario = $_GET['inventario'];
-// }
-$motivo = 2;
-$estado=$_GET['estado'];
-$inventario=$_GET['inventario'];
 $Id_objeto=208;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
@@ -31,14 +22,24 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/pagina_principal_vista.php.php";
+                                               window.location = "../vistas/gestion_salida_vista.php";
 
                             </script>';
-}
-elseif ($estado=='PROCESADO'){
-   $sql = "call proc_anular_salidas('$motivo','$inventario'); ";
+}else{
+
+   $id="";
+   // if (isset($_GET['inventario'])) {
+   //     $inventario = $_GET['inventario'];
+   // }
+   $motivo = $_GET['motivo'];
+   $estado=$_GET['estado'];
+   $inventario=$_GET['inventario'];
+
+
+ if ($estado=='PROCESADO'){
+   $sql = "call proc_anular_salidas('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
-    if($resultado === TRUE){
+    if($resultado == TRUE){
        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'ANULÓ' , ' LA SALIDA DEL PRODUCTO CON NO.INVENTARIO  '. $inventario.' ');
  
                             echo '<script type="text/javascript">
@@ -71,9 +72,9 @@ elseif ($estado=='PROCESADO'){
 
 }elseif ($estado=='ANULADO')
 {
-   $sql = "call proc_anular_salida2('$motivo','$inventario'); ";
+   $sql = "call proc_anular_salida2('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
-    if($resultado === TRUE){
+    if($resultado == TRUE){
        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'RESTAURÓ' , 'LA SALIDA DEL PRODUCTO CON NO.INVENTARIO  '. $inventario.' ');
  
                             echo '<script type="text/javascript">
@@ -102,6 +103,11 @@ elseif ($estado=='PROCESADO'){
                                       $(".FormularioAjax")[0].reset();
                                  </script>';
                          }
+
+
+
+  
+}
 }
 ob_end_flush();
 ?>

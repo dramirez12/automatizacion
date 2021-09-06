@@ -185,6 +185,7 @@ if ($visualizacion == 0) {
             </div>
 </section>
 
+</div>
 
                         
                         
