@@ -45,7 +45,7 @@ if ($visualizacion == 0) {
 
     $numero_inventario = $_GET['inventario'];
     
-    $sql = "call select_mostrar_datos_salida('$numero_inventario');";
+    $sql = "call select_mostrar_datos_salida('$numero_inventario')";
     $resultado= $mysqli->query($sql);
 
     $row = $resultado->fetch_array(MYSQLI_ASSOC);  

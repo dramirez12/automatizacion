@@ -37,16 +37,14 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
    
 
- if ($estado==='PROCESADO'){
+ if ($estado=='PROCESADO'){
    $sql = "call proc_anular_salidas('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
     if($resultado == TRUE){
        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'ANULÓ' , ' LA SALIDA DEL PRODUCTO CON NO.INVENTARIO  '. $inventario.' ');
  
                             
-                            echo($motivo);
-   echo($estado);
-   echo($inventario);
+  
    echo
                              '<script type="text/javascript">
                                swal({
@@ -77,7 +75,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                          }
 
 
-}elseif ($estado==='ANULADO')
+}elseif ($estado=='ANULADO')
 {
    $sql = "call proc_anular_salida2('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);

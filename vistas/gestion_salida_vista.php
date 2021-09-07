@@ -94,59 +94,13 @@ if ($visualizacion == 0) {
   $sqltabla = "select TDA.numero_inventario as inventario, TP.nombre_producto as producto, TMS.descripcion as descripcion, TMS.fecha_salida as fecha, TE.estado as estado,TMS.id_motivo as motivo FROM tbl_productos TP INNER JOIN tbl_detalle_adquisiciones TDA INNER JOIN tbl_motivo_salida TMS INNER JOIN tbl_estado TE ON TP.id_producto=TDA.id_producto AND TMS.id_detalle=TDA.id_detalle AND TMS.id_estado=TE.id_estado  
   ORDER BY `TE`.`estado` DESC";
   $resultadotabla = $mysqli->query($sqltabla);
-  //LO NECESITO PARA ANULAR
-  if (isset($_GET['motivo'])) {
-    $_SESSION['motivo'] = $row['motivo'];
-  }
+
+  
+  
   
 
 
-//*********PARA MODIFICAR LA SALIDA***** */
-  /* Esta condicion sirve para  verificar el valor que se esta enviando al momento de dar click en el icono modificar */
-  if (isset($_GET['inventario'])) {
-    $sqltabla = "select * FROM tbl_detalle_adquisiciones";
-    
-    $resultadotabla = $mysqli->query($sqltabla);
 
-    /* Esta variable recibe el producto a modificar */
-    $inventario = $_GET['inventario'];
-
-    /* Iniciar la variable de sesion y la crea */
-    /* Hace un select para mandar a traer todos los datos de la 
- tabla donde producto sea igual al que se ingreso en el input */
- $sqltabla = "select * FROM tbl_detalle_adquisiciones;
- ";
-    $resultado = $mysqli->query($sql);
-    /* Manda a llamar la fila */
-    $row = $resultado->fetch_array(MYSQLI_ASSOC);
-
-   /* Aqui obtengo el id<-productos de la tabla de la base el cual me sirve para enviarla a la pagina actualizar.php para usarla en el where del update   */
-  
-   //         variable               viene de la BD
-   $_SESSION['inventario_'] = $row['inventario'];
-    
-
-    /*Aqui levanto el modal*/
-
-    if (isset($_SESSION['inventario'])) {
-
-
-?>
-      <script>
-        $(function() {
-          $('#modal_modificar_producto').modal('toggle')
-
-        })
-      </script>;
-
-      <?php
-      ?>
-
-<?php
-
-
-    }
-  }
 }
 
 ob_end_flush();
@@ -165,62 +119,54 @@ ob_end_flush();
 
 <body>
 <!-- 1 FORMULARIO PRINCIPAL -->
-<div class="content-wrapper" id="tblListar">
+<div class="content-wrapper" id="tblListar"> 
   
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
+                  <!-- Content Header (Page header) -->
+                            <section class="content-header">
+                                <div class="container-fluid">
+                                  <div class="row mb-2">
+                                  
+                                    <div class="col-sm-6">
+                                      <h1>Gestion Salidas
+                                      </h1>
+                                    </div>
+
+                                      <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right">
+                                          <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+                                          <li class="breadcrumb-item active"><a href="crear_salida_vista.php">Nueva Salida</a></li>
+                                        </ol>
+                                      </div>
+
+                                <div class="RespuestaAjax"></div>
+
+                                </div>
+                              </div><!-- i/.container-flud -->
+                            </section>
 
 
-            <h1>Gestion Salidas
-            </h1>
-          </div>
+              <!--Parte central del formulario-->
+              <div class="card card-default"> 
+                          <div class="card-header">
+                            <h3 class="card-title">Salidas</h3>
 
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="crear_salida_vista.php">Nueva Salida</a></li>
-            </ol>
-          </div>
-
-          <div class="RespuestaAjax"></div>
-
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-
-    <!--Parte central del formulario-->
-    <div class="card card-default">
-      <div class="card-header">
-        <h3 class="card-title">Salidas</h3>
-        <div class="card-tools">
-
-         <!-- <button type="button" class=" my-3 btn btn-secondary btn-inline p-2 mr-2">Generar pdf</button> -->
-              <!-- <a href="crear_productos_vista.php" class=" my-3 btn btn-primary btn-inline p-2 "  >Nuevo</a> -->
-
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-        </div>
-        <br>
-        <div class=" px-12">
-       
-        </div>
-      </div>
-      
-      <div class="card-body">
-      
-     
-      <div class="mb-3">
-<a href="crear_salida_vista.php" class=" btn btn-success btn-inline float-right mt-2" ><i class="fas fa-plus pr-2"></i>Nuevo</a>
-
-</div>
+                                        <div class="card-tools">
+                                          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        </div>
+                              
+                                        <div class=" px-12">
+                                        </div>
+                          </div>
+                  
+        <div class="card-body"> 
+            <div class="mb-3">
+                                <div style="padding: 2px;"><a href="crear_salida_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+                      
 
       
       
-        <!-- NOMBRE DE LA TABLA QUE ALOJA LOS PRODUCTOS -->
-        <table id="tblsalidaproducto" class="table table-bordered table-striped">
+          <!-- NOMBRE DE LA TABLA QUE ALOJA LOS PRODUCTOS -->
+          <table id="tblsalidaproducto" class="table table-bordered table-striped">
 
 
 
@@ -239,6 +185,7 @@ ob_end_flush();
           <tbody>
             <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
+
                 <td><?php echo $row['inventario']; ?></td>
                 <td><?php echo $row['producto']; ?></td>
                 <td><?php echo $row['descripcion']; ?></td>
@@ -246,16 +193,14 @@ ob_end_flush();
                 <td><?php echo $row['estado']; ?></td>
                 <!-- editar -->
                 <td style="text-align: center;">
-
                   <a href="../vistas/editar_salida_vista.php?inventario=<?php echo $row['inventario']; ?>" class="btn btn-primary btn-raised btn-xs">
                     <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_salida'] ?> "></i>
                   </a>
-
                 </td>
+
                 <!-- anular -->
                 <td style="text-align: center;">
-
-                  <form action="../Controlador/anular_salida_controlador.php?estado=<?php echo $row['estado']; ?>&inventario=<?php echo $row['inventario']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
+                <form action="../Controlador/anular_salida_controlador.php?motivo=<?php echo $row['motivo']; ?>&estado=<?php echo $row['estado']; ?>&inventario=<?php echo $row['inventario']; ?>" method="POST" class="FormularioAjax"  autocomplete="off">
                     <button type="submit" class="btn btn-danger btn-raised btn-xs">
 
                       <i  class="fas fa-times-circle" style="display:<?php echo $_SESSION['eliminar_producto'] ?> "></i>
@@ -263,30 +208,31 @@ ob_end_flush();
                     <div class="RespuestaAjax"></div>
                   </form>
                 </td>
+
                 <!-- reporte -->
                 <td style="text-align: center;" >
-
                    <a href="../pdf_laboratorio/reporte_salida_lab.php?inventario=<?php echo $row['inventario']; ?>" target="_blank" class="btn btn-primary btn-raised btn-xs"    >
-                
                   <i class="fas fa-clipboard-list"></i>
                   </a>
-                </td>
-
-                      
+                </td>     
               </tr>
-            <?php } ?>
-          </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
-    </div>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              
+          </div>    
+      
+        </div><!-- /.card-body -->
 
 
-    <!-- /.card-body -->
-    <div class="card-footer">
+                <div class="card-footer">
 
-    </div>
-  </div>
+                </div>
+
+    </div><!-- /.card-default -->
+
+
+  </div><!-- /.CIERRE CAJA GRANDE -->
 
 
   <!-- <script type="text/javascript" language="javascript">
