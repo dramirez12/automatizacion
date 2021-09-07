@@ -121,7 +121,7 @@ $fechaActual = date('d-m-Y h:i:s');
 
                                                                         &nbsp;&nbsp; &nbsp;&nbsp;
                                                                         <div class="" id="curriculum_parrafo">
-                                                                            <button class="btn btn-info " id="descargar_curriculum" name=""><a href="" target="_blank" id="curriculum" style="color:white;font-weight: bold;">Descargar Curriculum</a></button>
+                                                                            <button class="btn btn-info " id="descargar_curriculum" name=""><a href="" target="_blank" id="curriculum" style="color:white;font-weight: bold;">Descargar Curriculum </a></button>
                                                                         </div>
 
 
