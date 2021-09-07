@@ -35,20 +35,27 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
    $estado=$_GET['estado'];
    $inventario=$_GET['inventario'];
 
+   
 
- if ($estado=='PROCESADO'){
+ if ($estado==='PROCESADO'){
    $sql = "call proc_anular_salidas('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
     if($resultado == TRUE){
        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'ANULÓ' , ' LA SALIDA DEL PRODUCTO CON NO.INVENTARIO  '. $inventario.' ');
  
-                            echo '<script type="text/javascript">
+                            
+                            echo($motivo);
+   echo($estado);
+   echo($inventario);
+   echo
+                             '<script type="text/javascript">
                                swal({
                                     title:"",
                                     text:"Los datos se anularon correctamente",
                                     type: "success",
                                     showConfirmButton: false,
                                     timer: 9000
+                                    
                                  });
                                  $(".FormularioAjax")[0].reset();
                 window.location = "../vistas/gestion_salida_vista.php";
@@ -70,13 +77,14 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                          }
 
 
-}elseif ($estado=='ANULADO')
+}elseif ($estado==='ANULADO')
 {
    $sql = "call proc_anular_salida2('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
     if($resultado == TRUE){
        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'RESTAURÓ' , 'LA SALIDA DEL PRODUCTO CON NO.INVENTARIO  '. $inventario.' ');
  
+      
                             echo '<script type="text/javascript">
                                swal({
                                     title:"",

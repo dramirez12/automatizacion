@@ -70,125 +70,88 @@ if ($visualizacion == 0) {
 <head>
     
 
-  </head>
+</head>
 <body>
 
-<div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
+    <div class="content-wrapper">
+                        <!-- Content Header (Page header) -->
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                    <div class="row mb-2">
+                                            <div class="col-sm-6">
+                                                <h1>Actualización Salida del producto</h1>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <ol class="breadcrumb float-sm-right">
+                                                    <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+                                                    <li class="breadcrumb-item"><a href="../vistas/gestion_salida_vista.php">Gestión salida</a></li>
+                                                </ol>
+                                            </div>
+                                            <!-- VERIFICAR -->
+                                            <div class="RespuestaAjax"></div>    
+                                    </div>
+                            </div><!-- /.container-fluid -->
+                        </section>
 
 
-                        <h1>Salida del producto</h1>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/gestion_salida_vista.php">Gestión salida</a></li>
-                        </ol>
-                    </div>
-
-                    <!-- VERIFICAR -->
-                    <div class="RespuestaAjax"></div>
-
-                    </div>
-            </div><!-- /.container-fluid -->
-        </section>
-
-
-         <!-- Main content -->
-         <section class="content">
-            <div class="container-fluid ">
-                <!-- pantalla 1 -->
-
-
-                <div class="card card-default ">
-                        <div class="card-header center">
-                          <!-- BUSCADOR -->
-                            <h5 >Buscar por No. Inventario</h5>
-                            
-                            <div>
-                            <form action="crear_salida_vista.php" method="post">
-                            <input name="palabra" id="palabra" readonly="true" disabled="true" style="text-transform: uppercase; height:35px; width:200px;" placeholder="num inventario..."><input readonly="true" disabled="true" class="btn btn-primary" type="submit" class="search" id="buscador"  value="Buscar" >
-                        </form>
-                            <div class="card-tools">
-                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button> -->
-                            </div>
-                        </div>
-                        </div>
-          </section>
-
-<section class="content">
-            <div class="container-fluid ">
-                <!-- pantalla 1 -->
-
-                <form action="../Controlador/actualizar_salida_controlador.php" method="post" data-form="update" class="FormularioAjax" autocomplete="off">
-
-                    <div class="card card-default ">
-                        <div class="card-header center">
-                            <h2 class="card-title">Datos del Producto Saliente</h2>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            </div>
-                        </div>
-
-                        <!-- /.card-header -->
-                        <div class="card-body ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                       
-
-                                <!--    ENTRADA DEL PRODUCTO QUE BUSCO  -->
-                                <input class="form-control" readonly="true" value= "<?php echo 'Producto: '.$_SESSION['producto'].'  Caracteristicas: '.$_SESSION['caracteristicas'] ; ?>"   type="text" id="txt_propiedades" name="txt_propiedades" required="" maxlength="30" readonly="true" disabled="true" style="text-transform: uppercase; height:38px; width:608px;" onkeyup="Espacio(this, event)"  onkeypress="return Letras(event)">
-
-                                        
-                                <!-- FECHA DE LA SALIDA  -->
-                                <div class="form-group">
-                                <label>Fecha Salida</label>
-                                <input class="form-control" readonly="true" type="date" id="fecha_editada" value="<?php echo $_SESSION['fecha'];?>" name="fecha_editada" maxlength="30"   required>
-                                </div>   
-                                    
-                                <!-- LA DESCRIPCION DE BAJA -->
-                                <div class="form-group ">
-                                <textarea class="form-control "  style="text-transform: uppercase"  class="tf w-input" required type="text"  maxlength="100" name="descripcion" id="descripcion" rows="5" cols="40" onkeyup="DobleEspacio(this, event); MismaLetra('descripcion');" onkeypress="return validacion_para_producto(event)" ><?php echo $_SESSION['descripcion'];?></textarea>
-
-                            </div>
-
-
-
-                                <p class="text-center" style="margin-top: 20px;">
-                                <button type="submit" class="btn btn-primary" id="btn_guardar_salida" name="btn_guardar_salida" <?php echo $_SESSION['btn_actualizar_salida_producto']; ?>><i class="zmdi zmdi-floppy"></i>Actualizar</button>
-                                <a href="../vistas/gestion_salida_vista.php" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>
-                                </p>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-
-                        </div>
-                    </div>
-
-
-
-                    <div class="RespuestaAjax"></div>
-                </form>
-
-            </div>
-</section>
-
-</div>
-
+                        <!-- Main content -->
                         
-                        
+
+
+                        <section class="content">
+                            <div class="container-fluid ">
+                                <!-- pantalla 1 -->
+
+                                <form action="../Controlador/actualizar_salida_controlador.php" method="post" data-form="update" class="FormularioAjax" autocomplete="off">
+
+                                    <div class="card card-default ">
+                                        <div class="card-header center">
+                                            <h2 class="card-title">Datos del Producto Saliente</h2>
+                                            <div class="card-tools">
+                                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            </div> 
+                                        </div>
+
+                                        <!-- /.card-header -->
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                                   
+                                                    <!--    ENTRADA DEL PRODUCTO QUE BUSCO  -->
+                                                    <input class="form-control" readonly="true" value= "<?php echo 'Producto: '.$_SESSION['producto'].'  Caracteristicas: '.$_SESSION['caracteristicas'] ; ?>"   type="text" id="txt_propiedades" name="txt_propiedades" required="" maxlength="30" readonly="true" disabled="true" style="text-transform: uppercase; height:38px; width:608px;" onkeyup="Espacio(this, event)"  onkeypress="return Letras(event)">
+
+                                                                    
+                                                    <!-- FECHA DE LA SALIDA  -->
+                                                    <div class="form-group">
+                                                        <label>Fecha Salida</label>
+                                                        <input class="form-control" readonly="true" type="date" id="fecha_editada" value="<?php echo $_SESSION['fecha'];?>" name="fecha_editada" maxlength="30"   required>
+                                                    </div>   
+                                                                
+                                                    <!-- LA DESCRIPCION DE BAJA -->
+                                                    <div class="form-group ">
+                                                        <textarea class="form-control "  style="text-transform: uppercase"  class="tf w-input" required type="text"  maxlength="100" name="descripcion" id="descripcion" rows="5" cols="40" onkeyup="DobleEspacio(this, event); MismaLetra('descripcion');" onkeypress="return validacion_para_producto(event)" ><?php echo $_SESSION['descripcion'];?></textarea>
+                                                    </div>
+
+                                                    <p class="text-center" style="margin-top: 20px;">
+                                                        <button type="submit" class="btn btn-primary" id="btn_guardar_salida" name="btn_guardar_salida" <?php echo $_SESSION['btn_actualizar_salida_producto']; ?>><i class="zmdi zmdi-floppy"></i>Actualizar</button>
+                                                        <a href="../vistas/gestion_salida_vista.php" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>
+                                                     </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- /.card-body -->
+                                        <div class="card-footer"> </div>
+
+                                    </div>  
+
+                                        <div class="RespuestaAjax"> </div>
+
+                                </form>
+                            </div>
+                        </section>
+    </div>                      
 </body>
 </html>
 
@@ -197,3 +160,4 @@ if ($visualizacion == 0) {
 
 <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
+<script src="{{asset('libs/SB-Admin/js/moment.js')}}"></script>
