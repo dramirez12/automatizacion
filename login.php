@@ -128,6 +128,7 @@ if (isset($_REQUEST['msj'])) {
 
 
 
+
 <!DOCTYPE html>
 <html>
 
@@ -135,10 +136,10 @@ if (isset($_REQUEST['msj'])) {
   <!--  <meta charset="utf-8"> -->
 
   <!-- Tell the browser to be responsive to screen width -->
- 
+
   <title>Informatica</title>
   <!-- Theme style -->
-  
+
 </head>
 
 <body class="hold-transition login-page">
@@ -156,7 +157,7 @@ if (isset($_REQUEST['msj'])) {
 
         <form action="Controlador/existe_usuario_controlador.php" method="post">
           <div class="input-group mb-3">
-            <input id="usuario" name="usuario" value="" type="text" maxlength="30" style="text-transform: uppercase" onkeyup="Espacio(this, event)" class="form-control" placeholder="Usuario">
+            <input id="usuario" name="usuario" value="" type="text" maxlength="30" style="text-transform: uppercase" onkeyup="Espacio(this, event)" class="form-control" placeholder="Usuario" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -164,7 +165,7 @@ if (isset($_REQUEST['msj'])) {
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" name="clave" id="clave" class="form-control" placeholder="Contraseña">
+            <input type="password" name="clave" id="clave" class="form-control" placeholder="CONTRASEÑA" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span id="show-hide-passwd6" action="hide" class="fas fa-eye"></span>
@@ -204,23 +205,23 @@ if (isset($_REQUEST['msj'])) {
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
   <!-- AdminLTE App -->
   <!--   <script src="dist/js/adminlte.min.js"></script> -->
-  
-    <script>
-      $(document).ready(function() {
 
-        $('#show-hide-passwd6').click(function() {
-          if ($(this).hasClass('fa-eye')) {
-            $('#clave').removeAttr('type');
-            $('#show-hide-passwd6').addClass('fa-eye-slash').removeClass('fa-eye');
-          } else {
-            //Establecemos el atributo y valor
-            $('#clave').attr('type', 'password');
-            $('#show-hide-passwd6').addClass('fa-eye').removeClass('fa-eye-slash');
-          }
-        });
+  <script>
+    $(document).ready(function() {
 
+      $('#show-hide-passwd6').click(function() {
+        if ($(this).hasClass('fa-eye')) {
+          $('#clave').removeAttr('type');
+          $('#show-hide-passwd6').addClass('fa-eye-slash').removeClass('fa-eye');
+        } else {
+          //Establecemos el atributo y valor
+          $('#clave').attr('type', 'password');
+          $('#show-hide-passwd6').addClass('fa-eye').removeClass('fa-eye-slash');
+        }
       });
-    </script>
+
+    });
+  </script>
 
 
 
