@@ -77,26 +77,20 @@ if (isset($_REQUEST['msj'])) {
   }
   if ($msj == 4) {
     echo '<script >
-      
-      swal(
-                      "Alerta!",
-                      "Lo sentimos tu usuario ha sido bloqueado, contactese con el administrador",
-                      "warning"
-                    );
-                    
+    
           
+                    
+
+                        swal("Lo sentimos tu usuario ha sido bloqueado"," Contactese con el administrador");
                             </script>';
+
+
   }
   if ($msj == 5) {
     echo '<script >
-                          
-        swal(
-                      "Alerta!",
-                      "Lo sentimos su usuario esta bloqueado, contactese con el administrador",
-                      "warning"
-                    );
-          
-   
+       
+         
+                        swal("Lo sentimos su usuario esta bloqueado"," Contactese con el administrador");
                             </script>';
   }
   if ($msj == 6) {
