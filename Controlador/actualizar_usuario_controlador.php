@@ -67,12 +67,12 @@ $result_estatus = $mysqli->query($sql_datos_estatus);
 	if ($resultado==true) {
 			        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , 'EL '.$Nombre.',DEL USUARIO '.$Usuario.'');
 
-header("location:../gestion_usuarios_vista.php?msj=2"); 
+header("location:../vistas/gestion_usuarios_vista.php?msj=2"); 
 
 }
 else
 {
-           header("location:../gestion_usuarios_vista.php?msj=3"); 
+           header("location:../vistas/gestion_usuarios_vista.php?msj=3"); 
 
 }
 
@@ -92,12 +92,12 @@ else
 if ($resultado==true) {
 				        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , 'EL '.$Nombre.',DEL USUARIO '.$Usuario.'');
 
-   header("location:../gestion_usuarios_vista.php?msj=2"); 
+   header("location:../vistas/gestion_usuarios_vista.php?msj=2"); 
 
 }
 else
 {
-           header("location:../gestion_usuarios_vista.php?msj=3"); 
+           header("location:../vistas/gestion_usuarios_vista.php?msj=3"); 
 
 }
 
