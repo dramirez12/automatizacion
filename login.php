@@ -96,7 +96,7 @@ if (isset($_REQUEST['msj'])) {
                       "warning"
                     );
           
-   alert("");
+   
                             </script>';
   }
   if ($msj == 6) {
