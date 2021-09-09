@@ -26,9 +26,9 @@ $Id_objeto=208;
 //    $inventario = $_GET['inventario'];
 // }
 
-$motivo = 3;
+$motivo = 1;
 $estado ='PROCESADO';
-$inventario = 'INV-7';
+$inventario = 'INV-5';
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
