@@ -42,7 +42,7 @@ if ($visualizacion == 0) {
 
 
 
-    $numero_inventario = 'INV-7';
+    $numero_inventario = $_POST['inventario'];
 
     $sql = "call select_mostrar_datos_salida('$numero_inventario')";
     $resultado = $mysqli->query($sql);
