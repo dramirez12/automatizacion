@@ -69,7 +69,7 @@ if ($estado == 'PROCESADO') {
                              echo '<script type="text/javascript">
                              swal({
                                   title:"",
-                                  text:"Los datos  se almacenaron correctamente",
+                                  text:"Los datos se restauraron correctamente",
                                   type: "success",
                                   showConfirmButton: false,
                                   timer: 3000
