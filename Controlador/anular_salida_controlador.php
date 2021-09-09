@@ -11,6 +11,12 @@ require_once ('../clases/funcion_bitacora.php');
 
 $Id_objeto=208;
 
+if (isset($_GET['inventario']) and isset($_GET['motivo']) and isset($_GET['estado'])) {
+   $inventario = $_GET['inventario'];
+   $motivo = $_GET['motivo'];
+   $estado = $_GET['estado'];
+}
+
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
   echo '<script type="text/javascript">
@@ -27,13 +33,6 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                             </script>';
 }else{
 
-   
-   if (isset($_GET['inventario']) && isset($_GET['motivo']) && isset($_GET['estado'])) {
-       $inventario = $_GET['inventario'];
-       $motivo = $_GET['motivo'];
-       $estado = $_GET['estado'];
-   }
-   
 
  if ($estado=='PROCESADO'){
    $sql = "call proc_anular_salidas('$motivo','$inventario')";
