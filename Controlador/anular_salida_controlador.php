@@ -45,7 +45,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
 }else{
 
    $motivo = 1;
-   $estado ='PROCESADO';
+   $estado ='ANULADO';
    $inventario = 'INV-5';
 
  if ($estado==='PROCESADO'){
