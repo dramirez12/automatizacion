@@ -86,7 +86,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                          }
 
 
-}elseif ($estado=='ANULADO')
+}elseif ($estado==='ANULADO')
 {
    $sql = "call proc_anular_salida2('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
