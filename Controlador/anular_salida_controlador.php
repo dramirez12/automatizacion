@@ -11,28 +11,23 @@ require_once('../clases/funcion_bitacora.php');
 
 $Id_objeto = 208;
 
-// if (isset($_GET['motivo'])) {
+if (isset($_GET['motivo'])) {
 
-//    $motivo = $_GET['motivo'];
-// }
+   $motivo = $_GET['motivo'];
+}
 
-// if (isset($_GET['estado'])) {
+if (isset($_GET['estado'])) {
 
-//    $estado = $_GET['estado'];
-// }
+   $estado = $_GET['estado'];
+}
 
-// if (isset($_GET['inventario'])) {
+if (isset($_GET['inventario'])) {
 
-//    $inventario = $_GET['inventario'];
-// }
+   $inventario = $_GET['inventario'];
+}
 
 
-
-$motivo = 1;
-$estado = 'PROCESADO';
-$inventario = 'INV-5';
-
-if ($estado === 'PROCESADO') {
+if ($estado == 'PROCESADO') {
    $sql = "call proc_anular_salidas('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
    if ($resultado == TRUE) {
