@@ -27,14 +27,12 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                             </script>';
 }else{
 
-   $id="";
-   // if (isset($_GET['inventario'])) {
-   //     $inventario = $_GET['inventario'];
-   // }
-   $motivo = $_GET['motivo'];
-   $estado=$_GET['estado'];
-   $inventario=$_GET['inventario'];
-
+   
+   if (isset($_GET['inventario']) && isset($_GET['motivo']) && isset($_GET['estado'])) {
+       $inventario = $_GET['inventario'];
+       $motivo = $_GET['motivo'];
+       $estado = $_GET['estado'];
+   }
    
 
  if ($estado=='PROCESADO'){
