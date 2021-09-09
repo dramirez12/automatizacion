@@ -11,10 +11,11 @@ require_once ('../clases/funcion_bitacora.php');
 
 $Id_objeto=208;
 
-if (isset($_GET['inventario']) and isset($_GET['motivo']) and isset($_GET['estado'])) {
-   $inventario = $_GET['inventario'];
+if (isset($_GET['motivo'], $_GET['estado'], $_GET['inventario'])) {
+   
    $motivo = $_GET['motivo'];
    $estado = $_GET['estado'];
+   $inventario = $_GET['inventario'];
 }
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
