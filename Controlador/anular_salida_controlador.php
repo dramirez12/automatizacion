@@ -71,19 +71,17 @@ if ($estado === 'PROCESADO') {
    if ($resultado == TRUE) {
       bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'RESTAURÓ', 'LA SALIDA DEL PRODUCTO CON NO.INVENTARIO  ' . $inventario . ' ');
 
-
-      echo '<script type="text/javascript">
-                               swal({
-                                    title:"",
-                                    text:"Los datos se restauraron correctamente",
-                                    type: "success",
-                                    showConfirmButton: false,
-                                    timer: 9000
-                                 });
-                                 $(".FormularioAjax")[0].reset();
-                window.location = "../vistas/gestion_salida_vista.php";
- 
-                             </script>';
+                             echo '<script type="text/javascript">
+                             swal({
+                                  title:"",
+                                  text:"Los datos  se almacenaron correctamente",
+                                  type: "success",
+                                  showConfirmButton: false,
+                                  timer: 3000
+                               });
+                               $(".FormularioAjax")[0].reset();
+                               window.location = "../vistas/gestion_salida_vista.php";
+                           </script>';
    } else {
       echo '<script type="text/javascript">
                                      swal({
