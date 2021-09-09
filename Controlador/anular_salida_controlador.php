@@ -26,9 +26,7 @@ $Id_objeto=208;
 //    $inventario = $_GET['inventario'];
 // }
 
-$motivo = 1;
-$estado ='PROCESADO';
-$inventario = 'INV-5';
+
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -46,7 +44,10 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                             </script>';
 }else{
 
-
+   $motivo = 1;
+   $estado ='PROCESADO';
+   $inventario = 'INV-5';
+   
  if ($estado=='PROCESADO'){
    $sql = "call proc_anular_salidas('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
