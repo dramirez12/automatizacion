@@ -11,10 +11,18 @@ require_once ('../clases/funcion_bitacora.php');
 
 $Id_objeto=208;
 
-if (isset($_GET['motivo'], $_GET['estado'], $_GET['inventario'])) {
+if (isset($_GET['motivo'])) {
    
    $motivo = $_GET['motivo'];
+}
+
+if (isset($_GET['estado'])) {
+   
    $estado = $_GET['estado'];
+}
+
+if (isset($_GET['inventario'])) {
+
    $inventario = $_GET['inventario'];
 }
 
