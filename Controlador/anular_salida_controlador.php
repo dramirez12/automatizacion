@@ -29,7 +29,7 @@ $Id_objeto = 208;
 
 
 $motivo = 1;
-$estado = 'ANULADO';
+$estado = 'PROCESADO';
 $inventario = 'INV-5';
 
 if ($estado === 'PROCESADO') {
