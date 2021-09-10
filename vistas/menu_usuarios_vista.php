@@ -192,41 +192,8 @@ $_SESSION['perfil_persona_menu']="No
             <!-- /.col -->
 
             
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Registro de Estudiantes </h4>
-                  <p><?php echo $_SESSION['crear_estudiantes_menu']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-user-plus"></i>
-                </div>
-                <a href="../vistas/registro_estudiantes_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-              <!-- /.info-box -->
-            </div>
-            <!-- /.col 
+            
 
-
-            <!-- fix for small devices only 
-    <div class="clearfix hidden-md-up"></div>
-
-        <div class="col-12 col-sm-6 col-md-4">
-<div class="small-box bg-primary">
-<div class="inner">
-<h4>Perfil </h4>
-<p><?php echo $_SESSION['perfil_persona_menu'];?></p>
-</div>
-<div class="icon">
-<i class="fas fa-user-edit"></i>
-</div>
-<a href="../vistas/perfil_personas_vista.php" class="small-box-footer">
-Ir <i class="fas fa-arrow-circle-right"></i>
-</a>
-</div>
-</div>-->
 
     
 
