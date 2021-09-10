@@ -23,6 +23,14 @@ function DobleEspacio(campo, event) {
   CadenaTextoNueva = CadenaTexto.split(CadenaaReemplazar).join(CadenaReemplazo);
   campo.value = CadenaTextoNueva;
 }
+//sin espacio
+function NoEspacio(campo, event) {
+  CadenaaReemplazar = " ";
+  CadenaReemplazo = "";
+  CadenaTexto = campo.value;
+  CadenaTextoNueva = CadenaTexto.split(CadenaaReemplazar).join(CadenaReemplazo);
+  campo.value = CadenaTextoNueva;
+}
 /*==============================================
     =     VALIDACION SOLO LETRAS            =
     ==============================================*/

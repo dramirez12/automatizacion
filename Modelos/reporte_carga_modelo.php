@@ -256,6 +256,41 @@ class modelo_modal
 
         return $consulta;
     }
+    function listar_persona()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta("SELECT CONCAT(p.nombres,' ', p.apellidos)  as nombres, id_persona as id FROM tbl_personas p");
+
+        return $consulta;
+    }
+    function listar_rol()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta("SELECT Id_rol, Rol FROM tbl_roles");
+
+        return $consulta;
+    }
+
+    function existe_usuario($usuario)
+    {
+        global $instancia_conexion;
+
+        $sql4 = "call proc_verificar_usuario('$usuario')";
+        return $instancia_conexion->ejecutarConsultaSimpleFila($sql4);
+    }
+    function registrar_usuario($id_persona, $Id_rol, $Usuario, $Fec_vence_contrasena, $Intentos, $estado, $Fecha_creacion, $Creado_por, $Clave)
+    {
+
+        global $instancia_conexion;
+
+        $sql = "call proc_insertar_usuario('$id_persona', '$Id_rol', '$Usuario', '$Fec_vence_contrasena', $Intentos, '$estado', '$Fecha_creacion', '$Creado_por', '$Clave')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
    
 

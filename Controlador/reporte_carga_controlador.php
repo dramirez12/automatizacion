@@ -23,6 +23,7 @@ $hora_inicial = isset($_POST["hora_inicial"]) ? limpiarCadena1($_POST["hora_inic
 $hora_final = isset($_POST["hora_final"]) ? limpiarCadena1($_POST["hora_final"]) : "";
 $nombre_docente=isset($_POST["txt_nombre_docente"])? limpiarCadena1($_POST["txt_nombre_docente"]):"";
 $id_tipo_asignatura = isset($_POST["id_tipo_asignatura"]) ? limpiarCadena1($_POST["id_tipo_asignatura"]) : "";
+$Usuario = isset($_POST["Usuario"]) ? limpiarCadena1($_POST["Usuario"]) : "";
 
 
 $instancia_modelo = new modelo_modal();
@@ -287,6 +288,34 @@ switch ($_GET["op"]) {
             echo "<option value='" . $r2->Id_asignatura . "'> " . $r2->asignatura . " </option>";
         }
         break;
+    case 'persona':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_persona();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id . "'> " . $r2->nombres . " </option>";
+        }
+        break;
+    case 'rol':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_rol();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->Id_rol . "'> " . $r2->Rol . " </option>";
+        }
+        break;
+    case 'verificarUsuario':
+        $rspta = $instancia_modelo->existe_usuario($Usuario);
+        //Codificar el resultado utilizando json
+        echo json_encode($rspta);
+        break;
+
 }
 
 
