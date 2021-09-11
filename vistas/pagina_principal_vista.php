@@ -19,19 +19,20 @@ require_once ('../clases/Conexion.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-          <center></center>  
+        <div class="row ">
+          <div class="col-12">
+              <div class="d-flex justify-content-between">
+                <div class="">
+                  <img src="../dist/img/lOGO_OFICIAL.jpg" alt="AdminLTE Logo" class="brand-image   img-fluid"style="opacity: .2">
+                </div>	
+                <div>
+                <img src="../dist/img/logo-unah-blue.png" alt="AdminLTE Logo" class="brand-image  img-fluid"style="opacity: .3">
+                </div>
+                
+                </div>
           </div>
 
-		<div class="full-box text-center">
-				<img src="../dist/img/lOGO_OFICIAL.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-			<img src="../dist/img/logo-unah-blue.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-			
-			
-		</div>
+		
 
 		
 
