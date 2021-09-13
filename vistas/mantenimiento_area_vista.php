@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
@@ -88,14 +89,16 @@ if ($visualizacion == 0) {
 
 
     /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
-    $sqltabla = "SELECT * FROM tbl_areas";
+    $sqltabla = "SELECT *, (SELECT c.Descripcion FROM tbl_carrera as c WHERE c.id_carrera= tbl_areas.id_carrera LIMIT 1) AS carrera
+      FROM tbl_areas";
     $resultadotabla = $mysqli->query($sqltabla);
 
 
 
     /* Esta condicion sirve para  verificar el valor que se esta enviando al momento de dar click en el icono modicar */
     if (isset($_GET['area'])) {
-        $sqltabla = "SELECT * FROM tbl_areas";
+        $sqltabla = "SELECT *, (SELECT c.Descripcion FROM tbl_carrera as c WHERE c.id_carrera= tbl_areas.id_carrera LIMIT 1) AS carrera
+        FROM tbl_areas";
         $resultadotabla = $mysqli->query($sqltabla);
 
         /* Esta variable recibe el estado de modificar */
@@ -104,7 +107,8 @@ if ($visualizacion == 0) {
         /* Iniciar la variable de sesion y la crea */
         /* Hace un select para mandar a traer todos los datos de la 
  tabla donde rol sea igual al que se ingreso en el input */
-        $sql = "SELECT * FROM tbl_areas WHERE area = '$area'";
+        $sql = "SELECT *, (SELECT c.Descripcion FROM tbl_carrera as c WHERE c.id_carrera= tbl_areas.id_carrera LIMIT 1) AS carrera
+        FROM tbl_areas WHERE area = '$area'";
         $resultado = $mysqli->query($sql);
         /* Manda a llamar la fila */
         $row = $resultado->fetch_array(MYSQLI_ASSOC);
@@ -112,6 +116,8 @@ if ($visualizacion == 0) {
         /* Aqui obtengo el id_actividad de la tabla de la base el cual me sirve para enviarla a la pagina actualizar.php para usarla en el where del update   */
         $_SESSION['id_area'] = $row['id_area'];
         $_SESSION['area'] = $row['area'];
+        $_SESSION['id_carrera'] = $row['id_carrera'];
+        $_SESSION['carrera'] = $row['carrera'];
         /*Aqui levanto el modal*/
 
         if (isset($_SESSION['area'])) {
@@ -159,15 +165,15 @@ ob_end_flush();
                     <div class="col-sm-6">
 
 
-                        <h1>Área
+                        <h1>Mantenimiento Área
                         </h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_plan.php">Menú mantenimiento</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_areas.php">Nueva área</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_plan.php">Menú Mantenimiento de Plan</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_areas.php">Nueva Área</a></li>
                         </ol>
                     </div>
 
@@ -182,6 +188,7 @@ ob_end_flush();
 
         <div class="card card-default">
             <div class="card-header">
+            <h3 class="card-title">Áreas Existentes</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -200,6 +207,7 @@ ob_end_flush();
                         <tr>
                             <th># </th>
                             <th>Área</th>
+                            <th>Carrera</th>
                             <th>Modificar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -209,6 +217,7 @@ ob_end_flush();
                             <tr>
                                 <td><?php echo $row['id_area']; ?></td>
                                 <td><?php echo $row['area']; ?></td>
+                                <td><?php echo $row['carrera']; ?></td>
 
 
                                 <td style="text-align: center;">
@@ -291,7 +300,7 @@ ob_end_flush();
                                             <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input hidden class="form-control"  id="carrera1" name="carrera1" value="0" readonly>
+                                    <input  class="form-control"  id="carrera1" name="carrera1" value="0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +355,37 @@ ob_end_flush();
     }
 </script>
 
-<script type="text/javascript" language="javascript">
+<script>
+function llenar_carrera() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/plan_estudio_controlador.php?op=carreras",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#cbm_carrera").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
+      
+
+      $("#cbm_carrera").append(o);
+      $("#cbm_carrera").val(0);
+      
+    },
+  });
+}
+llenar_carrera();
+$('#cbm_carrera').change(function() {
+	var carrera = $(this).val();
+	console.log(carrera);
+    $('#carrera1').val(carrera);
+    if (carrera == 0) {
+    alert("Seleccione una opción válida");
+    document.getElementById("cbm_carrera").value = "";
+  }
+});
+</script>
+
+<!-- <script type="text/javascript" language="javascript">
     $(document).ready(function() {
 
         $('.select2').select2({
@@ -356,7 +395,7 @@ ob_end_flush();
         });
 
     });
-</script>
+</script> -->
 
 <script type="text/javascript" language="javascript">
     function MismaLetra(id_input) {

@@ -5,6 +5,13 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
 
+if (permiso_ver('278') == '1') {
+
+    $_SESSION['menu_acuerdo'] = "...";
+} else {
+    $_SESSION['menu_acuerdo'] = "No tiene permisos para visualizar";
+}
+
 if (permiso_ver('149') == '1') {
 
     $_SESSION['nuevo_acuerdo_menu'] = "...";

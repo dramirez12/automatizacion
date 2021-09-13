@@ -5,6 +5,12 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
 
+if (permiso_ver('279') == '1') {
+
+    $_SESSION['menu_asistencia_acta'] = "...";
+} else {
+    $_SESSION['menu_asistencia_acta'] = "No tiene permisos para visualizar";
+}
 if (permiso_ver('152') == '1') {
 
     $_SESSION['asistencia_acta'] = "...";

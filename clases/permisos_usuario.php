@@ -385,6 +385,31 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
          $_SESSION['btn_coordinacion'] = "block";
       }
    }
+
+     //AGREGANDO MENU REUNION
+     if ($_SESSION['pantalla'] == '276' ) {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_control_actas'] = "block";
+      }
+   }
+    //AGREGANDO MENU ACTAS
+    if ($_SESSION['pantalla'] == '277' ) {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_control_actas'] = "block";
+      }
+   }
+       //AGREGANDO MENU ACUERDO
+       if ($_SESSION['pantalla'] == '278' ) {
+         if ($_SESSION['confirmacion'] == 'block') {
+            $_SESSION['btn_control_actas'] = "block";
+         }
+      }
+           //AGREGANDO MENU ASISTENCIA
+           if ($_SESSION['pantalla'] == '279' ) {
+            if ($_SESSION['confirmacion'] == 'block') {
+               $_SESSION['btn_control_actas'] = "block";
+            }
+         }
    if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] =='48' or $_SESSION['pantalla'] =='104' or $_SESSION['pantalla'] == '275') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['carga_academica_vista'] = "block";
@@ -460,16 +485,16 @@ if ($_SESSION['pantalla']>='34' and $_SESSION['pantalla']<='38' )
 
 
    //MODULO VISTA 360 ESTUDIANTIL
-   if ($_SESSION['pantalla'] = '115') {
+    if ($_SESSION['pantalla'] = '117') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['btn_perfil_estudiantil'] = "block";
       }
-   }  
+   }   
    if ($_SESSION['pantalla'] = '115') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['perfil360_vista'] = "block";
       }
-   } 
+   }  
 
    if ($_SESSION['pantalla'] = '118') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -613,13 +638,13 @@ if ($_SESSION['pantalla'] = '234') {
    }
 }
 
-if ($_SESSION['pantalla']=='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146' or $_SESSION['pantalla']='147' or $_SESSION['pantalla']='148' or $_SESSION['pantalla']='149' or $_SESSION['pantalla']='150' or $_SESSION['pantalla']='151' or $_SESSION['pantalla']='152' or $_SESSION['pantalla']='153' ){
+/* if ($_SESSION['pantalla']=='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146' ){
    if ($_SESSION['confirmacion'] == 'block') {
       $_SESSION['btn_control_actas'] = "block";
    }
-}
+} */
 
-if ($_SESSION['pantalla']='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146'){
+ if ($_SESSION['pantalla']='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146'){
    if ($_SESSION['confirmacion'] == 'block') {
       $_SESSION['gestion_reunion'] = "block";
    }
