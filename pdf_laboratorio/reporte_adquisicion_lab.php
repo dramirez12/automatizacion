@@ -57,7 +57,12 @@ $pdf->Cell(1,6,'',0,0,'C');//mk
 require_once "../Modelos/gestion_lab_modelo.php";
 $reportes = new reportes();
 
-$id_adquisicion1=$_GET['id_adquisicion'];
+if (isset($_GET['id_adquisicion'])) {
+    $id_adquisicion1 = $_GET['id_adquisicion'];
+}
+
+
+// $id_adquisicion1=$_GET['id_adquisicion'];
 $id_adquisicion=intval($id_adquisicion1);
 $rspta0 = $reportes->reportes_adquisicion_tipo($id_adquisicion);
 $acum=0;
@@ -67,7 +72,6 @@ while($reg= $rspta0->fetch_object())
     $pdf->Cell(80,8,utf8_decode('FICHA DE ADQUISICIÓN NO. '.$reg->id),1,0,'C'); 
     $pdf->Ln(5);
     $pdf->Ln(5);
-    require_once('../clases/funcion_bitacora.php');
 
     // $reportes_inv = $reg->numero_inventario;
     $tipo = $reg->tipo;
@@ -103,6 +107,7 @@ while($reg= $rspta0->fetch_object())
     // $pdf->Cell(30,4,utf8_decode('Caracteristicas: '.utf8_decode($reportes_caracteristicas)),0,0,'L'); 
 
 }
+
 $rspta = $reportes->reportes_adquisicion($id_adquisicion);
 
 //Implementamos las celdas de la tabla con los registros a mostrar
