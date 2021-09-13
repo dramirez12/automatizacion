@@ -200,7 +200,7 @@ ob_end_flush();
       <div class="card-body">
       <div style="padding: 2px;"><a href="mantenimiento_crear_ubicacion_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
 
-        <table id="tblUbicacion" class="table table-bordered table-striped">
+        <table id="tblTipoUbicacion" class="table table-bordered table-striped">
 
 
 
@@ -325,7 +325,7 @@ ob_end_flush();
   </script> -->
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(function() {
 
       $('#tblUbicacion').DataTable({
@@ -338,7 +338,7 @@ ob_end_flush();
         "responsive": true,
       });
     });
-  </script>
+  </script> -->
 
 
 </body>

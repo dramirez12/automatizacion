@@ -93,7 +93,7 @@ if ($visualizacion == 0) {
 
     /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
     $sqltabla = "SELECT 
-    a.id_asignacion AS id_asignacion, da.numero_inventario as inventario, p.nombre_producto as producto, u.ubicacion as ubicacion, CONCAT(per.nombres, ' ', per.apellidos) AS nombre, a.fecha_asignacion as fecha
+    a.id_asignacion AS id_asignacion, da.numero_inventario as inventario, p.nombre_producto as producto, u.ubicacion as ubicacion, CONCAT(per.nombres, ' ', per.apellidos) AS nombre, a.fecha_asignacion as fecha,a.motivo as motivo
     FROM tbl_asignaciones AS a
     LEFT JOIN tbl_detalle_adquisiciones AS da ON a.id_detalle = da.id_detalle
     LEFT JOIN tbl_productos AS p ON da.id_producto = p.id_producto
@@ -229,6 +229,7 @@ ob_end_flush();
                             <th>NOMBRE PRODUCTO</th>
                             <th>UBICACIÓN</th>
                             <th>RESPONSABLE</th>
+                            <th>MOTIVO</th>
                             <th>FECHA</th>
                             <th>REASIGNAR</th>
                             <th>ELIMINAR</th>
@@ -242,7 +243,9 @@ ob_end_flush();
                                 <td><?php echo $row['producto']; ?></td>
                                 <td><?php echo $row['ubicacion']; ?></td>
                                 <td><?php echo $row['nombre']; ?></td>
+                                <td><?php echo $row['motivo']; ?></td>
                                 <td><?php echo $row['fecha']; ?></td>
+
 
                                 <td style="text-align: center;">
 
@@ -297,7 +300,7 @@ ob_end_flush();
     </script>
 
 
-    <script type="text/javascript"> // formato de la tabla
+    <!-- <script type="text/javascript"> // formato de la tabla
         $(function() {
 
             $('#tblAsignacion').DataTable({
@@ -310,7 +313,7 @@ ob_end_flush();
                 "responsive": true,
             });
         });
-    </script>
+    </script> -->
 
 </body>
 

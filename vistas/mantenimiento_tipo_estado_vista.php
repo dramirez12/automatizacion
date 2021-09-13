@@ -322,7 +322,7 @@ ob_end_flush();
 
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(function() {
 
       $('#tblEstado').DataTable({
@@ -335,7 +335,7 @@ ob_end_flush();
         "responsive": true,
       });
     });
-  </script>
+  </script> -->
 
 
 </body>

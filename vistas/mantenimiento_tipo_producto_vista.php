@@ -324,7 +324,7 @@ ob_end_flush();
     </script> -->
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(function() {
 
       $('#tblTipoProducto').DataTable({
@@ -337,7 +337,7 @@ ob_end_flush();
         "responsive": true,
       });
     });
-  </script>
+  </script> -->
 
 
 </body>
