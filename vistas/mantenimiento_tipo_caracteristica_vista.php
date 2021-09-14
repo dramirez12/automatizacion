@@ -449,7 +449,7 @@ ob_end_flush();
   </scrip> -->
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(function() {
 
       $('#tblCaracteristica').DataTable({
@@ -462,7 +462,7 @@ ob_end_flush();
         "responsive": true,
       });
     });
-  </script>
+  </script> -->
 
 
 </body>

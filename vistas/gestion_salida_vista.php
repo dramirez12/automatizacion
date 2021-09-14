@@ -105,7 +105,7 @@ ob_end_flush();
 
 <head>
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -238,7 +238,7 @@ ob_end_flush();
 
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(function() {
 
       $('#tblsalidaproducto').DataTable({
@@ -251,7 +251,7 @@ ob_end_flush();
         "responsive": true,
       });
     });
-  </script>
+  </script> -->
 
 
 

@@ -10,7 +10,7 @@ var $aligns;
 		
 		function Header(){
 			$this->Image('../dist/img/logo_ia.jpg', 7,10,27);
-				$this->Image('../dist/img/logo-unah.jpg', 179,8, 25 );
+				// $this->Image('../dist/img/logo-unah.jpg', 179,8, 25 );
 			// $this->Image('../dist/img/logo_ia.jpg', 25,15,50);
 			// $this->Image('../dist/img/lOGO_OFICIAL.jpg', 10, 18, 45); //Insertamos el logo si es en PNG su calidad o formato debe estar entre PNG 8/PNG 24
 			

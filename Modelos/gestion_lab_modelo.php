@@ -86,8 +86,8 @@ class reportes
   public function reportes_adquisicion_tipo($id_adquisicion)
   {
      global $instancia_conexion;
-     $sql = "SELECT a.id_adquisicion as id, ta.tipo_adquisicion as tipo, a.descripcion_adquisicion as descripcion,a.fecha_adquisicion as fecha
-     FROM tbl_adquisiciones a inner join tbl_tipo_adquisicion ta where a.id_adquisicion='$id_adquisicion' and a.id_tipo_adquisicion=ta.id_tipo_adquisicion;";
+     $sql = "SELECT a.id_adquisicion as id, ta.tipo_adquisicion as tipo, a.descripcion_adquisicion as descripcion,a.fecha_adquisicion as fecha, e.estado as estado
+     FROM tbl_adquisiciones a inner join tbl_tipo_adquisicion ta inner join tbl_estado e where a.id_adquisicion='$id_adquisicion' and a.id_tipo_adquisicion=ta.id_tipo_adquisicion and a.id_estado=e.id_estado;";
 
   
     return $instancia_conexion->ejecutarConsulta($sql);
@@ -101,12 +101,14 @@ class reportes
   {
      global $instancia_conexion;
      $sql = "SELECT a.id_asignacion AS id,
-     a.id_asignacion AS id_asignacion, da.numero_inventario as inventario, CONCAT(p.nombre_producto, ' ' ,p.descripcion_producto) as producto, u.ubicacion as ubicacion, CONCAT(per.nombres, ' ', per.apellidos) AS nombre, a.fecha_asignacion as fecha
+     a.id_asignacion AS id_asignacion, da.numero_inventario as inventario,p.nombre_producto as producto, u.ubicacion as ubicacion,uu.ubicacion as ubicacion_previa, CONCAT(per.nombres, ' ', per.apellidos) AS nombre,CONCAT(perr.nombres, ' ', perr.apellidos) AS nombre_previo, a.fecha_asignacion as fecha,a.fecha_asignacion_previa as fecha_previa, a.motivo as motivo,a.motivo_previo as motivo_previo
      FROM tbl_asignaciones AS a
      LEFT JOIN tbl_detalle_adquisiciones AS da ON a.id_detalle = da.id_detalle
      LEFT JOIN tbl_productos AS p ON da.id_producto = p.id_producto
      LEFT JOIN tbl_ubicacion AS u ON a.id_ubicacion = u.id_ubicacion
-     LEFT JOIN tbl_personas AS per ON a.id_usuario_responsable = per.id_persona where id_asignacion ='$id_asignacion'";
+     LEFT JOIN tbl_ubicacion AS uu ON a.id_ubicacion_previa = uu.id_ubicacion
+     LEFT JOIN tbl_personas AS perr ON a.id_usuario_responsable_previo = perr.id_persona
+     LEFT JOIN tbl_personas AS per ON a.id_usuario_responsable = per.id_persona where a.id_asignacion ='$id_asignacion'";
 
   
     return $instancia_conexion->ejecutarConsulta($sql);

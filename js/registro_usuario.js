@@ -85,7 +85,7 @@ $("#guardar_usuario").click(function () {
   } else if (cbm_persona == 0 || cbm_rol == 0) {
     swal("Alerta!", "Seleccione una opción válida", "warning");
   } else {
-    bloquea();
+    
     $.post(
       "../Controlador/reporte_carga_controlador.php?op=verificarUsuario",
       {
@@ -99,6 +99,7 @@ $("#guardar_usuario").click(function () {
         if (data.registro > 0) {
           alert("Ya existe un usuario con ese nombre");
         } else {
+          bloquea();
           $.ajax({
             url: "../Controlador/registrar_usuario_controlador.php",
             type: "POST",
@@ -138,10 +139,11 @@ $("#guardar_usuario").click(function () {
   }
 });
 //
-var boton = document.getElementById("guardar_usuario");
-boton.addEventListener("click", bloquea, false);
+//boton.addEventListener("click", bloquea, false);
 
 function bloquea() {
+  
+var boton = document.getElementById("guardar_usuario");
   if (boton.disabled == false) {
     boton.disabled = true;
 

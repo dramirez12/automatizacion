@@ -1,33 +1,79 @@
 <?php
 require_once "../Modelos/personas_modelo.php";
 
-$modelo=new personas();
+$instancia_modelo=new personas();
 
 
-$nombre=isset($_POST["nombre_persona"])? ($_POST["nombre_persona"]):"";
-$apellido=isset($_POST["apellido_persona"])? ($_POST["apellido_persona"]):"";
-$identidad=isset($_POST["identidad_persona"])? ($_POST["identidad_persona"]):"";
-$nacionalidad=isset($_POST["nacionalidad_persona"])? ($_POST["nacionalidad_persona"]):"";
-$fecha=isset($_POST["fecha_persona"])? ($_POST["fecha_persona"]):"";
-$estado=isset($_POST["estado_civil_persona"])? ($_POST["estado_civil_persona"]):"";
-$genero=isset($_POST["genero_persona"])? ($_POST["genero_persona"]):"";
-$telefono=isset($_POST["telefono_persona"])? ($_POST["telefono_persona"]):"";
-$direccion=isset($_POST["direccion_persona"])? ($_POST["direccion_persona"]):"";
-$correo=isset($_POST["correo_persona"])? ($_POST["correo_persona"]):"";
-$tipo=isset($_POST["tipo_persona"])? ($_POST["tipo_persona"]):"";
+$cuenta = isset($_POST["cuenta"]) ? ($_POST["cuenta"]) : "";
 
 switch ($_GET["op"]){
-	case 'guardar':
-		
-            $rspta=$modelo->insertar($nombre,$apellido,$identidad,$nacionalidad,$fecha,$estado
-                                   ,$genero,$telefono,$direccion,$correo,$tipo);
-			echo $rspta ? "Persona registrada con exito" : "No se puedo llevar a cabo el registro de la persona";
+	case 'Tipopersona':
 
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_tipo_persona();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_tipo_persona . "'> " . $r2->tipo_persona . " </option>";
+        }
+        break;
+
+    case 'genero':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_genero();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_genero . "'> " . $r2->genero . " </option>";
+        }
+        break;
+
+    case 'estado_civil':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_estado_civil();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_estado_civil . "'> " . $r2->estado_civil . " </option>";
+        }
+        break;
+
+    case 'nacionalidad':
+
+        $data = array();
+        $respuesta2 = $instancia_modelo->listar_nacionalidad();
+
+        while ($r2 = $respuesta2->fetch_object()) {
+
+            # code...
+            echo "<option value='" . $r2->id_nacionalidad . "'> " . $r2->nacionalidad . " </option>";
+        }
+        break;
+
+    case 'verificarPersona':
+        $rspta = $instancia_modelo->existe_persona($cuenta);
+        //Codificar el resultado utilizando json
+        echo json_encode($rspta);
+        break;
+
+    case 'verificarPersonaAdmin':
+        $rspta = $instancia_modelo->existe_personaAdmin($cuenta);
+        //Codificar el resultado utilizando json
+        echo json_encode($rspta);
+        break;
+
+
+
+
+	
 	
 }
 
-
-?>
 
 
 

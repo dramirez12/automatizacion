@@ -1,98 +1,310 @@
-var tabla;
+function llenar_TipoPersona() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/guardar_personas_controlador.php?op=Tipopersona",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#tipo_persona").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
 
-//Función que se ejecuta al inicio
-function init() {
-    mostrarform(false);
-    listar();
-
-    $("#formulario").on("submit", function(e) {
-        guardar(e);
-    })
+      $("#tipo_persona").append(o);
+      $("#tipo_persona").val(0);
+    },
+  });
 }
+llenar_TipoPersona();
 
+function llenar_genero() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/guardar_personas_controlador.php?op=genero",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#genero_persona").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
 
-//Función para guardar o editar
+      $("#genero_persona").append(o);
+      $("#genero_persona").val(0);
+    },
+  });
+}
+llenar_genero();
 
-function guardar() {
+function llenar_estado_civil() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/guardar_personas_controlador.php?op=estado_civil",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#estado_civil_persona").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
 
+      $("#estado_civil_persona").append(o);
+      $("#estado_civil_persona").val(0);
+    },
+  });
+}
+llenar_estado_civil();
 
+function llenar_nacionalidad() {
+  var cadena = "&activar=activar";
+  $.ajax({
+    url: "../Controlador/guardar_personas_controlador.php?op=nacionalidad",
+    type: "POST",
+    data: cadena,
+    success: function (r) {
+      $("#nacionalidad_persona").html(r).fadeIn();
+      var o = new Option("SELECCIONAR", 0);
 
-    var datos = $("#formulario").serialize();
-    console.log(datos);
+      $("#nacionalidad_persona").append(o);
+      $("#nacionalidad_persona").val(0);
+    },
+  });
+}
+llenar_nacionalidad();
 
-    $.ajax({
-        url: "../Controlador/guardar_personas_controlador.php?op=guardar",
-        type: "POST",
-        data: datos,
+$("#guardar_persona").click(function () {
+  var tipo_persona = $("#tipo_persona").val();
 
-        success: function(d) {
-            console.log(d);
-            swal({
-                title: d,
+  var tipo_persona1 = document.getElementById("tipo_persona");
 
-                icon: "success",
-                button: "OK",
+  var selected_tipo_persona =
+    tipo_persona1.options[tipo_persona1.selectedIndex].text;
 
-            }).then(function() {
-                window.location = "../vistas/menu_usuarios_vista.php";
-            });
+  var num_cuenta = $("#num_cuenta").val();
+  var nombre_persona = $("#nombre_persona").val();
+  var apellido_persona = $("#apellido_persona").val();
 
+  var genero_persona = document.getElementById("genero_persona");
+  var selected_genero_persona =
+    genero_persona.options[genero_persona.selectedIndex].text;
 
-        }
+  var estado_civil_persona = document.getElementById("estado_civil_persona");
+  var selected_estado_civil_persona =
+    estado_civil_persona.options[estado_civil_persona.selectedIndex].text;
 
+  var correo_persona = $("#correo_persona").val();
+  var fecha_persona = $("#fecha_persona").val();
 
+  var nacionalidad_persona = document.getElementById("nacionalidad_persona");
+
+  var selected_nacionalidad_persona =
+    nacionalidad_persona.options[nacionalidad_persona.selectedIndex].text;
+
+  var identidad_persona = $("#identidad_persona").val();
+  var Estado_persona = "ACTIVO";
+  var telefono_persona = $("#telefono_persona").val();
+  var direccion_persona = $("#direccion_persona").val();
+
+  if (
+    num_cuenta.length == 0 ||
+    nombre_persona.length == 0 ||
+    apellido_persona.length == 0 ||
+    correo_persona.length == 0 ||
+    fecha_persona.length == 0 ||
+    identidad_persona.length == 0 ||
+    telefono_persona.length == 0
+  ) {
+    swal({
+      title: "alerta",
+      text: "Llene los campos vacios correctamente",
+      type: "warning",
+      showConfirmButton: true,
+      timer: 15000,
     });
-    console.log(data);
+  } else if (
+    tipo_persona == 0 ||
+    genero_persona == 0 ||
+    estado_civil_persona == 0 ||
+    nacionalidad_persona == 0
+  ) {
+    swal("Alerta!", "Seleccione una opción válida", "warning");
+  } else {
+    if (
+      selected_tipo_persona == "ESTUDIANTE" ||
+      selected_tipo_persona == "estudiante" ||
+      selected_tipo_persona == "Estudiante"
+    ) {
+      registrarEstudiante(
+        nombre_persona,
+        apellido_persona,
+        selected_genero_persona,
+        identidad_persona,
+        selected_nacionalidad_persona,
+        selected_estado_civil_persona,
+        fecha_persona,
+        tipo_persona,
+        Estado_persona,
+        correo_persona,
+        num_cuenta,
+        telefono_persona,
+        direccion_persona
+      );
+    } else {
+      registrarAdministrativo(
+        nombre_persona,
+        apellido_persona,
+        selected_genero_persona,
+        identidad_persona,
+        selected_nacionalidad_persona,
+        selected_estado_civil_persona,
+        fecha_persona,
+        tipo_persona,
+        Estado_persona,
+        correo_persona,
+        num_cuenta,
+        telefono_persona,
+        direccion_persona
+      );
+    }
+  }
+});
+//funcion registrar persona estuduante
+function registrarEstudiante(
+  nombre_persona,
+  apellido_persona,
+  selected_genero_persona,
+  identidad_persona,
+  selected_nacionalidad_persona,
+  selected_estado_civil_persona,
+  fecha_persona,
+  tipo_persona,
+  Estado_persona,
+  correo_persona,
+  num_cuenta,
+  telefono_persona,
+  direccion_persona
+) {
+  var estudiante = 1;
+  $.post(
+    "../Controlador/guardar_personas_controlador.php?op=verificarPersona",
+    {
+      cuenta: num_cuenta,
+    },
 
-    //limpiar();
+    function (data, status) {
+      console.log(data);
+      data = JSON.parse(data);
+
+      if (data.registro > 0) {
+        alert("Ya existe una persona con ese cuenta");
+      } else {
+        bloquea();
+        $.ajax({
+          url: "../Controlador/registrar_persona_controlador.php",
+          type: "POST",
+          data: {
+            nombres: nombre_persona,
+            apellidos: apellido_persona,
+            sexo: selected_genero_persona,
+            identidad: identidad_persona,
+            nacionalidad: selected_nacionalidad_persona,
+            estado_civil: selected_estado_civil_persona,
+            fecha_nacimiento: fecha_persona,
+            id_tipo_persona: tipo_persona,
+            Estado: Estado_persona,
+            correo: correo_persona,
+            cuenta: num_cuenta,
+            telefono: telefono_persona,
+            direccion: direccion_persona,
+            estud: estudiante,
+          },
+        }).done(function (resp) {
+          if (resp > 0) {
+            swal("Buen trabajo!", "datos ingresados correctamente!", "success");
+            location.reload();
+          } else {
+            swal(
+              "Alerta!",
+              "No se pudo completar intente de nuevo!",
+              "warning"
+            );
+            //document.getElementById("txt_registro").value = "";
+          }
+        });
+      }
+    }
+  );
 }
 
+//funcion registrar persona estuduante
+function registrarAdministrativo(
+  nombre_persona,
+  apellido_persona,
+  selected_genero_persona,
+  identidad_persona,
+  selected_nacionalidad_persona,
+  selected_estado_civil_persona,
+  fecha_persona,
+  tipo_persona,
+  Estado_persona,
+  correo_persona,
+  num_cuenta,
+  telefono_persona,
+  direccion_persona
+) {
+  $.post(
+    "../Controlador/guardar_personas_controlador.php?op=verificarPersonaAdmin",
+    {
+      cuenta: num_cuenta,
+    },
 
-//Función Listar
-function listar() {
-    $('#tbllistado').DataTable({
-        "language": {
-            "sProcessing": "Procesando...",
-            "sLengthMenu": "Mostrar _MENU_ registros",
-            "sZeroRecords": "No se encontraron resultados",
-            "sEmptyTable": "Ningún dato disponible en esta tabla",
-            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "sInfoPostFix": "",
-            "sSearch": "Buscar:",
-            "sUrl": "",
-            "sInfoThousands": ",",
-            "sLoadingRecords": "Cargando...",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast": "Último",
-                "sNext": "Siguiente",
-                "sPrevious": "Anterior"
-            },
-            "oAria": {
-                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            }
-        },
-        "ajax": {
-            url: '../Controlador/guardar_personas_controlador.php?op=listar',
-            type: "get",
-            dataType: "json",
-            error: function(e) {
-                console.log(e.responseText);
-            }
-        }
-    });
+    function (data, status) {
+      console.log(data);
+      data = JSON.parse(data);
+
+      if (data.registro > 0) {
+        alert("Ya existe una persona con ese número empleado");
+      } else {
+        bloquea();
+        $.ajax({
+          url: "../Controlador/registrar_persona_controlador.php",
+          type: "POST",
+          data: {
+            nombres: nombre_persona,
+            apellidos: apellido_persona,
+            sexo: selected_genero_persona,
+            identidad: identidad_persona,
+            nacionalidad: selected_nacionalidad_persona,
+            estado_civil: selected_estado_civil_persona,
+            fecha_nacimiento: fecha_persona,
+            id_tipo_persona: tipo_persona,
+            Estado: Estado_persona,
+            correo: correo_persona,
+            cuenta: num_cuenta,
+            telefono: telefono_persona,
+            direccion: direccion_persona,
+          },
+        }).done(function (resp) {
+          if (resp > 0) {
+            swal("Buen trabajo!", "datos ingresados correctamente!", "success");
+            location.reload();
+          } else {
+            swal(
+              "Alerta!",
+              "No se pudo completar intente de nuevo!",
+              "warning"
+            );
+            //document.getElementById("txt_registro").value = "";
+          }
+        });
+      }
+    }
+  );
 }
 
+// boton.addEventListener("click", bloquea, false);
 
+function bloquea() {
+  var boton = document.getElementById("guardar_persona");
+  if (boton.disabled == false) {
+    boton.disabled = true;
 
-
-
-
-
-
-console.log('estoy funcionando');
-
-listar();
+    setTimeout(function () {
+      boton.disabled = false;
+    }, 5000);
+  }
+}
