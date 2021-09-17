@@ -130,7 +130,7 @@ ob_end_flush();
                                         <button type="button" class="btn btn-success" id="guardar_edicion_recurso">Guardar</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -245,8 +245,8 @@ ob_end_flush();
 
     <script src="../js/tipos_recursos.js"></script>
     <script type="text/javascript">
-    //esto hasta 
-    var currentdate = new Date();
+        //esto hasta 
+        var currentdate = new Date();
         var datetime = "Fecha: " + currentdate.getDate() + "/" +
             (currentdate.getMonth() + 1) + "/" +
             currentdate.getFullYear() + " Hora " +
@@ -254,6 +254,7 @@ ob_end_flush();
             currentdate.getMinutes() + ":" +
             currentdate.getSeconds();
         //aqui
+        var accion = 'tabla_recursos';
         $(document).ready(function() {
             var table = $("#tabla_recursos_tipo").DataTable({
                 "lengthMenu": [
@@ -264,8 +265,8 @@ ob_end_flush();
                     [0, 'desc']
                 ],
                 "responsive": true,
-               //desde aqui
-               dom: 'Bfrtip',
+                //desde aqui
+                dom: 'Bfrtip',
                 buttons: [{
                         extend: 'copyHtml5',
                         title: 'Datos Exportados',
@@ -298,7 +299,7 @@ ob_end_flush();
                             columns: [0, 1, 2, 3, 4]
                         },
                         customize: function(doc) {
-                            doc.content[1].table.widths = ["20%", "20%","20%", "20%","20%"];
+                            doc.content[1].table.widths = ["20%", "20%", "20%", "20%", "20%"];
                             doc['footer'] = (function(page, pages) {
                                     return {
                                         columns: [
@@ -360,9 +361,13 @@ ob_end_flush();
 
 
                 "ajax": {
-                    "url": "../clases/tabla_recursos_tipo.php",
+                    "url": "../Controlador/control_recursos.php",
                     "type": "POST",
-                    "dataSrc": ""
+                    "dataSrc": "",
+                    data: {
+                        accion: accion
+                    },
+                    "dataType": 'json'
                 },
                 "columns": [{
                         "data": "id_recurso_tipo"
@@ -383,7 +388,6 @@ ob_end_flush();
                         "data": null,
                         defaultContent: '<center><div class="btn-group"> <button id="estado" class="ver btn btn-success btn - m" ><i class="fas fa-question-circle"</button><div></center>'
                     },
-
                     {
                         "data": null,
                         defaultContent: '<center><div class="btn-group"> <button id="eliminar" class="ver btn btn-danger btn - m" ><i class="fas fa-trash"></i></button><div></center>'
@@ -445,7 +449,7 @@ ob_end_flush();
                     const form = new FormData();
                     form.append('eliminar_recurso', 1);
                     form.append('id', id_recurso_tipo);
-                    fetch('../Controlador/action.php', {
+                    fetch('../Controlador/control_recursos.php', {
                             method: 'POST',
                             body: form
                         })

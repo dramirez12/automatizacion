@@ -1,4 +1,5 @@
 <?php
+//CONEXION DE LUIS
 //generando la conexion a la base de datos
 function conexion(){ 
 	$servidor= "167.114.169.207";

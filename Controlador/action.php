@@ -811,7 +811,6 @@ if (isset($_POST['getData_docente'])) {
 }
 
 if (isset($_POST['guardarDatos_soli'])) {
-
     $id_docente = $_POST['nombre_docentes'];
     $nombre_docente = $_POST['nombre_completo'];
     $nombre_proyecto = $_POST['nombre_proyecto'];

@@ -3,7 +3,7 @@ require_once 'conexion3.php';
 $conexion = conexion();
 
 //envio de la consulta
-$query = "SELECT id_recurso_tipo,nombre_recurso,descripcion,fecha,estado FROM  tbl_recursos_tipo ";
+$query = "SELECT * FROM  tbl_recursos_tipo ";
 
 //buscando el resultado 
 $resultado = mysqli_query($conexion, $query);
