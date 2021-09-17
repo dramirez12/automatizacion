@@ -50,7 +50,7 @@ class correo
 		$mail->SMTPDebug = 0;
 		$mail->Host = "informaticaunah.com";
 		$mail->Port = 465;
-		$mail->SMTPSecure = 'SSL';
+		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo_doc;
 		$mail->Password = $Password_doc;
