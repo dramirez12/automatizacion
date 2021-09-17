@@ -14,7 +14,7 @@ class correo
 		$mail->isSMTP();
 
 		$correo = "unahvinc@informaticaunah.com";
-		$Password = "N5y*%U(Ofb+T";
+		$Password = "O~K-m9_J.lbD";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
@@ -46,7 +46,7 @@ class correo
 		$mail->issMTP();
 
 		$correo_doc = "unahvinc@informaticaunah.com";
-		$Password_doc = "N5y*%U(Ofb+T";
+		$Password_doc = "O~K-m9_J.lbD";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
