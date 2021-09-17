@@ -49,8 +49,8 @@ class correo
 		$Password_doc = "Hola*1234";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
-		$mail->Port = 587;
-		$mail->SMTPSecure = 'TLS';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'SSL';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo_doc;
 		$mail->Password = $Password_doc;
