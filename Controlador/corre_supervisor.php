@@ -16,7 +16,7 @@ class correo
 		$correo = "unahvinc@informaticaunah.com";
 		$Password = "O~K-m9_J.lbD";
 		$mail->SMTPDebug = 0;
-		$mail->Host = "mail.informaticaunah.com";
+		$mail->Host = "informaticaunah.com";
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
@@ -48,7 +48,7 @@ class correo
 		$correo_doc = "unahvinc@informaticaunah.com";
 		$Password_doc = "O~K-m9_J.lbD";
 		$mail->SMTPDebug = 0;
-		$mail->Host = "mail.informaticaunah.com";
+		$mail->Host = "informaticaunah.com";
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'SSL';
 		$mail->SMTPAuth = true;
