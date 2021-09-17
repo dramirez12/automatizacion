@@ -17,8 +17,8 @@ class correo
 		$Password = "Hola*1234";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
-		$mail->Port = 465;
-		$mail->SMTPSecure = 'ssl';
+		$mail->Port = 587;
+		$mail->SMTPSecure = 'TLS';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo;
 		$mail->Password = $Password;
@@ -45,12 +45,12 @@ class correo
 		$mail =new PHPMailer\PHPMailer\PHPMailer();
 		$mail->issMTP();
 
-		$correo_doc = "unahvinc@informaticaunah.com";
-		$Password_doc = "O~K-m9_J.lbD";
+		$correo_doc = "automatizacionunah2021@gmail.com";
+		$Password_doc = "Hola*1234";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
-		$mail->Port = 465;
-		$mail->SMTPSecure = 'ssl';
+		$mail->Port = 587;
+		$mail->SMTPSecure = 'TLS';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo_doc;
 		$mail->Password = $Password_doc;
