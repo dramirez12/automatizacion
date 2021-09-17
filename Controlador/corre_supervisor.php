@@ -13,10 +13,10 @@ class correo
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 		$mail->isSMTP();
 
-		$correo = "unahvinc@informaticaunah.com";
-		$Password = "O~K-m9_J.lbD";
+		$correo = "automatizacionunah2021@gmail.com";
+		$Password = "Hola*1234";
 		$mail->SMTPDebug = 0;
-		$mail->Host = 'informaticaunah.com';
+		$mail->Host = 'smtp.gmail.com';
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
