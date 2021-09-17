@@ -17,8 +17,8 @@ class correo
 		$Password = "Hola*1234";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'smtp.gmail.com';
-		$mail->Port = 587;
-		$mail->SMTPSecure = 'TLS';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'SSL';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo;
 		$mail->Password = $Password;
