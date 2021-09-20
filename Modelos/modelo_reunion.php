@@ -1,10 +1,8 @@
 <?php
-
-include_once '../clases/Conexion.php';
-require '../plugins/phpmailer/Exception.php';
-require '../plugins/phpmailer/PHPMailer.php';
-require '../plugins/phpmailer/SMTP.php';
-
+require_once('../PHPMAILER/PHPMailer.php');
+require_once('../PHPMAILER/SMTP.php');
+require_once('../PHPMAILER/Exception.php');
+require_once('../clases/Conexion.php');
 $enlace = $_POST['NULL'];
 $agenda = $_POST['agenda'];
 $asunto = $_POST['asunto'];
@@ -20,12 +18,10 @@ $nombre = $_POST['nombre'];
 $tipo = $_POST['tipo'];
 $participante = $_POST['chk'];
 $anio_formateada = date('Y', strtotime($fecha));
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 
 if ($_POST['reunion'] == 'nuevo') {
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->isSMTP();
     try {
         $stmt = $mysqli->prepare("INSERT INTO tbl_reunion (id_tipo, id_estado, fecha, nombre_reunion, lugar, enlace, hora_inicio, hora_final, asunto, agenda_propuesta) VALUES (?,?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("iissssssss", $tipo, $estado, $fecha_formateada, $nombre, $lugar, $enlace, $horainicio, $horafinal, $asunto, $agenda);
@@ -48,19 +44,20 @@ if ($_POST['reunion'] == 'nuevo') {
             );
         }
         //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $correo = 'unahvinc@informaticaunah.com';
+		$Password = '.N9135myfkAa';
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host = 'informaticaunah.com';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-        $mail->Password   = 'informaticaunah2021';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+		$mail->Username = $correo;
+		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -103,7 +100,8 @@ if ($_POST['reunion'] == 'nuevo') {
 }
 
 if ($_POST['reunion'] == 'actualizar') {
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->isSMTP();
     $id_registro = $_POST['id_registro'];
     $invitados = $_POST['invitados'];
     try {
@@ -132,19 +130,20 @@ if ($_POST['reunion'] == 'actualizar') {
             );
         }
         //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $correo = 'unahvinc@informaticaunah.com';
+		$Password = '.N9135myfkAa';
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host = 'informaticaunah.com';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-        $mail->Password   = 'informaticaunah2021';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+		$mail->Username = $correo;
+		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -194,11 +193,12 @@ if ($_POST['reunion'] == 'cancelar') {
     $estadocancelar = 2;
     $id_cancelar = $_POST['id'];
     $mensaje = $_POST['mensaje'];
-    $motivo = ' -- motivo: '.$_POST['mensaje'];
-    $mail = new PHPMailer(true);
+    $motivo = ' -- motivo: ' . $_POST['mensaje'];
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->isSMTP();
     try {
         $stmt = $mysqli->prepare('UPDATE tbl_reunion SET id_estado = ?, mensaje =? WHERE id_reunion = ?');
-        $stmt->bind_param('isi', $estadocancelar,$motivo, $id_cancelar);
+        $stmt->bind_param('isi', $estadocancelar, $motivo, $id_cancelar);
         $stmt->execute();
         if ($stmt->affected_rows) {
             $respuesta = array(
@@ -211,17 +211,18 @@ if ($_POST['reunion'] == 'cancelar') {
             );
         }
         //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $correo = 'unahvinc@informaticaunah.com';
+		$Password = '.N9135myfkAa';
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host = 'informaticaunah.com';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-        $mail->Password   = 'informaticaunah2021';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+		$mail->Username = $correo;
+		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
-        $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informática Administrativa');
+        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_cancelar";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
