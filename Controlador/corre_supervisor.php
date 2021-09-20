@@ -13,10 +13,10 @@ class correo
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 		$mail->isSMTP();
 
-		$correo = "secreto-secreto02@hotmail.com";
-		$Password = "pokemon123";
+		$correo = "unahvinc@informaticaunah.com";
+		$Password = ".N9135myfkAa";
 		$mail->SMTPDebug = 0;
-		$mail->Host = "smtp.live.com";
+		$mail->Host = "informaticaunah.com	";
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
@@ -45,10 +45,10 @@ class correo
 		$mail =new PHPMailer\PHPMailer\PHPMailer();
 		$mail->issMTP();
 
-		$correo_doc = "secreto-secreto02@hotmail.com";
-		$Password_doc = "pokemon123";
+		$correo_doc = "unahvinc@informaticaunah.com";
+		$Password_doc = ".N9135myfkAa";
 		$mail->SMTPDebug = 0;
-		$mail->Host = "smtp.live.com";
+		$mail->Host = "informaticaunah.com	";
 		$mail->Port = 465;
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
