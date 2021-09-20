@@ -75,10 +75,10 @@ class correo
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 		$mail->isSMTP();
 
-		$correo_aproba = "luisdavidpacheco123@gmail.com";
-		$password_aproba = "osopolar123";
+		$correo_aproba = "unahvinc@informaticaunah.com";
+		$password_aproba = ".N9135myfkAa";
 		$mail->SMTPDebug = 0;
-		$mail->Host = 'smtp.gmail.com';
+		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 587;
 		$mail->SMTPSecure = 'tls';
 		$mail->SMTPAuth = true;
