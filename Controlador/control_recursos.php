@@ -7,6 +7,7 @@ if (isset($_POST['tipo_recursos'])) { //!insert en la tabla de recursos
     $fecha = $_POST['fecha_recurso'];
     $nombre_recurso = $_POST['nombre_recurso'];
     $respuesta = $mysqli->query("INSERT INTO tbl_recursos_tipo (descripcion,fecha, nombre_recurso,estado) VALUES ('$descripcion', '$fecha', '$nombre_recurso', '$estado')");
+    var_dump($respuesta);
     if ($respuesta == true) {
         echo json_encode('exito');
     } else {
