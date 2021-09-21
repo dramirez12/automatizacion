@@ -1,5 +1,5 @@
 <?php
-require '../clases/Conexion.php';
+include '../clases/Conexion.php';
 
 if (isset($_POST['tipo_recursos'])) { //!insert en la tabla de recursos
     $estado = 'Activo';
