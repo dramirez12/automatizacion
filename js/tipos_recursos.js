@@ -20,7 +20,7 @@ function eliminar(id) {
         form.append('eliminar_recurso', 1);
         form.append('id', id);
 
-        fetch('../Controlador/action.php', {
+        fetch('../Controlador/control_recurso.php', {
             method: 'POST',
             body: form
         })
@@ -75,7 +75,7 @@ function cambiarEstado(id, estado) {
         formEstado.append('id', id);
         formEstado.append('estado', estado);
 
-        fetch('../Controlador/action.php', {
+        fetch('../Controlador/control_recurso.php', {
             method: 'POST',
             body: formEstado
         })
@@ -125,7 +125,7 @@ buttonGuardar.addEventListener('click', function (e) {
         enviar_Datos.classList.add('was-validated')
     } else {
 
-        fetch('../Controlador/action.php', {
+        fetch('../Controlador/control_recurso.php', {
             method: 'POST',
             body: form2
         }
