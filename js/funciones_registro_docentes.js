@@ -1389,7 +1389,7 @@ function Registrar() {
     formData.append('f', foto);
 
     $.ajax({
-        url: 'subirimagen.php',
+        url: '../vistas/subirimagen.php',
         type: 'post',
         data: formData,
         contentType: false,
@@ -1410,7 +1410,7 @@ function Registrarcurriculum() {
     //formData.append('nombrearchivo',nombrearchivo);
 
     $.ajax({
-        url: 'subirdocumento.php',
+        url: '../vistas/subirdocumento.php',
         type: 'post',
         data: formData,
         contentType: false,
