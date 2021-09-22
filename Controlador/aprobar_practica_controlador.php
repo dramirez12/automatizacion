@@ -3,8 +3,9 @@
 ob_start();
 session_start();
 require_once("../Modelos/calculo_fecha_pps_modelos.php");
-require_once("../Modelos/asignar_docente_supervisor_modelo.php");
 require_once('../Controlador/corre_supervisor.php');
+require_once('../clases/Conexion.php');
+require_once('../clases/conexion_mantenimientos.php');
 
 $db = new pruebas();
 
@@ -32,8 +33,27 @@ echo $consulta;
         $id_persona_estud = $sql2->get_result();
 
 
-        $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
-        foreach ($rspta1 as $key => $value) {
+        $sql2 = $mysqli->prepare("SELECT px.valor, concat(a.nombres,' ',a.apellidos) as nombre, ep.nombre_empresa, ep.direccion_empresa,pe.fecha_inicio, pe.fecha_finaliza, c.valor Correo, e.valor Celular, ep.jefe_inmediato, ep.titulo_jefe_inmediato
+
+		FROM tbl_empresas_practica AS ep
+		JOIN tbl_personas AS a
+		ON ep.id_persona = a.id_persona
+		JOIN tbl_practica_estudiantes AS pe
+		ON pe.id_persona = a.id_persona
+		JOIN tbl_contactos c ON a.id_persona = c.id_persona
+		JOIN tbl_tipo_contactos d ON c.id_tipo_contacto = d.id_tipo_contacto AND d.descripcion = 'CORREO'
+		JOIN tbl_contactos e ON a.id_persona = e.id_persona
+		JOIN tbl_tipo_contactos f ON e.id_tipo_contacto = f.id_tipo_contacto AND f.descripcion = 'TELEFONO CELULAR'
+		join tbl_personas_extendidas as px on px.id_atributo=12 and px.id_persona=a.id_persona
+		where a.id_persona='$id_persona_estud'");
+        $sql2->execute();
+        $resultado2 = $sql2->get_result();
+        $row2 = $resultado2->fetch_all(MYSQLI_ASSOC);
+
+        
+
+        // $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
+        foreach ($row2 as $key => $value) {
 
             $estudiante = $value[1];
             $num_cuenta = $value[0];
