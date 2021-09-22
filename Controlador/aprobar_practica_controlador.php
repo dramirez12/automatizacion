@@ -8,6 +8,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/conexion_mantenimientos.php');
 
 $db = new pruebas();
+$correo = new correo();
 
 $cuenta_estud = $_POST['cuenta_estud'];
 $obs_prac = $_POST['obs_prac'];
@@ -25,8 +26,7 @@ echo $consulta;
 
 
     if ($consulta === true) {
-        $modelo = new asignaturas();
-        $correo = new correo();
+        
 
         $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
         $sql2->execute();
@@ -48,25 +48,7 @@ echo $consulta;
 		where a.id_persona='$id_persona_estud'");
         $sql2->execute();
         $resultado2 = $sql2->get_result();
-        $row2 = $resultado2->fetch_all(MYSQLI_ASSOC);
-
-        
-
-        // $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
-        foreach ($row2 as $key => $value) {
-
-            $estudiante = $value[1];
-            $num_cuenta = $value[0];
-            $estudcorreo = $value[6];
-            $celular = $value[7];
-            $empresa = $value[2];
-            $direccion = $value[3];
-            $fechai = $value[4];
-            $fechan = $value[5];
-            $jefe = $value[8];
-            $titulo = $value[9];
-        }
-
+        $row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
 
 
 
@@ -117,7 +99,7 @@ Comité de Vinculación Universidad Sociedad 
 
             <tr>
                 <td class="content-cell" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; padding: 35px; word-break: break-word;">
-                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $estudiante . ' </h4>
+                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $row2['nombre'] . ' </h4>
 
 
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
@@ -190,7 +172,7 @@ Comité de Vinculación Universidad Sociedad 
 
 
 
-        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $estudcorreo, $estudiante);
+        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $row2['Correo'] , $row2['nombre'] );
     }
 
 
