@@ -28,30 +28,31 @@ echo $consulta;
     if ($consulta === true) {
         
 
-        $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
-        $sql2->execute();
-        $id_persona_estud = $sql2->get_result();
+        // $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
+        // $sql2->execute();
+        // $id_persona_estud = $sql2->get_result();
 
 
-        $sql2 = $mysqli->prepare("SELECT px.valor, concat(a.nombres,' ',a.apellidos) as nombre, ep.nombre_empresa, ep.direccion_empresa,pe.fecha_inicio, pe.fecha_finaliza, c.valor Correo, e.valor Celular, ep.jefe_inmediato, ep.titulo_jefe_inmediato
+        // $sql2 = $mysqli->prepare("SELECT px.valor, concat(a.nombres,' ',a.apellidos) as nombre, ep.nombre_empresa, ep.direccion_empresa,pe.fecha_inicio, pe.fecha_finaliza, c.valor Correo, e.valor Celular, ep.jefe_inmediato, ep.titulo_jefe_inmediato
 
-		FROM tbl_empresas_practica AS ep
-		JOIN tbl_personas AS a
-		ON ep.id_persona = a.id_persona
-		JOIN tbl_practica_estudiantes AS pe
-		ON pe.id_persona = a.id_persona
-		JOIN tbl_contactos c ON a.id_persona = c.id_persona
-		JOIN tbl_tipo_contactos d ON c.id_tipo_contacto = d.id_tipo_contacto AND d.descripcion = 'CORREO'
-		JOIN tbl_contactos e ON a.id_persona = e.id_persona
-		JOIN tbl_tipo_contactos f ON e.id_tipo_contacto = f.id_tipo_contacto AND f.descripcion = 'TELEFONO CELULAR'
-		join tbl_personas_extendidas as px on px.id_atributo=12 and px.id_persona=a.id_persona
-		where a.id_persona='$id_persona_estud'");
-        $sql2->execute();
-        $resultado2 = $sql2->get_result();
-        $row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
+		// FROM tbl_empresas_practica AS ep
+		// JOIN tbl_personas AS a
+		// ON ep.id_persona = a.id_persona
+		// JOIN tbl_practica_estudiantes AS pe
+		// ON pe.id_persona = a.id_persona
+		// JOIN tbl_contactos c ON a.id_persona = c.id_persona
+		// JOIN tbl_tipo_contactos d ON c.id_tipo_contacto = d.id_tipo_contacto AND d.descripcion = 'CORREO'
+		// JOIN tbl_contactos e ON a.id_persona = e.id_persona
+		// JOIN tbl_tipo_contactos f ON e.id_tipo_contacto = f.id_tipo_contacto AND f.descripcion = 'TELEFONO CELULAR'
+		// join tbl_personas_extendidas as px on px.id_atributo=12 and px.id_persona=a.id_persona
+		// where a.id_persona='$id_persona_estud'");
+        // $sql2->execute();
+        // $resultado2 = $sql2->get_result();
+        // $row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
 
 
-
+        $nombre_estud = 'PRUEBA PRUEBA';
+        $correo_e = 'luisdavidpacheco123@gmail.com';
         $asunto_estudiante_aproba = "APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
 
         $cuerpo_aproba = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -99,7 +100,7 @@ Comité de Vinculación Universidad Sociedad 
 
             <tr>
                 <td class="content-cell" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; padding: 35px; word-break: break-word;">
-                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $row2['nombre'] . ' </h4>
+                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $nombre_estud . ' </h4>
 
 
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
@@ -172,7 +173,7 @@ Comité de Vinculación Universidad Sociedad 
 
 
 
-        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $row2['Correo'] , $row2['nombre'] );
+        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_e , $nombre_estud );
     }
 
 
