@@ -1,7 +1,12 @@
 <?php
 
 require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php'); 
+require_once ('../clases/Conexion.php');
+
+require('../clases/sesion.php');
+
+
+
 
 ?>
 <!DOCTYPE html>
