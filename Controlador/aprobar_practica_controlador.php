@@ -25,31 +25,31 @@ $correo = new correo();
 $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
 echo $consulta;
 
-// $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
-// $sql2->execute();
-// $id_persona_estud = $sql2->get_result();
+$sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
+$sql2->execute();
+$id_persona_estud = $sql2->get_result();
 
-// $id_persona_prueba = 157;
 
-// $rspta1 = $modelo->mostrar_datos_alumno($id_persona_prueba)->fetch_all();
-// foreach ($rspta1 as $key => $value) {
 
-//     $estudiante = $value[1];
-//     $num_cuenta = $value[0];
-//     $ecorreo = $value[6];
-//     $celular = $value[7];
-//     $empresa = $value[2];
-//     $direccion = $value[3];
-//     $fechai = $value[4];
-//     $fechan = $value[5];
-//     $jefe = $value[8];
-//     $titulo = $value[9];
-// }
+$rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
+foreach ($rspta1 as $key => $value) {
+
+    $estudiante = $value[1];
+    $num_cuenta = $value[0];
+    $estudcorreo = $value[6];
+    $celular = $value[7];
+    $empresa = $value[2];
+    $direccion = $value[3];
+    $fechai = $value[4];
+    $fechan = $value[5];
+    $jefe = $value[8];
+    $titulo = $value[9];
+}
 
 // var_dump($rspta1);
 // echo $rspta1;
 
-$nombre_estud = "Luis David Pacheco Pineda";
+
 $asunto_estudiante_aproba ="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
 
 $cuerpo_aproba = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -97,7 +97,7 @@ Comité de Vinculación Universidad Sociedad 
 
             <tr>
                 <td class="content-cell" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; padding: 35px; word-break: break-word;">
-                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $nombre_estud . ' </h4>
+                    <h4 style="box-sizing: border-box; color: #2F3133; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 19px; font-weight: bold; margin-top: 0;" align="left">Estimado: ' . $estudiante . ' </h4>
 
 
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" style="box-sizing: border-box; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; margin: 30px auto; padding: 0; text-align: center; width: 100%;">
@@ -166,11 +166,11 @@ Comité de Vinculación Universidad Sociedad 
 </html>
 ';
 
-$correo_estud = "secreto-secreto02@hotmail.com"; 
 
 
 
-$correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_estud, $nombre_estud);
+
+$correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $estudcorreo, $estudiante);
 
 // if ($consulta === 1) {
 //     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
