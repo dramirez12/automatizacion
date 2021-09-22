@@ -114,19 +114,19 @@ ob_end_flush();
 
     <!-- Main content -->
     <section class="content">
-            <div class="container-fluid">
-  <!-- pantalla 1 -->
-      
-<form action="../Controlador/guardar_pregunta_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax">
+      <div class="container-fluid">
+            
+          
+        <form action="../Controlador/guardar_pregunta_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax">
 
- <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Nueva pregunta</h3>
+            <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">Nueva pregunta</h3>
 
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+              </div>
             </div>
-          </div>
 
 
           <!-- /.card-header -->
@@ -153,25 +153,25 @@ ob_end_flush();
               </div>
             </div>
           </div>
+        </form>
 
+      </div>
+        
+        
 
+   
 
-          <!-- /.card-body -->
-          <div class="card-footer">
+   
             
-          </div>
-        </div>
-         
          
     
-    <div class="RespuestaAjax"></div>
-</form>
+        <div class="RespuestaAjax"></div>
+     
 
-  </div>
-</section>
+ 
+    </section>
 
 
-</div>
 
 </body>
 </html>
