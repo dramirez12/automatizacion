@@ -424,7 +424,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
 
 
                 </select>
-             
+                <input type="text" name="tipo_prac" id="tipo_prac" class="form-control">
               </div>
 
             </div>

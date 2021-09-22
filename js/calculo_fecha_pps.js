@@ -7,7 +7,7 @@ $(document).ready(function () {
             type: "POST",
             url: url,
             data: $("#formulario").serialize(),
-            success: function (data){
+            success: function (data) {
                 $("#fecha_finalizacion").val(data);
 
             }
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     $('#btn_aprobacion_rechazo_practica').on('click', function () {
 
-        
+
 
         var cuenta_estud = $("#txt_estudiante_cuenta").val();
         var obs_prac = $("#txt_motivo_rechazo").val();
@@ -73,8 +73,15 @@ $(document).ready(function () {
 
 $("#dias").change(function () {
     var dias_practi = $("#dias option:selected").text();
-  
+
     $("#dias_practica").val(dias_practi);
-  });
+});
+
+
+$("#cb_practica").change(function () {
+    var tipo_prac = $("#cb_practica option:selected").text();
+
+    $("#tipo_prac").val(tipo_prac);
+});
 
 
