@@ -4,11 +4,10 @@ ob_start();
 session_start();
 require_once("../Modelos/calculo_fecha_pps_modelos.php");
 require_once("../Modelos/asignar_docente_supervisor_modelo.php");
-require_once('../clases/funcion_bitacora.php');
 require_once('../Controlador/corre_supervisor.php');
 
 $db = new pruebas();
-$modelo = new asignaturas();
+
 $cuenta_estud = $_POST['cuenta_estud'];
 $obs_prac = $_POST['obs_prac'];
 $empresa_prac = $_POST['empresa_prac'];
@@ -18,9 +17,9 @@ $fecha_final_prac = $_POST['fecha_final_prac'];
 $horario_incio_prac = $_POST['horario_incio_prac'];
 $horario_fin_prac = $_POST['horario_fin_prac'];
 $dias_prac = $_POST['dias_prac'];
-$id_objeto = 21;
 
-$correo = new correo();
+
+
 
 
 $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
@@ -30,6 +29,8 @@ echo $consulta;
 
 if ($consulta === TRUE) {
 
+    $modelo = new asignaturas();
+    $correo = new correo();
 
     $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
     $sql2->execute();
