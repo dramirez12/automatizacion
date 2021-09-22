@@ -168,7 +168,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <li class="nav-item" style="display:<?php echo $_SESSION['parametro_vista'] ?>">
                   <a href="../vistas/gestion_parametros_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Parametros</p>
+                    <p>Parámetros</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['bitacora_vista'] ?>">
