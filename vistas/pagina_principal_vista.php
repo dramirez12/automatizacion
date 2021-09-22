@@ -12,7 +12,9 @@ if (isset($_SESSION["usuario"])) {
   $tiempo_transcurrido = (strtotime($ahora) - strtotime($fechaGuardada));
   if ($tiempo_transcurrido >= 60) {
     
-   header("location:logout.php");
+   session_start();  
+ session_destroy();  
+ header('location:index.php');
     //sino, actualizo la fecha de la sesión
   } else {
     $_SESSION["ultimoAcceso"] = $ahora;
