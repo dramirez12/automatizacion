@@ -1,9 +1,9 @@
 
 <?php
 
+ob_start();
 session_start();
 
-ob_start();
 
 
 require_once ('../vistas/pagina_inicio_vista.php');
@@ -77,7 +77,7 @@ if ($msj==1) {
 ob_end_flush();
 
 
- ?>
+?>
 
 
 <!DOCTYPE html>
