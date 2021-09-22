@@ -1387,9 +1387,10 @@ function Registrar() {
     var formData = new FormData();
     var foto = $('#seleccionararchivo')[0].files[0];
     formData.append('f', foto);
+    formData.append('nombrearchivo', nombrearchivo);
 
     $.ajax({
-        url: '../vistas/subirimagen.php',
+        url: 'subirimagen.php',
         type: 'post',
         data: formData,
         contentType: false,
@@ -1407,10 +1408,10 @@ function Registrarcurriculum() {
     var formData = new FormData();
     var curriculum = $('#curriculum')[0].files[0];
     formData.append('c', curriculum);
-    //formData.append('nombrearchivo',nombrearchivo);
+    formData.append('nombrearchivo', nombrearchivo);
 
     $.ajax({
-        url: '../vistas/subirdocumento.php',
+        url: 'subirdocumento.php',
         type: 'post',
         data: formData,
         contentType: false,
