@@ -117,7 +117,55 @@ ob_end_flush();
             <div class="container-fluid">
   <!-- pantalla 1 -->
       
+<form action="../Controlador/guardar_pregunta_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax">
 
+ <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title">Nueva pregunta</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+            </div>
+          </div>
+
+
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Ingrese la pregunta</label>
+                    <input class="form-control" type="text" id="txt_Pregunta" name="txt_Pregunta" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" required="" maxlength="30" >
+                </div>
+
+                <div class="form-group clearfix">
+                      <div class="icheck-success d-inline">
+                        <input type="checkbox"  id="txt_checkboxactivo" name="txt_checkboxactivo" value="true">
+                        <label for="txt_checkboxactivo">Activo
+                        </label>
+                      </div>
+                </div>
+
+              <p class="text-center" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-primary" id="btn_guardar_pregunta" <?php echo $_SESSION['btn_guardar_pregunta']; ?>  ><i class="zmdi zmdi-floppy"></i> Guardar</button>
+              </p>
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- /.card-body -->
+          <div class="card-footer">
+            
+          </div>
+        </div>
+         
+         
+    
+    <div class="RespuestaAjax"></div>
+</form>
 
   </div>
 </section>
