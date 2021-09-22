@@ -21,43 +21,43 @@ $dias_prac = $_POST['dias_prac'];
 
 
 
-
-$consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
-echo $consulta;
+if (isset($cuenta_estud)) {
 
 
-
-if ($consulta === TRUE) {
-
-    $modelo = new asignaturas();
-    $correo = new correo();
-
-    $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
-    $sql2->execute();
-    $id_persona_estud = $sql2->get_result();
+    $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
+    echo $consulta;
 
 
-    $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
-    foreach ($rspta1 as $key => $value) {
+    if ($consulta === true) {
+        $modelo = new asignaturas();
+        $correo = new correo();
 
-        $estudiante = $value[1];
-        $num_cuenta = $value[0];
-        $estudcorreo = $value[6];
-        $celular = $value[7];
-        $empresa = $value[2];
-        $direccion = $value[3];
-        $fechai = $value[4];
-        $fechan = $value[5];
-        $jefe = $value[8];
-        $titulo = $value[9];
-    }
+        $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
+        $sql2->execute();
+        $id_persona_estud = $sql2->get_result();
 
 
+        $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
+        foreach ($rspta1 as $key => $value) {
+
+            $estudiante = $value[1];
+            $num_cuenta = $value[0];
+            $estudcorreo = $value[6];
+            $celular = $value[7];
+            $empresa = $value[2];
+            $direccion = $value[3];
+            $fechai = $value[4];
+            $fechan = $value[5];
+            $jefe = $value[8];
+            $titulo = $value[9];
+        }
 
 
-    $asunto_estudiante_aproba = "APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
 
-    $cuerpo_aproba = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+        $asunto_estudiante_aproba = "APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
+
+        $cuerpo_aproba = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -175,7 +175,8 @@ Comité de Vinculación Universidad Sociedad 
 
 
 
-    $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $estudcorreo, $estudiante);
+        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $estudcorreo, $estudiante);
+    }
 }
 
 
