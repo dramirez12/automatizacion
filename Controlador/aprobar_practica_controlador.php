@@ -24,31 +24,7 @@ $dias_prac = $_POST['dias_prac'];
 $consulta = $db->update_pps($cuenta_estud, $obs_prac, $tipo, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
 echo $consulta;
 
-
-    if ($consulta === true) {
-        
-
-        // $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
-        // $sql2->execute();
-        // $id_persona_estud = $sql2->get_result();
-
-
-        // $sql2 = $mysqli->prepare("SELECT px.valor, concat(a.nombres,' ',a.apellidos) as nombre, ep.nombre_empresa, ep.direccion_empresa,pe.fecha_inicio, pe.fecha_finaliza, c.valor Correo, e.valor Celular, ep.jefe_inmediato, ep.titulo_jefe_inmediato
-
-		// FROM tbl_empresas_practica AS ep
-		// JOIN tbl_personas AS a
-		// ON ep.id_persona = a.id_persona
-		// JOIN tbl_practica_estudiantes AS pe
-		// ON pe.id_persona = a.id_persona
-		// JOIN tbl_contactos c ON a.id_persona = c.id_persona
-		// JOIN tbl_tipo_contactos d ON c.id_tipo_contacto = d.id_tipo_contacto AND d.descripcion = 'CORREO'
-		// JOIN tbl_contactos e ON a.id_persona = e.id_persona
-		// JOIN tbl_tipo_contactos f ON e.id_tipo_contacto = f.id_tipo_contacto AND f.descripcion = 'TELEFONO CELULAR'
-		// join tbl_personas_extendidas as px on px.id_atributo=12 and px.id_persona=a.id_persona
-		// where a.id_persona='$id_persona_estud'");
-        // $sql2->execute();
-        // $resultado2 = $sql2->get_result();
-        // $row2 = $resultado2->fetch_array(MYSQLI_ASSOC);
+      
 
 
         $nombre_estud = 'PRUEBA PRUEBA';
@@ -173,8 +149,8 @@ Comité de Vinculación Universidad Sociedad 
 
 
 
-        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_e , $nombre_estud );
-    }
+        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_e , $nombre_estud);
+
 
 
 
