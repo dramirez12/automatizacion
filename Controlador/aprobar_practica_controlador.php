@@ -3,7 +3,6 @@
 ob_start();
 session_start();
 require_once("../Modelos/calculo_fecha_pps_modelos.php");
-require_once("../Modelos/asignar_docente_supervisor_modelo.php");
 require_once('../Controlador/corre_supervisor.php');
 
 $db = new pruebas();
