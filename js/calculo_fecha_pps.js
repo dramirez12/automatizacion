@@ -79,7 +79,7 @@ $("#dias").change(function () {
 
 
 $("#cb_practica").change(function () {
-    var tipo_prac = $("#cb_practica option:selected").text();
+    var tipo_prac = $("#cb_practica option:selected").val();
 
     $("#tipo_prac").val(tipo_prac);
 });
