@@ -418,8 +418,8 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                 <label>Aprobar PPS</label>
                 <select class="form-control" name="cb_practica" id="cb_practica"  onchange="Mostrar_motivo();">
                   <option value="0">Seleccione una opción :</option>
-                  <option value="SI">SI</option>
-                  <option value="NO">NO</option>
+                  <option value="1">SI</option>
+                  <option value="2">NO</option>
                  <option value="INCOMPLETA">REQUISITOS INCOMPLETOS</option>
 
 

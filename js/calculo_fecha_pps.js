@@ -32,12 +32,14 @@ $(document).ready(function () {
         var horario_incio_prac = $("#horario_incio").val();
         var horario_fin_prac = $("#horario_fin").val();
         var dias_prac = $("#dias_practica").val();
+        var tipo = $("#cb_practica").val();
         $.ajax({
             url: "../Controlador/aprobar_practica_controlador.php",
             type: "POST",
             data: {
                 cuenta_estud: cuenta_estud,
                 obs_prac: obs_prac,
+                tipo: tipo,
                 empresa_prac: empresa_prac,
                 hrs_pps: hrs_pps,
                 fecha_inicio_prac: fecha_inicio_prac,
