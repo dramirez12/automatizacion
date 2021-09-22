@@ -49,7 +49,7 @@ if (isset($identidad_estudiante) and isset($nacimiento_estudiante) and isset($di
 {
 
 
-  if ($solicitud_charla_existe === TRUE) {
+ 
     if ($resultado2 === TRUE)
                          {
 
@@ -95,18 +95,7 @@ if (isset($identidad_estudiante) and isset($nacimiento_estudiante) and isset($di
                              $(".FormularioAjax")[0].reset();
                              </script>'; 
                           }
-  }else {
-    echo '<script type="text/javascript">
-                            swal({
-                             title:"Charla PPS",
-                             text:"No cuenta con la constancia de charla PPS",
-                             type: "error",
-                             showConfirmButton: false,
-                             timer: 3000
-                             });
-                             $(".FormularioAjax")[0].reset();
-                             </script>'; 
-  }
+ 
 
        
 }
@@ -125,5 +114,24 @@ else
    </script>';
  }
 
+
+
+//  if ($solicitud_charla_existe === TRUE) {
+// }else {
+//     echo '<script type="text/javascript">
+//                             swal({
+//                              title:"Charla PPS",
+//                              text:"No cuenta con la constancia de charla PPS",
+//                              type: "error",
+//                              showConfirmButton: false,
+//                              timer: 3000
+//                              });
+//                              $(".FormularioAjax")[0].reset();
+//                              </script>'; 
+//   } 
+
  ob_end_flush();
 ?>
+
+
+
