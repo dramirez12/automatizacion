@@ -94,7 +94,7 @@ class correo
 		if (!$mail->send()) {
 			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
-			// echo "correo enviado correctamente";
+			echo "correo enviado correctamente";
 		}
 
 		
