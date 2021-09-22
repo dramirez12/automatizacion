@@ -75,8 +75,8 @@ class correo
 		$mail = new PHPMailer\PHPMailer\PHPMailer();
 		$mail->isSMTP();
 
-		$correo_aproba = "unahvinc@informaticaunah.com";
-		$password_aproba = ".N9135myfkAa";
+		$correo_aproba = 'unahvinc@informaticaunah.com';
+		$password_aproba = '.N9135myfkAa';
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
@@ -92,9 +92,9 @@ class correo
 		$mail->IsHTML(true);
 
 		if (!$mail->send()) {
-			echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
+			// echo "Error al enviar el E-Mail: " . $mail->ErrorInfo;
 		} else {
-			echo "correo enviado correctamente";
+			// echo "correo enviado correctamente";
 		}
 
 		

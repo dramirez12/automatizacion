@@ -18,14 +18,11 @@ $horario_incio_prac = $_POST['horario_incio_prac'];
 $horario_fin_prac = $_POST['horario_fin_prac'];
 $dias_prac = $_POST['dias_prac'];
 
-
+$consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
+echo $consulta;
 
 
 if (isset($cuenta_estud)) {
-
-
-    // $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
-    // echo $consulta;
 
 
     if ($consulta === true) {
