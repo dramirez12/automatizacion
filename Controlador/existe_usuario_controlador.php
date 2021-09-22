@@ -65,8 +65,7 @@ if ($row['usuario'] ==1 )
 
 		if ($resultado_fecha_contra['Vence_contra']<$resultado_PARAMETRO_fecha_contra['valor']) 
 		{
-			header('location: ../vistas/pagina_principal_vista.php');
-				
+			header('location: ../vistas/pagina_principal_vista.php');	
 		}
 		else
 		{

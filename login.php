@@ -16,7 +16,7 @@ else
   $_SESSION['auto_registro']="none";
 }
 */
-$_SESSION["ultimoAcceso"] = date("Y-n-j H:i:s");
+
 if (isset($_REQUEST['msj'])) {
   $msj = $_REQUEST['msj'];
 
