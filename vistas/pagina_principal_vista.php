@@ -11,7 +11,9 @@ if (isset($_SESSION["usuario"])) {
   $ahora = date("Y-n-j H:i:s");
   $tiempo_transcurrido = (strtotime($ahora) - strtotime($fechaGuardada));
   if ($tiempo_transcurrido >= 60) {
-    
+    echo '<script>
+    alert("se acabo");
+    </script>';
    session_start();  
  session_destroy();  
  header('location:index.php');
