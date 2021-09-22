@@ -82,7 +82,7 @@ $_SESSION['gestion_pregunta_menu']="No
   <div class="icon">
     <i class="far fa-plus-square"></i>
   </div>
-  <a href="../vistas/gestion_preguntas_vista.php" class="small-box-footer">
+  <a href="../vistas/crear_pregunta_vista.php" class="small-box-footer">
    Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
@@ -105,7 +105,7 @@ $_SESSION['gestion_pregunta_menu']="No
   <div class="icon">
     <i class="fas fa-edit"></i>
   </div>
-  <a href="../vistas/crear_pregunta_vista.php" class="small-box-footer">
+  <a href="../vistas/gestion_preguntas_vista.php" class="small-box-footer">
     Ir <i class="fas fa-arrow-circle-right"></i>
   </a>
 </div>
