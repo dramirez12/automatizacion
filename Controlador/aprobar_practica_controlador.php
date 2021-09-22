@@ -2,13 +2,13 @@
 <?php
 ob_start();
 session_start();
-require_once ("../Modelos/calculo_fecha_pps_modelos.php");
-require_once ("../Modelos/asignar_docente_supervisor_modelo.php");
-require_once ('../clases/funcion_bitacora.php');
-require_once ('../Controlador/corre_supervisor.php');
+require_once("../Modelos/calculo_fecha_pps_modelos.php");
+require_once("../Modelos/asignar_docente_supervisor_modelo.php");
+require_once('../clases/funcion_bitacora.php');
+require_once('../Controlador/corre_supervisor.php');
 
 $db = new pruebas();
-$modelo=new asignaturas();
+$modelo = new asignaturas();
 $cuenta_estud = $_POST['cuenta_estud'];
 $obs_prac = $_POST['obs_prac'];
 $empresa_prac = $_POST['empresa_prac'];
@@ -22,38 +22,41 @@ $id_objeto = 21;
 
 $correo = new correo();
 
-    
+
 $consulta = $db->update_pps($cuenta_estud, $obs_prac, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
 echo $consulta;
 
-$sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
-$sql2->execute();
-$id_persona_estud = $sql2->get_result();
+
+
+if ($consulta === TRUE) {
+
+
+    $sql2 = $mysqli->prepare("SELECT id_persona FROM tbl_personas_extendidas WHERE valor = $cuenta_estud");
+    $sql2->execute();
+    $id_persona_estud = $sql2->get_result();
+
+
+    $rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
+    foreach ($rspta1 as $key => $value) {
+
+        $estudiante = $value[1];
+        $num_cuenta = $value[0];
+        $estudcorreo = $value[6];
+        $celular = $value[7];
+        $empresa = $value[2];
+        $direccion = $value[3];
+        $fechai = $value[4];
+        $fechan = $value[5];
+        $jefe = $value[8];
+        $titulo = $value[9];
+    }
 
 
 
-$rspta1 = $modelo->mostrar_datos_alumno($id_persona_estud)->fetch_all();
-foreach ($rspta1 as $key => $value) {
 
-    $estudiante = $value[1];
-    $num_cuenta = $value[0];
-    $estudcorreo = $value[6];
-    $celular = $value[7];
-    $empresa = $value[2];
-    $direccion = $value[3];
-    $fechai = $value[4];
-    $fechan = $value[5];
-    $jefe = $value[8];
-    $titulo = $value[9];
-}
+    $asunto_estudiante_aproba = "APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
 
-// var_dump($rspta1);
-// echo $rspta1;
-
-
-$asunto_estudiante_aproba ="APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
-
-$cuerpo_aproba = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    $cuerpo_aproba = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -126,7 +129,7 @@ Comité de Vinculación Universidad Sociedad 
 <br> 2.	Fecha de inicio: ' . $fecha_inicio_prac . '
 <br> 3.	Fecha de Finalización: ' . $fecha_final_prac . '
 <br> 4.	Dias: ' . $dias_prac . '
-<br> 5.	Horario: ' . $horario_incio_prac . ' a '.$horario_fin_prac.'
+<br> 5.	Horario: ' . $horario_incio_prac . ' a ' . $horario_fin_prac . '
 <br>
 <br>Usted no puede terminar su práctica antes de esta fecha, ni realizar cambios ni tratos sin previa consulta al comité, de lo contrario, no será tomada como válida. En caso de requerir cambios deberá realizar la solicitud por escrito, presentando la solicitud al comité y enviando una copia digital a este correo.
 </p>
@@ -171,15 +174,12 @@ Comité de Vinculación Universidad Sociedad 
 
 
 
-$correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $estudcorreo, $estudiante);
+    $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $estudcorreo, $estudiante);
+}
 
-// if ($consulta === 1) {
-//     bitacora::evento_bitacora($id_objeto, $_SESSION['id_usuario'], 'APROBÓ', 'UN NUEVO PRACTICANTE');
 
-    
-    
-// } else {
-// }
+
+
 
 
 ob_end_flush();

@@ -79,8 +79,8 @@ class correo
 		$password_aproba = ".N9135myfkAa";
 		$mail->SMTPDebug = 0;
 		$mail->Host = 'informaticaunah.com';
-		$mail->Port = 587;
-		$mail->SMTPSecure = 'tls';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
 		$mail->Username = $correo_aproba;
 		$mail->Password = $password_aproba;
