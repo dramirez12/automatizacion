@@ -368,7 +368,7 @@ AND px.id_persona=p.id_persona AND px.valor = $_REQUEST[cuenta]";
 
              <input class="form-control" type="text" id="txt_estudiante_cuenta" name="txt_estudiante_cuenta" hidden value="<?php echo strtoupper( $_SESSION['cuenta']) ?>" readonly="readonly">
              <input class="form-control" type="text" id="txt_empresa" name="txt_empresa" hidden value="<?php echo strtoupper( $_SESSION['empresa']) ?>" readonly="readonly">
-             <input class="form-control" type="text" id="txt_correo" name="txt_correo" hidden value="<?php echo( $_SESSION['correo']) ?>" readonly="readonly">
+             <input class="form-control" type="text" id="txt_correo" name="txt_correo" hidden value="<?php echo( $_SESSION['correo']) ?>">
 
 
               <div class="col-sm-6">
