@@ -1,7 +1,7 @@
 <?php
 require_once "../Modelos/registro_docente_modelo.php";
 $MP = new modelo_registro_docentes();
-$nombrearchivo = $_POST["nombrearchivo"];
+$nombrearchivo = $_POST["nombrearchivo2"];
 
 if(is_array($_FILES) && count($_FILES)>0){
 
