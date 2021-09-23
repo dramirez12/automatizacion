@@ -1106,68 +1106,121 @@ function RegistarDocente(
     var especialidadx = $("#especialidadx").val();
 
     var n = identidad.search('_');
+    if (
+        n != -1 ||
+        nombre.length == 0 ||
+        apellidos.length == 0 ||
+        sexo == null ||
+        foto.value == 0 ||
+        curriculo.value == 0 ||
+        identidad.length == 0 ||
+        nacionalidad == null ||
+        estado == null ||
+        fecha_nacimiento.length == 0
 
 
+    ) {
+        swal({
+            title: 'alerta',
+            text: 'Rellene o seleccione los campos vacíos de Datos Personales',
+            type: 'warning',
+            showConfirmButton: true,
+            timer: 15000
+        });
+
+    } else if (
+        telefonox.length == 0 ||
+        correosx.length == 0 ||
+        especialidadx.length == 0
+    ) {
+        swal({
+            title: 'alerta',
+            text: 'Rellene o seleccione los campos vacíos de Contactos y Formación Académica',
+            type: 'warning',
+            showConfirmButton: true,
+            timer: 15000
+        });
+
+    } else {
+        if (
+
+            nempleado.length == 0 ||
+            fecha_ingreso.length == 0 ||
+            idjornada == null ||
+            idcategoria == null ||
+            hi == null ||
+            hf == null ||
+            tipo_docente.length == 0
+
+        ) {
+            swal({
+                title: 'alerta',
+                text: 'Rellene o seleccione los campos vacíos de Información Docente',
+                type: 'warning',
+                showConfirmButton: true,
+                timer: 15000
+            });
+        } else {
 
 
-    nombre = nombre.toUpperCase();
-    apellidos = apellidos.toUpperCase();
-    identidad = identidad.toUpperCase();
-    nacionalidad = nacionalidad.toUpperCase();
-    tipo_docente = tipo_docente.toUpperCase();
+            nombre = nombre.toUpperCase();
+            apellidos = apellidos.toUpperCase();
+            identidad = identidad.toUpperCase();
+            nacionalidad = nacionalidad.toUpperCase();
+            tipo_docente = tipo_docente.toUpperCase();
 
-    estado = estado.toUpperCase();
-    sexo = sexo.toUpperCase();
+            estado = estado.toUpperCase();
+            sexo = sexo.toUpperCase();
 
-    $.post(
-        '../Controlador/registro_docente_controlador.php?op=registar', {
-            nombre: nombre,
-            apellidos: apellidos,
-            sexo: sexo,
-            identidad: identidad,
-            nacionalidad: nacionalidad,
-            estado: estado,
-            fecha_nacimiento: fecha_nacimiento,
-            hi: hi,
-            hf: hf,
-            nempleado: nempleado,
-            tipo_docente: tipo_docente,
-            fecha_ingreso: fecha_ingreso,
-            idjornada: idjornada,
-            idcategoria: idcategoria
-        },
+            $.post(
+                '../Controlador/registro_docente_controlador.php?op=registar', {
+                    nombre: nombre,
+                    apellidos: apellidos,
+                    sexo: sexo,
+                    identidad: identidad,
+                    nacionalidad: nacionalidad,
+                    estado: estado,
+                    fecha_nacimiento: fecha_nacimiento,
+                    hi: hi,
+                    hf: hf,
+                    nempleado: nempleado,
+                    tipo_docente: tipo_docente,
+                    fecha_ingreso: fecha_ingreso,
+                    idjornada: idjornada,
+                    idcategoria: idcategoria
+                },
 
-        function(e) {
-            // saveAll();
-            // saveAll2();
-            // saveAll3();
-            // saveAll5();
-            // Registrar();
-            Registrarcurriculum();
+                function(e) {
+                    saveAll();
+                    saveAll2();
+                    saveAll3();
+                    saveAll5();
+                    Registrar();
+                    Registrarcurriculum();
+
+                }
+
+            );
+
+            //window.location.href = window.location.href;
+
+            swal({
+                title: "alerta",
+                text: "Por favor espere un momento",
+                type: "warning",
+                showConfirmButton: false,
+                timer: 12000,
+
+            });
+            refrescar(15000);
+            mensaje();
 
         }
 
-    );
-
-    //window.location.href = window.location.href;
-
-    swal({
-        title: "alerta",
-        text: "Por favor espere un momento",
-        type: "warning",
-        showConfirmButton: false,
-        timer: 12000,
-
-    });
-    // refrescar(15000);
-    // mensaje();
-
+    }
 
 
 }
-
-
-
 
 //FUNCION PARA REGISTRAR DOCENTE EN CASO DE QUE ELIJA UNA NACIONALIDAD EXTRANJERA
 function RegistarDocente2(
@@ -1334,7 +1387,7 @@ function Registrar() {
     var formData = new FormData();
     var foto = $('#seleccionararchivo')[0].files[0];
     formData.append('f', foto);
-    //formData.append('nombrearchivo', nombrearchivo);
+    formData.append('nombrearchivo', nombrearchivo);
 
     $.ajax({
         url: 'subirimagen.php',
@@ -1355,7 +1408,7 @@ function Registrarcurriculum() {
     var formData = new FormData();
     var curriculum = $('#curriculum')[0].files[0];
     formData.append('c', curriculum);
-    // formData.append('nombrearchivo', nombrearchivo);
+    formData.append('nombrearchivo', nombrearchivo);
 
     $.ajax({
         url: 'subirdocumento.php',
