@@ -33,6 +33,8 @@ $(document).ready(function () {
         var horario_fin_prac = $("#horario_fin").val();
         var dias_prac = $("#dias_practica").val();
         var tipo = $("#tipo_prac").val();
+        var correo = $("#txt_correo").val();
+        var nombre_estud = $("#txt_estudiante_documento").val();
         $.ajax({
             url: "../Controlador/aprobar_practica_controlador.php",
             type: "POST",
@@ -47,6 +49,8 @@ $(document).ready(function () {
                 horario_incio_prac: horario_incio_prac,
                 horario_fin_prac: horario_fin_prac,
                 dias_prac: dias_prac,
+                correo: correo,
+                nombre_estud: nombre_estud,
             },
         }).done(function (resp) {
             if (resp > 0) {

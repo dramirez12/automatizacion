@@ -20,14 +20,13 @@ $fecha_final_prac = $_POST['fecha_final_prac'];
 $horario_incio_prac = $_POST['horario_incio_prac'];
 $horario_fin_prac = $_POST['horario_fin_prac'];
 $dias_prac = $_POST['dias_prac'];
+$correo = $_POST['correo'];
+$nombre_estud = $_POST['nombre_estud'];
 
 $consulta = $db->update_pps($cuenta_estud, $obs_prac, $tipo, $empresa_prac, $hrs_pps, $fecha_inicio_prac, $fecha_final_prac, $horario_incio_prac, $horario_fin_prac, $dias_prac);
 echo $consulta;
 
     
-        
-        $nombre_estud = 'PRUEBA PRUEBA';
-        $correo_e = 'luisdavidpacheco123@gmail.com';
 
         $asunto_estudiante_aproba = "APROBACIÓN DE PRÁCTICA PROFESIONAL SUPERVISADA";
 
@@ -149,7 +148,7 @@ Comité de Vinculación Universidad Sociedad 
 
 
 
-        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo_e , $nombre_estud);
+        $correo->correo_aprobacion_prac($cuerpo_aproba, $asunto_estudiante_aproba, $correo , $nombre_estud);
     
 
 

@@ -106,7 +106,7 @@ if ($msj==2)
 
 
 
-        $sql_tabla_estudiantes_practica="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as nombre,
+        $sql_tabla_estudiantes_practica="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as nombre, con.valor AS correo,
         CASE 
         WHEN (sd.estado_coordinacion IS NULL and sd.estado_vinculacion='1') then
         'PENDIENTE' 
@@ -119,7 +119,9 @@ if ($msj==2)
         when sd.estado_coordinacion IS NULL then 'PROCESO'
         else
         sd.estado_coordinacion end as estado_coordinacion
-        from  tbl_personas p, tbl_subida_documentacion sd, tbl_personas_extendidas px where sd.id_persona=p.id_persona AND px.id_atributo=12 and px.id_persona=p.id_persona and estado_coordinacion IS NULL ";
+        from  tbl_personas p, tbl_subida_documentacion sd, tbl_personas_extendidas px, tbl_contactos con 
+		  where sd.id_persona=p.id_persona AND px.id_atributo=12 AND con.id_tipo_contacto = 4 AND con.id_persona = p.id_persona
+		  AND px.id_persona=p.id_persona AND estado_coordinacion IS NULL";
 
 
 
@@ -128,6 +130,7 @@ if ($msj==2)
 
         $_SESSION['txt_estudiante']=$resultadotabla_estudiantes_practica['nombre'];
         $_SESSION['cuenta']=$resultadotabla_estudiantes_practica['valor'];
+        $_SESSION['correo']=$resultadotabla_estudiantes_practica['correo'];
         $_SESSION['Estado_proceso']=$resultadotabla_estudiantes_practica['proceso'];
         $_SESSION['estado_vin']=$resultadotabla_estudiantes_practica['estado_vinculacion'];
         $_SESSION['estado_coor']=$resultadotabla_estudiantes_practica['estado_coordinacion'];
@@ -139,10 +142,14 @@ if ($msj==2)
  if (isset($_REQUEST['cuenta']))
         {
   
-$sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as nombre from  tbl_personas p, tbl_subida_documentacion sd , tbl_personas_extendidas px where sd.id_persona=p.id_persona AND px.id_atributo=12 and px.id_persona=p.id_persona and px.valor=$_REQUEST[cuenta]";
+$sql_datos_modal="SELECT px.valor AS valor, concat(p.nombres,' ',p.apellidos) AS nombre, con.valor AS correo FROM tbl_personas p, tbl_subida_documentacion sd, 
+tbl_personas_extendidas px, tbl_contactos con
+WHERE sd.id_persona=p.id_persona AND px.id_atributo=12 AND con.id_tipo_contacto = 4 AND con.id_persona = p.id_persona 
+AND px.id_persona=p.id_persona AND px.valor = $_REQUEST[cuenta]";
           $resultado_datos = mysqli_fetch_assoc($mysqli->query($sql_datos_modal));
           $_SESSION['txt_estudiante']=$resultado_datos['nombre'];
           $_SESSION['cuenta']=$resultado_datos['valor'];
+          $_SESSION['correo']=$resultado_datos['correo'];
 
         ?>
         <script>
@@ -180,11 +187,15 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
      if (isset($_REQUEST['cuenta_coordinacion']))
         {
 
-          $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as nombre , sd.estado_vinculacion,ep.nombre_empresa   from  tbl_personas p, tbl_subida_documentacion sd,tbl_empresas_practica ep ,tbl_personas_extendidas px where p.id_persona=sd.id_persona AND px.id_atributo=12 and px.id_persona=p.id_persona and px.valor=$_REQUEST[cuenta_coordinacion]";
+          $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as nombre , sd.estado_vinculacion,ep.nombre_empresa, con.valor AS correo
+          FROM  tbl_personas p, tbl_subida_documentacion sd,tbl_empresas_practica ep ,tbl_personas_extendidas px, tbl_contactos con WHERE p.id_persona=sd.id_persona 
+          AND px.id_atributo=12 AND px.id_persona=p.id_persona AND ep.id_persona = p.id_persona AND con.id_tipo_contacto = 4 
+          AND con.id_persona = p.id_persona AND px.valor = $_REQUEST[cuenta_coordinacion]";
           $resultado_datos = mysqli_fetch_assoc($mysqli->query($sql_datos_modal));
           $_SESSION['txt_estudiante']=$resultado_datos['nombre'];
           $_SESSION['cuenta']=$resultado_datos['valor'];
           $_SESSION['empresa']=$resultado_datos['nombre_empresa'];
+          $_SESSION['correo']=$resultado_datos['correo'];
 
        
      
@@ -266,7 +277,8 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                     <thead>
                       <tr>
                        <th>NOMBRE COMPLETO</th>
-                       <th>CUENTA</th>   
+                       <th>CUENTA</th>
+                       <th hidden>CORREO</th>  
                        <th>PROCESO</th>
                        <th>EXPEDIENTE</th>                
                        <th>APROBAR PRACTICA</th>  
@@ -281,6 +293,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
                       <tr>
                         <td><?php echo strtoupper($row['nombre']); ?></td>
                         <td><?php echo $row['valor']; ?></td>
+                        <td hidden><?php echo $row['correo']; ?></td>
                         <td><?php echo $row['proceso']; ?></td>
 
 
@@ -355,6 +368,7 @@ $sql_datos_modal="SELECT px.valor as valor, concat(p.nombres,' ',p.apellidos) as
 
              <input class="form-control" type="text" id="txt_estudiante_cuenta" name="txt_estudiante_cuenta" hidden value="<?php echo strtoupper( $_SESSION['cuenta']) ?>" readonly="readonly">
              <input class="form-control" type="text" id="txt_empresa" name="txt_empresa" hidden value="<?php echo strtoupper( $_SESSION['empresa']) ?>" readonly="readonly">
+             <input class="form-control" type="text" id="txt_correo" name="txt_correo" hidden value="<?php echo( $_SESSION['correo']) ?>" readonly="readonly">
 
 
               <div class="col-sm-6">
