@@ -12,7 +12,7 @@ if (isset($_REQUEST['id_usuario2'])) {
 if (isset($_REQUEST['msj'])) {
   $msj = $_REQUEST['msj'];
   if ($msj == 1) {
-    echo '<script >
+    echo '<script>
                 
                  swal(
                       "Alerta!",
@@ -23,7 +23,7 @@ if (isset($_REQUEST['msj'])) {
                             </script>';
   }
   if ($msj == 2) {
-    echo '<script >
+    echo '<script>
                 
                  swal(
                       "Alerta!",
@@ -34,7 +34,7 @@ if (isset($_REQUEST['msj'])) {
                             </script>';
   }
   if ($msj == 3) {
-    echo '<script >
+    echo '<script>
                 
                  swal(
                       "Alerta!",
@@ -45,7 +45,7 @@ if (isset($_REQUEST['msj'])) {
                             </script>';
   }
   if ($msj == 4) {
-    echo '<script >
+    echo '<script>
                 
                  swal(
                       "Alerta!",
