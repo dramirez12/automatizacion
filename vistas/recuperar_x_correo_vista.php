@@ -52,7 +52,7 @@ if (isset($_REQUEST['idusuario'])) {
         <form action="../Controlador/verificar_correo_usuario_controlador.php?idusuario=<?php echo $id_usuario ?>" method="post">
 
           <div class="input-group mb-3">
-            <input type="email" class="form-control" id="correoclave" name="correoclave" value="" onkeypress="return ValidaMail($Correo_electronico)" onkeyup="Espacio(this, event)" maxlength="50" onkeypress="return comprobar(this.value, event, this.id)" placeholder="Correo Electronico" required="required">
+            <input type="email" class="form-control" id="correoclave" name="correoclave" value="" onkeypress="return ValidaMail('Correo_electronico')" onkeyup="Espacio(this, event)" maxlength="50" onkeypress="return comprobar(this.value, event, this.id)" placeholder="Correo Electronico" required="required">
 
             <div class="input-group-append">
               <div class="input-group-text">
@@ -85,9 +85,9 @@ if (isset($_REQUEST['idusuario'])) {
 
   <script src="../dist/js/main.js"></script>
   <script>
-    function ValidaMail($Correo_electronico) {
+    function ValidaMail(Correo_electronico) {
 
-      if (ereg("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([_a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]{2,200}\.[a-zA-Z]{2,6}$", $Correo_electronico)) {
+      if (ereg("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([_a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]{2,200}\.[a-zA-Z]{2,6}$", Correo_electronico)) {
         return true;
       } else {
         return false;
