@@ -1,6 +1,6 @@
 <?php
-
 require_once('../clases/Conexion.php');
+require_once('pagina_inicio_cambiar_clave_pregunta.php');
 
 if (isset($_REQUEST['id_usuario2'])) {
 
@@ -12,16 +12,48 @@ if (isset($_REQUEST['id_usuario2'])) {
 if (isset($_REQUEST['msj'])) {
   $msj = $_REQUEST['msj'];
   if ($msj == 1) {
-    echo '<script>alert("Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo")</script>';
+    echo '<script >
+                
+                 swal(
+                      "Alerta!",
+                      "Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo",
+                      "warning"
+                    );          
+          
+                            </script>';
   }
   if ($msj == 2) {
-    echo '<script>alert("PASSWORD NO VÁLIDO: ' . $_REQUEST['error'] . '")</script>';
+    echo '<script >
+                
+                 swal(
+                      "Alerta!",
+                      "PASSWORD NO VÁLIDO: ' . $_REQUEST['error'] . '",
+                      "warning"
+                    );          
+          
+                            </script>';
   }
   if ($msj == 3) {
-    echo '<script>alert("Los datos  se actulizaron correctamente")</script>';
+    echo '<script >
+                
+                 swal(
+                      "Alerta!",
+                      "Los datos  se actulizaron correctamente",
+                      "warning"
+                    );          
+          
+                            </script>';
   }
   if ($msj == 4) {
-    echo '<script>alert("No se realizo el proceso, favor llame al administrador o intente de nuevo")</script>';
+    echo '<script >
+                
+                 swal(
+                      "Alerta!",
+                      "No se realizo el proceso, favor llame al administrador o intente de nuevo",
+                      "warning"
+                    );          
+          
+                            </script>';
   }
 }
 
@@ -37,23 +69,9 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <title>Informatica Admistrativa</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 
 <body class="hold-transition login-page">
@@ -148,11 +166,6 @@ if (isset($_REQUEST['msj'])) {
 
     });
   </script>
-  <script type="text/javascript" src="../plugins/sweetalert2/sweetalert2.min.js"></script>
-
-  <script src="../dist/js/sweetalert2.min.js"></script>
-
-  <script src="../dist/js/main.js"></script>
 
 
 
