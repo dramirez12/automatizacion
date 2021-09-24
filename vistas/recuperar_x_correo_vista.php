@@ -93,6 +93,16 @@ if (isset($_REQUEST['idusuario'])) {
         return false;
       }
     }
+
+    function Espacio(campo, event) {
+
+      CadenaaReemplazar = " ";
+      CadenaReemplazo = "";
+      CadenaTexto = campo.value;
+      CadenaTextoNueva = CadenaTexto.split(CadenaaReemplazar).join(CadenaReemplazo);
+      campo.value = CadenaTextoNueva;
+
+    }
   </script>
 </body>
 
