@@ -36,9 +36,9 @@ if (isset($resultado)) {
 	header("location: ../login.php");
 }else{
 	if ($msj == 2) {
-		header("location: cambiar_clave_x_pregunta_vista.php?msj=$msj&error= " . $error_encontrado . "&id_usuario2=$Id_usuarios2");
+		header("location: ../vistas/cambiar_clave_x_pregunta_vista.php?msj=$msj&error= " . $error_encontrado . "&id_usuario2=$Id_usuarios2");
 	} else {
-		header("location: cambiar_clave_x_pregunta_vista.php?msj=$msj&id_usuario2=$Id_usuarios2");
+		header("location: ../vistas/cambiar_clave_x_pregunta_vista.php?msj=$msj&id_usuario2=$Id_usuarios2");
 	}
 }
 
