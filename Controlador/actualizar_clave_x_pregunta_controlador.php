@@ -3,7 +3,7 @@
 require_once('../clases/Conexion.php');
 require_once('../clases/encriptar_desencriptar.php');
 require_once('../clases/funcion_contra.php');
-require_once('../vistas/pagina_inicio_cambiar_clave_pregunta.php');
+//require_once('../vistas/pagina_inicio_cambiar_clave_pregunta.php');
 
 $Nueva_clave = cifrado::encryption($_POST['txt_nuevaclave']);
 $Confirmar_clave = cifrado::encryption($_POST['txt_confirmarclave']);
@@ -41,11 +41,11 @@ if ($_POST) {
 
 <head>
 
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.css" rel="stylesheet">
-		<script src="js/jquery-3.3.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script> -->
+		<!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+		<script src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
