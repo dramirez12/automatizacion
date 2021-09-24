@@ -61,7 +61,7 @@ if ($_POST)
 		<div class="container">
 			<div class="row">
 				<div class="row" style="text-align:center">
-					<?php if($resultado && isset($resultado) )
+					<?php if(isset($resultado) )
 					 { 
  					 header("location: ../login.php");?>
 						<?php 
