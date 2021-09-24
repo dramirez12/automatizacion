@@ -118,7 +118,7 @@ if (isset($_REQUEST['msj'])) {
         </form>
 
         <p class="mt-3 mb-1">
-          <a href="../login.php">Inicia Sesion</a>
+          <a href="../login.php">Inicia Sesión</a>
         </p>
 
       </div>
