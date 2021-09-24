@@ -3,6 +3,7 @@
 require_once('../clases/Conexion.php');
 require_once('../clases/encriptar_desencriptar.php');
 require_once('../clases/funcion_contra.php');
+require_once('pagina_inicio_cambiar_clave_pregunta.php');
 
 $Nueva_clave = cifrado::encryption($_POST['txt_nuevaclave']);
 $Confirmar_clave = cifrado::encryption($_POST['txt_confirmarclave']);
