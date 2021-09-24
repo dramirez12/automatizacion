@@ -98,7 +98,7 @@ if (isset($_REQUEST['idusuario'])) {
       var expresion1 = /^\w+([\.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail|unah)\.(?:|com|es)+$/;
 
       //console.log(expresion1.test(correo1));
-      if (expresion1.test(correo1)) {
+      if (list5.length <= 2 && expresion1.test(correo1)) {
         return true;
       } else {
         return false;
