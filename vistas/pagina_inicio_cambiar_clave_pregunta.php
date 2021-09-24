@@ -7,7 +7,7 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -39,8 +39,11 @@
 
     </div>
 
+    <script type="text/javascript" src="../plugins/sweetalert2/sweetalert2.min.js"></script>
 
+    <script src="../dist/js/sweetalert2.min.js"></script>
 
     <script src="../dist/js/main.js"></script>
+
 
 </html>
