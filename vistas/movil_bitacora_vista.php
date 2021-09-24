@@ -18,7 +18,13 @@ if ($visualizacion == 0) {
 
   bitacora_movil::evento_bitacora($_SESSION["id_usuario"],$Id_objeto, "INGRESO", "A BITÁCORA DEL SISTEMA MÓVIL");
 
+  if (permiso_ver('160') == '1') {
 
+    $_SESSION['movil_bitacora_vista'] = "...";
+  } else {
+    $_SESSION['movil_bitacora_vista'] = "No 
+    tiene permisos para visualizar";
+  }
   if (isset($_REQUEST['msj'])) {
     $msj = $_REQUEST['msj'];
 

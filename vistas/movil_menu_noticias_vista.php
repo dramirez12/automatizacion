@@ -27,6 +27,13 @@ if ($visualizacion == 0) {
 } else {
   bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 'A MENU NOTICIAS');
 }
+if (permiso_ver('180') == '1') {
+
+  $_SESSION['movil_menu_noticias_vista'] = "...";
+} else {
+  $_SESSION['movil_menu_noticias_vista'] = "No 
+  tiene permisos para visualizar";
+}
 
 if (permiso_ver('162') == '1') {
 

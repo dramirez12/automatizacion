@@ -27,6 +27,13 @@ if ($visualizacion == 0) {
 } else {
   bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto,'INGRESO','A MENU NOTIFICACIONES');
 }
+if (permiso_ver('181') == '1') {
+
+  $_SESSION['movil_menu_notificaciones_vista'] = "...";
+} else {
+  $_SESSION['movil_menu_notificaciones_vista'] = "No 
+  tiene permisos para visualizar";
+}
 
 if (permiso_ver('163') == '1') {
 

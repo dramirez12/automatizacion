@@ -32,6 +32,8 @@ $_SESSION['btn_comite_vida_estudiantil'] = 'none';
 $_SESSION['btn_control_actas'] = 'none';
 $_SESSION['btn_jefatura'] = 'none';
 $_SESSION['btn_gestion_laboratorio'] = 'none';
+$_SESSION['btn_administracion_app'] = 'none';
+
 
 /*Menu laterales*/
 $_SESSION['pregunta_vista'] = 'none';
@@ -351,10 +353,6 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
       }
    }
    
-
-
-   
-
    //AGREGANDO CARGA ACADEMICA
    if ($_SESSION['pantalla'] == '45') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -836,6 +834,30 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
    if ($_SESSION['pantalla'] = '116') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['perfil360_vista'] = "block";
+      }
+   }
+
+
+   //MENU ADMINISTRACION APP 
+   
+   if ($_SESSION['pantalla'] = '181') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_administracion_app'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '162') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_administracion_app'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '161') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_administracion_app'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '160') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_administracion_app'] = "block";
       }
    }
 

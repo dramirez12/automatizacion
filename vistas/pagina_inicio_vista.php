@@ -562,7 +562,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!----Modulo Administrativo App ----->
-            <li class="nav-item has-treeview" style="display:block">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_administracion_app'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fab fa-buysellads"></i>
                 <p>
@@ -573,25 +573,25 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
 
-                <li class="nav-item" style="display:block">
+                <li class="nav-item" style="display:<?php echo $_SESSION['notificacion'] ?>">
                   <a href="../vistas/movil_menu_notificaciones_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Notificaciones </p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:block">
+                <li class="nav-item" style="display:<?php echo $_SESSION['noticias'] ?>">
                   <a href="../vistas/movil_menu_noticias_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Noticias </p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:block">
+                <li class="nav-item" style="display:<?php echo $_SESSION['chat'] ?>">
                   <a href="../vistas/movil_chat_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Chat </p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:block">
+                <li class="nav-item" style="display:<?php echo $_SESSION['bitacora'] ?>">
                   <a href="../vistas/movil_bitacora_vista.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Bitácora </p>
