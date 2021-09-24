@@ -161,7 +161,17 @@ if (isset($_REQUEST['msj'])) {
     });
   </script>
 
+  <script>
+    function Espacio(campo, event) {
 
+      CadenaaReemplazar = " ";
+      CadenaReemplazo = "";
+      CadenaTexto = campo.value;
+      CadenaTextoNueva = CadenaTexto.split(CadenaaReemplazar).join(CadenaReemplazo);
+      campo.value = CadenaTextoNueva;
+
+    }
+  </script>
 
 </body>
 
