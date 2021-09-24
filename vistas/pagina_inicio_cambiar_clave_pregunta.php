@@ -39,10 +39,7 @@
 
     </div>
 
-    <script type="text/javascript" src="../plugins/sweetalert2/sweetalert2.min.js"></script>
-
-    <script src="../dist/js/sweetalert2.min.js"></script>
-
+    
     <script src="../dist/js/main.js"></script>
 
 
