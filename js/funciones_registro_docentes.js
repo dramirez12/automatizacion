@@ -1387,17 +1387,17 @@ function Registrar() {
     var formData = new FormData();
     var foto = $('#seleccionararchivo')[0].files[0];
     formData.append('f', foto);
-    formData.append('nombrearchivo', nombrearchivo);
+    // formData.append('nombrearchivo', nombrearchivo);
 
     $.ajax({
-        url: 'subirimagen.php',
+        url: '../Controlador/subirimagen.php',
         type: 'post',
         data: formData,
         contentType: false,
         processData: false,
         success: function(respuesta) {
             if (respuesta != 0) {
-                Swal('Mensaje De Confirmacion', 'Se subio fotografia con exito', 'success');
+                //Swal('Mensaje De Confirmacion', 'Se subio fotografia con exito', 'success');
             }
         }
     });
@@ -1408,17 +1408,17 @@ function Registrarcurriculum() {
     var formData = new FormData();
     var curriculum = $('#curriculum')[0].files[0];
     formData.append('c', curriculum);
-    formData.append('nombrearchivo', nombrearchivo);
+    //formData.append('nombrearchivo', nombrearchivo);
 
     $.ajax({
-        url: 'subirdocumento.php',
+        url: '../Controlador/subirdocumento.php',
         type: 'post',
         data: formData,
         contentType: false,
         processData: false,
         success: function(respuesta) {
             if (respuesta != 0) {
-                Swal('Mensaje De Confirmacion', 'Se subio el curriculum con exito', 'success');
+                // Swal('Mensaje De Confirmacion', 'Se subio el curriculum con exito', 'success');
             }
         }
     });

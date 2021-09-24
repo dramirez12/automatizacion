@@ -2,7 +2,7 @@
 require_once "../Modelos/registro_docente_modelo.php";
 $MP = new modelo_registro_docentes();
 
-$nombrearchivo2 = isset($_POST["nombrearchivo2"]) ? limpiarCadena1($_POST["nombrearchivo2"]) : "";
+//$nombrearchivo2 = isset($_POST["nombrearchivo2"]) ? limpiarCadena1($_POST["nombrearchivo2"]) : "";
 
 if(is_array($_FILES) && count($_FILES)>0){
 
