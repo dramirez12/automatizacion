@@ -32,56 +32,15 @@ if ($_POST) {
 		$msj = 2;
 	}
 }
+if (isset($resultado)) {
+	header("location: ../login.php");
+}else{
+	if ($msj == 2) {
+		header("location: cambiar_clave_x_pregunta_vista.php?msj=$msj&error= " . $error_encontrado . "&id_usuario2=$Id_usuarios2");
+	} else {
+		header("location: cambiar_clave_x_pregunta_vista.php?msj=$msj&id_usuario2=$Id_usuarios2");
+	}
+}
 
 
 ?>
-
-
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-theme.css" rel="stylesheet"> -->
-	<!-- <script src="js/jquery-3.3.1.min.js"></script> -->
-	<!-- <script src="js/bootstrap.min.js"></script> -->
-	<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-	<!-- icheck bootstrap -->
-	<link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-	<!-- Theme style -->
-	<link rel="stylesheet" href="../dist/css/adminlte.min.css">
-	<!-- Google Font: Source Sans Pro -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
-
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="row" style="text-align:center">
-				<?php if (isset($resultado)) {
-					header("location: ../login.php"); ?>
-				<?php
-				} else {
-					if ($msj == 2) {
-						header("location: cambiar_clave_x_pregunta_vista.php?msj=$msj&error= " . $error_encontrado . "&id_usuario2=$Id_usuarios2");
-					} else {
-						header("location: cambiar_clave_x_pregunta_vista.php?msj=$msj&id_usuario2=$Id_usuarios2");
-					}
-				?>
-				<?php
-				} ?>
-
-
-
-			</div>
-		</div>
-	</div>
-</body>
-
-</html>
