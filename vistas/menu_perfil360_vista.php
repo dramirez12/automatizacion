@@ -10,7 +10,7 @@ session_start();
 
 
 
-if (permiso_ver('117') == '1') {
+if (permiso_ver('115') == '1') {
 
   $_SESSION['menu perfil360'] = "...";
 } else {
@@ -18,7 +18,7 @@ if (permiso_ver('117') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('118') == '1') {
+if (permiso_ver('116') == '1') {
 
   $_SESSION['realizar_nueva_solicitud_vista'] = "...";
 } else {
@@ -27,7 +27,7 @@ if (permiso_ver('118') == '1') {
 }
 
 
-$Id_objeto=117; 
+$Id_objeto=115; 
 $visualizacion= permiso_ver($Id_objeto);
 if($visualizacion==0){
   echo '<script type="text/javascript">
