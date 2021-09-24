@@ -162,52 +162,25 @@ require_once ('../clases/Conexion.php');
                 $msj=$_REQUEST['msj'];
                         if ($msj==1) 
                         {
-                                  echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-  position: "center",
-  icon: "info",
-  title: "Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo",
-  showConfirmButton: false,
-  timer: 3000
-})   </script>';
+                          echo 'alert("Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo")';
+
+                                  
                         }
                         if ($msj==2)
                         {
-                            echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-  position: "center",
-  icon: "info",
-  title: "PASSWORD NO VÁLIDO: '.$_REQUEST['error'].'",
-  showConfirmButton: false,
-  timer: 3000
-})   </script>';
+                          echo 'alert("PASSWORD NO VÁLIDO: ' . $_REQUEST['error'] . '")';
+                            
                         }
                         if ($msj==3)
                          {
-                          echo '<script type="text/javascript">
-                              swal({
-                                   title:"",
-                                   text:"Los datos  se actulizaron correctamente",
-                                   type: "success",
-                                   showConfirmButton: false,
-                                   timer: 3000
-                                });
-                      
-                            </script>';
+                           echo 'alert("Los datos  se actulizaron correctamente")';
+                          
                         }
                         if ($msj==4) 
                         {
-echo '<script type="text/javascript">
-                                    swal({
-                                       title:"",
-                                       text:"No se realizo el proceso, favor llame al administrador o intente de nuevo",
-                                       type: "error",
-                                       showConfirmButton: false,
-                                       timer: 3000
-                                    });
-                                </script>';                        }
+                          echo 'alert("No se realizo el proceso, favor llame al administrador o intente de nuevo")';
+
+                                              }
                     
                }  
 
