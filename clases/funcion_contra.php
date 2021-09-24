@@ -5,7 +5,7 @@
 class validar_contra {
 
 
-function validar_clave($Contrasena,&$error_clave){
+function validar_clave($Contrasena,$error_clave){
 
 
     

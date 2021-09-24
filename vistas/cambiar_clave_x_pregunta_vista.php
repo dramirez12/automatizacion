@@ -12,16 +12,16 @@ if (isset($_REQUEST['id_usuario2'])) {
 if (isset($_REQUEST['msj'])) {
   $msj = $_REQUEST['msj'];
   if ($msj == 1) {
-    echo 'alert("Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo")';
+    echo '<script>alert("Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo")</script>';
   }
   if ($msj == 2) {
-    echo 'alert("PASSWORD NO VÁLIDO: ' . $_REQUEST['error'] . '")';
+    echo '<script>alert("PASSWORD NO VÁLIDO: ' . $_REQUEST['error'] . '")</script>';
   }
   if ($msj == 3) {
-    echo 'alert("Los datos  se actulizaron correctamente")';
+    echo '<script>alert("Los datos  se actulizaron correctamente")</script>';
   }
   if ($msj == 4) {
-    echo 'alert("No se realizo el proceso, favor llame al administrador o intente de nuevo")';
+    echo '<script>alert("No se realizo el proceso, favor llame al administrador o intente de nuevo")</script>';
   }
 }
 
