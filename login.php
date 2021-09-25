@@ -2,12 +2,6 @@
 session_start();
 require_once('clases/Conexion.php');
 include_once('vistas/pagina_inicio_login.php');
-$_SESSION['time'] = time();
-
-
-
-
-
 /*
    $sql_auto_registro=("select valor FROM tbl_parametros where parametro='AUTO_REGISTRO' ");
    $parametro_registro = mysqli_fetch_assoc($mysqli->query($sql_auto_registro));

@@ -1,23 +1,9 @@
 <?php
-session_start();
+
 require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php'); 
-/* $varsesion = $_SESSION['usuario'];
-if ( $varsesion == NULL || $varsesion = '') {
-  echo 'Usted no tiene autorización';
-  die();
-} */
+require_once ('../clases/Conexion.php');
 
 
-		if(!ISSET($_SESSION['usuario'])){
-			header('location:../index.php');
-		}else{
-			if((time() - $_SESSION['time']) > 60){
-      /* session_destroy(); */
-       
-			 	 header("location:logout_page.php");  
-			}
-		}
 
 ?>
 <!DOCTYPE html>

@@ -1,14 +1,17 @@
 <?php
+
 require_once('../clases/Conexion.php');
 require_once('../clases/permisos_usuario.php');
 
 
 
+
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
-  
-
 }
+
+
+
 
 
 ?>
