@@ -9,6 +9,7 @@ require_once ('../clases/Conexion.php');
 <!DOCTYPE html>
 <html>
 <head>
+
   <title></title>
 </head>
 
@@ -42,8 +43,10 @@ require_once ('../clases/Conexion.php');
 	 </div>
    </section>
  </div>
-
+ <script src="../js/autologout.js"></script>
  
 </body>
+
+
 </html>
 
