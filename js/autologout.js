@@ -1,10 +1,4 @@
-
-/**
- * Document   : Auto Logout Script
- * Author     : josephtinsley
- * Description: Force a logout automatically after a certain amount of time using HTML/JQuery/PHP. 
- * http://twitter.com/josephtinsley 
-*/
+//Inactividad sesion
 
 
 $(function()
@@ -31,12 +25,12 @@ $(function()
         if( minPast > maxMinutes)
         {
             sessionStorage.removeItem("lastTimeStamp");
-            window.location = "../vistas/session_killer.php";
+            window.location = "../vistas/cerrar_sesion.php";
             return false;
         }else
         {
             //JUST ADDED AS A VISUAL CONFIRMATION
-            console.log(currentTime +" - "+ pastTime+" - "+minPast+" min past");
+          /*   console.log(currentTime +" - "+ pastTime+" - "+minPast+" min past"); */
         }
     }
 
