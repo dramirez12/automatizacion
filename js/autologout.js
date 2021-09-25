@@ -16,7 +16,7 @@ $(function()
         {
             var storedTimeStamp = sessionStorage.getItem("lastTimeStamp");  
             timeCompare(storedTimeStamp);
-        },3000);
+        },30000);
     }
 
 

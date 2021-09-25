@@ -18,6 +18,7 @@ require_once ('../clases/Conexion.php');
  
 
 <body >
+<script src="../js/autologout.js"></script>
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -43,7 +44,7 @@ require_once ('../clases/Conexion.php');
 	 </div>
    </section>
  </div>
- <script src="../js/autologout.js"></script>
+
  
 </body>
 
