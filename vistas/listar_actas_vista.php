@@ -188,19 +188,6 @@ ob_end_flush();
                                             <?php
                                             }  ?>
                                         </tbody>
-                                        <thead>
-                                            <tr>
-                                                <th>No. Acta</th>
-                                                <th>Nombre Reunión</th>
-                                                <th>Estado</th>
-                                                <th>Fecha</th>
-                                                <th>Hora Inicio</th>
-                                                <th>Hora Final</th>
-                                                <th>Archivos</th>
-                                                <th>Acciones</th>
-                                                <!-- <th>Acta</th>-->
-                                            </tr>
-                                        </thead>
                                     </table>
                                 </form>
                             </div>

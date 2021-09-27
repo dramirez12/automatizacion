@@ -137,18 +137,6 @@ ob_end_flush();
                                             <?php
                                             }  ?>
                                         </tbody>
-                                        <thead>
-                                            <tr>
-                                                <th>No. Acta</th>
-                                                <th>Nombre Reunión</th>
-                                                <th>No. participantes</th>
-                                                <th>Asistencia</th>
-                                                <th>Inasistencia</th>
-                                                <th>Excusados</th>
-                                                <th>Detalle</th>
-                                                <!-- <th>Acta</th>-->
-                                            </tr>
-                                        </thead>
                                     </table>
                                 </form>
                             </div>

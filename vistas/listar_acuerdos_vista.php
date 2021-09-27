@@ -113,16 +113,6 @@ ob_end_flush();
                                             <?php
                                             }  ?>
                                         </tbody>
-                                        <thead>
-                                            <tr>
-                                                <th>No. Acta</th>
-                                                <th>Responsable</th>
-                                                <th>Nombre Acuerdo</th>
-                                                <th>Descripción</th>
-                                                <th>Fecha de Vencimiento</th>
-                                                <th>Estado Resolución</th>
-                                            </tr>
-                                        </thead>
                                     </table>
                                 </form>
                             </div>

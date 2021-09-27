@@ -2,9 +2,6 @@
 ob_start();
 session_start();
 include_once '../clases/Conexion.php';
-require '../plugins/phpmailer/Exception.php';
-require '../plugins/phpmailer/PHPMailer.php';
-require '../plugins/phpmailer/SMTP.php';
 $enlace = $_POST['NULL'];
 $nacta = $_POST['NULL'];
 $id_estado = $_POST['id_recursos'];
@@ -24,9 +21,6 @@ $redactor = $_SESSION['id_usuario'];
 $dtz = new DateTimeZone("America/Tegucigalpa");
 $dt = new DateTime("now", $dtz);
 $hoy = $dt->format("Y-m-d H:i:s");
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 if ($_POST['acta'] == 'actualizar') {
     try {
@@ -99,7 +93,7 @@ if ($_POST['acta'] == 'finalizar') {
         if ($stmt->affected_rows) {
             $respuesta = array(
                 'respuesta' => 'exito',
-                'id_actualizado' => $id_registro
+                'id_actualizado' => $id_finalizar
             );
         } else {
             $respuesta = array(
@@ -132,7 +126,6 @@ if ($_POST['recurso'] == 'borrar') {
                 'respuesta' => 'error'
             );
         }
-
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {

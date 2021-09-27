@@ -126,7 +126,7 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="nombre">Nombre:</label>
-                                                        <input required minlength="5" type="text" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion">
+                                                        <input required minlength="5" type="text" onkeyup="mayus(this);" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="tipo">Tipo de Reunión</label>

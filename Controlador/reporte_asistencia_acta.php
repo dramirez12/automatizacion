@@ -7,11 +7,8 @@ $instancia_conexion = new conexion();
 //$stmt = $instancia_conexion->query("SELECT tp.nombres FROM tbl_personas tp INNER JOIN tbl_usuarios us ON us.id_persona=tp.id_persona WHERE us.Id_usuario= 8");
 
 
-
 class myPDF extends FPDF
 {
-
-
     function encabezado()
     {
         //h:i:s
@@ -32,7 +29,6 @@ class myPDF extends FPDF
         $this->Cell(280, 10, "FECHA: " . $fecha, 0, 0, 'R');
         $this->ln();
         $this->ln();
-
         $this->SetFont('Arial', 'B', 18);
 
         global $instancia_conexion;
@@ -133,11 +129,11 @@ class myPDF extends FPDF
 
         global $instancia_conexion;
         $sql = "SELECT concat_ws(' ', pe.nombres, pe.apellidos)nombres, (ep.estado)'asistencia' 
-                FROM tbl_acta a 
-                INNER JOIN tbl_participantes pa ON pa.id_reunion = a.id_reunion
-                INNER JOIN tbl_personas pe ON pe.id_persona = pa.id_persona
-                INNER JOIN tbl_estado_participante ep ON ep.id_estado = pa.id_estado_participante
-                WHERE a.id_acta= '$_GET[id];'";
+        FROM tbl_acta a 
+        LEFT JOIN tbl_participantes pa ON pa.id_reunion = a.id_reunion
+        LEFT JOIN tbl_personas pe ON pe.id_persona = pa.id_persona
+        LEFT JOIN tbl_estado_participante ep ON ep.id_estado = pa.id_estado_participante
+        WHERE a.id_acta='$_GET[id];'";
         $stmt = $instancia_conexion->ejecutarConsulta($sql);
 
         while ($lista = $stmt->fetch_object()) {

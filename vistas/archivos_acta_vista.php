@@ -78,7 +78,7 @@ ob_end_flush();
                     <tr style="color: #3444d1;">
                         <th>Nombre Archivo</th>
                         <th>Formato</th>
-                        <th>VER</th>
+                        <th>DESCARGAR</th>
                     </tr>
                 </thead>
                 <body>
@@ -111,7 +111,7 @@ ob_end_flush();
                                 <?php echo $estadoacta['formato']; ?>
                             </td>
                             <td>
-                                <a href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?>"><i style="color: #359c32;" class="fas fa-eye"></i></a>
+                                <a href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?>"><i style="color: #359c32;" class="fas fa-download"></i></a>
                             </td>
                         </tr>
                     <?php  }  ?>

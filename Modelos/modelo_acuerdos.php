@@ -1,9 +1,8 @@
 <?php
-
-include_once '../clases/Conexion.php';
-require '../plugins/phpmailer/Exception.php';
-require '../plugins/phpmailer/PHPMailer.php';
-require '../plugins/phpmailer/SMTP.php';
+require_once('../PHPMAILER/PHPMailer.php');
+require_once('../PHPMAILER/SMTP.php');
+require_once('../PHPMAILER/Exception.php');
+require_once('../clases/Conexion.php');
 $acta = $_POST['acta'];
 $responsable = $_POST['responsable'];
 $estado = $_POST['estado'];
@@ -14,11 +13,10 @@ $fecha_exp = $_POST['fecha_exp'];
 $fecha_formato = date('Y-m-d', strtotime($fecha_exp));
 $id_registro = $_POST['id_registro'];
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 if ($_POST['acuerdo'] == 'nuevo') {
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->isSMTP();
     $estado = 1;
     try {
         $stmt = $mysqli->prepare("INSERT INTO tbl_acuerdos (id_acta, id_participante, id_estado, nombre_acuerdo, descripcion, resolucion, fecha_expiracion) VALUES (?,?,?,?,?,?,?)");
@@ -36,19 +34,20 @@ if ($_POST['acuerdo'] == 'nuevo') {
             );
         }
         //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $correo = 'unahvinc@informaticaunah.com';
+        $Password = '.N9135myfkAa';
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host = 'informaticaunah.com';
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-        $mail->Password   = 'informaticaunah2021';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+        $mail->Username = $correo;
+        $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
         $sql = "SELECT
                 t5.num_acta,
                 t4.nombre_reunion,
@@ -99,7 +98,8 @@ if ($_POST['acuerdo'] == 'nuevo') {
 }
 
 if ($_POST['acuerdo'] == 'actualizar') {
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->isSMTP();
     $estado = 1;
     try {
         $stmt = $mysqli->prepare('UPDATE tbl_acuerdos SET id_acta=?,id_participante=?,id_estado=?,nombre_acuerdo=?,descripcion=?,resolucion=?,fecha_expiracion=? WHERE id_acuerdo=?');
@@ -116,19 +116,20 @@ if ($_POST['acuerdo'] == 'actualizar') {
             );
         }
         //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $correo = 'unahvinc@informaticaunah.com';
+        $Password = '.N9135myfkAa';
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host = 'informaticaunah.com';
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-        $mail->Password   = 'informaticaunah2021';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+        $mail->Username = $correo;
+        $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
         $sql = "SELECT
                  t5.num_acta,
                  t4.nombre_reunion,
@@ -182,7 +183,8 @@ if ($_POST['acuerdo'] == 'actualizar') {
 }
 
 if ($_POST['acuerdos'] == 'finalizar') {
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->isSMTP();
     $estadofinalizar = 2;
     $fecha_res = 'FINALIZADO';
     $id_registrof = $_POST['id'];
@@ -201,19 +203,20 @@ if ($_POST['acuerdos'] == 'finalizar') {
             );
         }
         //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $correo = 'unahvinc@informaticaunah.com';
+		$Password = '.N9135myfkAa';
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host = 'informaticaunah.com';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-        $mail->Password   = 'informaticaunah2021';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+		$mail->Username = $correo;
+		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
         $sql = "SELECT
         t6.num_acta,
         t5.nombre_reunion,
@@ -270,7 +273,8 @@ if ($_POST['acuerdos'] == 'finalizar') {
 }
 
 if ($_POST['acuerdo'] == 'cancelar') {
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->isSMTP();
     $id_registroc = $_POST['id'];
     $estadocancelar = 3;
     $fecha_res = 'CANCELADO';
@@ -291,19 +295,20 @@ if ($_POST['acuerdo'] == 'cancelar') {
             );
         }
         //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $correo = 'unahvinc@informaticaunah.com';
+		$Password = '.N9135myfkAa';
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+        $mail->Host = 'informaticaunah.com';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'informaticaunah21@gmail.com';                     //SMTP username
-        $mail->Password   = 'informaticaunah2021';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+		$mail->Username = $correo;
+		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom('informaticaunah21@gmail.com', 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
         $sql = "SELECT
          t6.num_acta,
          t5.nombre_reunion,

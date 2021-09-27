@@ -173,17 +173,6 @@ ob_end_flush();
                                                                     </tr>
                                                                 <?php  }  ?>
                                                             </tbody>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Nombre Reunión</th>
-                                                                    <th>Tipo</th>
-                                                                    <th>Lugar</th>
-                                                                    <th>Fecha</th>
-                                                                    <th>Hora Inicio</th>
-                                                                    <th>Hora Final</th>
-                                                                    <th>Acciones</th>
-                                                                </tr>
-                                                            </thead>
                                                         </table>
                                                     </form>
                                                 </div>
@@ -206,7 +195,6 @@ ob_end_flush();
 
                                                             $(document).ready(function() {
                                                                 var undia = (sumarDias(hoy, +1));
-                                                                console.log(undia);
                                                                 $('#calendarioweb').fullCalendar({
                                                                     header: {
                                                                         left: 'today,prev,next',
@@ -276,50 +264,7 @@ ob_end_flush();
                 function mayus(e) {
             e.value = e.value.toUpperCase();
         }
-            /********** cancelar acta/reunion ***********/
-            $('.cancelar_registrooo').on('click', function(e) {
-                e.preventDefault();
-                var id = $(this).attr('data-id');
-                var tipo = $(this).attr('data-tipo');
-                swal({
-                    title: '¿Está Seguro?',
-                    text: 'Si la cancela no podra revertirlo!!<br><br><b>Escriba el motivo por lo cual cancela la reunion</b><br><br><input class="form-control" onkeyup="mayus(this);" id="mensaje" style="width: 65%; margin-left: 17%;" required name="mensaje" type="text">',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtontext: 'Si, cancelarla!',
-                    cancelButtontext: 'Cancelar'
-                }).then(function() {
-                    $.ajax({
-                        type: 'post',
-                        data: {
-                            'id': id,
-                            'reunion': 'cancelar',
-                            'mensaje': $('#mensaje').val()
-                        },
-                        url: '../Modelos/modelo_' + tipo + '.php',
-                        success: function(data) {
-                            var resultado = JSON.parse(data);
-                            if (resultado.respuesta == 'exito') {
-                                swal({
-                                    title: "cancelada",
-                                    text: "Reunión cancelada con Exito!",
-                                    type: "success"
-                                }).then(function() {
-                                    location.href = "../Vistas/reuniones_pendientes_vista.php";
-                                });
-                            } else {
-                                swal(
-                                    'Error!',
-                                    'No se pudo cancelar',
-                                    'error'
-                                )
-                            }
-                        }
-                    })
-                });
-            });
+
             $(function() {
 
                 $('#tabla27').DataTable({

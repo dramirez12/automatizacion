@@ -4,6 +4,7 @@
 
 require 'fpdf/fpdf.php';
 require_once ('../clases/Conexion.php');
+
 $usuario=$_SESSION['id_usuario'];
  $id=("select id_persona from tbl_usuarios where id_usuario='$usuario'");
 $result= mysqli_fetch_assoc($mysqli->query($id));
@@ -33,8 +34,7 @@ t1.asunto,
 t1.agenda_propuesta,
 t1.enlace,
 t2.estado_reunion,
-t3.tipo,
-T1.mensaje
+t3.tipo
 FROM
 tbl_reunion t1
 INNER JOIN tbl_estado_reunion t2 ON
@@ -53,7 +53,7 @@ tbl_participantes t1
 INNER JOIN tbl_personas t2 ON
 t2.id_persona = t1.id_persona
 WHERE
-id_reunion = $id ";
+id_reunion = $id";
 $resultado = $mysqli->query($sql);
 $personas = $resultado->fetch_assoc();
 
@@ -61,16 +61,12 @@ $personas = $resultado->fetch_assoc();
 
 class PDF extends FPDF
 	{
-		function Header()
-		{
+		function Header(){
 			if ( $this->PageNo() == 1 ) {
 							//date_default_timezone_get('America/Tegucigalpa');
-		$this->Image('../dist/img/logo_ia.jpg', 12,8,30);
-		$this->Image('../dist/img/logo-unah.jpg', 172,8, 22 );
+		                   $this->Image('../dist/img/logo_ia.jpg', 12,8,30);
+		                   $this->Image('../dist/img/logo-unah.jpg', 172,8, 22 );
 				}
-
-
-
 		}
 function Footer()
 		{
@@ -90,9 +86,6 @@ function Footer()
 
 $resultado = mysqli_query($connection, $sql);
 	$row = mysqli_fetch_array($resultado);
-
-	
-
 	$pdf = new PDF();
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
@@ -109,8 +102,6 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->SetFont('Arial','', 10);
 	$pdf->ln(5);
 	$pdf->Cell(0,5,utf8_decode('Fecha Impresion: '.$fecha."  ".$hora),0,1,'C');
-
-	
 	$pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','B',12);
 	$pdf->ln(10);
@@ -135,9 +126,6 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->SetX(20);
 	$pdf->multicell(170,7,utf8_decode('Estado: ' . $estado['estado_reunion'].$estado['mensaje']),0);
 	$pdf->ln(2);
-    
-
-    
 	$pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','I',12);
 	$pdf->ln(5);
@@ -148,11 +136,6 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->multicell(170,5,utf8_decode('Por medio del presente se recuerda que el próximo '. $estado['fecha'] . ' se realizará la reunion con asunto '.$estado['asunto'].', en el horario de ' .$estado['hora_inicio'].' a ' .$estado['hora_final'].' con los siguientes puntos a tratar: '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
-
-
-
-
-
 	$pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','B',12);
 	$pdf->ln(2);
@@ -160,7 +143,6 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->multicell(170,5,utf8_decode($estado['agenda_propuesta']),0);
 	$pdf->SetX(20);
 	$pdf->ln(2);
-
 	$pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','I',12);
 	$pdf->ln(15);
@@ -169,12 +151,4 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->ln(5);
 	$pdf->SetX(25);
 	$pdf->Output();
-	
-
-
-
-
-
 	$pdf->Output();
-
-?>

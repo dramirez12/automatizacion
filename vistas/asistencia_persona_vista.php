@@ -156,16 +156,6 @@ ob_end_flush();
                                                 echo $error;
                                             }  ?>
                                         </tbody>
-                                        <thead class="text-center">
-                                            <tr>
-                                                <th>Nombre Persona</th>
-                                                <th>No. reuniones</th>
-                                                <th>Asistencia</th>
-                                                <th>Inasistencia</th>
-                                                <th>Excusados</th>
-
-                                            </tr>
-                                        </thead>
                                     </table>
                                 </form>
                             </div>

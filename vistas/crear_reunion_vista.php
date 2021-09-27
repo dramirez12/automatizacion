@@ -304,7 +304,7 @@ LIMIT 1";
                                 <br>
                                 <b><a target="_blank" href="../pdf/reporte_memorandum.php?id=<?php echo $ultimo['valor']; ?>">Ver Reporte</a></b>`,
                         }).then(function() {
-                            location.href = "../Vistas/reuniones_pendientes_vista.php";
+                            location.href = "../vistas/reuniones_pendientes_vista.php";
                         });
                     } else {
                         swal(

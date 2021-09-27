@@ -131,17 +131,6 @@ ob_end_flush();
                                             <?php
                                             }  ?>
                                         </tbody>
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre Reunión</th>
-                                                <th>Fecha</th>
-                                                <th>Lugar</th>
-                                                <th>Tipo</th>
-                                                <th>Estado</th>
-                                                <th>Memorandum</th>
-                                                <!-- <th>Acta</th>-->
-                                            </tr>
-                                        </thead>
                                     </table>
                                 </form>
                             </div>
