@@ -31,9 +31,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A TIPOS DE INDICADOR .');
-
-
- 
 }
 
 ob_end_flush();
@@ -44,6 +41,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 </head>
 
@@ -160,19 +158,20 @@ ob_end_flush();
             }
         }
     }
-    function validate(s){
-        if (/^(\w+\s?)*\s*$/.test(s)){
-          return s.replace(/\s+$/,  '');
+
+    function validate(s) {
+        if (/^(\w+\s?)*\s*$/.test(s)) {
+            return s.replace(/\s+$/, '');
         }
         return 'NOT ALLOWED';
-        }
-        
-        validate('tes ting')      //'test ing'
-        validate('testing')       //'testing'
-        validate(' testing')      //'NOT ALLOWED'
-        validate('testing ')      //'testing'
-        validate('testing  ')     //'testing'
-        validate('testing   ')   
+    }
+
+    validate('tes ting') //'test ing'
+    validate('testing') //'testing'
+    validate(' testing') //'NOT ALLOWED'
+    validate('testing ') //'testing'
+    validate('testing  ') //'testing'
+    validate('testing   ')
 
     function sololetras(e) {
 

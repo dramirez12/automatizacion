@@ -17,6 +17,7 @@ if (permiso_ver('114') == '1') {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
 </head>
 
 <body>

@@ -116,6 +116,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -148,351 +149,351 @@ ob_end_flush();
 
 
       <div class="card card-default">
-          <div class="card-header">
-          
+        <div class="card-header">
+
           <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              
-            </div>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+
           </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="row">
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row">
             <div class="col-md-12">
-              
-     
-        
-<!-- comienzo de Tipo de adquisición -->
 
-      <!-- /.info-box -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+
+
+              <!-- comienzo de Tipo de adquisición -->
+
+              <!-- /.info-box -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Tipo Adquisición </h4>
-                  <p><?php echo $_SESSION['mantenimiento_crear_tipoadquisicion_vista']; ?></p>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Tipo Adquisición </h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_tipoadquisicion_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_crear_tipoadquisicion_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+                    <!-- /.info-box -->
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Tipo Adquisición </h4>
+                          <p><?php echo $_SESSION['mantenimiento_tipoadquisicion_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_tipoadquisicion_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
                 </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+              </section>
 
-                <a href="../vistas/mantenimiento_crear_tipoadquisicion_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
+              <!-- Final de Tipo de adquisición -->
 
-            </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-            <!-- /.info-box -->
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Tipo Adquisición </h4>
-                  <p><?php echo $_SESSION['mantenimiento_tipoadquisicion_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
+              <!-- comienzo de Tipo de Transacción -->
 
-                <a href="../vistas/mantenimiento_tipoadquisicion_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!-- /.row -->
-          </div>
-          <!--/. container-fluid -->
-        </div>
-      </section>
-
-<!-- Final de Tipo de adquisición -->
-
-<!-- comienzo de Tipo de Transacción -->
-
-      <!-- /.info-box -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+              <!-- /.info-box -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Tipo Transacción </h4>
-                  <p><?php echo $_SESSION['mantenimiento_tipo_transaccion_vista']; ?></p>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Tipo Transacción </h4>
+                          <p><?php echo $_SESSION['mantenimiento_tipo_transaccion_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_crear_tipo_transaccion_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+                    <!-- /.info-box -->
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Tipo Transacción </h4>
+                          <p><?php echo $_SESSION['mantenimiento_tipo_transaccion_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_tipo_transaccion_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
                 </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+              </section>
 
-                <a href="../vistas/mantenimiento_crear_tipo_transaccion_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
+              <!-- Final de Tipo de Transacción -->
 
-            </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-            <!-- /.info-box -->
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Tipo Transacción </h4>
-                  <p><?php echo $_SESSION['mantenimiento_tipo_transaccion_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
+              <!-- comienzo de Tipo de Estado -->
 
-                <a href="../vistas/mantenimiento_tipo_transaccion_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!-- /.row -->
-          </div>
-          <!--/. container-fluid -->
-        </div>
-      </section>
-
-<!-- Final de Tipo de Transacción --> 
-
-<!-- comienzo de Tipo de Estado -->
-
-      <!-- /.info-box -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+              <!-- /.info-box -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Tipo Estado </h4>
-                  <p><?php echo $_SESSION['mantenimiento_crear_estado_vista']; ?></p>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Tipo Estado </h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_estado_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_crear_estado_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+                    <!-- /.info-box -->
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Tipo Estado </h4>
+                          <p><?php echo $_SESSION['mantenimiento_estado_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_tipo_estado_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
                 </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+              </section>
 
-                <a href="../vistas/mantenimiento_crear_estado_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
+              <!-- Final de Tipo de Estado -->
 
-            </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-            <!-- /.info-box -->
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Tipo Estado </h4>
-                  <p><?php echo $_SESSION['mantenimiento_estado_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
+              <!-- comienzo de Tipo de Característica -->
 
-                <a href="../vistas/mantenimiento_tipo_estado_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!-- /.row -->
-          </div>
-          <!--/. container-fluid -->
-        </div>
-      </section>
-
-<!-- Final de Tipo de Estado --> 
-
-<!-- comienzo de Tipo de Característica -->
-
-      <!-- /.info-box -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+              <!-- /.info-box -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Tipo Característica </h4>
-                  <p><?php echo $_SESSION['mantenimiento_crear_tipo_caracteristica_vista']; ?></p>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Tipo Característica </h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_tipo_caracteristica_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_crear_tipo_caracteristica_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+                    <!-- /.info-box -->
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Tipo Característica </h4>
+                          <p><?php echo $_SESSION['mantenimiento_tipo_caracteristica_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_tipo_caracteristica_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
                 </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+              </section>
 
-                <a href="../vistas/mantenimiento_crear_tipo_caracteristica_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
+              <!-- Final de Tipo de Característica -->
 
-            </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-            <!-- /.info-box -->
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Tipo Característica </h4>
-                  <p><?php echo $_SESSION['mantenimiento_tipo_caracteristica_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
+              <!-- comienzo de Tipo de Producto -->
 
-                <a href="../vistas/mantenimiento_tipo_caracteristica_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!-- /.row -->
-          </div>
-          <!--/. container-fluid -->
-        </div>
-      </section>
-
-<!-- Final de Tipo de Característica -->
-
-<!-- comienzo de Tipo de Producto -->
-
-      <!-- /.info-box -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+              <!-- /.info-box -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Tipo Producto </h4>
-                  <p><?php echo $_SESSION['mantenimiento_crear_tipo_producto_vista']; ?></p>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Tipo Producto </h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_tipo_producto_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_crear_tipo_producto_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+                    <!-- /.info-box -->
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Tipo Producto </h4>
+                          <p><?php echo $_SESSION['mantenimiento_tipo_producto_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_tipo_producto_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
                 </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+              </section>
 
-                <a href="../vistas/mantenimiento_crear_tipo_producto_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
+              <!-- Final de Tipo de Producto -->
 
-            </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-            <!-- /.info-box -->
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Tipo Producto </h4>
-                  <p><?php echo $_SESSION['mantenimiento_tipo_producto_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
+              <!-- comienzo de Ubicación -->
 
-                <a href="../vistas/mantenimiento_tipo_producto_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!-- /.row -->
-          </div>
-          <!--/. container-fluid -->
-        </div>
-      </section>
-
-<!-- Final de Tipo de Producto --> 
-
-<!-- comienzo de Ubicación -->
-
-      <!-- /.info-box -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Info boxes -->
-          <div class="row" style="  display: flex;
+              <!-- /.info-box -->
+              <section class="content">
+                <div class="container-fluid">
+                  <!-- Info boxes -->
+                  <div class="row" style="  display: flex;
     align-items: center;
     justify-content: center;">
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-light">
-                <div class="inner">
-                  <h4>Crear Ubicación </h4>
-                  <p><?php echo $_SESSION['mantenimiento_crear_ubicacion_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-plus-square"></i>
-                </div>
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-light">
+                        <div class="inner">
+                          <h4>Crear Ubicación </h4>
+                          <p><?php echo $_SESSION['mantenimiento_crear_ubicacion_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus-square"></i>
+                        </div>
 
-                <a href="../vistas/mantenimiento_crear_ubicacion_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
+                        <a href="../vistas/mantenimiento_crear_ubicacion_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
 
+                    </div>
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+                    <!-- /.info-box -->
+                    <div class="col-6 col-sm-6 col-md-4">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <h4>Mantenimiento Ubicación </h4>
+                          <p><?php echo $_SESSION['mantenimiento_ubicacion_vista']; ?></p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-edit"></i>
+                        </div>
+
+                        <a href="../vistas/mantenimiento_ubicacion_vista.php" class="small-box-footer">
+                          Ir <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                    <!-- /.row -->
+                  </div>
+                  <!--/. container-fluid -->
+                </div>
+              </section>
+
+              <!-- Final de Ubicación -->
+
+
+
+              <!-- /.form-group -->
             </div>
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-            <!-- /.info-box -->
-            <div class="col-6 col-sm-6 col-md-4">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h4>Mantenimiento Ubicación </h4>
-                  <p><?php echo $_SESSION['mantenimiento_ubicacion_vista']; ?></p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-edit"></i>
-                </div>
-
-                <a href="../vistas/mantenimiento_ubicacion_vista.php" class="small-box-footer">
-                  Ir <i class="fas fa-arrow-circle-right"></i>
-                </a>
-              </div>
-
-            </div>
-            <!-- /.row -->
+            <!-- /.col -->
           </div>
-          <!--/. container-fluid -->
+          <!-- /.row -->
         </div>
-      </section>
-
-<!-- Final de Ubicación --> 
-
-
-
-<!-- /.form-group -->
-       </div>  
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.card-body -->
-          </div>
-  
+        <!-- /.card-body -->
+      </div>
 
 
 
 
 
-  </div>
+
+    </div>
 
   </div>
 

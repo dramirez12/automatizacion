@@ -77,6 +77,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -122,7 +123,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                        
+
                             <h3 class="card-title">Nuevo Edificio</h3>
 
                             <div class="card-tools">
@@ -134,17 +135,17 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
-                            <div class="col-md-3">
+                                <div class="col-md-3">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el Edificio</label>
-                                        <input class="form-control " type="text" id="txt_edificio" name="txt_edificio" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_edificio');" onkeypress="return LetrasyNumeros(event)"  onkeypress="return comprobar(this.value, event, this.id)">
+                                        <input class="form-control " type="text" id="txt_edificio" name="txt_edificio" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_edificio');" onkeypress="return LetrasyNumeros(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Código</label>
-                                        <input class="form-control" type="text" id="txt_codigo" name="txt_codigo" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_codigo');" onkeypress="return LetrasyNumeros(event)"  onkeypress="return comprobar(this.value, event, this.id)">
+                                        <input class="form-control" type="text" id="txt_codigo" name="txt_codigo" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_codigo');" onkeypress="return LetrasyNumeros(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
 
@@ -182,4 +183,4 @@ ob_end_flush();
 
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>

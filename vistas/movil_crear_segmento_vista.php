@@ -83,6 +83,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
   <!-- Bootstrap core CSS -->
   <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -143,7 +144,7 @@ ob_end_flush();
             </div>
             <!-- /.card-header -->
             <p class="text-center" style="margin-top: 20px;">
-              <button type="submit" class="btn btn-primary"  id="btn_guardar_segmentos" name="btn_guardar_segmentos"><i class="zmdi zmdi-floppy"></i>Guardar</button>
+              <button type="submit" class="btn btn-primary" id="btn_guardar_segmentos" name="btn_guardar_segmentos"><i class="zmdi zmdi-floppy"></i>Guardar</button>
             </p>
         </form>
       </div>

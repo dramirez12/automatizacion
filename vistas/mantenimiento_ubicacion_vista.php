@@ -149,8 +149,9 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <script src="../js/autologout.js"></script>
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -194,11 +195,11 @@ ob_end_flush();
         </div>
         <br>
         <div class=" px-12">
-         <!-- <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button> -->
+          <!-- <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button> -->
         </div>
-      </div> 
+      </div>
       <div class="card-body">
-      <div style="padding: 2px;"><a href="mantenimiento_crear_ubicacion_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+        <div style="padding: 2px;"><a href="mantenimiento_crear_ubicacion_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
 
         <table id="tblTipoUbicacion" class="table table-bordered table-striped">
 
@@ -285,7 +286,7 @@ ob_end_flush();
                     <label>Modificar Ubicación</label>
 
 
-                    <input class="form-control" class="tf w-input"  type="text" id="txt_ubicacion" onkeypress="return validacion_para_nombre_con_numeros(event)"  name="txt_ubicacion" value="<?php echo $_SESSION['ubicacion']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_ubicacion');" maxlength="50" >
+                    <input class="form-control" class="tf w-input" type="text" id="txt_ubicacion" onkeypress="return validacion_para_nombre_con_numeros(event)" name="txt_ubicacion" value="<?php echo $_SESSION['ubicacion']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_ubicacion');" maxlength="50">
 
                   </div>
 
@@ -313,9 +314,9 @@ ob_end_flush();
     <!-- /.  finaldel modal -->
 
     <!--mosdal crear -->
-  
+
     <div class="RespuestaAjax"></div>
-</form>
+  </form>
 
 
   <!--<script type="text/javascript" language="javascript">
@@ -344,12 +345,12 @@ ob_end_flush();
 </body>
 
 </html>
-  <script type="text/javascript" src="../js/pdf_gestion_laboratorio.js"></script>
-  <script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script>
+<script type="text/javascript" src="../js/pdf_gestion_laboratorio.js"></script>
+<script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

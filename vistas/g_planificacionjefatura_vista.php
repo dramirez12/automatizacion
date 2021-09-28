@@ -53,7 +53,7 @@ $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
+  echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -66,10 +66,7 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MENU JEFATURA.');
-
-
- 
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MENU JEFATURA.');
 }
 
 ob_end_flush()
@@ -81,6 +78,7 @@ ob_end_flush()
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -196,4 +194,5 @@ ob_end_flush()
   </div>
   </div>
 </body>
+
 </html>

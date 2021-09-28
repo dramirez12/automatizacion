@@ -57,6 +57,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Required meta tags -->

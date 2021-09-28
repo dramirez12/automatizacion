@@ -121,6 +121,7 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
 

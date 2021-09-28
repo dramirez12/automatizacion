@@ -53,7 +53,6 @@ if ($visualizacion == 0) {
   $sqltabla = "CALL sel_reportes_existencia_asignados('$id_producto')";
 
   $resultadotabla = $mysqli->query($sqltabla);
-
 }
 
 
@@ -65,6 +64,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
   <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
@@ -153,9 +153,9 @@ ob_end_flush();
 
             <?php } ?>
             <!-- echo var_dump($resultadotabla1); -->
-            <?php  $modelo=new respuesta();
-            $respuesta=$modelo->producto($id_producto);
-          
+            <?php $modelo = new respuesta();
+            $respuesta = $modelo->producto($id_producto);
+
             while ($row = $respuesta->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
 

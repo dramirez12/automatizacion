@@ -104,6 +104,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
   <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
@@ -186,8 +187,8 @@ ob_end_flush();
                   <td><?php echo $row['estado']; ?></td>
                   <!-- editar -->
                   <td style="text-align: center;">
-                    <a href="../vistas/editar_salida_vista.php?inventario=<?php echo $row['inventario'];?>" class="btn btn-primary btn-raised btn-xs">
-                      <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_salida']?>"></i>
+                    <a href="../vistas/editar_salida_vista.php?inventario=<?php echo $row['inventario']; ?>" class="btn btn-primary btn-raised btn-xs">
+                      <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_salida'] ?>"></i>
                     </a>
                   </td>
 

@@ -37,6 +37,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <title></title>
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
@@ -242,8 +243,8 @@ ob_end_flush();
 
     <script src="../js/newGasto.js"></script>
     <script type="text/javascript">
-    //esto hasta 
-    var currentdate = new Date();
+        //esto hasta 
+        var currentdate = new Date();
         var datetime = "Fecha: " + currentdate.getDate() + "/" +
             (currentdate.getMonth() + 1) + "/" +
             currentdate.getFullYear() + " Hora " +
@@ -261,8 +262,8 @@ ob_end_flush();
                     [0, 'desc']
                 ],
                 "responsive": true,
-              //desde aqui
-              dom: 'Bfrtip',
+                //desde aqui
+                dom: 'Bfrtip',
                 buttons: [{
                         extend: 'copyHtml5',
                         title: 'Datos Exportados',
@@ -295,7 +296,7 @@ ob_end_flush();
                             columns: [0, 1, 2, 3, 4]
                         },
                         customize: function(doc) {
-                            doc.content[1].table.widths = ["20%", "20%","20%", "20%","20%"];
+                            doc.content[1].table.widths = ["20%", "20%", "20%", "20%", "20%"];
                             doc['footer'] = (function(page, pages) {
                                     return {
                                         columns: [

@@ -111,6 +111,7 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
 
@@ -146,138 +147,139 @@ if (isset($_REQUEST['msj'])) {
         <div class="float-right mt-5 ml-5">
           <input class="form-control" placeholder="Buscar..." type="text" id="buscartext" name="buscar" onpaste="return false" onkeyup="leer(this.value)">
         </div>
-      <!-- /.card-header -->
-      <div class="card-body" id="Segmentos">
+        <!-- /.card-header -->
+        <div class="card-body" id="Segmentos">
 
+        </div>
+        <!-- /.card-body -->
       </div>
-      <!-- /.card-body -->
-    </div>
 
-    <!-- modal inicio -->
-    <form action="../Controlador/movil_segmentos_controlador.php?op=editar&id=<?php echo $id ?>" method="post" data-form="update" autocomplete="off">
+      <!-- modal inicio -->
+      <form action="../Controlador/movil_segmentos_controlador.php?op=editar&id=<?php echo $id ?>" method="post" data-form="update" autocomplete="off">
 
-      <div class="modal fade" id="modal_modificar_segmento">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Modificar Segmento</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+        <div class="modal fade" id="modal_modificar_segmento">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Modificar Segmento</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
 
-            <!--Cuerpo del modal-->
-            <div class="modal-body">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
+              <!--Cuerpo del modal-->
+              <div class="modal-body">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
 
-                    <div class="form-group">
-                      <label>Segmento</label>
+                      <div class="form-group">
+                        <label>Segmento</label>
 
-                      <input class="form-control" type="text" id="nombre" name="nombre" style="text-transform: uppercase" onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" required="" maxlength="30" value="<?php echo $_SESSION['txtNombre']; ?>">
+                        <input class="form-control" type="text" id="nombre" name="nombre" style="text-transform: uppercase" onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" required="" maxlength="30" value="<?php echo $_SESSION['txtNombre']; ?>">
 
+                      </div>
+
+                      <div class="form-group">
+                        <label>Descripción</label>
+
+                        <input class="form-control" type="text" id="descripcion" name="descripcion" style="text-transform: uppercase" onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" required="" maxlength="30" value="<?php echo $_SESSION['txtDescripcion']; ?>">
+
+                      </div>
                     </div>
 
-                    <div class="form-group">
-                      <label>Descripción</label>
+                    <!-- /.card-header -->
 
-                      <input class="form-control" type="text" id="descripcion" name="descripcion" style="text-transform: uppercase" onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" required="" maxlength="30" value="<?php echo $_SESSION['txtDescripcion']; ?>">
-
-                    </div>
                   </div>
-
-                  <!-- /.card-header -->
-
                 </div>
               </div>
-            </div>
 
-            <!--Footer del modal-->
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary" id="btn_modificar_segmento" name="btn_modificar_segmento">Guardar Cambios</button>
+              <!--Footer del modal-->
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="btn_modificar_segmento" name="btn_modificar_segmento">Guardar Cambios</button>
+              </div>
             </div>
+            <!-- /.modal-content -->
           </div>
-          <!-- /.modal-content -->
+          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-      </div>
 
-      <!-- /.  finaldel modal -->
-    </form>
+        <!-- /.  finaldel modal -->
+      </form>
 
-  </div><!-- fin content wrapper -->
+    </div><!-- fin content wrapper -->
 
-  <script>
-    function leer(buscar){
-      var buscar;
-      var parametro = {"buscar":buscar}
-      $.ajax({
-        data: parametro, //datos que se envian a traves de ajax
-        url: '../Controlador/movil_listar_segmento_controlador.php', //archivo que recibe la peticion
-        type: 'POST', //método de envio
-        beforeSend: function() {
-          $('#Segmentos').html("Procesando, espere por favor...");
-        },
-        success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-          $('#Segmentos').html(response);
+    <script>
+      function leer(buscar) {
+        var buscar;
+        var parametro = {
+          "buscar": buscar
         }
-      });
-    }
-
-    function readProducts() {
-      var parametro; 
-      $.ajax({
-        data: parametro, //datos que se envian a traves de ajax
-        url: '../Controlador/movil_listar_segmento_controlador.php', //archivo que recibe la peticion
-        type: 'POST', //método de envio
-        beforeSend: function() {
-          $('#Segmentos').html("Procesando, espere por favor...");
-        },
-        success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-          $('#Segmentos').html(response);
-        }
-      });
-    }
-
-    function eliminar(id) {
-      var parametro = {
-        'funcion': 'eliminar',
-        'id': id
-      }
-      var confirmacion = confirm('esta seguro de eliminar');
-      if (confirmacion) {
         $.ajax({
           data: parametro, //datos que se envian a traves de ajax
-          url: '../Controlador/movil_eliminar_segmento_controlador.php', //archivo que recibe la peticion
+          url: '../Controlador/movil_listar_segmento_controlador.php', //archivo que recibe la peticion
           type: 'POST', //método de envio
-          success: function(data) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-            console.log(data);
-            if (data != '') {
-              readProducts();
-              datoseliminados();
-            } else {
-              alert('no se pudo eliminar!!');
-            }
+          beforeSend: function() {
+            $('#Segmentos').html("Procesando, espere por favor...");
+          },
+          success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            $('#Segmentos').html(response);
           }
         });
-      } else {
-        console.log('decidio no eliminar');
       }
-    }
 
-    function datoseliminados() {
-      swal({
-        title: "",
-        text: "los datos se eliminaron correctamente.",
-        type: "success",
-        showConfirmButton: true,
-        timer: 3000
-      });
-    }
-    
-  </script>
+      function readProducts() {
+        var parametro;
+        $.ajax({
+          data: parametro, //datos que se envian a traves de ajax
+          url: '../Controlador/movil_listar_segmento_controlador.php', //archivo que recibe la peticion
+          type: 'POST', //método de envio
+          beforeSend: function() {
+            $('#Segmentos').html("Procesando, espere por favor...");
+          },
+          success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            $('#Segmentos').html(response);
+          }
+        });
+      }
+
+      function eliminar(id) {
+        var parametro = {
+          'funcion': 'eliminar',
+          'id': id
+        }
+        var confirmacion = confirm('esta seguro de eliminar');
+        if (confirmacion) {
+          $.ajax({
+            data: parametro, //datos que se envian a traves de ajax
+            url: '../Controlador/movil_eliminar_segmento_controlador.php', //archivo que recibe la peticion
+            type: 'POST', //método de envio
+            success: function(data) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+              console.log(data);
+              if (data != '') {
+                readProducts();
+                datoseliminados();
+              } else {
+                alert('no se pudo eliminar!!');
+              }
+            }
+          });
+        } else {
+          console.log('decidio no eliminar');
+        }
+      }
+
+      function datoseliminados() {
+        swal({
+          title: "",
+          text: "los datos se eliminaron correctamente.",
+          type: "success",
+          showConfirmButton: true,
+          timer: 3000
+        });
+      }
+    </script>
 </body>
 
 </html>

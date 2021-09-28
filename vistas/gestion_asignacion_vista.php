@@ -46,7 +46,7 @@ if (isset($_REQUEST['msj'])) {
         LEFT JOIN tbl_productos AS p ON da.id_producto = p.id_producto
         LEFT JOIN tbl_ubicacion AS u ON a.id_ubicacion = u.id_ubicacion
         LEFT JOIN tbl_personas AS per ON a.id_usuario_responsable = per.id_persona";
-        
+
         $resultadotabla = $mysqli->query($sqltabla);
     }
     if ($msj == 3) {
@@ -61,8 +61,6 @@ if (isset($_REQUEST['msj'])) {
     });
 </script>';
     }
-
-  
 }
 
 $Id_objeto = 212;
@@ -110,7 +108,7 @@ if ($visualizacion == 0) {
         LEFT JOIN tbl_productos AS p ON da.id_producto = p.id_producto
         LEFT JOIN tbl_ubicacion AS u ON a.id_ubicacion = u.id_ubicacion
         LEFT JOIN tbl_personas AS per ON a.id_usuario_responsable = per.id_persona";
-        
+
         $resultadotabla = $mysqli->query($sqltabla);
 
         /* Esta variable recibe el estado de modificar */
@@ -126,7 +124,7 @@ if ($visualizacion == 0) {
         LEFT JOIN tbl_ubicacion AS u ON a.id_ubicacion = u.id_ubicacion
         LEFT JOIN tbl_personas AS per ON a.id_usuario_responsable = per.id_persona
         WHERE a.id_asignacion = '$id_asignacion'";
-        
+
         $resultado = $mysqli->query($sql);
         /* Manda a llamar la fila */
         $row = $resultado->fetch_array(MYSQLI_ASSOC);
@@ -135,9 +133,9 @@ if ($visualizacion == 0) {
         $_SESSION['id_asignacion'] = $row['id_asignacion'];
         $_SESSION['inventario'] = $row['inventario'];
         $_SESSION['producto'] = $row['producto'];
-        $_SESSION['id_detalle']=$row['id_detalle'];
+        $_SESSION['id_detalle'] = $row['id_detalle'];
         $_SESSION['id_usuario_responsable_previo'] = $row['id_usuario_responsable'];
-        $_SESSION['motivo_previo']=$row['motivo'];
+        $_SESSION['motivo_previo'] = $row['motivo'];
         $_SESSION['id_ubicacion'] = $row['id_ubicacion'];
         $_SESSION['id_ubicacion_previa'] = $row['id_ubicacion'];
         $_SESSION['ubicacion'] = $row['ubicacion'];
@@ -171,9 +169,11 @@ ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+    <script src="../js/autologout.js"></script>
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
 </head>
 
@@ -215,76 +215,75 @@ ob_end_flush();
                 <!-- <div class=" px-12">
                     <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button>
                 </div> -->
-                
+
             </div>
-            
+
             <div class="card-body">
-                <div class="mb-3">                      
-                    <div style="padding: 2px;"><a href="crear_asignacion_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+                <div class="mb-3">
+                    <div style="padding: 2px;"><a href="crear_asignacion_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
 
                     <table id="tblAsignacion" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>INVENTARIO</th>
-                            <th>NOMBRE PRODUCTO</th>
-                            <th>UBICACIÓN</th>
-                            <th>RESPONSABLE</th>
-                            <th>MOTIVO</th>
-                            <th>FECHA</th>
-                            <th>REASIGNAR</th>
-                            <th>ELIMINAR</th>
-                            <th>REPORTE</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                        <thead>
                             <tr>
-                                <td><?php echo $row['inventario']; ?></td>
-                                <td><?php echo $row['producto']; ?></td>
-                                <td><?php echo $row['ubicacion']; ?></td>
-                                <td><?php echo $row['nombre']; ?></td>
-                                <td><?php echo $row['motivo']; ?></td>
-                                <td><?php echo $row['fecha']; ?></td>
-
-
-                                <td style="text-align: center;">
-
-                                    <!-- <a href="../vistas/actualizar_asignacion_vista.php">Inicio</a> -->
-
-                                    <a 
-                                        href="../vistas/actualizar_asignacion_vista.php?id_asignacion=<?php echo $row['id_asignacion']; ?>" class="btn btn-primary btn-raised btn-xs">
-                                        <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_asignacion'] ?> "></i>
-                                    </a>
-                                </td>
-
-                                <td style="text-align: center;">
-
-                                    <form action="../Controlador/eliminar_asignacion_controlador.php?id_asignacion=<?php echo $row['id_asignacion']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
-                                        <button type="submit" class="btn btn-danger btn-raised btn-xs">
-
-                                            <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_asignacion'] ?> "></i>
-                                        </button>
-                                        <div class="RespuestaAjax"></div>
-                                    </form>
-                                </td>
-
-                                <!-- reporte -->
-                                <td style="text-align: center;" >
-
-                                   <a href="../pdf_laboratorio/reporte_asignacion_lab.php?id_asignacion=<?php echo $row['id_asignacion']; ?>" target="_blank" class="btn btn-primary btn-raised btn-xs"    >
-                                
-                                  <i class="fas fa-clipboard-list"></i>
-                                  </a>
-                                </td>
-
+                                <th>INVENTARIO</th>
+                                <th>NOMBRE PRODUCTO</th>
+                                <th>UBICACIÓN</th>
+                                <th>RESPONSABLE</th>
+                                <th>MOTIVO</th>
+                                <th>FECHA</th>
+                                <th>REASIGNAR</th>
+                                <th>ELIMINAR</th>
+                                <th>REPORTE</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                                <tr>
+                                    <td><?php echo $row['inventario']; ?></td>
+                                    <td><?php echo $row['producto']; ?></td>
+                                    <td><?php echo $row['ubicacion']; ?></td>
+                                    <td><?php echo $row['nombre']; ?></td>
+                                    <td><?php echo $row['motivo']; ?></td>
+                                    <td><?php echo $row['fecha']; ?></td>
+
+
+                                    <td style="text-align: center;">
+
+                                        <!-- <a href="../vistas/actualizar_asignacion_vista.php">Inicio</a> -->
+
+                                        <a href="../vistas/actualizar_asignacion_vista.php?id_asignacion=<?php echo $row['id_asignacion']; ?>" class="btn btn-primary btn-raised btn-xs">
+                                            <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_asignacion'] ?> "></i>
+                                        </a>
+                                    </td>
+
+                                    <td style="text-align: center;">
+
+                                        <form action="../Controlador/eliminar_asignacion_controlador.php?id_asignacion=<?php echo $row['id_asignacion']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
+                                            <button type="submit" class="btn btn-danger btn-raised btn-xs">
+
+                                                <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_asignacion'] ?> "></i>
+                                            </button>
+                                            <div class="RespuestaAjax"></div>
+                                        </form>
+                                    </td>
+
+                                    <!-- reporte -->
+                                    <td style="text-align: center;">
+
+                                        <a href="../pdf_laboratorio/reporte_asignacion_lab.php?id_asignacion=<?php echo $row['id_asignacion']; ?>" target="_blank" class="btn btn-primary btn-raised btn-xs">
+
+                                            <i class="fas fa-clipboard-list"></i>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            <?php } ?>
+                        </tbody>
                     </table>
                 </div>
-            <!-- /.card-body -->
+                <!-- /.card-body -->
             </div>
-        
+
         </div>
 
         <!-- /.card-body -->
@@ -293,10 +292,11 @@ ob_end_flush();
         </div>
     </div>
 
-    <script type="text/javascript" language="javascript"> //impresión de reporte
-      function ventana() {
-        window.open("../Controlador/reporte_asignaciones_controlador.php", "REPORTE");
-      }
+    <script type="text/javascript" language="javascript">
+        //impresión de reporte
+        function ventana() {
+            window.open("../Controlador/reporte_asignaciones_controlador.php", "REPORTE");
+        }
     </script>
 
 

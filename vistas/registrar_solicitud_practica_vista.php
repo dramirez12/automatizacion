@@ -29,9 +29,9 @@ JOIN tbl_tipo_contactos d ON c.id_tipo_contacto = d.id_tipo_contacto AND d.descr
 $datos_estudiante = mysqli_fetch_assoc($mysqli->query($sql_estudiante));
 
 
-$_SESSION['nombre_completo_estudiante']=$datos_estudiante['nombre'];
-$_SESSION['cuenta_estudiante']=$datos_estudiante['valor'];
-$_SESSION['Correo_Electronico_estudiante']=$datos_estudiante['Correo'];
+$_SESSION['nombre_completo_estudiante'] = $datos_estudiante['nombre'];
+$_SESSION['cuenta_estudiante'] = $datos_estudiante['valor'];
+$_SESSION['Correo_Electronico_estudiante'] = $datos_estudiante['Correo'];
 
 
 
@@ -72,6 +72,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
 
@@ -181,7 +182,7 @@ ob_end_flush();
                   </div>
                 </div>
 
-                <div class="col-sm-4">  
+                <div class="col-sm-4">
                   <div class="form-group">
                     <label>Celular</label>
                     <input class="form-control" type="text" id="txt_celular_solicitud" name="txt_celular_solicitud" value="" required="" maxlength="9" onkeypress="return Numeros(event)" data-inputmask='"mask": "9999-9999"' data-mask>
@@ -206,7 +207,7 @@ ob_end_flush();
 
                 <div class="col-sm-12">
                   <hr>
-                 <center><label>REGISTRO DE EMPRESA</label></center>
+                  <center><label>REGISTRO DE EMPRESA</label></center>
                   <hr>
                 </div>
 
@@ -338,13 +339,11 @@ ob_end_flush();
 
 
   <script type="text/javascript">
+    $("#cb_trabaja").change(function() {
+      var id_tipo_periodo = $("#cb_trabaja option:selected").text();
 
-$("#cb_trabaja").change(function () {
-  var id_tipo_periodo = $("#cb_trabaja option:selected").text();
-
-  $("#trabaja").val(id_tipo_periodo);
-});
-
+      $("#trabaja").val(id_tipo_periodo);
+    });
   </script>
 
 

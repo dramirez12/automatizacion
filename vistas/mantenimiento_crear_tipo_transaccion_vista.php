@@ -47,23 +47,18 @@ if ($visualizacion == 0) {
     } else {
         $_SESSION['btn_guardar_tipotransaccion'] = "disabled";
     }
-    
 
- if (isset($_REQUEST['msj']))
- {
-      $msj=$_REQUEST['msj'];
-        if ($msj==1)
-            {
+
+    if (isset($_REQUEST['msj'])) {
+        $msj = $_REQUEST['msj'];
+        if ($msj == 1) {
             echo '<script> alert("Lo sentimos la transacción a ingresar ya existe favor intenta con uno nuevo")</script>';
-            }
-   
-               if ($msj==2)
-                  {
-                  echo '<script> alert("Transacción agregada correctamente")</script>';
-                  }
- }
+        }
 
-
+        if ($msj == 2) {
+            echo '<script> alert("Transacción agregada correctamente")</script>';
+        }
+    }
 }
 
 
@@ -77,6 +72,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -136,18 +132,18 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el Tipo Transacción</label>
-                                        <input class="form-control " class="tf w-input" type="text" id="txt_tipotransaccion1" name="txt_tipotransaccion1"  onkeypress="return validacion_para_nombre(event)" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipotransaccion1');" >
-               
+                                        <input class="form-control " class="tf w-input" type="text" id="txt_tipotransaccion1" name="txt_tipotransaccion1" onkeypress="return validacion_para_nombre(event)" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipotransaccion1');">
+
                                     </div>
 
-                                   
+
 
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                    <button type="submit" class="btn btn-primary" id="btn_guardar_tipotransaccion" name="btn_guardar_tipotransaccion" <?php echo $_SESSION['btn_guardar_tipotransaccion']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
-                                    <a href="../vistas/mantenimiento_tipo_transaccion_vista.php" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>  
+                                        <button type="submit" class="btn btn-primary" id="btn_guardar_tipotransaccion" name="btn_guardar_tipotransaccion" <?php echo $_SESSION['btn_guardar_tipotransaccion']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                        <a href="../vistas/mantenimiento_tipo_transaccion_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
 
-                                       
+
                                     </p>
                                 </div>
                             </div>

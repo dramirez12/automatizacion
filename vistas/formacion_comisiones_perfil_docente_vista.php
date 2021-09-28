@@ -5,6 +5,7 @@ $usuario = $_SESSION['id_persona'];
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <!-- Latest compiled and minified CSS -->
     <!--     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

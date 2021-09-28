@@ -22,6 +22,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 
   <!-- Bootstrap core CSS -->
@@ -79,13 +80,13 @@ ob_end_flush();
 
               <div class="form-group">
                 <label for="titulo"> Título:</label>
-                <input autofocus class="form-control" type="text" maxlength="90" id="titulo" name="titulo"  onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)" >
+                <input autofocus class="form-control" type="text" maxlength="90" id="titulo" name="titulo" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                 <!--<input class="tf w-input" id="txtCurp" name="txtCurp" maxlength="256" onkeypress="return check(event)" placeholder="No. de CURP" type="text">-->
               </div>
 
               <div class="form-group">
                 <label for="Contenido">Contenido:</label>
-                <input class="form-control" type="text" maxlength="255" id="Contenido" name="Contenido"  onpaste="return false" onkeyup="DobleEspacio(this, event)" required onkeypress="return check(event)">
+                <input class="form-control" type="text" maxlength="255" id="Contenido" name="Contenido" onpaste="return false" onkeyup="DobleEspacio(this, event)" required onkeypress="return check(event)">
               </div>
 
               <div class="form-group">
@@ -101,18 +102,18 @@ ob_end_flush();
                 </select>
               </div>
 
-          
-                <div class="form-group">
-                  <label for="subir_archivo">Adjuntar Archivos</label><br>
-                  <input type="file" name="subir_archivo" accept="image/*"/>
-                </div>
-                
-    
+
+              <div class="form-group">
+                <label for="subir_archivo">Adjuntar Archivos</label><br>
+                <input type="file" name="subir_archivo" accept="image/*" />
+              </div>
+
+
 
               <div class="form-group">
                 <!-- FECHA DE PUBLICACION txt_fecha_Publicacion -->
                 <label for="txt_fecha_Publicacion">Fecha y Hora de Publicación:</label>
-                <input class="form-control" type="datetime-local" id="txt_fecha_Publicacion" name="txt_fecha_Publicacion" min="<?php echo date("Y-m-d\TH:i",strtotime(date("Y-m-d\TH:i")."+ 1 hour"));?>" max="<?php echo date("Y-m-d\TH:i",strtotime(date("Y-m-d\TH:i")."+ 1 week"));?>" required>
+                <input class="form-control" type="datetime-local" id="txt_fecha_Publicacion" name="txt_fecha_Publicacion" min="<?php echo date("Y-m-d\TH:i", strtotime(date("Y-m-d\TH:i") . "+ 1 hour")); ?>" max="<?php echo date("Y-m-d\TH:i", strtotime(date("Y-m-d\TH:i") . "+ 1 week")); ?>" required>
               </div>
 
               <p class="text-center" style="margin-top: 20px;">
@@ -139,7 +140,6 @@ ob_end_flush();
       tecla_final = String.fromCharCode(tecla);
       return patron.test(tecla_final);
     }
-
   </script>
 </body>
 <?php ob_end_flush() ?>

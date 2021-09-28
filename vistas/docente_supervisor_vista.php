@@ -24,7 +24,7 @@ ob_end_flush();
 <html>
 
 <head>
-
+  <script src="../js/autologout.js"></script>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <?php
@@ -104,22 +104,22 @@ ob_end_flush();
                   </div>
                 </div>
 
-                <div class="col-md-2" >
-                        <div class="form-group">
-                            <label>Estudiantes asignados al docente:</label>
-                            <input class="form-control" readonly type="text" id="txt_asignados" name="txt_asignados">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Estudiantes asignados al docente:</label>
+                    <input class="form-control" readonly type="text" id="txt_asignados" name="txt_asignados">
 
-                        </div>
-                    </div>
+                  </div>
+                </div>
 
 
-                    <div class="col-md-2">
-                        <div class="form-group" hidden>
-                            <label>nombre docente:</label>
-                            <input class="form-control" readonly type="text" id="txt_nombre_docente" name="txt_nombre_docente">
+                <div class="col-md-2">
+                  <div class="form-group" hidden>
+                    <label>nombre docente:</label>
+                    <input class="form-control" readonly type="text" id="txt_nombre_docente" name="txt_nombre_docente">
 
-                        </div>
-                    </div>
+                  </div>
+                </div>
 
 
 

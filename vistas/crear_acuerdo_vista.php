@@ -54,8 +54,9 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
 
-<script src="../js/tipoacta-ajax.js"></script>
+    <script src="../js/tipoacta-ajax.js"></script>
 
     <title></title>
 </head>
@@ -83,7 +84,7 @@ ob_end_flush();
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <form role="form" name="guardar-acuerdo" id="guardar-acuerdo" method="post"  action="../Modelos/modelo_acuerdos.php">
+                <form role="form" name="guardar-acuerdo" id="guardar-acuerdo" method="post" action="../Modelos/modelo_acuerdos.php">
                     <div class="card card-danger">
                         <div class="card-header">
                             <h3 class="card-title">Acuerdos</h3>
@@ -94,8 +95,8 @@ ob_end_flush();
                                 <select class="form-control select2" style="width: 35%;" name="acta" id="acta" required>
                                     <option value="-1">-- Seleccione --</option>
                                     <?php
-                                            try {
-                                                $sql = "SELECT
+                                    try {
+                                        $sql = "SELECT
                                                 id_acta,
                                                 id_reunion,
                                                 IF(
@@ -106,40 +107,38 @@ ob_end_flush();
                                             FROM
                                                 tbl_acta
                                                 WHERE id_estado = 2";
-                                                $resultado = $mysqli->query($sql);
-                                                while ($acta = $resultado->fetch_assoc()) { ?>
-                                                    <option value="<?php echo $acta['id_acta']; ?>">  
-                                                        <?php echo $acta['num_acta']; ?>
-                                                    </option>
-                                            <?php }
-                                            } catch (Exception $e) {
-                                                echo "Error: " . $e->getMessage();
-                                            }
-                                            ?>                                    
+                                        $resultado = $mysqli->query($sql);
+                                        while ($acta = $resultado->fetch_assoc()) { ?>
+                                            <option value="<?php echo $acta['id_acta']; ?>">
+                                                <?php echo $acta['num_acta']; ?>
+                                            </option>
+                                    <?php }
+                                    } catch (Exception $e) {
+                                        echo "Error: " . $e->getMessage();
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Responsable:</label>
                                 <select class="form-control select2" style="width: 50%;" name="responsable" id="responsable" disabled="disabled" required>
-                                            <!--Cargar lista de responsables-->
-                                            <option value="selected">--Seleccione--</option>
-                                  
+                                    <!--Cargar lista de responsables-->
+                                    <option value="selected">--Seleccione--</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Nombre del Acuerdo:</label>
-                                <input style="width: 35%;" type="text" class="form-control" id="nombre_acuerdo" name="nombre_acuerdo"
-                                    placeholder="Ingrese nombre del acuerdo" minlength="5" maxlength="40" required/>
+                                <input style="width: 35%;" type="text" class="form-control" id="nombre_acuerdo" name="nombre_acuerdo" placeholder="Ingrese nombre del acuerdo" minlength="5" maxlength="40" required />
                             </div>
                             <div class="form-group">
                                 <label>Descripción:</label>
-                                <textarea class="form-control" placeholder="Ingrese la descripción del Acuerdo"
-                                    rows="5" id="descripcion" name="descripcion" minlength="5" maxlength="80" required></textarea>
+                                <textarea class="form-control" placeholder="Ingrese la descripción del Acuerdo" rows="5" id="descripcion" name="descripcion" minlength="5" maxlength="80" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Fecha Expiración:</label>
                                 <div style="width: 20%;" class="input-group date">
-                                    <input type="date" class="form-control "  id="fecha_exp" name="fecha_exp" min="<?php echo $hoy; ?>" required/>
+                                    <input type="date" class="form-control " id="fecha_exp" name="fecha_exp" min="<?php echo $hoy; ?>" required />
                                 </div>
                             </div>
                         </div>
@@ -149,8 +148,8 @@ ob_end_flush();
             <div style="padding: 0px 0 25px 0;">
                 <input type="hidden" name="estado" value="1">
                 <input type="hidden" name="acuerdo" value="nuevo">
-                <button style="color: white !important;" type="submit" class="btn btn-primary" <?php echo $_SESSION['btn_crear'];?>>Guardar</button>
-                <a style="color: white !important;" class="btn btn-danger" data-toggle="modal"  data-target="#modal-default" href="#">Cancelar</a>
+                <button style="color: white !important;" type="submit" class="btn btn-primary" <?php echo $_SESSION['btn_crear']; ?>>Guardar</button>
+                <a style="color: white !important;" class="btn btn-danger" data-toggle="modal" data-target="#modal-default" href="#">Cancelar</a>
             </div>
             </form>
         </section>
@@ -167,8 +166,7 @@ ob_end_flush();
                     <p>Lo que haya escrito no se guardará!</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <a style="color: white ;" type="button" class="btn btn-primary"
-                        href="../vistas/crear_acuerdo_vista.php">Sí, deseo cancelar</a>
+                    <a style="color: white ;" type="button" class="btn btn-primary" href="../vistas/crear_acuerdo_vista.php">Sí, deseo cancelar</a>
                     <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
                 </div>
             </div>
@@ -183,8 +181,8 @@ ob_end_flush();
     </div>
     <!-- /.content-wrapper -->
 
- 
- 
+
+
 </body>
 <script type="text/javascript">
     $(function() {
@@ -198,7 +196,7 @@ ob_end_flush();
             "responsive": true,
         });
     });
-    </script>
+</script>
 
 </html>
 <script src="../js/jquery-3.1.1.min.js"></script>
@@ -206,40 +204,40 @@ ob_end_flush();
 
 
 <script type="text/javascript">
- /********** Listar Responsable ***********/
+    /********** Listar Responsable ***********/
 
- $(document).ready(function(){
-         
-          var responsable = $('#responsable');
-  $("#acta").on("change", function () {
-    
-    var acta = $(this).val();
-    console.log(acta);
+    $(document).ready(function() {
 
-    if(acta > -1 && acta!=""){
-        responsable.removeAttr('disabled');
-    }else{
-        responsable.prop('disabled', 'disabled');
-    }
+        var responsable = $('#responsable');
+        $("#acta").on("change", function() {
 
-    if(acta <= 0){
-        responsable
-    }
-    
-    $.ajax({
-        type: 'POST',
-        url: "../Controlador/cargar_responsable_acta.php",
-        data: {acta: acta}
-    })
-        .done(function (data) {
-            responsable.html(data);
-            console.log(responsable)
-        })
-        .fail(() => {
-            alert("Error al cargar lista de responsables")
+            var acta = $(this).val();
+            console.log(acta);
+
+            if (acta > -1 && acta != "") {
+                responsable.removeAttr('disabled');
+            } else {
+                responsable.prop('disabled', 'disabled');
+            }
+
+            if (acta <= 0) {
+                responsable
+            }
+
+            $.ajax({
+                    type: 'POST',
+                    url: "../Controlador/cargar_responsable_acta.php",
+                    data: {
+                        acta: acta
+                    }
+                })
+                .done(function(data) {
+                    responsable.html(data);
+                    console.log(responsable)
+                })
+                .fail(() => {
+                    alert("Error al cargar lista de responsables")
+                });
         });
-  });
-});
-
-   
+    });
 </script>

@@ -80,6 +80,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -136,7 +137,7 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
-                            <div class="col-md-3">
+                                <div class="col-md-3">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
@@ -147,10 +148,10 @@ ob_end_flush();
                                     <div class="form-group">
                                         <label>Ingrese la Facultad</label>
                                         <select class="form-control-lg select2" type="text" id="cbm_facultad" name="cmb_facultad" style="width: 100%;">
-                                        <option value="">Seleccione una opción</option>
+                                            <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input class="form-control"  id="facultad1" name="facultad1"hidden >
+                                    <input class="form-control" id="facultad1" name="facultad1" hidden>
 
 
                                     <p class="text-center" style="margin-top: 20px;">

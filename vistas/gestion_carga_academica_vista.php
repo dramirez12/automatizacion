@@ -60,9 +60,8 @@ ob_end_flush();
 <html>
 
 <head>
-
+    <script src="../js/autologout.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 
 
 </head>
@@ -219,7 +218,7 @@ ob_end_flush();
                     </div>
 
 
-<!-- 
+                    <!-- 
                     <div class=" px-12">
                         <form method="post" action="../Controlador/reporte_carga_excel_controlador.php">
                             <button type="submit" name="export" class="btn btn-success " value="EXCEL"> <i class="fas fa-file-excel"></i> <a style="font-weight: bold;">Excel Preliminar</a></button>

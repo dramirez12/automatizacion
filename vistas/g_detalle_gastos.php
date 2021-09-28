@@ -26,9 +26,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LOS DETALLES DE GASTOS.');
-
-
- 
 }
 
 ob_end_flush();
@@ -38,7 +35,8 @@ ob_end_flush();
 <html>
 
 <head>
-<title></title>
+    <script src="../js/autologout.js"></script>
+    <title></title>
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <script type="text/java pt" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
@@ -101,8 +99,8 @@ ob_end_flush();
 
             </div>
         </section>
-         <!-- inicio del modal -->
-         <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <!-- inicio del modal -->
+        <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -250,11 +248,10 @@ ob_end_flush();
       });
     });
   </script> -->
-  
-    <script type="text/javascript">
 
-    //esto hasta 
-    var currentdate = new Date();
+    <script type="text/javascript">
+        //esto hasta 
+        var currentdate = new Date();
         var datetime = "Fecha: " + currentdate.getDate() + "/" +
             (currentdate.getMonth() + 1) + "/" +
             currentdate.getFullYear() + " Hora " +
@@ -399,7 +396,7 @@ ob_end_flush();
                     {
                         "data": null,
                         defaultContent: '<center> <button id="editar_detalle_gasto" data-toggle="modal" data-target="#modal" class="btn  btn-warning btn - m">Editar</center>'
-                    },//pendiente de agregar la edicion
+                    }, //pendiente de agregar la edicion
 
                 ],
             });
@@ -514,4 +511,3 @@ ob_end_flush();
     });
     //fin validacion  
 </script>
-

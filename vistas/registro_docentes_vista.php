@@ -55,6 +55,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -218,7 +219,7 @@ ob_end_flush();
                     <div class="form-group">
                       <!-- CURRICULUM -->
                       <label>Curriculum</label>
-                      <input class="form-control" type="file" accept=application/pdf id="curriculum" name="curriculum" required >
+                      <input class="form-control" type="file" accept=application/pdf id="curriculum" name="curriculum" required>
 
                     </div>
                   </div>

@@ -3,7 +3,7 @@
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-  }
+}
 ob_start();
 require_once('../clases/Conexion.php');
 
@@ -17,14 +17,15 @@ bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 
 if (permiso_ver('161') == '1') {
 
     $_SESSION['movil_chat_vista'] = "...";
-  } else {
+} else {
     $_SESSION['movil_chat_vista'] = "No 
     tiene permisos para visualizar";
-  }
+}
 
 ?>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +38,7 @@ if (permiso_ver('161') == '1') {
     <div class="content-wrapper">
         <!-- This is an example component -->
         <div class="w-100 h-auto">
-            <div class="grid grid-cols-3 min-w-full border rounded" >
+            <div class="grid grid-cols-3 min-w-full border rounded">
                 <!-- pagina chats -->
                 <div class="col-span-1" style="background-color: #007BFF;">
                     <div class="my-3 mx-3">
@@ -55,10 +56,10 @@ if (permiso_ver('161') == '1') {
                 </div>
                 <!-- pagina mensajes -->
 
-                    <div id="resultado_chat" class="col-span-2 bg-gray-500 overflow-auto" style="height: 713px;">
+                <div id="resultado_chat" class="col-span-2 bg-gray-500 overflow-auto" style="height: 713px;">
 
-                    </div>
-             
+                </div>
+
             </div>
         </div>
     </div>
@@ -71,4 +72,4 @@ if (permiso_ver('161') == '1') {
 
 </body>
 
-<?php ob_end_flush();?>
+<?php ob_end_flush(); ?>

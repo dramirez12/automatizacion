@@ -56,6 +56,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -109,12 +110,12 @@ ob_end_flush();
                                 <div class="card card-primary">
                                     <div class="card-header">
                                         <h3 class="card-title">Plan de Estudios Vigente</h3>
-                                      
+
                                     </div>
-                                   
+
 
                                     <div class="col-md-10">
-                                    <br>
+                                        <br>
                                         <div class="input-group mb-3 input-group">
                                             <span class=" input-group-text" style="font-weight: bold;">Nombre</span>
                                             <input type="text" class="form-control" id="nombre_" name="nombre_" value="<?php echo $row2['nombre'] ?>" readonly>
@@ -122,7 +123,7 @@ ob_end_flush();
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                   
+
                                         <div class="input-group mb-3 input-group">
                                             <span class=" input-group-text" style="font-weight: bold;">Fecha Vigencia</span>
                                             <input type="text" class="form-control" id="nombre_" name="nombre_" value="<?php echo $row2['fecha_vigencia'] ?>" readonly>
@@ -180,18 +181,18 @@ ob_end_flush();
  -->
 
                                                 </div>
-                                               
-                                                <div class="col-md-12">
-                                                   
-                                                        <label>Nombre</label>
-                                                        <input type="text" class="form-control" id="nombre1_" name="nombre1_" readonly>
-                                                        <br>
 
-                                                   
+                                                <div class="col-md-12">
+
+                                                    <label>Nombre</label>
+                                                    <input type="text" class="form-control" id="nombre1_" name="nombre1_" readonly>
+                                                    <br>
+
+
                                                 </div>
-                                                
+
                                                 <div class="col-md-5">
-                                                <button class="btn btn-primary " id="limpiar" onclick="limpiar_()"><i class="fas fa-sync-alt"></i> <a style="font-weight: bold;">limpiar tabla</a></button>
+                                                    <button class="btn btn-primary " id="limpiar" onclick="limpiar_()"><i class="fas fa-sync-alt"></i> <a style="font-weight: bold;">limpiar tabla</a></button>
                                                 </div>
                                             </div>
                                             <br>

@@ -1,11 +1,11 @@
 <?php
 ob_start();
 session_start();
-require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php');
-require_once ('../clases/funcion_bitacora.php');
-require_once ('../clases/funcion_visualizar.php');
-require_once ('../clases/funcion_permisos.php');
+require_once('../vistas/pagina_inicio_vista.php');
+require_once('../clases/Conexion.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_permisos.php');
 
 //Lineas de msj al cargar pagina de acuerdo a actualizar o eliminar datos
 if (isset($_REQUEST['msj'])) {
@@ -146,8 +146,9 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+    <script src="../js/autologout.js"></script>
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
 </head>
 
@@ -228,7 +229,7 @@ ob_end_flush();
 
                                             <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_estado'] ?> "></i>
                                         </button>
-                                        
+
                                         <div class="RespuestaAjax"></div>
                                     </form>
                                 </td>
@@ -353,12 +354,12 @@ ob_end_flush();
 
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
-  <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/pdf_mantenimientos.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

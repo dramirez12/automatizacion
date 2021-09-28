@@ -49,6 +49,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -182,7 +183,7 @@ ob_end_flush();
 
                                     <label>Nombre de Plan</label>
 
-                                    <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="150" value=""  onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required>
+                                    <input class="form-control" type="text" id="txt_nombre_edita" name="txt_nombre_edita" maxlength="150" value="" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_edita');" onkeypress="return sololetras(event)" required>
 
                                     <!-- <input class=" form-control" type="text" id="txt_nombre_edita2" name="txt_nombre_edita2" maxlength="25" value="" readonly hidden> -->
 
@@ -194,7 +195,7 @@ ob_end_flush();
 
                                     <label>Código de Plan</label>
 
-                                    <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" required  onkeyup="DobleEspacio(this, event); MismaLetra('txt_codigo_plan_edita');">
+                                    <input class="form-control" type="text" id="txt_codigo_plan_edita" name="txt_codigo_plan_edita" maxlength="25" required onkeyup="DobleEspacio(this, event); MismaLetra('txt_codigo_plan_edita');">
                                     <!-- <input class="form-control" type="text" id="txt_codigo_plan_edita2" name="txt_codigo_plan_edita2" maxlength="25" value="" readonly hidden> -->
 
 
@@ -216,7 +217,7 @@ ob_end_flush();
                                     <label>Créditos del Plan</label>
 
                                     <input class="form-control" type="text" id="txt_creditos_plan" name="txt_creditos_plan" maxlength="3" onkeypress="return solonumeros(event)">
-                                    <input class="form-control" type="text" id="txt_creditos_plan2" name="txt_creditos_plan2" maxlength="25" value="" readonly hidden> 
+                                    <input class="form-control" type="text" id="txt_creditos_plan2" name="txt_creditos_plan2" maxlength="25" value="" readonly hidden>
 
 
                                 </div>

@@ -149,6 +149,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
@@ -188,7 +189,7 @@ ob_end_flush();
 
         <div class="card card-default">
             <div class="card-header">
-            <h3 class="card-title">Áreas Existentes</h3>
+                <h3 class="card-title">Áreas Existentes</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 </div>
@@ -282,12 +283,12 @@ ob_end_flush();
 
                         <div class="card-body">
                             <div class="row">
-                            <div class="col-md-2">
+                                <div class="col-md-2">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Área</label>
-                                        <input class="form-control" type="text" id="area" name="area" value="<?php echo $_SESSION['area']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('area');" >
+                                        <input class="form-control" type="text" id="area" name="area" value="<?php echo $_SESSION['area']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('area');">
                                     </div>
                                     <div class="form-group ">
                                         <label>Descripción</label>
@@ -300,7 +301,7 @@ ob_end_flush();
                                             <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input  class="form-control"  id="carrera1" name="carrera1" value="0" readonly>
+                                    <input class="form-control" id="carrera1" name="carrera1" value="0" readonly>
                                 </div>
                             </div>
                         </div>
@@ -356,33 +357,33 @@ ob_end_flush();
 </script>
 
 <script>
-function llenar_carrera() {
-  var cadena = "&activar=activar";
-  $.ajax({
-    url: "../Controlador/plan_estudio_controlador.php?op=carreras",
-    type: "POST",
-    data: cadena,
-    success: function (r) {
-      $("#cbm_carrera").html(r).fadeIn();
-      var o = new Option("SELECCIONAR", 0);
-      
+    function llenar_carrera() {
+        var cadena = "&activar=activar";
+        $.ajax({
+            url: "../Controlador/plan_estudio_controlador.php?op=carreras",
+            type: "POST",
+            data: cadena,
+            success: function(r) {
+                $("#cbm_carrera").html(r).fadeIn();
+                var o = new Option("SELECCIONAR", 0);
 
-      $("#cbm_carrera").append(o);
-      $("#cbm_carrera").val(0);
-      
-    },
-  });
-}
-llenar_carrera();
-$('#cbm_carrera').change(function() {
-	var carrera = $(this).val();
-	console.log(carrera);
-    $('#carrera1').val(carrera);
-    if (carrera == 0) {
-    alert("Seleccione una opción válida");
-    document.getElementById("cbm_carrera").value = "";
-  }
-});
+
+                $("#cbm_carrera").append(o);
+                $("#cbm_carrera").val(0);
+
+            },
+        });
+    }
+    llenar_carrera();
+    $('#cbm_carrera').change(function() {
+        var carrera = $(this).val();
+        console.log(carrera);
+        $('#carrera1').val(carrera);
+        if (carrera == 0) {
+            alert("Seleccione una opción válida");
+            document.getElementById("cbm_carrera").value = "";
+        }
+    });
 </script>
 
 <!-- <script type="text/javascript" language="javascript">

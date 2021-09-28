@@ -80,6 +80,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -136,12 +137,12 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
-                            <div class="col-md-3">
+                                <div class="col-md-3">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el Municipio</label>
-                                        
+
                                         <input class="form-control " type="text" id="txt_municipio1" name="txt_municipio1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_municipio1');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
@@ -150,13 +151,13 @@ ob_end_flush();
                                         <input class="form-control" type="text" id="txt_codigo1" name="txt_codigo1" required="" maxlength="4" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Numeros(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
-                                     <div class="form-group">
+                                    <div class="form-group">
                                         <label>Departamento</label>
                                         <select class="form-control-lg select2" type="text" id="cbm_departamento" name="cmb_departamento" style="width: 100%;">
-                                        <option value="">Seleccione una opción</option>
+                                            <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input class="form-control"  id="departamento1" name="departamento1" hidden >
+                                    <input class="form-control" id="departamento1" name="departamento1" hidden>
 
 
                                     <p class="text-center" style="margin-top: 20px;">
@@ -186,8 +187,8 @@ ob_end_flush();
     </div>
 
 
- <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+    <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
+    <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 
 
 </body>

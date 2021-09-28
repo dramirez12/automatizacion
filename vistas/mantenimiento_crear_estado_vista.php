@@ -48,23 +48,18 @@ if ($visualizacion == 0) {
     } else {
         $_SESSION['btn_guardar_estado'] = "disabled";
     }
-    
 
- if (isset($_REQUEST['msj']))
- {
-      $msj=$_REQUEST['msj'];
-        if ($msj==1)
-            {
+
+    if (isset($_REQUEST['msj'])) {
+        $msj = $_REQUEST['msj'];
+        if ($msj == 1) {
             echo '<script> alert("Lo sentimos el rol a ingresar ya existe favor intenta con uno nuevo")</script>';
-            }
-   
-               if ($msj==2)
-                  {
-                  echo '<script> alert("Rol agregado correctamente")</script>';
-                  }
- }
+        }
 
-
+        if ($msj == 2) {
+            echo '<script> alert("Rol agregado correctamente")</script>';
+        }
+    }
 }
 
 
@@ -78,6 +73,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -141,13 +137,13 @@ ob_end_flush();
 
                                     </div>
 
-                                   
+
 
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                    <button type="submit" class="btn btn-primary" id="btn_guardar_estado" name="btn_guardar_estado" <?php echo $_SESSION['btn_guardar_estado']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
-                                    <a href="../vistas/mantenimiento_estado_vista.php" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>  
-                                       
+                                        <button type="submit" class="btn btn-primary" id="btn_guardar_estado" name="btn_guardar_estado" <?php echo $_SESSION['btn_guardar_estado']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                        <a href="../vistas/mantenimiento_estado_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
+
                                     </p>
                                 </div>
                             </div>
@@ -178,4 +174,4 @@ ob_end_flush();
 </body>
 
 </html>
-<script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script> 
+<script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script>

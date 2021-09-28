@@ -26,9 +26,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LAS ACTIVIDADES DEL POA.');
-
-
- 
 }
 
 ob_end_flush();
@@ -40,6 +37,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
@@ -106,7 +104,7 @@ ob_end_flush();
                                 <div class="form-group d-flex">
                                     <div class="ml-auto p-2">
                                         <button class="btn btn-primary" id="guardar_actividad">Guardar</button>
-                                    </div>                                    
+                                    </div>
                                 </div>
                                 <div id="mensaje_actividades"></div>
                             </form>
@@ -129,11 +127,11 @@ ob_end_flush();
         transitionEffect: 'fade',
         transitionSpeed: '400',
         lang: { // Language variables for button
-                next: 'Siguiente',
-                previous: 'Anterior'
-            }
+            next: 'Siguiente',
+            previous: 'Anterior'
+        }
     });
-    
+
 
     // function call_wizard2() {
     //     $('#vista_smart').smartWizard("reset");

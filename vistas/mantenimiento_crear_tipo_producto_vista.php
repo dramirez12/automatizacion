@@ -79,6 +79,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -138,16 +139,16 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el Tipo Producto</label>
-                                        <input class="form-control " class="tf w-input"  type="text" id="txt_tipo_producto1" onkeypress="return validacion_para_nombre(event)"  name="txt_tipo_producto1" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipo_producto1');" >
+                                        <input class="form-control " class="tf w-input" type="text" id="txt_tipo_producto1" onkeypress="return validacion_para_nombre(event)" name="txt_tipo_producto1" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipo_producto1');">
 
                                     </div>
 
-                                   
+
 
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_producto" name="btn_guardar_tipo_producto" <?php echo $_SESSION['btn_guardar_tipo_producto']; ?> ><i class="zmdi zmdi-floppy"></i> Guardar</button>
-                                        <a href="../vistas/mantenimiento_tipo_producto_vista.php" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>  
+                                        <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_producto" name="btn_guardar_tipo_producto" <?php echo $_SESSION['btn_guardar_tipo_producto']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                        <a href="../vistas/mantenimiento_tipo_producto_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
 
                                     </p>
 

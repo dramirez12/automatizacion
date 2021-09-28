@@ -26,7 +26,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A RESPONSABLES POA.');
-
 }
 
 ob_end_flush();
@@ -35,6 +34,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />

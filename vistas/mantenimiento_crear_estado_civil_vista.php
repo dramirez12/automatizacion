@@ -80,6 +80,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -136,17 +137,17 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
-                            <div class="col-md-3">
+                                <div class="col-md-3">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el Estado Civil</label>
-                                        <input class="form-control " type="text" id="txt_estado_civil" name="txt_estado_civil" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_estado_civil');" onkeypress="return sololetras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
+                                        <input class="form-control " type="text" id="txt_estado_civil" name="txt_estado_civil" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_estado_civil');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Descripción</label>
-                                        <input class="form-control" type="text" id="txt_descripcion" name="txt_descripcion" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');" onkeypress="return sololetras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
+                                        <input class="form-control" type="text" id="txt_descripcion" name="txt_descripcion" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
 

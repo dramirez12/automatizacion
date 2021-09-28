@@ -47,6 +47,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
@@ -187,7 +188,7 @@ ob_end_flush();
                                                 <div style="padding: 0px 0 0px 0; margin: 15px 0px 5px 10px;">
                                                     <input type="hidden" name="estado" value="1">
                                                     <input type="hidden" name="reunion" value="nuevo">
-                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled >Agendar</button>
+                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled>Agendar</button>
                                                 </div>
                                                 <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
                                                     <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">

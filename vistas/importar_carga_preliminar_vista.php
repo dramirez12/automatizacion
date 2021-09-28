@@ -34,10 +34,10 @@ if ($visualizacion == 0) {
 
 
     if (permisos::permiso_insertar($Id_objeto) == '1') {
-       $_SESSION['btn_guardar_datos_preliminar'] = "";
-     } else {
-       $_SESSION['btn_guardar_datos_preliminar'] = "disabled";
-     }
+        $_SESSION['btn_guardar_datos_preliminar'] = "";
+    } else {
+        $_SESSION['btn_guardar_datos_preliminar'] = "disabled";
+    }
 }
 
 $sql2 = $mysqli->prepare("SELECT tbl_periodo.id_periodo AS id_periodo, tbl_periodo.num_periodo AS num_periodo, tbl_periodo.num_anno AS num_anno
@@ -56,6 +56,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 

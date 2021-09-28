@@ -143,6 +143,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
@@ -275,7 +276,7 @@ ob_end_flush();
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Nombre</label>
-                                        <input class="form-control" type="text" id="nombre" name="nombre"  value="<?php echo $_SESSION['nombre']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('nombre');">
+                                        <input class="form-control" type="text" id="nombre" name="nombre" value="<?php echo $_SESSION['nombre']; ?>" onkeyup="DobleEspacio(this, event); MismaLetra('nombre');">
                                     </div>
                                 </div>
                             </div>

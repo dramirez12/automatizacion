@@ -149,8 +149,9 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <script src="../js/autologout.js"></script>
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -196,9 +197,9 @@ ob_end_flush();
           <!-- <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button> -->
         </div>
       </div>
-     
+
       <div class="card-body">
-      <!-- <div style="padding: 2px;"><a href="mantenimiento_crear_tipoadquisicion_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div> -->
+        <!-- <div style="padding: 2px;"><a href="mantenimiento_crear_tipoadquisicion_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div> -->
         <table id="tblReporte_ubicacion" class="table table-bordered table-striped">
 
 
@@ -214,14 +215,14 @@ ob_end_flush();
           <tbody>
             <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
-                <td><?php echo $row['numero'];?></td>
-                <td><?php echo $row['nombre_producto'];?></td>
-                <td><?php echo $row['ubicacion'];?></td>
-                <td><?php echo $row['responsable'];?></td>
+                <td><?php echo $row['numero']; ?></td>
+                <td><?php echo $row['nombre_producto']; ?></td>
+                <td><?php echo $row['ubicacion']; ?></td>
+                <td><?php echo $row['responsable']; ?></td>
 
-                
-               
-                
+
+
+
 
               </tr>
             <?php } ?>
@@ -229,8 +230,8 @@ ob_end_flush();
         </table>
 
         <!-- <div class="modal-footer justify-content-between"> -->
-            <!-- <button type="submit" class="btn btn-danger float-right mt-3" id="btn_cancelar_ubicacion" name="btn_cancelar_ubicacion" <?php echo $_SESSION['btn_cancelar_ubicacion']; ?>>Cancelar</button> -->
-          <!-- </div> -->
+        <!-- <button type="submit" class="btn btn-danger float-right mt-3" id="btn_cancelar_ubicacion" name="btn_cancelar_ubicacion" <?php echo $_SESSION['btn_cancelar_ubicacion']; ?>>Cancelar</button> -->
+        <!-- </div> -->
 
       </div>
       <!-- /.card-body -->
@@ -248,7 +249,7 @@ ob_end_flush();
 
 
 
- 
+
   <!-- <script type="text/javascript">
     $(function() {
 
@@ -278,7 +279,7 @@ ob_end_flush();
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
 
 
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

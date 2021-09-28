@@ -12,7 +12,7 @@ $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
+  echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -25,8 +25,7 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REASIGNACIÓN SOLICITUD.');
-
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REASIGNACIÓN SOLICITUD.');
 }
 
 ob_end_flush();
@@ -37,6 +36,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

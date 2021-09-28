@@ -12,6 +12,10 @@
     background-color: #aed2ef;
   }
 </style>
+
+<head>
+  <script src="../js/autologout.js"></script>
+</head>
 <html>
 
 <div class="container-fluid">

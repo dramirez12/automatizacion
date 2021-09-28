@@ -55,6 +55,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -154,7 +155,7 @@ ob_end_flush();
             <div class="container-fluid" style="width: 100%;">
                 <div class="box-body">
 
-                    <div class="card-body" >
+                    <div class="card-body">
 
 
                         <div class="table-responsive" style="width: auto;">

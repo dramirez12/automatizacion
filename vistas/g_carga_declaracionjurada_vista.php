@@ -15,7 +15,7 @@ $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
+  echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -28,10 +28,7 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A DECLARACIÓN JURADA.');
-
-
-  
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A DECLARACIÓN JURADA.');
 }
 
 ob_end_flush();
@@ -41,7 +38,7 @@ ob_end_flush();
 <html>
 
 <head>
-
+  <script src="../js/autologout.js"></script>
 </head>
 
 <body>
@@ -223,7 +220,7 @@ ob_end_flush();
           .then(res => res.json())
           .then(data => {
             console.log(data);
-            localStorage.setItem('data', JSON.stringify(data));            
+            localStorage.setItem('data', JSON.stringify(data));
             window.location.href = "../vistas/g_generardeclaracion_vista.php";
           })
       });

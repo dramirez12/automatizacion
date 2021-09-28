@@ -81,12 +81,13 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
   <!-- Bootstrap core CSS -->
   <link href="dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="assets/sticky-footer-navbar.css" rel="stylesheet">
-  
+
   <script type="text/javascript">
   </script>
 </head>
@@ -114,64 +115,64 @@ if (isset($_REQUEST['msj'])) {
     <section class="content">
       <div class="container-fluid">
         <!-- pantalla 1 -->
-        
-          <div class="card card-default">
-            <div class="card-header">
-              <h3 class="card-title">Registro Segmento</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-              </div>
+
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title">Registro Segmento</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <label>Segmento: </label>
-                  <select class="form-control" name="Segmento" id="Segmento" onchange="readProducts(this.value),realizaProceso() " required>
-                    <option value="">Seleccione un segmento:</option>
-                    <?php
-                    $sql_segmentos = "SELECT id,nombre FROM tbl_movil_segmentos";
-                    $resultado_segmentos = $mysqli->query($sql_segmentos);
-                    while ($segmento = $resultado_segmentos->fetch_array(MYSQLI_ASSOC)) { ?>
-                      <option value="<?php echo $segmento['id'] ?>"><?php echo $segmento['nombre'] ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Tipo de Persona: </label>
-                <select class="form-control" name="buscar_tipo_persona" id="buscar_tipo_persona" onchange="realizaProceso()">
-                  <option value="">Seleccione una opción :</option>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <label>Segmento: </label>
+                <select class="form-control" name="Segmento" id="Segmento" onchange="readProducts(this.value),realizaProceso() " required>
+                  <option value="">Seleccione un segmento:</option>
                   <?php
-                  $sql_tipo_persona = "SELECT id_tipo_persona,tipo_persona FROM tbl_tipos_persona";
-                  $resultado_tipo_persona = $mysqli->query($sql_tipo_persona);
-                  while ($tipo_persona = $resultado_tipo_persona->fetch_array(MYSQLI_ASSOC)) { ?>
-                    <option value="<?php echo $tipo_persona['id_tipo_persona'] ?>"><?php echo $tipo_persona['tipo_persona'] ?></option>
+                  $sql_segmentos = "SELECT id,nombre FROM tbl_movil_segmentos";
+                  $resultado_segmentos = $mysqli->query($sql_segmentos);
+                  while ($segmento = $resultado_segmentos->fetch_array(MYSQLI_ASSOC)) { ?>
+                    <option value="<?php echo $segmento['id'] ?>"><?php echo $segmento['nombre'] ?></option>
                   <?php } ?>
                 </select>
               </div>
             </div>
-            <!-- /.card-header -->
- 
-    <p class="text-center font-weight-bold">Listado de personas que se pueden seleccionar</p>
-            <div class="card-body" id="resultado">
-              
-
-                
+            <div class="form-group">
+              <label>Tipo de Persona: </label>
+              <select class="form-control" name="buscar_tipo_persona" id="buscar_tipo_persona" onchange="realizaProceso()">
+                <option value="">Seleccione una opción :</option>
+                <?php
+                $sql_tipo_persona = "SELECT id_tipo_persona,tipo_persona FROM tbl_tipos_persona";
+                $resultado_tipo_persona = $mysqli->query($sql_tipo_persona);
+                while ($tipo_persona = $resultado_tipo_persona->fetch_array(MYSQLI_ASSOC)) { ?>
+                  <option value="<?php echo $tipo_persona['id_tipo_persona'] ?>"><?php echo $tipo_persona['tipo_persona'] ?></option>
+                <?php } ?>
+              </select>
             </div>
-            
-             <hr>
-             <div class="dt-buttons btn-group col-1"><button class="btn btn-secondary buttons-pdf buttons-html5 btn-danger" type="button" id="GenerarReporte_segmento_usuario" title="Exportar a PDF"><span><i class="fas fa-file-pdf"></i> </span> </button> </div>
-       <p class="text-center font-weight-bold">Listado de personas que pertenecen al segmento</p>
-        <div class="card-body" id="resultadoSegmentoUsuarios">
-          
-          
+          </div>
+          <!-- /.card-header -->
+
+          <p class="text-center font-weight-bold">Listado de personas que se pueden seleccionar</p>
+          <div class="card-body" id="resultado">
+
+
+
+          </div>
+
+          <hr>
+          <div class="dt-buttons btn-group col-1"><button class="btn btn-secondary buttons-pdf buttons-html5 btn-danger" type="button" id="GenerarReporte_segmento_usuario" title="Exportar a PDF"><span><i class="fas fa-file-pdf"></i> </span> </button> </div>
+          <p class="text-center font-weight-bold">Listado de personas que pertenecen al segmento</p>
+          <div class="card-body" id="resultadoSegmentoUsuarios">
+
+
+          </div>
+          <a class="btn btn-primary m-4" href="../vistas/movil_gestion_segmentos_vista.php">Volver</a>
         </div>
-        <a class="btn btn-primary m-4" href="../vistas/movil_gestion_segmentos_vista.php">Volver</a> 
-      </div>
-      
+
     </section>
-   
+
 
 
   </div>
@@ -181,7 +182,7 @@ if (isset($_REQUEST['msj'])) {
       var segmento = document.getElementById('Segmento').value;
       var parametros = {
         "tipoPersona": tipo_persona,
-        "segmento" : segmento
+        "segmento": segmento
       }
       $.ajax({
         data: parametros, //datos que se envian a traves de ajax
@@ -191,11 +192,11 @@ if (isset($_REQUEST['msj'])) {
           $("#resultado").html("Procesando, espere por favor...");
         },
         success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-         $("#resultado").html(response);
+          $("#resultado").html(response);
         }
       });
     }
-   //funcion para marcar todos los checkbox
+    //funcion para marcar todos los checkbox
     function toggle(source) {
       console.log(source.checked);
       checkboxes = document.getElementsByName('persona[]');
@@ -204,36 +205,42 @@ if (isset($_REQUEST['msj'])) {
         validar(checkboxes[i]);
         checkboxes[i].disabled = true;
       }
-   
+
     }
     //-------------------------------------------
 
     //funcion que envia los datos de usuario y segmento al controldaor para realizar el sql correspondiente
-    function validar(checkbox){
-      if(checkbox.checked){
+    function validar(checkbox) {
+      if (checkbox.checked) {
         var segmento = document.getElementById('Segmento').value;
-        var parametros = {'funcion':'insertar','Segmento': segmento,'persona': checkbox.value }
-        $.ajax({
-        data: parametros, //datos que se envian a traves de ajax
-        url: '../Controlador/movil_segmento_persona_controlador.php', //archivo que recibe la peticion
-        type: 'POST', //método de envio
-        beforeSend: function() {
-          $('#resultadoSegmentoUsuarios').html("Procesando, espere por favor...");
-        },
-        success: function(data) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-          if(data != ''){
-          readProducts(segmento);
-          }else{
-            alert('no se pudo guardar!!');
-          }
+        var parametros = {
+          'funcion': 'insertar',
+          'Segmento': segmento,
+          'persona': checkbox.value
         }
-      });
+        $.ajax({
+          data: parametros, //datos que se envian a traves de ajax
+          url: '../Controlador/movil_segmento_persona_controlador.php', //archivo que recibe la peticion
+          type: 'POST', //método de envio
+          beforeSend: function() {
+            $('#resultadoSegmentoUsuarios').html("Procesando, espere por favor...");
+          },
+          success: function(data) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            if (data != '') {
+              readProducts(segmento);
+            } else {
+              alert('no se pudo guardar!!');
+            }
+          }
+        });
       }
     }
 
 
-    function readProducts(segmento){
-      var parametro = {'segmento':segmento}
+    function readProducts(segmento) {
+      var parametro = {
+        'segmento': segmento
+      }
       $.ajax({
         data: parametro, //datos que se envian a traves de ajax
         url: '../Controlador/movil_listar_segmento_usuarios_controlador.php', //archivo que recibe la peticion
@@ -245,10 +252,13 @@ if (isset($_REQUEST['msj'])) {
           $('#resultadoSegmentoUsuarios').html(response);
         }
       });
-	}
+    }
 
-  function eliminar(id_usuario,segmento){
-    var parametro = {'funcion':'eliminar','id_usuario':id_usuario}
+    function eliminar(id_usuario, segmento) {
+      var parametro = {
+        'funcion': 'eliminar',
+        'id_usuario': id_usuario
+      }
       $.ajax({
         data: parametro, //datos que se envian a traves de ajax
         url: '../Controlador/movil_segmento_persona_controlador.php', //archivo que recibe la peticion
@@ -258,16 +268,15 @@ if (isset($_REQUEST['msj'])) {
         },
         success: function(data) { //una vez que el archivo recibe el request lo procesa y lo devuelve
           console.log(data);
-          if(data != ''){
-          readProducts(segmento);
-          realizaProceso();
-          }else{
-          alert('no se pudo eliminar!!');
+          if (data != '') {
+            readProducts(segmento);
+            realizaProceso();
+          } else {
+            alert('no se pudo eliminar!!');
           }
         }
       });
-  }
- 
+    }
   </script>
 
 </body>

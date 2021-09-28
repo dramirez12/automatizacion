@@ -73,6 +73,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -190,7 +191,7 @@ ob_end_flush();
 
                                             <label>Nombre de Plan</label>
 
-                                            <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="150" value="" required  onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre');" >
+                                            <input class="form-control" type="text" id="txt_nombre" name="txt_nombre" maxlength="150" value="" required onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre');">
 
 
                                         </div>

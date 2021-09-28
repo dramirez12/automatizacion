@@ -16,7 +16,7 @@ $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
+     echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -29,13 +29,13 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REALIZAR UNA SOLICITUD');
+     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REALIZAR UNA SOLICITUD');
 
 
-    if (permisos::permiso_insertar($Id_objeto) == '1') {
-     $_SESSION['btn_solicitud'] = "";
-    } else {
-    $_SESSION['btn_solicitud'] = "disabled";
+     if (permisos::permiso_insertar($Id_objeto) == '1') {
+          $_SESSION['btn_solicitud'] = "";
+     } else {
+          $_SESSION['btn_solicitud'] = "disabled";
      }
 }
 
@@ -49,11 +49,12 @@ ob_end_flush();
 <html>
 
 <head>
-
+     <script src="../js/autologout.js"></script>
 
 </head>
 
 
 <body>
 </body>
+
 </html>

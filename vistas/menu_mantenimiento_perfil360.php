@@ -84,6 +84,7 @@ if (permiso_ver('142') == '1') {
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -118,7 +119,7 @@ if (permiso_ver('142') == '1') {
 
             <div class="card card-default">
                 <div class="card-header">
-                   
+
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -328,24 +329,24 @@ if (permiso_ver('142') == '1') {
                                             </div>
 
                                         </div>
-                                        
+
                                         <!-- /.row -->
                                     </div>
                                     <!--/. container-fluid -->
                                 </div>
                             </section>
 
-                                <!-- /.info-box -->
-                                <section class="content">
+                            <!-- /.info-box -->
+                            <section class="content">
                                 <div class="container-fluid">
                                     <!-- Info boxes -->
                                     <div class="row" style="  display: flex;align-items: center;justify-content: center;">
-                                    
+
                                         <!-- fix for small devices only -->
                                         <div class="clearfix hidden-md-up"></div>
                                         <!-- /.info-box -->
-                                        
-                                        
+
+
                                         <!-- /.row -->
                                     </div>
                                     <!--/. container-fluid -->

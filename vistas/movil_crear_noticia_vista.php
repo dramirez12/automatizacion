@@ -20,6 +20,7 @@ bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 
   <!-- Bootstrap core CSS -->
@@ -79,11 +80,11 @@ bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="titulo"> Título </label>
-                    <input autofocus class="form-control" type="text" maxlength="90" id="titulo" name="titulo" required onpaste="return false"  onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
+                    <input autofocus class="form-control" type="text" maxlength="90" id="titulo" name="titulo" required onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                   </div>
                   <div class="form-group">
                     <label for="subtitulo"> Subtítulo </label>
-                    <input autofocus class="form-control" type="text" maxlength="90" id="subtitulo" name="subtitulo" required onpaste="return false"  onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
+                    <input autofocus class="form-control" type="text" maxlength="90" id="subtitulo" name="subtitulo" required onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                   </div>
                   <div class="form-group">
                     <label for="Contenido">Contenido:</label>
@@ -113,25 +114,25 @@ bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 
                   <div class="form-group">
                     <!-- FECHA DE VENCIMIENTO txt_fecha_Publicacion -->
                     <label for="txt_fecha_Publicacion">Fecha y Hora de Vencimiento:</label>
-                    <input class="form-control" type="datetime-local" id="txt_fecha_vencimiento" name="txt_fecha_vencimiento" min="<?php echo date("Y-m-d\TH:i",strtotime(date("Y-m-d\TH:i")."+ 1 month"));?>" max="<?php echo date("Y-m-d\TH:i",strtotime(date("Y-m-d\TH:i")."+ 3 month"));?>" required>
+                    <input class="form-control" type="datetime-local" id="txt_fecha_vencimiento" name="txt_fecha_vencimiento" min="<?php echo date("Y-m-d\TH:i", strtotime(date("Y-m-d\TH:i") . "+ 1 month")); ?>" max="<?php echo date("Y-m-d\TH:i", strtotime(date("Y-m-d\TH:i") . "+ 3 month")); ?>" required>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label> Adjuntar Archivos</label>
                   <input class="form-control" type="file" class="form-control" id="txt_documentos" name="txt_documentos[]" multiple>
-                  </div>
                 </div>
-                <p class="text-center" style="margin-top: 20px;">
-                  <button type="submit" class="btn btn-primary" id="btn_guardar" name="btn_guardar"><i class="zmdi zmdi-floppy"></i>Guardar</button>
-                </p>
               </div>
+              <p class="text-center" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-primary" id="btn_guardar" name="btn_guardar"><i class="zmdi zmdi-floppy"></i>Guardar</button>
+              </p>
             </div>
           </div>
-        </form>
       </div>
+      </form>
+  </div>
 
-    </section>
+  </section>
   </div>
   <script>
     function check(e) {

@@ -55,6 +55,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -111,16 +112,16 @@ ob_end_flush();
 
                     <div class="card-body">
                         <!-- <div class="card-body"> -->
-                            <div class="row">
+                        <div class="row">
                             <!-- <div class="col-sm-3">
 
                                 </div> -->
-                                <div class="col-sm-3">
+                            <div class="col-sm-3">
 
-                                    <button type="" class="btn btn-warning btn" id="nuevo_requisito">Agregar Nuevo Requisito <i class="fas fa-plus"></i></button>
-                                    
-                                </div>
-                             
+                                <button type="" class="btn btn-warning btn" id="nuevo_requisito">Agregar Nuevo Requisito <i class="fas fa-plus"></i></button>
+
+                            </div>
+
 
                             <!-- </div> -->
                         </div>
@@ -131,7 +132,7 @@ ob_end_flush();
 
                         <div class="table-responsive" style="width: 100%;">
                             <table id="tabla_requisitos" class="table table-bordered table-striped">
-                            <br>
+                                <br>
                                 <thead>
                                     <tr>
                                         <th>Editar Requisito</th>
@@ -181,7 +182,7 @@ ob_end_flush();
 
                                             <!--comisiones-->
                                             <div class="card-body">
-<!--                                                 <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Requisitos</button>
+                                                <!--                                                 <button type="submit" class="btn btn-primary btn" data-toggle="modal" data-target="#ModalTask2" id="agregarotra" name="agregarotra" onclick="id_asignatura()">Agregar Requisitos</button>
  -->
                                                 <br>
 
@@ -215,8 +216,8 @@ ob_end_flush();
                                 </div>
                             </div>
                         </div>
-                       <!--  modal antiguo requisitos -->
-                      <!--   <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
+                        <!--  modal antiguo requisitos -->
+                        <!--   <div class="modal fade" tabindex="-1" role="dialog" id="ModalTask2">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -261,7 +262,7 @@ ob_end_flush();
                                     <div class="modal-header">
                                         <h5 class="modal-title">Nuevo requisito</h5>
                                         <button class="close" data-dismiss="modal" onclick="cancelar()">
-                                            &times; 
+                                            &times;
                                         </button>
                                     </div>
                                     <div class="modal-body">
@@ -288,7 +289,7 @@ ob_end_flush();
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Requisito</label>
-                                                    <select class="form-control"  style="width: 100%;" id="cbm_asignaturas_requisito">
+                                                    <select class="form-control" style="width: 100%;" id="cbm_asignaturas_requisito">
 
                                                     </select>
                                                 </div>
@@ -298,7 +299,7 @@ ob_end_flush();
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary" id="guardar_nueva_requi" name="guardar_nueva_requi" <?php echo $_SESSION['btn_guardar_nuevo_requisito']; ?> >Guardar</button>
+                                        <button class="btn btn-primary" id="guardar_nueva_requi" name="guardar_nueva_requi" <?php echo $_SESSION['btn_guardar_nuevo_requisito']; ?>>Guardar</button>
                                         <button class="btn btn-secondary" data-dismiss="modal" onclick="cancelar()">Close</button>
                                     </div>
                                 </div>

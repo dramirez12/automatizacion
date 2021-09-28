@@ -99,7 +99,7 @@ if ($visualizacion == 0) {
   /* Esta condicion sirve para  verificar el valor que se esta enviando al momento de dar click en el icono modificar */
   if (isset($_GET['nombre_producto'])) {
     $sqltabla = "select nombre_producto,descripcion_producto FROM tbl_productos";
-    
+
     $resultadotabla = $mysqli->query($sqltabla);
 
     /* Esta variable recibe el producto a modificar */
@@ -114,13 +114,13 @@ if ($visualizacion == 0) {
     $row = $resultado->fetch_array(MYSQLI_ASSOC);
 
     /* Aqui obtengo el id<-productos de la tabla de la base el cual me sirve para enviarla a la pagina actualizar.php para usarla en el where del update   */
-  
-   //         variable               viene de la BD
-   $_SESSION['id_producto_'] = $row['id_producto'];
+
+    //         variable               viene de la BD
+    $_SESSION['id_producto_'] = $row['id_producto'];
     $_SESSION['nombre_producto_'] = $row['nombre_producto'];
     $_SESSION['descripcion_producto_'] = $row['descripcion_producto'];
-//     $_SESSION['stock_minimo_'] = $row['stock_minimo'];
-   
+    //     $_SESSION['stock_minimo_'] = $row['stock_minimo'];
+
 
     /*Aqui levanto el modal*/
 
@@ -153,16 +153,17 @@ ob_end_flush();
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+  <script src="../js/autologout.js"></script>
+  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
 
 <body>
-<!-- 1 FORMULARIO PRINCIPAL -->
-<div class="content-wrapper" id="tblListar">
-  
+  <!-- 1 FORMULARIO PRINCIPAL -->
+  <div class="content-wrapper" id="tblListar">
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -194,23 +195,23 @@ ob_end_flush();
         <h3 class="card-title">Productos Existentes</h3>
         <div class="card-tools">
 
-         <!-- <button type="button" class=" my-3 btn btn-secondary btn-inline p-2 mr-2">Generar pdf</button> -->
-              <!-- <a href="crear_productos_vista.php" class=" my-3 btn btn-primary btn-inline p-2 "  >Nuevo</a> -->
+          <!-- <button type="button" class=" my-3 btn btn-secondary btn-inline p-2 mr-2">Generar pdf</button> -->
+          <!-- <a href="crear_productos_vista.php" class=" my-3 btn btn-primary btn-inline p-2 "  >Nuevo</a> -->
 
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
         <br>
         <div class=" px-12">
-       
+
         </div>
       </div>
       <div class="card-body">
-<div class="mb-3">
-<a href="crear_productos_vista.php" class=" btn btn-success btn-inline float-right mt-2" ><i class="fas fa-plus pr-2"></i>Nuevo</a>
-<!-- <input type="text" class="float-right mt-2"> -->
-</div>
+        <div class="mb-3">
+          <a href="crear_productos_vista.php" class=" btn btn-success btn-inline float-right mt-2"><i class="fas fa-plus pr-2"></i>Nuevo</a>
+          <!-- <input type="text" class="float-right mt-2"> -->
+        </div>
 
-      
+
         <!-- NOMBRE DE LA TABLA QUE ALOJA LOS PRODUCTOS -->
         <table id="tblproducto" class="table table-bordered table-striped">
 
@@ -218,11 +219,11 @@ ob_end_flush();
 
           <thead>
             <tr>
-                    <th>NOMBRE</th>
-                    <th>DESCRIPCION</th>
-                    <th>MODIFICAR</th>
-                    <th>ELIMINAR</th>
-                    <th>REPORTE</th>
+              <th>NOMBRE</th>
+              <th>DESCRIPCION</th>
+              <th>MODIFICAR</th>
+              <th>ELIMINAR</th>
+              <th>REPORTE</th>
             </tr>
           </thead>
           <tbody>
@@ -250,15 +251,15 @@ ob_end_flush();
                   </form>
                 </td>
                 <!-- reporte -->
-                <td style="text-align: center;" >
+                <td style="text-align: center;">
 
-                  <a href="../pdf_laboratorio/reporte_producto_lab.php?nombre_producto=<?php echo $row['nombre_producto']; ?>" target="_black" class="btn btn-primary btn-raised btn-xs"    >
-                
-                  <i class="fas fa-clipboard-list"></i>
+                  <a href="../pdf_laboratorio/reporte_producto_lab.php?nombre_producto=<?php echo $row['nombre_producto']; ?>" target="_black" class="btn btn-primary btn-raised btn-xs">
+
+                    <i class="fas fa-clipboard-list"></i>
                   </a>
                 </td>
 
-                      
+
               </tr>
             <?php } ?>
           </tbody>
@@ -288,7 +289,7 @@ ob_end_flush();
 
 
 
- 
+
 
 </body>
 
@@ -300,7 +301,7 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

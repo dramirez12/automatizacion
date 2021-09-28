@@ -79,6 +79,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -138,16 +139,16 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese la Ubicación</label>
-                                        <input class="form-control " class="tf w-input" type="text" id="txt_ubicacion1" onkeypress="return validacion_para_nombre_con_numeros(event)"  name="txt_ubicacion1" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_ubicacion1');" >
+                                        <input class="form-control " class="tf w-input" type="text" id="txt_ubicacion1" onkeypress="return validacion_para_nombre_con_numeros(event)" name="txt_ubicacion1" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_ubicacion1');">
 
                                     </div>
 
-                                   
+
 
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-primary" id="btn_guardar_ubicacion" name="btn_guardar_ubicacion" <?php echo $_SESSION['btn_guardar_ubicacion']; ?> ><i class="zmdi zmdi-floppy"></i> Guardar</button>
-                                        <a href="../vistas/mantenimiento_ubicacion_vista.php" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>  
+                                        <button type="submit" class="btn btn-primary" id="btn_guardar_ubicacion" name="btn_guardar_ubicacion" <?php echo $_SESSION['btn_guardar_ubicacion']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                        <a href="../vistas/mantenimiento_ubicacion_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
 
                                     </p>
 
@@ -180,4 +181,4 @@ ob_end_flush();
 </body>
 
 </html>
-  <script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script>
+<script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script>

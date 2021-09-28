@@ -37,11 +37,14 @@ ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
 </head>
+
 <body>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="padding: 0 15px 40px 15px;">
@@ -81,6 +84,7 @@ ob_end_flush();
                         <th>DESCARGAR</th>
                     </tr>
                 </thead>
+
                 <body>
                     <?php
                     try {
@@ -151,6 +155,7 @@ ob_end_flush();
         });
     </script>
 </body>
+
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>

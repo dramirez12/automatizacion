@@ -80,6 +80,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -136,7 +137,7 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
-                            <div class="col-md-3">
+                                <div class="col-md-3">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
@@ -152,10 +153,10 @@ ob_end_flush();
                                     <div class="form-group">
                                         <label>Tipo Persona</label>
                                         <select class="form-control-lg select2" type="text" id="cbm_persona" name="txt_persona1" style="width: 100%;">
-                                        <option value="">Seleccione una opción</option>
+                                            <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input class="form-control"  id="persona1" hidden >
+                                    <input class="form-control" id="persona1" hidden>
 
 
                                     <p class="text-center" style="margin-top: 20px;">
@@ -193,7 +194,7 @@ ob_end_flush();
 
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 <script type="text/javascript" src="../js/funciones_mantenimientos.js"></script>
 <script type="text/javascript" language="javascript">
     $(document).ready(function() {

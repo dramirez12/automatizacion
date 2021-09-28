@@ -13,7 +13,7 @@ date_default_timezone_set("America/Tegucigalpa");
 
 $Id_objeto = 166;
 
-bitacora_movil::evento_bitacora($_SESSION['id_usuario'],$Id_objeto, 'INGRESO', 'A CREAR TIPO MENSAJE');
+bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 'A CREAR TIPO MENSAJE');
 
 $visualizacion = permiso_ver($Id_objeto);
 if (isset($_REQUEST['msj'])) {
@@ -86,6 +86,7 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 
   <!-- Bootstrap core CSS -->
@@ -133,7 +134,7 @@ if (isset($_REQUEST['msj'])) {
       <div class="container-fluid">
         <!-- pantalla 1 -->
 
-        <form action="../Controlador/movil_guardar_tipomensaje_controlador.php" method="POST" >
+        <form action="../Controlador/movil_guardar_tipomensaje_controlador.php" method="POST">
 
           <div class="card card-default">
             <div class="card-header">
@@ -160,17 +161,17 @@ if (isset($_REQUEST['msj'])) {
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="descripcion"> Tipo de Mensaje a Enviar </label>
-                    <input autofocus class="form-control" type="text" maxlength="60" id="tipo_mensaje" name="tipo_mensaje" required style="text-transform: uppercase" onpaste="return false"  onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)">
+                    <input autofocus class="form-control" type="text" maxlength="60" id="tipo_mensaje" name="tipo_mensaje" required style="text-transform: uppercase" onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)">
                   </div>
 
 
-                
+
 
                 </div>
 
               </div>
 
-              
+
 
               <br>
 
@@ -200,7 +201,7 @@ if (isset($_REQUEST['msj'])) {
   </div>
 
 
-  
+
 
 </body>
 

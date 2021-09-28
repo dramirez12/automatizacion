@@ -73,7 +73,7 @@ ob_end_flush();
 <!DOCTYPE html>
 
 <head>
-
+    <script src="../js/autologout.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/datatables.min.css" />
@@ -163,7 +163,7 @@ ob_end_flush();
                 <div class="card-body">
 
                     <div class="table-responsive" style="width: 100%;">
-                    <div class="input-group">
+                        <div class="input-group">
                             <div class="col-md-3">
                                 <div class="input-group mb-3 input-group" hidden>
 
@@ -267,7 +267,7 @@ ob_end_flush();
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Fecha de ingreso</label>
-                                            <input class="form-control" type="date" name="fecha_ingreso"  id="fecha_ingreso" required  >
+                                            <input class="form-control" type="date" name="fecha_ingreso" id="fecha_ingreso" required>
 
                                         </div>
                                     </div>
@@ -488,25 +488,25 @@ ob_end_flush();
 <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
 
 <script language="javascript">
-let today = new Date();
-let dd = today.getDate();
-let mm = today.getMonth() + 1; //January is 0!
-let yyyy = today.getFullYear();
-if (dd < 10) {
-	dd = '0' + dd;
-}
-if (mm < 10) {
-	mm = '0' + mm;
-}
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; //January is 0!
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
 
-today = yyyy + '-' + mm + '-' + dd;
+    today = yyyy + '-' + mm + '-' + dd;
 
-let minimum = '1970-01-01';
+    let minimum = '1970-01-01';
 
-let search_date = document.getElementById('fecha_ingreso');
+    let search_date = document.getElementById('fecha_ingreso');
 
-search_date.max = today;
-search_date.min = minimum;
+    search_date.max = today;
+    search_date.min = minimum;
 </script>
 
 

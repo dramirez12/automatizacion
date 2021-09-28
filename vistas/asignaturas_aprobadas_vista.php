@@ -33,7 +33,7 @@ if ($visualizacion == 0) {
 
 
     //if (permisos::permiso_insertar($Id_objeto) == '1') {
-     //$_SESSION['btn_solicitud'] = "";
+    //$_SESSION['btn_solicitud'] = "";
     //} else {
     //$_SESSION['btn_solicitud'] = "disabled";
     // }
@@ -49,11 +49,12 @@ ob_end_flush();
 <html>
 
 <head>
-
+    <script src="../js/autologout.js"></script>
 
 </head>
 
 
 <body>
 </body>
+
 </html>

@@ -171,6 +171,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
   <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
@@ -367,7 +368,7 @@ ob_end_flush();
             </div>
 
           </div>
-        <!--Footer del modal-->
+          <!--Footer del modal-->
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             <button type="submit" class="btn btn-primary" id="btn_modificar_atributo" name="btn_modificar_atributo" <?php echo $_SESSION['btn_modificar_atributo']; ?>>Guardar cambios</button>
@@ -426,5 +427,3 @@ ob_end_flush();
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-
-

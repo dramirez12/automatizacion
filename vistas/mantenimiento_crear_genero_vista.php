@@ -80,6 +80,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -136,15 +137,15 @@ ob_end_flush();
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
-                            <div class="col-md-3">
+                                <div class="col-md-3">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el Género</label>
-                                        <input class="form-control " type="text" id="txt_genero1" name="txt_genero1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_genero1');" onkeypress="return sololetras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
+                                        <input class="form-control " type="text" id="txt_genero1" name="txt_genero1" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_genero1');" onkeypress="return sololetras(event)" onkeypress="return comprobar(this.value, event, this.id)">
                                     </div>
 
-                                   
+
 
 
                                     <p class="text-center" style="margin-top: 20px;">
@@ -181,4 +182,4 @@ ob_end_flush();
 
 </html>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>

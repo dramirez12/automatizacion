@@ -52,6 +52,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,6 +61,7 @@ ob_end_flush();
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <title></title>
 </head>
+
 <body>
   <form action="" method="POST" id="Formulario" class="FormularioAjax" name="miFormulario" autocomplete="off" role="form" enctype="multipart/form-data">
     <div class="content-wrapper">
@@ -88,7 +90,7 @@ ob_end_flush();
         <section class="content">
           <div class="container-fluid">
             <!-- pantalla  CIUDAD UNVERSITARIA - CARGA -->
-           
+
             <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">CARGAR ARCHIVOS DE CARGA ACADEMICA</h3>
@@ -109,14 +111,14 @@ ob_end_flush();
                       <label>PERIODO</label>
                       <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="6" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
                     </div>
-                  </div>    
+                  </div>
                   <div class="col-sm-2">
                     <div class="form-group">
                       <!-- DESCRIPCION -->
                       <label>DESCRIPCION</label>
                       <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="8" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
                     </div>
-                  </div>        
+                  </div>
                   <div class="col-sm-3">
                     <div class="form-group">
                       <!-- FECHA DE INGRESO txt_fecha_ingreso -->
@@ -139,11 +141,11 @@ ob_end_flush();
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
-              
-            </div>
-             <!-- TERMINA  CIUDAD UNVERSITARIA - CARGA -->
 
-             <!-- pantalla  CIUDAD UNVERSITARIA - CRAED -->
+            </div>
+            <!-- TERMINA  CIUDAD UNVERSITARIA - CARGA -->
+
+            <!-- pantalla  CIUDAD UNVERSITARIA - CRAED -->
             <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">CARGAR ARCHIVOS DE CARGA CRAED</h3>
@@ -165,7 +167,7 @@ ob_end_flush();
                       <label>PERIODO</label>
                       <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="6" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
                     </div>
-                  </div> 
+                  </div>
 
                   <div class="col-sm-2">
                     <div class="form-group">
@@ -173,7 +175,7 @@ ob_end_flush();
                       <label>DESCRIPCION</label>
                       <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="8" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
                     </div>
-                  </div>    
+                  </div>
 
                   <div class="col-sm-3">
                     <div class="form-group">
@@ -188,53 +190,53 @@ ob_end_flush();
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
-              
+
             </div>
             <!-- /.row CRAED- CARGA -->
           </div>
           <!-- INICIO INFORMACION DE AUTORIDADES CORRESPONDIENTES -->
-   <!-- pantalla  CIUDAD UNVERSITARIA - CARGA -->
-           
-            <div class="card card-default">
-              <div class="card-header">
-                <h3 class="card-title">Datos de Autoridades Correspondientes a Gestion de Cargas Acadmicas</h3>
+          <!-- pantalla  CIUDAD UNVERSITARIA - CARGA -->
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">Datos de Autoridades Correspondientes a Gestion de Cargas Acadmicas</h3>
 
-                </div>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <!-- PERIODO -->
-                      <label>Jefe del Departamento</label>
-                      <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="6" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
-                    </div>
-                  </div>    
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <!-- DESCRIPCION -->
-                      <label>Decano de la Facultad</label>
-                      <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="8" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
-                    </div>
-                  </div>        
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
             </div>
-             <!-- TERMINA  CIUDAD UNVERSITARIA - CARGA -->
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <!-- PERIODO -->
+                    <label>Jefe del Departamento</label>
+                    <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="6" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <!-- DESCRIPCION -->
+                    <label>Decano de la Facultad</label>
+                    <input class="form-control" type="text" id="txt_n_empleado" name="txt_n_empleado" maxlength="8" value="" onkeypress="return solonumeros(event)" onKeyUp="pierdeFoco(this)" required>
+                  </div>
+                </div>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- TERMINA  CIUDAD UNVERSITARIA - CARGA -->
           <!-- FIN /INFORMACION DE AUTORIDADES CORRESPONDIENTES -->
           <!-- /.card-body -->
           <p class="text-center" style="margin-top: 10px;">
             <button type="submit" class="btn btn-primary btn-lg" id="btn_guardar_registro_docentes" name="btn_guardar_registro_docentes" onclick="RegistarDocente($('#txt_nombres').val(), $('#txt_apellidos').val(), $('#cb_genero').val(), $('#identidad').val(), $('#cb_nacionalidad').val(), $('#cb_ecivil').val(), $('#txt_fecha_nacimiento').val(), $('#txt_hi').val(), $('#txt_hf').val(), $('#txt_n_empleado').val(), $('#tipo_docente').val(), $('#txt_fecha_ingreso').val());   ">
               <i class="zmdi zmdi-floppy"></i>GUARDAR</button>
-              <button hidden type="submit" class="btn btn-primary btn-lg" id="btn_guardar_registro_docentes2" name="btn_guardar_registro_docentes2" onclick="RegistarDocente2($('#txt_nombres').val(), $('#txt_apellidos').val(), $('#cb_genero').val(), $('#pasaporte').val(), $('#cb_nacionalidad').val(), $('#cb_ecivil').val(), $('#txt_fecha_nacimiento').val(), $('#txt_hi').val(), $('#txt_hf').val(), $('#txt_n_empleado').val(), $('#tipo_docente').val(), $('#txt_fecha_ingreso').val());   ">
+            <button hidden type="submit" class="btn btn-primary btn-lg" id="btn_guardar_registro_docentes2" name="btn_guardar_registro_docentes2" onclick="RegistarDocente2($('#txt_nombres').val(), $('#txt_apellidos').val(), $('#cb_genero').val(), $('#pasaporte').val(), $('#cb_nacionalidad').val(), $('#cb_ecivil').val(), $('#txt_fecha_nacimiento').val(), $('#txt_hi').val(), $('#txt_hf').val(), $('#txt_n_empleado').val(), $('#tipo_docente').val(), $('#txt_fecha_ingreso').val());   ">
               <i class="zmdi zmdi-floppy"></i>GUARDAR</button>
           </p>
 
@@ -248,7 +250,7 @@ ob_end_flush();
 
   <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
   <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
- <!-- <script type="text/javascript" src="../js/registro_docente.js"></script> -->
+  <!-- <script type="text/javascript" src="../js/registro_docente.js"></script> -->
 
 
 </body>
@@ -256,5 +258,3 @@ ob_end_flush();
 
 
 </html>
-
-

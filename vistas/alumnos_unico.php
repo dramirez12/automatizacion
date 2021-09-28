@@ -1,15 +1,15 @@
 <?php
 ob_start();
 session_start();
-require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php');
-require_once ('../clases/funcion_bitacora.php');
-require_once ('../clases/funcion_visualizar.php');
-require_once ('../clases/funcion_permisos.php');
+require_once('../vistas/pagina_inicio_vista.php');
+require_once('../clases/Conexion.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_permisos.php');
 
-$Id_objeto=40; 
-$visualizacion= permiso_ver($Id_objeto);
-if($visualizacion==0){
+$Id_objeto = 40;
+$visualizacion = permiso_ver($Id_objeto);
+if ($visualizacion == 0) {
   echo '<script type="text/javascript">
   swal({
         title:"",
@@ -20,28 +20,31 @@ if($visualizacion==0){
       });
   window.location = "../vistas/pagina_principal_vista.php";
 
-   </script>'; 
+   </script>';
 }
-if (isset($_GET['alumno'])){
+if (isset($_GET['alumno'])) {
 
-    $sqltabla = json_decode( file_get_contents("http://34.203.186.135/Automatizacion/api/himno.php?alumno=".$_GET['alumno']), true );
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INGRESO' , 'A REVISION ALUMNO HIMNO '.$sqltabla["ROWS"][0]['nombre'].'');
+  $sqltabla = json_decode(file_get_contents("http://34.203.186.135/Automatizacion/api/himno.php?alumno=" . $_GET['alumno']), true);
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REVISION ALUMNO HIMNO ' . $sqltabla["ROWS"][0]['nombre'] . '');
 }
 
 ob_end_flush();
 
- ?>
+?>
 
 
 <!DOCTYPE html>
 <html>
+
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
-<body >
+
+<body>
 
 
-    <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -50,7 +53,7 @@ ob_end_flush();
             <h1>Imprimir Documento</h1>
           </div>
 
-         
+
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -58,120 +61,117 @@ ob_end_flush();
               <li class="breadcrumb-item"><a href="../vistas/lista_alumnos_himno.php">Lista de alumnos Himno</a></li>
             </ol>
           </div>
-          
 
-            <div class="RespuestaAjax"></div>
-   
+
+          <div class="RespuestaAjax"></div>
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-            <div class="container-fluid">
-  <!-- pantalla 1 -->
-      
-<form action="../Controlador/himno_controlador.php" method="post"  data-form="save" autocomplete="off" class="FormularioAjax">
+      <div class="container-fluid">
+        <!-- pantalla 1 -->
 
- <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Datos del Estudiante</h3>
+        <form action="../Controlador/himno_controlador.php" method="post" data-form="save" autocomplete="off" class="FormularioAjax">
 
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">Datos del Estudiante</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+              </div>
             </div>
-          </div>
 
 
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="row">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
                 <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Nombre del Alumno</label>
-                            <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['nombre'] ?>" type="text" id="txt_nombre" name="txt_nombre1" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;" >
-                        </div>
+                  <div class="form-group">
+                    <label>Nombre del Alumno</label>
+                    <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['nombre'] ?>" type="text" id="txt_nombre" name="txt_nombre1" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Numero de Cuenta</label>
-                            <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['documento']  ?>" type="text" id="txt_cuenta" name="txt_cuenta" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
-                        </div>
+                  <div class="form-group">
+                    <label>Numero de Cuenta</label>
+                    <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['documento']  ?>" type="text" id="txt_cuenta" name="txt_cuenta" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Correo Electronico</label>
-                            <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['valor'] ?>" type="email" id="txt_correo" name="txt_correo" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
-                        </div>
+                  <div class="form-group">
+                    <label>Correo Electronico</label>
+                    <input class="form-control" value="<?php echo $sqltabla["ROWS"][0]['valor'] ?>" type="email" id="txt_correo" name="txt_correo" style="text-transform: uppercase" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" readonly onmousedown="return false;">
+                  </div>
                 </div>
                 <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Seleccione su aprobación</label>
-                            <select class="form-control" id="aprobado" name="aprobado" onchange="Mostrarlink();">
-                              <option disabled selected>Aprobar</option>
-                              <option value="aprobado">SI</option>
-                              <option value="desaprobar">NO</option>
-                            </select>
-                        </div>
+                  <div class="form-group">
+                    <label>Seleccione su aprobación</label>
+                    <select class="form-control" id="aprobado" name="aprobado" onchange="Mostrarlink();">
+                      <option disabled selected>Aprobar</option>
+                      <option value="aprobado">SI</option>
+                      <option value="desaprobar">NO</option>
+                    </select>
+                  </div>
                 </div>
-                
+
                 <div class="col-md-6">
-                      <div class="form-group">
-                        
-                            <a style="margin-top: 32px;"  class="badge-warning btn-sm text-center form-group" href="http://34.203.186.135/Automatizacion/PDF/himno.php?cuenta=<?php echo $sqltabla['ROWS'][0]['documento'] ?>" id="documento" name="documento" target="_blank">Imprimir Documento</a>
-                        
-                      </div>
+                  <div class="form-group">
+
+                    <a style="margin-top: 32px;" class="badge-warning btn-sm text-center form-group" href="http://34.203.186.135/Automatizacion/PDF/himno.php?cuenta=<?php echo $sqltabla['ROWS'][0]['documento'] ?>" id="documento" name="documento" target="_blank">Imprimir Documento</a>
+
+                  </div>
                 </div>
+              </div>
+              <p class="text-center form-group" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-primary" id="btn_guardar_cambio"><i class="zmdi zmdi-floppy"></i> Guardar</button>
+              </p>
             </div>
-            <p class="text-center form-group" style="margin-top: 20px;">
-                <button type="submit" class="btn btn-primary" id="btn_guardar_cambio" ><i class="zmdi zmdi-floppy"></i> Guardar</button>
-            </p>
+
+
+
+            <!-- /.card-body -->
+            <div class="card-footer">
+
+            </div>
           </div>
 
 
 
-          <!-- /.card-body -->
-          <div class="card-footer">
-            
-          </div>
-        </div>
-         
-         
-    
-    <div class="RespuestaAjax"></div>
-</form>
+          <div class="RespuestaAjax"></div>
+        </form>
+
+      </div>
+    </section>
+
 
   </div>
-</section>
 
 
-</div>
+  <script type="text/javascript">
+    document.getElementById("documento").style.display = "none";
+
+    function Mostrarlink() {
+      /* Para obtener el valor */
+      var aprobado = document.getElementById("aprobado").value;
+
+      if (aprobado == "aprobado") {
 
 
-<script type="text/javascript">
- 
- document.getElementById("documento").style.display="none";
+        document.getElementById("documento").style.display = "block";
 
- function Mostrarlink()
-{
-/* Para obtener el valor */
-var aprobado = document.getElementById("aprobado").value;
+      } else {
 
-  if (aprobado == "aprobado") {
-       
-    
-    document.getElementById("documento").style.display="block";
+
+        document.getElementById("documento").style.display = "none";
+      }
 
     }
-    else {
-      
-      
-      document.getElementById("documento").style.display="none";
-   }
-
-}
-
-</script>
+  </script>
 
 </body>
+
 </html>

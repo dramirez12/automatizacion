@@ -13,7 +13,7 @@ date_default_timezone_set("America/Tegucigalpa");
 
 $Id_objeto = 164;
 
-bitacora_movil::evento_bitacora($_SESSION['id_usuario'],$Id_objeto, 'INGRESO', 'A CREAR PARÁMETROS');
+bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 'A CREAR PARÁMETROS');
 
 $visualizacion = permiso_ver($Id_objeto);
 if (isset($_REQUEST['msj'])) {
@@ -96,6 +96,7 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 
   <!-- Bootstrap core CSS -->
@@ -143,7 +144,7 @@ if (isset($_REQUEST['msj'])) {
       <div class="container-fluid">
         <!-- pantalla 1 -->
 
-        <form action="../Controlador/movil_guardar_parametros_controlador.php" method="POST" >
+        <form action="../Controlador/movil_guardar_parametros_controlador.php" method="POST">
 
           <div class="card card-default">
             <div class="card-header">
@@ -166,37 +167,38 @@ if (isset($_REQUEST['msj'])) {
                     <label for="descripcion"> Nombre del Parámetro </label>
                     <input autofocus class="form-control" type="text" maxlength="200" id="parametro" name="parametro" required style="text-transform: uppercase" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
                   </div>
-                    <label for="ubicacion url">Descripción del Parámetro</label>
-                    <input class="form-control" type="text"  maxlength="200" id="descripcion" name="descripcion" required style="text-transform: uppercase" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
-                  </div> 
-                  </div>
-                  <div class="form-group">
-                    <label for="txt_valorparametro">Valor del Parámetro</label>
-                    <input class="form-control" type="text" id="valor" name="valor" required onpaste="return false"  maxlength="45"  onkeyup="DobleEspacio(this, event)">
-                  </div>
+                  <label for="ubicacion url">Descripción del Parámetro</label>
+                  <input class="form-control" type="text" maxlength="200" id="descripcion" name="descripcion" required style="text-transform: uppercase" onpaste="return false" onkeyup="DobleEspacio(this, event)" onkeypress="return check(event)">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="txt_valorparametro">Valor del Parámetro</label>
+                <input class="form-control" type="text" id="valor" name="valor" required onpaste="return false" maxlength="45" onkeyup="DobleEspacio(this, event)">
+              </div>
 
-                </div>
-                </div>
-                <p class="text-center" style="margin-top: 20px;">
+            </div>
+          </div>
+          <p class="text-center" style="margin-top: 20px;">
             <button type="submit" class="btn btn-primary" id="btn_guardar_parametro" name="btn_guardar_parametro"><i class="zmdi zmdi-floppy"></i>Guardar</button>
           </p>
-              </div>
-            
-            </div>
-           
-          </div>
-         
-        </form>
-        <!-- /.card-body -->
-        <div class="card-footer">
-
-        </div>
       </div>
-      <div class="RespuestaAjax"></div>
-      </form>
+
+  </div>
+
+  </div>
+
+  </form>
+  <!-- /.card-body -->
+  <div class="card-footer">
+
+  </div>
+  </div>
+  <div class="RespuestaAjax"></div>
+  </form>
   </div>
   </section>
   </div>
 </body>
+
 </html>
 <?php ob_end_flush() ?>

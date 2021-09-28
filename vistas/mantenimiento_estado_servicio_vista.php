@@ -1,11 +1,11 @@
 <?php
 session_start();
 ob_start();
-require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php');
-require_once ('../clases/funcion_bitacora.php');
-require_once ('../clases/funcion_visualizar.php');
-require_once ('../clases/funcion_permisos.php');
+require_once('../vistas/pagina_inicio_vista.php');
+require_once('../clases/Conexion.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_permisos.php');
 
 //Lineas de msj al cargar pagina de acuerdo a actualizar o eliminar datos
 if (isset($_REQUEST['msj'])) {
@@ -99,7 +99,7 @@ if ($visualizacion == 0) {
         $resultadotabla = $mysqli->query($sqltabla);
 
         /* Esta variable recibe el estado de modificar */
-        $estado= $_GET['estado'];
+        $estado = $_GET['estado'];
 
         /* Iniciar la variable de sesion y la crea */
         /* Hace un select para mandar a traer todos los datos de la 
@@ -145,6 +145,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
@@ -207,9 +208,9 @@ ob_end_flush();
                         </tr>
                     </thead>
                     <tbody>
-                    <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                        <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
                             <tr>
-                        
+
                                 <td><?php echo $row['estado']; ?></td>
                                 <td><?php echo $row['descripcion']; ?></td>
 
@@ -255,75 +256,75 @@ ob_end_flush();
 
 -->
 
-<form action="../Controlador/actualizar_estado_servicio_controlador.php?id_estado_servicio=<?php echo $_SESSION['id_estado_servicio']; ?>" method="post" data-form="update" autocomplete="off">
+    <form action="../Controlador/actualizar_estado_servicio_controlador.php?id_estado_servicio=<?php echo $_SESSION['id_estado_servicio']; ?>" method="post" data-form="update" autocomplete="off">
 
 
 
-<div class="modal fade" id="modal_modificar_estado">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"> Actualizar Estado servicio </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="modal fade" id="modal_modificar_estado">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"> Actualizar Estado servicio </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+
+                    <!--Cuerpo del modal-->
+                    <div class="modal-body">
+
+
+
+
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <label>Modificar Estado</label>
+
+
+                                        <input class="form-control" type="text" id="txt_estado" name="txt_estado" value="<?php echo $_SESSION['estado']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_estado');" onkeypress="return LetrasyNumeroos(event)" maxlength="30">
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label">Modificar Descripcion</label>
+
+                                        <input class="form-control" type="text" id="txt_descripcion" name="txt_descripcion" value="<?php echo $_SESSION['descripcion']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');" onkeypress="return LetrasyNumeros(event)" maxlength="30" onkeypress="return comprobar(this.value, event, this.id)">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <!--Footer del modal-->
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" id="btn_modificar_estado" name="btn_modificar_estado" <?php echo $_SESSION['btn_modificar_estado_servicio']; ?>>Guardar Cambios</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
             </div>
-
-
-                <!--Cuerpo del modal-->
-                <div class="modal-body">
-
-
-
-
-
-<div class="card-body">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-
-                <label>Modificar Estado</label>
-
-
-                <input class="form-control" type="text" id="txt_estado" name="txt_estado" value="<?php echo $_SESSION['estado']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_estado');" onkeypress="return LetrasyNumeroos(event)" maxlength="30">
-
-            </div>
-
-
-            <div class="form-group">
-                <label class="control-label">Modificar Descripcion</label>
-
-                <input class="form-control" type="text" id="txt_descripcion" name="txt_descripcion" value="<?php echo $_SESSION['descripcion']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');" onkeypress="return LetrasyNumeros(event)" maxlength="30" onkeypress="return comprobar(this.value, event, this.id)">
-
-            </div>
-
+            <!-- /.modal-dialog -->
         </div>
-    </div>
-</div>
 
-</div>
+        <!-- /.  finaldel modal -->
 
-
-
-
-<!--Footer del modal-->
-<div class="modal-footer justify-content-between">
-<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-<button type="submit" class="btn btn-primary" id="btn_modificar_estado" name="btn_modificar_estado" <?php echo $_SESSION['btn_modificar_estado_servicio']; ?>>Guardar Cambios</button>
-</div>
-</div>
-<!-- /.modal-content -->
-</div>
-<!-- /.modal-dialog -->
-</div>
-
-<!-- /.  finaldel modal -->
-
-<!--mosdal crear -->
+        <!--mosdal crear -->
 
 
 
-</form>
+    </form>
 
 
 

@@ -47,6 +47,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
@@ -56,9 +57,9 @@ ob_end_flush();
     <style>
         input[type=checkbox]:checked+label.strikethrough {
             text-decoration: line-through;
-            color:red;
-            position:relative;
-            top:3px
+            color: red;
+            position: relative;
+            top: 3px
         }
     </style>
     <!-- Content Wrapper. Contains page content -->
@@ -342,8 +343,8 @@ ob_end_flush();
     </div>
     <script type="text/javascript">
         function mayus(e) {
-    e.value = e.value.toUpperCase();
-}
+            e.value = e.value.toUpperCase();
+        }
         $(function() {
             $('#example1').DataTable({
                 "paging": true,
@@ -384,7 +385,7 @@ ob_end_flush();
             document.getElementById("enlace").required = false;
         }
 
-     
+
 
         function showInp() {
             getSelectValue = document.getElementById("tipo").value;

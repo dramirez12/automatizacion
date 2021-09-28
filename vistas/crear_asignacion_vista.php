@@ -83,7 +83,7 @@ ob_end_flush();
 <html>
 
 <head>
-
+    <script src="../js/autologout.js"></script>
 </head>
 
 <body>
@@ -176,7 +176,7 @@ ob_end_flush();
                                         <input class="form-control" type="date" min="<?php date_default_timezone_set('America/Tegucigalpa');
                                                                                         echo date("Y-m-d"); ?>" max="<?php date_default_timezone_set('America/Tegucigalpa');
                                                                                                                         echo date("Y-m-d"); ?>" value="<?php date_default_timezone_set('America/Tegucigalpa');
-                                                                                                                                                                                                            echo date("Y-m-d"); ?>" id="fecha_asignacion" name="fecha_asignacion" maxlength="30" style="text-transform:uppercase" onkeyup="Espacio(this, event)" onblur="document.getElementById('txt_nombre_oculto').value=this.value" required>
+                                                                                                                                                        echo date("Y-m-d"); ?>" id="fecha_asignacion" name="fecha_asignacion" maxlength="30" style="text-transform:uppercase" onkeyup="Espacio(this, event)" onblur="document.getElementById('txt_nombre_oculto').value=this.value" required>
                                     </div>
 
                                     <!-- PERSONA RESPONSABLE -->
@@ -248,10 +248,10 @@ ob_end_flush();
 
                     <!-- Salida PHP para seleccionar productos no coincidentes (pasar a procedimiento) -->
                     <?php
-                        $modelo=new respuesta();
-                        $sqlRespUserResult=$modelo->asignacion();
-                        //   $sqlRespUser = "SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'";
-                        //  $sqlRespUserResult = $->query($sqlRespUser);        
+                    $modelo = new respuesta();
+                    $sqlRespUserResult = $modelo->asignacion();
+                    //   $sqlRespUser = "SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'";
+                    //  $sqlRespUserResult = $->query($sqlRespUser);        
                     ?>
 
                     <div class="modal-body">

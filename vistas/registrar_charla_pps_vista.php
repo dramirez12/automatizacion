@@ -69,6 +69,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
 
@@ -279,14 +280,14 @@ END) as contador from tbl_contador_constancia where id_contador =2 ";
 
 
   function fecha_valida() {
-  var fech1 = new Date();
-  var fech2 = document.getElementById("txt_fecha_valida").value;
+    var fech1 = new Date();
+    var fech2 = document.getElementById("txt_fecha_valida").value;
 
-  if ((Date.parse(fech1)) >= (Date.parse(fech2))) {
+    if ((Date.parse(fech1)) >= (Date.parse(fech2))) {
 
-    document.getElementById("txt_fecha_valida").value = "";
-  } else {
+      document.getElementById("txt_fecha_valida").value = "";
+    } else {
 
+    }
   }
-}
 </script>

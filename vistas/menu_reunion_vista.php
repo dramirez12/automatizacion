@@ -8,11 +8,11 @@ require_once('../clases/funcion_visualizar.php');
 if (permiso_ver('276') == '1') {
 
     $_SESSION['menu_reunion'] = "...";
-  } else {
+} else {
     $_SESSION['menu_reunion'] = "No 
     tiene permisos para visualizar";
-  }
-  
+}
+
 if (permiso_ver('144') == '1') {
 
     $_SESSION['nueva_reunion'] = "...";
@@ -39,6 +39,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -78,7 +79,7 @@ ob_end_flush();
                                     <p><?php echo $_SESSION['nueva_reunion']; ?></p>
                                 </div>
                                 <div class="icon">
-                                <i class="far fa-calendar-plus"></i>
+                                    <i class="far fa-calendar-plus"></i>
                                 </div>
                                 <a href="../vistas/crear_reunion_vista.php" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
@@ -100,7 +101,7 @@ ob_end_flush();
                                     <p><?php echo $_SESSION['reuniones_pendientes']; ?></p>
                                 </div>
                                 <div class="icon">
-                                <i class="far fa-clock"></i>
+                                    <i class="far fa-clock"></i>
                                 </div>
                                 <a href="../vistas/reuniones_pendientes_vista.php" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
@@ -125,7 +126,7 @@ ob_end_flush();
                                     <p><?php echo $_SESSION['lista_reunion']; ?></p>
                                 </div>
                                 <div class="icon">
-                                <i class="fas fa-list-ol"></i>
+                                    <i class="fas fa-list-ol"></i>
                                 </div>
                                 <a href="../vistas/listar_reuniones_vista.php" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>

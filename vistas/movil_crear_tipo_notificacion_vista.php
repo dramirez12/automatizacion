@@ -13,7 +13,7 @@ date_default_timezone_set("America/Tegucigalpa");
 
 $Id_objeto = 167;
 
-bitacora_movil::evento_bitacora($_SESSION['id_usuario'],$Id_objeto, 'INGRESO ', 'A CREAR TIPO NOTIFICACIÓN');
+bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO ', 'A CREAR TIPO NOTIFICACIÓN');
 
 $visualizacion = permiso_ver($Id_objeto);
 if (isset($_REQUEST['msj'])) {
@@ -84,6 +84,7 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 
   <!-- Bootstrap core CSS -->
@@ -131,7 +132,7 @@ if (isset($_REQUEST['msj'])) {
       <div class="container-fluid">
         <!-- pantalla 1 -->
 
-        <form action="../Controlador/movil_guardar_tiponotificacion_controlador.php"method="POST" >
+        <form action="../Controlador/movil_guardar_tiponotificacion_controlador.php" method="POST">
 
           <div class="card card-default">
             <div class="card-header">
@@ -147,11 +148,11 @@ if (isset($_REQUEST['msj'])) {
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="descripcion"> Tipo de Notificación </label>
-                    <input autofocus class="form-control" type="text" maxlength="255" id="tio_notificacion" name="tipo_notificacion" required style="text-transform: uppercase"  onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)">
+                    <input autofocus class="form-control" type="text" maxlength="255" id="tio_notificacion" name="tipo_notificacion" required style="text-transform: uppercase" onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)">
                   </div>
                   <div class="form-group">
                     <label for="descripcion"> Descripción de la Notificación </label>
-                    <input autofocus class="form-control" type="text" maxlength="255" id="descripcion" name="descripcion" required style="text-transform: uppercase"  onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)">
+                    <input autofocus class="form-control" type="text" maxlength="255" id="descripcion" name="descripcion" required style="text-transform: uppercase" onpaste="return false" onkeypress="return Letras(event)" onkeyup="DobleEspacio(this, event)" onkeypress="return comprobar(this.value, event, this.id)">
                   </div>
                 </div>
               </div>

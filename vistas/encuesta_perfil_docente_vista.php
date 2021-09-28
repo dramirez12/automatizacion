@@ -99,6 +99,7 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
 
     <!--     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -296,7 +297,7 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
 
                                         ?>
                                     </div>
-                                   
+
 
 
                                 </div>
@@ -326,7 +327,7 @@ $row11 = $consulta11->fetch_all(MYSQLI_ASSOC);
 
                                 <div style="text-align:left">
 
-                                     <h5 style="font-weight: bold; font-size: 15px"> 4. ¿Selecciones la(s) Asignatura(s) en la que desea de impartir? </h5>
+                                    <h5 style="font-weight: bold; font-size: 15px"> 4. ¿Selecciones la(s) Asignatura(s) en la que desea de impartir? </h5>
                                     <div class="form-check">
 
                                         <?php

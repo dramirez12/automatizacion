@@ -27,9 +27,6 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LAS METAS DEL POA.');
-
-
- 
 }
 
 ob_end_flush();
@@ -40,6 +37,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
@@ -161,69 +159,72 @@ ob_end_flush();
             }
         }
     }
-    function letrasynumeros(e){
-        
-        key=e.keyCode || e.wich;
-    
-        teclado= String.fromCharCode(key).toUpperCase();
-    
-        letras= "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ1234567890";
-        
-        especiales ="8-37-38-46-164";
-    
-        teclado_especial=false;
-    
+
+    function letrasynumeros(e) {
+
+        key = e.keyCode || e.wich;
+
+        teclado = String.fromCharCode(key).toUpperCase();
+
+        letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ1234567890";
+
+        especiales = "8-37-38-46-164";
+
+        teclado_especial = false;
+
         for (var i in especiales) {
-          
-          if(key==especiales[i]){
-            teclado_especial= true;break;
-          }
+
+            if (key == especiales[i]) {
+                teclado_especial = true;
+                break;
+            }
         }
-    
-        if (letras.indexOf(teclado)==-1 && !teclado_especial) {
-          return false;
+
+        if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+            return false;
         }
-    
+
     }
-    function validate(s){
-        if (/^(\w+\s?)*\s*$/.test(s)){
-          return s.replace(/\s+$/,  '');
+
+    function validate(s) {
+        if (/^(\w+\s?)*\s*$/.test(s)) {
+            return s.replace(/\s+$/, '');
         }
         return 'NOT ALLOWED';
-        }
-        
-        validate('tes ting')      //'test ing'
-        validate('testing')       //'testing'
-        validate(' testing')      //'NOT ALLOWED'
-        validate('testing ')      //'testing'
-        validate('testing  ')     //'testing'
-        validate('testing   ')   
-
-    function solonumeros(e){
-        
-        key=e.keyCode || e.wich;
-    
-        teclado= String.fromCharCode(key).toUpperCase();
-    
-        letras= "1234567890";
-        
-        especiales ="8-37-38-46-164";
-    
-        teclado_especial=false;
-    
-        for (var i in especiales) {
-          
-          if(key==especiales[i]){
-            teclado_especial= true;break;
-          }
-        }
-    
-        if (letras.indexOf(teclado)==-1 && !teclado_especial) {
-          return false;
-        }
-    
     }
 
-  
+    validate('tes ting') //'test ing'
+    validate('testing') //'testing'
+    validate(' testing') //'NOT ALLOWED'
+    validate('testing ') //'testing'
+    validate('testing  ') //'testing'
+    validate('testing   ')
+
+    function solonumeros(e) {
+
+        key = e.keyCode || e.wich;
+
+        teclado = String.fromCharCode(key).toUpperCase();
+
+        letras = "1234567890";
+
+        especiales = "8-37-38-46-164";
+
+        teclado_especial = false;
+
+        for (var i in especiales) {
+
+            if (key == especiales[i]) {
+                teclado_especial = true;
+                break;
+            }
+        }
+
+        if (letras.indexOf(teclado) == -1 && !teclado_especial) {
+            return false;
+        }
+
+    }
 </script>
+
 </html>

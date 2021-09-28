@@ -18,7 +18,7 @@ require_once('../clases/funcion_permisos.php');
 
 
 // while ($row = $resultadocaracteristicas ->fetch_array(MYSQLI_ASSOC)) {
-  
+
 // echo ($row['id_tipo_caracteristica']); 
 
 // }
@@ -34,17 +34,17 @@ require_once('../clases/funcion_permisos.php');
 
 //$Producto=$_GET["nombre_producto"];
 //RECIBO LA VARIABLE SESSION DEL NOMBRE DEL PRODUCTO
-$producto=$_SESSION['producto_enviado'];
+$producto = $_SESSION['producto_enviado'];
 //RECIBO LOS DATOS ANTIGUOS DEL PRODUCTO
 $Array_viejo = array();
-$Array_viejo=$_SESSION['ARRAY_VIEJO'];
+$Array_viejo = $_SESSION['ARRAY_VIEJO'];
 
 //pasar esos valores del array a variables normal
-$id=$_SESSION['ARRAY_VIEJO']['id_producto'];
-$_nombreviejo=$_SESSION['ARRAY_VIEJO']['nombre_producto'];
-$_descripcionviejo=$_SESSION['ARRAY_VIEJO']['descripcion_producto'];
-$_stockviejo=$_SESSION['ARRAY_VIEJO']['stock_minimo'];
-$_tipoviejo=$_SESSION['ARRAY_VIEJO']['id_tipo_producto'];
+$id = $_SESSION['ARRAY_VIEJO']['id_producto'];
+$_nombreviejo = $_SESSION['ARRAY_VIEJO']['nombre_producto'];
+$_descripcionviejo = $_SESSION['ARRAY_VIEJO']['descripcion_producto'];
+$_stockviejo = $_SESSION['ARRAY_VIEJO']['stock_minimo'];
+$_tipoviejo = $_SESSION['ARRAY_VIEJO']['id_tipo_producto'];
 
 
 
@@ -68,10 +68,9 @@ if (isset($_REQUEST['msj'])) {
     });
 
 </script>';
-
   }
 
-  if ($msj==2) {
+  if ($msj == 2) {
 
     echo '<script type="text/javascript">
     swal({
@@ -84,12 +83,12 @@ if (isset($_REQUEST['msj'])) {
      
   </script>';
 
-   
 
-    
-$sqltabla = ("SELECT TTC.tipo_caracteristica,TTC.id_tipo_caracteristica from tbl_tipo_caracteristica TTC,tbl_caracteristicas_producto TCP,tbl_productos TP where TTC.id_tipo_caracteristica=TCP.id_tipo_caracteristica and TCP.id_producto=TP.id_producto and nombre_producto='$producto'
+
+
+    $sqltabla = ("SELECT TTC.tipo_caracteristica,TTC.id_tipo_caracteristica from tbl_tipo_caracteristica TTC,tbl_caracteristicas_producto TCP,tbl_productos TP where TTC.id_tipo_caracteristica=TCP.id_tipo_caracteristica and TCP.id_producto=TP.id_producto and nombre_producto='$producto'
 ;");
-$resultadotabla = $mysqli->query($sqltabla);
+    $resultadotabla = $mysqli->query($sqltabla);
   }
   if ($msj == 3) {
 
@@ -120,7 +119,7 @@ $resultadotabla = $mysqli->query($sqltabla);
 </script>';
   }
 
-  if($msj == 5){
+  if ($msj == 5) {
     echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -133,10 +132,9 @@ $resultadotabla = $mysqli->query($sqltabla);
                                 
 
 
-                            </script>'
-                            ;              
+                            </script>';
   }
-  if($msj == 6){
+  if ($msj == 6) {
     echo '<script type="text/javascript">
     swal({
     title:"",
@@ -145,9 +143,9 @@ $resultadotabla = $mysqli->query($sqltabla);
     showConfirmButton: false,
     timer: 3000
     });
-</script>';    
+</script>';
   }
-  if($msj == 7){
+  if ($msj == 7) {
     echo '<script type="text/javascript">
     swal({
       title:"",
@@ -156,7 +154,7 @@ $resultadotabla = $mysqli->query($sqltabla);
       showConfirmButton: false,
       timer: 3000
     });
-</script>';   
+</script>';
   }
 }
 
@@ -184,18 +182,15 @@ if ($visualizacion == 0) {
 
 
 
-  if (permisos::permiso_insertar($Id_objeto)=='1')
-  {
-   $_SESSION['btn_guardar_caracteristicas']="";
- }
- else
- {
-     $_SESSION['btn_guardar_caracteristicas']="disabled";
+  if (permisos::permiso_insertar($Id_objeto) == '1') {
+    $_SESSION['btn_guardar_caracteristicas'] = "";
+  } else {
+    $_SESSION['btn_guardar_caracteristicas'] = "disabled";
   }
 
 
-  
- /*
+
+  /*
 
   
 
@@ -209,7 +204,7 @@ if ($visualizacion == 0) {
   /* Esta condicion sirve para  verificar el valor que se esta enviando al momento de dar click en el icono modificar */
   if (isset($_GET['tipo_caracteristica'])) {
     $sqltabla = "select tipo_caracteristica FROM tbl_tipo_caracteristica";
-    
+
     $resultadotabla = $mysqli->query($sqltabla);
 
     /* Esta variable recibe el producto a modificar */
@@ -224,13 +219,13 @@ if ($visualizacion == 0) {
     $row = $resultado->fetch_array(MYSQLI_ASSOC);
 
     /* Aqui obtengo el id<-productos de la tabla de la base el cual me sirve para enviarla a la pagina actualizar.php para usarla en el where del update   */
-  
-   //         variable               viene de la BD
-   $_SESSION['id_caracteristica_'] = $row['id_caracteristica'];
+
+    //         variable               viene de la BD
+    $_SESSION['id_caracteristica_'] = $row['id_caracteristica'];
     $_SESSION['tipo_caracteristica_'] = $row['tipo_caracteristica'];
-    
-//     $_SESSION['stock_minimo_'] = $row['stock_minimo'];
-   
+
+    //     $_SESSION['stock_minimo_'] = $row['stock_minimo'];
+
 
     /*Aqui levanto el modal*/
 
@@ -269,7 +264,8 @@ ob_end_flush();
 <html>
 
 <head>
-    <title></title>
+  <script src="../js/autologout.js"></script>
+  <title></title>
 
 
 
@@ -278,149 +274,148 @@ ob_end_flush();
 <body>
 
 
-<div class="content-wrapper" id="formulariocaracteristicas">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-                           <h1>Actualización de Productos</h1>
-            </div>
+  <div class="content-wrapper" id="formulariocaracteristicas">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Actualización de Productos</h1>
+          </div>
 
-         
 
-                        <div class="col-sm-6">
-                          <ol class="breadcrumb float-sm-right">
-                            <!-- <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li> -->
-                            <!-- <li class="breadcrumb-item"><a href="../vistas/gestion_producto_vista.php">Gestión Productos</a></li> -->
 
-                            
-                          </ol>
-                        </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <!-- <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li> -->
+              <!-- <li class="breadcrumb-item"><a href="../vistas/gestion_producto_vista.php">Gestión Productos</a></li> -->
 
-            <div class="RespuestaAjax"></div>
-   
+
+            </ol>
+          </div>
+
+          <div class="RespuestaAjax"></div>
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-            <div class="container-fluid">
-  
-  
-
-              <div class="card card-default">
-                                <div class="card-header">
-                                  <h3 class="card-title">Editar Características del producto</h3>
-
-                                  <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                  </div>
-                      </div>
+      <div class="container-fluid">
 
 
 
-            <!-- /.card-header -->
-            <div class="card-body">
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title">Editar Características del producto</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+            </div>
+          </div>
+
+
+
+          <!-- /.card-header -->
+          <div class="card-body">
             <div class="row">
               <div class="col-md-12">
-              
-              <div id="formulariocaracteristicas1">
-                <form name="formularioCaracteristicas"   action="../Controlador/guardar_caracteristica_producto_controlador2.php" id="formularioCaracteristicas" class="FormularioAjax" data-form="save" method="POST" >
 
-                   
+                <div id="formulariocaracteristicas1">
+                  <form name="formularioCaracteristicas" action="../Controlador/guardar_caracteristica_producto_controlador2.php" id="formularioCaracteristicas" class="FormularioAjax" data-form="save" method="POST">
 
-                  
-                  <!-- <div class="col-sm-12"> -->
-                  <div class="form-group my-1">
+
+
+
+                    <!-- <div class="col-sm-12"> -->
+                    <div class="form-group my-1">
                       <label class="">Producto Ingresado: </label>
-                     
-                      <!-- < PROBANDOO  $_SESSION['ARRAY_VIEJO']['descripcion_producto']   *************************************""> -->
-                      <input class="form-control" value= "<?php echo $_SESSION['producto_enviado'];?>"   type="text" id="txt_nombre_oculto" name="txt_nombre_oculto" required="" maxlength="50" readonly="true" style="text-transform: uppercase; height:38px; width:858px;" onkeyup="Espacio(this, event)"  onkeypress="return Letras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
 
-                     
+                      <!-- < PROBANDOO  $_SESSION['ARRAY_VIEJO']['descripcion_producto']   *************************************""> -->
+                      <input class="form-control" value="<?php echo $_SESSION['producto_enviado']; ?>" type="text" id="txt_nombre_oculto" name="txt_nombre_oculto" required="" maxlength="50" readonly="true" style="text-transform: uppercase; height:38px; width:858px;" onkeyup="Espacio(this, event)" onkeypress="return Letras(event)" onkeypress="return comprobar(this.value, event, this.id)">
+
+
 
                     </div>
-                    
-
-                         
 
 
-                         <div class="form-group pt-3">
-                         <label>Tipo de características</label>                       
-                        </div>
-                                
 
 
-                    
-                      <div class="form-inline">
-                     
-                                                        <select class="form-control select2 mr-3" style="height:38px; width:708px;"  name="cmb_tipocaracteristicas" required="">
-                                                <option value="0"  >Seleccione un tipo de característica:</option>
-                                                <?php
-                                                $query = $mysqli -> query ("SELECT * FROM tbl_tipo_caracteristica");
-                                                while ($resultado = mysqli_fetch_array($query)) {
-                                                echo '<option value="'.$resultado['id_tipo_caracteristica'].'"> '.$resultado['tipo_caracteristica'].'</option>' ;
-                                                
-                                                }
-                                                ?>
-                                                        </select>
-                        
-                        <div class="" style="height:38px; width:358px;">
+
+                    <div class="form-group pt-3">
+                      <label>Tipo de características</label>
+                    </div>
+
+
+
+
+                    <div class="form-inline">
+
+                      <select class="form-control select2 mr-3" style="height:38px; width:708px;" name="cmb_tipocaracteristicas" required="">
+                        <option value="0">Seleccione un tipo de característica:</option>
+                        <?php
+                        $query = $mysqli->query("SELECT * FROM tbl_tipo_caracteristica");
+                        while ($resultado = mysqli_fetch_array($query)) {
+                          echo '<option value="' . $resultado['id_tipo_caracteristica'] . '"> ' . $resultado['tipo_caracteristica'] . '</option>';
+                        }
+                        ?>
+                      </select>
+
+                      <div class="" style="height:38px; width:358px;">
                         <button type="submit" class="btn btn-primary" id="btn_guardar_caracteristicas" name="btn_guardar_caracteristicas" <?php echo $_SESSION['btn_guardar_caracteristicas']; ?>><i class="zmdi zmdi-floppy"></i> Agregar</button>
-                     
-                        <button type="button" class=" ml-3  btn btn-inline btn-primary form-control" name="add" id="gcorreotel" data-toggle="modal" data-target="#modal_guardar_tipocaracteristica"><i class="fas fa-plus"></i></button>
-                       </div>
 
+                        <button type="button" class=" ml-3  btn btn-inline btn-primary form-control" name="add" id="gcorreotel" data-toggle="modal" data-target="#modal_guardar_tipocaracteristica"><i class="fas fa-plus"></i></button>
                       </div>
+
+                    </div>
                     <!-- </div> -->
 
                     <div class="RespuestaAjax"></div>
-                    
-                </form>
-                
 
-                    <div class="form-group pt-5" id="tblCaracteristicas1">
-                      <!-- /.arrastra este id para mostrar en el data -->
-                            <table width="100%" id="tblCaracteristicas" class="table table-bordered table-striped" >
-                            <thead>
-                            <tr>
-                          
-                              <th>    CARACTERÍSTICA      </th>
-                              <th>     ELIMINAR   </th>
-                                  
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                  </form>
+
+
+                  <div class="form-group pt-5" id="tblCaracteristicas1">
+                    <!-- /.arrastra este id para mostrar en el data -->
+                    <table width="100%" id="tblCaracteristicas" class="table table-bordered table-striped">
+                      <thead>
                         <tr>
-                         <td><?php echo $row['tipo_caracteristica']; ?></td>
 
-                        <!-- ELIMINAR LA CARACTERISTICA -->
-                        <td style="text-align: center;">
-                       
-                                <form action="../Controlador/eliminar_caracteristica_controlador2.php?tipo_caracteristica=<?php echo $row['tipo_caracteristica']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
-                                <button type="submit" class="btn btn-danger btn-raised btn-xs"> 
-                                <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_caracteristica'] ?> "></i>
-                                </button> 
+                          <th> CARACTERÍSTICA </th>
+                          <th> ELIMINAR </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
+                          <tr>
+                            <td><?php echo $row['tipo_caracteristica']; ?></td>
+
+                            <!-- ELIMINAR LA CARACTERISTICA -->
+                            <td style="text-align: center;">
+
+                              <form action="../Controlador/eliminar_caracteristica_controlador2.php?tipo_caracteristica=<?php echo $row['tipo_caracteristica']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
+                                <button type="submit" class="btn btn-danger btn-raised btn-xs">
+                                  <i class="far fa-trash-alt" style="display:<?php echo $_SESSION['eliminar_caracteristica'] ?> "></i>
+                                </button>
                                 <div class="RespuestaAjax"></div>
-                                </form> 
-                                </td>
-                                </tr>
-                  <?php } ?>
-                            </tbody>
-                            </table>
-                    </div>
-                    
+                              </form>
+                            </td>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
+                  </div>
 
-                    
 
- 
+
+
+
 
                   <!-- Botones para guardar y cancelar -->
-                  <div class="btn-group"  >
-                  <!-- <p class="text-center"  >
+                  <div class="btn-group">
+                    <!-- <p class="text-center"  >
                   <div class="form-group">  
                                                                                                                                                                                     
                   <form action="../Controlador/cancelar_actualizacion_caracteristicas_producto.php?id=<?php echo $id ?>&nombre=<?php echo $_nombreviejo ?>&descripcion=<?php echo $_descripcionviejo ?>&stock=<?php echo $_stockviejo ?>&tipo=<?php echo $_tipoviejo ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">                                                                            
@@ -430,21 +425,21 @@ ob_end_flush();
                   </form>
                   </div>
                   </p>  -->
-                  
-                  <p class="text-center"  >
-                  <div class="form-group"> 
-                  <form action="../Controlador/evaluar_producto_con_caracteristicas_actualizadas.php?id=<?php echo $id ?>" method="POST" class="FormularioAjax"  autocomplete="off">  
-                  <button class=" ml-3  btn btn-inline btn-primary form-control" type="submit">Guardar Cambios</button>
-                  <div class="RespuestaAjax"></div>
-                  </form>
+
+                    <p class="text-center">
+                    <div class="form-group">
+                      <form action="../Controlador/evaluar_producto_con_caracteristicas_actualizadas.php?id=<?php echo $id ?>" method="POST" class="FormularioAjax" autocomplete="off">
+                        <button class=" ml-3  btn btn-inline btn-primary form-control" type="submit">Guardar Cambios</button>
+                        <div class="RespuestaAjax"></div>
+                      </form>
+                    </div>
+                    </p>
                   </div>
-                  </p>
-                  </div>          
-                  
+
                   <!-- $Array_viejo=$_SESSION['ARRAY_VIEJO']; -->
 
 
-                   
+
 
 
 
@@ -453,35 +448,35 @@ ob_end_flush();
 
 
                   <!-- </form> -->
-              </div>
-                
+                </div>
+
 
               </div>
             </div>
           </div>
 
-</div>
+        </div>
 
 
 
-                        <!-- /.card-body -->
-                        <div class="card-footer">
+        <!-- /.card-body -->
+        <div class="card-footer">
 
-                        </div>
-                    </div>
+        </div>
+      </div>
 
 
 
-                    <div class="RespuestaAjax"></div>
-                </form>
+      <div class="RespuestaAjax"></div>
+      </form>
 
-            </div>
-        </section>
+  </div>
+  </section>
 
-    </div>
+  </div>
 
-    <!-- ****** MODAL PARA CREAR UNA NUEVA CARACTERISTICA*********** -->
-    <form action="../Controlador/GUARDAR_TIPO_CARACTERISTICA_CONTROLADOR3.PHP" method="post" class="FormularioAjx" autocomplete="off">
+  <!-- ****** MODAL PARA CREAR UNA NUEVA CARACTERISTICA*********** -->
+  <form action="../Controlador/GUARDAR_TIPO_CARACTERISTICA_CONTROLADOR3.PHP" method="post" class="FormularioAjx" autocomplete="off">
 
 
 
@@ -505,26 +500,26 @@ ob_end_flush();
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Nombre de tipo característica </label>
-                    <input class="form-control" class="tf w-input" type="text" id="txt_tipo_caracteristica1" onkeypress="return validacion_para_nombre(event)" name="txt_tipo_caracteristica1" value="" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipo_caracteristica1');"  maxlength="50">
+                    <input class="form-control" class="tf w-input" type="text" id="txt_tipo_caracteristica1" onkeypress="return validacion_para_nombre(event)" name="txt_tipo_caracteristica1" value="" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipo_caracteristica1');" maxlength="50">
                   </div>
                 </div>
               </div>
             </div>
 
-        
 
-          <div class="card-body">
+
+            <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
 
-                  <label>Tipo de dato de la Característica</label>
-                  <select class="form-control" name="cb_tipo_dato" id="cb_tipo_dato" onchange=""> 
-                  <option value="0">Seleccione una opción:</option>
-                  <option value="1">Letras</option>
-                  <option value="2">Números</option>
-                  <option value="3">Letras y Números</option>
-              </select>
+                    <label>Tipo de dato de la Característica</label>
+                    <select class="form-control" name="cb_tipo_dato" id="cb_tipo_dato" onchange="">
+                      <option value="0">Seleccione una opción:</option>
+                      <option value="1">Letras</option>
+                      <option value="2">Números</option>
+                      <option value="3">Letras y Números</option>
+                    </select>
                   </div>
 
 
@@ -533,28 +528,28 @@ ob_end_flush();
             </div>
 
 
-         
 
-          <!--Footer del modal-->
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_caracteristica" name="modal_guardar_tipocaracteristica" <?php echo $_SESSION['btn_guardar_caracteristicas']?>>Guardar Cambios</button>
-            <!-- <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_caracteristica1" name="btn_guardar_tipo_caracteristica1" <?php echo $_SESSION['btn_guardar_tipo_caracteristica1']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button> -->
-            
+
+            <!--Footer del modal-->
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_caracteristica" name="modal_guardar_tipocaracteristica" <?php echo $_SESSION['btn_guardar_caracteristicas'] ?>>Guardar Cambios</button>
+              <!-- <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_caracteristica1" name="btn_guardar_tipo_caracteristica1" <?php echo $_SESSION['btn_guardar_tipo_caracteristica1']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button> -->
+
+            </div>
           </div>
+
+          <!-- /.modal-content -->
         </div>
-       
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal-dialog -->
-    </div>
-<!-- /.  finaldel modal -->
-</form>
+      <!-- /.  finaldel modal -->
+  </form>
 
 
 
 
-    <script type="text/javascript">
+  <script type="text/javascript">
     $(function() {
 
       $('#tblCaracteristicas').DataTable({
@@ -566,9 +561,9 @@ ob_end_flush();
         "autoWidth": true,
         "responsive": true,
         "language": {
-            "url": "../plugins/lenguaje.json"
+          "url": "../plugins/lenguaje.json"
         },
-        
+
       });
     });
   </script>
@@ -586,7 +581,7 @@ ob_end_flush();
 
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-  <!-- para usar botones en datatables JS -->
+<!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

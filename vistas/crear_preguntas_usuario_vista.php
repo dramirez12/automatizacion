@@ -40,7 +40,7 @@ if (isset($_REQUEST['msj'])) {
 
   if ($msj == 1) {
 
-   
+
     echo '<script>  
       swal(
       "Alerta!",
@@ -49,7 +49,7 @@ if (isset($_REQUEST['msj'])) {
     );</script>';
   }
   if ($msj == 2) {
-    
+
     echo '<script> 
       swal(
       "Alerta!",
@@ -59,7 +59,7 @@ if (isset($_REQUEST['msj'])) {
   }
 
   if ($msj == 4) {
-    
+
     echo '<script>
       swal(
       "Alerta!",
@@ -78,10 +78,10 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
-  
+  <script src="../js/autologout.js"></script>
   <title>Informatica Admistrativa</title>
   <!-- Tell the browser to be responsive to screen width -->
- 
+
 </head>
 
 <body class="hold-transition login-page">

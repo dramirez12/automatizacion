@@ -47,23 +47,18 @@ if ($visualizacion == 0) {
     } else {
         $_SESSION['btn_guardar_tipo_caracteristica'] = "disabled";
     }
-    
 
- if (isset($_REQUEST['msj']))
- {
-      $msj=$_REQUEST['msj'];
-        if ($msj==1)
-            {
+
+    if (isset($_REQUEST['msj'])) {
+        $msj = $_REQUEST['msj'];
+        if ($msj == 1) {
             echo '<script> alert("Lo sentimos la característica a ingresar ya existe favor intenta con una nueva")</script>';
-            }
-   
-               if ($msj==2)
-                  {
-                  echo '<script> alert("Característica agregada correctamente")</script>';
-                  }
- }
+        }
 
-
+        if ($msj == 2) {
+            echo '<script> alert("Característica agregada correctamente")</script>';
+        }
+    }
 }
 
 
@@ -77,6 +72,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -136,28 +132,28 @@ ob_end_flush();
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label>Ingrese el Tipo de Característica</label>
-                                        <input class="form-control " class="tf w-input"  type="text" id="txt_tipo_caracteristica1" onkeypress="return validacion_para_nombre(event)" name="txt_tipo_caracteristica1" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipo_caracteristica1');" >
+                                        <input class="form-control " class="tf w-input" type="text" id="txt_tipo_caracteristica1" onkeypress="return validacion_para_nombre(event)" name="txt_tipo_caracteristica1" required="" maxlength="50" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipo_caracteristica1');">
 
                                     </div>
 
                                     <!-- <div class="col-sm-4"> -->
                                     <div class="form-group">
-                                    <label>Tipo de dato de la Característica</label>
-                                        <select class="form-control" name="cb_tipo_dato" id="cb_tipo_dato" onchange=""> 
-                                        <option value="0">Seleccione una opción:</option>
-                                        <option value="1">Letras</option>
-                                        <option value="2">Números</option>
-                                        <option value="3">Letras y Números</option>
-                                    </select>
+                                        <label>Tipo de dato de la Característica</label>
+                                        <select class="form-control" name="cb_tipo_dato" id="cb_tipo_dato" onchange="">
+                                            <option value="0">Seleccione una opción:</option>
+                                            <option value="1">Letras</option>
+                                            <option value="2">Números</option>
+                                            <option value="3">Letras y Números</option>
+                                        </select>
                                     </div>
                                     <!-- </div> -->
 
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                    <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_caracteristica" name="btn_guardar_tipo_caracteristica" <?php echo $_SESSION['btn_guardar_tipo_caracteristica']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
-                                    <a href="../vistas/mantenimiento_tipo_caracteristica_vista.php" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>  
+                                        <button type="submit" class="btn btn-primary" id="btn_guardar_tipo_caracteristica" name="btn_guardar_tipo_caracteristica" <?php echo $_SESSION['btn_guardar_tipo_caracteristica']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                        <a href="../vistas/mantenimiento_tipo_caracteristica_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
 
-                                       
+
                                     </p>
                                 </div>
                             </div>
@@ -188,4 +184,4 @@ ob_end_flush();
 </body>
 
 </html>
-  <script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script>
+<script type="text/javascript" src="../js/validaciones_gestion_laboratorio.js"></script>

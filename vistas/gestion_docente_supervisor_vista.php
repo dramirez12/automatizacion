@@ -12,6 +12,9 @@ require_once('../clases/funcion_permisos.php');
 ob_end_flush();
 ?>
 
+<head>
+  <script src="../js/autologout.js"></script>
+</head>
 <div class="content-wrapper">
   <section class="content-header">
     <div class="container-fluid">

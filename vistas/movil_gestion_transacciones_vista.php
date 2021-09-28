@@ -32,7 +32,7 @@ if ($visualizacion == 0) {
 // /* Esta condicion sirve para  verificar el valor que se esta enviando al momento de dar click en el icono modicar */
 if (isset($_GET['id'])) {
   $sql_transacciones = "SELECT * FROM tbl_movil_transacciones";
-  $resultado_transacciones= $mysqli->query($sql_transacciones);
+  $resultado_transacciones = $mysqli->query($sql_transacciones);
 
   $id = $_GET['id'];
   //  /* Hace un select para mandar a traer todos los datos de la 
@@ -121,6 +121,7 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
 
@@ -147,61 +148,67 @@ if (isset($_REQUEST['msj'])) {
     <div class="card card-default">
       <div class="card-header">
         <div class="card-tools">
-         
+
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
-        <div class="dt-buttons btn-group"><button class="btn btn-secondary buttons-pdf buttons-html5 btn-danger" tabindex="0" aria-controls="tabla2" type="button" id= "GenerarReporte"title="Exportar a PDF"><span><i class="fas fa-file-pdf"></i> </span> </button> </div>
-        
-      <div class="col-md-3"></div>
-      <label> Fecha Desde: </label>
-      <input type="date" class="form-control" placeholder="Start"  name="date1" id="inicio"/>
-      <label> Hasta:  </label>
-      <input type="date" class="form-control" placeholder="End"  name="date2" id="final"/>
-      <button class="btn btn-primary" name="search" onclick="readProducts();"><span class="glyphicon .glyphicon-search"></span>buscar</button> <a href="../vistas/movil_gestion_transacciones_vista.php" type="button" class="btn btn-success"><span class = "glyphicon glyphicon-refresh"><span>actualizar</a>
- <!--buscador-->
- <div class="float-right mt-5 ml-5">
+        <div class="dt-buttons btn-group"><button class="btn btn-secondary buttons-pdf buttons-html5 btn-danger" tabindex="0" aria-controls="tabla2" type="button" id="GenerarReporte" title="Exportar a PDF"><span><i class="fas fa-file-pdf"></i> </span> </button> </div>
+
+        <div class="col-md-3"></div>
+        <label> Fecha Desde: </label>
+        <input type="date" class="form-control" placeholder="Start" name="date1" id="inicio" />
+        <label> Hasta: </label>
+        <input type="date" class="form-control" placeholder="End" name="date2" id="final" />
+        <button class="btn btn-primary" name="search" onclick="readProducts();"><span class="glyphicon .glyphicon-search"></span>buscar</button> <a href="../vistas/movil_gestion_transacciones_vista.php" type="button" class="btn btn-success"><span class="glyphicon glyphicon-refresh"><span>actualizar</a>
+        <!--buscador-->
+        <div class="float-right mt-5 ml-5">
           <input class="form-control" placeholder="Buscar..." type="text" id="buscartext" name="buscar" onpaste="return false" onkeyup="leer(this.value)">
         </div>
-    
+
         <div class="card-body" id="Transacciones">
-        
+
         </div><!-- /.card-body -->
+      </div>
     </div>
-  </div>
 
 
-  <script type="text/javascript">
-     function readProducts() {
-      var fecha1 = document.getElementById('inicio').value;
-      var fecha2 = document.getElementById('final').value;
-      var parametro = {'inicio':fecha1,'final':fecha2}
-      $.ajax({
-        data: parametro, //datos que se envian a traves de ajax
-        url: '../Controlador/movil_listar_transacciones_controlador.php', //archivo que recibe la peticion
-        type: 'POST', //método de envio
-        beforeSend: function() {
-          $('#Transacciones').html("Procesando, espere por favor...");
-        },
-        success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-          $('#Transacciones').html(response);
+    <script type="text/javascript">
+      function readProducts() {
+        var fecha1 = document.getElementById('inicio').value;
+        var fecha2 = document.getElementById('final').value;
+        var parametro = {
+          'inicio': fecha1,
+          'final': fecha2
         }
-      });
-    }
-    function leer(buscar){
-      var parametro = {"buscar":buscar}
-      $.ajax({
-        data: parametro, //datos que se envian a traves de ajax
-        url: '../Controlador/movil_listar_transacciones_controlador.php', //archivo que recibe la peticion
-        type: 'POST', //método de envio
-        beforeSend: function() {
-          $('#Transacciones').html("Procesando, espere por favor...");
-        },
-        success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-          $('#Transacciones').html(response);
+        $.ajax({
+          data: parametro, //datos que se envian a traves de ajax
+          url: '../Controlador/movil_listar_transacciones_controlador.php', //archivo que recibe la peticion
+          type: 'POST', //método de envio
+          beforeSend: function() {
+            $('#Transacciones').html("Procesando, espere por favor...");
+          },
+          success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            $('#Transacciones').html(response);
+          }
+        });
+      }
+
+      function leer(buscar) {
+        var parametro = {
+          "buscar": buscar
         }
-      });
-    }
- </script>
+        $.ajax({
+          data: parametro, //datos que se envian a traves de ajax
+          url: '../Controlador/movil_listar_transacciones_controlador.php', //archivo que recibe la peticion
+          type: 'POST', //método de envio
+          beforeSend: function() {
+            $('#Transacciones').html("Procesando, espere por favor...");
+          },
+          success: function(response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            $('#Transacciones').html(response);
+          }
+        });
+      }
+    </script>
 </body>
 
 </html>

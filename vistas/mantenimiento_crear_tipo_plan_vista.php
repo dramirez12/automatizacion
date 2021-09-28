@@ -61,6 +61,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -130,7 +131,7 @@ ob_end_flush();
                                 <div class="col-md-4">
                                     <div class="form-group ">
                                         <label>Nombre</label>
-                                        <input class="form-control" type="text" id="tipo_plan" name="tipo_plan" maxlength="25" value=""  onkeyup="DobleEspacio(this, event); MismaLetra('tipo_plan');"  required>
+                                        <input class="form-control" type="text" id="tipo_plan" name="tipo_plan" maxlength="25" value="" onkeyup="DobleEspacio(this, event); MismaLetra('tipo_plan');" required>
                                     </div>
 
 

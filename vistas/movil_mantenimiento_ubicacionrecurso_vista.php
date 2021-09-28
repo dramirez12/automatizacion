@@ -118,7 +118,9 @@ if (isset($_REQUEST['msj'])) {
 
 <!DOCTYPE html>
 <html>
+
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
 
@@ -148,7 +150,7 @@ if (isset($_REQUEST['msj'])) {
 
     <div class="card card-default">
       <div class="card-header">
-          <a class="btn btn-primary btn-xs" href="#">Nuevo</a>
+        <a class="btn btn-primary btn-xs" href="#">Nuevo</a>
       </div>
       <!-- /.card-header -->
       <div class="card-body">
@@ -169,7 +171,7 @@ if (isset($_REQUEST['msj'])) {
               <tr>
                 <td><?php echo $segmento['']; ?></td>
                 <td><?php echo $segmento['']; ?></td>
-              
+
                 <td style="text-align: center;">
 
                   <a href="../vistas/movil_gestion_segmentos_vista.php?&id=<?php echo $segmento['id']; ?>" class="btn btn-primary btn-raised btn-xs">
@@ -194,7 +196,7 @@ if (isset($_REQUEST['msj'])) {
         </table>
       </div>
       <!-- /.card-body -->
-    </div> 
+    </div>
 
     <!-- /.card-body -->
     <div class="card-footer">
@@ -276,8 +278,8 @@ if (isset($_REQUEST['msj'])) {
         "autoWidth": true,
         "responsive": true,
         "language": {
-      "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-    }
+          "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        }
       });
     });
   </script>

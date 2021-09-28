@@ -76,6 +76,7 @@ if (permiso_ver('82') == '1') {
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -110,7 +111,7 @@ if (permiso_ver('82') == '1') {
 
             <div class="card card-default">
                 <div class="card-header">
-                   
+
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -331,7 +332,7 @@ if (permiso_ver('82') == '1') {
 
 
                             <!-- /.info-box -->
-                          
+
 
                             <!-- /.form-group -->
                         </div>

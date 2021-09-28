@@ -49,6 +49,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -120,24 +121,24 @@ ob_end_flush();
                                 <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
 
 
-                               
-                                    <div class="table-responsive" style="width: auto;">
-                                        <table id="tabla1_historial_plan" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
 
-                                                    <th>Nombre</th>
-                                                    <th>Codigo</th>
-                                                    <th>Numero de Clases</th>
-                                                    <th>Fecha Creacion</th>
-                                                    <th>Vigente</th>
-                                                    <th>Acción</th>
+                                <div class="table-responsive" style="width: auto;">
+                                    <table id="tabla1_historial_plan" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
 
-                                                </tr>
-                                            </thead>
-                                        </table>
+                                                <th>Nombre</th>
+                                                <th>Codigo</th>
+                                                <th>Numero de Clases</th>
+                                                <th>Fecha Creacion</th>
+                                                <th>Vigente</th>
+                                                <th>Acción</th>
 
-                                    </div>
+                                            </tr>
+                                        </thead>
+                                    </table>
+
+                                </div>
 
 
 
@@ -178,37 +179,37 @@ ob_end_flush();
 
                                     <div class=" px-12">
                                         <form method="post" action="../Controlador/reporte_carga_gestion_controlador.php">
-<!--                                             <button disabled class="btn btn-success " id="pdf"> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;">Exportar a PDF</a> </button>
- -->                                            <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
+                                            <!--                                             <button disabled class="btn btn-success " id="pdf"> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;">Exportar a PDF</a> </button>
+ --> <input type="text" class="form-control" id="txt_count1" name="txt_count1" readonly hidden>
 
                                         </form>
                                     </div>
                                 </div>
                                 <br>
 
-                                
-                                    <div class="table-responsive" style="width: auto;">
-                                        <table id="tabla3_historial_plan" class="table table-bordered table-striped">
-                                            <thead class= "thead-dark">
-                                                <tr>
 
-                                                    <th >Periodo</th>
-                                                    <th >Asignatura</th>
-                                                    <th >Codigo</th> 
-                                                    <th >UV</th>
-                                                    <th >Requisitos</th>
-                                                    <th >Equivalencia</th>
-                                                    <th >Sílabo</th>
+                                <div class="table-responsive" style="width: auto;">
+                                    <table id="tabla3_historial_plan" class="table table-bordered table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
 
-                                                </tr>
-                                            </thead>
-                                        </table>
+                                                <th>Periodo</th>
+                                                <th>Asignatura</th>
+                                                <th>Codigo</th>
+                                                <th>UV</th>
+                                                <th>Requisitos</th>
+                                                <th>Equivalencia</th>
+                                                <th>Sílabo</th>
 
-                                    </div>
+                                            </tr>
+                                        </thead>
+                                    </table>
+
+                                </div>
 
 
 
-                                
+
                             </div>
 
                         </div>
@@ -221,20 +222,20 @@ ob_end_flush();
             </section>
             <!--Modal para correo-->
             <div class="modal fade" tabindex="-1" role="dialog" id="Modalsilabo">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                           
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
 
-                                            <div class="modal-body">
 
-                                            <button class="btn btn-info " id="descargar_curriculum" name=""> <a href="" target="_blank" id="curriculum" style="color:white;font-weight: bold;">Descargar Sílabo</a></button>
+                        <div class="modal-body">
 
-                                            </div>
+                            <button class="btn btn-info " id="descargar_curriculum" name=""> <a href="" target="_blank" id="curriculum" style="color:white;font-weight: bold;">Descargar Sílabo</a></button>
 
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
 
         </div>
 

@@ -154,6 +154,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 </head>
 
@@ -374,7 +375,6 @@ ob_end_flush();
 
       $("#txt_jornada").val(id_tipo_periodo);
     });
-
   </script>
 
   <script type="text/javascript">

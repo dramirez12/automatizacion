@@ -30,6 +30,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -70,7 +71,7 @@ ob_end_flush();
                                     <p><?php echo $_SESSION['actas_pendientes']; ?></p>
                                 </div>
                                 <div class="icon">
-                                <i class="far fa-clock"></i>
+                                    <i class="far fa-clock"></i>
                                 </div>
                                 <a href="../vistas/actas_pendientes_vista.php" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>

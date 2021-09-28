@@ -37,6 +37,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <title></title>
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
@@ -241,8 +242,8 @@ ob_end_flush();
 
     <script src="../js/newIndicador.js"></script>
     <script type="text/javascript">
-    //esto hasta 
-    var currentdate = new Date();
+        //esto hasta 
+        var currentdate = new Date();
         var datetime = "Fecha: " + currentdate.getDate() + "/" +
             (currentdate.getMonth() + 1) + "/" +
             currentdate.getFullYear() + " Hora " +

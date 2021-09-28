@@ -61,6 +61,7 @@ ob_end_flush();
 <html>
 
 <head>
+    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -134,7 +135,7 @@ ob_end_flush();
                                             <option value="">Seleccione una opción</option>
                                         </select>
                                     </div>
-                                    <input hidden class="form-control"  id="carrera1" name="carrera1" value="0" readonly>
+                                    <input hidden class="form-control" id="carrera1" name="carrera1" value="0" readonly>
 
 
 
@@ -214,31 +215,31 @@ ob_end_flush();
     }
 
     // llenar select nombre de plan
-function llenar_carrera() {
-  var cadena = "&activar=activar";
-  $.ajax({
-    url: "../Controlador/plan_estudio_controlador.php?op=carreras",
-    type: "POST",
-    data: cadena,
-    success: function (r) {
-      $("#cbm_carrera").html(r).fadeIn();
-      var o = new Option("SELECCIONAR", 0);
-      
+    function llenar_carrera() {
+        var cadena = "&activar=activar";
+        $.ajax({
+            url: "../Controlador/plan_estudio_controlador.php?op=carreras",
+            type: "POST",
+            data: cadena,
+            success: function(r) {
+                $("#cbm_carrera").html(r).fadeIn();
+                var o = new Option("SELECCIONAR", 0);
 
-      $("#cbm_carrera").append(o);
-      $("#cbm_carrera").val(0);
-      
-    },
-  });
-}
-llenar_carrera();
-$('#cbm_carrera').change(function() {
-	var carrera = $(this).val();
-	console.log(carrera);
-    $('#carrera1').val(carrera);
-    if (carrera == 0) {
-    alert("Seleccione una opción válida");
-    document.getElementById("cbm_carrera").value = "";
-  }
-});
+
+                $("#cbm_carrera").append(o);
+                $("#cbm_carrera").val(0);
+
+            },
+        });
+    }
+    llenar_carrera();
+    $('#cbm_carrera').change(function() {
+        var carrera = $(this).val();
+        console.log(carrera);
+        $('#carrera1').val(carrera);
+        if (carrera == 0) {
+            alert("Seleccione una opción válida");
+            document.getElementById("cbm_carrera").value = "";
+        }
+    });
 </script>

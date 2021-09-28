@@ -67,7 +67,7 @@ ob_end_flush();
 <html>
 
 <head>
-
+    <script src="../js/autologout.js"></script>
 
 </head>
 

@@ -3,32 +3,31 @@
 ob_start();
 
 
-  session_start();
-require_once ('../vistas/pagina_inicio_vista.php');
-require_once ('../clases/Conexion.php');
-require_once ('../clases/funcion_bitacora.php');
-require_once ('../clases/funcion_visualizar.php');
-require_once ('../clases/funcion_permisos.php');
-
-
- 
-
-
-        $Id_objeto=5 ;
-
-  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'Ingreso' , 'A Crear roles');
+session_start();
+require_once('../vistas/pagina_inicio_vista.php');
+require_once('../clases/Conexion.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_permisos.php');
 
 
 
-$visualizacion= permiso_ver($Id_objeto);
+
+
+$Id_objeto = 5;
+
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Crear roles');
 
 
 
-if ($visualizacion==0)
- {
-//header('location:  ../vistas/menu_roles_vista.php');
+$visualizacion = permiso_ver($Id_objeto);
 
-    echo '<script type="text/javascript">
+
+
+if ($visualizacion == 0) {
+  //header('location:  ../vistas/menu_roles_vista.php');
+
+  echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -39,27 +38,19 @@ if ($visualizacion==0)
                            window.location = "../vistas/menu_roles_vista.php";
 
                             </script>';
-  
-}
-
-else
-
-{ 
-      
+} else {
 
 
 
 
 
-if (permisos::permiso_insertar($Id_objeto)=='1')
- {
-  $_SESSION['btn_guardar_roles']="";
-}
-else
-{
-    $_SESSION['btn_guardar_roles']="disabled";
- }
-/*
+
+  if (permisos::permiso_insertar($Id_objeto) == '1') {
+    $_SESSION['btn_guardar_roles'] = "";
+  } else {
+    $_SESSION['btn_guardar_roles'] = "disabled";
+  }
+  /*
 
  if (isset($_REQUEST['msj']))
  {
@@ -76,29 +67,30 @@ else
  }
 
 */
- 
 }
 
 
 ob_end_flush();
 
 
- ?>
+?>
 
 
 <!DOCTYPE html>
 <html>
+
 <head>
+  <script src="../js/autologout.js"></script>
   <title></title>
 
 
 
 </head>
 
-<body >
+<body>
 
 
-    <div class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -109,7 +101,7 @@ ob_end_flush();
             <h1>Roles</h1>
           </div>
 
-         
+
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -118,80 +110,81 @@ ob_end_flush();
             </ol>
           </div>
 
-            <div class="RespuestaAjax"></div>
-   
+          <div class="RespuestaAjax"></div>
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-            <div class="container-fluid">
-  <!-- pantalla 1 -->
-      
-  <form action="../Controlador/guardar_rol_controlador.php" method="post"  data-form="save" class="FormularioAjax" autocomplete="off">
+      <div class="container-fluid">
+        <!-- pantalla 1 -->
 
- <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Nuevo Rol</h3>
+        <form action="../Controlador/guardar_rol_controlador.php" method="post" data-form="save" class="FormularioAjax" autocomplete="off">
 
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-            </div>
-          </div>
+          <div class="card card-default">
+            <div class="card-header">
+              <h3 class="card-title">Nuevo Rol</h3>
 
-
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Ingrese el Rol</label>
-                    <input class="form-control" type="text" id="txt_rol" name="txt_rol" required="" maxlength="30" style="text-transform: uppercase" onkeyup="Espacio(this, event)"  onkeypress="return Letras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
-                </div>
-
-                <div class="form-group">
-                  <label>Descripcion</label>
-                    <input class="form-control" type="text" id="txt_descripcionrol" name="txt_descripcionrol" required="" maxlength="30"style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)"  onkeypress="return Letras(event)"  onkeypress="return comprobar(this.value, event, this.id)">
-                </div>
-
-                <div class="form-group clearfix">
-                      <div class="icheck-success d-inline">
-                        <input type="checkbox"  id="txt_checkboxactivo" name="txt_checkboxactivo" value="true">
-                        <label for="txt_checkboxactivo">Activo
-                        </label>
-                      </div>
-                </div>
-
-              <p class="text-center" style="margin-top: 20px;">
-                <button type="submit" class="btn btn-primary" id="btn_guardar_roles" name="btn_guardar_roles" <?php echo $_SESSION['btn_guardar_roles']; ?>  ><i class="zmdi zmdi-floppy"></i> Guardar</button>
-              </p>
-
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
               </div>
             </div>
+
+
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Ingrese el Rol</label>
+                    <input class="form-control" type="text" id="txt_rol" name="txt_rol" required="" maxlength="30" style="text-transform: uppercase" onkeyup="Espacio(this, event)" onkeypress="return Letras(event)" onkeypress="return comprobar(this.value, event, this.id)">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripcion</label>
+                    <input class="form-control" type="text" id="txt_descripcionrol" name="txt_descripcionrol" required="" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event)" onkeypress="return Letras(event)" onkeypress="return comprobar(this.value, event, this.id)">
+                  </div>
+
+                  <div class="form-group clearfix">
+                    <div class="icheck-success d-inline">
+                      <input type="checkbox" id="txt_checkboxactivo" name="txt_checkboxactivo" value="true">
+                      <label for="txt_checkboxactivo">Activo
+                      </label>
+                    </div>
+                  </div>
+
+                  <p class="text-center" style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary" id="btn_guardar_roles" name="btn_guardar_roles" <?php echo $_SESSION['btn_guardar_roles']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- /.card-body -->
+            <div class="card-footer">
+
+            </div>
           </div>
 
 
 
-          <!-- /.card-body -->
-          <div class="card-footer">
-            
-          </div>
-        </div>
-         
-         
-    
-    <div class="RespuestaAjax"></div>
-</form>
-           
-</div>
-</section>
+          <div class="RespuestaAjax"></div>
+        </form>
 
-</div>
+      </div>
+    </section>
+
+  </div>
 
 
 
 
-  
+
 </body>
+
 </html>

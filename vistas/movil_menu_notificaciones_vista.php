@@ -25,7 +25,7 @@ if ($visualizacion == 0) {
 
    </script>';
 } else {
-  bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto,'INGRESO','A MENU NOTIFICACIONES');
+  bitacora_movil::evento_bitacora($_SESSION['id_usuario'], $Id_objeto, 'INGRESO', 'A MENU NOTIFICACIONES');
 }
 if (permiso_ver('181') == '1') {
 
@@ -55,6 +55,7 @@ if (permiso_ver('169') == '1') {
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">

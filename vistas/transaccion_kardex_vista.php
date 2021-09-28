@@ -129,6 +129,7 @@ ob_end_flush();
 <html>
 
 <head>
+  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
   <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
 </head>
@@ -266,22 +267,21 @@ ob_end_flush();
                       <?php
 
 
-                              $modelo=new respuesta();
-                              $query=$modelo->transaccion();
+                      $modelo = new respuesta();
+                      $query = $modelo->transaccion();
 
-                              // $servidor= "localhost";
-                              // $usuario= "root";
-                              // $password = "";
-                              // $base= "informat_desarrollo_automatizacion";
+                      // $servidor= "localhost";
+                      // $usuario= "root";
+                      // $password = "";
+                      // $base= "informat_desarrollo_automatizacion";
 
-                              // $mysqli2 = new mysqli($servidor,$usuario,$password,$base);
+                      // $mysqli2 = new mysqli($servidor,$usuario,$password,$base);
 
-                              // $query = $mysqli2->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
-                              while ($resultado = mysqli_fetch_array($query)) {
-                              echo '<option value="'.$resultado['id_producto'].'"> '.$resultado['nombre_producto'].'</option>' ;
-
-                              }
-                     ?>
+                      // $query = $mysqli2->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
+                      while ($resultado = mysqli_fetch_array($query)) {
+                        echo '<option value="' . $resultado['id_producto'] . '"> ' . $resultado['nombre_producto'] . '</option>';
+                      }
+                      ?>
                     </select>
 
 
