@@ -96,7 +96,9 @@ if ($visualizacion == 0) {
 WHEN 0 THEN 'Inactivo'
 WHEN 1 THEN 'Activo'
 WHEN 2 THEN 'Nuevo'
-END as Estado  , u.Usuario 
+END as Estado  , u.Usuario ,
+(SELECT CONCAT(p.nombres,' ', p.apellidos) FROM tbl_personas p, tbl_usuarios usu 
+WHERE p.id_persona=u.id_persona  LIMIT 1) AS persona
 from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol ";
   $resultadotabla_usuario = $mysqli->query($sqltabla_usuario);
 
@@ -218,6 +220,7 @@ ob_end_flush();
           <thead>
             <tr>
               <th>USUARIO</th>
+              <th>PERSONA</th>
               <th>ROL</th>
               <th>ESTADO</th>
 
@@ -229,6 +232,7 @@ ob_end_flush();
             <?php while ($row = $resultadotabla_usuario->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
                 <td><?php echo $row['Usuario']; ?></td>
+                <td><?php echo $row['persona']; ?></td>
                 <td><?php echo $row['Rol']; ?></td>
 
                 <td><?php echo $row['Estado']; ?></td>
