@@ -1,39 +1,49 @@
 //Inactividad sesion
 
 
-$(function() {
+$(function()
+{
 
-    function timeChecker() {
-        setInterval(function() {
-            var storedTimeStamp = sessionStorage.getItem("lastTimeStamp");
+    function timeChecker()
+    {
+        setInterval(function()
+        {
+            var storedTimeStamp = sessionStorage.getItem("lastTimeStamp");  
             timeCompare(storedTimeStamp);
-        }, 45000);
+        },30000);
     }
 
 
-    function timeCompare(timeString) {
-        var maxMinutes = 10; //GREATER THEN 1 MIN.
+    function timeCompare(timeString)
+    {
+        var maxMinutes  = 1;  //GREATER THEN 1 MIN.
         var currentTime = new Date();
-        var pastTime = new Date(timeString);
-        var timeDiff = currentTime - pastTime;
-        var minPast = Math.floor(timeDiff / 600000);
+        var pastTime    = new Date(timeString);
+        var timeDiff    = currentTime - pastTime;
+        var minPast     = Math.floor( (timeDiff/60000) ); 
 
-        if (minPast > maxMinutes) {
+        if( minPast > maxMinutes)
+        {
             sessionStorage.removeItem("lastTimeStamp");
             window.location = "../vistas/cerrar_sesion.php";
             return false;
-        } else {
+        }else
+        {
             //JUST ADDED AS A VISUAL CONFIRMATION
-            /*   console.log(currentTime +" - "+ pastTime+" - "+minPast+" min past"); */
+          /*   console.log(currentTime +" - "+ pastTime+" - "+minPast+" min past"); */
         }
     }
 
-    if (typeof(Storage) !== "undefined") {
-        $(document).mousemove(function() {
+    if(typeof(Storage) !== "undefined") 
+    {
+        $(document).mousemove(function()
+        {
             var timeStamp = new Date();
-            sessionStorage.setItem("lastTimeStamp", timeStamp);
+            sessionStorage.setItem("lastTimeStamp",timeStamp);
         });
 
         timeChecker();
-    }
-}); //END JQUERY
+    }  
+});//END JQUERY
+
+
