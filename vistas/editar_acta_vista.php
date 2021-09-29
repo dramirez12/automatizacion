@@ -294,7 +294,7 @@ ob_end_flush();
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="archivos" role="tabpanel" aria-labelledby="archivos-tab">
-                                    <div class="card card-danger">
+                                    <div class="card card-success">
                                         <div class="card-header">
                                             <h3 class="card-title">Adjuntar Archivos</h3>
                                         </div>
@@ -310,48 +310,60 @@ ob_end_flush();
                                         ?>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="archivo_acta">Archivo:</label>
-                                                <input style="background-color: #FFC107; border: 0;" class="form-control" type="file" id="archivo_acta" multiple name="archivo_acta[]" accept="<?php echo $aceptados['Valor']; ?>">
+                                                <label for="archivo_acta">Subir Archivo:</label>
                                                 <div style="border: 0;" class="alert alert-warning alert-dismissable">
                                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                     <strong><i class="fas fa-upload fa-2x"></i>⠀⠀Añada el archivo aqui para subir</strong>
+                                                    <input style="background-color: #FFC107; border: 0;" class="form-control" type="file" id="archivo_acta" multiple name="archivo_acta[]" accept="<?php echo $aceptados['Valor']; ?>">
                                                 </div>
+                                                <div style="border: 0;" class="alert alert-dark alert-dismissable">
+                                                    <strong><i class="fas fa-cloud-upload-alt fa-2x"></i>⠀Vista previa archivos para subir:</strong>
+                                                    <ul name="listing" id="listing"></ul>
+                                                    <input class="btn btn-danger" type="button" onclick="limpiar()" value="Limpiar" />
+                                                </div>
+
                                             </div>
 
-                                            <div class="col-md-8">
-                                                <table class="table table-bordered table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Nombre Archivo</th>
-                                                            <th>Formato</th>
-                                                            <th>Accion</th>
-                                                        </tr>
-                                                    </thead>
-
-                                                    <body>
-                                                        <?php
-                                                        try {
-                                                            $sql = "SELECT  id_recursos,id_acta,url, formato, nombre FROM tbl_acta_recursos WHERE id_acta = $id";
-                                                            $resultado = $mysqli->query($sql);
-                                                        } catch (Exception $e) {
-                                                            $error = $e->getMessage();
-                                                            echo $error;
-                                                        }
-                                                        while ($estadoacta = $resultado->fetch_assoc()) { ?>
+                                            <div class="col-md-12">
+                                                <div style="border: 0;" class=" alert-dismissable">
+                                                    <strong><i class="far fa-save fa-2x"></i>⠀Archivos Guardados:</strong>
+                                                    <br>
+                                                    <br>
+                                                    <table id="tablaa" class="table table-bordered table-striped">
+                                                        <thead>
                                                             <tr>
-                                                                <td>
-                                                                    <label for="<?php echo $estadoacta['nombre']; ?>">
-                                                                        <a target="_blank" href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?>"><?php echo $estadoacta['nombre']; ?></a>
-                                                                    </label>
-                                                                </td>
-                                                                <td>
-                                                                    <?php echo $estadoacta['formato']; ?>
-                                                                </td>
-                                                                <td><a href="#" data-id="<?php echo $estadoacta['id_recursos']; ?>" data-tipo="acta" class="borrar_recursoacta btn btn-danger">Borrar</a></td>
+                                                                <th>Nombre Archivo</th>
+                                                                <th>Formato</th>
+                                                                <th>Accion</th>
                                                             </tr>
-                                                        <?php  }  ?>
-                                                    </body>
-                                                </table>
+                                                        </thead>
+
+                                                        <body>
+                                                            <?php
+                                                            try {
+                                                                $sql = "SELECT  id_recursos,id_acta,url, formato, nombre FROM tbl_acta_recursos WHERE id_acta = $id";
+                                                                $resultado = $mysqli->query($sql);
+                                                            } catch (Exception $e) {
+                                                                $error = $e->getMessage();
+                                                                echo $error;
+                                                            }
+                                                            while ($estadoacta = $resultado->fetch_assoc()) { ?>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for="<?php echo $estadoacta['nombre']; ?>">
+                                                                            <a target="_blank" href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?>"><?php echo $estadoacta['nombre']; ?></a>
+                                                                        </label>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $estadoacta['formato']; ?>
+                                                                    </td>
+                                                                    <td><a href="#" data-id="<?php echo $estadoacta['id_recursos']; ?>" data-tipo="acta" class="borrar_recursoacta btn btn-danger">Borrar</a></td>
+                                                                </tr>
+                                                            <?php  }  ?>
+                                                        </body>
+                                                    </table>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -369,7 +381,25 @@ ob_end_flush();
     </div>
     <!-- /.content-wrapper -->
     </div>
+
     <script type="text/javascript">
+        document.getElementById("archivo_acta").addEventListener("change", function(event) {
+            let output = document.getElementById("listing");
+            let files = event.target.files;
+
+            for (let i = 0; i < files.length; i++) {
+                let item = document.createElement("li");
+                item.innerHTML = "<b>NOMBRE:⠀</b>" + files[i].name + "<div class='progress'><div class='progress-bar' role='progressbar' aria-valuenow='100'  aria-valuemin='0' aria-valuemax='100' style='width:100%'>100%</div></div>";
+                output.appendChild(item);
+
+            };
+        }, false);
+
+        function limpiar() {
+            archivo_acta.value = '';
+            $(listing).empty();
+        }
+
         function mayus(e) {
             e.value = e.value.toUpperCase();
         }
@@ -387,6 +417,35 @@ ob_end_flush();
                 "info": true,
                 "autoWidth": true,
                 "responsive": true,
+            });
+        });
+        $(function() {
+            $('#tablaa').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": true,
+                language: {
+                    decimal: "",
+                    emptyTable: "No hay archivos guardados",
+                    info: "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    infoEmpty: "Mostrando 0 to 0 of 0 Entradas",
+                    infoFiltered: "(Filtrado de _MAX_ total entradas)",
+                    lengthMenu: "Mostrar _MENU_ Entradas",
+                    loadingRecords: "Cargando...",
+                    processing: "Procesando...",
+                    search: "Buscar:",
+                    zeroRecords: "Sin resultados encontrados",
+                    paginate: {
+                        first: "Primero",
+                        last: "Ultimo",
+                        next: "Siguiente",
+                        previous: "Anterior"
+                    }
+                },
             });
         });
     </script>
