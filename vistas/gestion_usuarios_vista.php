@@ -37,12 +37,15 @@ if (isset($_REQUEST['msj'])) {
 
 
 
-    $sqltabla_usuario = "select r.Rol , CASE u.estado 
+    $sqltabla_usuario = "
+select r.Rol , CASE u.estado 
 WHEN 0 THEN 'Inactivo'
 WHEN 1 THEN 'Activo'
 WHEN 2 THEN 'Nuevo'
-END as Estado ,  u.Usuario 
-from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol ";
+END as Estado ,  u.Usuario,
+(SELECT CONCAT(p.nombres,' ', p.apellidos)  FROM tbl_personas p 
+WHERE p.id_persona=u.id_persona LIMIT 1) AS persona 
+from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol; ";
     $resultadotabla_usuario = $mysqli->query($sqltabla_usuario);
   }
   if ($msj == 3) {
@@ -92,12 +95,15 @@ if ($visualizacion == 0) {
 
 
   /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
-  $sqltabla_usuario = "select r.Rol , CASE u.estado 
+  $sqltabla_usuario = "
+select r.Rol , CASE u.estado 
 WHEN 0 THEN 'Inactivo'
 WHEN 1 THEN 'Activo'
 WHEN 2 THEN 'Nuevo'
-END as Estado  , u.Usuario 
-from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol ";
+END as Estado ,  u.Usuario,
+(SELECT CONCAT(p.nombres,' ', p.apellidos)  FROM tbl_personas p 
+WHERE p.id_persona=u.id_persona LIMIT 1) AS persona 
+from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol; ";
   $resultadotabla_usuario = $mysqli->query($sqltabla_usuario);
 
   /* Se declara una variable para el input check*/
@@ -117,7 +123,11 @@ from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol ";
 
     /* Hace un select para mandar a traer todos los datos de la 
  tabla donde rol sea igual al que se ingreso en el input */
-    $sql = "select r.Id_rol,r.Rol, u.Usuario , u.estado  , u.Id_usuario FROM tbl_usuarios u , tbl_roles r WHERE u.Id_rol=r.Id_rol AND Usuario ='$Usuario'";
+    $sql = "SELECT r.Id_rol,r.Rol, u.Usuario , u.estado  , u.Id_usuario,
+(SELECT CONCAT(p.nombres,' ', p.apellidos) FROM tbl_personas p, tbl_usuarios usu 
+WHERE p.id_persona=u.id_persona  LIMIT 1) AS persona
+FROM tbl_usuarios u
+JOIN tbl_roles r ON u.Id_rol=r.Id_rol AND u.Usuario='$Usuario'";
     $resultado = $mysqli->query($sql);
     /* Manda a llamar la fila */
     $row = $resultado->fetch_array(MYSQLI_ASSOC);
@@ -125,10 +135,12 @@ from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol ";
     /* Aqui obtengo el id_rol de la tabla de la base el cual me sirve para enviarla a la pagina actualizar.php para usarla en el where del update   */
     $Id_usuario = $row['Id_usuario'];
     $Estatus = $row['estado'];
+    $persona= $row['persona'];
     $_SESSION['usuario_gestion'] = $row['Usuario'];
     $_SESSION['Id_rol_gestion'] = $row['Id_rol'];
     $_SESSION['Rol_gestion_usuario'] = $row['Rol'];
-
+    $_SESSION['persona_usuario'] = $row['persona'];
+    
     if (isset($_SESSION['usuario_gestion'])) {
 
 
@@ -218,6 +230,7 @@ ob_end_flush();
           <thead>
             <tr>
               <th>USUARIO</th>
+              <th>PERSONA</th>
               <th>ROL</th>
               <th>ESTADO</th>
 
@@ -229,6 +242,7 @@ ob_end_flush();
             <?php while ($row = $resultadotabla_usuario->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
                 <td><?php echo $row['Usuario']; ?></td>
+                <td><?php echo $row['persona']; ?></td>
                 <td><?php echo $row['Rol']; ?></td>
 
                 <td><?php echo $row['Estado']; ?></td>
@@ -306,6 +320,11 @@ ob_end_flush();
                       <label class="control-label">Usuario </label>
 
                       <input class="form-control" type="text" id="txt_usuario" name="txt_usuario" value="<?php echo $_SESSION['usuario_gestion']; ?>" style="text-transform: uppercase" onkeyup="Espacio(this, event)" onkeypress="return Letras(event)" maxlength="30" readonly="true">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Persona </label>
+
+                      <input class="form-control" type="text" id="txt_usuario" name="txt_usuario" value="<?php echo $_SESSION['persona_usuario']; ?>" style="text-transform: uppercase" onkeyup="Espacio(this, event)" onkeypress="return Letras(event)" maxlength="50" readonly="true">
                     </div>
 
                     <div class="form-group ">
