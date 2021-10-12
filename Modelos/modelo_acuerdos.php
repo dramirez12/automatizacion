@@ -8,6 +8,7 @@ $responsable = $_POST['responsable'];
 $estado = $_POST['estado'];
 $nombre_acuerdo = $_POST['nombre_acuerdo'];
 $descripcion = $_POST['descripcion'];
+$descripcionformato = nl2br($descripcion);
 $fecha_res = 'PENDIENTE';
 $fecha_exp = $_POST['fecha_exp'];
 $fecha_formato = date('Y-m-d', strtotime($fecha_exp));
@@ -47,7 +48,7 @@ if ($_POST['acuerdo'] == 'nuevo') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
         $sql = "SELECT
                 t5.num_acta,
                 t4.nombre_reunion,
@@ -79,14 +80,14 @@ if ($_POST['acuerdo'] == 'nuevo') {
         $body .= "que a la reunion <b>$nombrereu</b> a la que asistio se le asigno un acuerdo ";
         $body .= "con nombre <strong>$nombre_acuerdo</strong> ";
         $body .= " la cual tiene fecha de vencimiento para el: <strong>$fecha_exp</strong>, con la siguiente descripcion: <br><br>";
-        $body .= "<strong>$descripcion</strong>";
+        $body .= "<strong>$descripcionformato</strong>";
         $body .= "<br>";
         $body .= "<br>";
         $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "iaunah@unah.edu.hn";
+        $body .= "patricia.ellner@unah.edu.hn";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Depto. IA</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -129,7 +130,7 @@ if ($_POST['acuerdo'] == 'actualizar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
         $sql = "SELECT
                  t5.num_acta,
                  t4.nombre_reunion,
@@ -162,14 +163,14 @@ if ($_POST['acuerdo'] == 'actualizar') {
         $body .= "<b> Por favor tomar nota de las nuevas modificaciones</b>";
         $body .= " con nombre <strong>$nombre_acuerdo</strong> ";
         $body .= " la cual tiene fecha de vencimiento para el: <strong>$fecha_exp</strong>, con la siguiente descripción: <br><br>";
-        $body .= "<strong>$descripcion</strong>";
+        $body .= "<strong>$descripcionformato</strong>";
         $body .= "<br>";
         $body .= "<br>";
         $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "iaunah@unah.edu.hn";
+        $body .= "patricia.ellner@unah.edu.hn";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Depto. IA</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -216,7 +217,7 @@ if ($_POST['acuerdos'] == 'finalizar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
         $sql = "SELECT
         t6.num_acta,
         t5.nombre_reunion,
@@ -256,10 +257,10 @@ if ($_POST['acuerdos'] == 'finalizar') {
         $body .= "<br>";
         $body .= "<br>";
         $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "iaunah@unah.edu.hn";
+        $body .= "patricia.ellner@unah.edu.hn";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Depto. IA</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -308,7 +309,7 @@ if ($_POST['acuerdo'] == 'cancelar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
         $sql = "SELECT
          t6.num_acta,
          t5.nombre_reunion,
@@ -349,10 +350,10 @@ if ($_POST['acuerdo'] == 'cancelar') {
         $body .= "<br>";
         $body .= "<br>";
         $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "iaunah@unah.edu.hn";
+        $body .= "patricia.ellner@unah.edu.hn";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Depto. IA</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();

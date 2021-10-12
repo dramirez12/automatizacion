@@ -29,7 +29,7 @@ $(document).ready(function () {
                             text: "Se Finalizo con Exito!",
                             type: "success"
                         }).then(function () {
-                            location.href = "../Vistas/actas_pendientes_vista.php";
+                            location.href = "../vistas/actas_pendientes_vista.php";
                         });
                     } else {
                         swal(
@@ -69,7 +69,7 @@ $(document).ready(function () {
                                 <br>
                                 <b><a target="_blank" href="../vistas/crear_acuerdo_vista.php">Crear Un acuerdo</a></b>`,
                     }).then(function () {
-                        location.href = "../Vistas/actas_pendientes_vista.php";
+                        location.href = "../vistas/actas_pendientes_vista.php";
                     }
                     );
                 } else {
@@ -82,6 +82,48 @@ $(document).ready(function () {
             }
         })
     });
+
+  /********** editar acta ***********/
+  $('#actas-archivo').on('submit', function (e) {
+    e.preventDefault();
+    var datos = new FormData(this);
+    $.ajax({
+        type: $(this).attr('method'),
+        data: datos,
+        url: $(this).attr('action'),
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        async: true,
+        cache: false,
+        success: function (data) {
+            console.log(data);
+            var resultado = data;
+            if (resultado.respuesta == 'exito') {
+                swal({
+                    title: "Correcto",
+                    text: "El acta se ha archivado correctamente!",
+                    type: "success",
+                    confirmButtonText: "Ir a Actas Pendientes",
+                        html: `<br>
+                                ¿Desea archivaar otra acta ahora?
+                                <br>
+                                <b><a target="_blank" href="../vistas/archivar_actas_vista.php">Archivar Acta</a></b>`,
+                }).then(function () {
+                    location.href = "../vistas/menu_acta_vista.php";
+                }
+                );
+            } else {
+                swal(
+                    'Error',
+                    'Hubo un error!',
+                    'error'
+                )
+            }
+        }
+    })
+});
+
     /********** editar reunion ***********/
     $('#editar-reunion').on('submit', function (e) {
         e.preventDefault();
@@ -669,7 +711,7 @@ $(document).ready(function () {
                                 <br>
                                 ¿Desea agregar otro acuerdo?
                                 <br>
-                                <b><a href="../Vistas/crear_acuerdo_vista.php">Añadir otro acuerdo</a></b>`,
+                                <b><a href="../vistas/crear_acuerdo_vista.php">Añadir otro acuerdo</a></b>`,
                     }).then(function () {
                         location.href = "../vistas/acuerdos_pendientes_vista.php";
                     }
@@ -762,7 +804,50 @@ $(document).ready(function () {
         });
     });
 
-
+ /********** cancelar reunion ***********/
+ $('.cancelar_registrooo').on('click', function (e) {
+    e.preventDefault();
+    var id = $(this).attr('data-id');
+    var tipo = $(this).attr('data-tipo');
+    swal({
+        title: '¿Está Seguro?',
+        text: 'Si la cancela no podra revertirlo!!<br><br><b>Escriba el motivo por lo cual cancela la reunion</b><br><br><input class="form-control" onkeyup="mayus(this);" id="mensaje" style="width: 65%; margin-left: 17%;" required name="mensaje" type="text">',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtontext: 'Si, cancelarla!',
+        cancelButtontext: 'Cancelar'
+    }).then(function () {
+        $.ajax({
+            type: 'post',
+            data: {
+                'id': id,
+                'mensaje': $('#mensaje').val(),
+                'reunion': 'cancelar'
+            },
+            url: '../Modelos/modelo_' + tipo + '.php',
+            success: function (data) {
+                var resultado = JSON.parse(data);
+                if (resultado.respuesta == 'exito') {
+                    swal({
+                        title: "cancelada",
+                        text: "Reunión cancelada con Exito!",
+                        type: "success"
+                    }).then(function () {
+                        location.href = "../vistas/reuniones_pendientes_vista.php";
+                    });
+                } else {
+                    swal(
+                        'Error!',
+                        'No se pudo cancelar',
+                        'error'
+                    )
+                }
+            }
+        })
+    });
+});
 
 
     $('.cancelar_registroacuerdo').on('click', function (e) {

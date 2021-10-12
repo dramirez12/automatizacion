@@ -231,9 +231,9 @@ $resultado = mysqli_query($connection, $sql);
         $pdf->SetFont('Arial', '', 12);
         $pdf->Cell(70, 7, utf8_decode($total_asistencia['num_acta']), 1, 0, 'C');
         $pdf->Cell(75, 7, utf8_decode($total_asistencia['nombre_reunion']), 1, 0, 'C');
-        $pdf->Cell(40, 7, utf8_decode($total_asistencia['asistio']), 1, 0, 'C');
-        $pdf->Cell(40, 7, utf8_decode($total_asistencia['inasistencia']), 1, 0, 'C');
-        $pdf->Cell(40, 7, utf8_decode($total_asistencia['excusa']), 1, 0, 'C');
+        $pdf->Cell(40, 7, utf8_decode($total_asistencia['asistio']). '%', 1, 0, 'C');
+        $pdf->Cell(40, 7, utf8_decode($total_asistencia['inasistencia']). '%', 1, 0, 'C');
+        $pdf->Cell(40, 7, utf8_decode($total_asistencia['excusa']). '%', 1, 0, 'C');
         $pdf->ln();
         $pdf->ln(20);
 

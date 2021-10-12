@@ -122,7 +122,7 @@ ob_end_flush();
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Vista General</a>
                                                 </li>
-                                                <li class="nav-item">
+                                                <li class="nav-item" style="display: none;">
                                                     <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Vista Calendario</a>
                                                 </li>
                                             </ul>
@@ -279,6 +279,8 @@ ob_end_flush();
                 })
 
             });
+
+            
         </script>
 
         <!-- Modal -->

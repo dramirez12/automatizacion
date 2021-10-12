@@ -46,96 +46,30 @@ ob_end_flush();
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Lista de Actas</h1>
+                        <h1>Actas Archivadas</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista.php">Menu Gestión actas</a></li>
-                            <li class="breadcrumb-item active">Lista de Actas</li>
+                            <li class="breadcrumb-item active">Actas Archivadas</li>
                         </ol>
-                    </div>
-                    <div style="padding: 10px 0 0 8px; float: right;">
-                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-primary" href="listar_actasarchivadas_vista.php">Ver Actas Archivadas</a>
                     </div>
                     <div class="RespuestaAjax"></div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-        <!--Pantalla 2-->
-        <?php
-        $dtz = new DateTimeZone("America/Tegucigalpa");
-        $dt = new DateTime("now", $dtz);
-        $hoy = $dt->format("Y");
-        $sql = "SELECT
-            ROUND(
-                SUM(t1.id_estado_participante = 1) / COUNT(t1.id_estado_participante) * 100
-            ) AS asistio,
-            ROUND(
-                SUM(t1.id_estado_participante = 2) / COUNT(t1.id_estado_participante) * 100
-            ) AS falto,
-            ROUND(
-                SUM(t1.id_estado_participante = 3) / COUNT(t1.id_estado_participante) * 100
-            ) AS excusa
-        FROM
-            tbl_participantes t1
-        INNER JOIN tbl_reunion t2 ON
-            t2.id_reunion = t1.id_reunion
-        WHERE
-            t2.fecha LIKE '%$hoy%' ";
-        $resultado = $mysqli->query($sql);
-        $estado = $resultado->fetch_assoc();
-        ?>
-        <div class="row" style="padding: 0 30px;">
-            <div class="col-4 ">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3><?php echo $estado['asistio'] ?><sup style="font-size: 20px">%</sup></h3>
-                        <p>Porcentaje de Asistencia</p>
-                    </div>
-                    <div class="icon"><i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <a href="menu_asistencia_vista.php" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3><?php echo $estado['excusa'] ?><sup style="font-size: 20px">%</sup></h3>
-                        <p>Porcentaje de Excusados</p>
-                    </div>
-                    <div class="icon"><i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <a href="menu_asistencia_vista.php" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3><?php echo $estado['falto'] ?><sup style="font-size: 20px">%</sup></h3>
-                        <p>Porcentaje de Inasistencia</p>
-                    </div>
-                    <div class="icon"><i class="fas fa-user-times"></i>
-                    </div>
-                    <a href="menu_asistencia_vista.php" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-        </div>
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Listado de todas las Actas</h3>
+                <h3 class="card-title">Listado de todas las Actas archivadas</h3>
+                
                 <!--BOTON AGENDAR REUNIÓN-->
                 <!-- <div class="px-1">
                     <a href="../vistas/agendar_reunion_vista.php" class="btn btn-warning"><i class="fas fa-arrow"></i>Agendar Nueva Reunión</a>
                 </div>-->
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                </div>
+                <a href="archivar_actas_vista.php" type="button" class="btn  bg-warning float-right derecha">
+                    <i class="fas fa-plus-circle"><br></i> Archivar Nueva Acta
+                </a>
             </div>
             <!-- /.card-header -->
             <!-- /.card-header -->
@@ -152,42 +86,46 @@ ob_end_flush();
                                             <tr>
                                                 <th>No. Acta</th>
                                                 <th>Nombre Reunión</th>
-                                                <th>Estado</th>
-                                                <th>Fecha</th>
-                                                <th>Hora Inicio</th>
-                                                <th>Hora Final</th>
-                                                <th>Archivos</th>
-                                                <th>Acciones</th>
+                                                <th>Tipo Reunión</th>
+                                                <th>Fecha Reunión</th>
+                                                <th>Redactor</th>
+                                                <th>Fecha de carga</th>
+                                                <th>Acta</th>
                                                 <!-- <th>Acta</th>-->
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             try {
-                                                $sql = "SELECT t1.id_acta,t1.num_acta,t2.nombre_reunion,t4.tipo, t3.estado,t2.lugar,t1.fecha,t1.hora_inicial,t1.hora_final, GROUP_CONCAT(t5.url) AS url
-                                                from tbl_acta t1
-                                                LEFT JOIN tbl_reunion t2 ON t2.id_reunion = t1.id_reunion
-                                                LEFT JOIN tbl_estado_acta t3 ON t3.id_estado = t1.id_estado
-                                                LEFT JOIN tbl_tipo_reunion_acta t4 ON t4.id_tipo = t1.id_tipo
-                                                LEFT JOIN tbl_acta_recursos t5 on t5.id_acta = t1.id_acta
-                                                GROUP BY t1.id_acta";
+                                                $sql = "SELECT 
+                                                t1.id_tipo, 
+                                                t1.nombrereu,
+                                                t1.num_acta,
+                                                t1.fecha,
+                                                t1.fecha_archivo,
+                                                t1.url,
+                                                t1.nombre,
+                                                t2.tipo,
+                                                t3.Usuario
+                                                FROM tbl_acta_archivo t1
+                                                INNER JOIN tbl_tipo_reunion_acta t2 
+                                                ON t2.id_tipo = t1.id_tipo
+                                                INNER JOIN	tbl_usuarios t3
+                                                ON t3.Id_usuario = t1.redactor";
                                                 $resultado = $mysqli->query($sql);
                                             } catch (Exception $e) {
                                                 $error = $e->getMessage();
                                                 echo $error;
                                             }
-                                            while ($reunion = $resultado->fetch_assoc()) { ?>
+                                            while ($acta = $resultado->fetch_assoc()) { ?>
                                                 <tr>
-                                                    <td><?php echo $reunion['num_acta']; ?></td>
-                                                    <td><?php echo $reunion['nombre_reunion']; ?></td>
-                                                    <td><?php echo $reunion['estado']; ?></td>
-                                                    <td><?php echo $reunion['fecha']; ?></td>
-                                                    <td><?php echo $reunion['hora_inicial']; ?></td>
-                                                    <td><?php echo $reunion['hora_final']; ?></td>
-                                                    <td>
-                                                        <a target="_blank" href="../vistas/archivos_acta_vista.php?id=<?php echo $reunion['id_acta'] ?>">archivos</a>
-                                                    </td>
-                                                    <td><a target="_blank" href="../Controlador/reporte_acta.php?id=<?php echo $reunion['id_acta'] ?>">VER ACTA</a></td>
+                                                    <td><?php echo $acta['num_acta']; ?></td>
+                                                    <td><?php echo $acta['nombrereu']; ?></td>
+                                                    <td><?php echo $acta['tipo']; ?></td>
+                                                    <td><?php echo $acta['fecha']; ?></td>
+                                                    <td><?php echo $acta['Usuario']; ?></td>
+                                                    <td><?php echo $acta['fecha_archivo']; ?></td>
+                                                    <td> <a style="color: #359c32;" target="_blank" href="<?php echo $acta['url'] . $acta['nombre']; ?>"><i class="fas fa-eye "></i> VER ACTA</a></td>
                                                 </tr>
                                             <?php
                                             }  ?>

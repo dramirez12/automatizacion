@@ -5,6 +5,7 @@ require_once('../PHPMAILER/Exception.php');
 require_once('../clases/Conexion.php');
 $enlace = $_POST['NULL'];
 $agenda = $_POST['agenda'];
+$agendaformato = nl2br($agenda);
 $asunto = $_POST['asunto'];
 $enlace = $_POST['enlace'];
 $estado = $_POST['estado'];
@@ -57,7 +58,7 @@ if ($_POST['reunion'] == 'nuevo') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -81,16 +82,16 @@ if ($_POST['reunion'] == 'nuevo') {
         $body .= " lugar: <strong>$lugar</strong><br>";
         $body .= " en el horario de <strong>$horainicio</strong>";
         $body .= " a <strong>$horafinal</strong> con los siguientes puntos a tratar: <br><br>";
-        $body .= "<strong>$agenda</strong><br>";
+        $body .= "<strong>$agendaformato</strong><br>";
         $body .= "<br>";
         $body .= "<br>";
         $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "iaunah@unah.edu.hn";
+        $body .= "patricia.ellner@unah.edu.hn";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Depto. IA</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
         $mail->Body = $body;
-        $mail->CharSet = 'UTF-8';
+        $mail->CharSet = 'utf-8';
         $mail->send();
         $mysqli->close();
     } catch (Exception $e) {
@@ -143,7 +144,7 @@ if ($_POST['reunion'] == 'actualizar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -169,13 +170,13 @@ if ($_POST['reunion'] == 'actualizar') {
         $body .= " lugar: <strong>$lugar</strong><br>";
         $body .= " en el horario de <strong>$horainicio</strong>";
         $body .= " a <strong>$horafinal</strong> con los siguientes puntos a tratar: <br><br>";
-        $body .= "<strong>$agenda</strong><br>";
+        $body .= "<strong>$agendaformato</strong><br>";
         $body .= "<br>";
         $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "iaunah@unah.edu.hn";
+        $body .= "patricia.ellner@unah.edu.hn";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Depto. IA</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -222,7 +223,7 @@ if ($_POST['reunion'] == 'cancelar') {
 		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
-        $mail->setFrom($correo, 'Jefatura Depto. Informatica Administrativa');
+        $mail->setFrom($correo, 'Deptartamento Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_cancelar";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -247,10 +248,10 @@ if ($_POST['reunion'] == 'cancelar') {
         $body .= " a <strong>$final</strong>";
         $body .= " HA SIDO <strong>CANCELADA</strong> por el siguiente motivo: <strong>$mensaje</strong>.<br><br>";
         $body .= "<b>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</b><br>";
-        $body .= "<b>iaunah@unah.edu.hn</b>";
+        $body .= "<b>patricia.ellner@unah.edu.hn</b>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "Saludos, <strong>Jefatura Depto. IA</strong><br>";
+        $body .= "Saludos, <strong>Jefatura Deptartamento Informática</strong><br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
