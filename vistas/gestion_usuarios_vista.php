@@ -96,7 +96,10 @@ if ($visualizacion == 0) {
 WHEN 0 THEN 'Inactivo'
 WHEN 1 THEN 'Activo'
 WHEN 2 THEN 'Nuevo'
-END as Estado  , u.Usuario 
+END as Estado  , u.Usuario,
+(SELECT CONCAT(p.nombres,' ', p.apellidos) FROM tbl_personas p, tbl_usuarios usu 
+WHERE p.id_persona=u.id_persona  LIMIT 1) AS persona
+
 from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol ";
   $resultadotabla_usuario = $mysqli->query($sqltabla_usuario);
 
@@ -117,7 +120,10 @@ from tbl_usuarios u ,tbl_roles r WHERE u.Id_rol=r.Id_rol ";
 
     /* Hace un select para mandar a traer todos los datos de la 
  tabla donde rol sea igual al que se ingreso en el input */
-    $sql = "select r.Id_rol,r.Rol, u.Usuario , u.estado  , u.Id_usuario FROM tbl_usuarios u , tbl_roles r WHERE u.Id_rol=r.Id_rol AND Usuario ='$Usuario'";
+    $sql = "select r.Id_rol,r.Rol, u.Usuario , u.estado  , u.Id_usuario,
+    (SELECT CONCAT(p.nombres,' ', p.apellidos) FROM tbl_personas p, tbl_usuarios usu 
+WHERE p.id_persona=u.id_persona  LIMIT 1) AS persona
+    FROM tbl_usuarios u , tbl_roles r WHERE u.Id_rol=r.Id_rol AND Usuario ='$Usuario'";
     $resultado = $mysqli->query($sql);
     /* Manda a llamar la fila */
     $row = $resultado->fetch_array(MYSQLI_ASSOC);
@@ -217,6 +223,8 @@ ob_end_flush();
         <table id="tabla" class="table table-bordered table-striped">
           <thead>
             <tr>
+
+              <th>NOMBRE</th>
               <th>USUARIO</th>
               <th>ROL</th>
               <th>ESTADO</th>
@@ -228,6 +236,7 @@ ob_end_flush();
           <tbody>
             <?php while ($row = $resultadotabla_usuario->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
+                <td><?php echo $row['persona']; ?></td>
                 <td><?php echo $row['Usuario']; ?></td>
                 <td><?php echo $row['Rol']; ?></td>
 
