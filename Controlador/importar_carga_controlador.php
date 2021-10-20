@@ -4,9 +4,9 @@ session_start();
 require_once('../clases/funcion_bitacora.php');
 
 
-if (isset($_POST['op'])) {
+if (isset($_GET['op'])) {
 
-    switch ($_POST['op']) {
+    switch ($_GET['op']) {
 
         case 'cargarExcel':
 
