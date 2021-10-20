@@ -345,7 +345,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
             $excel->removeCellStyleXfByIndex(0); // remove the default style
             $excel->removeCellXfByIndex(0); // remove the default style
         }
-
+        PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
         $zipClass = PHPExcel_Settings::getZipClass();
 
         $zip = new $zipClass;
