@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require_once('../clases/funcion_bitacora.php');
 
@@ -71,7 +72,7 @@ if (isset($_GET['op'])) {
                         echo "<td>" . $dias . "</td>";
                         echo "<td>" . $aula . "</td>";
                         echo "<td>" . $profesor . "</td>";
-                        echo "<td>" . $matriculados . "</td>";
+                            echo "<td>" . $matriculados . "</td>";
                         echo "</tr>";
 
                     }

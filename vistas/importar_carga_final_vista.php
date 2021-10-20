@@ -57,7 +57,7 @@ ob_end_flush();
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
+    <!-- <script src="../js/autologout.js"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Required meta tags -->
@@ -159,7 +159,8 @@ ob_end_flush();
                 </div>
             </div>
         </section>
-
+        <script src="../js/importar_carga.js"></script>
+    </div>
 
 </body>
 
@@ -176,5 +177,3 @@ ob_end_flush();
         }
     });
 </script>
-
-<script src="../js/importar_carga.js"></script>
