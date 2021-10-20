@@ -42,6 +42,7 @@ function cargar_excel() {
             contentType: false,
             processData: false,
             success: function(respuesta) {
+                console.log(respuesta);
                 $("#div_tabla").html(respuesta);
                 document.getElementById("btn_guardar").disabled = false;
             },
