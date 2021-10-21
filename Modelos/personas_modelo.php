@@ -70,7 +70,13 @@ class personas
 		return $instancia_conexion->ejecutarConsultaSimpleFila($sql4);
 	}
 
+	public function Registrar_foto($nombrearchivo)
+	{
+		global $instancia_conexion;
+		$sql = "CALL proc_insertar_foto_estudiante('$nombrearchivo')";
 
+		return $instancia_conexion->ejecutarConsulta($sql);
+	}
 
 }
 

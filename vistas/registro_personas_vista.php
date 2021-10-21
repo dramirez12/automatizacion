@@ -199,7 +199,12 @@ ob_end_flush();
                   <input class="form-control" type="text" id="direccion_persona" name="direccion_persona" maxlength="48" style="text-transform: uppercase">
 
                 </div>
+                <div class="col-md-4">
+                  <label>Seleccione imagen </label>
 
+                  <input class="form-control" type="file" id="imagen_persona" name="imagen_persona" maxlength="48" style="text-transform: uppercase" accept="image/jpg/png/jpeg/PNG" required>
+
+                </div>
                 <div class="col-sm-12 ">
                   <label></label>
                   <hr>
