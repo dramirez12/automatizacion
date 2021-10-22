@@ -221,7 +221,7 @@ ob_end_flush();
 
                                     <div class="form-group">
                                         <!-- FOTOGRAFIA  -->
-                                        <input hidden type="file" accept=".png, .jpg, .JPG, .jpeg" maxlength="8388608" name="imagen_nueva" id="imagen_nueva" style="text-transform: uppercase">
+                                        <input hidden type="file" accept=".png, .jpg, .JPG, .jpeg" maxlength="8388608" name="imagen" id="imagen" style="text-transform: uppercase">
                                     </div>
 
                                     <!-- </form> -->
