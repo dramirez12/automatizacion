@@ -107,10 +107,11 @@ ob_end_flush();
                                                         <label for="nombre">Nombre:</label>
                                                         <input minlength="5" onchange="showdatos()" onkeyup="mayus(this);" type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion" onkeyup="PasarValor()">
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label for="tipo">Tipo de Reunión</label>
+                                                        <label for="tipo">Tipo de Modalidad</label>
                                                         <select class="form-control" onChange="showInp(); showdatos();" style="width: 50%;" id="tipo" name="tipo">
-                                                            <option value="0">-- Selecione un Tipo --</option>
+                                                            <option value="0">-- Selecione una modalidad --</option>
                                                             <?php
                                                             try {
                                                                 $sql = "SELECT * FROM tbl_tipo_reunion_acta ";
@@ -177,6 +178,14 @@ ob_end_flush();
                                 <!-- /.row -->
                             </div>
                             <div class="tab-pane fade " id="datosreunion" role="tabpanel" aria-labelledby="datosreunion-tab">
+                                <div class="form-group">
+                                    <label for="tipo">Tipo de Reunion</label>
+                                    <select class="form-control" onChange="reuOnChange(this)" ; style="width: 50%;" id="clasif" name="clasif">
+                                        <option value="1">-- Selecione un Tipo --</option>
+                                        <option value="2">ASAMBLEA</option>
+                                        <option value="3">REUNIONES DE DEPARTAMENTO</option>
+                                    </select>
+                                </div>
                                 <div class="card card-warning">
                                     <div class="card-header">
                                         <h3 class="card-title">Participantes</h3>
@@ -190,46 +199,104 @@ ob_end_flush();
                                                     <input type="hidden" name="reunion" value="nuevo">
                                                     <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled>Agendar</button>
                                                 </div>
-                                                <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
-                                                    <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
-                                                    <label for="checkboxPrimary10">
-                                                        Seleccionar/Deseleccionar Todo
-                                                    </label>
-                                                </div>
-                                                <!-- /.card-header -->
-                                                <div class="card-body">
-                                                    <table class="table table-bordered table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Nombre Participante</th>
-                                                                <th>Tipo Contrado</th>
-                                                            </tr>
-                                                        </thead>
+                                                <div id="reu-normal" style="display:none;">
 
-                                                        <body>
-                                                            <?php
-                                                            try {
-                                                                $sql = "SELECT t1.id_persona,concat_ws(' ', t1.nombres, t1.apellidos) as nombres, t3.jornada FROM tbl_personas t1 INNER JOIN tbl_horario_docentes t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_jornadas t3 ON t2.id_jornada = t3.id_jornada ORDER BY nombres ASC";
-                                                                $resultado = $mysqli->query($sql);
-                                                            } catch (Exception $e) {
-                                                                $error = $e->getMessage();
-                                                                echo $error;
-                                                            }
-                                                            while ($estadoacta = $resultado->fetch_assoc()) { ?>
+
+                                                    <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
+                                                        <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
+                                                        <label for="checkboxPrimary10">
+                                                            Seleccionar/Deseleccionar Todo
+                                                        </label>
+                                                    </div>
+
+
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body">
+                                                        <table id="" class="table table-bordered table-striped">
+                                                            <thead>
                                                                 <tr>
-                                                                    <td>
-                                                                        <div class="icheck-danger d-inline">
-                                                                            <input type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chk[]" value="<?php echo $estadoacta['id_persona']; ?>">
-                                                                            <label for="<?php echo $estadoacta['id_persona']; ?>">
-                                                                                <?php echo $estadoacta['nombres']; ?>
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td><?php echo $estadoacta['jornada']; ?></td>
+                                                                    <th>Nombre Participante</th>
+                                                                    <th>Tipo Contrado</th>
                                                                 </tr>
-                                                            <?php  }  ?>
-                                                        </body>
-                                                    </table>
+                                                            </thead>
+
+                                                            <body>
+                                                                <?php
+                                                                try {
+                                                                    $sql = "SELECT t1.id_persona,concat_ws(' ', t1.nombres, t1.apellidos) as nombres, t3.jornada FROM tbl_personas t1 INNER JOIN tbl_horario_docentes t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_jornadas t3 ON t2.id_jornada = t3.id_jornada ORDER BY nombres ASC";
+                                                                    $resultado = $mysqli->query($sql);
+                                                                } catch (Exception $e) {
+                                                                    $error = $e->getMessage();
+                                                                    echo $error;
+                                                                }
+                                                                while ($estadoacta = $resultado->fetch_assoc()) { ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="icheck-danger d-inline">
+                                                                                <input type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chknormal[]" value="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                <label for="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                    <?php echo $estadoacta['nombres']; ?>
+                                                                                </label>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td><?php echo $estadoacta['jornada']; ?></td>
+                                                                    </tr>
+                                                                <?php  }  ?>
+                                                            </body>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div id="reu-asamblea" style="display: none;">
+
+
+                                                    <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
+                                                        <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
+                                                        <label for="checkboxPrimary10">
+                                                            Seleccionar/Deseleccionar Todo
+                                                        </label>
+                                                    </div>
+
+
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body">
+                                                        <table id="" class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Nombre Participante</th>
+                                                                    <th>Tipo Contrado</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <body>
+                                                                <?php
+                                                                try {
+                                                                    $sql = "SELECT t1.id_persona, CONCAT_WS(' ', t1.nombres, t1.apellidos) AS nombres, t3.jornada
+                                                                    FROM tbl_personas t1
+                                                                    INNER JOIN tbl_horario_docentes t2 ON t2.id_persona = t1.id_persona
+                                                                    INNER JOIN tbl_jornadas t3 ON t2.id_jornada = t3.id_jornada
+                                                                    WHERE t3.jornada = 'TIEMPO COMPLETO' OR t3.jornada = 'MEDIO TIEMPO'
+                                                                    ORDER BY nombres ASC";
+                                                                    $resultado = $mysqli->query($sql);
+                                                                } catch (Exception $e) {
+                                                                    $error = $e->getMessage();
+                                                                    echo $error;
+                                                                }
+                                                                while ($estadoacta = $resultado->fetch_assoc()) { ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="icheck-danger d-inline">
+                                                                                <input type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chk[]" value="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                <label for="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                    <?php echo $estadoacta['nombres']; ?>
+                                                                                </label>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td><?php echo $estadoacta['jornada']; ?></td>
+                                                                    </tr>
+                                                                <?php  }  ?>
+                                                            </body>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                                 <!-- /.card-body -->
                                             </div>
@@ -252,6 +319,51 @@ ob_end_flush();
     <!-- /.content-wrapper -->
     </div>
     <script type="text/javascript">
+        $(function() {
+
+            $("#clasif").on('change', function() {
+                var selectValue = $(this).val();
+                switch (selectValue) {
+
+                    case "1":
+                        $("#reu-normal").hide();
+                        $("#reu-asamblea").hide();
+                        $( "#chknormal" ).prop( "disabled", true );
+                        $( "#chk" ).prop( "disabled", true );
+                        $('input').filter(':checkbox').removeAttr('checked');
+                        $('button:submit').prop({
+                            disabled: $('input:checkbox:checked').length < 2
+                        });
+                        break;
+
+                    case "2":
+                        $("#reu-normal").hide();
+                        $( "#chknormal" ).prop( "disabled", true );
+                        $( "#chk" ).prop( "disabled", false );
+                        $("#reu-asamblea").show();
+                        $('input').filter(':checkbox').removeAttr('checked');
+                        $('button:submit').prop({
+                            disabled: $('input:checkbox:checked').length < 2
+                        });
+                        break;
+
+                    case "3":
+                        $("#chknormal").prop( "disabled", false );
+                        $("#reu-normal").show();
+                        $("#reu-asamblea").hide();
+                        $("#chk").prop( "disabled", true );
+                        $('input').filter(':checkbox').removeAttr('checked');
+                        $('button:submit').prop({
+                            disabled: $('input:checkbox:checked').length < 2
+                        });
+                        break;
+
+                }
+
+            }).change();
+
+        });
+
         function mayus(e) {
             e.value = e.value.toUpperCase();
         }

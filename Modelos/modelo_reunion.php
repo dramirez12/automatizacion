@@ -17,8 +17,14 @@ $horainiciof = date('H:i;s', strtotime($horainicio));
 $lugar = $_POST['lugar'];
 $nombre = $_POST['nombre'];
 $tipo = $_POST['tipo'];
-$participante = $_POST['chk'];
 $anio_formateada = date('Y', strtotime($fecha));
+$correojefatura = 'patricia.ellner@unah.edu.hn';
+if ($_POST['clasif'] == '2'){
+    $participante = $_POST['chk'];
+}
+if ($_POST['clasif'] == '3'){
+    $participante = $_POST['chknormal'];
+}
 
 if ($_POST['reunion'] == 'nuevo') {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -45,20 +51,20 @@ if ($_POST['reunion'] == 'nuevo') {
             );
         }
         //Server settings
-        $correo = 'unahvinc@informaticaunah.com';
-		$Password = '.N9135myfkAa';
+        $correo = 'jefatura@informaticaunah.com';
+        $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
-		$mail->Port = 465;
-		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-		$mail->Username = $correo;
-		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
+        $mail->Username = $correo;
+        $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
+        $mail->setFrom($correo, 'Jefatura Deptartamento de Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -75,21 +81,26 @@ if ($_POST['reunion'] == 'nuevo') {
         $body .= "Hora de Inicio: <strong>$horainicio</strong><br>";
         $body .= "Hora Final: <strong>$horafinal</strong><br>";
         $body .= "Asunto: <strong>$asunto</strong><br>";
-        $body .= "Enlace: <strong>$enlace</strong><br>";
         $body .= "<br>";
         $body .= "Por medio de la presente se notifica que el <strong>$fecha</strong>";
         $body .= " se realizará la reunión con asunto <strong>$asunto</strong>,";
-        $body .= " lugar: <strong>$lugar</strong><br>";
+        $body .= " lugar: <strong>$lugar</strong>";
         $body .= " en el horario de <strong>$horainicio</strong>";
         $body .= " a <strong>$horafinal</strong> con los siguientes puntos a tratar: <br><br>";
+        $body .= "<strong>AGENDA</strong><br><br>";
         $body .= "<strong>$agendaformato</strong><br>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "patricia.ellner@unah.edu.hn";
+        $body .= "Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a: ";
+        $body .= "<strong><a href=''>$correojefatura</a></strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
+        $body .= "Enlace: <strong><a href='$enlace'>$enlace</a></strong><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento de Informática</strong></h3><br>";
+        $body .= "<br>";
+        $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+        $body .= "<br>";
+        $body .= "<br>";
         $mail->Body = $body;
         $mail->CharSet = 'utf-8';
         $mail->send();
@@ -132,19 +143,19 @@ if ($_POST['reunion'] == 'actualizar') {
         }
         //Server settings
         $correo = 'unahvinc@informaticaunah.com';
-		$Password = '.N9135myfkAa';
+        $Password = '.N9135myfkAa';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
-		$mail->Port = 465;
-		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-		$mail->Username = $correo;
-		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
+        $mail->Username = $correo;
+        $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
+        $mail->setFrom($correo, 'Jefatura Deptartamento de Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -163,20 +174,26 @@ if ($_POST['reunion'] == 'actualizar') {
         $body .= "Hora de Inicio: <strong>$horainicio</strong><br>";
         $body .= "Hora Final: <strong>$horafinal</strong><br>";
         $body .= "Asunto: <strong>$asunto</strong><br>";
-        $body .= "Enlace: <strong>$enlace</strong><br>";
         $body .= "<br>";
         $body .= "Por medio de la presente se notifica que el <strong>$fecha</strong>";
         $body .= " se realizará la reunión con asunto <strong>$asunto</strong>,";
-        $body .= " lugar: <strong>$lugar</strong><br>";
+        $body .= " lugar: <strong>$lugar</strong>";
         $body .= " en el horario de <strong>$horainicio</strong>";
         $body .= " a <strong>$horafinal</strong> con los siguientes puntos a tratar: <br><br>";
+        $body .= "<strong>AGENDA</strong><br><br>";
         $body .= "<strong>$agendaformato</strong><br>";
         $body .= "<br>";
-        $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "patricia.ellner@unah.edu.hn";
+        $body .= "<br>";
+        $body .= "Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a: ";
+        $body .= "<strong><a href=''>$correojefatura</a></strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
+        $body .= "Enlace: <strong><a href='$enlace'>$enlace</a></strong><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento de Informática</strong></h3><br>";
+        $body .= "<br>";
+        $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+        $body .= "<br>";
+        $body .= "<br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -213,14 +230,14 @@ if ($_POST['reunion'] == 'cancelar') {
         }
         //Server settings
         $correo = 'unahvinc@informaticaunah.com';
-		$Password = '.N9135myfkAa';
+        $Password = '.N9135myfkAa';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
-		$mail->Port = 465;
-		$mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-		$mail->Username = $correo;
-		$mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
+        $mail->Username = $correo;
+        $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
         $mail->setFrom($correo, 'Deptartamento Informática');
@@ -251,7 +268,11 @@ if ($_POST['reunion'] == 'cancelar') {
         $body .= "<b>patricia.ellner@unah.edu.hn</b>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "Saludos, <strong>Jefatura Deptartamento Informática</strong><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento de Informática</strong></h3><br>";
+        $body .= "<br>";
+        $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+        $body .= "<br>";
+        $body .= "<br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();

@@ -352,7 +352,7 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
          $_SESSION['btn_perfil_estudiantil'] = "block";
       }
    }
-   
+
    //AGREGANDO CARGA ACADEMICA
    if ($_SESSION['pantalla'] == '45') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -385,14 +385,14 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
       }
    }
 
-   
+
    if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] == '48' or $_SESSION['pantalla'] == '104' or $_SESSION['pantalla'] == '275') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['carga_academica_vista'] = "block";
       }
    }
 
-   
+
 
 
    ///planes de estudio mantenimiento
@@ -463,7 +463,7 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
    }
 
 
-   
+
 
    if ($_SESSION['pantalla'] = '123' or $_SESSION['pantalla'] == '120') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -538,12 +538,13 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
 
    //AGREGANDO MODULO CVE
 
-  
+
    /* if ($_SESSION['pantalla']=='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146' ){
    if ($_SESSION['confirmacion'] == 'block') {
       $_SESSION['btn_control_actas'] = "block";
    }
 } */
+
 
    if ($_SESSION['pantalla'] = '144' or $_SESSION['pantalla'] == '145' or $_SESSION['pantalla'] == '146') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -804,13 +805,13 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['administracion_cve'] = "block";
       }
-   }   
+   }
 
    if ($_SESSION['pantalla'] = '224') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['actividades_cve'] = "block";
       }
-   } 
+   }
 
    if ($_SESSION['pantalla'] = '226') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -839,7 +840,7 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
 
 
    //MENU ADMINISTRACION APP 
-   
+
    if ($_SESSION['pantalla'] = '181') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['btn_administracion_app'] = "block";
@@ -860,6 +861,4 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
          $_SESSION['btn_administracion_app'] = "block";
       }
    }
-
- 
 }
