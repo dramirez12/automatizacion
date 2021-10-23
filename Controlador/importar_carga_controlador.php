@@ -77,7 +77,7 @@ if (isset($_GET['op'])) {
 
                     echo "</tbody></table>";
                 } else {
-                    return 0;
+                    echo $tmpfname;
                 }
 
                 //code...
