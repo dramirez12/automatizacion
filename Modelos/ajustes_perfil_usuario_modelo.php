@@ -52,5 +52,30 @@ WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 16;
 
         return $consulta;
     }
+    function modificar_informacion_perfil($telefono,$id_persona,$telefono_anterior,$correo,$id_persona_,$correo_anterior)
+    {
+     
+          //$Id_objeto=98;
+          global $instancia_conexion;
+
+          $sql = "call proc_actualizar_ajustes_perfil('$telefono','$id_persona','$telefono_anterior','$correo','$id_persona_','$correo_anterior')";
+  
+          if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+              return 1;
+            
+  
+          } else {
+              return 0;
+          }
+    }
+    function CambiarFoto($valor, $id_persona)
+    {
+
+
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta("UPDATE tbl_personas_extendidas SET valor = '$valor' WHERE id_persona = $id_persona AND id_atributo = 16;");
+
+        return $consulta;
+    }
 
 }

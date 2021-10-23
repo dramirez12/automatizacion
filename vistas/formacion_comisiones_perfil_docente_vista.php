@@ -161,7 +161,7 @@ $usuario = $_SESSION['id_persona'];
             <div class="modal-footer">
                 <button type="button" id="guardarFormacion" class="btn btn-primary">Guardar Formación Académica <i class="fa fa-user-plus"></i></button>
 
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             </div>
 
         </div>

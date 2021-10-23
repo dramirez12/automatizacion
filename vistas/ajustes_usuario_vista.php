@@ -144,7 +144,7 @@ ob_end_flush();
 
 
 
-                        <input type="text" value="<?php echo $id_persona ?>" readonly hidden id="id_persona">
+                        <input type="text" value="<?php echo $id_persona ?>" readonly hidden id="id_persona" name="id_persona">
 
 
 
@@ -167,13 +167,13 @@ ob_end_flush();
                             <div class=" col-sm-12" style="text-align: center">
 
                                 <div class="form-group">
-                                    <!-- FOTOGRAFIA  -->
+                                   
                                     <input hidden>
                                 </div>
 
 
 
-                                <button style="color:white;font-weight: bold;" type="button" id="" class="btn btn-large btn-block btn-info  full-width" style="width:100%"></i>Editar Información</button>
+                                <button style="color:white;font-weight: bold;" type="button" id="" class="btn btn-large btn-block btn-info  full-width" style="width:100%" data-toggle="modal" data-target="#myModal" ></i>Editar Información</button>
 
 
 
@@ -219,6 +219,7 @@ ob_end_flush();
                                         <button style="color:white;font-weight: bold;" hidden type="submit" id="btn_foto" class="btn btn-info btn_foto"><i class="fas fa-user-edit"></i>Guardar foto de Perfil</button>
                                         <button hidden id="btn_foto_cancelar" class="btn btn-dark btn_foto_cancelar"></i>Cancelar</button>
 
+
                                     <div class="form-group">
                                         <!-- FOTOGRAFIA  -->
                                         <input hidden type="file" accept=".png, .jpg, .JPG, .jpeg" maxlength="8388608" name="imagen" id="imagen" style="text-transform: uppercase">
@@ -254,10 +255,68 @@ ob_end_flush();
     </div>
 
 
+<!-- modales -->
 
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Información personal</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <br>
+                <label for="">Teléfono:</label>
+
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
+                        <input required type="text" name="telefono" id="telefono" class="form-control" data-inputmask="'mask': ' 9999-9999'" data-mask >
+                        <input hidden readonly id="telefono_anterior" class="form-control" type="text">
+
+
+
+                      
+
+
+                    </div>
+                </div>
+
+                <label for="">Dirección de correo:</label>
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-envelope-open-text"></i></span>
+                            <input id="correo" class="form-control" type="text">
+                            <input hidden readonly id="correo_anterior" class="form-control" type="text">
+
+                       
+
+
+                    </div>
+                </div>
+
+                <br>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" id="guardarFormacion" class="btn btn-primary" onclick=" guardar_informacion();">Guardar información personal <i class="fa fa-user-plus"></i></button>
+
+                <button id="cerrar" type="button" class="btn btn-secondary" data-dismiss="modal" >Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
 </body>
 <html>
+
 <script type="text/javascript" src="../js/ajustes_perfil_usuario.js"></script>
