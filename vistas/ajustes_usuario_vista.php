@@ -15,7 +15,7 @@ require_once('../clases/conexion_mantenimientos.php');
 
 $Id_objeto = 290;
 $visualizacion = permiso_ver($Id_objeto);
-$usuario = $_SESSION['id_persona'];
+//$usuario = $_SESSION['id_persona'];
 
 
 
