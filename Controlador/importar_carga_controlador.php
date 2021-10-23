@@ -77,12 +77,13 @@ if (isset($_GET['op'])) {
 
                     echo "</tbody></table>";
                 } else {
-                    echo $tmpfname;
+                    return 0;
                 }
 
                 //code...
             } catch (\Throwable $th) {
                 echo $th;
+                echo $tmpfname;
             }
 
            
