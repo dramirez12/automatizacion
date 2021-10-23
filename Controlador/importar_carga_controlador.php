@@ -83,7 +83,7 @@ if (isset($_GET['op'])) {
                 //code...
             } catch (\Throwable $th) {
                 echo $th;
-                echo $tmpfname;
+               
             }
 
            
