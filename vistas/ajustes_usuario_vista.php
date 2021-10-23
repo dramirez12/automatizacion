@@ -144,7 +144,7 @@ ob_end_flush();
 
 
 
-                        <input type="text" value="<?php echo $id_persona ?>" readonly hidden id="id_persona" name="id_persona">
+                        <input type="text" value="<?php echo $id_persona ?>" readonly  id="id_persona" name="id_persona">
 
 
 
