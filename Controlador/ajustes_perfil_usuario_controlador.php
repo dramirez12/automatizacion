@@ -2,12 +2,8 @@
 require_once "../Modelos/ajustes_perfil_usuario_modelo.php";
 
 $id_persona = isset($_POST["id_persona"]) ? limpiarCadena1($_POST["id_persona"]) : "";
-$id_persona_ = isset($_POST["id_persona"]) ? limpiarCadena1($_POST["id_persona"]) : "";
 $telefono = isset($_POST["telefono"]) ? limpiarCadena1($_POST["telefono"]) : "";
-$telefono_anterior = isset($_POST["telefono_anterior"]) ? limpiarCadena1($_POST["telefono_anterior"]) : "";
 $correo = isset($_POST["correo"]) ? limpiarCadena1($_POST["correo"]) : "";
-$correo_anterior = isset($_POST["correo_anterior"]) ? limpiarCadena1($_POST["correo_anterior"]) : "";
-
 
 
 $instancia_modelo = new ajustes_perfil_modelo();
@@ -36,7 +32,7 @@ if (isset($_GET['op'])) {
             echo json_encode($rspta);
             break;
         case 'modificar_informacion':
-            $rspta = $instancia_modelo->modificar_informacion_perfil($telefono, $id_persona, $telefono_anterior, $correo, $id_persona_, $correo_anterior);
+            $rspta = $instancia_modelo->modificar_informacion_perfil($telefono, $id_persona, $correo);
             //Codificar el resultado utilizando json
             echo json_encode($rspta);
             break;

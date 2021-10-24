@@ -40,7 +40,7 @@ function TraerTelefono() {
 
             var tel = document.getElementById("cont1").innerHTML = " " + data.valor;
             document.getElementById('telefono').value = tel;
-            // document.getElementById("telefono_anterior").value = tel;
+            document.getElementById("telefono_anterior").value = tel;
 
 
         }
@@ -49,7 +49,7 @@ function TraerTelefono() {
 
 function TraerCorreo() {
     var id_persona = $("#id_persona").val();
-    console.log(id_persona);
+
 
     $.post(
         "../Controlador/ajustes_perfil_usuario_controlador.php?op=CargarCorreo", { id_persona: id_persona },
@@ -58,7 +58,8 @@ function TraerCorreo() {
 
             var correo = document.getElementById("cont2").innerHTML = " " + data.valor;
             document.getElementById('correo').value = correo;
-            // document.getElementById("correo_anterior").value = correo;
+            document.getElementById("correo_anterior").value = correo;
+
 
 
 
@@ -75,59 +76,21 @@ $(document).ready(function() {
 
 });
 
-//PERMITIR CORREO VALIDO
-/* function correovalido(correo1) {
-	var expresion1 =
-	  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  
-	//////console.log(expresion1.test(correo1));
-	if (expresion1.test(correo1)) {
-	  return 1;
-	} else {
-	  return 0;
-	}
-  } */
-/* function addCorreo() {
-	
-	var correo = $("#correo").val();
-  
-	////console.log(correo);
-  
-	if (correo.length == 0) {
-	  alert("Completar El Campo correo Por Favor");
-	} else {
-	  if (correovalido($("#correo").val()) == 0) {
-		//aqui debo validar que no se agregue a la tabla ...
-  
-		swal("Alerta", "ingresar un correo válido", "warning");
-  
-	    limpiarCor(); 
-		return false;
-	  } else {
-  
-		$("#ModalCorreo").modal("hide");
-	  }
-	}
-  } */
-
 // GUARDAR O ACTUALIZAR INFORMACION
 function guardar_informacion() {
     var telefono = $('#telefono').val();
-    console.log(telefono);
 
     var telefono_anterior = $('#telefono_anterior').val();
-    console.log(telefono_anterior);
+
 
     var correo = $('#correo').val();
-    console.log(correo);
+
 
     var correo_anterior = $('#correo_anterior').val();
-    console.log(correo_anterior);
 
     var id_persona = $("#id_persona").val();
-    console.log(id_persona);
-    var id_persona_ = $("#id_persona").val();
-    console.log(id_persona_);
+
+
 
 
     if (
@@ -144,8 +107,19 @@ function guardar_informacion() {
             timer: 15000,
         });
 
-    } else {
+    } else if (telefono == telefono_anterior && correo == correo_anterior) {
+        swal({
+            title: "alerta",
+            text: "No se han modificado datos!",
+            type: "warning",
+            showConfirmButton: true,
+            timer: 15000,
+        });
 
+
+
+
+    } else {
 
         $.ajax({
             url: "../Controlador/ajustes_perfil_usuario_controlador.php?op=modificar_informacion",
@@ -153,11 +127,7 @@ function guardar_informacion() {
             data: {
                 telefono: telefono,
                 id_persona: id_persona,
-                telefono_anterior: telefono_anterior,
                 correo: correo,
-                id_persona_: id_persona_,
-                correo_anterior: correo_anterior
-
             },
         }).done(function(resp) {
             if (resp > 0) {
@@ -241,7 +211,7 @@ var d = document.getElementById("imagen");
 d.onchange = function() {
     var archivo = $("#imagen").val();
     var extensiones = archivo.substring(archivo.lastIndexOf("."));
-    // ////console.log(extensiones);
+
     if (
         extensiones != ".jpg" &&
         extensiones != ".png" &&
@@ -252,3 +222,18 @@ d.onchange = function() {
         document.getElementById("imagen").value = "";
     }
 };
+
+function abrirModal() {
+    $("#myModal").modal({ backdrop: "static", keyboard: false });
+    $("#myModal").modal("show");
+
+
+}
+
+function cancelar() {
+    var tel = document.getElementById("telefono_anterior").value;
+    var correo = document.getElementById("correo_anterior").value;
+
+    $("#correo").val(correo);
+    $("#telefono").val(tel);
+}
