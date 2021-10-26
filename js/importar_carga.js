@@ -164,9 +164,8 @@ function cargar_excel_preliminar1() {
             contentType: false,
             processData: false,
             success: function(respuesta) {
-                alert(respuesta);
-                // $("#div_tabla_preliminar").html(respuesta);
-                //  document.getElementById("btn_guardar_preliminar").disabled = false;
+                $("#div_tabla_preliminar").html(respuesta);
+                document.getElementById("btn_guardar_preliminar").disabled = false;
             },
         });
         return false;
