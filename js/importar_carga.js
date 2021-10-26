@@ -36,13 +36,13 @@ function cargar_excel() {
         formData.append("archivoExcel", files);
 
         $.ajax({
-            url: "../Controlador/importar_carga_controlador.php?op=cargarExcel",
+            url: "../Controlador/importar.php?",
             type: "post",
             data: formData,
             contentType: false,
             processData: false,
             success: function(respuesta) {
-                console.log(respuesta);
+                // alert(respuesta);
                 $("#div_tabla").html(respuesta);
                 document.getElementById("btn_guardar").disabled = false;
             },
@@ -158,7 +158,7 @@ function cargar_excel_preliminar1() {
         formData.append("archivo_excel_preliminar", files);
 
         $.ajax({
-            url: "../Controlador/importar_carga_controlador.php?op=cargarExcel_preliminar",
+            url: "../Controlador/importar_preliminar.php",
             type: "post",
             data: formData,
             contentType: false,

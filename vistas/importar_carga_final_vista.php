@@ -141,7 +141,7 @@ ob_end_flush();
 
                             </div>
                             <div class="col-lg-2">
-                                <button class="btn btn-primary" style="width: 100%;" disabled id="btn_guardar" onclick="registrar_excel();" <?php echo $_SESSION['btn_guardar_datos_preliminar']; ?>>Guardar Datos</button><br>
+                                <button class="btn btn-primary" onclick="registrar_excel();" style="width: 100%;" id="btn_guardar" onclic <?php echo $_SESSION['btn_guardar_datos_final']; ?>>Guardar Datos</button><br>
 
                             </div>
 
