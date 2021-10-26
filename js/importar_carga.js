@@ -293,9 +293,9 @@ function llamarregistrarPreliminar(
     }).done(function(resp) {
         // alert(resp);
         if (resp == 1) {
-            swal("Bien!", "Se guardo con exito!", "success");
-
-            window.location = "../vistas/importar_carga_preliminar_vista.php";
+            // wal("Bien!", "Se guardo con exito!", "success");
+            aler(resp);
+            // window.location = "../vistas/importar_carga_preliminar_vista.php";
         } else {
             swal("Error!", "No se pudo completar, intente de nuevo!", "warning");
             //   window.location = "../vistas/importar_carga_final_vista.php";
