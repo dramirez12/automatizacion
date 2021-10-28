@@ -19,7 +19,7 @@ FROM tbl_personas AS PER
    
    JOIN tbl_personas_extendidas AS PEX ON PEX.id_persona=PER.id_persona
   
-WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 16;
+WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 11;
 ";
         $result = $instancia_conexion->ejecutarConsulta($sql);
 
@@ -73,7 +73,7 @@ WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 16;
 
 
         global $instancia_conexion;
-        $consulta = $instancia_conexion->ejecutarConsulta("UPDATE tbl_personas_extendidas SET valor = '$valor' WHERE id_persona = $id_persona AND id_atributo = 16;");
+        $consulta = $instancia_conexion->ejecutarConsulta("UPDATE tbl_personas_extendidas SET valor = '$valor' WHERE id_persona = $id_persona AND id_atributo = 11;");
 
         return $consulta;
     }
