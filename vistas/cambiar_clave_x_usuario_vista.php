@@ -208,48 +208,55 @@ if (isset($_REQUEST['msj'])) {
 })   </script>';
   }
   if ($msj == 2) {
-    echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-                          position: "center",
-                          icon: "success",
-                          title: "Clave actualizada correctamente",
-                          showConfirmButton: false,
-                          timer: 3000
-                          }) </script>';
+    echo '<script>
+                
+                 swal(
+                      "Alerta!",
+                      "Clave actualizada correctamente",
+                      "warning"
+                    );          
+          
+                            </script>';
   }
+
+
   if ($msj == 3) {
-    echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-  position: "center",
-  icon: "info",
-  title: "Clave incorrecta, verificar su clave actual",
-  showConfirmButton: false,
-  timer: 3000
-})   </script>';
+    echo '<script>
+                
+                 swal(
+                      "Alerta!",
+                      "Clave incorrecta, verificar su clave actual",
+                      "warning"
+                    );          
+          
+                            </script>';
   }
+
+ 
   if ($msj == 4) {
-    echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-  position: "center",
-  icon: "info",
-  title: "La clave nueva debe ser diferente a la anterior",
-  showConfirmButton: false,
-  timer: 3000
-})   </script>';
+    echo '<script>
+                
+                 swal(
+                      "Alerta!",
+                      "La clave nueva debe ser diferente a la anterior",
+                      "warning"
+                    );          
+          
+                            </script>';
+   
   }
   if ($msj == 6) {
-    echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-  position: "center",
-  icon: "info",
-  title: "PASSWORD NO VÁLIDO: ' . $_REQUEST['error'] . '",
-  showConfirmButton: false,
-  timer: 3000
-})   </script>';
+    echo '<script>
+                
+                 swal(
+                      "Alerta!",
+                      "PASSWORD NO VÁLIDO: ' . $_REQUEST['error'] . '",
+                      "warning"
+                    );          
+          
+                            </script>';
+    
+   
   }
 }
 
