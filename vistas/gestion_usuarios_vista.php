@@ -174,6 +174,7 @@ ob_end_flush();
 
 <head>
   <script src="../js/autologout.js"></script>
+  <script src="../js/gestion_usuario.js"></script>
   <title></title>
 </head>
 
@@ -215,8 +216,25 @@ ob_end_flush();
       <div class="card-header">
         <h3 class="card-title">Usuarios Existente</h3>
         <div class="card-tools">
+
+
+
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
         </div>
+
+      </div>
+
+      <div class="card-header">
+        <!--COMBOBOX-->
+
+        <div class="px-1">
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalReset">
+            <i class="fas fa-undo"></i>Reset Usuario
+          </button>
+        </div>
+
+
       </div>
       <!-- /.card-header -->
       <div class="card-body">
@@ -264,6 +282,47 @@ ob_end_flush();
             <?php } ?>
           </tbody>
         </table>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="modalReset">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Datos</h5>
+                <button class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+
+              <div class="modal-body">
+                <div class="row">
+
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Seleccione Usuario</label>
+                      <select class="form-control" name="usuario" id="usuario">
+
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label></label>
+                    <button type="button" onclick="reiniciar();" class="btn btn-primary">
+                      <i class="fas fa-undo"></i> Aceptar
+                    </button>
+                  </div>
+
+
+
+                </div>
+              </div>
+              <div class="modal-footer">
+
+                <!-- <button class="btn btn-danger" data-dismiss="modal">Cerrar</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- /.card-body -->
     </div>
@@ -298,6 +357,7 @@ ob_end_flush();
 
           <!--Cuerpo del modal-->
           <div class="modal-body">
+
 
 
 

@@ -77,5 +77,26 @@ WHERE PER.id_persona= $id_persona AND PEX.id_atributo = 11;
 
         return $consulta;
     }
+    function usuario()
+    {
+        global $instancia_conexion;
+        $consulta = $instancia_conexion->ejecutarConsulta('select id_usuario,usuario from tbl_usuarios');
 
+        return $consulta;
+    }
+
+    function confirmar($id_usuario)
+    {
+
+        
+        global $instancia_conexion;
+
+        $sql = "call proc_actualizar_reset_usuario('$id_usuario')";
+
+        if ($consulta = $instancia_conexion->ejecutarConsulta($sql)) {
+            return 1;
+        } else {
+            echo $consulta;
+        }
+    }
 }
