@@ -44,9 +44,9 @@ function reiniciar() {
                     if (resp == 1) {
                         //alert("si");
                         swal({
-                            title: "alerta",
+                            title: "Bien",
                             text: "Se guardó correctamente",
-                            type: "warning",
+                            type: "success",
                             showConfirmButton: false,
                             timer: 11000,
                         });
