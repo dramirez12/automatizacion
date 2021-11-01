@@ -10,7 +10,7 @@ require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_bitacora.php');
 
 $actividad=new Actividad();
-$Id_objeto=225;	
+$Id_objeto=225;
 $usuario= $_SESSION['id_usuario'];
 $hoy=date("y-m-d");
 
@@ -162,6 +162,7 @@ switch ($_GET["op"]){
 				//SE MANDA A LA BITACORA LA ACCION DE INSERTAR
 		$rspta=$actividad->insertaryenviar($no_solicitud,$nombre_actividad,$ubicacion,$fch_inicial_actividad,$fch_final_actividad,$descripcion,$poblacion_objetivo,$presupuesto,$staff_alumnos,$observaciones,$usuario,$id_ambito,$periodo);
 		echo $rspta ? "ACTIVIDAD REGISTRADA" : "actividad no se pudo registrar";
+		
 		bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'LA ACTIVIDAD: "' . $nombre_actividad . '"');
 		}else {
 		$rspta=$actividad->insertaryenviar2($id_actividad_voae,$no_solicitud,$nombre_actividad,$ubicacion,$fch_inicial_actividad,$fch_final_actividad,$descripcion,$poblacion_objetivo,$presupuesto,$staff_alumnos,$observaciones,$usuario,$id_ambito,$periodo);
@@ -193,7 +194,7 @@ switch ($_GET["op"]){
 
 
 	    case 'listar':
-	    $rspta=$actividad->listar();
+	    $rspta=$actividad->listar($usuario);
  		//Vamos a declarar un array
 	    $data= Array();
 

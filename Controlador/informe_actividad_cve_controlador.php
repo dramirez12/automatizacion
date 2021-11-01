@@ -27,7 +27,7 @@ $usuario=isset($_POST["usuario"])? limpiarCadena($_POST["usuario"]):"";
 $id_estado=isset($_POST["id_estado"])? limpiarCadena($_POST["id_estado"]):"";
 $nombre_estado=isset($_POST["nombre_estado"])? limpiarCadena($_POST["nombre_estado"]):"";
 $archivo=isset($_POST["archivo"])? limpiarCadena($_POST["archivo"]):"";
-
+$usuario=$_SESSION['id_usuario'];
 if (permisos::permiso_eliminar($Id_objeto)=='0')    {
     $_SESSION["btn_eliminar"]="hidden";
   } else {
@@ -68,8 +68,7 @@ switch ($_GET["op"]){
 			$id_estado=13;
 
 			$rspta=$informe_actividad->insertar($nombre_archivo,$dir_repositorio,$id_actividad,$introduccion,$objetivos,$desarrollo,$conclusiones,$id_usuario_registro,$id_estado);
-			echo $rspta ? "Informe  Registrado" : "El informe no se pudo registrar";
-			
+			echo $rspta ? "Informe  Registrado" : "El informe no se pudo registrar ";
 			bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INSERTO', 'EL INFORME CON ID: "' . $id_informe . '"');
 		}
 		else {
@@ -101,9 +100,9 @@ switch ($_GET["op"]){
 
 
 
-		case 'listar':
+		case 'listar': 
 			
-			$rspta=$informe_actividad->listar();
+			$rspta=$informe_actividad->listar($usuario);
 			//Vamos a declarar un array
 			$data= Array();
 
@@ -115,14 +114,16 @@ switch ($_GET["op"]){
 					<input type="hidden" name="id_actividad_cve" value="'.$reg->id_actividad_voae.'" onclick="listar('.$reg->id_actividad_voae.')">
 					<button class="btn btn-info" title="Lista de Asistencia" type="submit"><i class="fas fa-list-ol"></i></button>
 				</form>'. 
-				'<form action="../Controlador/informe_actividad_pdf.php" method="POST" style="display:inline;">
+				'<form target="_black" action="../Controlador/informe_actividad_pdf.php" method="POST" style="display:inline;">
 					   <input type="hidden" name="id_informe" value="'.$reg->id_informe.'">
 					   <button title="Generar PDF"  class="btn btn-danger"  type="submit" ><i class="fas fa-file-pdf"></i></button></form>',						 
 				"1"=>$reg->no_solicitud,
 				"2"=>$reg->nombre,
 				"3"=>$reg->asistentes,
 				"4"=>$reg->fch_informe,
-				"5"=>$reg->usuario
+				"5"=>$reg->usuario,
+				"6"=>'<a target="_black" href="'.$reg->dir_repositorio.'"><button class="btn btn-success" type="button">Ver Archivo</button>
+				</a>'
 				
 				);
 			}

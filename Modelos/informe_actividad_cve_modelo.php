@@ -81,9 +81,9 @@ Class informe_actividad
 	}
 
 	//Implementar un método para listar los registros
-	public function listar()
+	public function listar($usuario)
 	{
-		$sql="SELECT * FROM  view_informes_actividades";
+		$sql="CALL vista_informes('$usuario')";
 		return ejecutarConsulta($sql);		
 	}
 
