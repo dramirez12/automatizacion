@@ -10,7 +10,7 @@ require_once ('../clases/funcion_visualizar.php');
 require_once ('../clases/funcion_bitacora.php');
 
 $externa=new Externa();
-$Id_objeto=237; 
+$Id_objeto=294; 
 
 if (permisos::permiso_modificar($Id_objeto)==0)
   {
