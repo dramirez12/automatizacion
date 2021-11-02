@@ -73,7 +73,7 @@ class personas
 	public function Registrar_foto($nombrearchivo)
 	{
 		global $instancia_conexion;
-		$sql = "CALL proc_insertar_foto_estudiante('$nombrearchivo')";
+		$sql = "CALL proc_insertar_foto('$nombrearchivo')";
 
 		return $instancia_conexion->ejecutarConsulta($sql);
 	}

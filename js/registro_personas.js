@@ -335,6 +335,9 @@ function Registrar() {
                 );
 
                 location.reload();
+            } else {
+                swal("Alerta!", "intenta de nuevo", "warning");
+
             }
         }
     });
