@@ -62,6 +62,18 @@ ob_end_flush();
 <head>
     <script src="../js/autologout.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <!--  <link rel="stylesheet" type="text/css" href="../plugins/datatables/datatables.min.css" /> -->
+    <!--datables estilo bootstrap 4 CSS-->
+    <!-- <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+
+    <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"> -->
+
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <!-- css -->
+   <!--  <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"> -->
+
 
 
 </head>
@@ -277,7 +289,7 @@ ob_end_flush();
 
                             </div>
                         </div> -->
-                    <table id="tabla_carga" class="table table-bordered table-striped" style="width:99%">
+                    <table id="tabla_carga" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Acción</th>
@@ -957,7 +969,6 @@ ob_end_flush();
 
     });
 </script>
-<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
 <script>
     var idioma_espanol = {
@@ -989,15 +1000,11 @@ ob_end_flush();
 
     }
 </script>
-<!-- <script type="text/javascript" charset="utf8" src="../plugins/DataTables(1)/datatables.min.js"></script> -->
-
+<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
-<!-- <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script> -->
-
-<!-- <script type="text/javascript" src="../js/pdf_mantenimientos.js"></script> -->
-<!-- datatables JS -->
-<!-- <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script> -->
+<script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
 <!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>

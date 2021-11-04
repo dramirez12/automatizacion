@@ -197,10 +197,7 @@ function AgregarEspecialidad(grado, especialidad) {
   }).done(function (resp) {
     if (resp > 0) {
       swal(
-        "Buen trabajo!",
-        "se agrego correctamente, asegurate de actualizar tu curriculum",
-        "success"
-      );
+        "Buen trabajo!", "Se agrego correctamente, asegurate de actualizar tu curriculum", "success" );
       limpiartext();
       especialidad();
       // especialidad();

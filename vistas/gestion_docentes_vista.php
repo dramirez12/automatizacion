@@ -76,10 +76,10 @@ ob_end_flush();
     <script src="../js/autologout.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../plugins/datatables/datatables.min.css" />
-    <!--datables estilo bootstrap 4 CSS-->
-    <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-    <!--  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<!--     <link rel="stylesheet" type="text/css" href="../plugins/datatables/datatables.min.css" />
+ -->    <!--datables estilo bootstrap 4 CSS-->
+<!--     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+ -->    <!--  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css"> -->
     <!--  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -91,14 +91,14 @@ ob_end_flush();
 
 
 
-    <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
-
-    <meta charset="UTF-8">
+<!--     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+ -->
+   <!--  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+ -->
     <!-- css -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
-
+<!--     <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+ -->
 </head>
 
 
