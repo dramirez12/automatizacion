@@ -64,7 +64,7 @@ if (isset($_REQUEST['msj'])) {
 
 
 
-$Id_objeto = 293;
+$Id_objeto = 284;
 $visualizacion = permiso_ver($Id_objeto);
 
 
@@ -84,7 +84,7 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-  //bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Gestion de Objetos');
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Gestion de Objetos');
 
 
   if (permisos::permiso_modificar($Id_objeto) == '1') {

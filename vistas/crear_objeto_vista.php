@@ -14,7 +14,7 @@ require_once('../clases/funcion_permisos.php');
 
 
 
-$Id_objeto = 292;
+$Id_objeto = 283;
 
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Crear Objeto');
 

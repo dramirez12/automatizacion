@@ -4,7 +4,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
 
 
-if (permiso_ver('292') == '1') {
+if (permiso_ver('283') == '1') {
 
   $_SESSION['crear_objetos_menu'] = "...";
 } else {
@@ -12,7 +12,7 @@ if (permiso_ver('292') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('293') == '1') {
+if (permiso_ver('284') == '1') {
 
   $_SESSION['gestion_objetos_menu'] = "...";
 } else {
