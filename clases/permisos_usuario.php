@@ -91,7 +91,8 @@ $_SESSION['reportes_existencias_vista'] = 'none';
 $_SESSION['reportes_ubicacion_vista'] = 'none';
 $_SESSION['salida_vista'] = 'none';
 $_SESSION['transaccion_kardex'] = 'none';
-
+$_SESSION['objetos_vista'] = 'none';
+$_SESSION['modulos_vista'] = 'none';
 
 
 
@@ -166,6 +167,12 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
    if ($_SESSION['pantalla'] == '3' or $_SESSION['pantalla'] == '4') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['usuarios_vista'] = "block";
+      }
+   }
+   //objetos creacion y gestion
+   if ($_SESSION['pantalla'] == '283' or $_SESSION['pantalla'] == '284') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['objetos_vista'] = "block";
       }
    }
    if ($_SESSION['pantalla'] == '5' or $_SESSION['pantalla'] == '6') {

@@ -40,21 +40,6 @@ if ($visualizacion == 0) {
     $_SESSION['btn_guardar_permisos'] = "disabled";
   }
 
-  /*
-if (isset($_REQUEST['msj']))
- {
-   $msj=$_REQUEST['msj'];
-
-    if ($msj==1) 
-      {
-      echo '<script> alert("Permisos agregados correctamente")</script>';
-      }
-           if ($msj==2)
-            {
-              echo '<script> alert("Lo sentimos tiene campos por rellenar ")</script>';
-            }
-   
-}*/
 }
 
 
@@ -204,11 +189,12 @@ ob_end_flush();
             <div class="card-header">
               <h3 class="card-title">Pantallas</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+               <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>-->
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+                <!--      
               <table id="tabla" class="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -218,7 +204,7 @@ ob_end_flush();
                   </tr>
                 </thead>
                 <tbody>
-                  <?php while ($row = $resultadotabla_permisos->fetch_array(MYSQLI_ASSOC)) { ?>
+                  <?php /* while ($row = $resultadotabla_permisos->fetch_array(MYSQLI_ASSOC)) { ?>
                     <tr>
                       <td><?php echo $row['objeto']; ?></td>
 
@@ -230,11 +216,16 @@ ob_end_flush();
                       </td>
 
                     </tr>
-                  <?php } ?>
+                  <?php } */
+                 
+                ?>
                 </tbody>
-              </table>
+              </table>-->
             </div>
-            <!-- /.card-body -->
+            <div id="modulos">
+               <!-- /.card-body -->
+             
+            </div><!--modulos-->
           </div>
 
 
@@ -249,7 +240,7 @@ ob_end_flush();
 
 
   </div>
-
+  <script src="../js/crear_permisos.js  "></script>
 </body>
 
 </html>
