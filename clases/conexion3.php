@@ -2,9 +2,9 @@
 //CONEXION DE LUIS
 //generando la conexion a la base de datos
 function conexion(){ 
-	$servidor= "167.114.169.207";
+	$servidor= "51.222.86.251";
 	$usuario= "informat_desarrollo";
-	$password = "!fuRCr3XR-tz";
+	$password = "^Kwd{PE^(L&#";
 	$base= "informat_desarrollo_automatizacion";
 
  	$conexion = mysqli_connect($servidor, $usuario,$password,$base);

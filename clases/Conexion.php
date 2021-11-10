@@ -1,8 +1,8 @@
 <?php
 
-$servidor= "167.114.169.207";
+$servidor= "51.222.86.251";
 $usuario= "informat_desarrollo";
-$password = "!fuRCr3XR-tz";
+$password = "^Kwd{PE^(L&#";
 $base= "informat_desarrollo_automatizacion";
 
 	$mysqli = new mysqli($servidor, $usuario,$password,$base);
@@ -13,7 +13,7 @@ $base= "informat_desarrollo_automatizacion";
 		die('Error en la conexion' . $mysqli->connect_error);
 		exit();	
 	}
-$connect = new PDO("mysql:host=167.114.169.207;dbname=informat_desarrollo_automatizacion", "informat_desarrollo", "!fuRCr3XR-tz");
+$connect = new PDO("mysql:host=51.222.86.251;dbname=informat_desarrollo_automatizacion", "informat_desarrollo", "^Kwd{PE^(L&#");
 
 if (!mysqli_set_charset($mysqli, "utf8")) {
         printf("Error cargando el conjunto de caracteres utf8: %s\n", mysqli_error($mysqli));

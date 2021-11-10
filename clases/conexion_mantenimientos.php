@@ -1,6 +1,6 @@
 <?php
 require_once "global.php";
-$conexion = new mysqli('167.114.169.207', 'informat_desarrollo', '!fuRCr3XR-tz', 'informat_desarrollo_automatizacion');
+$conexion = new mysqli('51.222.86.251', 'informat_desarrollo', '^Kwd{PE^(L&#', 'informat_desarrollo_automatizacion');
 mysqli_query($conexion, 'SET NAMES "' . DB_ENCODE . '"');
 
 //Si tenemos un posible error en la conexión lo mostramos
@@ -68,7 +68,8 @@ if (!function_exists('ejecutarConsulta')) {
 		}
 		function salir()
 		{
-			mysqli_close();
+			global $conexion;
+			mysqli_close($conexion);
 		}
 	}
 }
