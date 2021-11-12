@@ -40,7 +40,7 @@ Class Horas
 	//Implementar un método para listar los registros
 	public function listar($usuario)
 	{
-		$sql="CALL vista_horas('$usuario')";
+		$sql="CALL vista_horas3('$usuario')";
 		return ejecutarConsulta($sql);	
 			
 	}
