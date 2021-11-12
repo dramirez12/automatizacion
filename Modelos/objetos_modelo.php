@@ -11,24 +11,11 @@ class objetos{
 		return $instancia_conexion->ejecutarConsulta($sql);
         # code...
     }
-    function registrar_modulo($modulo,$descripcion)
-    {
-        global $instancia_conexion;
-		$sql="insert into tbl_modulos(nombre, descripcion) values('".$modulo."','".$descripcion."')";
-		return $instancia_conexion->ejecutarConsulta($sql);
-        # code...
-    }
     function listar(){
 
         global $instancia_conexion;
 		$sql="
         select ob.Id_objeto,ob.objeto,ob.descripcion,m.nombre from tbl_objetos ob, tbl_modulo_objetos mob,tbl_modulos m where ob.Id_objeto=mob.id_objeto and mob.id_modulo=m.id_modulo;";
-		return $instancia_conexion->ejecutarConsulta($sql);
-    }
-    function listar_modulos(){
-
-        global $instancia_conexion;
-		$sql=" select * from tbl_modulos;";
 		return $instancia_conexion->ejecutarConsulta($sql);
     }
     function seleccionar_objeto($id_objeto){
@@ -42,12 +29,6 @@ class objetos{
         global $instancia_conexion;
 		$sql="call proc_insertar_actualizar_objetos('".$objeto."','".$descripcion."',".$id_modulo.",".$id_objeto.",2)";
 		return $instancia_conexion->ejecutarConsulta($sql);
-    }
-    function actualizar_modulo($id_modulo,$modulo,$descripcion){
-        global $instancia_conexion;
-		$sql="update tbl_modulos set nombre='".$modulo."', descripcion='".$descripcion."' where id_modulo=".$id_modulo."";
-		return $instancia_conexion->ejecutarConsulta($sql);
-
     }
     function listar_select_modulos(){
         global $instancia_conexion;
@@ -63,15 +44,9 @@ class objetos{
         return $consulta;
 
     }
-
     function mostrar($id_objeto){
         global $instancia_conexion;
         $sql='select ob.Id_objeto,ob.objeto,ob.descripcion,m.id_modulo from tbl_objetos ob, tbl_modulo_objetos mob,tbl_modulos m where ob.Id_objeto='.$id_objeto.' and ob.Id_objeto=mob.id_objeto and mob.id_modulo=m.id_modulo;';
-        return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
-    }
-    function mostrar_modulo($id_modulo){
-        global $instancia_conexion;
-        $sql='select * from tbl_modulos where id_modulo='.$id_modulo;
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
     }
 }
