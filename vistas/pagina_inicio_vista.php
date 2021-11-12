@@ -1,9 +1,9 @@
 <?php
 
+
+
 require_once('../clases/Conexion.php');
 require_once('../clases/permisos_usuario.php');
-
-
 
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -80,19 +80,19 @@ if (session_status() === PHP_SESSION_NONE) {
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-          <a class="nav-link" href="../vistas/cambiar_clave_x_usuario_vista">
+          <a class="nav-link" href="../vistas/cambiar_clave_x_usuario_vista"> Restablecer Contraseña
             <i class="fas fa-user-tag"></i>
           </a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link" href="../vistas/gestion_respuesta_usuario_vista">
+          <a class="nav-link" href="../vistas/gestion_respuesta_usuario_vista">Preguntas de Seguridad
             <i class="fas fa-question-circle"></i>
           </a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="btn-exit-system" href="#!">
+          <a class="btn-exit-system nav-link" style="color:#4697D7 " href="#!">Cerrar Sesión &nbsp;
             <i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
@@ -123,9 +123,8 @@ if (session_status() === PHP_SESSION_NONE) {
             <img src="../dist/img/usuario3.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="../vistas/ajustes_usuario_vista" class="d-block"><?php
-                                                                          echo ($_SESSION['usuario']); ?></a>
-
+            <a href="#" class="d-block"><?php
+                                        echo ($_SESSION['usuario']); ?></a>
           </div>
         </div>
 
@@ -389,16 +388,6 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
                 <!--- Gestión asistencia  -->
-
-                <li class="nav-item" /*style="display:<?php echo $_SESSION['gestion_actas'] ?>"*/>
-                  <a href="../vistas/listar_actasarchivadasdocentes_vista" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>
-                          Consultar Acta
-                        </p>
-                    </a>
-                </li>
-                <!--- Consultar actas  -->
               </ul>
             </li>
 
@@ -963,7 +952,7 @@ if (session_status() === PHP_SESSION_NONE) {
           //Initialize Select2 Elements
           $('.select2bs4').select2({
             theme: 'bootstrap4'
-          })
+          })});
   </script>
   <script>
     $(function() {
