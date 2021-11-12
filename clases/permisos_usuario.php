@@ -175,6 +175,11 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
          $_SESSION['objetos_vista'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] == '285' or $_SESSION['pantalla'] == '286') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['modulos_vista'] = "block";
+      }
+   }
    if ($_SESSION['pantalla'] == '5' or $_SESSION['pantalla'] == '6') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['roles_vista'] = "block";
