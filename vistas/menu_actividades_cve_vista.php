@@ -38,7 +38,7 @@ if (permiso_ver('235')=='1') {
             tiene permisos para visualizar";
 }
 
-if (permiso_ver('295')=='1') {
+if (permiso_ver('288')=='1') {
   $_SESSION['reporte_act']="...";
 } else {
   $_SESSION['reporte_act']="No 
