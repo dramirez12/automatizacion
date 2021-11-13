@@ -10,7 +10,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-$Id_objeto = 262;
+$Id_objeto = 131;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -31,6 +31,9 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A TIPOS DE INDICADOR .');
+
+
+ 
 }
 
 ob_end_flush();
@@ -41,7 +44,6 @@ ob_end_flush();
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
     <title></title>
 </head>
 
@@ -158,20 +160,19 @@ ob_end_flush();
             }
         }
     }
-
-    function validate(s) {
-        if (/^(\w+\s?)*\s*$/.test(s)) {
-            return s.replace(/\s+$/, '');
+    function validate(s){
+        if (/^(\w+\s?)*\s*$/.test(s)){
+          return s.replace(/\s+$/,  '');
         }
         return 'NOT ALLOWED';
-    }
-
-    validate('tes ting') //'test ing'
-    validate('testing') //'testing'
-    validate(' testing') //'NOT ALLOWED'
-    validate('testing ') //'testing'
-    validate('testing  ') //'testing'
-    validate('testing   ')
+        }
+        
+        validate('tes ting')      //'test ing'
+        validate('testing')       //'testing'
+        validate(' testing')      //'NOT ALLOWED'
+        validate('testing ')      //'testing'
+        validate('testing  ')     //'testing'
+        validate('testing   ')   
 
     function sololetras(e) {
 

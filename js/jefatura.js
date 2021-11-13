@@ -6,7 +6,6 @@ const Btn_enviar = document.getElementById("enviar_archivos");
 const file_ca = document.getElementById("file_ca");
 const file_cr = document.getElementById("file_cr");
 
-
 //!envio de datos del formulario
 //**validando el archivo lado del cliente
 $("#file_ca").on('change', function () {

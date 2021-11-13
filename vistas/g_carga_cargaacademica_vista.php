@@ -5,7 +5,7 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-if (permiso_ver('245') == '1') {
+if (permiso_ver('114') == '1') {
 
   $_SESSION['g_cargaacademica_vista'] = "...";
 } else {
@@ -14,7 +14,7 @@ if (permiso_ver('245') == '1') {
 }
 
 
-$Id_objeto = 245;
+$Id_objeto = 114;
 
 $visualizacion = permiso_ver($Id_objeto);
 
@@ -49,7 +49,6 @@ if (isset($_REQUEST['msj'])) {
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
   <title></title>
 
   <style>
@@ -87,7 +86,7 @@ if (isset($_REQUEST['msj'])) {
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -102,8 +101,8 @@ if (isset($_REQUEST['msj'])) {
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="enviar_reporte_word">Enviar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="enviar_reporte_word">Generar</button>
         </div>
       </div>
     </div>
@@ -228,7 +227,7 @@ if (isset($_REQUEST['msj'])) {
 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="enviar_archivos">Enviar</button>
+                    <button type="button" class="btn btn-success" id="enviar_archivos">Guardar</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
@@ -411,6 +410,19 @@ if (isset($_REQUEST['msj'])) {
           [0, 'desc']
         ],
         "responsive": true,
+        "language": {
+          "lengthMenu": "Mostrar _MENU_ Registros",
+          "zeroRecords": "No se encontraron resultados",
+          "info": "Mostrando la pagina de _PAGE_ de _PAGES_",
+          "infoEmpty": "No records available",
+          "infoFiltered": "(Filtrado de _MAX_ Registros Totales)",
+          "search": "Buscar:",
+          "pagingType": "full_numbers",
+          "oPaginate": {
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+          },
+        },
         dom: 'Bfrtip',
         "buttons": [{
             extend: 'copyHtml5',

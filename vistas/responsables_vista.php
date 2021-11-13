@@ -1,11 +1,11 @@
 <?php
-ob_start();
+session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 247;
+$Id_objeto = 133;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -26,15 +26,23 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A RESPONSABLES POA.');
+
+
+ 
 }
 
 ob_end_flush();
 ?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />

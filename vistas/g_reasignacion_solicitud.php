@@ -5,14 +5,14 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 250;
+$Id_objeto = 119;
 
 
 $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-  echo '<script type="text/javascript">
+    echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -25,7 +25,8 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REASIGNACIÓN SOLICITUD.');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A REASIGNACIÓN SOLICITUD.');
+
 }
 
 ob_end_flush();
@@ -36,7 +37,6 @@ ob_end_flush();
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -214,8 +214,8 @@ ob_end_flush();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="../vistas/g_reasignacionjefatura_vista.php">Gestion de Reasignacion Jefatura</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/g_reasignacionjefatura_vista.php">Gestión de Reasignación Académica</a></li>
+
             </ol>
           </div>
 

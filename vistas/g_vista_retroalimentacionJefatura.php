@@ -8,7 +8,7 @@ $Id_objeto = 120;
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {
-  echo '<script type="text/javascript">
+    echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -20,9 +20,10 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GESTIÓN RETROALIMENTACIÓN.');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GESTIÓN RETROALIMENTACIÓN.');
+
 }
-ob_end_flush();
+ob_end_flush(); 
 
 ?>
 
@@ -31,7 +32,6 @@ ob_end_flush();
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
   <title></title>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -237,7 +237,7 @@ ob_end_flush();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/g_reasignacionjefatura_vista.php">Gestión de Reasignación Académica</a></li>
 
             </ol>
           </div>

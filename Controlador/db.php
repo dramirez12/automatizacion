@@ -595,25 +595,6 @@ class db extends conexion2
         ]);
         return 'exito';
     }
-    public function eliminar_detalle_indicador($id_detalles_tipo_indicador)
-    {
-        $sql = "DELETE FROM `tbl_detalles_tipo_indicador` WHERE `id_detalles_tipo_indicador` =:id_detalles_tipo_indicador";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            'id_detalles_tipo_indicador' => $id_detalles_tipo_indicador
-        ]);
-        return 'exito';
-    }
-
-    public function eliminar_detalle_recurso($id_detalle_tipo_recurso)
-    {
-        $sql = "DELETE FROM `tbl_detalles_tipo_recurso` WHERE `id_detalle_tipo_recurso` =:id_detalle_tipo_recurso";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([
-            'id_detalle_tipo_recurso' => $id_detalle_tipo_recurso
-        ]);
-        return 'exito';
-    }
 
     public function eliminar_indicador($id_indicador)
     {
@@ -741,9 +722,56 @@ class db extends conexion2
 
     //?fin modificacion 29/07/2021
 
+        //!ACTIVIDADES cambios POA
+
+    //!cambios POA_metas
+    public function edicion_metas($id_metas, $primer_trimestre, $segundo_trimestre, $tercer_trimestre, $cuarto_trimestre)
+    {
+        $sql = "UPDATE `tbl_metas` SET `trimestre_1`=:primer_trimestre ,`trimestre_2`=:segundo_trimestre ,`trimestre_3`=:tercer_trimestre,`trimestre_4`=:cuarto_trimestre WHERE id_metas = :id_metas";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_metas' => $id_metas,
+            'primer_trimestre' => $primer_trimestre,
+            'segundo_trimestre' => $segundo_trimestre,
+            'tercer_trimestre' => $tercer_trimestre,
+            'cuarto_trimestre' => $cuarto_trimestre
+        ]);
+        return 'exito';
+    }
+    //!cambios POA_metas
+
+    //!cambios POA actividades
+    public function update_actividades($id_actividades_poa, $n_actividad, $id_verificacion, $m_verificacion, $id_poblacion, $p_objetivo)
+    {
+        $sql = "UPDATE `tbl_actividades_poa` SET `nombre_actividad`=:n_actividad WHERE id_actividades_poa =:id_actividades_poa";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_actividades_poa' => $id_actividades_poa,
+            'n_actividad' => $n_actividad
+        ]);
+
+        $sql = "UPDATE `tbl_medio_verificacion` SET `descripcion`=:m_verificacion WHERE id_verificacion =:id_verificacion ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_verificacion' => $id_verificacion,
+            'm_verificacion' => $m_verificacion
+        ]);
+
+        $sql = "UPDATE `tbl_poblacion_objetivo` SET `descripcion`=:p_objetivo WHERE `id_poblacion_objetivo`=:id_poblacion";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_poblacion' => $id_poblacion,
+            'p_objetivo' => $p_objetivo
+        ]);
+
+        return 'exito';
+    }
+
+    //!cambios POA actividades
+    
     public function editar_recurso($id_recurso, $nombre_recurso_ed, $descripcion_ed)
     {
-        $sql = "UPDATE `tbl_recursos_tipo` SET `descripcion`= :descripcion_ed,`nombre_recurso`= :nombre_recurso_ed WHERE `id_recurso_tipo` =:id_recurso";
+        $sql = "UPDATE tbl_recursos_tipo SET descripcion= :descripcion_ed,nombre_recurso= :nombre_recurso_ed WHERE id_recurso_tipo =:id_recurso";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'id_recurso' => $id_recurso,
@@ -781,7 +809,7 @@ class db extends conexion2
 
     public function editar_detalle_recurso($id_detalle_recurso, $nombre_detalle, $cant_detalle, $precio_detalle, $desc_detalle)
     {
-        $sql = "UPDATE `tbl_detalles_tipo_recurso` SET nombre =:nombre_detalle , descripcion =:desc_detalle , cantidad = :cant_detalle , precio_aprox=:precio_detalle WHERE id_detalle_tipo_recurso =:id_detalle_recurso";
+        $sql = "UPDATE tbl_detalles_tipo_recurso SET nombre =:nombre_detalle , descripcion =:desc_detalle , cantidad = :cant_detalle , precio_aprox=:precio_detalle WHERE id_detalle_tipo_recurso =:id_detalle_recurso";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'id_detalle_recurso' => $id_detalle_recurso,
@@ -796,7 +824,7 @@ class db extends conexion2
     
     public function detalle_indicador($id_indicador, $descripcion)
     {
-        $sql = "UPDATE `tbl_detalles_tipo_indicador` SET descripcion=:descripcion WHERE id_detalles_tipo_indicador =:id_indicador";
+        $sql = "UPDATE tbl_detalles_tipo_indicador SET descripcion=:descripcion WHERE id_detalles_tipo_indicador =:id_indicador";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'id_indicador' => $id_indicador,

@@ -10,7 +10,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-$Id_objeto = 258;
+$Id_objeto = 127;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -31,6 +31,9 @@ if ($visualizacion == 0) {
 } else {
 
     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A TIPOS DE RECURSOS.');
+
+
+ 
 }
 
 ob_end_flush()
@@ -42,7 +45,6 @@ ob_end_flush()
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -110,7 +112,7 @@ ob_end_flush()
                                                 <label for="">Fecha</label><br>
                                                 <input type="text" class="form-control" id="datepicker" name="fecha_recurso" placeholder="dia/mes/año" required> <br>
                                                 <label for="">Nombre Recurso</label><br>
-                                                <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" maxlength="20" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('nombre_recurso');" onkeypress="return sololetras(event)" required><br>
+                                                <input type="text" class="form-control" id="nombre_recurso" name="nombre_recurso" maxlength="20" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('nombre_recurso');" onkeypress="return sololetras(event)"  required><br>
                                             </div>
                                             <br>
                                             <div class="col-12">
@@ -136,9 +138,8 @@ ob_end_flush()
         </section>
     </div>
 </body>
-
 </html>
-<script src="../js/tipos_recursos.js"></script>
+<script src="../js/tipos_recursos.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script>
@@ -165,20 +166,19 @@ ob_end_flush()
             }
         }
     }
-
-    function validate(s) {
-        if (/^(\w+\s?)*\s*$/.test(s)) {
-            return s.replace(/\s+$/, '');
+    function validate(s){
+        if (/^(\w+\s?)*\s*$/.test(s)){
+          return s.replace(/\s+$/,  '');
         }
         return 'NOT ALLOWED';
-    }
-
-    validate('tes ting') //'test ing'
-    validate('testing') //'testing'
-    validate(' testing') //'NOT ALLOWED'
-    validate('testing ') //'testing'
-    validate('testing  ') //'testing'
-    validate('testing   ')
+        }
+        
+        validate('tes ting')      //'test ing'
+        validate('testing')       //'testing'
+        validate(' testing')      //'NOT ALLOWED'
+        validate('testing ')      //'testing'
+        validate('testing  ')     //'testing'
+        validate('testing   ')   
 
     function sololetras(e) {
 

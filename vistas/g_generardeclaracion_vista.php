@@ -7,43 +7,19 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('239') == '1') {
+if (permiso_ver('108') == '1') {
 
   $_SESSION['g_generardeclaracion_vista'] = "...";
 } else {
   $_SESSION['g_generardeclaracion_vista'] = "No 
   tiene permisos para visualizar";
 }
-
-
-$visualizacion = permiso_ver($Id_objeto);
-
-
-if ($visualizacion == 0) {
-  echo '<script type="text/javascript">
-                              swal({
-                                   title:"",
-                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-                                   type: "error",
-                                   showConfirmButton: false,
-                                   timer: 3000
-                                });
-                           window.location = "../vistas/g_carga_recontratacion_vista.php";
-
-                            </script>';
-} else {
-
-  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GENERAR DECLARACIÓN ACADÉMICA');
-}
-
-ob_end_flush();
 ?>
 <!DOCTYPE html>
 
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
   <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
   <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
@@ -71,7 +47,7 @@ ob_end_flush();
         <div class="modal-body">
           <form id="form_reporte_ind">
             <!--  <label for="">Nombre Jefe</label>-->
-            <!-- <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" onkeyup="mayusculas(this);" required>-->
+           <!-- <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" onkeyup="mayusculas(this);" required>-->
             <label for="">Departamento</label>
             <input type="text" class="form-control" id="depto" name="depto" onkeyup="mayusculas(this);" required>
             <!-- <label for="">Numero de identidad</label>
@@ -141,7 +117,7 @@ ob_end_flush();
                     <th scope="col">N° de alumnos</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody></tbody> 
               </table>
               <input type="text" id="nombre_docenteSend" hidden>
             </div>
@@ -316,22 +292,22 @@ ob_end_flush();
     const button_individual = document.getElementById('reporte_modal_individual');
     button_individual.addEventListener('click', function(e) {
       e.preventDefault();
-
+      
       if (form_reporte_ind.checkValidity() === false) {
         e.preventDefault();
         e.stopPropagation();
         form_reporte_ind.classList.add('was-validated')
       } else {
-        // var nombre_jefe = document.getElementById('nombre_jefe').value;
+       // var nombre_jefe = document.getElementById('nombre_jefe').value;
         var depto = document.getElementById('depto').value;
         //var identidad = document.getElementById('identidad').value;
         var periodo = localStorage.getItem('periodo');
         var fecha = localStorage.getItem('fecha');
         var nombre_docente = document.getElementById('nombreEnviar_docente').value;
-        var profesion_jefe = document.getElementById('profesion_jefe').value;
-        var profesion_docente = document.getElementById('profesion_docente').value;
-        var id_coordAcademica = localStorage.getItem('id_coordAcademica');
-        window.location.href = '../Reporte/reporte_individual.php?enviar=enviar&nombre_docente=' + nombre_docente + '&depto=' + depto + '&periodo=' + periodo + '&fecha=' + fecha + '&profesion_jefe=' + profesion_jefe + '&profesion_docente=' + profesion_docente + '&id_coordAcademica=' + id_coordAcademica + '';
+        var profesion_jefe = document.getElementById('profesion_jefe').value; 
+        var profesion_docente = document.getElementById('profesion_docente').value;  
+        var id_coordAcademica = localStorage.getItem('id_coordAcademica');      
+        window.location.href = '../Reporte/reporte_individual.php?enviar=enviar&nombre_docente=' + nombre_docente  +'&depto=' + depto  + '&periodo=' + periodo  + '&fecha='+ fecha + '&profesion_jefe=' + profesion_jefe +  '&profesion_docente=' + profesion_docente + '&id_coordAcademica='+id_coordAcademica+'';                
         $('#modal_final_ca').modal('toggle');
         document.getElementById('form_reporte_ind').reset();
       }

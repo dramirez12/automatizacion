@@ -5,7 +5,7 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 256;
+$Id_objeto = 125;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -37,7 +37,6 @@ ob_end_flush();
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
     <title></title>
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
     <script type="text/java pt" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>

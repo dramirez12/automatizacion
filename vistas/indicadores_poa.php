@@ -2,32 +2,45 @@
 session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
-require_once('../clases/funcion_bitacora.php');
-require_once('../clases/funcion_visualizar.php');
+// require_once('../clases/funcion_bitacora.php');
+// require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 242;
-$visualizacion = permiso_ver($Id_objeto);
+// if (permiso_ver('114') == '1') {
+
+//   $_SESSION['g_cargaacademica_vista'] = "...";
+// } else {
+//   $_SESSION['g_cargaacademica_vista'] = "No 
+//    tiene permisos para visualizar";
+// }
 
 
-if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
-                              swal({
-                                   title:"",
-                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-                                   type: "error",
-                                   showConfirmButton: false,
-                                   timer: 3000
-                                });
-                           window.location = "../vistas/indicadores_poa.php";
+// $Id_objeto = 114;
 
-                            </script>';
-} else {
+// $visualizacion = permiso_ver($Id_objeto);
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'INDICADORES POA.');
-}
 
-ob_end_flush()
 
+// if ($visualizacion == 0) {
+//   header('location:  ../vistas/pagina_principal_vista.php');
+// } else {
+//   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
+// }
+
+
+// if (isset($_REQUEST['msj'])) {
+//   $msj = $_REQUEST['msj'];
+
+//   if ($msj == 1) {
+//     echo '<script> alert("Fecha invalidas favor verificar.")</script>';
+//   }
+
+//   if ($msj == 2) {
+//     echo '<script> alert("Datos por rellenar, por favor verificar.")</script>';
+//   }
+//   if ($msj == 3) {
+//     echo '<script> alert("Por favor verificar fechas.")</script>';
+//   }
+// }
 
 ?>
 
@@ -36,7 +49,6 @@ ob_end_flush()
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../js/smart_wizard_arrows.css" rel="stylesheet">
@@ -65,8 +77,7 @@ ob_end_flush()
 </head>
 
 
-<body>
-
+<body onload="loadNombre_objetivo();">
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -131,7 +142,7 @@ ob_end_flush()
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="nav-link" href="#step-2">
+                                                    <a class="nav-link" href="#step-2" id="nav_edicion">
                                                         Agregar Responsables
                                                     </a>
                                                 </li>
@@ -168,13 +179,21 @@ ob_end_flush()
                                                                         <label for="formGroupExampleInput">Responsable</label>
                                                                         <input type="text" class="form-control" id="responsable_rs" name="responsable_rs" placeholder="Agregar responsable" required>
                                                                         <input type="text" id="id_indicador_res" name="id_indicador_res" hidden>
+                                                                        <input type="text" id="id_responsable_edit">
                                                                     </div>
                                                                     <div id="mensaje_responsable">
 
                                                                     </div>
                                                                     <div class="form-group d-flex">
-                                                                        <div class="ml-auto p-2">
+                                                                        <!-- <div class="ml-auto p-2" id="botones_edicion" hidden>
+                                                                            <button class="btn btn-warning" id="guardar_edicion">Guardar edicion</button> 
+
+                                                                            <button class="btn sw-btn-prev btn btn-danger" id="finalizar_edicion">Finalizar</button>
+                                                                            <button class="btn btn-warning" id="guardar_edicion">Guardar</button>
+                                                                        </div> -->
+                                                                        <div class="ml-auto p-2" id="botones_nuevo_responsables">
                                                                             <!-- <button class="btn btn-warning" id="guardar_edicion">Guardar edicion</button> -->
+                                                                            <button class="btn sw-btn-prev btn btn-danger">Finalizar</button>
                                                                             <button class="btn btn-primary" id="guardar_responsable">Guardar</button>
                                                                         </div>
                                                                     </div>
@@ -205,9 +224,9 @@ ob_end_flush()
                                         <form id="ind_form">
                                             <div class="container">
                                                 <label for="">Nombre indicador</label>
-                                                <textarea class="form-control" id="ind_indicador" name="ind_indicador" rows="3" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('ind_indicador');" onkeypress="return sololetras(event)" required></textarea>
+                                                <textarea class="form-control" id="ind_indicador" name="ind_indicador" rows="3" maxlength="100" required></textarea>
                                                 <label for="">Resultado esperado</label>
-                                                <textarea class="form-control" id="ind_resultado" name="ind_resultado" rows="3" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('ind_resultado');" onkeypress="return sololetras(event)" required></textarea>
+                                                <textarea class="form-control" id="ind_resultado" name="ind_resultado" rows="3" maxlength="100" required></textarea>
                                                 <input type="text" id="id_indicador_edit" name="id_indicador_edit" hidden>
                                             </div>
                                         </form>
@@ -254,6 +273,9 @@ ob_end_flush()
                 </div>
             </div>
         </div>
+
+
+
         <ul class="pagination pagination-lg justify-content-center">
             <li class="page-item"><a class="page-link" href="../vistas/poa_vista.php">Planificaciones</a></li>
             <li class="page-item"><a class="page-link" href="../vistas/objetivos_poa.php">Objetivos</a></li>
@@ -264,6 +286,17 @@ ob_end_flush()
                 </span>
             </li>
         </ul>
+
+        <div class="container">
+            <nav class="navbar navbar-dark bg-primary">
+                <hr>
+                <center>
+                    <h5>Nombre Objetivo: <strong id="nombre_objetivo"></strong></h5>
+                </center>
+                <hr>
+            </nav>
+        </div>
+
 
         <div class=" card-body">
             <div class="container-fluid">
@@ -285,7 +318,7 @@ ob_end_flush()
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">ID INDICADOR</th>
-                                                        <th scope="col">DESCRIPCIÓN</th>
+                                                        <th scope="col">INDICADOR</th>
                                                         <th scope="col">RESULTADOS</th>
                                                         <th scope="col">ID_OBJETIVOS</th>
                                                         <th scope="col">ACCIONES</th>
@@ -455,6 +488,7 @@ ob_end_flush()
                             var actividad = r[i].actividad;
                             var id_verificacion = r[i].id_verificacion;
                             var medio_veri = r[i].medio_veri;
+                            var id_pobla_objetivo = r[i].id_poblacion_objetivo;
                             var pobla_objetivo = r[i].pobla_objetivo;
 
                             var tr_body = "<tr>" +
@@ -462,9 +496,10 @@ ob_end_flush()
                                 "<td align='center' class=''>" + actividad + "</td>" +
                                 "<td align='center' class=''>" + id_verificacion + "</td>" +
                                 "<td align='center' class=''>" + medio_veri + "</td>" +
+                                "<td align='center' class=''>" + id_pobla_objetivo + "</td>" +
                                 "<td align='center' class=''>" + pobla_objetivo + "</td>" +
                                 "<td align='center'><button type='button' class='btn btn-success btn-sm' id='editar_act' ><i class='fas fa-edit' ></i></button></td>" +
-                                "<td align='center'><button type='button' class='btn btn-danger btn-sm' id=''eliminar_act' ><i class='fas fa-times' ></i></button></td>"
+                                "<td align='center'><button type='button' class='btn btn-danger btn-sm' id='eliminar_act' ><i class='fas fa-times' ></i></button></td>"
                             "</tr>";
                             $("#tabla_actividades tbody").append(tr_body);
                         }
@@ -510,7 +545,7 @@ ob_end_flush()
                             var tr_body = "<tr>" +
                                 "<td class='des'>" + descripcion + "</td>" +
                                 "<td align='center' class='cant'>" + cantidad + "</td>" +
-                                "<td align='center'><button type='button' id='edit_responsable' class='btn btn-success'><i class='fas fa-edit' ></i></button></td>" +
+                                "<td align='center'><button class='btn btn-warning' id='editar_responsable'>Editar</button></td></td>" +
                                 "<td align='center'><button type='button' id='delete_responsable' class='btn btn-danger'><i class='fas fa-times' ></i></button></td>"
                             "</tr>";
                             $("#tabla_responsables tbody").append(tr_body);
@@ -678,6 +713,36 @@ ob_end_flush()
     </script>
 
     <script>
+        //!edicion de un responsable
+        // $(".sw-btn-next").click(function() {
+        //     //alert("botton next");       
+        //     $("#botones_nuevo_responsables").attr("hidden", false);
+        //     $("#botones_edicion").attr("hidden", true);
+        // });
+
+        // $('#finalizar_edicion, #nav_edicion').click(function() {
+        //     document.getElementById('agregar_responsables').reset();
+        //     $("#botones_nuevo_responsables").attr("hidden", false);
+        //     $("#botones_edicion").attr("hidden", true);
+        // });
+
+        // function adelante() {
+        //     $('#smartwizard').smartWizard("goToStep", 1);
+        //     //Modal detalle responsables
+        //     $('#tabla_responsables tbody').on('click', '#editar_responsable', function() {
+        //         var fila = $(this).closest('tr');
+        //         var id_responsable = fila.find('td:eq(0)').text();
+        //         var responsable = fila.find('td:eq(1)').text();
+        //         //console.log(id_responsable + '-' + responsable);
+        //         document.getElementById('responsable_rs').value = responsable;
+        //         document.getElementById('id_responsable_edit').value = id_responsable;
+        //     });
+        //     $("#botones_edicion").attr("hidden", false);
+        //     $("#botones_nuevo_responsables").attr("hidden", true);
+        // }
+
+        //! fin edicion de un responsable
+
         //?opciones de eliminacion tabla responsables
         //Modal detalle pedidos segundo modal
         $('#tabla_responsables tbody').on('click', '#delete_responsable', function() {
@@ -751,92 +816,13 @@ ob_end_flush()
             // $('#smartwizard').smartWizard("next");
         });
         //?opcion es de edicion responsables
-    </script>
 
-    <script type="text/javascript" language="javascript">
-        function MismaLetra(id_input) {
-            var valor = $('#' + id_input).val();
-            var longitud = valor.length;
-            //console.log(valor+longitud);
-            if (longitud > 2) {
-                var str1 = valor.substring(longitud - 3, longitud - 2);
-                var str2 = valor.substring(longitud - 2, longitud - 1);
-                var str3 = valor.substring(longitud - 1, longitud);
-                nuevo_valor = valor.substring(0, longitud - 1);
-                if (str1 == str2 && str1 == str3 && str2 == str3) {
-                    swal('Error', 'No se permiten 3 letras consecutivamente', 'error');
 
-                    $('#' + id_input).val(nuevo_valor);
-                }
-            }
-        }
-
-        function letrasynumeros(e) {
-
-            key = e.keyCode || e.wich;
-
-            teclado = String.fromCharCode(key).toUpperCase();
-
-            letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ1234567890";
-
-            especiales = "8-37-38-46-164";
-
-            teclado_especial = false;
-
-            for (var i in especiales) {
-
-                if (key == especiales[i]) {
-                    teclado_especial = true;
-                    break;
-                }
-            }
-
-            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
-            }
-
-        }
-
-        function validate(s) {
-            if (/^(\w+\s?)*\s*$/.test(s)) {
-                return s.replace(/\s+$/, '');
-            }
-            return 'NOT ALLOWED';
-        }
-
-        validate('tes ting') //'test ing'
-        validate('testing') //'testing'
-        validate(' testing') //'NOT ALLOWED'
-        validate('testing ') //'testing'
-        validate('testing  ') //'testing'
-        validate('testing   ')
-
-        function sololetras(e) {
-
-            key = e.keyCode || e.wich;
-
-            teclado = String.fromCharCode(key).toUpperCase();
-
-            letras = " ABCDEFGHIJKLMNOPQRSTUVWXYZÑ";
-
-            especiales = "8-37-38-46-164";
-
-            teclado_especial = false;
-
-            for (var i in especiales) {
-
-                if (key == especiales[i]) {
-                    teclado_especial = true;
-                    break;
-                }
-            }
-
-            if (letras.indexOf(teclado) == -1 && !teclado_especial) {
-                return false;
-            }
-
+        function loadNombre_objetivo() {
+            document.getElementById('nombre_objetivo').innerHTML = localStorage.getItem('nombre_objetivo');
         }
     </script>
+
 
 </body>
 

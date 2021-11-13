@@ -86,7 +86,7 @@ function subirBase_academica($nombre_archivo, $id_ca)
     // $respuesta = $db->contarArchivo($id);
     // $cantidad = $respuesta['cuenta'];
 
-    $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
+    $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
     //$ruta = '../archivos/file_academica/' . $nombre_archivo;
     class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
     {
@@ -134,7 +134,7 @@ function subirBase_craed($nombre_archivo_cr, $id_cr)
 {
 
 
-    $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
+    $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
     class MyReadFilte implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
     {
         public function readCell($column, $row, $worksheetName = '')
@@ -284,6 +284,12 @@ if (isset($_POST['eliminar_recurso'])) {
     echo json_encode($rspuesta);
 }
 
+// if (isset($_POST['eliminar_recurso'])) {
+//     $id = $_POST['id'];
+//     $respuesta = $db->eliminarRecurso($id);
+//     echo json_encode($respuesta);
+// }
+
 if (isset($_POST['cambiar_estado'])) {
     $estado = $_POST['estado'];
     $id = $_POST['id'];
@@ -379,7 +385,7 @@ if (isset($_POST['subir_excel_ca'])) {
     if ($cantidad >= 1) {
         echo json_encode('archivo_subido');
     } else {
-        $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
+        $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
         //$ruta = '../archivos/file_academica/' . $nombre_archivo;
 
         class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
@@ -434,7 +440,7 @@ if (isset($_POST['subir_excel_cr'])) {
     if ($cantidad >= 1) {
         echo json_encode('archivo_subidoCR');
     } else {
-        $conexion = new mysqli('167.114.169.207','informat_desarrollo_automatizacion', 'informat_desarrollo', '!fuRCr3XR-tz');
+        $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
 
 
         //$ruta = '../archivos/file_academica/' . $nombre_archivo;
@@ -811,6 +817,7 @@ if (isset($_POST['getData_docente'])) {
 }
 
 if (isset($_POST['guardarDatos_soli'])) {
+
     $id_docente = $_POST['nombre_docentes'];
     $nombre_docente = $_POST['nombre_completo'];
     $nombre_proyecto = $_POST['nombre_proyecto'];
@@ -831,30 +838,14 @@ if (isset($_POST['eliminar_indicador'])) {
     echo json_encode($rspuesta);
 }
 if (isset($_POST['eliminar_detalle_gasto'])) {
-
+    
     $id_detalle_tipo_gasto = $_POST['id_detalle_tipo_gasto'];
     $rewspuesta = $db->eliminar_deatlle_gasto($id_detalle_tipo_gasto);
     echo json_encode($rewspuesta);
     //echo json_encode($_POST);
 
 }
-//eliminar indicador de detalle
-if (isset($_POST['eliminar_detalle_indicador'])) {
 
-    $id_detalles_tipo_indicador = $_POST['id_detalles_tipo_indicador'];
-    $rewspuesta = $db->eliminar_detalle_indicador($id_detalles_tipo_indicador);
-    echo json_encode($rewspuesta);
-    //echo json_encode($_POST);
-
-}
-
-//eliminar detalle de recursos
-if (isset($_POST['eliminar_detalle_recurso'])) {
-    $id_detalle_tipo_recurso = $_POST['id_recurso'];
-    $rewspuesta = $db->eliminar_detalle_recurso($id_detalle_tipo_recurso);
-    echo json_encode($rewspuesta);
-    //echo json_encode($_POST);
-}
 //?modificacion 29/07/2021
 if (isset($_POST['nueva_retro'])) {
     $nombre_docente = $_POST['nombre_completo'];
@@ -891,6 +882,68 @@ if (isset($_POST['nueva_retro'])) {
 }
 //?fin modificacion 29/07/2021
 
+//!cambios POA_metas
+if (isset($_POST['editar_meta'])) {
+
+    $id_metas = $_POST['id_metas'];
+    $primer_trimestre = $_POST['primer_trimestre'];
+    $segundo_trimestre = $_POST['segundo_trimestre'];
+    $tercer_trimestre = $_POST['tercer_trimestre'];
+    $cuarto_trimestre = $_POST['cuarto_trimestre'];
+
+    if ($primer_trimestre == null) {
+        $primer_trimestre = 0;
+    } else {
+        $primer_trimestre = $primer_trimestre;
+    }
+
+    if ($segundo_trimestre == null) {
+        $segundo_trimestre = 0;
+    } else {
+        $segundo_trimestre = $segundo_trimestre;
+    }
+
+    if ($tercer_trimestre == null) {
+        $tercer_trimestre = 0;
+    } else {
+        $tercer_trimestre = $tercer_trimestre;
+    }
+
+    if ($cuarto_trimestre == null) {
+        $cuarto_trimestre = 0;
+    } else {
+        $cuarto_trimestre = $cuarto_trimestre;
+    }
+
+
+    $total = $primer_trimestre + $segundo_trimestre + $tercer_trimestre + $cuarto_trimestre;
+    if ($total > 100) {
+        echo json_encode('cuenta_mayor');
+    } else if ($total < 100) {
+        echo json_encode('menor_cuenta');
+    } else {
+        //echo json_encode('no tiene datos');
+        //insertar datos
+        $respuesta = $db->edicion_metas($id_metas, $primer_trimestre, $segundo_trimestre, $tercer_trimestre, $cuarto_trimestre);
+        echo json_encode($respuesta);
+    }
+    //echo json_encode($_POST);
+}
+//!cambios POA _META 13/08/2021 
+
+//!cambios poa actividades_proyecto
+if (isset($_POST['edit_act_send'])) {
+    //echo json_encode($_POST);
+    $id_actividades_poa = $_POST['id_actividad'];
+    $n_actividad = $_POST['n_actividad'];
+    $id_verificacion = $_POST['id_verificacion'];
+    $m_verificacion = $_POST['m_verificacion'];
+    $id_poblacion = $_POST['id_poblacion'];
+    $p_objetivo = $_POST['p_objetivo'];
+
+    $respuesta = $db->update_actividades($id_actividades_poa, $n_actividad, $id_verificacion, $m_verificacion, $id_poblacion, $p_objetivo);
+    echo json_encode($respuesta);
+}
 if (isset($_POST['edicion_recurso_send'])) {
 
     $id_recurso = $_POST['id_recurso'];

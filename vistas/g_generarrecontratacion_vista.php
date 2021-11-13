@@ -7,41 +7,18 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('243') == '1') {
+if (permiso_ver('112') == '1') {
 
   $_SESSION['g_generarrecontratacion_vista'] = "...";
 } else {
   $_SESSION['g_generarrecontratacion_vista'] = "No 
   tiene permisos para visualizar";
 }
-
-$visualizacion = permiso_ver($Id_objeto);
-
-
-if ($visualizacion == 0) {
-  echo '<script type="text/javascript">
-                              swal({
-                                   title:"",
-                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-                                   type: "error",
-                                   showConfirmButton: false,
-                                   timer: 3000
-                                });
-                           window.location = "../vistas/g_carga_recontratacion_vista.php";
-
-                            </script>';
-} else {
-
-  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A GENERAR RECONTRATACIÓN.');
-}
-
-ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
 </head>
 
 <body>

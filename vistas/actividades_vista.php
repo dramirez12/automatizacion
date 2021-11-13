@@ -1,43 +1,7 @@
-<?php
-ob_start();
-require_once('../clases/Conexion.php');
-require_once('../vistas/pagina_inicio_vista.php');
-require_once('../clases/funcion_bitacora.php');
-require_once('../clases/funcion_visualizar.php');
-
-$Id_objeto = 246;
-
-
-$visualizacion = permiso_ver($Id_objeto);
-
-
-if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
-                              swal({
-                                   title:"",
-                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-                                   type: "error",
-                                   showConfirmButton: false,
-                                   timer: 3000
-                                });
-                           window.location = "../vistas/actividades_vista_poa.php";
-
-                            </script>';
-} else {
-
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A LAS ACTIVIDADES DEL POA.');
-}
-
-ob_end_flush();
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
     <meta charset="utf-8">
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
@@ -66,9 +30,10 @@ ob_end_flush();
                         <tr>
                             <th scope="col">ID ACTIVIDAD</th>
                             <th scope="col">ACTIVIDAD</th>
-                            <th scope="col">ID VERIFICAÓN</th>
+                            <th scope="col">ID VERIFICACIÓN</th>
                             <th scope="col">MEDIO VERIFICACIÓN</th>
-                            <th scope="col">POBLACION OBJETIVO</th>
+                            <th scope="col">ID POBLACIÓN</th>
+                            <th scope="col">POBLACIÓN OBJETIVO</th>
                             <th scope="col">EDITAR</th>
                             <th scope="col">ELIMINAR</th>
                         </tr>
@@ -91,18 +56,23 @@ ob_end_flush();
                             <form id="agregar_actividades">
                                 <div class="form-group">
                                     <label for="formGroupExampleInput">Nombre Actividad</label>
-                                    <input type="text" class="form-control" id="n_actividad" name="n_actividad" maxlength="200" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('n_actividad');" onkeypress="return sololetras(event)" placeholder="Actividad" required>
+                                    <input type="text" class="form-control" id="n_actividad" name="n_actividad" maxlength="90" placeholder="Actividad" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput2">Medios de verificacion</label>
-                                    <input type="text" class="form-control" id="m_verificacion" name="m_verificacion" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('m_verificacion');" onkeypress="return sololetras(event)" placeholder="Verificación" required>
+                                    <input type="text" class="form-control" id="m_verificacion" name="m_verificacion" maxlength="150" placeholder="Verificación" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput3">Población objetivo</label>
-                                    <input type="text" class="form-control" id="p_objetivo" name="p_objetivo" maxlength="255" value="" onkeyup="DobleEspacio(this, event);  MismaLetra('p_objetivo');" onkeypress="return sololetras(event)" placeholder="Población" required>
+                                    <input type="text" class="form-control" id="p_objetivo" name="p_objetivo" maxlength="150" placeholder="Población" required>
                                 </div>
                                 <div class="form-group d-flex">
-                                    <div class="ml-auto p-2">
+                                    <div class="ml-auto p-2" id="edicion_actividades" hidden>
+                                        <button class="btn sw-btn-prev btn btn-danger" id="finalizar_act">Finalizar</button>
+                                        <button class="btn btn-warning" id="guardar_edicion_act">Guardar Edición</button>
+                                    </div>
+                                    <div class="ml-auto p-2" id="add_actividades">
+                                        <button class="btn sw-btn-prev btn btn-danger">Finalizar</button>
                                         <button class="btn btn-primary" id="guardar_actividad">Guardar</button>
                                     </div>
                                 </div>
@@ -132,10 +102,87 @@ ob_end_flush();
         }
     });
 
+    //!enviar datos al from
+    $('#tabla_actividades tbody').on('click', '#editar_act', function() {
+        var fila = $(this).closest('tr');
+        var id_actividad = fila.find('td:eq(0)').text();
+        var n_actividad = fila.find('td:eq(1)').text();
+        var id_verificacion = fila.find('td:eq(2)').text();
 
-    // function call_wizard2() {
-    //     $('#vista_smart').smartWizard("reset");
-    // }
+        var m_verificacion = fila.find('td:eq(3)').text();
+        var id_poblacion = fila.find('td:eq(4)').text();
+        var p_objetivo = fila.find('td:eq(5)').text();
+        // var tercer_trimestre = fila.find('td:eq(3)').text();
+        // var cuarto_trimestre = fila.find('td:eq(4)').text();
+        localStorage.removeItem('id_actividad');
+        localStorage.removeItem('id_verificacion');
+        localStorage.removeItem('id_poblacion');
+
+        localStorage.setItem('id_actividad', id_actividad);
+        localStorage.setItem('id_verificacion', id_verificacion);
+        localStorage.setItem('id_poblacion', id_poblacion);
+
+
+        document.getElementById('n_actividad').value = n_actividad;
+        document.getElementById('m_verificacion').value = m_verificacion;
+        document.getElementById('p_objetivo').value = p_objetivo;
+        // document.getElementById('cuarto_trimestre').value = cuarto_trimestre;
+
+        $(".sw-btn-next").trigger("click");
+
+        $("#edicion_actividades").attr("hidden", false);
+        $("#add_actividades").attr("hidden", true);
+    });
+    //!enviar datos al from
+
+    $('#finalizar_act').click(function() {
+        document.getElementById('agregar_actividades').reset();
+        $("#edicion_actividades").attr("hidden", true);
+        $("#add_actividades").attr("hidden", false);
+    });
+
+    const button_edicion_act = document.getElementById('guardar_edicion_act');
+    const form_acti = document.getElementById('agregar_actividades');
+
+    button_edicion_act.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (agregar_actividades.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+            agregar_actividades.classList.add('was-validated')
+        } else {
+
+            const newform_edit = new FormData(form_acti);
+            newform_edit.append('edit_act_send', 1);
+            newform_edit.append('id_actividad', localStorage.getItem('id_actividad'));
+            newform_edit.append('id_verificacion', localStorage.getItem('id_verificacion'));
+            newform_edit.append('id_poblacion', localStorage.getItem('id_poblacion'));
+
+            fetch('../Controlador/action.php', {
+                    method: 'POST',
+                    body: newform_edit
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data == 'exito') {
+                        $('#tabla_actividades tbody').empty(); //limpiar la tabla despues de cada llamdo
+                        update_actividades();
+                        $("#mensaje_actividades").html(showMEssage('success', 'Dato actualizado el registro a la tabla'));
+                        $("#mensaje_actividades").fadeTo(2000, 500).slideUp(500, function() {                            
+                            $("#mensaje_actividades").slideUp(500);
+                        });
+                        document.getElementById('agregar_actividades').reset();
+                    } else {
+                        $("#mensaje_actividades").html(showMEssage('danger', 'Algo ocurrio mal'));
+                        $("#mensaje_actividades").fadeTo(2000, 500).slideUp(500, function() {
+                            $("#mensaje_actividades").slideUp(500);
+                        });
+
+                    }
+                })
+        }
+    });
 </script>
 
 </html>

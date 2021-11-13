@@ -7,7 +7,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('252') == '1') {
+if (permiso_ver('121') == '1') {
 
   $_SESSION['g_planificacionjefatura_vista'] = "...";
 } else {
@@ -15,7 +15,7 @@ if (permiso_ver('252') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('238') == '1') {
+if (permiso_ver('107') == '1') {
 
   $_SESSION['poa_vista'] = "...";
 } else {
@@ -23,7 +23,7 @@ if (permiso_ver('238') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('248') == '1') {
+if (permiso_ver('117') == '1') {
 
   $_SESSION['g_detalle_recursos'] = "...";
 } else {
@@ -31,7 +31,7 @@ if (permiso_ver('248') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('257') == '1') {
+if (permiso_ver('126') == '1') {
 
   $_SESSION['g_detalle_gastos'] = "...";
 } else {
@@ -39,21 +39,21 @@ if (permiso_ver('257') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('256') == '1') {
+if (permiso_ver('125') == '1') {
 
   $_SESSION['g_detalle_indicadores'] = "...";
 } else {
   $_SESSION['g_detalle_indicadores'] = "No 
   tiene permisos para visualizar";
 }
-$Id_objeto = 252;
+$Id_objeto = 105;
 
 
 $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-  echo '<script type="text/javascript">
+    echo '<script type="text/javascript">
                               swal({
                                    title:"",
                                    text:"Lo sentimos no tiene permiso de visualizar la pantalla",
@@ -66,7 +66,10 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
-  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MENU JEFATURA.');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A MENU JEFATURA.');
+
+
+ 
 }
 
 ob_end_flush()
@@ -78,7 +81,6 @@ ob_end_flush()
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -194,5 +196,4 @@ ob_end_flush()
   </div>
   </div>
 </body>
-
 </html>
