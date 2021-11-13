@@ -751,9 +751,9 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
 
 
 
-   //GESTION LABORATORIO
+    //GESTION LABORATORIO
   
-if ($_SESSION['pantalla']=='182' or $_SESSION['pantalla']=='190' or $_SESSION['pantalla']=='193' or $_SESSION['pantalla']='194' or $_SESSION['pantalla']='195' or $_SESSION['pantalla']='196' or $_SESSION['pantalla']='201' or $_SESSION['pantalla']<='218' ){
+if ($_SESSION['pantalla']=='182' or $_SESSION['pantalla']=='190' or $_SESSION['pantalla']=='193' or $_SESSION['pantalla']='194' or $_SESSION['pantalla']='195' or $_SESSION['pantalla']='196' or $_SESSION['pantalla']='201' or $_SESSION['pantalla']='210' or $_SESSION['pantalla']<='218' ){
    if ($_SESSION['confirmacion'] == 'block') {
       $_SESSION['btn_gestion_laboratorio'] = "block";
    }
@@ -811,6 +811,11 @@ if ($_SESSION['pantalla']='207'){
    }
 }
 
+if ($_SESSION['pantalla']>='183' and $_SESSION['pantalla']<='189' or $_SESSION['pantalla']=='191' or $_SESSION['pantalla']='192' or $_SESSION['pantalla']='197' or $_SESSION['pantalla']='198' or $_SESSION['pantalla']='199' or $_SESSION['pantalla']='200' ){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['mantenimiento_laboratorio'] = "block";
+   }
+}
 
 
 
