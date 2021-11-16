@@ -3,9 +3,9 @@
 //generando la conexion a la base de datos
 function conexion(){ 
 	$servidor= "51.222.86.251";
-	$usuario= "informat_desarrollo";
-	$password = "^Kwd{PE^(L&#";
-	$base= "informat_desarrollo_automatizacion";
+	$usuario= "informat_informaticaunah2";
+	$password = 'WAc$W]74{Qo-';
+	$base= "informat_automatizacion";
 
  	$conexion = mysqli_connect($servidor, $usuario,$password,$base);
 
