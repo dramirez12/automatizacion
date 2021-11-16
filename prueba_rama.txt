@@ -1,1 +1,8 @@
 Esto es de la rama de desarrollo
+<<<<<<< Updated upstream
+=======
+
+
+
+Esto es otra otra prueba;
+>>>>>>> Stashed changes
