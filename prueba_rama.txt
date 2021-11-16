@@ -1,7 +1,7 @@
 Esto es de la rama de desarrollo
 <<<<<<< Updated upstream
 =======
-
+Esto es desarrollo
 
 
 Esto es otra otra prueba;
