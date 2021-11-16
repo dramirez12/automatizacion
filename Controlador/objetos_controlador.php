@@ -7,6 +7,7 @@ $id_objeto = isset($_POST["id_objeto"]) ? limpiarCadena1($_POST["id_objeto"]) : 
 $objeto = isset($_POST["objeto"]) ? limpiarCadena1($_POST["objeto"]) : "";
 $id_modulo = isset($_POST["id_modulo"]) ? limpiarCadena1($_POST["id_modulo"]) : "";
 $descripcion = isset($_POST["descripcion"]) ? limpiarCadena1($_POST["descripcion"]) : "";
+$id_rol = isset($_POST["id_rol"]) ? limpiarCadena1($_POST["id_rol"]) : "";
 $Id_objeto1=292;//registrar objetos
 $Id_objeto2=293;//gestion objetos
 
@@ -133,6 +134,10 @@ switch ($_GET["op"])
           // }
   
   
+      break;
+    case 'permisos_objetos':
+      $respuesta=$instancia_modelo->listar_permiso_objeto($id_rol);
+      echo json_encode($respuesta->fetch_all());
       break;
   
   

@@ -74,6 +74,13 @@ class objetos{
         $sql='select * from tbl_modulos where id_modulo='.$id_modulo;
         return $instancia_conexion->ejecutarConsultaSimpleFila($sql);
     }
+
+    function listar_permiso_objeto($id_rol){
+        global $instancia_conexion;
+        $sql='select mo.id_modulo,mo.id_objeto,o.objeto from tbl_modulo_objetos mo, tbl_objetos o, tbl_permisos_usuarios p where mo.id_objeto=o.Id_objeto and p.Id_objeto=o.Id_objeto and p.Id_rol='.$id_rol;
+        return $instancia_conexion->ejecutarConsulta($sql);
+
+    }
 }
 
 ?>

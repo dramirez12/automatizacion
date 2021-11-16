@@ -9,7 +9,7 @@ require "../clases/funcion_permisos.php";
 
 
 
-Class Externa
+Class Externa 
 {
 	//Implementamos nuestro constructor
 	public function __construct()
@@ -18,22 +18,22 @@ Class Externa
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($nombre_act,$ente,$usuario,$ambito,$periodo,$tipo)
+	public function insertar($nombre_act,$ente,$usuario,$ambito,$periodo,$tipo,$fecha_inicio,$fecha_final)
 	{
-		$sql="CALL inserta_actividad_externa('$nombre_act','$ente','$usuario','$ambito','$periodo')";
+		$sql="CALL inserta_actividad_externa('$nombre_act','$ente','$usuario','$ambito','$periodo','$fecha_inicio','$fecha_final')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($id_actividad_voae,$nombre_act,$ubicacion,$fecha_inicio,$fecha_final,$descripcion,$ente,$usuario,$ambito,$periodo)
+	public function editar($id_actividad_voae,$nombre_act,$fecha_inicio,$fecha_final,$ente,$usuario,$ambito,$periodo)
 	{
-		$sql="UPDATE tbl_voae_actividades SET nombre_actividad=trim(upper('$nombre_act')),ubicacion=trim(upper('$ubicacion')),fch_inicial_actividad='$fecha_inicio',fch_final_actividad='$fecha_final',descripcion=trim(upper('$descripcion')),staff_alumnos=trim(upper('$ente')),id_ambito='$ambito',periodo='$periodo' WHERE id_actividad_voae='$id_actividad_voae'";
+		$sql="UPDATE tbl_voae_actividades SET nombre_actividad=trim(upper('$nombre_act')),fch_inicial_actividad='$fecha_inicio',fch_final_actividad='$fecha_final',staff_alumnos=trim(upper('$ente')),id_ambito='$ambito',periodo='$periodo' WHERE id_actividad_voae='$id_actividad_voae'";
 		return ejecutarConsulta($sql);
 	}
 	
 	public function eliminar($id_actividad_voae)
 	{
-		$sql="DELETE FROM tbl_voae_actividades WHERE id_actividad_voae='$id_actividad_voae'";
+		$sql="CALL eliminar_act_externa('$id_actividad_voae')";
 		return ejecutarConsulta($sql);
 	}
 	//Implementar un método para mostrar los datos de un registro a modificar
@@ -47,6 +47,13 @@ Class Externa
 	public function listar()
 	{
 		$sql="SELECT * FROM tbl_voae_actividades where tipo_actividad='ACTIVIDAD EXTERNA'";
+		return ejecutarConsulta($sql);	
+			
+	}
+	//Implementar un método para listar los registros
+	public function listar2($actividad)
+	{
+		$sql="SELECT nombre_alumno, cuenta, cant_horas FROM tbl_voae_asistencias where id_actividad_voae='$actividad'";
 		return ejecutarConsulta($sql);	
 			
 	}

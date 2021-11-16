@@ -53,5 +53,12 @@ Class Faltas
 		$sql="SELECT * FROM view_faltas_conducta";
 		return ejecutarConsulta($sql);		
 	}
+	//Implementar un método para listar los registros
+	public function listar_his($cuenta1)
+	{
+		$sql="select `tbl_voae_faltas_conductas`.`id_falta` AS `id_falta`,`tbl_voae_faltas_conductas`.`id_tipo_falta` AS `id_tipo_falta`,`tbl_voae_faltas_conductas`.`id_persona_alumno` AS `id_persona_alumno`,`tbl_voae_faltas_conductas`.`fch_falta` AS `fch_falta`,`tbl_voae_tipos_faltas`.`nombre_falta` AS `nombre_falta`,`tbl_voae_faltas_conductas`.`descripcion` AS `descripcion`,concat(`tbl_personas`.`nombres`,' ',`tbl_personas`.`apellidos`) AS `nombres`,`tbl_personas_extendidas`.`valor` AS `valor` from (((`tbl_voae_faltas_conductas` join `tbl_personas` on(`tbl_voae_faltas_conductas`.`id_persona_alumno` = `tbl_personas`.`id_persona`)) join `tbl_voae_tipos_faltas` on(`tbl_voae_faltas_conductas`.`id_tipo_falta` = `tbl_voae_tipos_faltas`.`id_falta`)) join `tbl_personas_extendidas` on(`tbl_voae_faltas_conductas`.`id_persona_alumno` = `tbl_personas_extendidas`.`id_persona`)) where `valor` = '$cuenta1'";
+		return ejecutarConsulta($sql);		
+	}
 }
+
 ?>

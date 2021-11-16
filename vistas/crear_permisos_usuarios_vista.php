@@ -116,7 +116,7 @@ ob_end_flush();
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <label>Roles</label>
-                    <select class="form-control select2" style="width: 100%;" name="comborol" required="">
+                    <select class="form-control select2" id="select_roles" style="width: 100%;" name="comborol" required="">
                       <option value="0">Seleccione un Rol:</option>
                       <?php
                       $query = $mysqli->query("SELECT * FROM tbl_roles ");

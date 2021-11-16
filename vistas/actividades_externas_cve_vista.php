@@ -93,7 +93,8 @@ ob_end_flush();
                             <th>Identificador</th>
                             <th>Nombre Actividad</th>
                             <th>Ente Organizador</th>
-                            
+                            <th>Fecha Final</th>
+                            <th>Periodo</th>
                             
                           </thead>
                           <tbody>                            
@@ -181,6 +182,41 @@ ob_end_flush();
                 </div>
                 </div>
                 </div>
+                
+              <!-- Card 1 Fechas de la Actividad -->
+              <div class="card card-default">
+                <div class="card-header bg-gradient-dark">
+                  <h3 class="card-title">Fechas Inicial/Final de la Actividad</h3>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /. card-header-->
+                <div class="card-body">
+                  <div class="row">
+                    <!-- Fecha Inical -->
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Fecha Incial:</label>
+                        <input type="date" class="form-control" placeholder="FECHA" name="fch_inicial_actividad" id="fch_inicial_actividad" required="" required max=<?php $hoy=date("Y-m-d"); echo $hoy;?>
+                        />
+                    </div>
+                    </div>
+                    <!-- Fecha Final-->
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                       <label>Fecha Final:</label>
+                       <input type="date" class="form-control" name="fch_final_actividad" id="fch_final_actividad" required="" required max=<?php $hoy=date("Y-m-d"); echo $hoy;?>
+                       >
+                     </div>
+                   </div>
+
+                 </div>
+               </div>
+             </div>
+
 
                 
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -252,18 +288,5 @@ function teclear(event) {
   }
 }
 </script>
-<script src="../public/datatables/jszip.min.js"></script>
-    
-
- <link rel="stylesheet" type="text/css" href="../public/DataTables-1.10.25/css/dataTables.bootstrap4.min.css"/>
-<link rel="stylesheet" type="text/css" href="../public/Buttons-1.7.1/css/buttons.bootstrap4.min.css"/>
- 
-<script type="text/javascript" src="../public/pdfmake-0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="../public/pdfmake-0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="../public/DataTables-1.10.25/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../public/DataTables-1.10.25/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="../public/Buttons-1.7.1/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="../public/Buttons-1.7.1/js/buttons.bootstrap4.min.js"></script>
-<script type="text/javascript" src="../public/Buttons-1.7.1/js/buttons.html5.min.js"></script>
 </body>
 </html>
