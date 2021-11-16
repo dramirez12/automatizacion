@@ -1,8 +1,11 @@
 Esto es de la rama de desarrollo
-<<<<<<< Updated upstream
-=======
+
 Esto es desarrollo
 
 
 Esto es otra otra prueba;
->>>>>>> Stashed changes
+
+
+Estoy en master
+
+Esto es otra prueba;
