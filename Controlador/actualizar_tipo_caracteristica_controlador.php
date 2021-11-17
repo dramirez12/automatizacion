@@ -43,8 +43,18 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
     {
 
             if ($existe['tipo_caracteristica'] == 1) {
-
-            header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=1");
+                echo '<script type="text/javascript">
+                swal({
+                    title:"",
+                    text: "El nombre de la caracteristica ya existe!",
+                    type: "success",
+                    showConfirmButton: false,
+                    timer: 6000
+                  });
+                  $(".FormularioAjax")[0].reset();
+                  window.location = "../vistas/mantenimiento_tipo_caracteristica_vista.php";
+              </script>';
+            
 
 
             } else {
@@ -63,8 +73,17 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
                                 $resultado = $mysqli->query($sql);
 
                                 if ($resultado == true) {
-                                    header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=2");
-
+                                    echo '<script type="text/javascript">
+                                    swal({
+                                        title:"",
+                                        text: "Los datos se almacenaron correctamente",
+                                        type: "success",
+                                        showConfirmButton: false,
+                                        timer: 6000
+                                      });
+                                      $(".FormularioAjax")[0].reset();
+                                      window.location = "../vistas/mantenimiento_tipo_caracteristica_vista.php";
+                                  </script>';
                                 } else {
                                     header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=8");
                                 }
@@ -77,8 +96,17 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
                                 $resultado = $mysqli->query($sql);
 
                                 if ($resultado == true) {
-                                    header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=2");
-
+                                    echo '<script type="text/javascript">
+                                    swal({
+                                        title:"",
+                                        text: "Los datos se almacenaron correctamente",
+                                        type: "success",
+                                        showConfirmButton: false,
+                                        timer: 6000
+                                      });
+                                      $(".FormularioAjax")[0].reset();
+                                      window.location = "../vistas/mantenimiento_tipo_caracteristica_vista.php";
+                                  </script>';
                                 } else {
                                     header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=8");
                                 }
@@ -94,8 +122,17 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
                                 $resultado = $mysqli->query($sql);
 
                                 if ($resultado == true) {
-                                    header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=2");
-
+                                    echo '<script type="text/javascript">
+                                    swal({
+                                        title:"",
+                                        text: "Los datos se almacenaron correctamente",
+                                        type: "success",
+                                        showConfirmButton: false,
+                                        timer: 6000
+                                      });
+                                      $(".FormularioAjax")[0].reset();
+                                      window.location = "../vistas/mantenimiento_tipo_caracteristica_vista.php";
+                                  </script>';
                                 } else {
                                     header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=8");
                                 }
@@ -113,8 +150,17 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
       
     }else if ($_POST['cb_tipo_dato']<0)
         {
-            header("location:../vistas/mantenimiento_tipo_caracteristicas_producto_vista.php?msj=7");
-
+            echo '<script type="text/javascript">
+            swal({
+                title:"",
+                text: "Seleccione un tipo de dato!",
+                type: "error",
+                showConfirmButton: false,
+                timer: 6000
+              });
+              $(".FormularioAjax")[0].reset();
+              window.location = "../vistas/mantenimiento_tipo_caracteristica_vista.php";
+          </script>';
         }
         else
             {
@@ -128,6 +174,16 @@ if( preg_match($patron_texto, $_POST['txt_tipocaracteristica']) )
 }
 else{   
    
-    header("location:../vistas/mantenimiento_tipo_caracteristica_vista.php?msj=3");
+    echo '<script type="text/javascript">
+    swal({
+        title:"",
+        text: "Nombre no Válido!",
+        type: "error",
+        showConfirmButton: false,
+        timer: 6000
+      });
+      $(".FormularioAjax")[0].reset();
+      window.location = "../vistas/mantenimiento_tipo_caracteristica_vista.php";
+  </script>';
 
     }         
