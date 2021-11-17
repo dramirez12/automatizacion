@@ -129,6 +129,7 @@ if ($visualizacion == 0) {
                             </script>';
 } else {
 
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento Tipo Caracteristica');
 
 
   if (permisos::permiso_modificar($Id_objeto) == '1') {
@@ -198,7 +199,6 @@ ob_end_flush();
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
   <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
@@ -215,7 +215,7 @@ ob_end_flush();
           <div class="col-sm-6">
 
 
-            <h1>Tipo Características
+            <h1>Tipos de Características
             </h1>
           </div>
 
@@ -276,12 +276,17 @@ ob_end_flush();
                   <td><?php echo 'LETRAS Y NÚMEROS';
                       $_SESSION['validacion'] = $row['validacion'];; ?></td>
                 <?php } ?>
+                <!-- /. PARA MODIFICAR -->
                 <td style="text-align: center;">
                   <a href="../vistas/mantenimiento_tipo_caracteristica_vista.php?tipo_caracteristica=<?php echo $row['tipo_caracteristica']; ?>&validacion=<?php echo $_SESSION['validacion']; ?>" class="btn btn-primary btn-raised btn-xs">
                     <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_tipo_caracteristica'] ?> "></i>
                   </a>
                 </td>
 
+
+
+
+                <!-- /. PARA ELIMINAR -->
                 <td style="text-align: center;">
 
                   <form action="../Controlador/eliminar_tipo_caracteristica_controlador.php?tipo_caracteristica=<?php echo $row['tipo_caracteristica']; ?>" method="POST" class="FormularioAjax" data-form="delete" autocomplete="off">
@@ -316,7 +321,7 @@ ob_end_flush();
 
 -->
 
-  <form action="../Controlador/actualizar_tipo_caracteristica_controlador.php?id_tipo_caracteristica=<?php echo $_SESSION['id_tipo_caracteristica']; ?>" method="post" data-form="update" class="FormularioAjx" autocomplete="off">
+  <form action="../Controlador/actualizar_tipo_caracteristica_controlador.php?id_tipo_caracteristica=<?php echo $_SESSION['id_tipo_caracteristica']; ?>" method="post" data-form="update" class="FormularioAjax" autocomplete="off">
 
 
 
@@ -333,13 +338,12 @@ ob_end_flush();
 
           <!--Cuerpo del modal-->
           <div class="modal-body">
-
-
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Modificar Tipo de Característica </label>
+
                     <input class="form-control" class="tf w-input" type="text" id="txt_tipocaracteristica" onkeypress="return validacion_para_nombre(event)" name="txt_tipocaracteristica" value="<?php echo $_SESSION['tipo_caracteristica'];   ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_tipocaracteristica');" maxlength="50">
                   </div>
                 </div>
@@ -387,7 +391,7 @@ ob_end_flush();
               $_SESSION['tipo3'] = 'NUMEROS';
             }
             ?>
-          </div>
+          
 
 
           <div class="card-body">
@@ -419,8 +423,7 @@ ob_end_flush();
               </div>
             </div>
           </div>
-
-
+          </div>
 
 
 
