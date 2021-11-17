@@ -80,19 +80,19 @@ if (session_status() === PHP_SESSION_NONE) {
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-          <a class="nav-link" href="../vistas/cambiar_clave_x_usuario_vista.php">
+          <a class="nav-link" href="../vistas/cambiar_clave_x_usuario_vista"> Restablecer Contraseña
             <i class="fas fa-user-tag"></i>
           </a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link" href="../vistas/gestion_respuesta_usuario_vista.php">
+          <a class="nav-link" href="../vistas/gestion_respuesta_usuario_vista">Preguntas de Seguridad
             <i class="fas fa-question-circle"></i>
           </a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="btn-exit-system" href="#!">
+          <a class="btn-exit-system nav-link" style="color:#4697D7 " href="#!">Cerrar Sesión &nbsp;
             <i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
@@ -110,7 +110,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="../vistas/pagina_principal_vista.php" class="brand-link">
+      <a href="../vistas/pagina_principal_vista" class="brand-link">
         <img src="../dist/img/lOGO_OFICIAL.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Informática </span>
       </a>
@@ -123,7 +123,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <img src="../dist/img/usuario3.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="../vistas/ajustes_usuario_vista.php" class="d-block"><?php
+            <a href="../vistas/ajustes_usuario_vista" class="d-block"><?php
                                                                           echo ($_SESSION['usuario']); ?></a>
 
           </div>
@@ -144,38 +144,38 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['pregunta_vista'] ?>">
-                  <a href="../vistas/menu_pregunta_vista.php" class="nav-link">
+                  <a href="../vistas/menu_pregunta_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Preguntas de Seguridad</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['usuarios_vista'] ?>">
-                  <a href="../vistas/menu_usuarios_vista.php" class="nav-link">
+                  <a href="../vistas/menu_usuarios_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Usuarios</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['roles_vista'] ?>">
-                  <a href="../vistas/menu_roles_vista.php" class="nav-link">
+                  <a href="../vistas/menu_roles_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Roles</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['permisos_usuario_vista'] ?>">
-                  <a href="../vistas/menu_permisos_usuario_vista.php" class="nav-link">
+                  <a href="../vistas/menu_permisos_usuario_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Permisos a Usuarios</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['parametro_vista'] ?>">
-                  <a href="../vistas/gestion_parametros_vista.php" class="nav-link">
+                  <a href="../vistas/gestion_parametros_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Parámetros</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['bitacora_vista'] ?>">
-                  <a href="../vistas/bitacora_vista.php" class="nav-link">
+                  <a href="../vistas/bitacora_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Bitacora del Sistema</p>
                   </a>
@@ -194,25 +194,25 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['practica_vista'] ?>">
-                  <a href="../vistas/menu_practica_vista.php" class="nav-link">
+                  <a href="../vistas/menu_practica_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Práctica Profesional </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['supervision_vista'] ?>">
-                  <a href="../vistas/menu_supervision_vista.php" class="nav-link">
+                  <a href="../vistas/menu_supervision_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Supervisión de Práctica </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['egresados_vista'] ?>">
-                  <a href="../vistas/menu_egresados_vista.php" class="nav-link">
+                  <a href="../vistas/menu_egresados_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Egresados</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['proyectos_vinculacion_vista'] ?>">
-                  <a href="../vistas/menu_proyectos_vista.php" class="nav-link">
+                  <a href="../vistas/menu_proyectos_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Proyectos de Vinculación </p>
                   </a>
@@ -232,76 +232,76 @@ if (session_status() === PHP_SESSION_NONE) {
               <ul class="nav nav-treeview">
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['final_practica'] ?>">
-                  <a href="../vistas/revision_finalizacion_vista.php" class="nav-link">
+                  <a href="../vistas/revision_finalizacion_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Finalizacion de Practica </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['cambio_carrera'] ?>">
-                  <a href="../vistas/menu_revision_cambio.php" class="nav-link">
+                  <a href="../vistas/menu_revision_cambio" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Cambio de Carrera </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['carta_egresado'] ?>">
-                  <a href="../vistas/revision_carta_egresado_vista.php" class="nav-link">
+                  <a href="../vistas/revision_carta_egresado_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Carta de Egresado</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['cancelar_clases'] ?>">
-                  <a href="../vistas/revision_cancelar_clases.php" class="nav-link">
+                  <a href="../vistas/revision_cancelar_clases" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Cancelacion de clases</p>
                   </a>
                 </li>
                 <!-- CARGA ACADEMICA -->
                 <li class="nav-item" style="display:<?php echo $_SESSION['carga_academica_vista'] ?>">
-                  <a href="../vistas/menu_carga_academica_vista.php" class="nav-link">
+                  <a href="../vistas/menu_carga_academica_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Carga Académica </p>
                   </a>
                 </li>
                 <!-- PLAN DE ESTUDIO -->
                 <li class="nav-item" style="display:<?php echo $_SESSION['plan_estudio_vista'] ?>">
-                  <a href="../vistas/menu_plan_estudio_vista.php" class="nav-link">
+                  <a href="../vistas/menu_plan_estudio_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Plan de Estudio </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['expediente_graduacion'] ?>">
-                  <a href="../vistas/revision_expediente_graduacion.php" class="nav-link">
+                  <a href="../vistas/revision_expediente_graduacion" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Expediente Graduación </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['equivalencias'] ?>">
-                  <a href="../vistas/menu_revison_equivalencias.php" class="nav-link">
+                  <a href="../vistas/menu_revison_equivalencias" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Pre Equivalencias </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['suficiencia'] ?>">
-                  <a href="../vistas/menu_revision_suficiencia.php" class="nav-link">
+                  <a href="../vistas/menu_revision_suficiencia" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Examen de Suficiencia</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['revision_servicio_comunitario'] ?>">
-                  <a href="../vistas/revision_servicio_comunitario_vista.php" class="nav-link">
+                  <a href="../vistas/revision_servicio_comunitario_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Servicio Comunitario</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['reactivacion_cuenta'] ?>">
-                  <a href="../vistas/revision_reactivacion_vista.php" class="nav-link">
+                  <a href="../vistas/revision_reactivacion_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Reactivacion de cuenta</p>
                   </a>
@@ -321,7 +321,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['docentes_vista'] ?>">
-                  <a href="../vistas/menu_docentes_vista.php" class="nav-link">
+                  <a href="../vistas/menu_docentes_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Docentes </p>
                   </a>
@@ -342,7 +342,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <ul class="nav nav-treeview">
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['gestion_reunion'] ?>">
-                  <a href="../vistas/menu_reunion_vista.php" class="nav-link">
+                  <a href="../vistas/menu_reunion_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Gestión Reunión
@@ -351,7 +351,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
                 <!--- Gestión Reunión  -->
                 <li class="nav-item" style="display:<?php echo $_SESSION['gestion_actas'] ?>">
-                  <a href="../vistas/menu_acta_vista.php" class="nav-link">
+                  <a href="../vistas/menu_acta_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Gestión Acta
@@ -360,7 +360,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
                 <!--- Gestión acta  -->
                 <li class="nav-item" style="display:<?php echo $_SESSION['gestion_acuerdos_seguimientos'] ?>">
-                  <a href="../vistas/menu_acuerdo_vista.php" class="nav-link">
+                  <a href="../vistas/menu_acuerdo_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Acuerdo y Seguimiento
@@ -369,7 +369,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
                 <!--- Gestión acuerdos  -->
                 <li class="nav-item" style="display:<?php echo $_SESSION['gestion_lista_asistencia'] ?>">
-                  <a href="../vistas/menu_asistencia_vista.php" class="nav-link">
+                  <a href="../vistas/menu_asistencia_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Lista Asistencia
@@ -379,7 +379,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <!--- Gestión asistencia  -->
 
                 <li class="nav-item" /*style="display:<?php echo $_SESSION['gestion_actas'] ?>"*/>
-                  <a href="../vistas/listar_actasarchivadasdocentes_vista.php" class="nav-link">
+                  <a href="../vistas/listar_actasarchivadasdocentes_vista" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>
                           Consultar Acta
@@ -405,72 +405,72 @@ if (session_status() === PHP_SESSION_NONE) {
 
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_practica'] ?>">
-                  <a href="../vistas/menu_estudiantes_practica_vista.php" class="nav-link">
+                  <a href="../vistas/menu_estudiantes_practica_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Solicitud de Practica </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_final_practica'] ?>">
-                  <a href="../vistas/solicitud_finalizacion_vista.php" class="nav-link">
+                  <a href="../vistas/solicitud_finalizacion_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Finalizacion de Practica </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_cambio_carrera'] ?>">
-                  <a href="../vistas/cambio_carrera_vista.php" class="nav-link">
+                  <a href="../vistas/cambio_carrera_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Cambio de Carrera </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_carta_egresado'] ?>">
-                  <a href="../vistas/carta_egresado_vista.php" class="nav-link">
+                  <a href="../vistas/carta_egresado_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Carta de Egresado</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_equivalencias'] ?>">
-                  <a href="../vistas/equivalencias_vista.php" class="nav-link">
+                  <a href="../vistas/equivalencias_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Pre Equivalencias </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_cancelar_clases'] ?>">
-                  <a href="../vistas/cancelar_clases_vista.php" class="nav-link">
+                  <a href="../vistas/cancelar_clases_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Cancelacion de clases</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_equivalencias'] ?>">
-                  <a href="../vistas/expediente_graduacion_vista.php" class="nav-link">
+                  <a href="../vistas/expediente_graduacion_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Expediente Graduación</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_servicio_comunitario'] ?>">
-                  <a href="../vistas/servicio_comunitario_vista.php" class="nav-link">
+                  <a href="../vistas/servicio_comunitario_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Servicio Comunitario </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['solicitud_examensuficiencia'] ?>">
-                  <a href="../vistas/menu_suficiencia_vista.php" class="nav-link">
+                  <a href="../vistas/menu_suficiencia_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Examen de Suficiencia </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['reactivacion_cuenta'] ?>">
-                  <a href="../vistas/reactivacion_cuenta_vista.php" class="nav-link">
+                  <a href="../vistas/reactivacion_cuenta_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Reactivacion de Cuenta </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['Historial_de_solicitudes'] ?>">
-                  <a href="../vistas/historial_solicitudes_vista.php" class="nav-link">
+                  <a href="../vistas/historial_solicitudes_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Historial solicitudes </p>
                   </a>
@@ -491,7 +491,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <ul class="nav nav-treeview">
                 <!-- Actualizar o modificarrrrrrrrr -->
                 <li class="nav-item" style="display:<?php echo $_SESSION['perfil360_vista'] ?>">
-                  <a href="../vistas/menu_perfil360_vista.php" class="nav-link">
+                  <a href="../vistas/menu_perfil360_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Perfil 360 Estudiantil </p>
                   </a>
@@ -511,25 +511,25 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['actividades_cve'] ?>">
-                  <a href="../vistas/menu_actividades_cve_vista.php" class="nav-link">
+                  <a href="../vistas/menu_actividades_cve_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Actividades </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['faltas_cve'] ?>">
-                  <a href="../vistas/registro_faltas_conducta_vista.php" class="nav-link">
+                  <a href="../vistas/registro_faltas_conducta_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Registro Faltas</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['memos_cve'] ?>">
-                  <a href="../vistas/memorandum_cve_vista.php" class="nav-link">
+                  <a href="../vistas/memorandum_cve_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Memorándums</p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['horas_cve'] ?>">
-                  <a href="../vistas/horas_voae_cve_vista.php" class="nav-link">
+                  <a href="../vistas/horas_voae_cve_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Horas VOAE</p>
                   </a>
@@ -549,7 +549,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['g_cargajefatura'] ?>">
-                  <a href="../vistas/g_cargajefatura_vista.php" class="nav-link">
+                  <a href="../vistas/g_cargajefatura_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Gestión Carga Academica</p>
                   </a>
@@ -557,7 +557,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['g_reasignacionjefatura'] ?>">
-                  <a href="../vistas/g_reasignacionjefatura_vista.php" class="nav-link">
+                  <a href="../vistas/g_reasignacionjefatura_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Gestón Reasignacion Academica </p>
                   </a>
@@ -565,7 +565,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['g_planificacionjefatura'] ?>">
-                  <a href="../vistas/g_planificacionjefatura_vista.php" class="nav-link">
+                  <a href="../vistas/g_planificacionjefatura_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Gestión Administracion Y Planificacion Academica </p>
                   </a>
@@ -587,25 +587,25 @@ if (session_status() === PHP_SESSION_NONE) {
               <ul class="nav nav-treeview">
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['notificacion'] ?>">
-                  <a href="../vistas/movil_menu_notificaciones_vista.php" class="nav-link">
+                  <a href="../vistas/movil_menu_notificaciones_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Notificaciones </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['noticias'] ?>">
-                  <a href="../vistas/movil_menu_noticias_vista.php" class="nav-link">
+                  <a href="../vistas/movil_menu_noticias_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Noticias </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['chat'] ?>">
-                  <a href="../vistas/movil_chat_vista.php" class="nav-link">
+                  <a href="../vistas/movil_chat_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Chat </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['bitacora'] ?>">
-                  <a href="../vistas/movil_bitacora_vista.php" class="nav-link">
+                  <a href="../vistas/movil_bitacora_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Bitácora </p>
                   </a>
@@ -615,7 +615,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <!-- APP INFORMATICA -->
             <li class="nav-item has-treeview" style="display:block">
-              <a href="../vistas/movil_menu_gestion_vista.php" class="nav-link">
+              <a href="../vistas/movil_menu_gestion_vista" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Gestión App
@@ -638,32 +638,32 @@ if (session_status() === PHP_SESSION_NONE) {
               <ul class="nav nav-treeview">
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['producto_vista'] ?>">
-                  <a href="../vistas/gestion_producto_vista.php" class="nav-link">
+                  <a href="../vistas/gestion_producto_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Producto </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['adquisicion_vista'] ?>">
-                  <a href="../vistas/gestion_adquisicion_vista.php" class="nav-link">
+                  <a href="../vistas/gestion_adquisicion_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Adquisición </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['salida_vista'] ?>">
-                  <a href="../vistas/gestion_salida_vista.php" class="nav-link">
+                  <a href="../vistas/gestion_salida_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Salida </p>
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['asignacion_vista'] ?>">
-                  <a href="../vistas/gestion_asignacion_vista.php" class="nav-link">
+                  <a href="../vistas/gestion_asignacion_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Asignación </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['transaccion_kardex'] ?>">
-                  <a href="../vistas/transaccion_kardex_vista.php" class="nav-link">
+                  <a href="../vistas/transaccion_kardex_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Transacciones </p>
                   </a>
@@ -681,14 +681,14 @@ if (session_status() === PHP_SESSION_NONE) {
                   <ul class="nav nav-treeview">
 
                     <li class="nav-item" style="display:<?php echo $_SESSION['reportes_existencias_vista'] ?>">
-                      <a href="../vistas/reportes_existencias_vista.php" class="nav-link">
+                      <a href="../vistas/reportes_existencias_vista" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p> Existencias</p>
                       </a>
                     </li>
 
                     <li class="nav-item" style="display:<?php echo $_SESSION['reportes_ubicacion_vista'] ?>">
-                      <a href="../vistas/reportes_ubicacion_vista.php" class="nav-link">
+                      <a href="../vistas/reportes_ubicacion_vista" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p> Ubicación</p>
                       </a>
@@ -713,7 +713,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
-                  <a href="../vistas/menu_ayuda_vista.php" class="nav-link">
+                  <a href="../vistas/menu_ayuda_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Manuales de usuario </p>
                   </a>
@@ -743,42 +743,42 @@ if (session_status() === PHP_SESSION_NONE) {
               <ul class="nav nav-treeview">
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantemiento_carga_academica'] ?>">
-                  <a href="../vistas/menu_mantenimiento.php" class="nav-link">
+                  <a href="../vistas/menu_mantenimiento" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Docentes</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantemiento_carga_academica1'] ?>">
-                  <a href="../vistas/menu_mantenimiento_carga.php" class="nav-link">
+                  <a href="../vistas/menu_mantenimiento_carga" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Carga </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_plan'] ?>">
-                  <a href="../vistas/menu_mantenimiento_plan.php" class="nav-link">
+                  <a href="../vistas/menu_mantenimiento_plan" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos de Plan </p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_perfil360'] ?>">
-                  <a href="../vistas/menu_mantenimiento_perfil360.php" class="nav-link">
+                  <a href="../vistas/menu_mantenimiento_perfil360" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Perfil360 Estudiantil</p>
                   </a>
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['administracion_cve'] ?>">
-                  <a href="../vistas/menu_administracion_cve_vista.php" class="nav-link">
+                  <a href="../vistas/menu_administracion_cve_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Mantenimiento CVE</p>
                   </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="../vistas/menu_mantenimientoacta_vista.php" class="nav-link">
+                  <a href="../vistas/menu_mantenimientoacta_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Mantenimientos Actas
@@ -787,14 +787,14 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['menu_mantenimientos_jefatura_principal'] ?>">
-                  <a href="../vistas/menu_mantenimientos_jefatura_principal.php" class="nav-link">
+                  <a href="../vistas/menu_mantenimientos_jefatura_principal" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Jefatura</p>
                   </a>
                 </li>
 
                 <li class="nav-item has-treeview" style="display:block">
-                  <a href="../vistas/movil_menu_mantenimiento_vista.php" class="nav-link">
+                  <a href="../vistas/movil_menu_mantenimiento_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Mantenimiento App
@@ -805,7 +805,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_laboratorio'] ?>">
-                  <a href="../vistas/menu_mantenimiento_laboratorio.php" class="nav-link">
+                  <a href="../vistas/menu_mantenimiento_laboratorio" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Mantenimientos Laboratorio</p>
                   </a>
@@ -827,7 +827,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
-                  <a href="../vistas/about_vista.php" class="nav-link">
+                  <a href="../vistas/about_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> About </p>
                   </a>
@@ -951,20 +951,20 @@ if (session_status() === PHP_SESSION_NONE) {
           //Initialize Select2 Elements
           $('.select2bs4').select2({
             theme: 'bootstrap4'
-          })
+          })});
   </script>
   <script>
-    $(function() {
+  $(function() {
 
-      //Input para telefono
-      $('[data-mask]').inputmask()
+//Input para telefono
+$('[data-mask]').inputmask()
 
 
 
-    })
+})
   </script>
   <script type="text/javascript">
-    $(function() {
+  $(function() {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
