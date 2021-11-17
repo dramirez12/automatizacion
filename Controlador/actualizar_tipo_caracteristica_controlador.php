@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 session_start();
 
 require_once('../clases/Conexion.php');
@@ -186,4 +186,8 @@ else{
       window.location = "../vistas/mantenimiento_tipo_caracteristica_vista.php";
   </script>';
 
-    }         
+    }  
+
+
+    ob_end_flush();       
+    ?>

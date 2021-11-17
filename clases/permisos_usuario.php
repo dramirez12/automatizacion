@@ -10,7 +10,20 @@ if (session_status() === PHP_SESSION_NONE) {
    session_start();
 }
 
+if (!isset($_SESSION['id_usuario'])){
+   echo '<script type="text/javascript">
+                    swal({
+                       title:"",
+                       text:"Tu sesión ha vencido, te redireccionaremos al login.",
+                       type: "error",
+                       showConfirmButton: false,
+                       timer: 4000
+                    });
+                    
+                </script>';
+   header('location:../');
 
+}
 
 
 
