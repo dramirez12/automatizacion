@@ -59,6 +59,7 @@ ob_end_flush();
     <script src="../js/tipoacta-ajax.js"></script>
 
     <title></title>
+    
 </head>
 
 <body>
@@ -75,7 +76,7 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="g">Inicio</a></li>
                             <li class="breadcrumb-item active">Archivar Acta</li>
                         </ol>
                     </div>
@@ -90,7 +91,7 @@ ob_end_flush();
                         <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
                         <input type="hidden" name="acta" value="actualizar">
                         <button style="padding-right: 15px;" type="submit" class="btn btn-success float-left" id="editar_registro" <?php echo $_SESSION['btn_crear']; ?>>Archivar Acta</button>
-                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-danger" href="menu_acta_vista.php">Cancelar</a>
+                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-danger" href="menu_acta_vista">Cancelar</a>
                     </div><br><br>
 
                     <div class="card-body">
@@ -105,7 +106,7 @@ ob_end_flush();
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nombre">Nombre Reunión:</label>
-                                            <input required minlength="5" type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la Reunion a la que pertenece el acta">
+                                            <input onkeyup="mayus(this);" required minlength="5" maxlength="50" type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la Reunion a la que pertenece el acta">
                                         </div>
                                         <div class="form-group">
                                             <label for="tipo">Tipo de Reunión</label>
@@ -128,7 +129,7 @@ ob_end_flush();
                                         </div>
                                         <div class="form-group">
                                             <label for="lugar">Lugar:</label>
-                                            <input required minlength="4" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Ingrese el lugar donde se desarrollo">
+                                            <input onkeyup="mayus(this);" required minlength="4" maxlength="50" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Ingrese el lugar donde se desarrollo">
                                         </div>
                                         <div class="form-group">
                                             <label for="fecha">Fecha:</label>
@@ -136,7 +137,7 @@ ob_end_flush();
                                         </div>
                                         <div class="form-group">
                                             <label for="nacta">No. Acta:</label>
-                                            <input required minlength="4" onkeyup="mayus(this);" style="width: 90%;" type="text" class="form-control" id="nacta" minlength="5" maxlength="25" name="nacta" placeholder="Ingrese numero o codigo del acta">
+                                            <input required onkeyup="mayus(this);" style="width: 90%;" type="text" class="form-control" id="nacta" minlength="5" maxlength="20" name="nacta" placeholder="Ingrese numero o codigo del acta">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
@@ -218,6 +219,7 @@ ob_end_flush();
         $(listing).empty();
     }
 
+    
     function mayus(e) {
         e.value = e.value.toUpperCase();
     }
@@ -227,6 +229,7 @@ ob_end_flush();
         ta.val(letras)
     });
 </script>
+
 <?php
 $sql = "SELECT
                     Valor

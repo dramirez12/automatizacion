@@ -91,8 +91,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_reunion_vista.php">Gestion Reuniones</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_reunion_vista">Gestión  Reuniones</a></li>
                             <li class="breadcrumb-item active">Reuniones Pendientes</li>
                         </ol>
                     </div>
@@ -110,7 +110,7 @@ ob_end_flush();
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Listado de reuniones que se desarrollaran pronto</h3>
-                                    <a href="crear_reunion_vista.php" type="button" class="btn btn-app bg-warning float-right derecha <?php echo $_SESSION['btn_crear']; ?>">
+                                    <a href="crear_reunion_vista" type="button" class="btn btn-app bg-warning float-right derecha <?php echo $_SESSION['btn_crear']; ?>">
                                         <i class="fas fa-plus-circle"><br></i>Agendar Nueva Reunión
                                     </a>
                                 </div>
@@ -122,7 +122,7 @@ ob_end_flush();
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Vista General</a>
                                                 </li>
-                                                <li class="nav-item" style="display: none;">
+                                                <li class="nav-item" style="display: ;">
                                                     <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Vista Calendario</a>
                                                 </li>
                                             </ul>
@@ -164,7 +164,7 @@ ob_end_flush();
                                                                         <td><?php echo $reunion['hora_inicio']; ?></td>
                                                                         <td><?php echo $reunion['hora_final']; ?></td>
                                                                         <td>
-                                                                            <a href="../vistas/editar_reunion_vista.php?id=<?php echo $reunion['id_reunion'] ?>" style="max-width:55px; padding: 7px;" class="btn btn-success <?php echo $_SESSION['btn_editar']; ?>">
+                                                                            <a href="../vistas/editar_reunion_vista?id=<?php echo $reunion['id_reunion'] ?>" style="max-width:55px; padding: 7px;" class="btn btn-success <?php echo $_SESSION['btn_editar']; ?>">
                                                                                 <i class="far fa-edit"></i><br>Editar
                                                                             </a>
                                                                             <a href="#" data-id="<?php echo $reunion['id_reunion']; ?>" data-tipo="reunion" style="max-width: 70px; padding: 7px;" class="cancelar_registrooo btn btn-danger <?php echo $_SESSION['btn_borrar']; ?>  ">

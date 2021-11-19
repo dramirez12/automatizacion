@@ -64,7 +64,7 @@ if ($_POST['reunion'] == 'nuevo') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento de Informática');
+        $mail->setFrom($correo, 'Jefatura Departamento de Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -83,7 +83,7 @@ if ($_POST['reunion'] == 'nuevo') {
         $body .= "Asunto: <strong>$asunto</strong><br>";
         $body .= "<br>";
         $body .= "Por medio de la presente se notifica que el <strong>$fecha</strong>";
-        $body .= " se realizará la reunión con asunto <strong>$asunto</strong>,";
+        $body .= " se realizará la reunión con asunto: <strong>$asunto</strong>,";
         $body .= " lugar: <strong>$lugar</strong>";
         $body .= " en el horario de <strong>$horainicio</strong>";
         $body .= " a <strong>$horafinal</strong> con los siguientes puntos a tratar: <br><br>";
@@ -96,7 +96,7 @@ if ($_POST['reunion'] == 'nuevo') {
         $body .= "<br>";
         $body .= "<br>";
         $body .= "Enlace: <strong><a href='$enlace'>$enlace</a></strong><br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento de Informática</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
         $body .= "<br>";
         $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
         $body .= "<br>";
@@ -112,6 +112,7 @@ if ($_POST['reunion'] == 'nuevo') {
 }
 
 if ($_POST['reunion'] == 'actualizar') {
+    $participante = $_POST['chk'];
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->isSMTP();
     $id_registro = $_POST['id_registro'];
@@ -141,9 +142,8 @@ if ($_POST['reunion'] == 'actualizar') {
                 'respuesta' => 'error'
             );
         }
-        //Server settings
-        $correo = 'unahvinc@informaticaunah.com';
-        $Password = '.N9135myfkAa';
+        $correo = 'jefatura@informaticaunah.com';
+        $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
         $mail->Port = 465;
@@ -155,7 +155,7 @@ if ($_POST['reunion'] == 'actualizar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento de Informática');
+        $mail->setFrom($correo, 'Jefatura Departamento de Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -189,7 +189,7 @@ if ($_POST['reunion'] == 'actualizar') {
         $body .= "<br>";
         $body .= "<br>";
         $body .= "Enlace: <strong><a href='$enlace'>$enlace</a></strong><br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento de Informática</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
         $body .= "<br>";
         $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
         $body .= "<br>";
@@ -229,8 +229,8 @@ if ($_POST['reunion'] == 'cancelar') {
             );
         }
         //Server settings
-        $correo = 'unahvinc@informaticaunah.com';
-        $Password = '.N9135myfkAa';
+        $correo = 'jefatura@informaticaunah.com';
+        $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
         $mail->Port = 465;
@@ -240,7 +240,7 @@ if ($_POST['reunion'] == 'cancelar') {
         $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
-        $mail->setFrom($correo, 'Deptartamento Informática');
+        $mail->setFrom($correo, 'Departamento Informática');
         $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_cancelar";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
@@ -268,7 +268,7 @@ if ($_POST['reunion'] == 'cancelar') {
         $body .= "<b>patricia.ellner@unah.edu.hn</b>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento de Informática</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
         $body .= "<br>";
         $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
         $body .= "<br>";

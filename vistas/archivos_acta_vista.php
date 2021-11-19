@@ -115,7 +115,7 @@ ob_end_flush();
                                 <?php echo $estadoacta['formato']; ?>
                             </td>
                             <td>
-                                <a href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?>"><i style="color: #359c32;" class="fas fa-download"></i></a>
+                                <a href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?> download="<?php echo $estadoacta['nombre']; ?>""><i style="color: #359c32;" class="fas fa-download"></i></a>
                             </td>
                         </tr>
                     <?php  }  ?>

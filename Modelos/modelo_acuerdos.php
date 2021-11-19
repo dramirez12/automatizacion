@@ -13,7 +13,7 @@ $fecha_res = 'PENDIENTE';
 $fecha_exp = $_POST['fecha_exp'];
 $fecha_formato = date('Y-m-d', strtotime($fecha_exp));
 $id_registro = $_POST['id_registro'];
-
+$correojefatura = 'patricia.ellner@unah.edu.hn';
 
 if ($_POST['acuerdo'] == 'nuevo') {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -35,8 +35,8 @@ if ($_POST['acuerdo'] == 'nuevo') {
             );
         }
         //Server settings
-        $correo = 'unahvinc@informaticaunah.com';
-        $Password = '.N9135myfkAa';
+        $correo = 'jefatura@informaticaunah.com';
+        $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
         $mail->Port = 465;
@@ -48,7 +48,7 @@ if ($_POST['acuerdo'] == 'nuevo') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
+        $mail->setFrom($correo, 'Jefatura Departamento de Informática');
         $sql = "SELECT
                 t5.num_acta,
                 t4.nombre_reunion,
@@ -83,11 +83,15 @@ if ($_POST['acuerdo'] == 'nuevo') {
         $body .= "<strong>$descripcionformato</strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "patricia.ellner@unah.edu.hn";
+        $body .= "Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a: ";
+        $body .= "<strong><a href=''>$correojefatura</a></strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
+        $body .= "<br>";
+        $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+        $body .= "<br>";
+        $body .= "<br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -117,8 +121,8 @@ if ($_POST['acuerdo'] == 'actualizar') {
             );
         }
         //Server settings
-        $correo = 'unahvinc@informaticaunah.com';
-        $Password = '.N9135myfkAa';
+        $correo = 'jefatura@informaticaunah.com';
+        $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
         $mail->Port = 465;
@@ -130,7 +134,7 @@ if ($_POST['acuerdo'] == 'actualizar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
+        $mail->setFrom($correo, 'Jefatura Departamento de Informática');
         $sql = "SELECT
                  t5.num_acta,
                  t4.nombre_reunion,
@@ -166,11 +170,15 @@ if ($_POST['acuerdo'] == 'actualizar') {
         $body .= "<strong>$descripcionformato</strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "patricia.ellner@unah.edu.hn";
+        $body .= "Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a: ";
+        $body .= "<strong><a href=''>$correojefatura</a></strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
+        $body .= "<br>";
+        $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+        $body .= "<br>";
+        $body .= "<br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -204,8 +212,8 @@ if ($_POST['acuerdos'] == 'finalizar') {
             );
         }
         //Server settings
-        $correo = 'unahvinc@informaticaunah.com';
-		$Password = '.N9135myfkAa';
+        $correo = 'jefatura@informaticaunah.com';
+        $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
@@ -217,7 +225,7 @@ if ($_POST['acuerdos'] == 'finalizar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
+        $mail->setFrom($correo, 'Jefatura Departamento de Informática');
         $sql = "SELECT
         t6.num_acta,
         t5.nombre_reunion,
@@ -256,11 +264,15 @@ if ($_POST['acuerdos'] == 'finalizar') {
         $body .= "que el acuerdo de la reunión <b>$nombrereu</b> a la que asistió se dio por finalizado";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "patricia.ellner@unah.edu.hn";
+        $body .= "Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a: ";
+        $body .= "<strong><a href=''>$correojefatura</a></strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
+        $body .= "<br>";
+        $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+        $body .= "<br>";
+        $body .= "<br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
@@ -296,8 +308,8 @@ if ($_POST['acuerdo'] == 'cancelar') {
             );
         }
         //Server settings
-        $correo = 'unahvinc@informaticaunah.com';
-		$Password = '.N9135myfkAa';
+        $correo = 'jefatura@informaticaunah.com';
+        $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
         $mail->Host = 'informaticaunah.com';
 		$mail->Port = 465;
@@ -309,7 +321,7 @@ if ($_POST['acuerdo'] == 'cancelar') {
         //Recipients
 
         $stmt->close();
-        $mail->setFrom($correo, 'Jefatura Deptartamento Informática');
+        $mail->setFrom($correo, 'Jefatura Departamento de Informática');
         $sql = "SELECT
          t6.num_acta,
          t5.nombre_reunion,
@@ -349,11 +361,15 @@ if ($_POST['acuerdo'] == 'cancelar') {
         $body .= " por el siguiente motivo: <b>$mensaje</b>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a:</h3>";
-        $body .= "patricia.ellner@unah.edu.hn";
+        $body .= "Este es un correo automático por favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escríbanos a: ";
+        $body .= "<strong><a href=''>$correojefatura</a></strong>";
         $body .= "<br>";
         $body .= "<br>";
-        $body .= "<h3>Saludos Cordiales, <strong>Deptartamento Informática</strong></h3><br>";
+        $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
+        $body .= "<br>";
+        $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+        $body .= "<br>";
+        $body .= "<br>";
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
