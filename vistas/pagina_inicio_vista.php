@@ -388,8 +388,19 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
                 <!--- Gestión asistencia  -->
+                <li class="nav-item" /style="display:<?php echo $_SESSION['gestion_actas'] ?>"/>
+              <a href="../vistas/listar_actasarchivadasdocentes_vista.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Consultar Acta
+                    </p>
+                </a>
+            </li>
+            <!--- Consultar actas  -->
               </ul>
             </li>
+            
+         
 
 
             <!---- solicitudes ----->

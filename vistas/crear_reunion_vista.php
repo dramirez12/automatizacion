@@ -12,7 +12,7 @@ $hoy = $dt->format("Y-m-d");
 
 $Id_objeto = 144;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A crear Reunion');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A crear Reunión');
 
 $visualizacion = permiso_ver($Id_objeto);
 
@@ -61,12 +61,12 @@ ob_end_flush();
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Agendar una Reunion</h1>
+                        <h1>Agendar una Reunión</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/menu_reunion_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active">Crear Reunion</li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_reunion_vista">Inicio</a></li>
+                            <li class="breadcrumb-item active">Crear Reunión</li>
                         </ol>
                     </div>
                 </div>
@@ -80,13 +80,19 @@ ob_end_flush();
                     <div class="card-header p-0 pt-1 border-bottom-0">
                         <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="datosgenerales-tab" data-toggle="pill" href="#datosgenerales" role="tab" aria-controls="datosgenerales" aria-selected="false">Datos Generales y Datos Reunion</a>
+                                <a class="nav-link active" id="datosgenerales-tab" data-toggle="pill" href="#datosgenerales" role="tab" aria-controls="datosgenerales" aria-selected="false">Datos Generales y Datos Reunión</a>
                             </li>
                             <li class="nav-item">
                                 <a style="display: none;" class="nav-link " id="datosreunion-tab" data-toggle="pill" href="#datosreunion" role="tab" aria-controls="datosreunion" aria-selected="true">Participantes</a>
                             </li>
                             <li class="nav-item">
-                                <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista.php">Cancelar</a>
+                            <form role="form" name="guardar-reunion" id="guardar-reunion" method="post" action="../Modelos/modelo_reunion.php">
+                            <div class="form-control" style="padding: 0px 0 0px 0; margin: 0px 0px 5px 10px;">
+                               <input type="hidden" name="estado" value="1">
+                               <input type="hidden" name="reunion" value="nuevo">
+                               <button type="submit" class="btn btn-success float-right" <?php echo $_SESSION['btn_crear']; ?> disabled>Agendar</button>
+                               <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista">Cancelar</a>
+                            </div>
                             </li>
                         </ul>
                     </div>
@@ -101,17 +107,17 @@ ob_end_flush();
                                             <div class="card-header">
                                                 <h3 class="card-title">Datos Generales</h3>
                                             </div>
-                                            <form role="form" name="guardar-reunion" id="guardar-reunion" method="post" action="../Modelos/modelo_reunion.php">
+                                            
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="nombre">Nombre:</label>
-                                                        <input minlength="5" onchange="showdatos()" onkeyup="mayus(this);" type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion" onkeyup="PasarValor()">
+                                                        <input required maxlength="50" minlength="5" onchange="showdatos()"  type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunión" onkeyup="PasarValor()" onkeypress="return validacion(event)" onblur="limpia()">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="tipo">Tipo de Modalidad</label>
                                                         <select class="form-control" onChange="showInp(); showdatos();" style="width: 50%;" id="tipo" name="tipo">
-                                                            <option value="0">-- Selecione una modalidad --</option>
+                                                            <option value="0">Seleccione una modalidad</option>
                                                             <?php
                                                             try {
                                                                 $sql = "SELECT * FROM tbl_tipo_reunion_acta ";
@@ -129,7 +135,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lugar">Lugar:</label>
-                                                        <input required minlength="4" onkeyup="mayus(this);" onchange="showdatos()" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunion">
+                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required="" maxlength="30" minlength="4" onchange="showdatos()" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunión">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="fecha">Fecha:</label>
@@ -145,7 +151,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="display: none;" id="enlaces" for="enlace">Enlace de la Reunión:</label>
-                                                        <input style="display: none;" minlength="10" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunion">
+                                                        <input style="display: none;" minlength="10" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunión">
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -163,11 +169,11 @@ ob_end_flush();
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="asunto">Asunto:</label>
-                                                    <textarea required minlength="4" onchange="showdatos()" onkeyup="mayus(this);" class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"></textarea>
+                                                    <input type="text" onkeypress="return validacionn(event)" onblur="limpia()" minlength="5" maxlength="50" required minlength="4" onchange="showdatos()"  class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"></input>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="agenda">Agenda Propuesta</label>
-                                                    <textarea required minlength="10" onchange="showdatos()" onkeyup="mayus(this);" class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"></textarea>
+                                                    <textarea onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" onchange="showdatos()"  class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"></textarea>
                                                 </div>
                                             </div>
                                             <!-- /.card-body -->
@@ -179,7 +185,7 @@ ob_end_flush();
                             </div>
                             <div class="tab-pane fade " id="datosreunion" role="tabpanel" aria-labelledby="datosreunion-tab">
                                 <div class="form-group">
-                                    <label for="tipo">Tipo de Reunion</label>
+                                    <label for="tipo">Tipo de Reunión</label>
                                     <select class="form-control" onChange="reuOnChange(this)" ; style="width: 50%;" id="clasif" name="clasif">
                                         <option value="1">-- Selecione un Tipo --</option>
                                         <option value="2">ASAMBLEA</option>
@@ -194,11 +200,7 @@ ob_end_flush();
                                         <div class="col-12">
                                             <!-- /.card -->
                                             <div class="card">
-                                                <div style="padding: 0px 0 0px 0; margin: 15px 0px 5px 10px;">
-                                                    <input type="hidden" name="estado" value="1">
-                                                    <input type="hidden" name="reunion" value="nuevo">
-                                                    <button style="float: right; " type="submit" class="btn btn-success float-left" <?php echo $_SESSION['btn_crear']; ?> disabled>Agendar</button>
-                                                </div>
+                                                
                                                 <div id="reu-normal" style="display:none;">
 
 
@@ -233,7 +235,7 @@ ob_end_flush();
                                                                     <tr>
                                                                         <td>
                                                                             <div class="icheck-danger d-inline">
-                                                                                <input type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chknormal[]" value="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                <input  type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chknormal[]" value="<?php echo $estadoacta['id_persona']; ?>">
                                                                                 <label for="<?php echo $estadoacta['id_persona']; ?>">
                                                                                     <?php echo $estadoacta['nombres']; ?>
                                                                                 </label>
@@ -378,6 +380,8 @@ ob_end_flush();
                 "responsive": true,
             });
         });
+
+
     </script>
 
     <?php
@@ -480,7 +484,93 @@ LIMIT 1";
                 document.getElementById("enlace").required = false;
             }
         }
+
+
     </script>
+    
+
+    <script> 
+  function validacion(e) {
+      key = e.keyCode || e.which;
+      tecla = String.fromCharCode(key).toLowerCase();
+      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
+      especiales = [37, 39, 46, 13, 8, 32];
+  
+      tecla_especial = false
+      for(var i in especiales) {
+          if(key == especiales[i]) {
+              tecla_especial = true;
+              break;
+          }
+      }
+  
+      if(letras.indexOf(tecla) == -1 && !tecla_especial)
+          return false;
+  }
+  function validacionn(e) {
+      key = e.keyCode || e.which;
+      tecla = String.fromCharCode(key).toLowerCase();
+      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
+      especiales = [8, 37, 39, 46, 32];
+  
+    
+  
+      if(letras.indexOf(tecla) == -1 && !tecla_especial)
+          return false;
+  }
+  window.onload = function() {
+  var nom = document.getElementById('nombre');
+  var asu = document.getElementById('asunto');
+  var lugar = document.getElementById('lugar');
+  var agenda = document.getElementById('agenda');
+  
+  nom.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  nom.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+  asu.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  asu.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+  lugar.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  lugar.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+  agenda.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  agenda.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+}
+  
+  function limpia() {
+      var val = document.getElementById("nombre").value;
+      var tam = val.length;
+      for(i = 0; i < tam; i++) {
+          if(!isNaN(val[i]))
+              document.getElementById("nombre").value = '';
+      }
+  }
+  </script>
     <script>
         const inicio = document.getElementById("horainicio");
         const final = document.getElementById("horafinal");
@@ -507,6 +597,8 @@ LIMIT 1";
         }
         inicio.addEventListener("change", comparaHoras);
         final.addEventListener("change", comparaHoras);
+
+
     </script>
 </body>
 
