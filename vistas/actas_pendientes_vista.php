@@ -174,8 +174,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista.php">Gestion Actas</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista">Gestion Actas</a></li>
                             <li class="breadcrumb-item active">Actas Pendientes</li>
                         </ol>
                     </div>
@@ -241,7 +241,7 @@ ob_end_flush();
                                                         <td><?php echo $actap['hora_final']; ?></td>
                                                         <td>
 
-                                                            <a style="min-width: 10px; max-width: 190px; max-height: 300px; margin: 0 0 8px 0;" href="editar_acta_vista.php?id=<?php echo $actap['id_acta'] ?>" type="button" class="btn btn-block btn-success btn-sm  <?php echo $_SESSION['btn_editar']; ?>"><i class="fas fa-edit"></i> Continuar Editando
+                                                            <a style="min-width: 10px; max-width: 190px; max-height: 300px; margin: 0 0 8px 0;" href="editar_acta_vista?id=<?php echo $actap['id_acta'] ?>" type="button" class="btn btn-block btn-success btn-sm  <?php echo $_SESSION['btn_editar']; ?>"><i class="fas fa-edit"></i> Continuar Editando
                                                             </a>
                                                             <a style="height: 35px; width: 190px;" href="#" data-id="<?php echo $actap['id_acta'] ?>" data-tipo="acta" class="finalizar_registroacta btn btn-primary <?php echo $_SESSION['btn_editar']; ?>"><i class="fas fa-check-circle "></i> FINALIZAR
                                                             </a>

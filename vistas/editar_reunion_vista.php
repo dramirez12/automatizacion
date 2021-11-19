@@ -100,7 +100,7 @@ ob_end_flush();
                         <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
                         <input type="hidden" name="reunion" value="actualizar">
                         <button style="padding-right: 15px;" type="submit" class="btn btn-success float-left" id="editar_registro" <?php echo $_SESSION['btn_crear']; ?>>Guardar Cambios</button>
-                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista.php">Cancelar</a>
+                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista">Cancelar</a>
                     </div><br><br><br>
                     <div class="card card-primary card-outline card-tabs">
                         <div class="card-header p-0 pt-1 border-bottom-0">
@@ -127,7 +127,7 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="nombre">Nombre:</label>
-                                                        <input required minlength="5" type="text" onkeyup="mayus(this);" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion">
+                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" type="text" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="tipo">Tipo de Reunión</label>
@@ -157,7 +157,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lugar">Lugar:</label>
-                                                        <input required minlength="4" onkeyup="mayus(this);" value="<?php echo $estado['lugar']; ?>" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunion">
+                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required minlength="4" value="<?php echo $estado['lugar']; ?>" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunion">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="fecha">Fecha:</label>
@@ -191,11 +191,11 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="asunto">Asunto:</label>
-                                                        <textarea required minlength="4" onkeyup="mayus(this);" class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"><?php echo $estado['asunto']; ?></textarea>
+                                                        <textarea onkeypress="return validacionn(event)" onblur="limpia()" required minlength="4" maxlength="50" class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"><?php echo $estado['asunto']; ?></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="agenda">Agenda Propuesta</label>
-                                                        <textarea required minlength="10" onkeyup="mayus(this);" class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"><?php echo $estado['agenda_propuesta']; ?></textarea>
+                                                        <textarea onkeypress="return validacion(event)" onblur="limpia()" required minlength="10" class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"><?php echo $estado['agenda_propuesta']; ?></textarea>
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -401,6 +401,90 @@ ob_end_flush();
             }
         }
     </script>
+
+    
+     <script> 
+  function validacion(e) {
+      key = e.keyCode || e.which;
+      tecla = String.fromCharCode(key).toLowerCase();
+      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
+      especiales = [37, 39, 46, 13, 8, 32];
+  
+      tecla_especial = false
+      for(var i in especiales) {
+          if(key == especiales[i]) {
+              tecla_especial = true;
+              break;
+          }
+      }
+  
+      if(letras.indexOf(tecla) == -1 && !tecla_especial)
+          return false;
+  }
+  function validacionn(e) {
+      key = e.keyCode || e.which;
+      tecla = String.fromCharCode(key).toLowerCase();
+      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
+      especiales = [8];
+  
+    
+  
+      if(letras.indexOf(tecla) == -1 && !tecla_especial)
+          return false;
+  }
+  window.onload = function() {
+  var nom = document.getElementById('nombre');
+  var asu = document.getElementById('asunto');
+  var lugar = document.getElementById('lugar');
+  var agenda = document.getElementById('agenda');
+  
+  nom.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  nom.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+  asu.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  asu.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+  lugar.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  lugar.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+  agenda.onpaste = function(e) {
+    e.preventDefault();
+    alert("Está acción pegar está prohibida");
+  }
+  
+  agenda.oncopy = function(e) {
+    e.preventDefault();
+    alert("Está acción de copiar está prohibida");
+  }
+}
+  
+  function limpia() {
+      var val = document.getElementById("nombre").value;
+      var tam = val.length;
+      for(i = 0; i < tam; i++) {
+          if(!isNaN(val[i]))
+              document.getElementById("nombre").value = '';
+      }
+  }
+  </script>
     <script>
         const inicio = document.getElementById("horainicio");
         const final = document.getElementById("horafinal");
