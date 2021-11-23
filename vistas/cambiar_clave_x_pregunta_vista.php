@@ -71,7 +71,7 @@ if (isset($_REQUEST['msj'])) {
 <head>
   <script src="../js/autologout.js"></script>
   <title>Informatica Admistrativa</title>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 
 <body class="hold-transition login-page">
@@ -82,7 +82,7 @@ if (isset($_REQUEST['msj'])) {
       <div class="card-body login-card-body">
 
         <div class="login-logo">
-          <img src="../dist/img/logo_informatica.jpg" width="40%" height="40%" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+          <img src="../dist/img/lOGO_OFICIAL.jpg" width="40%" height="40%" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         </div>
 
         <p class="login-box-msg">Cambiar contraseña por Pregunta de Seguridad</p>
@@ -98,6 +98,9 @@ if (isset($_REQUEST['msj'])) {
                 <span id="show-hide-passwd1" action="hide" class="fas fa-eye"></span>
               </div>
             </div>
+
+
+            <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">popover</a>
           </div>
           <label>Confirmar Contraseña:</label>
           <div class="input-group mb-3">
@@ -130,6 +133,9 @@ if (isset($_REQUEST['msj'])) {
 
 
   <script>
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    })
     $(document).ready(function() {
 
       $('#show-hide-passwd1').click(function() {

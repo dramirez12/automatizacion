@@ -21,6 +21,7 @@
    <title>Informatica Admistrativa</title>
    <!-- Tell the browser to be responsive to screen width -->
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
    <!-- Font Awesome -->
@@ -75,7 +76,7 @@
            <div class="row">
              <div class="col-8">
                <p class="mb-0">
-                 <a href="../login.php">Inicia Sesion</a>
+                 <a href="../login.php">Inicia Sesión</a>
                </p>
              </div>
 
@@ -101,9 +102,7 @@
    </div>
    <!-- /.login-box -->
 
-   <script type="text/javascript" src="../plugins/sweetalert2/sweetalert2.min.js"></script>
-
-   <script src="../dist/js/sweetalert2.min.js"></script>
+   
 
    <script src="../dist/js/main.js"></script>
 
@@ -115,15 +114,14 @@
   if (isset($_REQUEST['msj'])) {
     $msj = $_REQUEST['msj'];
     if ($msj == 2) {
-      echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-  position: "center",
-  icon: "info",
-  title: "Lo sentimos datos incorrectos, favor intente de nuevo",
-  showConfirmButton: false,
-  timer: 3000
-})   </script>';
+      echo '<script >
+                            swal(
+                      "Alerta!",
+                      "Lo sentimos datos incorrectos, favor intente de nuevo",
+                      "warning"
+                    );
+                            </script>';
     }
   }
+ 
   ?>

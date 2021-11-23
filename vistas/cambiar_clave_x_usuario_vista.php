@@ -26,6 +26,7 @@ if (isset($_REQUEST['estatus'])) {
   <title>Informatica Admistrativa</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
   <!-- Font Awesome -->
@@ -97,7 +98,7 @@ if (isset($_REQUEST['estatus'])) {
           <div class="row">
             <div class="col-8">
               <p class="mb-0">
-                <a href="../login.php">Inicia Sesion</a>
+                <a href="../login.php">Inicia Sesión</a>
               </p>
             </div>
 
@@ -123,9 +124,6 @@ if (isset($_REQUEST['estatus'])) {
   </div>
   <!-- /.login-box -->
 
-  <script type="text/javascript" src="../plugins/sweetalert2/sweetalert2.min.js"></script>
-
-  <script src="../dist/js/sweetalert2.min.js"></script>
 
   <script src="../dist/js/main.js"></script>
 
@@ -197,15 +195,16 @@ if (isset($_REQUEST['msj'])) {
   $msj = $_REQUEST['msj'];
 
   if ($msj == 1) {
-    echo '<script type="text/javascript">
-                          
-                          Swal.fire({
-  position: "center",
-  icon: "info",
-  title: "Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo",
-  showConfirmButton: false,
-  timer: 3000
-})   </script>';
+
+    echo '<script>
+                
+                 swal(
+                      "Alerta!",
+                      "Lo sentimos NUEVA Y CONFIRMAR deben ser iguales intenta de nuevo",
+                      "warning"
+                    );          
+          
+                            </script>';
   }
   if ($msj == 2) {
     echo '<script>
@@ -232,7 +231,7 @@ if (isset($_REQUEST['msj'])) {
                             </script>';
   }
 
- 
+
   if ($msj == 4) {
     echo '<script>
                 
@@ -243,7 +242,6 @@ if (isset($_REQUEST['msj'])) {
                     );          
           
                             </script>';
-   
   }
   if ($msj == 6) {
     echo '<script>
@@ -255,8 +253,6 @@ if (isset($_REQUEST['msj'])) {
                     );          
           
                             </script>';
-    
-   
   }
 }
 

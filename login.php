@@ -83,8 +83,6 @@ if (isset($_REQUEST['msj'])) {
 
                         swal("Lo sentimos tu usuario ha sido bloqueado"," Contactese con el administrador");
                             </script>';
-
-
   }
   if ($msj == 5) {
     echo '<script >
@@ -180,10 +178,10 @@ if (isset($_REQUEST['msj'])) {
 
 
         <p class="mb-1">
-          <a href="vistas/recuperar_clave_vista.php">Olvidaste tu contraseña?</a>
+          <a href="vistas/recuperar_clave_vista.php">¿Olvidaste tu contraseña?</a>
         </p>
         <p class="mb-0">
-          <a href="vistas/auto_registro_estudiante_vista.php" class="text-center">Registrate</a>
+          <a href="vistas/auto_registro_estudiante_vista.php" class="text-center">Regístrate</a>
         </p>
       </div>
       <!-- /.login-card-body -->
