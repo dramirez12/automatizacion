@@ -1,9 +1,9 @@
 <?php
 class conexion2
 {
-    private const DBHOST = 'localhost';
-    private const DBUSER = 'root';
-    private const DBPASS = '';
+    private const DBHOST = '51.222.86.251';
+    private const DBUSER = 'informat_desarrollo';
+    private const DBPASS = '^Kwd{PE^(L&#';
     private const DBNAME = 'informat_desarrollo_automatizacion';
 
     private $dsn = 'mysql:host=' . self::DBHOST . ';dbname=' . self::DBNAME . '';
