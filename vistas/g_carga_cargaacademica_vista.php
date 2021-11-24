@@ -5,16 +5,16 @@ require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 
-if (permiso_ver('114') == '1') {
+if (permiso_ver('245') == '1') {
 
-  $_SESSION['g_cargaacademica_vista'] = "...";
+  $_SESSION['g_carga_cargaacademica_vista'] = "...";
 } else {
-  $_SESSION['g_cargaacademica_vista'] = "No 
+  $_SESSION['g_carga_cargaacademica_vista'] = "No 
    tiene permisos para visualizar";
 }
 
 
-$Id_objeto = 114;
+$Id_objeto = 245;
 
 $visualizacion = permiso_ver($Id_objeto);
 
@@ -23,7 +23,7 @@ $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
   header('location:  ../vistas/pagina_principal_vista.php');
 } else {
-  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'Gestión carga académica');
 }
 
 
@@ -166,7 +166,7 @@ if (isset($_REQUEST['msj'])) {
                               </div>
                               <div class="col-sm">
                                 <label for="">DESCRIPCIÓN</label><br>
-                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca" required onkeyup="mayusculas(this);">
+                                <input type="text" class="form-control" name="descrp_ca" id="descrp_ca"  required onkeyup="mayusculas(this);">
                               </div>
                               <div class="col-sm">
                                 <label for="">AÑO PERIODO</label><br>

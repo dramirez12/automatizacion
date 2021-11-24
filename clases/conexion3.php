@@ -1,13 +1,12 @@
 <?php
-//CONEXION DE LUIS
 //generando la conexion a la base de datos
 function conexion(){ 
-	$servidor= "51.222.86.251";
-	$usuario= "informat_desarrollo";
-	$password = "^Kwd{PE^(L&#";
-	$base= "informat_desarrollo_automatizacion";
+    $db_host="localhost";
+ 	$db_nombre="informat_desarrollo_automatizacion";
+ 	$db_usuario="root";
+ 	$db_contra="";
 
- 	$conexion = mysqli_connect($servidor, $usuario,$password,$base);
+ 	$conexion = mysqli_connect($db_host,$db_usuario,$db_contra);
 
  	//error al buscar la direccion del host
  	if(mysqli_connect_errno()){
@@ -15,9 +14,8 @@ function conexion(){
  		exit();
  	}
 
-	 
  	//Error al conectar con la base de datos
- 	mysqli_select_db($conexion,$base) or die("No se encuentra la base de datos");
+ 	mysqli_select_db($conexion,$db_nombre) or die("No se encuentra la base de datos");
 
  	mysqli_set_charset($conexion, "utf8");
 

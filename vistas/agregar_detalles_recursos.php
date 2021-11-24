@@ -11,7 +11,6 @@ require_once('../vistas/pagina_inicio_vista.php');
 <html lang="en">
 
 <head>
-    <script src="../js/autologout.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>

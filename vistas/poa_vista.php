@@ -2,38 +2,48 @@
 session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
-require_once('../clases/funcion_bitacora.php');
-require_once('../clases/funcion_visualizar.php');
+// require_once('../clases/funcion_bitacora.php');
+// require_once('../clases/funcion_visualizar.php');
 
-$Id_objeto = 107;
-$visualizacion = permiso_ver($Id_objeto);
+// if (permiso_ver('114') == '1') {
 
-if ($visualizacion == 0) {
-    echo '<script type="text/javascript">
-                              swal({
-                                   title:"",
-                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
-                                   type: "error",
-                                   showConfirmButton: false,
-                                   timer: 3000
-                                });
-                           window.location = "../vistas/poa_vista.php";
-
-                            </script>';
-} else {
-
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'AL PLAN OPERATIVO ANUAL.');
+//   $_SESSION['g_cargaacademica_vista'] = "...";
+// } else {
+//   $_SESSION['g_cargaacademica_vista'] = "No 
+//    tiene permisos para visualizar";
+// }
 
 
- 
-}
+// $Id_objeto = 114;
 
-ob_end_flush();
+// $visualizacion = permiso_ver($Id_objeto);
 
 
 
+// if ($visualizacion == 0) {
+//   header('location:  ../vistas/pagina_principal_vista.php');
+// } else {
+//   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
+// }
+
+
+// if (isset($_REQUEST['msj'])) {
+//   $msj = $_REQUEST['msj'];
+
+//   if ($msj == 1) {
+//     echo '<script> alert("Fecha invalidas favor verificar.")</script>';
+//   }
+
+//   if ($msj == 2) {
+//     echo '<script> alert("Datos por rellenar, por favor verificar.")</script>';
+//   }
+//   if ($msj == 3) {
+//     echo '<script> alert("Por favor verificar fechas.")</script>';
+//   }
+// }
 
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -127,7 +137,7 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/g_planificacionjefatura_vista.php">POA</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/planificacion_academica_vista.php">POA</a></li>
                         </ol>
                     </div>
                 </div>
@@ -223,19 +233,6 @@ ob_end_flush();
                     [0, 'desc']
                 ],
                 "responsive": true,
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ Registros",
-                    "zeroRecords": "No se encontraron resultados",
-                    "info": "Mostrando la pagina de _PAGE_ de _PAGES_",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(Filtrado de _MAX_ Registros Totales)",
-                    "search": "Buscar:",
-                    "pagingType": "full_numbers",
-                    "oPaginate": {
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                },
                 "ajax": {
                     "url": "../clases/tabla_planificacion.php",
                     "type": "POST",
@@ -478,5 +475,3 @@ ob_end_flush();
 </body>
 
 </html>
-
-

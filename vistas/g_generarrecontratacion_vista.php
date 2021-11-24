@@ -59,6 +59,8 @@ if (permiso_ver('112') == '1') {
           </div>
           <div class="modal-body">
             <div class="container-fluid">
+              <input type="text" id="id_craed_send" hidden>
+              <input type="text" id="nombre_docente_enviar" hidden>
               <p id="nombreDocenteCR"></p>
               <table id="detalle_docenteCR" class="table table-bordered">
                 <thead>
@@ -77,7 +79,7 @@ if (permiso_ver('112') == '1') {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Generar reporte</button>
+            <button type="button" class="btn btn-primary" id="generar_reporte">Generar reporte</button>
           </div>
         </div>
       </div>
@@ -105,7 +107,6 @@ if (permiso_ver('112') == '1') {
                   <th scope="col">ID</th>
                   <th scope="col">NOMBRE DOCENTES</th>
                   <th scope="col">ACCIÓN</th>
-                  <th scope="col">GENERAR</th>
                 </tr>
               </thead>
             </table>
@@ -120,6 +121,17 @@ if (permiso_ver('112') == '1') {
   </div>
 
   <script type="text/javascript">
+    const button_reporte = document.getElementById('generar_reporte');
+    //var nombre_docente_send = $('#nombre_docente_enviar').val();
+    //var id_craed_enviar = $('#id_craed_send').val()
+
+    button_reporte.addEventListener('click', function(e) {
+      //window.location.href = "../Reporte/report_poa.php?enviar=enviar&id_planificacion=" + id_planificacion + "";
+      window.location.href = "../Reporte/recontra_report.php?enviar&id_craed=" + $('#id_craed_send').val() + "&nombre_docente_send=" + $('#nombre_docente_enviar').val(); + "";
+      //window.location.href = "../Reporte/recontra_report.php?enviar&nombre_docente_send=" + $('#nombre_docente_enviar').val(); + "&id_enviar = " + localStorage.getItem('id_send') + "";
+    });
+
+
     var retrievedObject = localStorage.getItem('data');
     const data = JSON.parse(retrievedObject);
 
@@ -150,26 +162,22 @@ if (permiso_ver('112') == '1') {
 
             return '<center><button class="btn btn-primary" id="get_ID" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus " ></i></button><center>';
           }
-        },
-        {
-          data: null,
-          render: function(data, type, row) {
-            return '<center><button class="btn btn-success" data-toggle="modal" data-target="#modal_final_CR" id="generar_doctoCR">Generar</button><center>';
-          }
         }
       ]
     });
-
     //table.columns([0]).visible(false);
     $('#tabla_docentesCR tbody').on('click', '#get_ID', function() {
-
       var fila = table.row($(this).parents('tr')).data();
       var id_craed_jefa = fila.id_craed_jefa;
       var nombre_docente = fila.Profesor;
       //console.log(id_craed_jefa+'-'+nombre_docente);
 
       $('#detalle_docenteCR tbody').empty();
+
+
+      document.getElementById('id_craed_send').value = id_craed_jefa
       document.getElementById('nombreDocenteCR').innerHTML = nombre_docente;
+      document.getElementById('nombre_docente_enviar').value = nombre_docente;
       datos(id_craed_jefa, nombre_docente);
     });
 

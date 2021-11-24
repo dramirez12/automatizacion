@@ -30,10 +30,10 @@
                         <tr>
                             <th scope="col">ID ACTIVIDAD</th>
                             <th scope="col">ACTIVIDAD</th>
-                            <th scope="col">ID VERIFICACIÓN</th>
+                            <th scope="col">ID VERIFICAÓN</th>
                             <th scope="col">MEDIO VERIFICACIÓN</th>
                             <th scope="col">ID POBLACIÓN</th>
-                            <th scope="col">POBLACIÓN OBJETIVO</th>
+                            <th scope="col">POBLACION OBJETIVO</th>
                             <th scope="col">EDITAR</th>
                             <th scope="col">ELIMINAR</th>
                         </tr>

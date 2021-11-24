@@ -179,7 +179,7 @@ require_once('../vistas/pagina_inicio_vista.php');
                                                                         <label for="formGroupExampleInput">Responsable</label>
                                                                         <input type="text" class="form-control" id="responsable_rs" name="responsable_rs" placeholder="Agregar responsable" required>
                                                                         <input type="text" id="id_indicador_res" name="id_indicador_res" hidden>
-                                                                        <input type="text" id="id_responsable_edit">
+                                                                        <!--input type="text" id="id_responsable_edit"-->
                                                                     </div>
                                                                     <div id="mensaje_responsable">
 

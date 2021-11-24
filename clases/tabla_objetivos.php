@@ -20,7 +20,6 @@ if (isset($_POST['datos_plani'])) {
         }
         echo json_encode($filas); //enviando en formato jSON
     }
-    
     mysqli_free_result($resultado);
     mysqli_close($conexion);
 }
