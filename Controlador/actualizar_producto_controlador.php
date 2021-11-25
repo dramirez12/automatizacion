@@ -5,7 +5,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-$Id_objeto=194; 
+$Id_objeto=12194; 
 
 //$Id_producto=intval( $_GET['id_producto']);
 $id_producto_=intval($_POST['txt_']);
@@ -73,14 +73,14 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 if ($valor_viejo['nombre_producto']<>$nombre_producto_ and $valor_viejo['descripcion_producto']<>$descripcion_producto_ and $valor_viejo['stock_minimo']<>$stock and $valor_viejo['id_tipo_producto']<>$tipo_producto)
                 {
                     //4 CAMPOS 
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_.' ,LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.  ' ,EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' POR ' .$stock. ' Y EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
 
                     $resultado = $mysqli->query($sql);
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -99,7 +99,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['nombre_producto']<>$nombre_producto_ and $valor_viejo['descripcion_producto']<>$descripcion_producto_ and $valor_viejo['stock_minimo']<>$stock)
                 {
                     //3 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_.' ,LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.  ' Y EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' A ' .$stock.   ' ' );  
                     
                     $resultado = $mysqli->query($sql);
@@ -118,7 +118,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 8000
                          });
                     
-                          window.location = "../vistas/gestion_producto_vista.php";
+                          window.location = "../vistas/gestion_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -136,7 +136,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 6000
                          });
                     
-                          window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                          window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -161,14 +161,14 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['nombre_producto']<>$nombre_producto_ and $valor_viejo['descripcion_producto']<>$descripcion_producto_ and $valor_viejo['id_tipo_producto']<>$tipo_producto)
                 {
                     //3 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_.' ,LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.  ' Y EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
                     
                     $resultado = $mysqli->query($sql);
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -187,14 +187,14 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['nombre_producto']<>$nombre_producto_ and $valor_viejo['stock_minimo']<>$stock and $valor_viejo['id_tipo_producto']<>$tipo_producto )
                 {
                     //3 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_. ' ,EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' A ' .$stock.  ' Y EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
                     
                     $resultado = $mysqli->query($sql);
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -213,14 +213,14 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['descripcion_producto']<>$descripcion_producto_ and $valor_viejo['stock_minimo']<>$stock and $valor_viejo['id_tipo_producto']<>$tipo_producto)
                 {
                     //3 CAMPOPS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.  ' ,EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' POR ' .$stock. ' Y EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
                     
                     $resultado = $mysqli->query($sql);
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -239,7 +239,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['nombre_producto']<>$nombre_producto_ and $valor_viejo['descripcion_producto']<>$descripcion_producto_)
                 {
                     //2 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_.' , LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.   ' ' );  
 
                     $resultado = $mysqli->query($sql);
@@ -256,7 +256,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                               timer: 8000
                            });
                       
-                            window.location = "../vistas/gestion_producto_vista.php";
+                            window.location = "../vistas/gestion_producto_vista";
 
                         $(".FormularioAjax")[0].reset();
 
@@ -274,7 +274,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                               timer: 6000
                            });
                       
-                            window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                            window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                         $(".FormularioAjax")[0].reset();
 
@@ -302,7 +302,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['nombre_producto']<>$nombre_producto_ and $valor_viejo['stock_minimo']<>$stock)
                 {
                     //2 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_. ' ,EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' A ' .$stock.  ' ' );  
                     
                     $resultado = $mysqli->query($sql);
@@ -321,7 +321,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 8000
                          });
                     
-                          window.location = "../vistas/gestion_producto_vista.php";
+                          window.location = "../vistas/gestion_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -339,7 +339,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 6000
                          });
                     
-                          window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                          window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -365,14 +365,14 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['nombre_producto']<>$nombre_producto_ and $valor_viejo['id_tipo_producto']<>$tipo_producto)
                 {
                     //2 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_. ' Y EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
 
                     $resultado = $mysqli->query($sql);
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -391,7 +391,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['descripcion_producto']<>$descripcion_producto_ and $valor_viejo['stock_minimo']<>$stock)
                 {
                     //2 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , 'LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.  ' ,EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' A ' .$stock.  ' ' );  
 
                     $resultado = $mysqli->query($sql);
@@ -410,7 +410,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 8000
                          });
                     
-                          window.location = "../vistas/gestion_producto_vista.php";
+                          window.location = "../vistas/gestion_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -428,7 +428,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 6000
                          });
                     
-                          window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                          window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -453,7 +453,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['descripcion_producto']<>$descripcion_producto_ and $valor_viejo['id_tipo_producto']<>$tipo_producto)
                 {
                     //2 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     //bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_. ', LA DESCRIPCION DEL PRODUCTO ' .$nombre_producto_ .', EL STOCK Y EL TIPO DE PRODUCTO DE ' .$nombre_producto_. ' ');  
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , 'LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.   ' Y EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
 
@@ -461,7 +461,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -480,7 +480,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['stock_minimo']<>$stock and $valor_viejo['id_tipo_producto']<>$tipo_producto)
                 {
                     //2 CAMPOS
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     //bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_. ', LA DESCRIPCION DEL PRODUCTO ' .$nombre_producto_ .', EL STOCK Y EL TIPO DE PRODUCTO DE ' .$nombre_producto_. ' ');  
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' ,  'EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' A ' .$stock. ' Y EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
 
@@ -488,7 +488,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -507,7 +507,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['nombre_producto']<>$nombre_producto_)
                 {
                     //1 CAMPO
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , ' EL NOMBRE '.$valor_viejo['nombre_producto'].' POR '.$nombre_producto_.  ' ' );  
 
                     $resultado = $mysqli->query($sql);
@@ -524,7 +524,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                               timer: 8000
                            });
                       
-                            window.location = "../vistas/gestion_producto_vista.php";
+                            window.location = "../vistas/gestion_producto_vista";
 
                         $(".FormularioAjax")[0].reset();
 
@@ -542,7 +542,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                               timer: 8000
                            });
                       
-                            window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                            window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                         $(".FormularioAjax")[0].reset();
 
@@ -567,7 +567,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['descripcion_producto']<>$descripcion_producto_)
                 {
                     //1 CAMPO
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , 'LA DESCRIPCION DEL PRODUCTO ' .$valor_viejo['descripcion_producto']. ' POR '  .$descripcion_producto_.  ' ' );  
                     
                     $resultado = $mysqli->query($sql);
@@ -584,7 +584,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 8000
                          });
                     
-                          window.location = "../vistas/gestion_producto_vista.php";
+                          window.location = "../vistas/gestion_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -602,7 +602,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 8000
                          });
                     
-                          window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                          window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -627,7 +627,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['stock_minimo']<>$stock)
                 {
                     //1 CAMPO
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' ,  'EL STOCK MINIMO ' .$valor_viejo['stock_minimo'].  ' A ' .$stock.  ' ' );  
                     
                     $resultado = $mysqli->query($sql);
@@ -646,7 +646,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 8000
                          });
                     
-                          window.location = "../vistas/gestion_producto_vista.php";
+                          window.location = "../vistas/gestion_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -664,7 +664,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 6000
                          });
                     
-                          window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                          window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -689,14 +689,14 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                 }else if ($valor_viejo['id_tipo_producto']<>$tipo_producto)
                 {
                     //1 CAMPO
-                    $Id_objeto=194 ;
+                    $Id_objeto=12194 ;
                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'MODIFICO' , 'EL TIPO DE PRODUCTO DE ' .$valor_viejo['id_tipo_producto']. ' A ' .$tipo_producto.  ' ' );  
                     
                     $resultado = $mysqli->query($sql);
 
                     if ($resultado == true) {
                         echo '<script type="text/javascript">
-                        window.location="../vistas/editar_caracteristicas_producto_vista.php";
+                        window.location="../vistas/editar_caracteristicas_producto_vista";
                         </script>';
                     } else {
 
@@ -725,7 +725,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 10000
                          });
                     
-                          window.location = "../vistas/gestion_producto_vista.php";
+                          window.location = "../vistas/gestion_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 
@@ -743,7 +743,7 @@ if ($_POST['txt_nombre_producto']  <>"" and  $_POST['txt_descripcion']<>"" and  
                             timer: 20000
                          });
                     
-                          window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                          window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                       $(".FormularioAjax")[0].reset();
 

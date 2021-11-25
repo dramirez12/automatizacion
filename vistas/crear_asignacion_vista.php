@@ -5,8 +5,9 @@ ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
+require_once('../clases/global.php');
 require_once('../clases/conexion_mantenimientos.php');
-require_once "../Modelos/detalle_existencias_modelo.php";
+require_once('../Modelos/detalle_existencias_modelo.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
@@ -26,7 +27,7 @@ if (empty($_SESSION['num_inventario'])) {
 
 
 
-$Id_objeto = 214;
+$Id_objeto = 12214;
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'Nueva asignación.');
 
 $inputTags = "";
@@ -39,10 +40,11 @@ WHERE per.id_persona = '$id_usuario_responsable'";
 $resultado = $mysqli->query($consulta);
 $inputTags = $resultado->fetch_array(MYSQLI_ASSOC);
 
+
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {
-    //header('location:  ../vistas/menu_roles_vista.php');
+    
 
     echo '<script type="text/javascript">
                             swal({
@@ -52,7 +54,7 @@ if ($visualizacion == 0) {
                                  showConfirmButton: false,
                                  timer: 3000
                               });
-                         window.location = "../vistas/pagina_principal_vista.php";
+                         window.location = "../vistas/pagina_principal_vista";
 
                           </script>';
 } else {
@@ -83,7 +85,7 @@ ob_end_flush();
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
+
 </head>
 
 <body>
@@ -94,14 +96,14 @@ ob_end_flush();
                 <div class="row mb-2">
                     <div class="col-sm-6">
 
-
+                    <?php echo $id_usuario_responsable; ?>
                         <h1>Asignación del producto</h1>
                     </div>
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/gestion_asignacion_vista.php">Gestión de asignaciones</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/gestion_asignacion_vista">Gestión de asignaciones</a></li>
                         </ol>
                     </div>
 
@@ -126,7 +128,7 @@ ob_end_flush();
 
                         <div>
                             <form action="crear_asignacion_vista.php" method="post">
-                                <input name="palabra" id="palabra" style="text-transform: uppercase; height:35px; width:200px;" placeholder="num inventario..."><input class="btn btn-primary" type="submit" class="search" id="buscador" value="Buscar">
+                                <input name="palabra" id="palabra" style="text-transform: uppercase; height:35px; width:200px;" placeholder="num inventario..." onkeypress="return validacion_para_numero_inventario(event)" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event);"><input class="btn btn-primary" type="submit" class="search" id="buscador" value="Buscar">
                             </form>
                             <div class="card-tools">
                             </div>
@@ -142,7 +144,7 @@ ob_end_flush();
 
                     <div class="card card-default ">
                         <div class="card-header center">
-                            <h2 class="card-title">Datos del producto por asignar</h2>
+                            <h2 class="card-title">Datos del Producto por Asignar</h2>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
@@ -173,14 +175,14 @@ ob_end_flush();
                                     <!-- FECHA DE LA ASIGNACIÓN  -->
                                     <div class="form-group">
                                         <label>Fecha de Asignación</label>
-                                        <input class="form-control" type="date" min="<?php date_default_timezone_set('America/Tegucigalpa');
+                                        <input class="form-control" type="text" readonly min="<?php date_default_timezone_set('America/Tegucigalpa');
                                                                                         echo date("Y-m-d"); ?>" max="<?php date_default_timezone_set('America/Tegucigalpa');
                                                                                                                         echo date("Y-m-d"); ?>" value="<?php date_default_timezone_set('America/Tegucigalpa');
-                                                                                                                                                        echo date("Y-m-d"); ?>" id="fecha_asignacion" name="fecha_asignacion" maxlength="30" style="text-transform:uppercase" onkeyup="Espacio(this, event)" onblur="document.getElementById('txt_nombre_oculto').value=this.value" required>
+                                                                                                                                                                                                            echo date("Y-m-d"); ?>" id="fecha_asignacion" name="fecha_asignacion" maxlength="30" style="text-transform:uppercase" onkeyup="Espacio(this, event)" onblur="document.getElementById('txt_nombre_oculto').value=this.value" required>
                                     </div>
 
                                     <!-- PERSONA RESPONSABLE -->
-                                    <label>Persona responsable</label><br>
+                                    <label>Persona Responsable</label><br>
                                     <div class="input-group mb-6">
                                         <input class="form-control" type="text" id="txt_persona_responsable" name="txt_persona_responsable" value="<?php echo $inputTags['nombre']; ?>" required readonly>
 
@@ -208,13 +210,13 @@ ob_end_flush();
 
                                     <!-- DESCRIPCION DE LA MOTIVACIÓN DE LA ASIGNACIÓN -->
                                     <div class="form-group ">
-                                        <label>Motivo de asignación</label>
-                                        <textarea class="form-control " class="tf w-input" required type="text" placeholder="ingrese la descripcion del motivo de asignación aquí" maxlength="100" name="motivo" id="motivo" onkeypress="return validacion_para_producto(event)" name="motivo" maxlength="100" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('motivo');" rows="5" cols="40"></textarea>
+                                        <label>Motivo de Asignación</label>
+                                        <textarea class="form-control " class="tf w-input" required type="text" placeholder="ingrese la descripción del motivo de asignación aquí" maxlength="100" name="motivo" id="motivo" onkeypress="return validacion_para_producto(event)" name="motivo" maxlength="100" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('motivo');" rows="5" cols="40"></textarea>
                                     </div>
 
                                     <p class="text-center" style="margin-top: 20px;">
                                         <button type="submit" class="btn btn-primary" id="btn_guardar_asignacion" name="btn_guardar_asignacion" <?php echo $_SESSION['btn_guardar_asignacion']; ?>><i class="zmdi zmdi-floppy"></i> Asignar</button>
-                                        <a href="../vistas/gestion_asignacion_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
+                                        <a href="../vistas/gestion_asignacion_vista" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
                                     </p>
                                 </div>
                             </div>
@@ -248,10 +250,10 @@ ob_end_flush();
 
                     <!-- Salida PHP para seleccionar productos no coincidentes (pasar a procedimiento) -->
                     <?php
-                    $modelo = new respuesta();
-                    $sqlRespUserResult = $modelo->asignacion();
-                    //   $sqlRespUser = "SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'";
-                    //  $sqlRespUserResult = $->query($sqlRespUser);        
+                        $modelo=new respuesta();
+                        $sqlRespUserResult=$modelo->asignacion();
+                        //   $sqlRespUser = "SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'";
+                        //  $sqlRespUserResult = $->query($sqlRespUser);        
                     ?>
 
                     <div class="modal-body">
@@ -272,12 +274,13 @@ ob_end_flush();
                                             <tr>
                                                 <td><?php echo $rowIR['nombre']; ?></td>
 
+
                                                 <td style="text-align: center;">
 
-                                                    <form action="crear_asignacion_vista.php?id_usuario_responsable=<?php echo $rowIR['id_persona']; ?>" method="POST" autocomplete="off">
-                                                        <button type="submit" class="btn btn-primary btn-raised btn-xs"><i class="far fa-edit"></i>
-                                                        </button>
-                                                    </form>
+                                                        <form action="crear_asignacion_vista.php?id_usuario_responsable=<?php echo $rowIR['id_persona']; ?>" method="POST" autocomplete="off">
+                                                            <button type="submit" class="btn btn-primary btn-raised btn-xs"><i class="far fa-check-square"></i>
+                                                            </button>
+                                                        </form>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -300,6 +303,7 @@ ob_end_flush();
 </body>
 
 </html>
+
 
 <script type="text/javascript">
     // formato de la tabla

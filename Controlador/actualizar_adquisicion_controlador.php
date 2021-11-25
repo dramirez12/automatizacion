@@ -6,7 +6,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-$Id_objeto=211; 
+$Id_objeto=12211; 
 
 //$Id_producto=intval( $_GET['id_producto']);
   /* Aqui obtengo el id_estado_civil de la tabla de la base el cual me sirve para enviarla a la pagina actualizar.php para usarla en el where del update   */
@@ -60,7 +60,7 @@ if  ($_POST['txt_descripcion']<> '' and $_POST['txt_fechaAdquisicion']>0)
                 timer: 6000
               });
               $(".FormularioAjax")[0].reset();
-              window.location = "../vistas/editar_detalle_adquisicion_vista.php";
+              window.location = "../vistas/editar_detalle_adquisicion_vista";
           </script>';
         } else {
             echo '<script type="text/javascript">
@@ -72,7 +72,7 @@ if  ($_POST['txt_descripcion']<> '' and $_POST['txt_fechaAdquisicion']>0)
                 timer: 3000
             });
             $(".FormularioAjax")[0].reset();
-            window.location = "../vistas/editar_detalle_adquisicion_vista.php";
+            window.location = "../vistas/editar_detalle_adquisicion_vista";
         </script>';
         }
     } else {
@@ -86,7 +86,7 @@ if  ($_POST['txt_descripcion']<> '' and $_POST['txt_fechaAdquisicion']>0)
              timer: 3000
          });
          $(".FormularioAjax")[0].reset();
-         window.location = "../vistas/editar_detalle_adquisicion_vista.php";
+         window.location = "../vistas/editar_detalle_adquisicion_vista";
      </script>';
 
         } 

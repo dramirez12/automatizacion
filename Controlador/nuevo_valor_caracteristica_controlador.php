@@ -8,7 +8,7 @@
 
         // $id_detalle_caracteristica = $_GET['id_detalle_caracteristica'];
         
-          $Id_objeto=218; 
+          $Id_objeto=12218; 
           $caracteristica = $_GET['caracteristica'];
           $numero_inventario = $_SESSION['numero_inventario_'];
 
@@ -81,7 +81,7 @@
 
                     /*   require"../contenidos/crearRol-view.php"; 
                     header('location: ../contenidos/crearRol-view.php?msj=2');*/
-                    header("location:../vistas/editar_detalle_adquisicion_vista.php?numero_inventario= $numero_inventario&msj=11");
+                    header("location:../vistas/editar_detalle_adquisicion_vista?numero_inventario= $numero_inventario&msj=11");
                       
                   } 
                   else 
@@ -95,7 +95,7 @@
 
             else
             {
-                header("location:../vistas/editar_detalle_adquisicion_vista.php?numero_inventario=$numero_inventario&msj=10");
+                header("location:../vistas/editar_detalle_adquisicion_vista?numero_inventario=$numero_inventario&msj=10");
             }
 
 

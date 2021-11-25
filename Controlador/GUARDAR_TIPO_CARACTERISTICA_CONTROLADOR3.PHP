@@ -6,7 +6,7 @@
  require_once ('../clases/Conexion.php');
  require_once ('../clases/funcion_bitacora.php'); 
 
-        $Id_objeto=195 ;
+        $Id_objeto=12195 ;
 
 
 $tipo_caracteristica=mb_strtoupper ($_POST['txt_tipo_caracteristica1']);
@@ -33,7 +33,7 @@ if( preg_match($patron_texto, $_POST['txt_tipo_caracteristica1']) )
                         if ($existe['tipo_caracteristica']== 1)
                         
                         {
-                            header("location:../vistas/editar_caracteristicas_producto_vista.php?msj=1");
+                            header("location:../vistas/editar_caracteristicas_producto_vista?msj=1");
 
                         }
                         else
@@ -49,7 +49,7 @@ if( preg_match($patron_texto, $_POST['txt_tipo_caracteristica1']) )
                                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'CREO' , 'UNA NUEVA CARACTERISTICA:  '. $tipo_caracteristica.'');
 
                         
-                                    header("location:../vistas/editar_caracteristicas_producto_vista.php?msj=2");
+                                    header("location:../vistas/editar_caracteristicas_producto_vista?msj=2");
       
                                     
 
@@ -58,7 +58,7 @@ if( preg_match($patron_texto, $_POST['txt_tipo_caracteristica1']) )
                                 else 
                                 {
                                 // echo "Error: " . $sql ;
-                                header("location:../vistas/editar_caracteristicas_producto_vista.php?msj=3");
+                                header("location:../vistas/editar_caracteristicas_producto_vista?msj=3");
 
                                 }
 
@@ -69,18 +69,18 @@ if( preg_match($patron_texto, $_POST['txt_tipo_caracteristica1']) )
 
                     else if ($_POST['cb_tipo_dato']<0)
                     {
-                        header("location:../vistas/editar_caracteristicas_producto_vista.php?msj=7");
+                        header("location:../vistas/editar_caracteristicas_producto_vista?msj=7");
 
                     }
                     else
                         {
-                            header("location:../vistas/editar_caracteristicas_producto_vista.php?msj=4");
+                            header("location:../vistas/editar_caracteristicas_producto_vista?msj=4");
 
                         }
 }
 
 else{   
-    header("location:../vistas/editar_caracteristicas_producto_vista.php?msj=6");
+    header("location:../vistas/editar_caracteristicas_producto_vista?msj=6");
 
 }    
 

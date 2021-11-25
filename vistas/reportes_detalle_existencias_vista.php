@@ -11,7 +11,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-$Id_objeto = 206;
+$Id_objeto = 12206;
 $visualizacion = permiso_ver($Id_objeto);
 if (isset($_GET['id_producto'])) {
   $id_producto1 = $_GET['id_producto'];
@@ -23,7 +23,7 @@ if (isset($_GET['id_producto'])) {
 
 
 if ($visualizacion == 0) {
-  // header('location:  ../vistas/menu_roles_vista.php');
+  
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -32,7 +32,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_inicio_vista.php";
+                           window.location = "../vistas/pagina_inicio_vista";
 
                             </script>';
 } else {
@@ -87,8 +87,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/reportes_existencias_vista.php">Consulta Existencias</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/reportes_existencias_vista">Consulta Existencias</a></li>
               <!-- <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_tipoadquisicion_vista.php">Nuevo Tipo Adquisición</a></li> -->
             </ol>
           </div>
@@ -144,7 +144,7 @@ ob_end_flush();
 
                 <!-- <td style="text-align: center;">
                     <a href="../vistas/reportes_detalle_existencias_vista.php?id_producto=<?php echo $row['id_producto']; ?>" class="btn btn-primary btn-raised btn-xs px-3">
-                    <!-- <i class="far fa-edit" style="display:<?php echo $_SESSION['ver_detalle_existencias'] ?> "></i> -->
+                   <i class="far fa-edit" style="display:<?php echo $_SESSION['ver_detalle_existencias'] ?> "></i> -->
                 <!-- Ver mas -->
                 <!-- </a> -->
                 <!-- </td> -->
@@ -168,7 +168,7 @@ ob_end_flush();
 
                 <!-- <td style="text-align: center;">
                     <a href="../vistas/reportes_detalle_existencias_vista.php?id_producto=<?php echo $row['id_producto']; ?>" class="btn btn-primary btn-raised btn-xs px-3">
-                    <!-- <i class="far fa-edit" style="display:<?php echo $_SESSION['ver_detalle_existencias'] ?> "></i> -->
+                     <i class="far fa-edit" style="display:<?php echo $_SESSION['ver_detalle_existencias'] ?> "></i> -->
                 <!-- Ver mas -->
                 <!-- </a> -->
                 <!-- </td> -->

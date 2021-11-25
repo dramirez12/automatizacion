@@ -59,13 +59,13 @@ if (isset($_REQUEST['msj'])) {
 }
 
 
-$Id_objeto = 208;
+$Id_objeto = 12208;
 $visualizacion = permiso_ver($Id_objeto);
 
 
 
 if ($visualizacion == 0) {
-  // header('location:  ../vistas/menu_roles_vista.php');
+  
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -74,7 +74,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_principal_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {
@@ -91,7 +91,7 @@ if ($visualizacion == 0) {
 
 
   /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
-  $sqltabla = "select TDA.numero_inventario as inventario, TP.nombre_producto as producto, TMS.descripcion as descripcion, TMS.fecha_salida as fecha, TE.estado as estado,TMS.id_motivo as motivo FROM tbl_productos TP INNER JOIN tbl_detalle_adquisiciones TDA INNER JOIN tbl_motivo_salida TMS INNER JOIN tbl_estado TE ON TP.id_producto=TDA.id_producto AND TMS.id_detalle=TDA.id_detalle AND TMS.id_estado=TE.id_estado  
+  $sqltabla = "select TE.estado as estado_producto, TDA.numero_inventario as inventario, TP.nombre_producto as producto, TMS.descripcion as descripcion, TMS.fecha_salida as fecha, TMS.id_estado as estado,TMS.id_motivo as motivo FROM tbl_productos TP INNER JOIN tbl_detalle_adquisiciones TDA INNER JOIN tbl_motivo_salida TMS INNER JOIN tbl_estado TE ON TP.id_producto=TDA.id_producto AND TMS.id_detalle=TDA.id_detalle AND TDA.id_estado=TE.id_estado  
   ORDER BY `TE`.`estado` DESC";
   $resultadotabla = $mysqli->query($sqltabla);
 }
@@ -104,7 +104,6 @@ ob_end_flush();
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
   <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
   <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
@@ -127,8 +126,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="crear_salida_vista.php">Nueva Salida</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="crear_salida_vista">Nueva Salida</a></li>
             </ol>
           </div>
 
@@ -154,9 +153,12 @@ ob_end_flush();
 
       <div class="card-body">
         <div class="mb-3">
-          <div style="padding: 2px;"><a href="crear_salida_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
-
-
+          <div  class="text-right" >
+            <div class="btn-group">
+              <div style="padding: 2px;"><a href="../pdf_laboratorio/reporte_salida_degt.php" target="_blank" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-file-pdf"></i> Reporte DEGT</a></div>
+              <div style="padding: 2px;"><a href="crear_salida_vista" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+            </div>
+          </div>
 
 
           <!-- NOMBRE DE LA TABLA QUE ALOJA LOS PRODUCTOS -->
@@ -168,36 +170,49 @@ ob_end_flush();
               <tr>
                 <th>NO. INVENTARIO</th>
                 <th>PRODUCTO</th>
+                <th>ESTADO PRODUCTO</th>
                 <th>MOTIVO</th>
                 <th>FECHA</th>
-                <th>ESTADO</th>
+                <th>ESTADO SALIDA</th>
                 <th>MODIFICAR</th>
-                <th>ANULAR</th>
+                <th>ANULAR/RESTAURAR</th>
                 <th>REPORTE</th>
               </tr>
             </thead>
             <tbody>
               <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
                 <tr>
+                      <?php  
+                            if ($row['estado'] == '1') {
+                              $_SESSION['estado_salida']= "PROCESADO";
+                              $_SESSION['icono_estado_salida']= "fas fa-times-circle";
+                              $_SESSION['color_icono_estado_salida']= "danger";
+                            } else {
+                              $_SESSION['estado_salida'] = "ANULADO";
+                              $_SESSION['icono_estado_salida']= "fas fa-undo";
+                              $_SESSION['color_icono_estado_salida']= "success";
+                            }
+                      ?>
 
                   <td><?php echo $row['inventario']; ?></td>
                   <td><?php echo $row['producto']; ?></td>
+                  <td><?php echo $row['estado_producto']; ?></td>
                   <td><?php echo $row['descripcion']; ?></td>
                   <td><?php echo $row['fecha']; ?></td>
-                  <td><?php echo $row['estado']; ?></td>
+                  <td><?php echo $_SESSION['estado_salida']; ?></td>
                   <!-- editar -->
                   <td style="text-align: center;">
-                    <a href="../vistas/editar_salida_vista.php?inventario=<?php echo $row['inventario']; ?>" class="btn btn-primary btn-raised btn-xs">
-                      <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_salida'] ?>"></i>
+                    <a href="../vistas/editar_salida_vista?inventario=<?php echo $row['inventario'];?>" class="btn btn-primary btn-raised btn-xs">
+                      <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_salida']?>"></i>
                     </a>
                   </td>
 
                   <!-- anular -->
                   <td style="text-align: center;">
                     <form action="../Controlador/anular_salida_controlador.php?motivo=<?php echo $row['motivo']; ?>&estado=<?php echo $row['estado']; ?>&inventario=<?php echo $row['inventario']; ?>" method="POST" class="FormularioAjax" autocomplete="off">
-                      <button type="submit" class="btn btn-danger btn-raised btn-xs">
+                      <button type="submit" class="btn btn-<?php echo $_SESSION['color_icono_estado_salida'] ?> btn-raised btn-xs">
 
-                        <i class="fas fa-times-circle" style="display:<?php echo $_SESSION['eliminar_producto'] ?> "></i>
+                        <i class="<?php echo $_SESSION['icono_estado_salida'] ?>" style="display:<?php echo $_SESSION['eliminar_producto'] ?> "></i>
                       </button>
                       <div class="RespuestaAjax"></div>
                     </form>

@@ -33,6 +33,8 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
+
+
   public function reportes_detalle_existencias($id_producto)
   {
     global $instancia_conexion;
@@ -53,6 +55,7 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
+
   public function reportes_adquisicion($nombre_producto)
   {
      global $instancia_conexion;
@@ -66,6 +69,8 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
+
+
   public function reportes_adquisicion_caracteristicas($id_detalle)
   {
      global $instancia_conexion;
@@ -83,6 +88,8 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
+
+
   public function reportes_adquisicion_tipo($id_adquisicion)
   {
      global $instancia_conexion;
@@ -127,6 +134,7 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
+
   public function prueba2($id_producto)
   {
      global $instancia_conexion;
@@ -137,10 +145,19 @@ class reportes
 
   }
     
+  
   public function reportes_salida($num_inventario)
   {
      global $instancia_conexion;
      $sql = "CALL select_reporte_salida('$num_inventario')";
+     return $instancia_conexion->ejecutarConsulta($sql);
+  }
+  
+  public function reportes_salida_degt()
+  {
+     global $instancia_conexion;
+     $sql = "select TDA.numero_inventario as inventario, TP.nombre_producto as producto, TDC.valor_caracteristica as costo FROM tbl_productos TP INNER JOIN tbl_detalle_adquisiciones TDA INNER JOIN tbl_motivo_salida TMS INNER JOIN tbl_detalle_caracteristica TDC INNER JOIN tbl_caracteristicas_producto TCP INNER JOIN tbl_tipo_caracteristica TTC ON TP.id_producto=TDA.id_producto AND TMS.id_detalle=TDA.id_detalle AND TDA.id_estado=5 AND TDA.id_detalle = TDC.id_detalle AND TDC.id_caracteristica_producto = TCP.id_caracteristica_producto AND TCP.id_tipo_caracteristica = TTC.id_tipo_caracteristica AND TTC.tipo_caracteristica = 'COSTO'
+     ORDER BY `TP`.`nombre_producto` DESC";
      return $instancia_conexion->ejecutarConsulta($sql);
   } 
   

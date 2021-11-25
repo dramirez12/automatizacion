@@ -6,7 +6,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-$Id_objeto = 187;
+$Id_objeto = 12187;
 $tipo_adquisicion = mb_strtoupper($_POST['txt_tipoadquisicion']);
 $id_tipo_adquisicion = $_GET['id_tipo_adquisicion'];
 
@@ -27,7 +27,7 @@ if( preg_match($patron_texto, $_POST['txt_tipoadquisicion']) )
                     if ($existe['tipo_adquisicion'] == 1) {/*
                     header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
 
-                        header("location:../vistas/mantenimiento_tipoadquisicion_vista.php?msj=1");
+                        header("location:../vistas/mantenimiento_tipoadquisicion_vista?msj=1");
                     } else {
 
                         $sql = "call proc_actualizar_tipo_adquisicion('$tipo_adquisicion','$id_tipo_adquisicion' )";
@@ -58,10 +58,10 @@ if( preg_match($patron_texto, $_POST['txt_tipoadquisicion']) )
                                     timer: 3000
                                   });
                                   $(".FormularioAjax")[0].reset();
-                                  window.location = "../vistas/mantenimiento_tipoadquisicion_vista.php";
+                                  window.location = "../vistas/mantenimiento_tipoadquisicion_vista";
                               </script>';
                             } else {
-                                header("location:../vistas/mantenimiento_tipoadquisicion_vista.php?msj=3");
+                                header("location:../vistas/mantenimiento_tipoadquisicion_vista?msj=3");
                             }
                         } else {
                             /* SI NO SE CAMBIO NADA;*/
@@ -74,7 +74,7 @@ if( preg_match($patron_texto, $_POST['txt_tipoadquisicion']) )
                                 timer: 3000
                             });
                             $(".FormularioAjax")[0].reset();
-                                  window.location = "../vistas/mantenimiento_tipoadquisicion_vista.php";
+                                  window.location = "../vistas/mantenimiento_tipoadquisicion_vista";
                         </script>';
                             } 
 

@@ -7,7 +7,7 @@ require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_bitacora.php');
 
-  $Id_objeto=209; 
+  $Id_objeto=12209; 
  
 //$buscador = strtoupper($_POST['palabra']);
 $num_inventario=$_SESSION['lo_que_busco'];
@@ -51,7 +51,7 @@ if (empty($num_inventario)) {
            showConfirmButton: false,
            timer: 3000
         });
-        window.location = "../vistas/crear_salida_vista.php";
+        window.location = "../vistas/crear_salida_vista";
 
                 $(".FormularioAjax")[0].reset();
     </script>';
@@ -94,7 +94,7 @@ if (empty($num_inventario)) {
                             showConfirmButton: false,
                             timer: 3000
                         });
-                        window.location = "../vistas/gestion_salida_vista.php";
+                        window.location = "../vistas/gestion_salida_vista";
 
                         $(".FormularioAjax")[0].reset();
                     </script>';

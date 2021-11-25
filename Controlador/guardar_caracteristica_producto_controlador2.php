@@ -7,7 +7,7 @@
         require_once ('../clases/funcion_bitacora.php');
         
         
-          $Id_objeto=195; 
+          $Id_objeto=12195; 
          
           $Combo=$_POST['cmb_tipocaracteristicas'];	
          
@@ -93,12 +93,12 @@
                                 timer: 3000
                             });
                             $(".FormularioAjax")[0].reset();
-                            window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                            window.location = "../vistas/editar_caracteristicas_producto_vista";
                            
                         
                         </script>';
                             } else {
-                                header("location:../vistas/editar_caracteristicas_producto_vista.php?msj=3");
+                                header("location:../vistas/editar_caracteristicas_producto_vista?msj=3");
                             }
 
                 }

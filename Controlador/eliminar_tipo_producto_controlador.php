@@ -16,7 +16,7 @@ if (isset($_GET['tipo_producto'])) {
     $tipo_producto = $_GET['tipo_producto'];
 }
 
-$Id_objeto=192;
+$Id_objeto=12192;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -29,7 +29,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/mantenimiento_tipo_producto_vista.php";
+                                               window.location = "../vistas/mantenimiento_tipo_producto_vista";
 
                             </script>';
 }
@@ -53,7 +53,7 @@ else
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-               window.location = "../vistas/mantenimiento_tipo_producto_vista.php";
+               window.location = "../vistas/mantenimiento_tipo_producto_vista";
 
                             </script>'
                             ;                      

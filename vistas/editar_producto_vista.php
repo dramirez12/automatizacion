@@ -12,7 +12,7 @@ require_once('../clases/funcion_permisos.php');
 
 
 
-$Id_objeto = 194;
+$Id_objeto = 12194;
 
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -20,7 +20,7 @@ $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-    //header('location:  ../vistas/menu_roles_vista.php');
+    
 
     echo '<script type="text/javascript">
                               swal({
@@ -30,37 +30,39 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/menu_roles_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {
 
 
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A EDITAR PRODUCTO');
+        bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A EDITAR PRODUCTO');
 
 
-    if (permisos::permiso_modificar($Id_objeto) == '1') {
-        $_SESSION['btn_actualizar_producto'] = "";
-    } else {
-        $_SESSION['btn_actualizar_producto'] = "disabled";
-    }
+        if (permisos::permiso_modificar($Id_objeto) == '1') {
+                $_SESSION['btn_actualizar_producto'] = "";
+              } else {
+                $_SESSION['btn_actualizar_producto'] = "disabled";
+              }
 
-    $nombre_producto = $_GET['nombre_producto'];
+              $nombre_producto = $_GET['nombre_producto'];
+             
+              $sql= "select TTP.id_tipo_producto,TTP.tipo_producto,TP.id_producto as id_producto,TP.nombre_producto,TP.descripcion_producto,TP.stock_minimo FROM tbl_tipo_producto TTP, tbl_productos TP WHERE TP.id_tipo_producto=TTP.id_tipo_producto and nombre_producto='$nombre_producto'";
+              
+              $resultado = $mysqli->query($sql);
+              /* Manda a llamar la fila */
+              $row = $resultado->fetch_array(MYSQLI_ASSOC);
+              
+   //         variable               viene de la BD
+   $_SESSION['id_producto_'] = $row['id_producto'];
+   $_SESSION['nombre_producto_'] = $row['nombre_producto'];
+   $_SESSION['descripcion_producto_'] = $row['descripcion_producto'];
+   
+   $_SESSION['stock_minimo_'] = $row['stock_minimo'];
+   $_SESSION['tipo_producto_'] = $row['id_tipo_producto'];
+   $_SESSION['nombre_tipo_producto_'] = $row['tipo_producto'];
 
-    $sql = "select TTP.id_tipo_producto,TTP.tipo_producto,TP.id_producto as id_producto,TP.nombre_producto,TP.descripcion_producto,TP.stock_minimo FROM tbl_tipo_producto TTP, tbl_productos TP WHERE TP.id_tipo_producto=TTP.id_tipo_producto and nombre_producto='$nombre_producto'";
 
-    $resultado = $mysqli->query($sql);
-    /* Manda a llamar la fila */
-    $row = $resultado->fetch_array(MYSQLI_ASSOC);
-
-    //         variable               viene de la BD
-    $_SESSION['id_producto_'] = $row['id_producto'];
-    $_SESSION['nombre_producto_'] = $row['nombre_producto'];
-    $_SESSION['descripcion_producto_'] = $row['descripcion_producto'];
-
-    $_SESSION['stock_minimo_'] = $row['stock_minimo'];
-    $_SESSION['tipo_producto_'] = $row['id_tipo_producto'];
-    $_SESSION['nombre_tipo_producto_'] = $row['tipo_producto'];
 }
 
 
@@ -74,7 +76,6 @@ ob_end_flush();
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
     <title></title>
 
 
@@ -99,9 +100,9 @@ ob_end_flush();
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/gestion_producto_vista.php">Gestión Productos</a></li>
-
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/gestion_producto_vista">Gestión Productos</a></li>
+                            
                         </ol>
                     </div>
 
@@ -133,78 +134,84 @@ ob_end_flush();
                             <div class="row">
                                 <div class="col-md-6">
 
-                                    <div class="form-group">
+                                <div class="form-group">
 
-                                        <label>Modificar nombre </label>
+                                <label>Modificar Nombre </label>
 
-                                        <input class="form-control" class="tf w-input" type="text" id="txt_nombre_producto" name="txt_nombre_producto" onkeypress="return validacion_para_producto(event)" value="<?php echo $_SESSION['nombre_producto_']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_producto');" maxlength="50">
+                                <input class="form-control" class="tf w-input" type="text" id="txt_nombre_producto" name="txt_nombre_producto" onkeypress="return validacion_para_producto(event)" value="<?php echo $_SESSION['nombre_producto_']; ?>" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_nombre_producto');"   maxlength="50">
 
-
-                                        <input class="form-control" type="hidden" id="txt_" name="txt_" value="<?php echo $_SESSION['id_producto_']; ?>">
-
-
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <label>Descripcion del Producto </label>
+                               
+                                <input class="form-control" type="hidden" id="txt_" name="txt_" value="<?php echo $_SESSION['id_producto_']; ?>" >
 
 
-                                        <input class="form-control" class="tf w-input" type="text" id="txt_descripcion" name="txt_descripcion" onkeypress="return validacion_para_producto(event)" value="<?php echo $_SESSION['descripcion_producto_']; ?>" maxlength="100" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');">
+                                </div>
 
-                                    </div>
+                                <div class="form-group">
 
-                                    <!-- SELECT QUE TRAE EL TIPO DE PRODUCTO -->
+                                <label>Descripcion del Producto </label>
 
-                                    <div class="form-group ">
-                                        <label class="control-label">Tipos de productos</label>
-                                        <select class="form-control" id="cmb_tipoproducto2" name="cmb_tipoproducto2" disabled required="">
-                                            <option value="0">Seleccione un tipo:</option>
-                                            <?php
-                                            // $_SESSION['tipo_producto_'] = $row['id_tipo_producto'];
 
-                                            if (isset($_SESSION['tipo_producto_'])) {
-                                                $query = $mysqli->query("select * FROM tbl_tipo_producto where id_tipo_producto<>$_SESSION[tipo_producto_] ");
-                                                while ($resultado = mysqli_fetch_array($query)) {
+                                <input class="form-control" class="tf w-input" type="text" id="txt_descripcion" name="txt_descripcion" onkeypress="return validacion_para_producto(event)" value="<?php echo $_SESSION['descripcion_producto_']; ?>" maxlength="100" required style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('txt_descripcion');">
 
-                                                    echo '<option value="' . $resultado['id_tipo_producto'] . '"  > ' . $resultado['tipo_producto'] . '</option>';
+                                </div>
+
+                                <!-- SELECT QUE TRAE EL TIPO DE PRODUCTO -->
+
+                                <div class="form-group ">
+                                <label class="control-label">Tipos de Productos</label>
+                                <select class="form-control" id="cmb_tipoproducto2" name="cmb_tipoproducto2" disabled  required="">
+                                <option value="0"  >Seleccione un tipo:</option>
+                                <?php
+                                // $_SESSION['tipo_producto_'] = $row['id_tipo_producto'];
+
+                                        if(isset($_SESSION['tipo_producto_']))
+                                        {
+                                        $query = $mysqli -> query ("select * FROM tbl_tipo_producto where id_tipo_producto<>$_SESSION[tipo_producto_] ");
+                                        while ($resultado = mysqli_fetch_array($query)) 
+                                        {
+                                        
+                                        echo '<option value="'.$resultado['id_tipo_producto'].'"  > '.$resultado['tipo_producto'].'</option>' ;
+                                        }
+                                        
+                                        
+                                        echo '<option value="'.$_SESSION['tipo_producto_'].'" selected="" >  '.$_SESSION['nombre_tipo_producto_'].'</option>' ;
+                                        } 
+                                        else
+                                        {
+                                                $query = $mysqli -> query ("select * FROM tbl_tipo_producto");
+                                                while ($resultado = mysqli_fetch_array($query))
+                                                {
+                                                //$nombre_tipo_producto= $row['tipo_producto'];
+                                                echo '<option value="'.$_SESSION['tipo_producto_'].'" selected="" >  '.$_SESSION['nombre_tipo_producto_'].'</option>' ;
                                                 }
 
+                                        }
+                                        //$_SESSION['nombre_tipo_producto_'] = $row['tipo_producto'];
 
-                                                echo '<option value="' . $_SESSION['tipo_producto_'] . '" selected="" >  ' . $_SESSION['nombre_tipo_producto_'] . '</option>';
-                                            } else {
-                                                $query = $mysqli->query("select * FROM tbl_tipo_producto");
-                                                while ($resultado = mysqli_fetch_array($query)) {
-                                                    //$nombre_tipo_producto= $row['tipo_producto'];
-                                                    echo '<option value="' . $_SESSION['tipo_producto_'] . '" selected="" >  ' . $_SESSION['nombre_tipo_producto_'] . '</option>';
-                                                }
-                                            }
-                                            //$_SESSION['nombre_tipo_producto_'] = $row['tipo_producto'];
+                                                    if ($_SESSION['tipo_producto_'] == 1){
+                                                        $_SESSION['disabled'] = "disabled";
+                                                    }else{
+                                                        $_SESSION['disabled'] = "";
+                                                    }
 
-                                            if ($_SESSION['tipo_producto_'] == 1) {
-                                                $_SESSION['disabled'] = "disabled";
-                                            } else {
-                                                $_SESSION['disabled'] = "";
-                                            }
-
-                                            ?>
-                                        </select>
-                                    </div>
+                                ?>
+                                </select>
+                                </div>
 
 
-                                    <!-- STOCK DEL PRODUCTO -->
-                                    <div class="form-group ">
-                                        <label>Stock Minimo</label>
-                                        <input class="form-control" value="<?php echo $_SESSION['stock_minimo_']; ?>" <?php echo $_SESSION['disabled']; ?> style="height:28px; width:70px;" min="0" max="100" type="number" id="stock2" name="stock2" placeholder="" size="20">
-                                    </div>
+                                <!-- STOCK DEL PRODUCTO -->
+                                <div class="form-group ">
+                                <label>Stock Minimo</label>
+                                <input class="form-control"  value="<?php echo $_SESSION['stock_minimo_']; ?>" <?php echo $_SESSION['disabled'];?> style="height:28px; width:70px;" min="0" max="100" type="number" id="stock2" name="stock2" placeholder="" size="20"  >
+                                </div>      
 
 
-
+                                
 
                                     <p class="text-center" style="margin-top: 20px;">
-                                        <button type="submit" class="btn btn-primary" id="btn_actualizar_producto" name="btn_actualizar_producto" <?php echo $_SESSION['btn_actualizar_producto']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
-
-                                        <a href="../vistas/gestion_producto_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
+                                    <button type="submit" class="btn btn-primary" id="btn_actualizar_producto" name="btn_actualizar_producto" <?php echo $_SESSION['btn_actualizar_producto']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                                   
+                                    <a href="../vistas/gestion_producto_vista" class="btn btn-danger"  ><i class="zmdi zmdi-floppy"></i> Cancelar</a>
                                     </p>
                                 </div>
                             </div>
@@ -222,7 +229,7 @@ ob_end_flush();
 
                     <div class="RespuestaAjax"></div>
                 </form>
-
+     
             </div>
         </section>
 
@@ -243,11 +250,11 @@ ob_end_flush();
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- datatables JS -->
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
-<!-- para usar botones en datatables JS -->
+  <!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="../js/funciones_registro_docentes.js"></script>
-<script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>
+  <script type="text/javascript" src="../js/validar_registrar_docentes.js"></script>

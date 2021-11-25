@@ -113,12 +113,12 @@ if (isset($_REQUEST['msj'])) {
 }
 
 
-$Id_objeto = 195;
+$Id_objeto = 12195;
 $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-  // header('location:  ../vistas/menu_roles_vista.php');
+  
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -127,7 +127,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/gestion_producto_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {

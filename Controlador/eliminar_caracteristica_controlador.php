@@ -6,7 +6,7 @@ require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_permisos.php');
 require_once ('../clases/funcion_bitacora.php');
 
-$Id_objeto = 195;
+$Id_objeto = 12195;
 
 
 
@@ -27,7 +27,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/gestion_preguntas_vista.php";
+                                               window.location = "../vistas/gestion_preguntas_vista";
 
                             </script>';
 }
@@ -49,7 +49,7 @@ else
              });
                               
                                    $(".FormularioAjax")[0].reset();
-                                   window.location = "../vistas/crear_caracteristicas_producto_vista.php";
+                                   window.location = "../vistas/crear_caracteristicas_producto_vista";
 
                             </script>';
                       // }
@@ -71,7 +71,7 @@ else
 
 
                                  $(".FormularioAjax")[0].reset();
-                                 window.location = "../vistas/crear_caracteristicas_producto_vista.php";
+                                 window.location = "../vistas/crear_caracteristicas_producto_vista";
 
                           </script>';
 
@@ -87,26 +87,3 @@ else
 ob_end_flush();
 
 
-// $sql1 = "SELECT (tipo_caracteristica) as caracteristica FROM tbl_tipo_caracteristica
-// WHERE id_tipo_caracteristica=$tipo_caracteristica";
-//  $existe = mysqli_fetch_array($mysqli->query($sqlexiste));
-//  if($existe){
-//   $nombreCaracteristicas=$existe['caracteristica'];
-
-//  }else{
-   
-//  }
-// else{
-//       header("location:../vistas/crear_caracteristicas_producto_vista.php?msj=3");
-//                       // 	echo '<script type="text/javascript">
-//                       //             swal({
-//                       //                title:"",
-//                       //                text:"No se realizo el proceso, el registro a eliminar tiene datos en otras tablas",
-//                       //                type: "error",
-//                       //                showConfirmButton: false,
-//                       //                timer: 1500
-//                       //             });
-//                       //              $(".FormularioAjax")[0].reset();
-//                       //         </script>';
-//                       // }
-// }

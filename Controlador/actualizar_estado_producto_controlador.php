@@ -6,7 +6,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-$Id_objeto = 189;
+$Id_objeto = 12189;
 $estado= mb_strtoupper($_POST['txt_estado']);
 $id_estado = $_GET['id_estado'];
 
@@ -24,10 +24,9 @@ if( preg_match($patron_texto, $_POST['txt_estado']) )
 
 
 
-            if ($existe['estado'] == 1) {/*
-            header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
+            if ($existe['estado'] == 1) {
 
-                header("location:../vistas/mantenimiento_tipo_estado_vista.php?msj=1");
+                header("location:../vistas/mantenimiento_tipo_estado_vista?msj=1");
             } else {
 
                 $sql = "call proc_actualizar_estado('$estado','$id_estado' )";
@@ -58,14 +57,14 @@ if( preg_match($patron_texto, $_POST['txt_estado']) )
                             timer: 6000
                           });
                           $(".FormularioAjax")[0].reset();
-                          window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
+                          window.location = "../vistas/mantenimiento_tipo_estado_vista";
                       </script>';
 
                     } else {
-                        header("location:../vistas/mantenimiento_tipo_estado_vista.php?msj=3");
+                        header("location:../vistas/mantenimiento_tipo_estado_vista?msj=3");
                     }
                 } else {
-                    /*header("location: ../contenidos/editarRoles-view.php?msj=3&Rol=$Rol2 ");*/
+                    
                     echo '<script type="text/javascript">
                     swal({
                         title: "",
@@ -75,7 +74,7 @@ if( preg_match($patron_texto, $_POST['txt_estado']) )
                         timer: 3000
                     });
                     $(".FormularioAjax")[0].reset();
-                    window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
+                    window.location = "../vistas/mantenimiento_tipo_estado_vista";
                     </script>';
                     } 
             }

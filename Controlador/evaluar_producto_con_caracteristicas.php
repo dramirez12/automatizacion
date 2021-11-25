@@ -5,7 +5,7 @@
         require_once ('../clases/funcion_bitacora.php');
         
         
-          $Id_objeto=195; 
+          $Id_objeto=12195; 
           $nombre_producto="";
           $id_producto="";
           if (isset($_GET['nombre_producto'])) {
@@ -33,7 +33,7 @@
                                      timer: 20000
                                   });
                                   $(".FormularioAjax")[0].reset();
-                                window.location = "../vistas/crear_caracteristicas_producto_vista.php";
+                                window.location = "../vistas/crear_caracteristicas_producto_vista";
   
                               </script>'
                               ;          
@@ -54,7 +54,7 @@
                                      timer: 20000
                                   });
                                   $(".FormularioAjax")[0].reset();
-                                window.location = "../vistas/gestion_producto_vista.php";
+                                window.location = "../vistas/gestion_producto_vista";
   
                               </script>'
                               ;    

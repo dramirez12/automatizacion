@@ -9,7 +9,7 @@ require_once('../clases/funcion_permisos.php');
 require_once('../clases/funcion_bitacora.php');
 
 
-$Id_objeto = 208;
+$Id_objeto = 12208;
 
 if (isset($_GET['motivo'])) {
 
@@ -27,7 +27,7 @@ if (isset($_GET['inventario'])) {
 }
 
 
-if ($estado == 'PROCESADO') {
+if ($estado == '1') {
    $sql = "call proc_anular_salidas('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
    if ($resultado == TRUE) {
@@ -45,7 +45,7 @@ if ($estado == 'PROCESADO') {
                                     
                                  });
                                  $(".FormularioAjax")[0].reset();
-                window.location = "../vistas/gestion_salida_vista.php";
+                window.location = "../vistas/gestion_salida_vista";
  
                              </script>';
    } else {
@@ -60,7 +60,7 @@ if ($estado == 'PROCESADO') {
                                       $(".FormularioAjax")[0].reset();
                                  </script>';
    }
-} else if ($estado == 'ANULADO') {
+} else if ($estado == '2') {
    $sql = "call proc_anular_salida2('$motivo','$inventario')";
    $resultado = $mysqli->query($sql);
    if ($resultado == TRUE) {
@@ -75,7 +75,7 @@ if ($estado == 'PROCESADO') {
                                   timer: 3000
                                });
                                $(".FormularioAjax")[0].reset();
-                               window.location = "../vistas/gestion_salida_vista.php";
+                               window.location = "../vistas/gestion_salida_vista";
                            </script>';
    } else {
       echo '<script type="text/javascript">

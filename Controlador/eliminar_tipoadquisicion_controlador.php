@@ -16,7 +16,7 @@ if (isset($_GET['tipo_adquisicion'])) {
     $tipo_adquisicion = $_GET['tipo_adquisicion'];
 }
 
-$Id_objeto=187;
+$Id_objeto=12187;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -29,7 +29,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/mantenimiento_tipoadquisicion_vista.php";
+                                               window.location = "../vistas/mantenimiento_tipoadquisicion_vista";
 
                             </script>';
 }
@@ -53,7 +53,7 @@ else
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-               window.location = "../vistas/mantenimiento_tipoadquisicion_vista.php";
+               window.location = "../vistas/mantenimiento_tipoadquisicion_vista";
 
                             </script>'
                             ;                      

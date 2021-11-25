@@ -61,7 +61,7 @@ if (isset($_REQUEST['msj'])) {
 }
 
 
-$Id_objeto = 210;
+$Id_objeto = 12210;
 $visualizacion = permiso_ver($Id_objeto);
 
 
@@ -75,7 +75,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_principal_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {
@@ -159,8 +159,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="crear_adquisicion_vista.php">Nueva Adquisición</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="crear_adquisicion_vista">Nueva Adquisición</a></li>
             </ol>
           </div>
 
@@ -186,7 +186,7 @@ ob_end_flush();
       </div>
       <div class="card-body">
         <div class="mb-3">
-          <div style="padding: 2px;"><a href="crear_adquisicion_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+          <div style="padding: 2px;"><a href="crear_adquisicion_vista" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
 
 
           <table id="tbladquisicion" class="table table-bordered table-striped">
@@ -221,7 +221,7 @@ ob_end_flush();
                     $_SESSION['btn_editar_bloqueado'] = "#";
                   } else {
                     $_SESSION['botones_adquisicion'] = "";
-                    $_SESSION['btn_editar_bloqueado'] = "../vistas/editar_adquisicion_vista.php?id_adquisicion=";
+                    $_SESSION['btn_editar_bloqueado'] = "../vistas/editar_adquisicion_vista?id_adquisicion=";
                   }
 
 
@@ -251,7 +251,7 @@ ob_end_flush();
                   <!-- reporte -->
                   <td style="text-align: center;">
 
-                    <a href="../pdf_laboratorio/reporte_adquisicion_lab.php?id_adquisicion=<?php echo $row['id_adquisicion']; ?>" target="_blank" class="btn btn-primary btn-raised btn-xs">
+                    <a href="../pdf_laboratorio/reporte_adquisicion_lab?id_adquisicion=<?php echo $row['id_adquisicion']; ?>" target="_blank" class="btn btn-primary btn-raised btn-xs">
 
                       <i class="fas fa-clipboard-list"></i>
                     </a>

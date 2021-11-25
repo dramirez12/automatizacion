@@ -2,7 +2,7 @@
 	
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
-$Id_objeto=209;      
+$Id_objeto=12209;      
        $vacio="";
        
         // Si está vacío, lo informamos, sino realizamos la búsqueda

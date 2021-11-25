@@ -11,7 +11,7 @@ require_once ('../clases/funcion_bitacora.php');
 
 
 
-$Id_objeto=218;
+$Id_objeto=12218;
 
 
   ///obtener el id_adquisicion
@@ -41,7 +41,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/vistas/pagina_principal_vista.php";
+                                               window.location = "../vistas/vistas/pagina_principal_vista";
 
                             </script>';
 }
@@ -65,7 +65,7 @@ else
                                    timer: 6000
                                 });
                                 $(".FormularioAjax")[0].reset();
-               window.location = "../vistas/gestion_adquisicion_vista.php";
+               window.location = "../vistas/gestion_adquisicion_vista";
 
                             </script>'
                             ;                      

@@ -9,7 +9,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 212;
+$Id_objeto = 12212;
 $id_asignacion = $_GET['id_asignacion'];
 $id_usuario = $_SESSION['id_usuario'];
 $id_detalle = $_SESSION['id_detalle'];
@@ -53,9 +53,9 @@ $inventario = $_POST['txt_inventario_modal'];
         $resultado = $mysqli->query($sql);
 
         if ($resultado == true) {
-            header("location:../vistas/gestion_asignacion_vista.php?msj=2");
+            header("location:../vistas/gestion_asignacion_vista?msj=2");
         } else {
-            header("location:../vistas/gestion_asignacion_vista.php?msj=3");
+            header("location:../vistas/gestion_asignacion_vista?msj=3");
         }
  
   }
@@ -69,9 +69,9 @@ elseif($id_ubicacion_previa<>$id_ubicacion) {
     $resultado = $mysqli->query($sql);
 
     if ($resultado == true) {
-        header("location:../vistas/gestion_asignacion_vista.php?msj=2");
+        header("location:../vistas/gestion_asignacion_vista?msj=2");
     } else {
-        header("location:../vistas/gestion_asignacion_vista.php?msj=3");
+        header("location:../vistas/gestion_asignacion_vista?msj=3");
     }
 
 }
@@ -85,14 +85,14 @@ elseif ($id_usuario_responsable_previo <> $id_usuario_responsable ) {
     $resultado = $mysqli->query($sql);
 
     if ($resultado == true) {
-        header("location:../vistas/gestion_asignacion_vista.php?msj=2");
+        header("location:../vistas/gestion_asignacion_vista?msj=2");
     } else {
-        header("location:../vistas/actualizar_asignacion_vista.php?msj=2");
+        header("location:../vistas/actualizar_asignacion_vista?msj=2");
     }
 
 }else{
 
-    header("location:../vistas/actualizar_asignacion_vista.php?msj=3");
+    header("location:../vistas/actualizar_asignacion_vista?msj=3");
 
 }
 
@@ -102,7 +102,7 @@ elseif ($id_usuario_responsable_previo <> $id_usuario_responsable ) {
 
 
 
-    header("location:../vistas/actualizar_asignacion_vista.php?msj=1");
+    header("location:../vistas/actualizar_asignacion_vista?msj=1");
 }
 
 

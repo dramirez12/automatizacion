@@ -11,7 +11,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-$Id_objeto = 217;
+$Id_objeto = 12217;
 $visualizacion = permiso_ver($Id_objeto);
 
 if (isset($_REQUEST['msj'])) {
@@ -99,7 +99,7 @@ if (isset($_REQUEST['msj'])) {
 
 
 if ($visualizacion == 0) {
-  // header('location:  ../vistas/menu_roles_vista.php');
+  
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -108,7 +108,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_principal_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {
@@ -151,7 +151,7 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
               <!-- <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_laboratorio.php">Menu Mantenimiento</a></li> -->
               <!-- <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_tipo_caracteristica_vista.php">Nuevo Tipo Característica</a></li> -->
             </ol>

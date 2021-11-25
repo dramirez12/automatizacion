@@ -8,7 +8,7 @@ require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_permisos.php');
 require_once ('../clases/funcion_bitacora.php');
 
-$Id_objeto=210;
+$Id_objeto=12210;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -21,7 +21,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                      timer: 3000
                                   });
                                   $(".FormularioAjax")[0].reset();
-                                                 window.location = "../vistas/pagina_principal_vista.php";
+                                                 window.location = "../vistas/pagina_principal_vista";
   
                               </script>';
   }else{
@@ -65,7 +65,7 @@ while ($row = $resultadoproducto->fetch_array(MYSQLI_ASSOC)) {
                timer: 2000
             });
             $(".FormularioAjax")[0].reset();
-          window.location = "../vistas/gestion_adquisicion_vista.php";
+          window.location = "../vistas/gestion_adquisicion_vista";
 
         </script>'
         ;          

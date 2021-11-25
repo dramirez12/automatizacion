@@ -6,7 +6,7 @@
         require_once ('../clases/funcion_bitacora.php');
         
         
-          $Id_objeto=218; 
+          $Id_objeto=12218; 
           ///obtener el id_adquisicion
         //   $sql = "SELECT MAX(id_adquisicion) as id_adquisicion FROM tbl_adquisiciones";
         //   $resultado = $mysqli->query($sql);
@@ -39,7 +39,7 @@
                                      timer: 20000
                                   });
                                   $(".FormularioAjax")[0].reset();
-                                window.location = "../vistas/crear_detalle_adquisicion_vista.php";
+                                window.location = "../vistas/crear_detalle_adquisicion_vista";
   
                               </script>'
                               ;          
@@ -56,7 +56,7 @@
                                      timer: 20000
                                   });
                                   $(".FormularioAjax")[0].reset();
-                                window.location = "../vistas/gestion_adquisicion_vista.php";
+                                window.location = "../vistas/gestion_adquisicion_vista";
   
                               </script>'
                               ;          

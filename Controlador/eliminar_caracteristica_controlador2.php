@@ -14,7 +14,7 @@ if (isset($_GET['tipo_caracteristica'])) {
     $tipo_caracteristica = $_GET['tipo_caracteristica'];
 }
 
-$Id_objeto=195;
+$Id_objeto=12195;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -27,7 +27,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/gestion_preguntas_vista.php";
+                                               window.location = "../vistas/gestion_preguntas_vista";
 
                             </script>';
 }
@@ -38,7 +38,7 @@ else
           $resultado = $mysqli->query($sql);
           if($resultado === TRUE){
             bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'ELIMINO' , 'LA CARACTERISTICA '.($tipo_caracteristica).' ');
-            // header("location:../vistas/crear_caracteristicas_producto_vista.php?msj=5");
+           
             	echo '<script type="text/javascript">
               swal({
                 title:"",
@@ -52,7 +52,7 @@ else
 
 
                                    $(".FormularioAjax")[0].reset();
-                                   window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                                   window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                             </script>';
                       // }
@@ -74,7 +74,7 @@ else
 
 
                                  $(".FormularioAjax")[0].reset();
-                                 window.location = "../vistas/editar_caracteristicas_producto_vista.php";
+                                 window.location = "../vistas/editar_caracteristicas_producto_vista";
 
                           </script>';
 

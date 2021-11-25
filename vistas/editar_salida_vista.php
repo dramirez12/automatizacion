@@ -5,18 +5,19 @@ ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
+require_once('../clases/Conexion_mantenimientos.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 209;
+$Id_objeto = 12209;
 
 
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {
-    //header('location:  ../vistas/menu_roles_vista.php');
+   
 
     echo '<script type="text/javascript">
                             swal({
@@ -26,7 +27,7 @@ if ($visualizacion == 0) {
                                  showConfirmButton: false,
                                  timer: 3000
                               });
-                         window.location = "../vistas/pagina_principal_vista.php";
+                         window.location = "../vistas/pagina_principal_vista";
 
                           </script>';
 } else {
@@ -67,7 +68,7 @@ ob_end_flush();
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
+
 
 </head>
 
@@ -84,8 +85,8 @@ ob_end_flush();
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/gestion_salida_vista.php">Gestión salida</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/gestion_salida_vista">Gestión salida</a></li>
                         </ol>
                     </div>
                     <!-- VERIFICAR -->
@@ -125,7 +126,30 @@ ob_end_flush();
                                     <!-- FECHA DE LA SALIDA  -->
                                     <div class="form-group">
                                         <label>Fecha Salida</label>
-                                        <input class="form-control" readonly="true" type="date" id="fecha_editada" value="<?php echo $_SESSION['fecha']; ?>" name="fecha_editada" maxlength="30" required>
+                                        <input class="form-control" readonly="true" type="text" id="fecha_editada" value="<?php echo $_SESSION['fecha']; ?>" name="fecha_editada" maxlength="30" required>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label class="control-label">Estado del producto</label>
+                                        <select class="form-control select2" style="width: 100%;" id="cmb_estado_producto" name="cmb_estado_producto" required>   
+                                        <!-- <option   >Seleccione un tipo de Producto:</option> -->
+                                                <?php
+                                                        $sql = "SELECT a.id_estado as id_estado_producto, a.estado as estado_producto FROM tbl_estado a inner join tbl_detalle_adquisiciones b WHERE a.id_estado = b.id_estado and b.numero_inventario = '$numero_inventario'";
+                                                        $resultado = $conexion->query($sql);
+                                                        $row = $resultado->fetch_array(MYSQLI_ASSOC);
+                                                        $id_estado_producto=$row['id_estado_producto'];
+                                                        $estado_producto=$row['estado_producto'];
+
+                                                            $query = $conexion -> query ("select * FROM tbl_estado where id_estado <> 1 and id_estado <> 2 and id_estado <> 4 and id_estado <> $id_estado_producto");
+                                                            while ($resultado = mysqli_fetch_array($query)) 
+                                                            {
+                                                            
+                                                            echo '<option value="'.$resultado['id_estado'].'"  > '.$resultado['estado'].'</option>' ;
+                                                            }
+                                                            
+                                                            echo '<option value="'. $id_estado_producto.'" selected="" >  '.$estado_producto.'</option>' ; 
+                                                ?>
+                                        </select>      
                                     </div>
 
                                     <!-- LA DESCRIPCION DE BAJA -->
@@ -135,7 +159,7 @@ ob_end_flush();
 
                                     <p class="text-center" style="margin-top: 20px;">
                                         <button type="submit" class="btn btn-primary" id="btn_guardar_salida" name="btn_guardar_salida" <?php echo $_SESSION['btn_actualizar_salida_producto']; ?>><i class="zmdi zmdi-floppy"></i>Actualizar</button>
-                                        <a href="../vistas/gestion_salida_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
+                                        <a href="../vistas/gestion_salida_vista" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
                                     </p>
                                 </div>
                             </div>

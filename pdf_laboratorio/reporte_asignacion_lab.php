@@ -155,7 +155,7 @@ require_once('../clases/funcion_bitacora.php');
 // require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 214;
+$Id_objeto = 12212;
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Reporte', 'Genero un reporte de los datos de la asignacion del producto  '.$reportes_producto);
 
 ?>

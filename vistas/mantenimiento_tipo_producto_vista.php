@@ -59,13 +59,13 @@ if (isset($_REQUEST['msj'])) {
 }
 
 
-$Id_objeto = 192;
+$Id_objeto = 12192;
 $visualizacion = permiso_ver($Id_objeto);
 
 
 
 if ($visualizacion == 0) {
-  // header('location:  ../vistas/menu_roles_vista.php');
+ 
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -74,7 +74,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/menu_mantenimiento_laboratorio.php";
+                           window.location = "../vistas/menu_mantenimiento_laboratorio";
 
                             </script>';
 } else {
@@ -171,8 +171,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_laboratorio.php">Menu Mantenimiento</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_laboratorio">Menu Mantenimiento</a></li>
               <!-- <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_tipo_producto_vista.php">Nuevo Tipo Producto</a></li> -->
             </ol>
           </div>
@@ -198,7 +198,7 @@ ob_end_flush();
         </div>
       </div>
       <div class="card-body">
-        <div style="padding: 2px;"><a href="mantenimiento_crear_tipo_producto_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+        <div style="padding: 2px;"><a href="mantenimiento_crear_tipo_producto_vista" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
 
         <table id="tblTipoProducto" class="table table-bordered table-striped">
 
@@ -218,7 +218,7 @@ ob_end_flush();
 
                 <td style="text-align: center;">
 
-                  <a href="../vistas/mantenimiento_tipo_producto_vista.php?tipo_producto=<?php echo $row['tipo_producto']; ?>"> <button type="submit" class="btn btn-primary btn-raised btn-xs" <?php echo $_SESSION['btn_modificar_tipo_producto'] ?>>
+                  <a href="../vistas/mantenimiento_tipo_producto_vista?tipo_producto=<?php echo $row['tipo_producto']; ?>"> <button type="submit" class="btn btn-primary btn-raised btn-xs" <?php echo $_SESSION['btn_modificar_tipo_producto'] ?>>
                       <i class="far fa-edit"></i>
                     </button>
                   </a>

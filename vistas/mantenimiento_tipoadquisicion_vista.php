@@ -59,13 +59,13 @@ if (isset($_REQUEST['msj'])) {
 }
 
 
-$Id_objeto = 187;
+$Id_objeto = 12187;
 $visualizacion = permiso_ver($Id_objeto);
 
 
 
 if ($visualizacion == 0) {
-  // header('location:  ../vistas/menu_roles_vista.php');
+  
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -74,7 +74,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/menu_mantenimiento_laboratorio.php";
+                           window.location = "../vistas/menu_mantenimiento_laboratorio";
 
                             </script>';
 } else {
@@ -173,8 +173,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_laboratorio.php">Menu Mantenimiento</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/menu_mantenimiento_laboratorio">Menu Mantenimiento</a></li>
               <!-- <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_tipoadquisicion_vista.php">Nuevo Tipo Adquisición</a></li> -->
             </ol>
           </div>
@@ -200,7 +200,7 @@ ob_end_flush();
       </div>
 
       <div class="card-body">
-        <div style="padding: 2px;"><a href="mantenimiento_crear_tipoadquisicion_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+        <div style="padding: 2px;"><a href="mantenimiento_crear_tipoadquisicion_vista" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
         <table id="tblTipoAdquisicion" class="table table-bordered table-striped">
 
 
@@ -219,7 +219,7 @@ ob_end_flush();
 
                 <td style="text-align: center;">
 
-                  <a href="../vistas/mantenimiento_tipoadquisicion_vista.php?tipo_adquisicion=<?php echo $row['tipo_adquisicion']; ?>" class="btn btn-primary btn-raised btn-xs">
+                  <a href="../vistas/mantenimiento_tipoadquisicion_vista?tipo_adquisicion=<?php echo $row['tipo_adquisicion']; ?>" class="btn btn-primary btn-raised btn-xs">
                     <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_tipo_adquisicion'] ?> "></i>
                   </a>
                 </td>

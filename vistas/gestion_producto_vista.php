@@ -59,13 +59,13 @@ if (isset($_REQUEST['msj'])) {
 }
 
 
-$Id_objeto = 196;
+$Id_objeto = 12196;
 $visualizacion = permiso_ver($Id_objeto);
 
 
 
 if ($visualizacion == 0) {
-  // header('location:  ../vistas/menu_roles_vista.php');
+  
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -74,7 +74,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_principal_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {
@@ -177,8 +177,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="crear_productos_vista.php">Nuevo Producto</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="crear_productos_vista">Nuevo Producto</a></li>
             </ol>
           </div>
 
@@ -207,7 +207,7 @@ ob_end_flush();
       </div>
       <div class="card-body">
         <div class="mb-3">
-          <a href="crear_productos_vista.php" class=" btn btn-success btn-inline float-right mt-2"><i class="fas fa-plus pr-2"></i>Nuevo</a>
+          <a href="crear_productos_vista" class=" btn btn-success btn-inline float-right mt-2"><i class="fas fa-plus pr-2"></i>Nuevo</a>
           <!-- <input type="text" class="float-right mt-2"> -->
         </div>
 
@@ -234,7 +234,7 @@ ob_end_flush();
                 <!-- editar -->
                 <td style="text-align: center;">
 
-                  <a href="../vistas/editar_producto_vista.php?nombre_producto=<?php echo $row['nombre_producto']; ?>" class="btn btn-primary btn-raised btn-xs">
+                  <a href="../vistas/editar_producto_vista?nombre_producto=<?php echo $row['nombre_producto']; ?>" class="btn btn-primary btn-raised btn-xs">
                     <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_producto'] ?> "></i>
                   </a>
 
@@ -253,7 +253,7 @@ ob_end_flush();
                 <!-- reporte -->
                 <td style="text-align: center;">
 
-                  <a href="../pdf_laboratorio/reporte_producto_lab.php?nombre_producto=<?php echo $row['nombre_producto']; ?>" target="_black" class="btn btn-primary btn-raised btn-xs">
+                  <a href="../pdf_laboratorio/reporte_producto_lab?nombre_producto=<?php echo $row['nombre_producto']; ?>" target="_black" class="btn btn-primary btn-raised btn-xs">
 
                     <i class="fas fa-clipboard-list"></i>
                   </a>

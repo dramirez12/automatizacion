@@ -15,7 +15,7 @@ if (isset($_GET['estado'])) {
     $estado = $_GET['estado'];
 }
 
-$Id_objeto=189;
+$Id_objeto=12189;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -28,7 +28,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
+                                               window.location = "../vistas/mantenimiento_tipo_estado_vista";
 
                             </script>';
 }
@@ -52,7 +52,7 @@ else
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-               window.location = "../vistas/mantenimiento_tipo_estado_vista.php";
+               window.location = "../vistas/mantenimiento_tipo_estado_vista";
 
                             </script>'
                             ;                      

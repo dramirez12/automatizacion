@@ -6,7 +6,7 @@
         require_once ('../clases/funcion_bitacora.php');
         
         
-          $Id_objeto=218; 
+          $Id_objeto=12218; 
 
           ///obtener el id_estado
           $sql = "SELECT * FROM tbl_estado WHERE estado = 'bueno'";
@@ -40,7 +40,7 @@ if( preg_match($patron_texto, $_POST['txt_numero']) )
                  
                 if ($existe['numero_inventario']==1)
                 {
-                        header("location:../vistas/crear_detalle_adquisicion_vista.php?msj=1");
+                        header("location:../vistas/crear_detalle_adquisicion_vista?msj=1");
 
                 }else
                 {
@@ -63,9 +63,9 @@ if( preg_match($patron_texto, $_POST['txt_numero']) )
 
 
 
-                                header("location:../vistas/crear_detalle_adquisicion_vista.php?msj=2");
+                                header("location:../vistas/crear_detalle_adquisicion_vista?msj=2");
                         } else {
-                                header("location:../vistas/crear_detalle_adquisicion_vista.php?msj=3");
+                                header("location:../vistas/crear_detalle_adquisicion_vista?msj=3");
                         }   
 
                 }
@@ -75,13 +75,13 @@ if( preg_match($patron_texto, $_POST['txt_numero']) )
 
 
         }else{       
-                header("location:../vistas/crear_detalle_adquisicion_vista.php?msj=4");
+                header("location:../vistas/crear_detalle_adquisicion_vista?msj=4");
         }
          
 }
 
 else{   
-        header("location:../vistas/crear_detalle_adquisicion_vista.php?msj=8");
+        header("location:../vistas/crear_detalle_adquisicion_vista?msj=8");
 }   
 
 

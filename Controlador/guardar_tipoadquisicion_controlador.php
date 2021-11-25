@@ -6,7 +6,7 @@
  require_once ('../clases/Conexion.php');
  require_once ('../clases/funcion_bitacora.php'); 
  
- $Id_objeto=186;
+ $Id_objeto=12186;
  $tipo_adquisicion=mb_strtoupper ($_POST['txt_tipoadquisicion1']);
  //mb_st.. para caracteres especiales convierte a mayusculas sin importar la tilde
 
@@ -57,7 +57,7 @@
                           
                             if($resultado === TRUE) 
                             {
-                                    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INSERTO' , 'EL TIPO ADQUISICION'. $tipo_adquisicion.'');
+                                    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INSERTO ' , ' EL TIPO ADQUISICION  '. $tipo_adquisicion.'');
 
                           /*   require"../contenidos/crearRol-view.php"; 
                           header('location: ../contenidos/crearRol-view.php?msj=2');*/
@@ -70,7 +70,7 @@
                                                     timer: 3000
                                                   });
                                                   $(".FormularioAjax")[0].reset();
-                                                  window.location = "../vistas/mantenimiento_tipoadquisicion_vista.php";
+                                                  window.location = "../vistas/mantenimiento_tipoadquisicion_vista";
                                               </script>';
                             
                         } 

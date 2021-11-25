@@ -6,7 +6,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-$Id_objeto = 218;
+$Id_objeto = 12218;
 
 $id_detalle_caracteristica = $_GET['id_detalle_caracteristica'];
 
@@ -57,21 +57,21 @@ if (preg_match($patron_texto,$_POST['txt_valor'])){
                         /* Hace el query para que actualize*/
                         if ($resultado == true) {
                           
-                            header("location:../vistas/editar_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=8");
+                            header("location:../vistas/editar_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=8");
 
 
 
                         } else {
-                            header("location:../vistas/editar_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=9");
+                            header("location:../vistas/editar_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=9");
                         }
                     } else {
                         /*header("location: ../contenidos/editarRoles-view.php?msj=3&Rol=$Rol2 ");*/
-                        header("location:../vistas/editar_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=9");
+                        header("location:../vistas/editar_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=9");
 
                         }
 } else {
             
-    header("location:../vistas/editar_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=10");
+    header("location:../vistas/editar_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=10");
             
     }
                

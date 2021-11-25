@@ -11,7 +11,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 186;
+$Id_objeto = 12186;
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento/Crear tipo adquisicion');
 
 
@@ -20,7 +20,7 @@ $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
-    //header('location:  ../vistas/menu_roles_vista.php');
+    
 
     echo '<script type="text/javascript">
                               swal({
@@ -30,7 +30,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/menu_mantenimiento_laboratorio.php";
+                           window.location = "../vistas/menu_mantenimiento_laboratorio";
 
                             </script>';
 } else {
@@ -91,9 +91,9 @@ ob_end_flush();
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_laboratorio.php">Menu Mantenimiento</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_tipoadquisicion_vista.php"> Mantenimiento Tipo Adquisición</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_mantenimiento_laboratorio">Menu Mantenimiento</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/mantenimiento_tipoadquisicion_vista"> Mantenimiento Tipo Adquisición</a></li>
                         </ol>
                     </div>
 
@@ -133,7 +133,7 @@ ob_end_flush();
                                     <p class="text-center" style="margin-top: 20px;">
                                         <button type="submit" class="btn btn-primary" id="btn_guardar_tipoadquisicion" name="btn_guardar_tipoadquisicion" <?php echo $_SESSION['btn_guardar_tipoadquisicion']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
 
-                                        <a href="../vistas/mantenimiento_tipoadquisicion_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
+                                        <a href="../vistas/mantenimiento_tipoadquisicion_vista" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
 
                                     </p>
                                 </div>

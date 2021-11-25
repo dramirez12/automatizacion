@@ -6,7 +6,7 @@
         require_once ('../clases/funcion_bitacora.php');
         
         
-          $Id_objeto=218; 
+          $Id_objeto=12218; 
           $caracteristica = $_GET['caracteristica'];
           $id_detalle = $_SESSION['id_detalle_'];
 
@@ -50,7 +50,7 @@
                           
                    if ($existe['id_caracteristica_producto']== 1)
                     {
-                        header("location:../vistas/crear_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=9");
+                        header("location:../vistas/crear_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=9");
                     
                     }
                     else
@@ -78,7 +78,7 @@
                 //                         </script>';
 
 
-                header("location:../vistas/crear_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=7");
+                header("location:../vistas/crear_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=7");
 
 
 
@@ -92,7 +92,7 @@
 
         } else {
          
-                header("location:../vistas/crear_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=8");
+                header("location:../vistas/crear_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=8");
             
       }
 

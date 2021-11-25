@@ -5,7 +5,7 @@
         require_once ('../clases/Conexion.php');
         require_once ('../clases/funcion_bitacora.php');
         
-        $Id_objeto=218; 
+        $Id_objeto=12218; 
          
         //   $caracteristica = $_GET['caracteristica'];
           $id_detalle = $_GET['id_detalle'];
@@ -33,11 +33,11 @@
                           
                    if ($contador_detalles < $contador_caracteristicas)
                     {
-                        header("location:../vistas/crear_detalle_adquisicion_vista.php?id_detalle=$id_detalle&msj=11");
+                        header("location:../vistas/crear_detalle_adquisicion_vista?id_detalle=$id_detalle&msj=11");
                     
                     }
                     else{
-                    header("location:../vistas/crear_detalle_adquisicion_vista.php?msj=10");
+                    header("location:../vistas/crear_detalle_adquisicion_vista?msj=10");
                     
                     }
          

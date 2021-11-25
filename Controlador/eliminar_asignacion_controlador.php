@@ -15,7 +15,7 @@ require_once ('../clases/funcion_bitacora.php');
 } 
 
 
- $Id_objeto=212;
+ $Id_objeto=12212;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -28,7 +28,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/gestion_asignacion_vista.php";
+                                               window.location = "../vistas/gestion_asignacion_vista";
 
                             </script>';
 }
@@ -52,7 +52,7 @@ else
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-               window.location = "../vistas/gestion_asignacion_vista.php";
+               window.location = "../vistas/gestion_asignacion_vista";
 
                             </script>'
                             ;                      

@@ -6,7 +6,7 @@ session_start();
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 
-$Id_objeto = 185;
+$Id_objeto = 12185;
 $ubicacion = strtoupper($_POST['txt_ubicacion']);
 $id_ubicacion = $_GET['id_ubicacion'];
 
@@ -23,10 +23,10 @@ if( preg_match($patron_texto, $_POST['txt_ubicacion']) )
 
 
 
-                if ($existe['ubicacion'] == 1) {/*
-                header("location: ../contenidos/editarRoles-view.php?msj=1&Rol=$Rol2 ");*/
+                if ($existe['ubicacion'] == 1) {
+                   
 
-                    header("location:../vistas/mantenimiento_ubicacion_vista.php?msj=1");
+                    header("location:../vistas/mantenimiento_ubicacion_vista?msj=1");
                 } else {
 
                     $sql = "call proc_actualizar_ubicacion('$ubicacion','$id_ubicacion' )";
@@ -59,13 +59,13 @@ if( preg_match($patron_texto, $_POST['txt_ubicacion']) )
                                 timer: 6000
                               });
                               $(".FormularioAjax")[0].reset();
-                              window.location = "../vistas/mantenimiento_ubicacion_vista.php";
+                              window.location = "../vistas/mantenimiento_ubicacion_vista";
                           </script>';
                         } else {
-                            header("location:../vistas/mantenimiento_ubicacion_vista.php?msj=3");
+                            header("location:../vistas/mantenimiento_ubicacion_vista?msj=3");
                         }
                     } else {
-                        /*header("location: ../contenidos/editarRoles-view.php?msj=3&Rol=$Rol2 ");*/
+                       
                         echo '<script type="text/javascript">
                         swal({
                             title: "",
@@ -75,7 +75,7 @@ if( preg_match($patron_texto, $_POST['txt_ubicacion']) )
                             timer: 3000
                         });
                         $(".FormularioAjax")[0].reset();
-                        window.location = "../vistas/mantenimiento_ubicacion_vista.php";
+                        window.location = "../vistas/mantenimiento_ubicacion_vista";
                         </script>';
                         } 
                 }

@@ -6,7 +6,7 @@ require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
 
 
-  $Id_objeto=194; 
+  $Id_objeto=12194; 
  
 
 
@@ -92,7 +92,7 @@ if( preg_match($patron_texto, $_POST['txt_nombre_producto']  ) )
                               timer: 6000
                            });
                       
-                            window.location = "../vistas/gestion_producto_vista.php";
+                            window.location = "../vistas/gestion_producto_vista";
 
                         $(".FormularioAjax")[0].reset();
 
@@ -110,7 +110,7 @@ if( preg_match($patron_texto, $_POST['txt_nombre_producto']  ) )
                               timer: 6000
                            });
                       
-                            window.location = "../vistas/crear_caracteristicas_producto_vista.php";
+                            window.location = "../vistas/crear_caracteristicas_producto_vista";
 
                         $(".FormularioAjax")[0].reset();
 

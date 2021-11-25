@@ -5,7 +5,7 @@ ob_start();
  require_once ('../clases/Conexion.php');
  require_once ('../clases/funcion_bitacora.php'); 
 
-        $Id_objeto=217 ;
+        $Id_objeto=12217 ;
 
 
 $tipo_transaccion=mb_strtoupper ($_POST['cb_tipo_transaccion']);
@@ -33,7 +33,7 @@ if( preg_match($patron_texto, $_POST['txt_cantidad']) )
           {
 
             if(($cantidad > $existencia) and ($tipo_transaccion == 2)){
-              header("location:../vistas/transaccion_kardex_vista.php?msj=6");
+              header("location:../vistas/transaccion_kardex_vista?msj=6");
             }else{
                    
                       /* Query para que haga el insert*/
@@ -47,7 +47,7 @@ if( preg_match($patron_texto, $_POST['txt_cantidad']) )
 
                     /*   require"../contenidos/crearRol-view.php"; 
                  header('location: ../contenidos/crearRol-view.php?msj=2');*/
-                 header("location:../vistas/transaccion_kardex_vista.php?msj=1");
+                 header("location:../vistas/transaccion_kardex_vista?msj=1");
                       
                   } 
                   else 
@@ -60,12 +60,12 @@ if( preg_match($patron_texto, $_POST['txt_cantidad']) )
 
           else
           {
-            header("location:../vistas/transaccion_kardex_vista.php?msj=3");
+            header("location:../vistas/transaccion_kardex_vista?msj=3");
           }
         }
      
   else{   
-    header("location:../vistas/transaccion_kardex_vista.php?msj=4");
+    header("location:../vistas/transaccion_kardex_vista?msj=4");
   }              
 
   ob_end_flush();

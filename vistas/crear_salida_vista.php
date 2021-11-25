@@ -11,7 +11,7 @@ require_once('../clases/funcion_permisos.php');
 
 $producto = "";
 $caracteristicas = "";
-$Id_objeto = 209;
+$Id_objeto = 12209;
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Nueva Salida');
 
 $modal = "";
@@ -26,8 +26,7 @@ if (isset($_REQUEST['msj'])) {
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {
-    //header('location:  ../vistas/menu_roles_vista.php');
-
+    
     echo '<script type="text/javascript">
                             swal({
                                  title:"",
@@ -36,7 +35,7 @@ if ($visualizacion == 0) {
                                  showConfirmButton: false,
                                  timer: 3000
                               });
-                         window.location = "../vistas/pagina_principal_vista.php";
+                         window.location = "../vistas/pagina_principal_vista";
 
                           </script>';
 } else {
@@ -68,7 +67,7 @@ ob_end_flush();
 <html>
 
 <head>
-    <script src="../js/autologout.js"></script>
+
 
 </head>
 
@@ -87,8 +86,8 @@ ob_end_flush();
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/gestion_salida_vista.php">Gestión salida</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/gestion_salida_vista">Gestión salida</a></li>
                         </ol>
                     </div>
 
@@ -113,7 +112,7 @@ ob_end_flush();
 
                         <div>
                             <form action="crear_salida_vista.php" method="post">
-                                <input name="palabra" id="palabra" style="text-transform: uppercase; height:35px; width:200px;" placeholder="num inventario..."><input class="btn btn-primary" type="submit" class="search" id="buscador" value="Buscar">
+                                <input name="palabra" id="palabra" style="text-transform: uppercase; height:35px; width:200px;" placeholder="num inventario..." onkeypress="return validacion_para_numero_inventario(event)" maxlength="30" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event);"><input class="btn btn-primary" type="submit" class="search" id="buscador" value="Buscar">
                             </form>
                             <div class="card-tools">
                             </div>
@@ -160,7 +159,7 @@ ob_end_flush();
                                     <!-- FECHA DE LA SALIDA  -->
                                     <div class="form-group">
                                         <label>Fecha Salida</label>
-                                        <input class="form-control" type="date" id="fecha" min="<?php echo $nuevaFecha; ?>" max="<?php date_default_timezone_set('America/Tegucigalpa');
+                                        <input class="form-control" type="text" Readonly id="fecha" min="<?php echo $nuevaFecha; ?>" max="<?php date_default_timezone_set('America/Tegucigalpa');
                                                                                                                                     echo date("Y-m-d"); ?>" onchange="handler(event);" value="<?php date_default_timezone_set('America/Tegucigalpa');
                                                                                                                                                                                                 echo date("Y-m-d"); ?>" name="fecha" required>
                                     </div>
@@ -181,13 +180,13 @@ ob_end_flush();
 
                                     <!-- LA DESCRIPCION DE BAJA -->
                                     <div class="form-group ">
-                                        <textarea class="form-control " style="text-transform: uppercase" class="tf w-input" required type="text" placeholder="ingrese la descripcion del motivo de salida aquí" maxlength="100" name="descripcion" id="descripcion" rows="5" cols="40" onkeyup="DobleEspacio(this, event); MismaLetra('descripcion');" onkeypress="return validacion_para_producto(event)"></textarea>
+                                        <textarea class="form-control " style="text-transform: uppercase" class="tf w-input" required type="text" placeholder="ingrese la descripción del motivo de salida aquí" maxlength="100" name="descripcion" id="descripcion" rows="5" cols="40" onkeyup="DobleEspacio(this, event); MismaLetra('descripcion');" onkeypress="return validacion_para_producto(event)"></textarea>
                                     </div>
 
 
                                     <p class="text-center" style="margin-top: 20px;">
                                         <button type="submit" class="btn btn-primary" id="btn_guardar_salida" name="btn_guardar_salida" <?php echo $_SESSION['btn_guardar_salida_producto']; ?>><i class="zmdi zmdi-floppy"></i> Guardar</button>
-                                        <a href="../vistas/gestion_salida_vista.php" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
+                                        <a href="../vistas/gestion_salida_vista" class="btn btn-danger"><i class="zmdi zmdi-floppy"></i> Cancelar</a>
                                     </p>
 
 

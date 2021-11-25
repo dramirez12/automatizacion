@@ -10,7 +10,7 @@ require_once ('../clases/funcion_bitacora.php');
 
 
 
-$Id_objeto=218; 
+$Id_objeto=12218; 
 $numero = $_GET['numero_inventario'];
 // $id_detalle = $_SESSION['id_detalle_'];
 // echo $id_detalle;
@@ -28,7 +28,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0')
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/pagina_principal_vista.php";
+                                               window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
   }
@@ -39,11 +39,11 @@ else
           $resultado = $mysqli->query($sql);
           if($resultado === TRUE){
             bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'ELIMINO' , 'EL ELEMENTO DE INVENTARIO: '.$numero.' ');
-            // header("location:../vistas/crear_caracteristicas_producto_vista.php?msj=5");
+            
             	echo '<script type="text/javascript">
                                 
                                    $(".FormularioAjax")[0].reset();
-                                   window.location = "../vistas/crear_detalle_adquisicion_vista.php?msj=5";
+                                   window.location = "../vistas/crear_detalle_adquisicion_vista?msj=5";
 
                             </script>';
                       
@@ -52,7 +52,7 @@ else
                                                        
           
           }else{
-            header("location:../vistas/crear_detalle_adquisicion_vista.php?msj=3");
+            header("location:../vistas/crear_detalle_adquisicion_vista?msj=3");
 
 
           }

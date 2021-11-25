@@ -6,7 +6,7 @@
  require_once ('../clases/Conexion.php');
  require_once ('../clases/funcion_bitacora.php'); 
 
-        $Id_objeto=191;
+        $Id_objeto=12191;
 
 
 $tipo_producto=strtoupper ($_POST['txt_tipo_producto1']);
@@ -54,8 +54,7 @@ if( preg_match($patron_texto, $_POST['txt_tipo_producto1']) )
                           {
                                     bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INSERTO' , 'EL TIPO PRODUCTO '. $tipo_producto.'');
 
-                        /*   require"../contenidos/crearRol-view.php"; 
-                        header('location: ../contenidos/crearRol-view.php?msj=2');*/
+                        
                         echo '<script type="text/javascript">
                                               swal({
                                                   title:"",
@@ -65,7 +64,7 @@ if( preg_match($patron_texto, $_POST['txt_tipo_producto1']) )
                                                   timer: 3000
                                                 });
                                                 $(".FormularioAjax")[0].reset();
-                                                window.location = "../vistas/mantenimiento_tipo_producto_vista.php";
+                                                window.location = "../vistas/mantenimiento_tipo_producto_vista";
                                             </script>';
                           
                       } 

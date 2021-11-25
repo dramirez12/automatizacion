@@ -59,7 +59,7 @@ require_once('../clases/funcion_permisos.php');
 // }
 
 
-$Id_objeto = 207;
+$Id_objeto = 12207;
 $visualizacion = permiso_ver($Id_objeto);
 
 
@@ -74,7 +74,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_principal_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {
@@ -172,8 +172,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/reportes_ubicacion_vista.php">Consulta Ubicación</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/reportes_ubicacion_vista">Consulta Ubicación</a></li>
               <!-- <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_tipoadquisicion_vista.php">Nuevo Tipo Adquisición</a></li> -->
             </ol>
           </div>

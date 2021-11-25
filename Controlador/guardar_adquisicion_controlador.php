@@ -7,7 +7,7 @@ require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
 require_once ('../clases/funcion_bitacora.php');
 
-  $Id_objeto=211; 
+  $Id_objeto=12211; 
  
 
 
@@ -45,7 +45,7 @@ if  ($_POST['txt_descripcion']<> '' and $_POST['txt_fechaAdquisicion']> '' and $
                     
          echo '<script type="text/javascript">
         
-              window.location = "../vistas/crear_detalle_adquisicion_vista.php";
+              window.location = "../vistas/crear_detalle_adquisicion_vista";
 
            $(".FormularioAjax")[0].reset();
 

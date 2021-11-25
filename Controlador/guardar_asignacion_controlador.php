@@ -6,7 +6,7 @@ ob_start();
 require_once ('../clases/Conexion.php');
 require_once ('../clases/funcion_bitacora.php');
 
-$Id_objeto=214;
+$Id_objeto=12214;
 
 $num_inventario=$_SESSION['lo_que_busco'];
  
@@ -78,7 +78,7 @@ $asignado='1';
                           $_SESSION['lo_que_busco']="";
 
                           echo '<script type="text/javascript">              
-                          window.location = "../vistas/gestion_asignacion_vista.php";
+                          window.location = "../vistas/gestion_asignacion_vista";
                           $(".FormularioAjax")[0].reset();
                           </script>';
 

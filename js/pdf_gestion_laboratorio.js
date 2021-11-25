@@ -4042,7 +4042,7 @@ $(document).ready(function() {
                
                
                 "exportOptions": {
-                                columns: [ 0,1,2,3,4],
+                                columns: [ 0,1,2,3,4,5],
     
                                
   
@@ -4070,7 +4070,7 @@ $(document).ready(function() {
     
     
       customize: function(doc) {
-        doc.content[2].margin = [ 150, 0, 150, 0 ], //left, top, right, bottom
+        doc.content[2].margin = [ 100, 0, 150, 0 ], //left, top, right, bottom
   
        
         

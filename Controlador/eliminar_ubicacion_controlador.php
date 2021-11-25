@@ -15,7 +15,7 @@ if (isset($_GET['ubicacion'])) {
     $ubicacion = $_GET['ubicacion'];
 }
 
-$Id_objeto=185;
+$Id_objeto=12185;
 
 if (permisos::permiso_eliminar($Id_objeto)=='0') {
 
@@ -28,7 +28,7 @@ if (permisos::permiso_eliminar($Id_objeto)=='0') {
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-                                               window.location = "../vistas/mantenimiento_ubicacion_vista.php";
+                                               window.location = "../vistas/mantenimiento_ubicacion_vista";
 
                             </script>';
 }
@@ -52,7 +52,7 @@ else
                                    timer: 3000
                                 });
                                 $(".FormularioAjax")[0].reset();
-               window.location = "../vistas/mantenimiento_ubicacion_vista.php";
+               window.location = "../vistas/mantenimiento_ubicacion_vista";
 
                             </script>'
                             ;                      

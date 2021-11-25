@@ -63,11 +63,11 @@ if (isset($_REQUEST['msj'])) {
     }
 }
 
-$Id_objeto = 212;
+$Id_objeto = 12212;
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {
-    // header('location:  ../vistas/menu_roles_vista.php');
+    
     echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -76,7 +76,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_principal_vista.php";
+                           window.location = "../vistas/pagina_principal_vista";
 
                             </script>';
 } else {
@@ -192,8 +192,8 @@ ob_end_flush();
 
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item active"><a href="../vistas/crear_asignacion_vista.php">Nueva asignación</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item active"><a href="../vistas/crear_asignacion_vista">Nueva asignación</a></li>
                         </ol>
                     </div>
 
@@ -220,7 +220,7 @@ ob_end_flush();
 
             <div class="card-body">
                 <div class="mb-3">
-                    <div style="padding: 2px;"><a href="crear_asignacion_vista.php" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
+                    <div style="padding: 2px;"><a href="crear_asignacion_vista" class=" btn btn-success btn-inline float-right mt-0"><i class="fas fa-plus pr-2"></i>Nuevo</a></div>
 
                     <table id="tblAsignacion" class="table table-bordered table-striped">
                         <thead>
@@ -249,9 +249,8 @@ ob_end_flush();
 
                                     <td style="text-align: center;">
 
-                                        <!-- <a href="../vistas/actualizar_asignacion_vista.php">Inicio</a> -->
-
-                                        <a href="../vistas/actualizar_asignacion_vista.php?id_asignacion=<?php echo $row['id_asignacion']; ?>" class="btn btn-primary btn-raised btn-xs">
+                                       
+                                        <a href="../vistas/actualizar_asignacion_vista?id_asignacion=<?php echo $row['id_asignacion']; ?>" class="btn btn-primary btn-raised btn-xs">
                                             <i class="far fa-edit" style="display:<?php echo $_SESSION['modificar_asignacion'] ?> "></i>
                                         </a>
                                     </td>
