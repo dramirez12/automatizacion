@@ -14,5 +14,4 @@ define("DB_PASSWORD", 'WAc$W]74{Qo-');
 //definimos la codificación de los caracteres
 define("DB_ENCODE","utf8");
 
-//Definimos una constante como nombre del proyecto
-define("PRO_NOMBRE","ITVentas");
+
