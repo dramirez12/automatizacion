@@ -13,7 +13,7 @@ $encode=DB_ENCODE;
 		die('Error en la conexion' . $mysqli->connect_error);
 		exit();	
 	}
-$connect = new PDO("mysql:host=".$servidor.";dbname=".$base."", $usuario, $password);
+$connect = new PDO("mysql:host=".$servidor."; dbname=".$base."", $usuario, $password);
 
 if (!mysqli_set_charset($mysqli, $encode)) {
         printf("Error cargando el conjunto de caracteres utf8: %s\n", mysqli_error($mysqli));
