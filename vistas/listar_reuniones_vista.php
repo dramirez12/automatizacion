@@ -1,5 +1,5 @@
 <?php
-// Colaboracion: JLLC-9112205');
+//
 ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
@@ -59,8 +59,8 @@ ob_end_flush();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="../vistas/menu_reunion_vista.php">Menu Gestión Reunión</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/menu_reunion_vista">Menu Gestión Reunión</a></li>
             </ol>
           </div>
           <div class="RespuestaAjax"></div>
@@ -127,7 +127,7 @@ ob_end_flush();
                           <td><?php echo $reunion['lugar']; ?></td>
                           <td><?php echo $reunion['tipo']; ?></td>
                           <td><?php echo $reunion['estado']; ?></td>
-                          <td><a target="_blank" href="../pdf/reporte_memorandum.php?id=<?php echo $reunion['id_reunion'] ?>">VER MEMORANDUM</a></td>
+                          <td><a target="_blank" href="../pdf/reporte_memorandum?id=<?php echo $reunion['id_reunion'] ?>">VER MEMORANDUM</a></td>
                         </tr>
                       <?php
                       }  ?>

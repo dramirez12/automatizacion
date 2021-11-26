@@ -1,5 +1,5 @@
 <?php
-// Colaboracion: JLLC-9112205');
+//
 ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
@@ -253,6 +253,7 @@ ob_end_flush();
                                     columns: [{
                                         alignment: "center",
                                         text: [{
+                                            " Pagina ",
                                                 text: page.toString(),
                                                 italics: true
                                             },

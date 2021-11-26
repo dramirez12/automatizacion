@@ -34,7 +34,8 @@ t1.asunto,
 t1.agenda_propuesta,
 t1.enlace,
 t2.estado_reunion,
-t3.tipo
+t3.tipo, 
+t1.mensaje
 FROM
 tbl_reunion t1
 INNER JOIN tbl_estado_reunion t2 ON
@@ -92,7 +93,7 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->SetFont('Arial','B',15);
 	$pdf->cell(0,6,utf8_decode('Universidad Nacional Autónoma de Honduras'),0,1,'C');
 	$pdf->ln(2);
-	$pdf->cell(0,6,utf8_decode('Facultad de Ciencias Economicas'),0,1,'C');
+	$pdf->cell(0,6,utf8_decode('Facultad de Ciencias Económicas'),0,1,'C');
 	$pdf->ln(2);
 	$pdf->cell(0,6,utf8_decode('Departamento de Informática Administrativa'),0,1,'C');
 	$pdf->ln(20);
@@ -114,7 +115,7 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->SetX(20);
 	$pdf->multicell(170,7,utf8_decode('Tipo: ' . $estado['tipo']),0);
 	$pdf->SetX(20);
-	$pdf->multicell(170,7,utf8_decode('De: Jefatura Depto. Informatica Administrativa'),0);
+	$pdf->multicell(170,7,utf8_decode('De: Jefatura Depto. Informática Administrativa'),0);
 	$pdf->SetX(20);
 	$pdf->SetFont('Arial','I',11);
 	$pdf->multicell(170,7,utf8_decode('Para: '. $personas['personas']),0);
@@ -133,7 +134,7 @@ $resultado = mysqli_query($connection, $sql);
     $pdf->multicell(170,9,utf8_decode('Estimados: '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
-	$pdf->multicell(170,5,utf8_decode('Por medio del presente se recuerda que el próximo '. $estado['fecha'] . ' se realizará la reunion con asunto '.$estado['asunto'].', en el horario de ' .$estado['hora_inicio'].' a ' .$estado['hora_final'].' con los siguientes puntos a tratar: '),0);
+	$pdf->multicell(170,5,utf8_decode('Por medio del presente se recuerda que el próximo '. $estado['fecha'] . ' se realizará la reunión con asunto '.$estado['asunto'].', en el horario de ' .$estado['hora_inicio'].' a ' .$estado['hora_final'].' con los siguientes puntos a tratar: '),0);
 	$pdf->ln(5);
 	$pdf->SetX(20);
 	$pdf->SetFillColor(232,232,232);

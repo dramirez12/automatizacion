@@ -91,7 +91,7 @@ ob_end_flush();
                                <input type="hidden" name="estado" value="1">
                                <input type="hidden" name="reunion" value="nuevo">
                                <button type="submit" class="btn btn-success float-right" <?php echo $_SESSION['btn_crear']; ?> disabled>Agendar</button>
-                               <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista">Cancelar</a>
+                               <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista" id="confirm">Cancelar</a>
                             </div>
                             </li>
                         </ul>
@@ -111,7 +111,7 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="nombre">Nombre:</label>
-                                                        <input required maxlength="50" minlength="5" onchange="showdatos()"  type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunión" onkeyup="PasarValor()" onkeypress="return validacion(event)" onblur="limpia()">
+                                                        <input onkeyup="MismaLetra('nombre');" onkeypress="return validacion(event)" onblur="limpia()" required="" maxlength="50" minlength="5" onchange="showdatos()"  type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunión">
                                                     </div>
 
                                                     <div class="form-group">
@@ -135,7 +135,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lugar">Lugar:</label>
-                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required="" maxlength="30" minlength="4" onchange="showdatos()" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunión">
+                                                        <input onkeyup="MismaLetra('lugar');" onkeypress="return validacion(event)" onblur="limpia()" required="" maxlength="30" minlength="4" onchange="showdatos()" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunión">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="fecha">Fecha:</label>
@@ -151,7 +151,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="display: none;" id="enlaces" for="enlace">Enlace de la Reunión:</label>
-                                                        <input style="display: none;" minlength="10" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunión">
+                                                        <input style="display: none;" minlength="10" maxlength="1000" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunión">
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -169,11 +169,11 @@ ob_end_flush();
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="asunto">Asunto:</label>
-                                                    <input type="text" onkeypress="return validacionn(event)" onblur="limpia()" minlength="5" maxlength="50" required minlength="4" onchange="showdatos()"  class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"></input>
+                                                    <textarea onkeyup="MismaLetra('asunto');" type="text" onkeypress="return validacion(event)"  minlength="5" maxlength="50" required minlength="4" onchange="showdatos()"  class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="agenda">Agenda Propuesta</label>
-                                                    <textarea onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" onchange="showdatos()"  class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"></textarea>
+                                                    <textarea onkeyup="MismaLetra('agenda');" onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" maxlength="65000" onchange="showdatos()"  class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"></textarea>
                                                 </div>
                                             </div>
                                             <!-- /.card-body -->
@@ -205,7 +205,7 @@ ob_end_flush();
 
 
                                                     <div class="icheck-danger d-inline" style="padding: 15px 0px 0px 15px;">
-                                                        <input type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
+                                                        <input  type="checkbox" id="checkboxPrimary10" name="selectall" onclick="marcar(this);">
                                                         <label for="checkboxPrimary10">
                                                             Seleccionar/Deseleccionar Todo
                                                         </label>
@@ -235,7 +235,7 @@ ob_end_flush();
                                                                     <tr>
                                                                         <td>
                                                                             <div class="icheck-danger d-inline">
-                                                                                <input  type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chknormal[]" value="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                <input onclick="return false;" type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chknormal[]" value="<?php echo $estadoacta['id_persona']; ?>">
                                                                                 <label for="<?php echo $estadoacta['id_persona']; ?>">
                                                                                     <?php echo $estadoacta['nombres']; ?>
                                                                                 </label>
@@ -287,7 +287,7 @@ ob_end_flush();
                                                                     <tr>
                                                                         <td>
                                                                             <div class="icheck-danger d-inline">
-                                                                                <input type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chk[]" value="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                <input onclick="return false;" type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chk[]" value="<?php echo $estadoacta['id_persona']; ?>">
                                                                                 <label for="<?php echo $estadoacta['id_persona']; ?>">
                                                                                     <?php echo $estadoacta['nombres']; ?>
                                                                                 </label>
@@ -321,54 +321,7 @@ ob_end_flush();
     <!-- /.content-wrapper -->
     </div>
     <script type="text/javascript">
-        $(function() {
 
-            $("#clasif").on('change', function() {
-                var selectValue = $(this).val();
-                switch (selectValue) {
-
-                    case "1":
-                        $("#reu-normal").hide();
-                        $("#reu-asamblea").hide();
-                        $( "#chknormal" ).prop( "disabled", true );
-                        $( "#chk" ).prop( "disabled", true );
-                        $('input').filter(':checkbox').removeAttr('checked');
-                        $('button:submit').prop({
-                            disabled: $('input:checkbox:checked').length < 2
-                        });
-                        break;
-
-                    case "2":
-                        $("#reu-normal").hide();
-                        $( "#chknormal" ).prop( "disabled", true );
-                        $( "#chk" ).prop( "disabled", false );
-                        $("#reu-asamblea").show();
-                        $('input').filter(':checkbox').removeAttr('checked');
-                        $('button:submit').prop({
-                            disabled: $('input:checkbox:checked').length < 2
-                        });
-                        break;
-
-                    case "3":
-                        $("#chknormal").prop( "disabled", false );
-                        $("#reu-normal").show();
-                        $("#reu-asamblea").hide();
-                        $("#chk").prop( "disabled", true );
-                        $('input').filter(':checkbox').removeAttr('checked');
-                        $('button:submit').prop({
-                            disabled: $('input:checkbox:checked').length < 2
-                        });
-                        break;
-
-                }
-
-            }).change();
-
-        });
-
-        function mayus(e) {
-            e.value = e.value.toUpperCase();
-        }
         $(function() {
             $('#example1').DataTable({
                 "paging": true,
@@ -396,213 +349,50 @@ LIMIT 1";
     $resultado = $mysqli->query($sql);
     $ultimo = $resultado->fetch_assoc();
     ?>
-    <script type="text/javascript">
-        /********** guardar reunion ***********/
-        $('#guardar-reunion').on('submit', function(e) {
-            e.preventDefault();
-            var datos = $(this).serializeArray();
-            $.ajax({
-                type: $(this).attr('method'),
-                data: datos,
-                url: $(this).attr('action'),
-                dataType: 'json',
-                success: function(data) {
-                    console.log(data);
-                    var resultado = data;
-                    if (resultado.respuesta == 'exito') {
-                        swal({
-                            title: "Correcto",
-                            text: "Se Agendo correctamente!",
-                            type: "success",
-                            confirmButtonText: "Ir a Reuniones Pendientes",
-                            html: `<h3>La reunión se Agendo con Exito!</h3>
-                                <br>
-                                ¿Ahora que desea hacer?
-                                <br>
-                                <b><a target="_blank" href="../pdf/reporte_memorandum.php?id=<?php echo $ultimo['valor']; ?>">Ver Reporte</a></b>`,
-                        }).then(function() {
-                            location.href = "../vistas/reuniones_pendientes_vista.php";
-                        });
-                    } else {
-                        swal(
-                            'Error',
-                            'Hubo un error falta campos por llenar!',
-                            'error'
-                        )
-                    }
-                }
-            })
-        });
-
-        function marcar(source) {
-            checkboxes = document.getElementsByTagName('input'); //obtenemos todos los controles del tipo Input
-            for (i = 0; i < checkboxes.length; i++) //recoremos todos los controles
-            {
-                if (checkboxes[i].type == "checkbox") //solo si es un checkbox entramos
-                {
-                    checkboxes[i].checked = source.checked; //si es un checkbox le damos el valor del checkbox que lo llamó (Marcar/Desmarcar Todos)
-                }
-            }
-        }
-
-        $(function() {
-            $('input:checkbox').change(function() {
-                $('button:submit').prop({
-                    disabled: $('input:checkbox:checked').length < 2
-                });
-            });
-        });
-
-        function showdatos() {
-            getnombre = document.getElementById("nombre").value;
-            getlugar = document.getElementById("lugar").value;
-            getagenda = document.getElementById("agenda").value;
-            getasunto = document.getElementById("asunto").value;
-            getfecha = document.getElementById("fecha").value;
-            gettipo = document.getElementById("tipo").value;
-            getinicio = document.getElementById("horainicio").value;
-            getfinal = document.getElementById("horafinal").value;
-
-            if (getnombre == "" || getlugar == "" || getagenda == "" || getasunto == "" || getfecha == "" || gettipo == "0" || getinicio == "" || getfinal == "") {
-                document.getElementById("datosreunion-tab").style.display = "none";
-                document.getElementById("archivos-tab").style.display = "none";
-            } else {
-                document.getElementById("datosreunion-tab").style.display = "block";
-                document.getElementById("archivos-tab").style.display = "block";
-            }
-        }
-
-        function showInp() {
-            getSelectValue = document.getElementById("tipo").value;
-            if (getSelectValue == "2") {
-                document.getElementById("enlace").style.display = "block";
-                document.getElementById("enlace").required = true;
-                document.getElementById("enlaces").style.display = "block";
-            } else {
-                document.getElementById("enlace").style.display = "none";
-                document.getElementById("enlaces").style.display = "none";
-                document.getElementById("enlace").required = false;
-            }
-        }
-
-
-    </script>
-    
-
-    <script> 
-  function validacion(e) {
-      key = e.keyCode || e.which;
-      tecla = String.fromCharCode(key).toLowerCase();
-      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
-      especiales = [37, 39, 46, 13, 8, 32];
-  
-      tecla_especial = false
-      for(var i in especiales) {
-          if(key == especiales[i]) {
-              tecla_especial = true;
-              break;
-          }
-      }
-  
-      if(letras.indexOf(tecla) == -1 && !tecla_especial)
-          return false;
-  }
-  function validacionn(e) {
-      key = e.keyCode || e.which;
-      tecla = String.fromCharCode(key).toLowerCase();
-      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
-      especiales = [8, 37, 39, 46, 32];
-  
-    
-  
-      if(letras.indexOf(tecla) == -1 && !tecla_especial)
-          return false;
-  }
-  window.onload = function() {
-  var nom = document.getElementById('nombre');
-  var asu = document.getElementById('asunto');
-  var lugar = document.getElementById('lugar');
-  var agenda = document.getElementById('agenda');
-  
-  nom.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  nom.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-  asu.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  asu.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-  lugar.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  lugar.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-  agenda.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  agenda.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-}
-  
-  function limpia() {
-      var val = document.getElementById("nombre").value;
-      var tam = val.length;
-      for(i = 0; i < tam; i++) {
-          if(!isNaN(val[i]))
-              document.getElementById("nombre").value = '';
-      }
-  }
-  </script>
     <script>
-        const inicio = document.getElementById("horainicio");
-        const final = document.getElementById("horafinal");
-        const comparaHoras = () => {
-            const vInicio = inicio.value;
-            const vFinal = final.value;
-            if (!vInicio || !vFinal) {
-                return;
-            }
-            const tIni = new Date();
-            const pInicio = vInicio.split(":");
-            tIni.setHours(pInicio[0], pInicio[1]);
-            const tFin = new Date();
-            const pFin = vFinal.split(":");
-            tFin.setHours(pFin[0], pFin[1]);
-            if (tFin.getTime() < tIni.getTime()) {
-                alert("La hora final no puede menor a de inicio");
-                document.getElementById('horafinal').value = ''
-            }
-            if (tFin.getTime() === tIni.getTime()) {
-                alert("La hora inicio con la hora final no pueden ser Iguales");
-                document.getElementById('horafinal').value = ''
+        
+/********** guardar reunion ***********/
+$('#guardar-reunion').on('submit', function(e) {
+    e.preventDefault();
+    var datos = $(this).serializeArray();
+    $.ajax({
+        type: $(this).attr('method'),
+        data: datos,
+        url: $(this).attr('action'),
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            var resultado = data;
+            if (resultado.respuesta == 'exito') {
+                swal({
+                    title: "Correcto",
+                    text: "Se Agendo correctamente!",
+                    type: "success",
+                    allowOutsideClick: false, //bloquear click fuera
+                    confirmButtonText: "Ir a Reuniones Pendientes",
+                    html: `<h3>La reunión se Agendo con Exito!</h3>
+                        <br>
+                        ¿Ahora que desea hacer?
+                        <br>
+                        <b><a target="_blank" href="../pdf/reporte_memorandum.php?id=<?php echo $ultimo['valor']; ?>">Ver Reporte</a></b>`,
+                }).then(function() {
+                    location.href = "../vistas/reuniones_pendientes_vista.php";
+                });
+            } else {
+                swal(
+                    'Error',
+                    'Hubo un error falta campos por llenar!',
+                    'error'
+                )
             }
         }
-        inicio.addEventListener("change", comparaHoras);
-        final.addEventListener("change", comparaHoras);
-
-
+    })
+});
     </script>
 </body>
 
 </html>
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- Select2 -->
 <script src="../plugins/select2/js/select2.full.min.js"></script>

@@ -52,8 +52,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista.php">Menu Gestión actas</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista">Menu Gestión actas</a></li>
                             <li class="breadcrumb-item"><a href="#">Lista de Actas</a></li>
                         </ol>
                     </div>
@@ -133,7 +133,7 @@ ob_end_flush();
                                                     <td style="color: green;"><?php echo $reunion['asistio']; ?>%</td>
                                                     <td style="color: red;"><?php echo $reunion['inasistencia']; ?>%</td>
                                                     <td style="color:rgb(255, 135, 0);"><?php echo $reunion['excusa']; ?>%</td>
-                                                    <td><a target="_blank" href="../Controlador/reporte_asistencia_acta.php?id=<?php echo $reunion['id_acta'] ?>">VER REPORTE</a></td>
+                                                    <td><a target="_blank" href="../Controlador/reporte_asistencia_acta?id=<?php echo $reunion['id_acta'] ?>">VER REPORTE</a></td>
                                                 </tr>
                                             <?php
                                             }  ?>
@@ -239,10 +239,10 @@ ob_end_flush();
                     pageSize: "letter",
                     alignment: "center",
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5],
+                        columns: [0, 1, 2, 3, 4, 5, 6],
 
                     },
-                    title: "REPORTE ASISTENCIA POR ACTAS ",
+                    title: "REPORTE ASISTENCIA POR ACTAaS ",
 
                     messageTop: "FECHA: " + fechaYHora,
                     customize: function(doc) {

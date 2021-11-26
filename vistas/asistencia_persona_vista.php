@@ -1,5 +1,5 @@
 <?php
-// Colaboracion: JLLC-9112205');
+//
 ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
@@ -57,8 +57,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_asistencia_vista.php">Menu Asistencia</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_asistencia_vista">Menu Asistencia</a></li>
                             <li class="breadcrumb-item active">Lista de Actas</li>
                         </ol>
                     </div>

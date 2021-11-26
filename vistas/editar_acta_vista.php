@@ -92,7 +92,7 @@ ob_end_flush();
                         <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
                         <input type="hidden" name="acta" value="actualizar">
                         <button style="padding-right: 15px;" type="submit" class="btn btn-success float-left" id="editar_registro" <?php echo $_SESSION['btn_crear']; ?>>Guardar Como Borrador</button>
-                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-danger" href="actas_pendientes_vista.php">Cancelar</a>
+                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-danger" href="actas_pendientes_vista">Cancelar</a>
                     </div><br><br><br>
                     <div class="card card-primary card-outline card-tabs">
                         <div class="card-header p-0 pt-1 border-bottom-0">

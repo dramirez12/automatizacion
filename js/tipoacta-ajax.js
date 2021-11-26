@@ -29,7 +29,7 @@ $(document).ready(function () {
                             text: "Se Finalizo con Exito!",
                             type: "success"
                         }).then(function () {
-                            location.href = "../vistas/actas_pendientes_vista.php";
+                            location.href = "../vistas/actas_pendientes_vista";
                         });
                     } else {
                         swal(
@@ -67,9 +67,9 @@ $(document).ready(function () {
                         html: `<br>
                                 ¿Desea gestionar los acuerdos ahora?
                                 <br>
-                                <b><a target="_blank" href="../vistas/crear_acuerdo_vista.php">Crear Un acuerdo</a></b>`,
+                                <b><a target="_blank" href="../vistas/crear_acuerdo_vista">Crear Un acuerdo</a></b>`,
                     }).then(function () {
-                        location.href = "../vistas/actas_pendientes_vista.php";
+                        location.href = "../vistas/actas_pendientes_vista";
                     }
                     );
                 } else {
@@ -104,13 +104,13 @@ $(document).ready(function () {
                     title: "Correcto",
                     text: "El acta se ha archivado correctamente!",
                     type: "success",
-                    confirmButtonText: "Ir a Actas Pendientes",
+                    confirmButtonText: "Ir a Actas Archivadas",
                         html: `<br>
-                                ¿Desea archivaar otra acta ahora?
+                                ¿Desea archivar otra acta ahora?
                                 <br>
-                                <b><a target="_blank" href="../vistas/archivar_actas_vista.php">Archivar Acta</a></b>`,
+                                <b><a target="_blank" href="../vistas/archivar_actas_vista">Archivar Acta</a></b>`,
                 }).then(function () {
-                    location.href = "../vistas/menu_acta_vista.php";
+                    location.href = "../vistas/listar_actasarchivadas_vista";
                 }
                 );
             } else {
@@ -141,7 +141,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se editó correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../vistas/reuniones_pendientes_vista.php";
+                        location.href = "../vistas/reuniones_pendientes_vista";
                     }
                     );
                 } else {
@@ -171,7 +171,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../vistas/mantenimiento_estadoparticipante_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoparticipante_vista";
                     }
                     );
                 } else {
@@ -202,7 +202,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../vistas/mantenimiento_estadonoti_vista.php";
+                        location.href = "../vistas/mantenimiento_estadonoti_vista";
                     }
                     );
                 } else {
@@ -234,7 +234,7 @@ $(document).ready(function () {
                         text: "Se guardo correctamente!",
                         type: "success"
                     }).then(function () {
-                        location.href = "../vistas/mantenimiento_actareunion_vista.php";
+                        location.href = "../vistas/mantenimiento_actareunion_vista";
                     }
                     );
                 } else {
@@ -269,7 +269,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../vistas/mantenimiento_estadoacta_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoacta_vista";
                     }
                     );
                 } else {
@@ -300,7 +300,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../vistas/mantenimiento_estadoreunion_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoreunion_vista";
                     }
                     );
                 } else {
@@ -331,7 +331,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!", type:
                             "success"
                     }).then(function () {
-                        location.href = "../vistas/mantenimiento_estadoacuerdo_vista.php";
+                        location.href = "../vistas/mantenimiento_estadoacuerdo_vista";
                     }
                     );
                 } else {
@@ -418,7 +418,7 @@ $(document).ready(function () {
                             text: "cancelada con Exito!",
                             type: "success"
                         }).then(function () {
-                            location.href = "../vistas/reuniones_pendientes_vista.php";
+                            location.href = "../vistas/reuniones_pendientes_vista";
                         }
                         );
                     } else {
@@ -711,9 +711,9 @@ $(document).ready(function () {
                                 <br>
                                 ¿Desea agregar otro acuerdo?
                                 <br>
-                                <b><a href="../vistas/crear_acuerdo_vista.php">Añadir otro acuerdo</a></b>`,
+                                <b><a href="../vistas/crear_acuerdo_vista">Añadir otro acuerdo</a></b>`,
                     }).then(function () {
-                        location.href = "../vistas/acuerdos_pendientes_vista.php";
+                        location.href = "../vistas/acuerdos_pendientes_vista";
                     }
                     );
                 } else {
@@ -745,7 +745,7 @@ $(document).ready(function () {
                         title: "Correcto", text: "Se guardo correctamente!",
                         type: "success",
                     }).then(function () {
-                        location.href = "../vistas/acuerdos_pendientes_vista.php";
+                        location.href = "../vistas/acuerdos_pendientes_vista";
                     }
                     );
                 } else {
@@ -789,7 +789,7 @@ $(document).ready(function () {
                             text: 'Finalizada con Exito!',
                             type: 'success'
                         }).then(function () {
-                            location.href = "../vistas/acuerdos_pendientes_vista.php";
+                            location.href = "../vistas/acuerdos_pendientes_vista";
                         }
                         );
                     } else {
@@ -811,13 +811,14 @@ $(document).ready(function () {
     var tipo = $(this).attr('data-tipo');
     swal({
         title: '¿Está Seguro?',
-        text: 'Si la cancela no podra revertirlo!!<br><br><b>Escriba el motivo por lo cual cancela la reunion</b><br><br><input class="form-control" onkeyup="mayus(this);" id="mensaje" style="width: 65%; margin-left: 17%;" required name="mensaje" type="text">',
+        text: '<h5>¡Si la cancela no podrá revertirlo!</h5><br><b>Escriba el motivo por lo cual cancela la reunión:</b><br><br><input class="form-control" onkeyup="mayus(this);" id="mensaje" style="width: 65%; margin-left: 17%;  border: solid 2px #007EA7;" required="" name="mensaje" type="text">',
         type: 'warning',
+        allowOutsideClick: false, //bloquear click fuera
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtontext: 'Si, cancelarla!',
-        cancelButtontext: 'Cancelar'
+        confirmButtonText: '¡Si, cancelarla!',
+        cancelButtonText: 'Cancelar'
     }).then(function () {
         $.ajax({
             type: 'post',
@@ -832,10 +833,10 @@ $(document).ready(function () {
                 if (resultado.respuesta == 'exito') {
                     swal({
                         title: "cancelada",
-                        text: "Reunión cancelada con Exito!",
+                        text: "<h5>¡Reunión cancelada con Éxito!</h5>",
                         type: "success"
                     }).then(function () {
-                        location.href = "../vistas/reuniones_pendientes_vista.php";
+                        location.href = "../vistas/reuniones_pendientes_vista";
                     });
                 } else {
                     swal(
@@ -880,7 +881,7 @@ $(document).ready(function () {
                             text: 'acuerdo cancelado con Exito!',
                             type: 'success'
                         }).then(function () {
-                            location.href = "../vistas/acuerdos_pendientes_vista.php";
+                            location.href = "../vistas/acuerdos_pendientes_vista";
                         }
                         );
                     } else {

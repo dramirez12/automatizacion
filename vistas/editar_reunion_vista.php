@@ -70,12 +70,12 @@ ob_end_flush();
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Editar Reunion</h1>
+                        <h1>Editar Reunión</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                            <li class="breadcrumb-item active">Editar Reunion</li>
+                            <li class="breadcrumb-item active">Editar Reunión</li>
                         </ol>
                     </div>
                 </div>
@@ -127,7 +127,7 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="nombre">Nombre:</label>
-                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" type="text" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion">
+                                                        <input onkeypress="return validacion(event)" onblur="limpia()" onkeyup="MismaLetra('nombre');" required maxlength="50" minlength="5" type="text" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="tipo">Tipo de Reunión</label>
@@ -157,7 +157,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lugar">Lugar:</label>
-                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required minlength="4" value="<?php echo $estado['lugar']; ?>" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunion">
+                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required minlength="4" maxlength="30" value="<?php echo $estado['lugar']; ?>" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunion" onkeyup="MismaLetra('lugar');">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="fecha">Fecha:</label>
@@ -173,7 +173,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label id="enlaces" for="enlace">Enlace de la Reunión:</label>
-                                                        <input value="<?php echo $estado['enlace']; ?>" minlength="10" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunion">
+                                                        <input value="<?php echo $estado['enlace']; ?>" minlength="10" maxlength="1000" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunion">
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -191,11 +191,11 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="asunto">Asunto:</label>
-                                                        <textarea onkeypress="return validacionn(event)" onblur="limpia()" required minlength="4" maxlength="50" class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"><?php echo $estado['asunto']; ?></textarea>
+                                                        <textarea onkeyup="MismaLetra('asunto');" onkeypress="return validacionn(event)" onblur="limpia()" required minlength="5" maxlength="50" class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"><?php echo $estado['asunto']; ?></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="agenda">Agenda Propuesta</label>
-                                                        <textarea onkeypress="return validacion(event)" onblur="limpia()" required minlength="10" class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"><?php echo $estado['agenda_propuesta']; ?></textarea>
+                                                        <textarea onkeyup="MismaLetra('agenda');" onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" maxlength="65000" class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"><?php echo $estado['agenda_propuesta']; ?></textarea>
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -357,161 +357,8 @@ ob_end_flush();
             });
         });
 
-        $(function() {
-            $('input:checkbox').change(function() {
-                $('button:submit').prop({
-                    disabled: $('input:checkbox:checked').length = 0
-                });
-            });
-        });
     </script>
 
-
-
-    <script type="text/javascript">
-        function marcar(source) {
-            checkboxes = document.getElementsByTagName('input'); //obtenemos todos los controles del tipo Input
-            for (i = 0; i < checkboxes.length; i++) //recoremos todos los controles
-            {
-                if (checkboxes[i].type == "checkbox") //solo si es un checkbox entramos
-                {
-                    checkboxes[i].checked = source.checked; //si es un checkbox le damos el valor del checkbox que lo llamó (Marcar/Desmarcar Todos)
-                }
-            }
-        }
-        if (document.getElementById("enlace").value == "") {
-            document.getElementById("enlace").style.display = "none";
-            document.getElementById("enlaces").style.display = "none";
-            document.getElementById("enlace").required = false;
-        }
-
-
-
-        function showInp() {
-            getSelectValue = document.getElementById("tipo").value;
-            if (getSelectValue == "2") {
-                document.getElementById("enlace").style.display = "block";
-                document.getElementById("enlace").required = true;
-                document.getElementById("enlaces").style.display = "block";
-            } else {
-                document.getElementById("enlace").style.display = "none";
-                document.getElementById("enlaces").style.display = "none";
-                document.getElementById("enlace").required = false;
-                document.getElementById("enlace").value = "";
-            }
-        }
-    </script>
-
-    
-     <script> 
-  function validacion(e) {
-      key = e.keyCode || e.which;
-      tecla = String.fromCharCode(key).toLowerCase();
-      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
-      especiales = [37, 39, 46, 13, 8, 32];
-  
-      tecla_especial = false
-      for(var i in especiales) {
-          if(key == especiales[i]) {
-              tecla_especial = true;
-              break;
-          }
-      }
-  
-      if(letras.indexOf(tecla) == -1 && !tecla_especial)
-          return false;
-  }
-  function validacionn(e) {
-      key = e.keyCode || e.which;
-      tecla = String.fromCharCode(key).toLowerCase();
-      letras = "abcdefghijklmnñopqrstuvwxyz,.;@:-()%#0123456789éáíóú"
-      especiales = [8];
-  
-    
-  
-      if(letras.indexOf(tecla) == -1 && !tecla_especial)
-          return false;
-  }
-  window.onload = function() {
-  var nom = document.getElementById('nombre');
-  var asu = document.getElementById('asunto');
-  var lugar = document.getElementById('lugar');
-  var agenda = document.getElementById('agenda');
-  
-  nom.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  nom.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-  asu.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  asu.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-  lugar.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  lugar.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-  agenda.onpaste = function(e) {
-    e.preventDefault();
-    alert("Está acción pegar está prohibida");
-  }
-  
-  agenda.oncopy = function(e) {
-    e.preventDefault();
-    alert("Está acción de copiar está prohibida");
-  }
-}
-  
-  function limpia() {
-      var val = document.getElementById("nombre").value;
-      var tam = val.length;
-      for(i = 0; i < tam; i++) {
-          if(!isNaN(val[i]))
-              document.getElementById("nombre").value = '';
-      }
-  }
-  </script>
-    <script>
-        const inicio = document.getElementById("horainicio");
-        const final = document.getElementById("horafinal");
-        const comparaHoras = () => {
-            const vInicio = inicio.value;
-            const vFinal = final.value;
-            if (!vInicio || !vFinal) {
-                return;
-            }
-            const tIni = new Date();
-            const pInicio = vInicio.split(":");
-            tIni.setHours(pInicio[0], pInicio[1]);
-            const tFin = new Date();
-            const pFin = vFinal.split(":");
-            tFin.setHours(pFin[0], pFin[1]);
-            if (tFin.getTime() < tIni.getTime()) {
-                alert("La hora final no puede menor a de inicio");
-                document.getElementById('horafinal').value = ''
-            }
-            if (tFin.getTime() === tIni.getTime()) {
-                alert("La hora inicio con la hora final no pueden ser Iguales");
-                document.getElementById('horafinal').value = ''
-            }
-        }
-        inicio.addEventListener("change", comparaHoras);
-        final.addEventListener("change", comparaHoras);
-    </script>
 </body>
 
 </html>
@@ -533,3 +380,4 @@ ob_end_flush();
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
 <script src="../js/tipoacta-ajax.js"></script>
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>
