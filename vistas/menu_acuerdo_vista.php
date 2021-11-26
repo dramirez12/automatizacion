@@ -80,7 +80,7 @@ ob_end_flush();
                                 </div>
                                 <div class="icon"><i class="far fa-plus-square"></i>
                                 </div>
-                                <a href="../vistas/crear_acuerdo_vista.php" class="small-box-footer">
+                                <a href="../vistas/crear_acuerdo_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -102,7 +102,7 @@ ob_end_flush();
                                 <div class="icon">
                                     <i class="far fa-clock"></i>
                                 </div>
-                                <a href="../vistas/acuerdos_pendientes_vista.php" class="small-box-footer">
+                                <a href="../vistas/acuerdos_pendientes_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -126,7 +126,7 @@ ob_end_flush();
                                 </div>
                                 <div class="icon"><i class="far fa-handshake"></i>
                                 </div>
-                                <a href="../vistas/listar_acuerdos_vista.php" class="small-box-footer">
+                                <a href="../vistas/listar_acuerdos_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>

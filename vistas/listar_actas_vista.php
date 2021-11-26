@@ -1,5 +1,5 @@
 <?php
-// Colaboracion: JLLC-9112205');
+//
 ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
@@ -50,13 +50,13 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista.php">Menu Gestión actas</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista">Menu Gestión actas</a></li>
                             <li class="breadcrumb-item active">Lista de Actas</li>
                         </ol>
                     </div>
                     <div style="padding: 10px 0 0 8px; float: right;">
-                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-primary" href="listar_actasarchivadas_vista.php">Ver Actas Archivadas</a>
+                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-primary" href="listar_actasarchivadas_vista">Ver Actas Archivadas</a>
                     </div>
                     <div class="RespuestaAjax"></div>
                 </div>
@@ -96,7 +96,7 @@ ob_end_flush();
                     </div>
                     <div class="icon"><i class="fas fa-clipboard-check"></i>
                     </div>
-                    <a href="menu_asistencia_vista.php" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="menu_asistencia_vista" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -109,7 +109,7 @@ ob_end_flush();
                     </div>
                     <div class="icon"><i class="fas fa-exclamation-triangle"></i>
                     </div>
-                    <a href="menu_asistencia_vista.php" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="menu_asistencia_vista" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -122,7 +122,7 @@ ob_end_flush();
                     </div>
                     <div class="icon"><i class="fas fa-user-times"></i>
                     </div>
-                    <a href="menu_asistencia_vista.php" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="menu_asistencia_vista" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@ ob_end_flush();
                                                     <td><?php echo $reunion['hora_inicial']; ?></td>
                                                     <td><?php echo $reunion['hora_final']; ?></td>
                                                     <td>
-                                                        <a target="_blank" href="../vistas/archivos_acta_vista.php?id=<?php echo $reunion['id_acta'] ?>">archivos</a>
+                                                        <a target="_blank" href="../vistas/archivos_acta_vista?id=<?php echo $reunion['id_acta'] ?>">archivos</a>
                                                     </td>
                                                     <td><a target="_blank" href="../Controlador/reporte_acta.php?id=<?php echo $reunion['id_acta'] ?>">VER ACTA</a></td>
                                                 </tr>
@@ -315,6 +315,7 @@ ob_end_flush();
                                     columns: [{
                                         alignment: "center",
                                         text: [{
+                                            " Pagina ",
                                                 text: page.toString(),
                                                 italics: true
                                             },

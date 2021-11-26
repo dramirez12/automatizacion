@@ -74,7 +74,7 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista.php">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista">Inicio</a></li>
                             <li class="breadcrumb-item active">Crear Acuerdo</li>
                         </ol>
                     </div>
@@ -166,7 +166,7 @@ ob_end_flush();
                     <p>Lo que haya escrito no se guardará!</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <a style="color: white ;" type="button" class="btn btn-primary" href="../vistas/crear_acuerdo_vista.php">Sí, deseo cancelar</a>
+                    <a style="color: white ;" type="button" class="btn btn-primary" href="../vistas/crear_acuerdo_vista">Sí, deseo cancelar</a>
                     <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
                 </div>
             </div>

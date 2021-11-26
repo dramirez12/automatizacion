@@ -1,6 +1,6 @@
 <?php
-require_once "global.php";
-$conexion = new mysqli('51.222.86.251', 'informat_desarrollo', '^Kwd{PE^(L&#', 'informat_desarrollo_automatizacion');
+require_once "Conexion.php";
+$conexion = $mysqli;
 mysqli_query($conexion, 'SET NAMES "' . DB_ENCODE . '"');
 
 //Si tenemos un posible error en la conexión lo mostramos

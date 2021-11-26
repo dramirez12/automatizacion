@@ -78,8 +78,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista.php">Gestión Acuerdos</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista">Gestión Acuerdos</a></li>
                             <li class="breadcrumb-item active">Acuerdos Pendientes</li>
                         </ol>
                     </div>
@@ -96,7 +96,7 @@ ob_end_flush();
                             <!-- /.card -->
                             <div class="card-header">
                                 <h3 class="card-title">Listado de Acuerdos pendientes</h3>
-                                <a href="crear_acuerdo_vista.php" type="button" class="btn btn-app bg-warning float-right derecha <?php echo $_SESSION['btn_crear']; ?>">
+                                <a href="crear_acuerdo_vista" type="button" class="btn btn-app bg-warning float-right derecha <?php echo $_SESSION['btn_crear']; ?>">
                                     <i class="fas fa-plus-circle"><br></i>Crear Nueva Acuerdo
                                 </a>
                             </div>
@@ -148,7 +148,7 @@ ob_end_flush();
                                                             <td><?php echo $reunion['descripcion']; ?></td>
                                                             <td><?php echo $reunion['fecha_expiracion']; ?></td>
                                                             <td>
-                                                                <a href="../vistas/editar_acuerdo_vista.php?id=<?php echo $reunion['id_acuerdo'] ?>" style="min-width:86px; margin-bottom: 5px;" class="btn btn-primary  <?php echo $_SESSION['btn_editar'] ?>" style="color: while;">
+                                                                <a href="../vistas/editar_acuerdo_vista?id=<?php echo $reunion['id_acuerdo'] ?>" style="min-width:86px; margin-bottom: 5px;" class="btn btn-primary  <?php echo $_SESSION['btn_editar'] ?>" style="color: while;">
                                                                     <i class="far fa-edit"></i><br>Editar
                                                                 </a>
                                                                 <a href="#" data-id="<?php echo $reunion['id_acuerdo']; ?>" data-tipo="acuerdos" style="min-width:86px; margin-bottom: 5px;" class="finalizar_registroacuerdo btn btn-success  <?php echo $_SESSION['btn_editar'] ?>">

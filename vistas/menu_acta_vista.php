@@ -49,7 +49,7 @@ ob_end_flush();
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
                                 <li class="breadcrumb-item active">Control de actas</li>
                             </ol>
                         </div><!-- /.col -->
@@ -75,7 +75,7 @@ ob_end_flush();
                                 <div class="icon">
                                     <i class="far fa-clock"></i>
                                 </div>
-                                <a href="../vistas/actas_pendientes_vista.php" class="small-box-footer">
+                                <a href="../vistas/actas_pendientes_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -99,7 +99,7 @@ ob_end_flush();
                                 </div>
                                 <div class="icon"><i class="fas fa-file-alt"></i>
                                 </div>
-                                <a href="../vistas/listar_actas_vista.php" class="small-box-footer">
+                                <a href="../vistas/listar_actas_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -123,7 +123,7 @@ ob_end_flush();
                                 </div>
                                 <div class="icon"><i class="fas fa-archive"></i>
                                 </div>
-                                <a href="../vistas/archivar_actas_vista.php" class="small-box-footer">
+                                <a href="../vistas/archivar_actas_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>

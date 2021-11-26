@@ -73,7 +73,7 @@ ob_end_flush();
                     <!-- Info boxes -->
                     <div class="row" style="  display: flex; align-items: center; justify-content: center;">
                         <div class="col-6 col-sm-6 col-md-4">
-                            <div class="small-box bg-light">
+                            <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h4>Agendar Nueva Reunión </h4>
                                     <p><?php echo $_SESSION['nueva_reunion']; ?></p>
@@ -81,7 +81,7 @@ ob_end_flush();
                                 <div class="icon">
                                     <i class="far fa-calendar-plus"></i>
                                 </div>
-                                <a href="../vistas/crear_reunion_vista.php" class="small-box-footer">
+                                <a href="../vistas/crear_reunion_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -103,7 +103,7 @@ ob_end_flush();
                                 <div class="icon">
                                     <i class="far fa-clock"></i>
                                 </div>
-                                <a href="../vistas/reuniones_pendientes_vista.php" class="small-box-footer">
+                                <a href="../vistas/reuniones_pendientes_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -128,7 +128,7 @@ ob_end_flush();
                                 <div class="icon">
                                     <i class="fas fa-list-ol"></i>
                                 </div>
-                                <a href="../vistas/listar_reuniones_vista.php" class="small-box-footer">
+                                <a href="../vistas/listar_reuniones_vista" class="small-box-footer">
                                     Ir <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
