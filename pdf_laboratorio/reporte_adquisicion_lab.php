@@ -16,7 +16,6 @@ $pdf->Ln(10);
 
 //Seteamos el tipo de letra y creamos el título de la página. No es un encabezado no se repetirá
 $pdf->SetFont('Arial','B',10);
-
 $pdf->Cell(60,6,'',0,0,'C');
 $pdf->Cell(78,9,utf8_decode('UNIVERSIDAD NACIONAL AUTÓNOMA DE HONDURAS'),0,0,'C'); 
 $pdf->Ln(5);
@@ -97,6 +96,7 @@ while($reg= $rspta0->fetch_object())
     $pdf->Ln(6);
     $pdf->Cell(45,8,'',0,0,'C');
     $pdf->Cell(20,10,utf8_decode('ESTADO: '.$estado),0,0,'L'); 
+
     // $pdf->Ln(7);
     // $pdf->Cell(30,6,'',0,0,'C');
     // $pdf->Cell(30,6,utf8_decode(utf8_decode($reportes_descripcion)),0,0,'L'); 
@@ -183,6 +183,7 @@ while($reg= $rspta->fetch_object())
 
 }
     $pdf->Ln(5);
+    $pdf->Output('Reporte individual de adquisicion No '.$id_adquisicion,'I');
     // $pdf->Cell(20,6,'',0,0,'C');
     // $pdf->Cell(30,4,utf8_decode('Caracteristicas: '.utf8_decode($reportes_caracteristicas)),0,0,'L'); 
 

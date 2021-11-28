@@ -95,6 +95,7 @@ while($reg= $rspta->fetch_object())
     $pdf->Cell(24,15,$reportes_costo,1,0,'L',0);
     $pdf->Cell(74,15,utf8_decode('DEPTO. INFORMÁTICA ADMINSITRATIVA'),1,0,'L',0);
     $pdf->Ln(15);
+    $pdf->Output('Reporte DEGT','I');
 
     // $pdf->SetFont('Arial','',10);
     // $pdf->Cell(30,6,'',0,0,'C');

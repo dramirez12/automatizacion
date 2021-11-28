@@ -94,43 +94,44 @@ while($reg= $rspta->fetch_object())
     $pdf->SetFont('Arial','',10);
 
     $pdf->Cell(30,6,'',0,0,'C');
-	$pdf->Cell(30,6,utf8_decode('No. INVENTARIO: '.utf8_decode($reportes_inventario)),0,0,'L'); 
+	$pdf->Cell(30,6,utf8_decode('No. INVENTARIO: '.$reportes_inventario),0,0,'L'); 
     $pdf->Ln(7);
 
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,6,utf8_decode('PRODUCTO: '.utf8_decode($reportes_producto)),0,0,'L'); 
+    $pdf->Cell(30,6,utf8_decode('PRODUCTO: '.$reportes_producto),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('UBICACIÓN PREVIA: '.utf8_decode($reportes_ubicacion_previa)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('UBICACIÓN PREVIA: '.$reportes_ubicacion_previa),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('UBICACIÓN ACTUAL: '.utf8_decode($reportes_ubicacion)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('UBICACIÓN ACTUAL: '.$reportes_ubicacion),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('RESPONSABLE PREVIO: '.utf8_decode($reportes_nombre_previo)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('RESPONSABLE PREVIO: '.$reportes_nombre_previo),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('RESPONSABLE ACTUAL: '.utf8_decode($reportes_nombre)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('RESPONSABLE ACTUAL: '.$reportes_nombre),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('MOTIVO PREVIO: '.utf8_decode($reportes_motivo_previo)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('MOTIVO PREVIO: '.$reportes_motivo_previo),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('MOTIVO ACTUAL: '.utf8_decode($reportes_motivo)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('MOTIVO ACTUAL: '.$reportes_motivo),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('FECHA PREVIA: '.utf8_decode($reportes_fecha_previo)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('FECHA PREVIA: '.$reportes_fecha_previo),0,0,'L'); 
 
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
-    $pdf->Cell(30,4,utf8_decode('FECHA ACTUAL: '.utf8_decode($reportes_fecha)),0,0,'L'); 
+    $pdf->Cell(30,4,utf8_decode('FECHA ACTUAL: '.$reportes_fecha),0,0,'L'); 
+    $pdf->Output('Reporte individual de asignacion con No '.$reportes_inventario,'I');
 
 
 

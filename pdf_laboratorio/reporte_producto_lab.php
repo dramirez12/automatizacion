@@ -94,6 +94,7 @@ while($reg= $rspta->fetch_object())
     $pdf->Ln(7);
     $pdf->Cell(40,6,'',0,0,'C');
     $pdf->Cell(30,4,utf8_decode('CARACTERISTICAS: '.utf8_decode($reportes_caracteristicas)),0,0,'L'); 
+    $pdf->Output('Reporte individual del producto '.$nombre_producto,'I');
 
 
    

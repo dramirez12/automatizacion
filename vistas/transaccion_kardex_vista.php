@@ -5,7 +5,7 @@ session_start();
 
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
-require_once('../clases/conexion_mantenimientos.php');
+// require_once('../clases/conexion_mantenimientos.php');
 require_once "../Modelos/detalle_existencias_modelo.php";
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
@@ -117,8 +117,10 @@ if ($visualizacion == 0) {
 
   /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A transaccion');
-  $sqltabla = "call sel_transacciones_kardex()";
-  $resultadotabla = $mysqli->query($sqltabla);
+  $sqltabla = "SELECT t.id_transaccion, p.nombre_producto, tt.tipo_transaccion, t.cantidad,t.fecha_transaccion FROM tbl_transacciones t INNER join tbl_productos p INNER JOIN tbl_tipo_transaccion tt ON p.id_producto=t.id_producto and tt.id_tipo_transaccion=t.id_tipo_transaccion;";
+  $resultadotabla = $connection->query($sqltabla);
+  $resultado=$mysqli->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
+
 }
 
 ob_end_flush();
@@ -267,8 +269,8 @@ ob_end_flush();
                       <?php
 
 
-                      $modelo = new respuesta();
-                      $query = $modelo->transaccion();
+                      // $modelo = new respuesta();
+                      // $query = $modelo->transaccion();
 
                       // $servidor= "localhost";
                       // $usuario= "root";
@@ -278,8 +280,8 @@ ob_end_flush();
                       // $mysqli2 = new mysqli($servidor,$usuario,$password,$base);
 
                       // $query = $mysqli2->query("SELECT * FROM tbl_productos where id_tipo_producto='2'");
-                      while ($resultado = mysqli_fetch_array($query)) {
-                        echo '<option value="' . $resultado['id_producto'] . '"> ' . $resultado['nombre_producto'] . '</option>';
+                      while ($resultado1 = mysqli_fetch_array($resultado)) {
+                        echo '<option value="' . $resultado1['id_producto'] . '"> ' . $resultado1['nombre_producto'] . '</option>';
                       }
                       ?>
                     </select>

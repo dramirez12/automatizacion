@@ -110,6 +110,7 @@ while($reg= $rspta->fetch_object())
     $pdf->Ln(7);
     $pdf->Cell(30,6,'',0,0,'C');
     $pdf->Cell(30,4,utf8_decode('FECHA: '.utf8_decode($reportes_fecha)),0,0,'L'); 
+    $pdf->Output('Reporte individual de salida con No '.$reportes_inventario,'I');
     
     
 

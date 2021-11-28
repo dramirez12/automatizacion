@@ -96,7 +96,7 @@ ob_end_flush();
                 <div class="row mb-2">
                     <div class="col-sm-6">
 
-                    <?php echo $id_usuario_responsable; ?>
+                    <!-- <?php echo $id_usuario_responsable; ?> -->
                         <h1>Asignación del producto</h1>
                     </div>
 
@@ -250,8 +250,9 @@ ob_end_flush();
 
                     <!-- Salida PHP para seleccionar productos no coincidentes (pasar a procedimiento) -->
                     <?php
-                        $modelo=new respuesta();
-                        $sqlRespUserResult=$modelo->asignacion();
+                    $sqlRespUserResult=$connection->query("SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'");
+                        // $modelo=new respuesta();
+                        // $sqlRespUserResult=$modelo->asignacion();
                         //   $sqlRespUser = "SELECT per.id_persona as id_persona, CONCAT (per.nombres, ' ' ,per.apellidos) AS nombre FROM tbl_personas per WHERE per.Estado = 'ACTIVO'";
                         //  $sqlRespUserResult = $->query($sqlRespUser);        
                     ?>

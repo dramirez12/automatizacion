@@ -65,7 +65,7 @@ $visualizacion = permiso_ver($Id_objeto);
 
 
 if ($visualizacion == 0) {
- 
+  // header('location:  ../vistas/menu_roles_vista.php');
   echo '<script type="text/javascript">
                               swal({
                                    title:"",
@@ -74,7 +74,7 @@ if ($visualizacion == 0) {
                                    showConfirmButton: false,
                                    timer: 3000
                                 });
-                           window.location = "../vistas/pagina_principal_vista";
+                           window.location = "../vistas/pagina_principal_vista.php";
 
                             </script>';
 } else {
@@ -155,9 +155,8 @@ ob_end_flush();
 <html>
 
 <head>
-  <script src="../js/autologout.js"></script>
-  <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-  <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
+<link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+<link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
   <title></title>
 </head>
 
@@ -177,8 +176,8 @@ ob_end_flush();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
-              <li class="breadcrumb-item active"><a href="../vistas/reportes_existencias_vista">Consulta Existencias</a></li>
+              <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
+              <li class="breadcrumb-item active"><a href="../vistas/reportes_existencias_vista.php">Consulta Existencias</a></li>
               <!-- <li class="breadcrumb-item active"><a href="../vistas/mantenimiento_crear_tipoadquisicion_vista.php">Nuevo Tipo Adquisición</a></li> -->
             </ol>
           </div>
@@ -199,14 +198,14 @@ ob_end_flush();
         </div>
         <br>
         <!-- <div class=" px-12"> -->
-        <!-- <a target="_blank" href="../pdf/reporte_existencias_lab.php" class="btn btn-warning" id="btnreporte"><i class="fa fa-file-pdf-o" ></i> Generar Reporte</a> -->
+                <!-- <a target="_blank" href="../pdf/reporte_existencias_lab.php" class="btn btn-warning" id="btnreporte"><i class="fa fa-file-pdf-o" ></i> Generar Reporte</a> -->
 
-        <!-- <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button> -->
+          <!-- <button class="btn btn-success "> <i class="fas fa-file-pdf"></i> <a style="font-weight: bold;" onclick="ventana()">Exportar a PDF</a> </button> -->
         <!-- </div> -->
       </div>
-
+     
       <div class="card-body">
-        <!-- <div style="padding: 2px;"><a href="mantenimiento_crear_tipoadquisicion_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div> -->
+      <!-- <div style="padding: 2px;"><a href="mantenimiento_crear_tipoadquisicion_vista.php" class=" btn btn-success btn-inline float-right mt-0" ><i class="fas fa-plus pr-2"></i>Nuevo</a></div> -->
         <table id="tblReporte_existencias" class="table table-bordered table-striped">
 
 
@@ -216,51 +215,69 @@ ob_end_flush();
               <!-- <th>NO.</th> -->
               <th>PRODUCTO</th>
               <th>EXISTENCIAS</th>
-              <th>DETALLE DEL PRODUCTO</th>
+              <th>DETALLE  DEL  PRODUCTO</th>
               <th>ADVERTENCIA</th>
             </tr>
           </thead>
           <tbody>
-            <?php $acum = 0; ?>
+            <?php $acum=0; ?>
             <?php while ($row = $resultadotabla->fetch_array(MYSQLI_ASSOC)) { ?>
-              <?php $acum += 1; ?>
+              <?php $acum+=1; ?>
               <tr>
                 <!-- <td><?php echo $acum; ?></td> -->
                 <td><?php echo $row['nombre_producto']; ?></td>
 
                 <td><?php echo $row['existencia']; ?></td>
+                
+                <?php if($row['tipo_producto']==2){ ?>
+                  <!-- <div class=" btn btn-secondary px-4 py-0 disabled" style="font-size:14px;">
+                      Ver más
+                    </div> -->
 
-                <td style="text-align: center;">
-                  <a style="font-size:14px;" href="../vistas/reportes_detalle_existencias_vista?id_producto=<?php echo $row['id_producto']; ?>" class="btn btn-primary px-3 py-0 ">
-                    <!-- <i class="far fa-edit" style="display:<?php echo $_SESSION['ver_detalle_existencias'] ?> "></i> -->
-                    Ver más
+                    <td style="text-align: center;">
+                
+                  <a class=" btn btn-secondary px-4 py-0 disabled" style="font-size:14px;" href="../vistas/reportes_detalle_existencias_vista?id_producto=<?php echo $row['id_producto']; ?>" class="btn btn-primary px-3 py-0 ">
+          
+            
+                        Inactivo
                   </a>
                 </td>
-                <td style="text-align: center; ">
-                  <?php if ($row['existencia'] <= $row['stock']) { ?>
-                    <div class=" btn btn-danger px-5 py-0">
-                      <div style="font-size:14px;">Escaso</div>
-                    </div>
-
-                  <?php } elseif ($row['stock'] == '0' and $row['tipo_producto'] == 1) { ?>
-                    <div class=" btn btn-secondary px-4 py-0" style="font-size:14px;">
-                      Almacenable
-                    </div>
-
-
-                  <?php } else { ?>
-                    <div class=" btn btn-success px-5 py-0">
-                      <div style="font-size:14px;">Óptimo</div>
-                    </div>
-                  <?php } ?>
+                    <?php } ?>
+                    <?php if($row['tipo_producto']==1){ ?>
+                  <td style="text-align: center;">
+                
+                  <a style="font-size:14px;" href="../vistas/reportes_detalle_existencias_vista?id_producto=<?php echo $row['id_producto']; ?>" class="btn btn-primary px-4 py-0 ">
+          
+                          Ver más
+                  </a>
                 </td>
+                    
+                  <?php } ?>
+                <td style="text-align: center; "> 
+                <?php if ($row['existencia']<=$row['stock']){ ?>
+                  <div class=" btn btn-danger px-5 py-0">
+                     <div style="font-size:14px;">Escaso</div> 
+                  </div>
+                  
+                  <?php }elseif ($row['stock']=='0' and $row['tipo_producto']==1){?>
+                    <div  class=" btn btn-secondary px-4 py-0" style="font-size:14px;">
+                     Almacenable
+                   </div>
+                  
+                
+                <?php }else{ ?>
+                  <div  class=" btn btn-success px-5 py-0">
+                  <div style="font-size:14px;">Óptimo</div> 
+                  </div>
+                  <?php }?>
+                </td>
+                  
+                 
 
 
-
-
-
-
-
+                
+               
+                
 
               </tr>
             <?php } ?>
@@ -268,8 +285,8 @@ ob_end_flush();
         </table>
 
         <!-- <div class="modal-footer justify-content-between"> -->
-        <!-- <button type="submit" class="btn btn-danger float-right mt-3" id="btn_cancelar_ubicacion" name="btn_cancelar_ubicacion" <?php echo $_SESSION['btn_cancelar_ubicacion']; ?>>Cancelar</button> -->
-        <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-danger float-right mt-3" id="btn_cancelar_ubicacion" name="btn_cancelar_ubicacion" <?php echo $_SESSION['btn_cancelar_ubicacion']; ?>>Cancelar</button> -->
+          <!-- </div> -->
 
       </div>
       <!-- /.card-body -->
@@ -320,7 +337,7 @@ ob_end_flush();
 <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
 
 
-<!-- para usar botones en datatables JS -->
+  <!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
 <script src="../plugins/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>

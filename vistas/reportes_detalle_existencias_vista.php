@@ -4,9 +4,9 @@ ob_start();
 session_start();
 
 require_once('../vistas/pagina_inicio_vista.php');
-require_once('../clases/Conexion.php');
+// require_once('../clases/Conexion.php');
 require_once "../Modelos/detalle_existencias_modelo.php";
-require_once('../clases/conexion_mantenimientos.php');
+// require_once('../clases/conexion_mantenimientos.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
@@ -50,9 +50,25 @@ if ($visualizacion == 0) {
 
   /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
   // $sqltabla = "CALL sel_reportes_existencia_asignados('$id_producto')";
-  $sqltabla = "CALL sel_reportes_existencia_asignados('$id_producto')";
+  $sqltabla = "SELECT inv.id_inventario,dc.numero_inventario, p.id_producto,p.nombre_producto,ub.ubicacion as ubicacion,GROUP_CONCAT(distinctrow tic.tipo_caracteristica,': ',deca.valor_caracteristica SEPARATOR ', ')
+  as caracteristicas FROM tbl_detalle_adquisiciones dc inner join tbl_inventario inv inner join tbl_productos p
+  INNER JOIN tbl_caracteristicas_producto cp INNER JOIN tbl_detalle_caracteristica deca INNER JOIN tbl_tipo_caracteristica tic INNER JOIN tbl_asignaciones TA
+INNER JOIN tbl_ubicacion ub
+  ON cp.id_producto = dc.id_producto and deca.id_caracteristica_producto= cp.id_caracteristica_producto
+  and dc.id_detalle =deca.id_detalle and tic.id_tipo_caracteristica=cp.id_tipo_caracteristica and p.id_producto=cp.id_producto and TA.id_detalle=dc.id_detalle and TA.id_ubicacion=ub.id_ubicacion
+  where cp.id_producto='$id_producto' and inv.id_producto='$id_producto' and dc.id_estado=4
+  GROUP by id_inventario,numero_inventario,id_producto,nombre_producto,ubicacion";
 
+// $sqltabla = "CALL sel_reportes_existencia_asignados3('$id_producto')";
+ $sql="SELECT inv.id_inventario,dc.numero_inventario, p.id_producto,p.nombre_producto, GROUP_CONCAT(distinctrow tic.tipo_caracteristica,': ',deca.valor_caracteristica SEPARATOR ', ')
+ as caracteristicas FROM tbl_detalle_adquisiciones dc inner join tbl_inventario inv inner join tbl_productos p
+ INNER JOIN tbl_caracteristicas_producto cp INNER JOIN tbl_detalle_caracteristica deca INNER JOIN tbl_tipo_caracteristica tic 
+ ON cp.id_producto = dc.id_producto and deca.id_caracteristica_producto= cp.id_caracteristica_producto
+ and dc.id_detalle =deca.id_detalle and tic.id_tipo_caracteristica=cp.id_tipo_caracteristica and p.id_producto=cp.id_producto 
+ where cp.id_producto='$id_producto' and inv.id_producto='$id_producto' and dc.asignado=0 and dc.id_estado=4
+ GROUP by id_inventario,numero_inventario,id_producto,existencia";
   $resultadotabla = $mysqli->query($sqltabla);
+  $resultado= $connection->query($sql);
 }
 
 
@@ -153,10 +169,11 @@ ob_end_flush();
 
             <?php } ?>
             <!-- echo var_dump($resultadotabla1); -->
-            <?php $modelo = new respuesta();
-            $respuesta = $modelo->producto($id_producto);
+            <?php 
+            // $modelo = new respuesta();
+            // $respuesta = $modelo->producto($id_producto);
 
-            while ($row = $respuesta->fetch_array(MYSQLI_ASSOC)) { ?>
+            while ($row = $resultado->fetch_array(MYSQLI_ASSOC)) { ?>
               <tr>
 
                 <!-- <td><?php echo $row['id_inventario'] ?></td> -->
