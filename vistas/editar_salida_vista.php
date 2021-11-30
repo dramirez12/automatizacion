@@ -5,7 +5,7 @@ ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
-require_once('../clases/Conexion_mantenimientos.php');
+// require_once('../clases/Conexion_mantenimientos.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
@@ -135,7 +135,7 @@ ob_end_flush();
                                         <!-- <option   >Seleccione un tipo de Producto:</option> -->
                                                 <?php
                                                         $sql = "SELECT a.id_estado as id_estado_producto, a.estado as estado_producto FROM tbl_estado a inner join tbl_detalle_adquisiciones b WHERE a.id_estado = b.id_estado and b.numero_inventario = '$numero_inventario'";
-                                                        $resultado = $conexion->query($sql);
+                                                        $resultado = $connection->query($sql);
                                                         $row = $resultado->fetch_array(MYSQLI_ASSOC);
                                                         $id_estado_producto=$row['id_estado_producto'];
                                                         $estado_producto=$row['estado_producto'];
