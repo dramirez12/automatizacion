@@ -5,7 +5,6 @@ ob_start();
 session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
-// require_once('../clases/Conexion_mantenimientos.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
@@ -140,7 +139,7 @@ ob_end_flush();
                                                         $id_estado_producto=$row['id_estado_producto'];
                                                         $estado_producto=$row['estado_producto'];
 
-                                                            $query = $conexion -> query ("select * FROM tbl_estado where id_estado <> 1 and id_estado <> 2 and id_estado <> 4 and id_estado <> $id_estado_producto");
+                                                            $query = $connection -> query ("select * FROM tbl_estado where id_estado <> 1 and id_estado <> 2 and id_estado <> 4 and id_estado <> $id_estado_producto");
                                                             while ($resultado = mysqli_fetch_array($query)) 
                                                             {
                                                             
