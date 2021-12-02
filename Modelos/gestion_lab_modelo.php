@@ -33,8 +33,6 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
-
-
   public function reportes_detalle_existencias($id_producto)
   {
     global $instancia_conexion;
@@ -55,7 +53,6 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
-
   public function reportes_adquisicion($nombre_producto)
   {
      global $instancia_conexion;
@@ -69,8 +66,6 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
-
-
   public function reportes_adquisicion_caracteristicas($id_detalle)
   {
      global $instancia_conexion;
@@ -88,8 +83,6 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
-
-
   public function reportes_adquisicion_tipo($id_adquisicion)
   {
      global $instancia_conexion;
@@ -134,7 +127,6 @@ class reportes
     return $instancia_conexion->ejecutarConsulta($sql);
 
   }
-
   public function prueba2($id_producto)
   {
      global $instancia_conexion;
@@ -145,14 +137,14 @@ class reportes
 
   }
     
-  
   public function reportes_salida($num_inventario)
   {
      global $instancia_conexion;
      $sql = "CALL select_reporte_salida('$num_inventario')";
      return $instancia_conexion->ejecutarConsulta($sql);
-  }
-  
+  } 
+
+
   public function reportes_salida_degt()
   {
      global $instancia_conexion;
