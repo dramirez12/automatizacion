@@ -45,7 +45,7 @@ if( preg_match($patron_texto, $_POST['descripcion']) )
                         $valor_viejo = $result_valor->fetch_array(MYSQLI_ASSOC);
 
                         if ($valor_viejo['descripcion'] <> $nueva_descripcion and $valor_viejo['id_estado'] <> $estado_producto) {
-                            $Id_objeto = 12209;
+                            $Id_objeto = 209;
                             bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA DESCRIPCION DE LA SALIDA: ' . $valor_viejo['descripcion'] . ' POR ' . $nueva_descripcion . ' Y EL ESTADO DEL PRODUCTO: ' . $valor_viejo['id_estado'] . ' POR ' . $estado_producto . ' ');
                             /* Hace el query para que actualize*/
 
@@ -76,7 +76,7 @@ if( preg_match($patron_texto, $_POST['descripcion']) )
                             }
                         }
                         else if ($valor_viejo['descripcion'] <> $nueva_descripcion) {
-                            $Id_objeto = 12209;
+                            $Id_objeto = 209;
                             bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'LA DESCRIPCION DE LA SALIDA: ' . $valor_viejo['descripcion'] . ' POR ' . $nueva_descripcion . ' ');
                             /* Hace el query para que actualize*/
 
@@ -107,7 +107,7 @@ if( preg_match($patron_texto, $_POST['descripcion']) )
                             }
                         }
                         else if ($valor_viejo['id_estado'] <> $estado_producto) {
-                            $Id_objeto = 12209;
+                            $Id_objeto = 209;
                             bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'MODIFICO', 'EL ESTADO DEL PRODUCTO EN SALIDA: ' . $valor_viejo['id_estado'] . ' POR ' . $estado_producto . ' ');
                             /* Hace el query para que actualize*/
 

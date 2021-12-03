@@ -735,81 +735,82 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
    }
 
 
-   //GESTION LABORATORIO
-  
-      //BOTON PRINCIPAL
-      if ($_SESSION['pantalla']='12194' or $_SESSION['pantalla']='12195' or $_SESSION['pantalla']='12196' or $_SESSION['pantalla']='12210' or $_SESSION['pantalla']='12211' or $_SESSION['pantalla']='12218' or $_SESSION['pantalla']='12212' or $_SESSION['pantalla']='12214' or $_SESSION['pantalla']='12208' or $_SESSION['pantalla']='12209' or $_SESSION['pantalla']='12217' or $_SESSION['pantalla']='12206' or $_SESSION['pantalla']='12207' or $_SESSION['pantalla']='12184'  ){
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['btn_gestion_laboratorio'] = "block";
-         }
-      }
+  //AGREGANDO MODULO GESTION LABORATORIO
 
-      //PROCESO PRODUCTO
-      if ($_SESSION['pantalla'] = '12194' or $_SESSION['pantalla'] = '12195' or $_SESSION['pantalla'] = '12196') {
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['producto_vista'] = "block";
-         }
-      }
+//BOTON PRINCIPAL
+if ($_SESSION['pantalla']='12194' or $_SESSION['pantalla']='12195' or $_SESSION['pantalla']='12196' or $_SESSION['pantalla']='12210' or $_SESSION['pantalla']='12211' or $_SESSION['pantalla']='12218' or $_SESSION['pantalla']='12212' or $_SESSION['pantalla']='12214' or $_SESSION['pantalla']='12208' or $_SESSION['pantalla']='12209' or $_SESSION['pantalla']='12217' or $_SESSION['pantalla']='12206' or $_SESSION['pantalla']='12207'  ){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['btn_gestion_laboratorio'] = "block";
+   }
+}
 
-      //PROCESO ADQUISICION
-      if ($_SESSION['pantalla'] = '12210' or $_SESSION['pantalla'] = '12211' or $_SESSION['pantalla'] = '12218') {
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['adquisicion_vista'] = "block";
-         }
-      }
+//PROCESO PRODUCTO
+  if ($_SESSION['pantalla'] = '12194' or $_SESSION['pantalla'] = '12195' or $_SESSION['pantalla'] = '12196') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['producto_vista'] = "block";
+   }
+}
 
-      //PROCESO ASIGNACION
-      if ($_SESSION['pantalla'] = '12212' or $_SESSION['pantalla'] = '12214') {
-         if ($_SESSION['confirmacion'] == 'block') {
-               $_SESSION['asignacion_vista'] = "block";
-         }
-      }
-         
+//PROCESO ADQUISICION
+if ($_SESSION['pantalla'] = '12210' or $_SESSION['pantalla'] = '12211' or $_SESSION['pantalla'] = '12218') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['adquisicion_vista'] = "block";
+   }
+}
 
-      //PROCESO SALIDA
-      if ($_SESSION['pantalla'] = '12208' or $_SESSION['pantalla'] = '12209') {
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['salida_vista'] = "block";
-         }
-      }
+//PROCESO ASIGNACION
+if ($_SESSION['pantalla'] = '12212' or $_SESSION['pantalla'] = '12214') {
+   if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['asignacion_vista'] = "block";
+   }
+}
+     
 
-      //PANTALLA TRANSACCIONES
-      if ($_SESSION['pantalla'] = '12217'){
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['transaccion_kardex']  = "block";
-         }
-      }
+//PROCESO SALIDA
+if ($_SESSION['pantalla'] = '12208' or $_SESSION['pantalla'] = '12209') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['salida_vista'] = "block";
+   }
+}
 
-
-      //DESPLEGAR REPORTES
-      if ($_SESSION['pantalla'] = '12206' or $_SESSION['pantalla'] = '12207') {
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['reportes_vista'] = "block";
-         }
-      }
-
-            
-      //PANTALLA EXISTENCIAS
-      if ($_SESSION['pantalla'] = '12206'){
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['reportes_existencias_vista']  = "block";
-         }
-      }
-            
-      //PANTALLA UBICACION
-      if ($_SESSION['pantalla'] = '12207'){
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['reportes_ubicacion_vista']  = "block";
-         }
-      }
+//PANTALLA TRANSACCIONES
+if ($_SESSION['pantalla'] = '12217'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['transaccion_kardex']  = "block";
+   }
+}
 
 
-      //Mantenimiento LABORATORIO
-      if ($_SESSION['pantalla'] >= '12184' && $_SESSION['pantalla'] <= '12189' or $_SESSION['pantalla'] = '12191' or $_SESSION['pantalla'] = '12192' or $_SESSION['pantalla'] >= '12197' && $_SESSION['pantalla'] <= '12200' ){
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['mantenimiento_laboratorio'] = "block";
-         }
-      }
+//DESPLEGAR REPORTES
+if ($_SESSION['pantalla'] = '12206' or $_SESSION['pantalla'] = '12207') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['reportes_vista'] = "block";
+   }
+}
+
+      
+//PANTALLA EXISTENCIAS
+if ($_SESSION['pantalla'] = '12206'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['reportes_existencias_vista']  = "block";
+   }
+}
+        
+//PANTALLA UBICACION
+if ($_SESSION['pantalla'] = '12207'){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['reportes_ubicacion_vista']  = "block";
+   }
+}
+
+
+//Mantenimiento LABORATORIO
+if ($_SESSION['pantalla']='12184' or $_SESSION['pantalla']='12185' or $_SESSION['pantalla']='12186' or $_SESSION['pantalla']='12187' or $_SESSION['pantalla']='12188' or $_SESSION['pantalla']='12189' or $_SESSION['pantalla']='12191' or $_SESSION['pantalla']='12192' or $_SESSION['pantalla']='12197' or $_SESSION['pantalla']='12198' or $_SESSION['pantalla']='12199' or $_SESSION['pantalla']='12200'  ){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['mantenimiento_laboratorio'] = "block";
+   }
+}
+
 
    //COMITE VIDA ESTUDIANTL
    if ($_SESSION['pantalla'] == '220' or $_SESSION['pantalla'] == '221' or $_SESSION['pantalla'] == '222' or $_SESSION['pantalla'] == '223') {
