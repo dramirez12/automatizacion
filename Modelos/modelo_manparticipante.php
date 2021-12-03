@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 include_once '../clases/Conexion.php';
 $estado = $_POST['estado'];
 $id_estado = $_POST['id_estado'];
@@ -18,6 +20,17 @@ if ($_POST['estado-participante'] == 'nuevo') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5018;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'INSERTO';
+        $descripcionac= 'estado para los participantes con nombre:'.$estado;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -41,6 +54,17 @@ if ($_POST['estado-participante'] == 'actualizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5018;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'MODIFICO';
+        $descripcionac= 'estado para los participantes con nombre:'.$estado;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -67,6 +91,17 @@ if ($_POST['estado-participante'] == 'eliminar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5018;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'ELIMINO';
+        $descripcionac= 'estado para los participantes con id:'.$id_borrar;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {

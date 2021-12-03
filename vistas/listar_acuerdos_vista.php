@@ -7,7 +7,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
-$Id_objeto = 151;
+$Id_objeto = 5010;
 $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
   echo '<script type="text/javascript">
@@ -46,13 +46,14 @@ ob_end_flush();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+            <br>
             <h1>Lista de Acuerdos Realizados</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
-              <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista">Gestión acuerdos</a></li>
-              <li class="breadcrumb-item active">Lista de Acuerdos</li>
+              <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista">Menú Acuerdos y Seguimientos</a></li>
+              <li class="breadcrumb-item active">Lista de Acuerdos Realizados</li>
             </ol>
           </div>
           <div class="RespuestaAjax"></div>
@@ -64,7 +65,7 @@ ob_end_flush();
 
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Listado de Acuerdos</h3>
+        <h3 class="card-title">Listado de Acuerdos Asignados</h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -80,9 +81,9 @@ ob_end_flush();
             <div class="tab-content" id="custom-tabs-four-tabContent">
               <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                 <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_manactareunion.php">
-                  <table id="tabla30" class="table table-bordered table-striped">
+                  <table id="tabla30" class="table table-bordered table-striped table-hover">
                     <thead>
-                      <tr>
+                      <tr class="table-secondary">
                         <th>No. Acta</th>
                         <th>Responsable</th>
                         <th>Nombre Acuerdo</th>
@@ -229,8 +230,8 @@ ob_end_flush();
           //       },
           {
             extend: "pdfHtml5",
-            download: 'open',
-            text: '<i class="fas fa-file-pdf"></i> ',
+          /*download: 'open',*/
+          text: '<i class="far fa-file-pdf"></i> <b style=font-size: 30px;>PDF</b> ',
             titleAttr: "Exportar a PDF",
             className: "btn btn-danger",
             orientation: "landscape",

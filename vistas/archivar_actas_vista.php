@@ -14,8 +14,7 @@ $dt = new DateTime("now", $dtz);
 $hoy = $dt->format("Y-m-d");
 
 
-$Id_objeto = 149;
-
+$Id_objeto = 5019;
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A archivar acta');
 
 $visualizacion = permiso_ver($Id_objeto);
@@ -76,7 +75,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="g">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="menu_acta_vista">Menú Actas</a></li>
                             <li class="breadcrumb-item active">Archivar Acta</li>
                         </ol>
                     </div>
@@ -91,7 +91,7 @@ ob_end_flush();
                         <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
                         <input type="hidden" name="acta" value="actualizar">
                         <button style="padding-right: 15px;" type="submit" class="btn btn-success float-left" id="editar_registro" <?php echo $_SESSION['btn_crear']; ?>>Archivar Acta</button>
-                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-danger" href="menu_acta_vista">Cancelar</a>
+                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-danger" data-toggle="modal" data-target="#modal-default" href="menu_acta_vista">Cancelar</a>
                     </div><br><br>
 
                     <div class="card-body">
@@ -106,12 +106,12 @@ ob_end_flush();
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nombre">Nombre Reunión:</label>
-                                            <input onkeyup="mayus(this);" required minlength="5" maxlength="50" type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la Reunion a la que pertenece el acta">
+                                            <input onkeypress="return validacion(event)" onblur="limpia()" onkeyup="MismaLetra('nombre');" required minlength="5" maxlength="50" type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la Reunion. (Mínimo 5 caracteres)">
                                         </div>
                                         <div class="form-group">
                                             <label for="tipo">Tipo de Reunión</label>
                                             <select class="form-control" onChange="showInp(); showdatos();" style="width: 50%;" id="tipo" name="tipo" required>
-                                                <option value="0">-- Selecione un Tipo --</option>
+                                                <option value="0">-- Seleccioné un Tipo --</option>
                                                 <?php
                                                 try {
                                                     $sql = "SELECT * FROM tbl_tipo_reunion_acta ";
@@ -129,7 +129,7 @@ ob_end_flush();
                                         </div>
                                         <div class="form-group">
                                             <label for="lugar">Lugar:</label>
-                                            <input onkeyup="mayus(this);" required minlength="4" maxlength="50" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Ingrese el lugar donde se desarrollo">
+                                            <input onkeypress="return validacion(event)" onblur="limpia()" onkeyup="MismaLetra('lugar');" required minlength="4" maxlength="30" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Ingrese el lugar donde se desarrollo. (Mínimo 4 caracteres)">
                                         </div>
                                         <div class="form-group">
                                             <label for="fecha">Fecha:</label>
@@ -137,7 +137,7 @@ ob_end_flush();
                                         </div>
                                         <div class="form-group">
                                             <label for="nacta">No. Acta:</label>
-                                            <input required onkeyup="mayus(this);" style="width: 90%;" type="text" class="form-control" id="nacta" minlength="5" maxlength="20" name="nacta" placeholder="Ingrese numero o codigo del acta">
+                                            <input onkeypress="return validacion(event)" onblur="limpia()" onkeyup="mayus(this); MismaLetra('nacta');" required  style="width: 90%;" type="text" class="form-control" id="nacta" minlength="5" maxlength="25" name="nacta" placeholder="Ingrese numero o codigo del acta. (Mínimo 5 caracteres)">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
@@ -162,12 +162,23 @@ ob_end_flush();
                                     $resultado = $mysqli->query($sql);
                                     $aceptados = $resultado->fetch_assoc();
                                     ?>
+                                             <?php
+    $sql = "SELECT
+                    Valor
+                FROM
+                    `tbl_parametros`
+                WHERE
+                    Parametro = 'acta_max_size'";
+    $resultado = $mysqli->query($sql);
+    $sizee = $resultado->fetch_assoc();
+    ?>
+
                                     <div class="card-body">
 
                                         <div class="form-group">
                                             <label for="archivo_acta">Subir Archivo:</label>
                                             <div style="border: 0;" class="alert alert-warning alert-dismissable">
-                                                <strong><i class="fas fa-upload fa-2x"></i>⠀⠀Añada el archivo aqui para subir</strong>
+                                                <strong><i class="fas fa-upload fa-2x"></i>⠀<b>⠀Añada el archivo aquí para subir.</b><br> <b style="padding: 2px; border-radius:5px; background-color:#D39F14">Formatos aceptados: <?php echo $aceptados['Valor']; ?> </b> </strong><b style="margin-left: 10px; padding: 2px; border-radius:5px; background-color:#D39F14">Tamaño máximo: <?php echo $sizee['Valor']; ?> MB </b></strong>
                                                 <input required style="background-color: #FFC107; border: 0;" class="form-control" type="file" id="archivo_acta" name="archivo_acta[]" accept="<?php echo $aceptados['Valor']; ?>">
                                             </div>
                                             <div style="border: 0;" class="alert alert-dark alert-dismissable">
@@ -193,6 +204,26 @@ ob_end_flush();
             </div>
             <!-- /.container-fluid -->
         </section>
+        <div class="modal fade justify-content-center" id="modal-default">
+
+<div class="modal-dialog modal-dialog-centered modal-sm justify-content-center">
+    <div class="modal-content lg-secondary">
+        <div class="modal-header">
+            <h4 style="padding-left: 19%;" class="modal-title"><b>¿Desea cancelar?</b></h4>
+        </div>
+        <div class="modal-body justify-content-center">
+            <p style="padding-left: 6%;">¡Lo que haya escrito no se guardará!</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <a style="color: white ;" type="button" class="btn btn-primary" href="actas_pendientes_vista">Sí, deseo cancelar</a>
+            <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
         <!-- /.content -->
     </div>
 
@@ -230,41 +261,121 @@ ob_end_flush();
     });
 </script>
 
-<?php
-$sql = "SELECT
+            <?php
+               $sql = "SELECT
                     Valor
                 FROM
                     `tbl_parametros`
                 WHERE
                     Parametro = 'acta_max_size'";
-$resultado = $mysqli->query($sql);
-$aceptados = $resultado->fetch_assoc();
-?>
+              $resultado = $mysqli->query($sql);
+              $aceptados = $resultado->fetch_assoc();
+            ?>
 <script>
-    const MAXIMO_TAMANIO_BYTES = <?php echo $aceptados['Valor']; ?>; // 1MB = 1 millón de bytes
-    // Obtener referencia al elemento
-    const $miInput = document.querySelector("#archivo_acta");
-    $miInput.addEventListener("change", function() {
-        // si no hay archivos, regresamos
-        if (this.files.length <= 0) return;
-        // Validamos el primer archivo únicamente
-        const archivo = this.files[0];
-        if (archivo.size > MAXIMO_TAMANIO_BYTES) {
-            const tamanioEnMb = MAXIMO_TAMANIO_BYTES / 1000000;
-            alert(`El tamaño máximo es ${tamanioEnMb} MB`);
-            // Limpiar
-            $miInput.value = "";
-        } else {
-            // Validación pasada. Envía el formulario o haz lo que tengas que hacer
+   var MAXIMO_TAMANIO_BYTES = <?php echo $aceptados['Valor']; ?>; // 1MB = 1 millón de bytes
+        var MAXIMO_TAMANIO_BYTES = MAXIMO_TAMANIO_BYTES * 1000000;
+        // Obtener referencia al elemento
+        const $miInput = document.querySelector("#archivo_acta");
+        $miInput.addEventListener("change", function() {
+            // si no hay archivos, regresamos
+            if (this.files.length <= 0) return;
+            // Validamos el primer archivo únicamente
+            const archivo = this.files[0];
+            const tam = parseInt(archivo.size / 1000000 +1);
+            if (archivo.size > MAXIMO_TAMANIO_BYTES) {
+                const tamanioEnMb = MAXIMO_TAMANIO_BYTES / 1000000;
+                swal('Error', `<h5>EL archivo es demasiado grande. El tamaño de subida máximo es:<b> ${tamanioEnMb} MB</b>, Y lo que está tratando de subir pesa: <b style="color:red;"> ${tam} MB</b>.</h5>`, 'error');
+                // Limpiar
+                $miInput.value = "";
+                
+            archivo_acta.value = '';
+            $(listing).empty();
+            
+            } else if (archivo<0){
+                // Validación pasada. Envía el formulario o haz lo que tengas que hacer
+                archivo_acta.value = '';
+            $(listing).empty();
+            }
+        });
+        function validacion(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = "abcdefghijklmnñopqrstuvwxyz,.;@/:/-()%#0123456789éáíóú"
+    especiales = [37, 39, 46, 13, 8, 32];
+
+    tecla_especial = false
+    for(var i in especiales) {
+        if(key == especiales[i]) {
+            tecla_especial = true;
+            break;
         }
-    });
+    }
+
+    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+}
+
+window.onload = function() {
+    var nom = document.getElementById('nombre');
+    var lug = document.getElementById('lugar');
+    var nacta = document.getElementById('nacta');
+    
+    nom.onpaste = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+    }
+    
+    nom.oncopy = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+    }
+    
+    lug.onpaste = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+    }
+    
+    lug.oncopy = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+    }
+    
+    nacta.onpaste = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+      }
+      
+      nacta.oncopy = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+      }
+  }
+  $("#actas-archivo").submit(function () {  
+    if($("#tipo").value() < "1") { 
+        swal('Error', '<h5>Debe seleccionar un <b>Tipo</b></h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+}); 
+
+document.getElementById("nombre").addEventListener("keydown", teclear);
+    document.getElementById("lugar").addEventListener("keydown", teclear);
+
+var flag = false;
+var teclaAnterior = "";
+
+function teclear(event) {
+  teclaAnterior = teclaAnterior + " " + event.keyCode;
+  var arregloTA = teclaAnterior.split(" ");
+  if (event.keyCode == 32 && arregloTA[arregloTA.length - 2] == 32) {
+    event.preventDefault();
+  }
+}
 </script>
 
 </html>
 <script src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>
 
 
 
-<script type="text/javascript">
-
-</script>

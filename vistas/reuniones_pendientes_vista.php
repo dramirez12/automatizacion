@@ -8,7 +8,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 145;
+$Id_objeto = 5001;
 
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Reuniones Pendientes');
 
@@ -131,22 +131,22 @@ ob_end_flush();
                                             <div class="tab-content" id="custom-tabs-four-tabContent">
                                                 <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                                     <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_reunion.php">
-                                                        <table id="tabla27" class="table table-bordered table-striped">
+                                                        <table id="tabla27" class="table table-bordered table-striped table-hover">
                                                             <thead>
-                                                                <tr>
+                                                                <tr class="table-secondary">
                                                                     <th>Nombre Reunión</th>
-                                                                    <th>Tipo</th>
+                                                                    <th>Categoria</th>
+                                                                    <th>Modalidad</th>
                                                                     <th>Lugar</th>
                                                                     <th>Fecha</th>
                                                                     <th>Hora Inicio</th>
-                                                                    <th>Hora Final</th>
                                                                     <th>Acciones</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <?php
                                                                 try {
-                                                                    $sql = "SELECT t1.id_reunion,t1.nombre_reunion,t2.tipo,t1.lugar,t1.fecha,t1.hora_inicio,t1.hora_final 
+                                                                    $sql = "SELECT t1.categoria,t1.id_reunion,t1.nombre_reunion,t2.tipo,t1.lugar,t1.fecha,t1.hora_inicio,t1.hora_final 
                                                                     FROM tbl_reunion t1 
                                                                     INNER JOIN tbl_tipo_reunion_acta t2 on t2.id_tipo = t1.id_tipo
                                                                     WHERE id_estado = 1 OR id_estado = 3";
@@ -158,11 +158,11 @@ ob_end_flush();
                                                                 while ($reunion = $resultado->fetch_assoc()) { ?>
                                                                     <tr>
                                                                         <td><?php echo $reunion['nombre_reunion']; ?></td>
+                                                                        <td><?php echo $reunion['categoria']; ?></td>
                                                                         <td><?php echo $reunion['tipo']; ?></td>
                                                                         <td><?php echo $reunion['lugar']; ?></td>
                                                                         <td><?php echo $reunion['fecha']; ?></td>
                                                                         <td><?php echo $reunion['hora_inicio']; ?></td>
-                                                                        <td><?php echo $reunion['hora_final']; ?></td>
                                                                         <td>
                                                                             <a href="../vistas/editar_reunion_vista?id=<?php echo $reunion['id_reunion'] ?>" style="max-width:55px; padding: 7px;" class="btn btn-success <?php echo $_SESSION['btn_editar']; ?>">
                                                                                 <i class="far fa-edit"></i><br>Editar
@@ -223,6 +223,7 @@ ob_end_flush();
                                                                     },
                                                                     eventClick: function(calEvent, jsEvent, view) {
                                                                         $('#tituloReunion').html(calEvent.title);
+                                                                        $('#categoria').html(calEvent.categoria);
                                                                         $('#tipo').html(calEvent.tipo);
                                                                         $('#estado').html(calEvent.estado_reunion);
                                                                         $('#participantes').html(calEvent.participantes);
@@ -284,8 +285,8 @@ ob_end_flush();
         </script>
 
         <!-- Modal -->
-        <div class="modal fade bd-example-modal-xl" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" id="exampleModalLong">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="tituloReunion"></h5>
@@ -293,30 +294,37 @@ ob_end_flush();
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <div><b>Tipo: </b><a id="tipo"></a></div>
+                    <div class="modal-body" style="word-break: break-all;">
+                        <div><b>Categoria: </b><a id="categoria"></a></div>
+                        <div><b>Modalidad: </b><a id="tipo"></a></div>
                         <div><b>Estado: </b><a id="estado"></a></div>
+                        <div><b>Enlace: </b><a id="enlace"></a></div>
                         <div><b>Lugar: </b><a id="lugar"></a></div>
                         <div><b>Fecha: </b><a id="fecha"></a></div>
                         <div><b>Hora Inicio: </b><a id="hora_inicio"></a></div>
-                        <div><b>Hora Final: </b><a id="hora_final"></a></div>
-                        <div><b>Enlace: </b><a id="enlace"></a></div>
-                        <div><b> Lista Participantes: </b>
-                            <div id="participantes"></div>
-                        </div>
+                        <div><b>Hora Final: </b><a id="hora_final"></a></div><br>
+                        <div><b>Lista Participantes: </b><a id="participantes"></a></div><br>
                         <h6><b> Asunto: </b></h6>
-                        <div id="asunto"></div>
-                        <div><b> Agenda Propuesta: </b></div>
-                        <a id="agenda_propuesta"></a>
-                    </div>
+                        <div id="asunto"></div><br>
+                        <div><b> Agenda Propuesta: </b><br></div>
+                        <a style="white-space: pre-line"id="agenda_propuesta"></a>
+                    </div><br>	
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
         </div>
 </body>
 <script>
+    $('#exampleModalLong').on('show', function () {
+       $(this).find('.modal-body').css({
+              width:'auto',
+              height:'auto',
+              'max-height':'100%',
+              'max-width':'100%'
+       });
+});
     //REPORTE DE REUNIONES PENDIENTES
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     $(document).ready(function() {
@@ -376,8 +384,8 @@ ob_end_flush();
                 //       },
                 {
                     extend: "pdfHtml5",
-                    download: 'open',
-                    text: '<i class="fas fa-file-pdf"></i> ',
+          /*download: 'open',*/
+          text: '<i class="far fa-file-pdf"></i> <b style=font-size: 30px;>PDF</b> ',
                     titleAttr: "Exportar a PDF",
                     className: "btn btn-danger",
                     orientation: "landscape",
@@ -455,6 +463,7 @@ ob_end_flush();
             ]
         });
     });
+    $('#exampleModalLong').modal('handleUpdate')
 </script>
 
 </html>

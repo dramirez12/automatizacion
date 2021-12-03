@@ -4,30 +4,26 @@ session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_bitacora.php');
 
-if (permiso_ver('276') == '1') {
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Menu Reuniones');
 
-    $_SESSION['menu_reunion'] = "...";
-} else {
-    $_SESSION['menu_reunion'] = "No 
-    tiene permisos para visualizar";
-}
 
-if (permiso_ver('144') == '1') {
+if (permiso_ver('5000') == '1') {
 
     $_SESSION['nueva_reunion'] = "...";
 } else {
     $_SESSION['nueva_reunion'] = "No tiene permisos para visualizar";
 }
 
-if (permiso_ver('145') == '1') {
+if (permiso_ver('5001') == '1') {
 
     $_SESSION['reuniones_pendientes'] = "...";
 } else {
     $_SESSION['reuniones_pendientes'] = "No tiene permisos para visualizar";
 }
 
-if (permiso_ver('146') == '1') {
+if (permiso_ver('5003') == '1') {
 
     $_SESSION['lista_reunion'] = "...";
 } else {
@@ -54,13 +50,12 @@ ob_end_flush();
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Reuniones </h1>
+                            <h1 class="m-0 text-dark">Menú Reuniones</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item active">Control de actas</li>
-                                <li class="breadcrumb-item active">Reuniones</li>
+                                <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                                <li class="breadcrumb-item active">Menú Reuniones</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -68,6 +63,7 @@ ob_end_flush();
             </div>
             <!-- /.content-header -->
             <!-- Main content -->
+            <br><br>
             <section class="content">
                 <div class="container-fluid">
                     <!-- Info boxes -->

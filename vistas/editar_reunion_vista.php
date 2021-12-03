@@ -10,9 +10,9 @@ require_once('../clases/funcion_permisos.php');
 $dtz = new DateTimeZone("America/Tegucigalpa");
 $dt = new DateTime("now", $dtz);
 $hoy = $dt->format("Y-m-d");
-$Id_objeto = 144;
+$Id_objeto = 5002;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A crear Reunion');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Editar Reunión');
 
 $visualizacion = permiso_ver($Id_objeto);
 
@@ -74,7 +74,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="menu_reunion_vista">Menú Reuniones</a></li>
                             <li class="breadcrumb-item active">Editar Reunión</li>
                         </ol>
                     </div>
@@ -100,7 +101,7 @@ ob_end_flush();
                         <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
                         <input type="hidden" name="reunion" value="actualizar">
                         <button style="padding-right: 15px;" type="submit" class="btn btn-success float-left" id="editar_registro" <?php echo $_SESSION['btn_crear']; ?>>Guardar Cambios</button>
-                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista">Cancelar</a>
+                        <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" data-toggle="modal" data-target="#modal-default" href="#">Cancelar</a>
                     </div><br><br><br>
                     <div class="card card-primary card-outline card-tabs">
                         <div class="card-header p-0 pt-1 border-bottom-0">
@@ -127,12 +128,13 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="nombre">Nombre:</label>
-                                                        <input onkeypress="return validacion(event)" onblur="limpia()" onkeyup="MismaLetra('nombre');" required maxlength="50" minlength="5" type="text" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion">
+                                                        <input onkeypress="return validacion(event)" onblur="limpia()" onkeyup="MismaLetra('nombre');" required maxlength="50" minlength="5" type="text" value="<?php echo $estado['nombre_reunion']; ?>" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunion. (Mínimo 5 caracteres)">
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label for="tipo">Tipo de Reunión</label>
+                                                        <label for="tipo">Modalidad de Reunión</label>
                                                         <select class="form-control" onchange="showInp()" style="width: 50%;" id="tipo" name="tipo">
-                                                            <option value="0">-- Selecione un Tipo --</option>
+                                                            <option value="0">-- Seleccione una Modalidad --</option>
                                                             <?php
                                                             try {
                                                                 $tipo_actual = $estado['id_tipo'];
@@ -157,19 +159,19 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lugar">Lugar:</label>
-                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required minlength="4" maxlength="30" value="<?php echo $estado['lugar']; ?>" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunion" onkeyup="MismaLetra('lugar');">
+                                                        <input onkeypress="return validacion(event)" onblur="limpia()" required minlength="4" maxlength="30" value="<?php echo $estado['lugar']; ?>" style="width: 100%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunion. (Mínimo 4 caracteres)" onkeyup="MismaLetra('lugar');">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="fecha">Fecha:</label>
-                                                        <input required style="width: 40%;" value="<?php echo $estado['fecha']; ?>" type="date" class="form-control datetimepicker-input" id="fecha" name="fecha" min="<?php echo $hoy; ?>" />
+                                                        <input required style="width: 40%;" value="<?php echo $estado['fecha']; ?>" type="date" class="form-control datetimepicker-input" id="fecha" title="Por favor seleccione una fecha mas reciente" name="fecha" min="<?php echo $hoy; ?>" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="horainicio">Hora Inicio: </label>
-                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_inicio']; ?>" class="form-control" id="horainicio" name="horainicio" min="7:00:00" max="23:00:00">
+                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_inicio']; ?>" class="form-control" id="horainicio" name="horainicio" min="6:00" max="23:00:00">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="horafinal">Hora Final: </label>
-                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_final']; ?>" class="form-control" id="horafinal" name="horafinal" min="7:30:00" max="24:00:00">
+                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_final']; ?>" class="form-control" id="horafinal" name="horafinal" min="6:30">
                                                     </div>
                                                     <div class="form-group">
                                                         <label id="enlaces" for="enlace">Enlace de la Reunión:</label>
@@ -191,11 +193,11 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="asunto">Asunto:</label>
-                                                        <textarea onkeyup="MismaLetra('asunto');" onkeypress="return validacionn(event)" onblur="limpia()" required minlength="5" maxlength="50" class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"><?php echo $estado['asunto']; ?></textarea>
+                                                        <textarea onkeyup="MismaLetra('asunto');" onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" maxlength="50" class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión. (Mínimo 5 caracteres)"><?php echo $estado['asunto']; ?></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="agenda">Agenda Propuesta</label>
-                                                        <textarea onkeyup="MismaLetra('agenda');" onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" maxlength="65000" class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"><?php echo $estado['agenda_propuesta']; ?></textarea>
+                                                        <textarea onkeyup="MismaLetra('agenda');" onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" maxlength="65000" class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta. (Mínimo 5 caracteres)"><?php echo $estado['agenda_propuesta']; ?></textarea>
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -219,7 +221,7 @@ ob_end_flush();
                                                     </div>
                                                     <div style="padding: 15px 0px 0px 15px;">
                                                         <p>
-                                                            Listado de personas que estan invitadas actualmente <br> <b>SELECCIONA UNA PERSONA PARA ELIMINARLA DE LOS INVITADOS</b>
+                                                            Listado de personas que están invitadas actualmente <br> <b>SELECCIONA UNA PERSONA PARA ELIMINARLA DE LOS INVITADOS</b>
                                                         </p>
                                                     </div>
                                                     <!-- /.card-header -->
@@ -337,10 +339,31 @@ ob_end_flush();
             <!-- /.container-fluid -->
             </form>
         </section>
+        <div class="modal fade justify-content-center" id="modal-default">
+
+<div class="modal-dialog modal-dialog-centered modal-sm justify-content-center">
+    <div class="modal-content lg-secondary">
+        <div class="modal-header">
+            <h4 style="padding-left: 19%;" class="modal-title"><b>¿Desea cancelar?</b></h4>
+        </div>
+        <div class="modal-body justify-content-center">
+            <p style="padding-left: 6%;">¡Lo que haya escrito no se guardará!</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <a style="color: white ;" type="button" class="btn btn-primary" href="reuniones_pendientes_vista">Sí, deseo cancelar</a>
+            <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
     </div>
+    
     <script type="text/javascript">
         function mayus(e) {
             e.value = e.value.toUpperCase();
@@ -356,6 +379,67 @@ ob_end_flush();
                 "responsive": true,
             });
         });
+        const fec = "<?php echo $hoy; ?>";
+
+        
+        $("#guardar-reunion").submit(function () {  
+    if($("#nombre").val().length < 5) { 
+        e.preventDefault();
+        swal('Error', '<h5>El <b>Nombre</b> debe tener como mínimo 5 caracteres</h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+});  
+
+$("#editar-reunion").submit(function () {  
+    if($("#lugar").val().length < 4) { 
+        e.preventDefault();
+        swal('Error', '<h5>El <b>Lugar</b> debe tener como mínimo 4 caracteres</h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+});  
+$("#editar-reunion").submit(function () {  
+    if($("#asunto").val().length < 5) { 
+        e.preventDefault();
+        swal('Error', '<h5>El <b>Asunto</b> debe tener como mínimo 5 caracteres</h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+});  
+$("#editar-reunion").submit(function () {  
+    if($("#agenda").val().length < 5) { 
+        e.preventDefault();
+        swal('Error', '<h5>La <b>Agenda</b> debe tener como mínimo 5 caracteres</h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+});  
+$("#editar-reunion").submit(function () {  
+    if($("#horainicio").val() < "06:00") { 
+        e.preventDefault();
+        swal('Error', '<h5><b>Hora de Inicio</b> debe de ser mayor que 6:00 A.M.</h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+});  
+$("#editar-reunion").submit(function () {  
+    if($("#horainicio").val() > "23:30") {
+        e.preventDefault(); 
+        swal('Error', '<h5><b>Hora de Inicio</b> debe de ser menor que 23:30 P.M.</h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+});  
+$("#editar-reunion").submit(function () {  
+    if($("#horafinal").val() < "06:30") { 
+        e.preventDefault();
+        swal('Error', '<h5><b>Hora de Final</b> No debe de ser menor que 07:30 A.M.</h5>', 'error');  
+        return false;  
+    }  
+    return false;  
+});  
+ 
 
     </script>
 

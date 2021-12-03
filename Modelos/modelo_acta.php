@@ -34,6 +34,7 @@ if ($_POST['acta'] == 'actualizar') {
             $stmt->bind_param("iii", $id_estado_participante, $id_reunion, $id_persona);
             $stmt->execute();
         }
+       
 
         //almacenamos las propiedades de las imagenes
         $name_array     = $_FILES['archivo_acta']['name'];
@@ -73,6 +74,17 @@ if ($_POST['acta'] == 'actualizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5005;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'MODIFICO';
+        $descripcionac= 'el acta con número: '.$nacta;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -100,6 +112,17 @@ if ($_POST['acta'] == 'finalizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5005;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'FINALIZO';
+        $descripcionac= 'el acta con número: '.$nacta;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -126,6 +149,17 @@ if ($_POST['recurso'] == 'borrar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5005;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'ELIMINO';
+        $descripcionac= 'recurso del acta con número: '.$nacta;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {

@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 require_once('../PHPMAILER/PHPMailer.php');
 require_once('../PHPMAILER/SMTP.php');
 require_once('../PHPMAILER/Exception.php');
@@ -34,6 +36,17 @@ if ($_POST['acuerdo'] == 'nuevo') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5010;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'INSERTO';
+        $descripcionac= 'Acuerdo con nombre: '.$nombre_acuerdo;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         //Server settings
         $correo = 'jefatura@informaticaunah.com';
         $Password = 'J3f@tur@';
@@ -77,9 +90,9 @@ if ($_POST['acuerdo'] == 'nuevo') {
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = "Responsable de un nuevo acuerdo";
         $body .= "Buenas estimado: <strong>$nombrepersona</strong> por medio de la presente se le comunica ";
-        $body .= "que a la reunion <b>$nombrereu</b> a la que asistio se le asigno un acuerdo ";
+        $body .= "que a la reunión <b>$nombrereu</b> a la que asistió se le asignó un acuerdo ";
         $body .= "con nombre <strong>$nombre_acuerdo</strong> ";
-        $body .= " la cual tiene fecha de vencimiento para el: <strong>$fecha_exp</strong>, con la siguiente descripcion: <br><br>";
+        $body .= " la cual tiene fecha de vencimiento para el: <strong>$fecha_exp</strong>, con la siguiente descripción: <br><br>";
         $body .= "<strong>$descripcionformato</strong>";
         $body .= "<br>";
         $body .= "<br>";
@@ -120,6 +133,17 @@ if ($_POST['acuerdo'] == 'actualizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5010;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'MODIFICO';
+        $descripcionac= 'Acuerdo con nombre: '.$nombre_acuerdo;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         //Server settings
         $correo = 'jefatura@informaticaunah.com';
         $Password = 'J3f@tur@';
@@ -211,6 +235,17 @@ if ($_POST['acuerdos'] == 'finalizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5010;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'FINALIZO';
+        $descripcionac= 'Acuerdo con id: '.$id_registrof;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         //Server settings
         $correo = 'jefatura@informaticaunah.com';
         $Password = 'J3f@tur@';
@@ -307,6 +342,17 @@ if ($_POST['acuerdo'] == 'cancelar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5010;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'CANCELO';
+        $descripcionac= 'Acuerdo con id: '.$id_registroc;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         //Server settings
         $correo = 'jefatura@informaticaunah.com';
         $Password = 'J3f@tur@';

@@ -17,7 +17,18 @@ if ($_POST['estado-noti'] == 'nuevo') {
             $respuesta = array(
                 'respuesta' => 'error'
             );
-        }
+        } 
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5017;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'INSERTO';
+        $descripcionac= 'estado para unA NOTIFICACION con nombre:'.$estado;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -41,6 +52,17 @@ if ($_POST['estado-noti'] == 'actualizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5017;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'MODIFICO';
+        $descripcionac= 'estado para unA NOTIFICACION con nombre:'.$estado;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -67,6 +89,17 @@ if ($_POST['estado-noti'] == 'eliminar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5017;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'ELIMINO';
+        $descripcionac= 'estado para unA NOTIFICACION con id:'.$id_borrar;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {

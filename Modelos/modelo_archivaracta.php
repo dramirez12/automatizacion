@@ -56,6 +56,17 @@ if ($_POST['acta'] == 'actualizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5005;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'ARCHIVO';
+        $descripcionac= 'acta con número: '.$nacta;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {

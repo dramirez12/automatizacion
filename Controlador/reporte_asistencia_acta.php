@@ -6,7 +6,17 @@ $instancia_conexion = new conexion();
 
 //$stmt = $instancia_conexion->query("SELECT tp.nombres FROM tbl_personas tp INNER JOIN tbl_usuarios us ON us.id_persona=tp.id_persona WHERE us.Id_usuario= 8");
 
-
+$dtz = new DateTimeZone("America/Tegucigalpa");
+$dt = new DateTime("now", $dtz);
+$hoy = $dt->format("Y-m-d H:i:s");
+$id_objetoac = 148;
+$id_userac = $_SESSION['id_usuario'];
+$accionac = 'REPORTE';
+$descripcionac= 'generÓ reporte de asistencia del acta con No.: '.$_GET[id];
+$fechaac = $hoy;
+$stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+$stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+$stmt->execute();
 class myPDF extends FPDF
 {
     function encabezado()
@@ -47,6 +57,7 @@ class myPDF extends FPDF
             $this->ln();
 
         }
+
     }
     function footer()
     {

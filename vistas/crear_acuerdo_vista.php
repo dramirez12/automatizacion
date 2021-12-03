@@ -14,7 +14,7 @@ $dt = new DateTime("now", $dtz);
 $hoy = $dt->format("Y-m-d");
 
 
-$Id_objeto = 149;
+$Id_objeto = 5007;
 
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A crear Acuerdo');
 
@@ -70,11 +70,13 @@ ob_end_flush();
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
+                        <br>
                         <h1>Crear Acuerdo</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="menu_acuerdo_vista">Menú Acuerdos y Seguimientos</a></li>
                             <li class="breadcrumb-item active">Crear Acuerdo</li>
                         </ol>
                     </div>
@@ -129,11 +131,11 @@ ob_end_flush();
                             </div>
                             <div class="form-group">
                                 <label>Nombre del Acuerdo:</label>
-                                <input style="width: 35%;" type="text" class="form-control" id="nombre_acuerdo" name="nombre_acuerdo" placeholder="Ingrese nombre del acuerdo" minlength="5" maxlength="40" required />
+                                <input onkeyup="MismaLetra('nombre_acuerdo');" onkeypress="return validacion(event)" onblur="limpia()" style="width: 35%;" type="text" class="form-control" id="nombre_acuerdo" name="nombre_acuerdo" placeholder="Ingrese nombre del acuerdo. (Mínimo 5 caracteres)" minlength="5" maxlength="40" required />
                             </div>
                             <div class="form-group">
                                 <label>Descripción:</label>
-                                <textarea class="form-control" placeholder="Ingrese la descripción del Acuerdo" rows="5" id="descripcion" name="descripcion" minlength="5" maxlength="80" required></textarea>
+                                <textarea onkeyup="MismaLetra('descripcion');" onkeypress="return validacion(event)" onblur="limpia()" class="form-control" placeholder="Ingrese la descripción del Acuerdo. (Mínimo 5 caracteres)" rows="5" id="descripcion" name="descripcion" minlength="5" maxlength="80" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Fecha Expiración:</label>
@@ -145,7 +147,7 @@ ob_end_flush();
                     </div>
             </div>
             <!-- /.row -->
-            <div style="padding: 0px 0 25px 0;">
+            <div style="padding: 0px 0 25px 30px;">
                 <input type="hidden" name="estado" value="1">
                 <input type="hidden" name="acuerdo" value="nuevo">
                 <button style="color: white !important;" type="submit" class="btn btn-primary" <?php echo $_SESSION['btn_crear']; ?>>Guardar</button>
@@ -157,24 +159,24 @@ ob_end_flush();
     </div>
     <div class="modal fade justify-content-center" id="modal-default">
 
-        <div class="modal-dialog modal-dialog-centered modal-sm justify-content-center">
-            <div class="modal-content lg-secondary">
-                <div class="modal-header">
-                    <h4 class="modal-title"> Desea cancelar?</h4>
-                </div>
-                <div class="modal-body justify-content-center">
-                    <p>Lo que haya escrito no se guardará!</p>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <a style="color: white ;" type="button" class="btn btn-primary" href="../vistas/crear_acuerdo_vista">Sí, deseo cancelar</a>
-                    <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
-                </div>
-            </div>
-            <!-- /.modal-content -->
+<div class="modal-dialog modal-dialog-centered modal-sm justify-content-center">
+    <div class="modal-content lg-secondary">
+        <div class="modal-header">
+            <h4 style="padding-left: 19%;" class="modal-title"><b>¿Desea cancelar?</b></h4>
         </div>
-        <!-- /.modal-dialog -->
+        <div class="modal-body justify-content-center">
+            <p style="padding-left: 6%;">¡Lo que haya escrito no se guardará!</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <a style="color: white ;" type="button" class="btn btn-primary" href="acuerdos_pendientes_vista">Sí, deseo cancelar</a>
+            <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
+        </div>
     </div>
-    <!-- /.modal -->
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
     <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -200,7 +202,7 @@ ob_end_flush();
 
 </html>
 <script src="../js/jquery-3.1.1.min.js"></script>
-
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>
 
 
 <script type="text/javascript">
@@ -240,4 +242,41 @@ ob_end_flush();
                 });
         });
     });
+
+    window.onload = function() {
+    var nacuerdo = document.getElementById('nombre_acuerdo');
+    var desc = document.getElementById('descripcion');
+    
+    desc.onpaste = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+      }
+      
+      desc.oncopy = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+      }
+    nacuerdo.onpaste = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+      }
+      
+      nacuerdo.oncopy = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+      }
+    }
+    document.getElementById("nombre_acuerdo").addEventListener("keydown", teclear);
+    document.getElementById("descripcion").addEventListener("keydown", teclear);
+
+var flag = false;
+var teclaAnterior = "";
+
+function teclear(event) {
+  teclaAnterior = teclaAnterior + " " + event.keyCode;
+  var arregloTA = teclaAnterior.split(" ");
+  if (event.keyCode == 32 && arregloTA[arregloTA.length - 2] == 32) {
+    event.preventDefault();
+  }
+}
 </script>

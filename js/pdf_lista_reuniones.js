@@ -40,7 +40,7 @@ $(document).ready(function() {
             {
              extend: "pdfHtml5",
           download: 'open',
-          text: '<i class="fas fa-file-pdf"></i> ',
+          text: '<i class="fas fa-file-pdf"></i> <B>PDF</B>',
           titleAttr: "Exportar a PDF",
           className: "btn btn-danger",
           orientation: "landscape",

@@ -8,9 +8,9 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 154;
+$Id_objeto = 5013;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento Estado Acta');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento Tipo Reunión/Acta');
 
 $visualizacion = permiso_ver($Id_objeto);
 
@@ -76,7 +76,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="menu_mantenimientoacta_vista">Menú Mantenimiento actas</a></li>
                             <li class="breadcrumb-item active">Tipo de Reunión</li>
                         </ol>
                     </div>
@@ -95,7 +96,7 @@ ob_end_flush();
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="tipo">Nombre Tipo: </label>
-                                    <input type="text" class="form-control" class="form-control col-md-6" id="tipo" name="tipo" placeholder="Ingrese un tipo nuevo" required title="Solo se permiten MAYÚSCULAS o MINÚSCULAS y no se Aceptan caracteres especiales" minlength="3" maxlength="15" pattern="[A-Za-z]{1,15}">
+                                    <input type="text" class="form-control" class="form-control col-md-6" id="tipo" name="tipo" placeholder="Ingrese un tipo nuevo. (Mínimo 3 caracteres)" onkeyup="MismaLetra('tipo');" required title="Solo se permiten MAYÚSCULAS y no se Aceptan caracteres especiales" minlength="3" maxlength="15" pattern="[A-Z\s]{1,15}">
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -133,9 +134,9 @@ ob_end_flush();
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_manactareunion.php">
-                                        <table id="tabla1" class="table table-bordered table-striped">
+                                        <table id="tabla1" class="table table-bordered table-striped table-hover">
                                             <thead>
-                                                <tr>
+                                                <tr class="table-secondary">
                                                     <th class="ocultar">No.</th>
                                                     <th>Tipo</th>
                                                     <th>Acciones</th>
@@ -144,7 +145,9 @@ ob_end_flush();
                                             <tbody>
                                                 <?php
                                                 try {
-                                                    $sql = "SELECT * FROM tbl_tipo_reunion_acta";
+                                                    $sql = "SELECT @rownum:=@rownum+1 id_tipoa, tipo,id_tipo
+                                                    FROM tbl_tipo_reunion_acta t, (
+                                                    SELECT @rownum:=0) r";
                                                     $resultado = $mysqli->query($sql);
                                                 } catch (Exception $e) {
                                                     $error = $e->getMessage();
@@ -152,10 +155,10 @@ ob_end_flush();
                                                 }
                                                 while ($tipoacta = $resultado->fetch_assoc()) { ?>
                                                     <tr>
-                                                        <td class="ocultar"><?php echo $tipoacta['id_tipo']; ?></td>
+                                                        <td class="ocultar"><?php echo $tipoacta['id_tipoa']; ?></td>
                                                         <td><?php echo $tipoacta['tipo']; ?></td>
                                                         <td>
-                                                            <a href="../vistas/editar_tiporeunion_vista.php?id=<?php echo $tipoacta['id_tipo'] ?>" class="btn btn-success <?php echo $_SESSION['btn_editar']; ?>" style="color: while;">
+                                                            <a href="../vistas/editar_tiporeunion_vista?id=<?php echo $tipoacta['id_tipo'] ?>" class="btn btn-success <?php echo $_SESSION['btn_editar']; ?>" style="color: while;">
                                                                 Editar
                                                             </a>
                                                             <a href="#" data-id="<?php echo $tipoacta['id_tipo']; ?>" data-tipo="manactareunion" class="borrar_registro btn btn-danger <?php echo $_SESSION['btn_borrar']; ?>">
@@ -213,6 +216,34 @@ ob_end_flush();
                 },
             });
         });
+        
+        window.onload = function() {
+    var nom = document.getElementById('tipo');
+
+    
+   
+    nom.onpaste = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+    }
+    
+    nom.oncopy = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+    }
+}
+document.getElementById("tipo").addEventListener("keydown", teclear);
+
+var flag = false;
+var teclaAnterior = "";
+
+function teclear(event) {
+  teclaAnterior = teclaAnterior + " " + event.keyCode;
+  var arregloTA = teclaAnterior.split(" ");
+  if (event.keyCode == 32 && arregloTA[arregloTA.length - 2] == 32) {
+    event.preventDefault();
+  }
+}
     </script>
 
 
@@ -232,4 +263,5 @@ ob_end_flush();
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>
 <script src="../js/tipoacta-ajax.js"></script>

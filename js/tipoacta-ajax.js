@@ -1,18 +1,19 @@
 $(document).ready(function () {
-    /********** finalizar acta ***********/
+/********** finalizar acta ***********/
     $('.finalizar_registroacta').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
         var tipo = $(this).attr('data-tipo');
         swal({
             title: '¿Está Seguro en finalizar el acta?',
-            text: 'Por favor asegurese de llenar el acta, de lo contrario no podra revertirlo!!',
+            text: '¡Por favor asegúrese de llenar el acta, de lo contrario no podrá revertirlo!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Finalizarla!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Finalizarla!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -42,7 +43,7 @@ $(document).ready(function () {
             })
         });
     });
-    /********** editar acta ***********/
+/********** editar acta ***********/
     $('#editar-actas-archivo').on('submit', function (e) {
         e.preventDefault();
         var datos = new FormData(this);
@@ -82,9 +83,8 @@ $(document).ready(function () {
             }
         })
     });
-
-  /********** editar acta ***********/
-  $('#actas-archivo').on('submit', function (e) {
+/********** editar acta ***********/
+    $('#actas-archivo').on('submit', function (e) {
     e.preventDefault();
     var datos = new FormData(this);
     $.ajax({
@@ -122,9 +122,8 @@ $(document).ready(function () {
             }
         }
     })
-});
-
-    /********** editar reunion ***********/
+    });
+/********** editar reunion ***********/
     $('#editar-reunion').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -154,7 +153,7 @@ $(document).ready(function () {
             }
         })
     });
-    /********** guardarestado noti ***********/
+/********** guardarestado noti ***********/
     $('#guardar-estadoparticipante').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -184,8 +183,7 @@ $(document).ready(function () {
             }
         })
     });
-
-    /********** guardarestado noti ***********/
+/********** guardarestado noti ***********/
     $('#guardar-estadonoti').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -215,8 +213,7 @@ $(document).ready(function () {
             }
         })
     });
-
-    /********** guardar tipo reunion/acta ********** UNICO*/
+/********** guardar tipo reunion/acta ********** UNICO*/
     $('#guardar-tiporeu').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -247,12 +244,7 @@ $(document).ready(function () {
             }
         })
     });
-
-
-
-
-
-    /********** guardarestado acta ***********/
+/********** guardarestado acta ***********/
     $('#guardar-estadoacta').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -282,8 +274,7 @@ $(document).ready(function () {
             }
         })
     });
-
-    /********** guardarestado reunion ***********/
+/********** guardarestado reunion ***********/
     $('#guardar-estadoreunion').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -313,8 +304,7 @@ $(document).ready(function () {
             }
         })
     });
-
-    /********** guardar estado acuerdo ***********/
+/********** guardar estado acuerdo ***********/
     $('#guardar-estadoacuerdo').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -344,8 +334,7 @@ $(document).ready(function () {
             }
         })
     });
-
-    /********** borrar acta/reunion ***********/
+/********** borrar acta/reunion ***********/
     $('.borrar_registro').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -355,10 +344,11 @@ $(document).ready(function () {
             text: 'Si lo elimina no podra revertirlo!!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Eliminarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -387,8 +377,7 @@ $(document).ready(function () {
             })
         });
     });
-
-    /********** borrar acta/reunion ***********/
+/********** borrar acta/reunion ***********/
     $('.cancelar_registro').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -398,10 +387,11 @@ $(document).ready(function () {
             text: 'Si la cancela no podra revertirlo!!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, cancelarla!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, cancelarla!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -432,8 +422,7 @@ $(document).ready(function () {
             })
         });
     });
-
-    /********** borrar recursos***********/
+/********** borrar recursos***********/
     $('.borrar_recursoacta').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -443,10 +432,11 @@ $(document).ready(function () {
             text: 'Desea elimar el archivo',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Eliminarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -475,8 +465,7 @@ $(document).ready(function () {
             })
         });
     });
-
-    /********** borrar estado acta ***********/
+/********** borrar estado acta ***********/
     $('.borrar_estadoacta').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -486,10 +475,11 @@ $(document).ready(function () {
             text: 'Si lo elimina no podra revertirlo!!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Eliminarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -518,8 +508,7 @@ $(document).ready(function () {
             })
         });
     });
-
-    /********** borrar estado reunion ***********/
+/********** borrar estado reunion ***********/
     $('.borrar_estadoreunion').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -529,10 +518,11 @@ $(document).ready(function () {
             text: 'Si lo elimina no podra revertirlo!!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Eliminarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -561,8 +551,7 @@ $(document).ready(function () {
             })
         });
     });
-
-    /********** borrar estado acuerdo ***********/
+/********** borrar estado acuerdo ***********/
     $('.borrar_estadoacuerdo').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -572,10 +561,11 @@ $(document).ready(function () {
             text: 'Si lo elimina no podra revertirlo!!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Eliminarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -604,8 +594,7 @@ $(document).ready(function () {
             })
         });
     });
-
-    /********** borrar estado noti ***********/
+/********** borrar estado noti ***********/
     $('.borrar_estadonoti').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -615,10 +604,11 @@ $(document).ready(function () {
             text: 'Si lo elimina no podra revertirlo!!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Eliminarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -647,7 +637,7 @@ $(document).ready(function () {
             })
         });
     });
-
+/********** borrar estado participante ***********/
     $('.borrar_estadoparticipante').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -657,10 +647,11 @@ $(document).ready(function () {
             text: 'Si lo elimina no podra revertirlo!!',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Eliminarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Eliminarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -689,8 +680,7 @@ $(document).ready(function () {
             })
         });
     });
-
-    /********** guardar acuerdo ***********/
+/********** guardar acuerdo ***********/
     $('#guardar-acuerdo').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -726,9 +716,7 @@ $(document).ready(function () {
             }
         })
     });
-
-
-    /********** guardar acuerdo ***********/
+/********** editar acuerdo ***********/
     $('#editar-acuerdo').on('submit', function (e) {
         e.preventDefault();
         var datos = $(this).serializeArray();
@@ -758,7 +746,7 @@ $(document).ready(function () {
             }
         })
     });
-
+/********** finalizar registro acuerdo ***********/
     $('.finalizar_registroacuerdo').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -768,10 +756,11 @@ $(document).ready(function () {
             text: 'El responsable cumplio con la tarea asignada?',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Finalizar!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Finalizar!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',
@@ -803,9 +792,8 @@ $(document).ready(function () {
             })
         });
     });
-
  /********** cancelar reunion ***********/
- $('.cancelar_registrooo').on('click', function (e) {
+    $('.cancelar_registrooo').on('click', function (e) {
     e.preventDefault();
     var id = $(this).attr('data-id');
     var tipo = $(this).attr('data-tipo');
@@ -848,9 +836,8 @@ $(document).ready(function () {
             }
         })
     });
-});
-
-
+    });
+/********** cancelar registro acuerdo ***********/
     $('.cancelar_registroacuerdo').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
@@ -860,10 +847,11 @@ $(document).ready(function () {
             text: 'Si lo cancelar no podra revertirlo y se notificará al responsable!!<br><br><b>Escriba el motivo por lo cual cancela el acuerdo</b><br><br><input class="form-control" onkeyup="mayus(this);" id="mensaje" style="width: 65%; margin-left: 17%;" required name="mensaje" type="text">',
             type: 'warning',
             showCancelButton: true,
+            allowOutsideClick: false, //bloquear click fuera
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtontext: 'Si, Cancelarlo!',
-            cancelButtontext: 'Cancelar'
+            confirmButtonText: 'Si, Cancelarlo!',
+            cancelButtonText: 'Cancelar'
         }).then(function () {
             $.ajax({
                 type: 'post',

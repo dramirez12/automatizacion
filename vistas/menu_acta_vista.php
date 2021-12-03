@@ -4,25 +4,29 @@ session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_bitacora.php');
 
-if (permiso_ver('277') == '1') {
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Menú Actas');
 
-    $_SESSION['menu_acta'] = "...";
-} else {
-    $_SESSION['menu_acta'] = "No tiene permisos para visualizar";
-}
-if (permiso_ver('147') == '1') {
+if (permiso_ver('5004') == '1') {
 
     $_SESSION['actas_pendientes'] = "...";
 } else {
     $_SESSION['actas_pendientes'] = "No tiene permisos para visualizar";
 }
 
-if (permiso_ver('148') == '1') {
+if (permiso_ver('5006') == '1') {
 
     $_SESSION['listar_actas'] = "...";
 } else {
     $_SESSION['listar_actas'] = "No tiene permisos para visualizar";
+}
+
+if (permiso_ver('5019') == '1') {
+
+    $_SESSION['archivar_nueva_acta'] = "...";
+} else {
+    $_SESSION['archivar_nueva_acta'] = "No tiene permisos para visualizar";
 }
 ob_end_flush();
 ?>
@@ -45,12 +49,12 @@ ob_end_flush();
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Actas</h1>
+                            <h1 class="m-0 text-dark">Menú Actas</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
-                                <li class="breadcrumb-item active">Control de actas</li>
+                            <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                           <li class="breadcrumb-item active">Menú Actas</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -59,7 +63,7 @@ ob_end_flush();
             <!-- /.content-header -->
             <!-- Main content -->
 
-
+<br>
             <section class="content">
                 <div class="container-fluid">
                     <!-- Info boxes -->
@@ -119,7 +123,7 @@ ob_end_flush();
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h4>Archivar Nueva Acta</h4>
-                                    <p><?php echo $_SESSION['listar_actas']; ?></p>
+                                    <p><?php echo $_SESSION['archivar_nueva_acta']; ?></p>
                                 </div>
                                 <div class="icon"><i class="fas fa-archive"></i>
                                 </div>
