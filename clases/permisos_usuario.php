@@ -391,52 +391,15 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
    //AGREGANDO Modulo Control de Actas
 
    //Boton Principal Control de Actas
-  if ($_SESSION['pantalla']='5000' or $_SESSION['pantalla']='5001' or $_SESSION['pantalla']='5003' or $_SESSION['pantalla']='5004' or $_SESSION['pantalla']='5006' or $_SESSION['pantalla']='5007' or $_SESSION['pantalla']='5009' or $_SESSION['pantalla']='5010' or $_SESSION['pantalla']='5011' or $_SESSION['pantalla']='5012' or $_SESSION['pantalla']='5020' or $_SESSION['pantalla']='5027' ){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_control_actas'] = "block";
-   }
-}
-//Menu de Reuniones
-  if ($_SESSION['pantalla'] = '5000' or $_SESSION['pantalla'] = '5001' or $_SESSION['pantalla'] = '5003') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['gestion_reunion'] = "block";
-   }
-}
-
-      //Menu de Actas 
-      if ($_SESSION['pantalla'] >= '5004' && $_SESSION['pantalla'] <= '5006' or $_SESSION['pantalla'] = '5019') {
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['gestion_actas'] = "block";
-         }
-      }
-
-      //Menu Acuerdos y Seguimientos
-      if ($_SESSION['pantalla'] = '5007' or $_SESSION['pantalla'] = '5009' or $_SESSION['pantalla'] = '5010') {
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['gestion_acuerdos_seguimientos'] = "block";
-         }
-      }
-     
-      //Menu Lista de Asistencia
-      if ($_SESSION['pantalla'] = '5011' or $_SESSION['pantalla'] = '5012') {
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['gestion_lista_asistencia'] = "block";
-         }
-      }
-
-      //Menu Lista de Actas Archivadas
-      if ($_SESSION['pantalla'] = '5020'){
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['gestion_consulta_actas']  = "block";
-         }
-      }
-          
-      //Mantenimiento de Actas
-      if ($_SESSION['pantalla'] >= '5013' && $_SESSION['pantalla'] <= '5018'){
-         if ($_SESSION['confirmacion'] == 'block') {
-            $_SESSION['mantenimiento_actas'] = "block";
-         }
-      }
+   if ($_SESSION['pantalla'] == '5000' or $_SESSION['pantalla'] == '5001' or $_SESSION['pantalla'] == '5003' or $_SESSION['pantalla'] == '5004' or $_SESSION['pantalla'] == '5006' or $_SESSION['pantalla'] == '5007' or $_SESSION['pantalla'] == '5009' or $_SESSION['pantalla'] == '5010' or $_SESSION['pantalla'] == '5011' or $_SESSION['pantalla'] == '5012' or $_SESSION['pantalla'] == '5020' or $_SESSION['pantalla'] == '5027' ){ if ($_SESSION['confirmacion'] == 'block') { $_SESSION['btn_control_actas'] = "block"; } } //Menu de Reuniones
+   if ($_SESSION['pantalla'] == '5000' or $_SESSION['pantalla'] == '5001' or $_SESSION['pantalla'] == '5003') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_reunion'] = "block"; } } //Menu de Actas 
+   if ($_SESSION['pantalla'] == '5004' or $_SESSION['pantalla'] == '5005' or $_SESSION['pantalla'] == '5006' or $_SESSION['pantalla'] == '5019') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_actas'] = "block"; } }
+    //Menu Acuerdos y Seguimientos
+    if ($_SESSION['pantalla'] == '5007' or $_SESSION['pantalla'] == '5008' or $_SESSION['pantalla'] == '5009' or $_SESSION['pantalla'] == '5010') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_acuerdos_seguimientos'] = "block"; } } //Menu Lista de Asistencia 
+    if ($_SESSION['pantalla'] == '5011' or $_SESSION['pantalla'] == '5012') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_lista_asistencia'] = "block"; } } //Menu Lista de Actas Archivadas 
+    if ($_SESSION['pantalla'] == '5020'){ if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_consulta_actas'] = "block"; } } //Mantenimiento de Actas 
+    if ($_SESSION['pantalla'] == '5013' or $_SESSION['pantalla'] == '5014' or $_SESSION['pantalla'] == '5015' or $_SESSION['pantalla'] == '5016' or $_SESSION['pantalla'] == '5017' or $_SESSION['pantalla'] == '5018'){ if ($_SESSION['confirmacion'] == 'block') { $_SESSION['mantenimiento_actas'] = "block"; } } 
+ 
    //aqui termina modulo actas
 
    if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] == '48' or $_SESSION['pantalla'] == '104' or $_SESSION['pantalla'] == '275') {

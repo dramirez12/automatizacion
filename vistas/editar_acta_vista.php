@@ -166,11 +166,11 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="horainicio">Hora Inicio: </label>
-                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_inicial']; ?>" class="form-control" id="horainicio" name="horainicio" min="7:00:00" max="23:00:00">
+                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_inicial']; ?>" class="form-control" id="horainicio" name="horainicio">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="horafinal">Hora Final: </label>
-                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_final']; ?>" class="form-control" id="horafinal" name="horafinal" min="7:30:00" max="24:00:00">
+                                                        <input required style="width: 30%;" type="time" value="<?php echo $estado['hora_final']; ?>" class="form-control" id="horafinal" name="horafinal">
                                                     </div>
                                                     <div class="form-group">
                                                         <label id="enlaces" for="enlace">Enlace de la Reunión:</label>
