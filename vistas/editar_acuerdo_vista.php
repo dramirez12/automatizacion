@@ -14,9 +14,9 @@ $dtz = new DateTimeZone("America/Tegucigalpa");
 $dt = new DateTime("now", $dtz);
 $hoy = $dt->format("Y-m-d");
 
-$Id_objeto = 150;
+$Id_objeto = 5008;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A crear Acuerdo');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Editar Acuerdo');
 
 $visualizacion = permiso_ver($Id_objeto);
 
@@ -82,12 +82,14 @@ ob_end_flush();
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6"><br>
                         <h1>Editar Acuerdo</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista.php">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="menu_acuerdo_vista">Menú Acuerdos y Seg.</a></li>
+                            <li class="breadcrumb-item"><a href="acuerdos_pendientes_vista">Acuerdos Pendientes</a></li>
                             <li class="breadcrumb-item active">Editar Acuerdo</li>
                         </ol>
                     </div>
@@ -96,12 +98,10 @@ ob_end_flush();
         </section>
         <!-- Main content -->
         <section class="content">
-
             <?php
             $sql = "SELECT * FROM `tbl_acuerdos` WHERE `id_acuerdo` = $id ";
             $resultado = $mysqli->query($sql);
             $estado = $resultado->fetch_assoc();
-
             ?>
             <div class="container-fluid">
                 <form role="form" name="editar-acuerdo" id="editar-acuerdo" method="post" action="../Modelos/modelo_acuerdos.php">
@@ -144,7 +144,7 @@ ob_end_flush();
                             </div>
                             <div class="form-group">
                                 <label>Responsable:</label>
-                                <select class="form-control" class="selectpicker show-tick form-control" style="width: 50%;" name="responsable" id="responsable">
+                                <select required class="form-control" class="selectpicker show-tick form-control" style="width: 50%;" name="responsable" id="responsable">
                                     <!--Participantes por acta-->
                                     <?php
                                     try {
@@ -171,15 +171,16 @@ ob_end_flush();
                                         echo "Error: " . $e->getMessage();
                                     }
                                     ?>
+
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Nombre del Acuerdo:</label>
-                                <input style="width: 35%;" type="text" class="form-control" id="nombre_acuerdo" value="<?php echo $estado['nombre_acuerdo']; ?>" name="nombre_acuerdo" placeholder="Ingrese nombre del acuerdo">
+                                <input required onkeyup="MismaLetra('nombre_acuerdo');" onkeypress="return validacion(event)" onblur="limpia()" style="width: 35%;" type="text" class="form-control" id="nombre_acuerdo" value="<?php echo $estado['nombre_acuerdo']; ?>" name="nombre_acuerdo" minlength="5" maxlength="40" placeholder="Ingrese nombre del acuerdo. (Mínimo 5 caracteres)">
                             </div>
                             <div class="form-group">
                                 <label>Descripción:</label>
-                                <textarea class="form-control" placeholder="Ingrese la descripción del Acuerdo" rows="5" id="descripcion" name="descripcion"><?php echo $estado['descripcion']; ?></textarea>
+                                <textarea onkeyup="MismaLetra('descripcion');" onkeypress="return validacion(event)" onblur="limpia()" class="form-control" placeholder="Ingrese la descripción del Acuerdo. (Mínimo 5 caracteres)" rows="5" id="descripcion" name="descripcion" minlength="5" maxlength="80" required><?php echo $estado['descripcion']; ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Fecha Expiración:</label>
@@ -192,7 +193,7 @@ ob_end_flush();
                     </div>
             </div>
             <!-- /.row -->
-            <div style="padding: 0px 0 25px 0;">
+            <div style="padding: 0px 0 25px 25px;">
                 <input type="hidden" name="id_registro" value="<?php echo $id; ?>">
                 <input type="hidden" name="acuerdo" value="actualizar">
                 <button style="color: white !important;" type="submit" class="btn btn-primary" <?php echo $_SESSION['btn_crear']; ?>>Guardar</button>
@@ -207,13 +208,13 @@ ob_end_flush();
         <div class="modal-dialog modal-dialog-centered modal-sm justify-content-center">
             <div class="modal-content lg-secondary">
                 <div class="modal-header">
-                    <h4 style="padding-left: 19%;" class="modal-title"><b>Desea cancelar?</b></h4>
+                    <h4 style="padding-left: 19%;" class="modal-title"><b>¿Desea cancelar?</b></h4>
                 </div>
                 <div class="modal-body justify-content-center">
-                    <p style="padding-left: 6%;">Lo que haya escrito no se guardará!</p>
+                    <p style="padding-left: 6%;">¡Lo que haya escrito no se guardará!</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <a style="color: white ;" type="button" class="btn btn-primary" href="../vistas/acuerdo_pendientes_vista.php">Sí, deseo cancelar</a>
+                    <a style="color: white ;" type="button" class="btn btn-primary" href="acuerdos_pendientes_vista">Sí, deseo cancelar</a>
                     <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
                 </div>
             </div>
@@ -247,6 +248,19 @@ ob_end_flush();
              $('#responsable').select2();
          });
      });*/
+     document.getElementById("nombre_acuerdo").addEventListener("keydown", teclear);
+    document.getElementById("descripcion").addEventListener("keydown", teclear);
+
+var flag = false;
+var teclaAnterior = "";
+
+function teclear(event) {
+  teclaAnterior = teclaAnterior + " " + event.keyCode;
+  var arregloTA = teclaAnterior.split(" ");
+  if (event.keyCode == 32 && arregloTA[arregloTA.length - 2] == 32) {
+    event.preventDefault();
+  }
+}
 </script>
 
 </html>
@@ -267,6 +281,7 @@ ob_end_flush();
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>
 <script>
     /********** Listar Responsable ***********/
 
@@ -293,4 +308,27 @@ ob_end_flush();
                 });
         });
     });
+    window.onload = function() {
+    var nacuerdo = document.getElementById('nombre_acuerdo');
+    var desc = document.getElementById('descripcion');
+    
+    desc.onpaste = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+      }
+      
+      desc.oncopy = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+      }
+    nacuerdo.onpaste = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+      }
+      
+      nacuerdo.oncopy = function(e) {
+        e.preventDefault();
+        swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+      }
+    }
 </script>

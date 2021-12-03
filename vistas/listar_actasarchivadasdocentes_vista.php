@@ -7,7 +7,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
-$Id_objeto = 148;
+$Id_objeto = 5020;
 $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
@@ -21,7 +21,7 @@ if ($visualizacion == 0) {
                            window.location = "../vistas/menu_acta_vista.php";
                             </script>';
 } else {
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Lista Actas');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Consultar Actas (Docente)');
 }
 
 ob_end_flush();
@@ -45,7 +45,7 @@ ob_end_flush();
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6"><br>
                         <h1>Actas Archivadas</h1>
                     </div>
                     <div class="col-sm-6">
@@ -60,7 +60,7 @@ ob_end_flush();
         </section>
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Listado de todas las Actas archivadas</h3>
+                <h3 class="card-title">Listado de Actas</h3>
 
                 <!--BOTON AGENDAR REUNIÓN-->
                 <!-- <div class="px-1">
@@ -78,15 +78,15 @@ ob_end_flush();
                         <div class="tab-content" id="custom-tabs-four-tabContent">
                             <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                 <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_manactareunion.php">
-                                    <table id="tab" class="table table-bordered table-striped">
+                                    <table id="tab" class="table table-bordered table-striped table-hover">
                                         <thead>
-                                            <tr>
+                                            <tr class="table-secondary">
                                                 <th>No. Acta</th>
                                                 <th>Nombre Reunión</th>
                                                 <th>Tipo Reunión</th>
                                                 <th>Fecha Reunión</th>
                                                 <th>Redactor</th>
-                                                <th>Fecha de carga</th>
+                                                <th>Fecha de Subida</th>
                                                 <th>Acta</th>
                                                 <!-- <th>Acta</th>-->
                                             </tr>

@@ -7,7 +7,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-$Id_objeto = 150;
+$Id_objeto = 5009;
 $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
@@ -74,12 +74,13 @@ ob_end_flush();
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
+                        <br>
                         <h1>Acuerdos Pendientes</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista">Gestión Acuerdos</a></li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_acuerdo_vista">Menú Acuerdos y Seguimientos</a></li>
                             <li class="breadcrumb-item active">Acuerdos Pendientes</li>
                         </ol>
                     </div>
@@ -97,7 +98,7 @@ ob_end_flush();
                             <div class="card-header">
                                 <h3 class="card-title">Listado de Acuerdos pendientes</h3>
                                 <a href="crear_acuerdo_vista" type="button" class="btn btn-app bg-warning float-right derecha <?php echo $_SESSION['btn_crear']; ?>">
-                                    <i class="fas fa-plus-circle"><br></i>Crear Nueva Acuerdo
+                                    <i class="fas fa-plus-circle"><br></i>Crear Nuevo Acuerdo
                                 </a>
                             </div>
                             <!-- /.card-header -->
@@ -105,14 +106,14 @@ ob_end_flush();
                                 <div class="card card-primary card-outline card-outline-tabs">
                                     <div class="card-body">
                                         <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_acuerdos.php">
-                                            <table id="tabla29" class="table table-bordered table-striped">
+                                            <table id="tabla29" class="table table-bordered table-striped table-hover">
                                                 <thead>
-                                                    <tr>
+                                                    <tr class="table-secondary">
                                                         <th>No. Acta</th>
                                                         <th>Responsable</th>
-                                                        <th>Nombre del Acuerdo</th>
+                                                        <th>Nombre Acuerdo</th>
                                                         <th>Descripción</th>
-                                                        <th>Fecha de Vencimiento</th>
+                                                        <th>Fecha Vencimiento</th>
                                                         <th>Acciones</th>
                                                     </tr>
                                                 </thead>
@@ -148,7 +149,7 @@ ob_end_flush();
                                                             <td><?php echo $reunion['descripcion']; ?></td>
                                                             <td><?php echo $reunion['fecha_expiracion']; ?></td>
                                                             <td>
-                                                                <a href="../vistas/editar_acuerdo_vista?id=<?php echo $reunion['id_acuerdo'] ?>" style="min-width:86px; margin-bottom: 5px;" class="btn btn-primary  <?php echo $_SESSION['btn_editar'] ?>" style="color: while;">
+                                                                <a href="../vistas/editar_acuerdo_vista?id=<?php echo $reunion['id_acuerdo'] ?>"  class="btn btn-primary  <?php echo $_SESSION['btn_editar'] ?>" style="color: while; min-width:86px; margin-bottom: 5px;">
                                                                     <i class="far fa-edit"></i><br>Editar
                                                                 </a>
                                                                 <a href="#" data-id="<?php echo $reunion['id_acuerdo']; ?>" data-tipo="acuerdos" style="min-width:86px; margin-bottom: 5px;" class="finalizar_registroacuerdo btn btn-success  <?php echo $_SESSION['btn_editar'] ?>">
@@ -258,8 +259,8 @@ ob_end_flush();
                         //       },
                         {
                             extend: "pdfHtml5",
-                            download: 'open',
-                            text: '<i class="fas fa-file-pdf"></i> ',
+          /*download: 'open',*/
+          text: '<i class="far fa-file-pdf"></i> <b style=font-size: 30px;>PDF</b> ',
                             titleAttr: "Exportar a PDF",
                             className: "btn btn-danger",
                             orientation: "landscape",

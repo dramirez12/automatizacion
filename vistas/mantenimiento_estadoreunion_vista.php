@@ -6,9 +6,9 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
-$Id_objeto = 156;
+$Id_objeto = 5015;
 
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento Estado Reunion');
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Mantenimiento Estado Reunión');
 
 $visualizacion = permiso_ver($Id_objeto);
 
@@ -73,7 +73,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="menu_mantenimientoacta_vista">Menú Mantenimiento actas</a></li>
                             <li class="breadcrumb-item active">Estado Reunión</li>
                         </ol>
                     </div>
@@ -92,7 +93,7 @@ ob_end_flush();
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="estado">Nombre Estado: </label>
-                                    <input type="text" class="form-control" class="form-control col-md-6" id="estado" name="estado" placeholder="Ingrese un estado nuevo" required title="Solo se permiten MAYÚSCULAS o MINÚSCULAS y no se Aceptan caracteres especiales" minlength="3" maxlength="15" pattern="[A-Za-z]{1,15}">
+                                    <input type="text" class="form-control" class="form-control col-md-6" id="estado" name="estado" placeholder="Ingrese un estado nuevo. (Mínimo 3 caracteres)" required title="Solo se permiten MAYÚSCULAS y no se Aceptan caracteres especiales" onkeyup="MismaLetra('estado');" minlength="3" maxlength="15" pattern="[A-Z\s]{1,15}">
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -129,9 +130,9 @@ ob_end_flush();
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_manreunion.php">
-                                        <table id="tabla3" class="table table-bordered table-striped">
+                                        <table id="tabla3" class="table table-bordered table-striped table-hover">
                                             <thead>
-                                                <tr>
+                                                <tr class="table-secondary">
                                                     <th class="ocultar">No.</th>
                                                     <th>Estado</th>
                                                     <th>Acciones</th>
@@ -140,7 +141,9 @@ ob_end_flush();
                                             <tbody>
                                                 <?php
                                                 try {
-                                                    $sql = "SELECT * FROM tbl_estado_reunion";
+                                                    $sql = "SELECT @rownum:=@rownum+1 id_estado_reuniona, estado_reunion, id_estado_reunion
+                                                    FROM tbl_estado_reunion t, (
+                                                    SELECT @rownum:=0) r";
                                                     $resultado = $mysqli->query($sql);
                                                 } catch (Exception $e) {
                                                     $error = $e->getMessage();
@@ -148,7 +151,7 @@ ob_end_flush();
                                                 }
                                                 while ($estadoreunion = $resultado->fetch_assoc()) { ?>
                                                     <tr>
-                                                        <td class="ocultar"><?php echo $estadoreunion['id_estado_reunion']; ?></td>
+                                                        <td class="ocultar"><?php echo $estadoreunion['id_estado_reuniona']; ?></td>
                                                         <td><?php echo $estadoreunion['estado_reunion']; ?></td>
                                                         <td>
                                                             <a href="../vistas/editar_estadoreunion_vista.php?id=<?php echo $estadoreunion['id_estado_reunion'] ?>" class="btn btn-success <?php echo $_SESSION['btn_editar']; ?>" style="color: while;">
@@ -193,6 +196,34 @@ ob_end_flush();
                 "responsive": true,
             });
         });
+
+        window.onload = function() {
+    var nom = document.getElementById('estado');
+
+    
+   
+    nom.onpaste = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
+    }
+    
+    nom.oncopy = function(e) {
+      e.preventDefault();
+      swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
+    }
+}
+document.getElementById("estado").addEventListener("keydown", teclear);
+
+var flag = false;
+var teclaAnterior = "";
+
+function teclear(event) {
+  teclaAnterior = teclaAnterior + " " + event.keyCode;
+  var arregloTA = teclaAnterior.split(" ");
+  if (event.keyCode == 32 && arregloTA[arregloTA.length - 2] == 32) {
+    event.preventDefault();
+  }
+}
     </script>
 
 
@@ -212,4 +243,5 @@ ob_end_flush();
 <script src="../plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="../plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>
 <script src="../js/tipoacta-ajax.js"></script>

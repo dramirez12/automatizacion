@@ -28,7 +28,7 @@ class myPDF extends FPDF
             $this->Cell(330, 10, utf8_decode("DEPARTAMENTO DE INFORMÁTICA "), 0, 0, 'C');
             $this->ln(10);
             $this->SetFont('times', 'B', 20);
-            $this->Cell(330, 10, utf8_decode("REPORTE DE ACTAS PENDIENTES"), 0, 0, 'C');
+            $this->Cell(330, 10, utf8_decode("REPORTEq DE ACTAS PENDIENTES"), 0, 0, 'C');
             $this->ln(17);
             $this->SetFont('Arial', '', 12);
         $this->Cell(55, 10, utf8_decode("ACTAS PENDIENTES"), 0, 0, 'C');

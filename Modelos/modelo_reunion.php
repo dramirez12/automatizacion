@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 require_once('../PHPMAILER/PHPMailer.php');
 require_once('../PHPMAILER/SMTP.php');
 require_once('../PHPMAILER/Exception.php');
@@ -21,25 +23,37 @@ $anio_formateada = date('Y', strtotime($fecha));
 $correojefatura = 'patricia.ellner@unah.edu.hn';
 if ($_POST['clasif'] == '2'){
     $participante = $_POST['chk'];
+    $categoria = 'ASAMBLEA';
 }
 if ($_POST['clasif'] == '3'){
     $participante = $_POST['chknormal'];
+    $categoria = 'REUNIONES DE DEPARTAMENTO';
 }
 
 if ($_POST['reunion'] == 'nuevo') {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->isSMTP();
     try {
-        $stmt = $mysqli->prepare("INSERT INTO tbl_reunion (id_tipo, id_estado, fecha, nombre_reunion, lugar, enlace, hora_inicio, hora_final, asunto, agenda_propuesta) VALUES (?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("iissssssss", $tipo, $estado, $fecha_formateada, $nombre, $lugar, $enlace, $horainicio, $horafinal, $asunto, $agenda);
+        $stmt = $mysqli->prepare("INSERT INTO tbl_reunion (id_tipo, id_estado, fecha, nombre_reunion, lugar, enlace, hora_inicio, hora_final, asunto, agenda_propuesta, categoria) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("iisssssssss", $tipo, $estado, $fecha_formateada, $nombre, $lugar, $enlace, $horainicio, $horafinal, $asunto, $agenda, $categoria);
         $stmt->execute();
         $id_registro = $stmt->insert_id;
         $id_reunion = $id_registro;
         foreach ($participante as $par) {
-            $stmt = $mysqli->prepare("INSERT INTO tbl_participantes (id_reunion, id_persona) VALUES (?,?)");
-            $stmt->bind_param("ii", $id_reunion, $par);
-            $stmt->execute();
+            if ($_POST['clasif'] == '2'){
+                $part = $par - 10000;
+                $stmt = $mysqli->prepare("INSERT INTO tbl_participantes (id_reunion, id_persona) VALUES (?,?)");
+                $stmt->bind_param("ii", $id_reunion, $part);
+                $stmt->execute();
+            }
+            if ($_POST['clasif'] == '3'){
+                $stmt = $mysqli->prepare("INSERT INTO tbl_participantes (id_reunion, id_persona) VALUES (?,?)");
+                $stmt->bind_param("ii", $id_reunion, $par);
+                $stmt->execute();
+            }
         }
+ 
+
         if ($id_registro > 0) {
             $respuesta = array(
                 'respuesta' => 'exito',
@@ -50,6 +64,18 @@ if ($_POST['reunion'] == 'nuevo') {
                 'respuesta' => 'error'
             );
         }
+               $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5000;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'INSERTO';
+        $descripcionac= 'la reunion con nombre: '.$nombre;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
+
         //Server settings
         $correo = 'jefatura@informaticaunah.com';
         $Password = 'J3f@tur@';
@@ -76,6 +102,7 @@ if ($_POST['reunion'] == 'nuevo') {
         $mail->Subject = "$asunto";
         $body  = "<h1><b>MEMORÁNDUM IA-$id_registro/$anio_formateada</b></h1><br>";
         $body .= "Nombre Reunión: <strong>$nombre</strong><br>";
+        $body .= "Categoria de la Reunión: <strong>$categoria</strong><br>";
         $body .= "Lugar: <strong>$lugar</strong><br>";
         $body .= "Fecha: <strong>$fecha</strong><br>";
         $body .= "Hora de Inicio: <strong>$horainicio</strong><br>";
@@ -122,26 +149,87 @@ if ($_POST['reunion'] == 'actualizar') {
         $stmt->bind_param("ssssssssii", $nombre, $lugar, $horainicio, $horafinal, $fecha_formateada, $asunto, $agenda, $enlace, $tipo, $id_registro);
         $stmt->execute();
         $id_reunion = $id_registro;
+        $desc = 1;
         foreach ($participante as $par) {
             $stmt = $mysqli->prepare("INSERT INTO tbl_participantes (id_reunion, id_persona) VALUES (?,?)");
             $stmt->bind_param("ii", $id_reunion, $par);
             $stmt->execute();
         }
+
         foreach ($invitados as $inv) {
-            $stmt = $mysqli->prepare("DELETE FROM tbl_participantes WHERE id_reunion=? and id_persona=?");
-            $stmt->bind_param("ii", $id_reunion, $inv);
+            $stmt = $mysqli->prepare("UPDATE tbl_participantes SET descripcion=? WHERE id_reunion=? and id_persona=?");
+            $stmt->bind_param("iii", $desc, $id_reunion, $inv);
             $stmt->execute();
         }
-        if ($stmt->affected_rows) {
-            $respuesta = array(
-                'respuesta' => 'exito',
-                'id_actualizado' => $id_registro
-            );
-        } else {
-            $respuesta = array(
-                'respuesta' => 'error'
-            );
-        }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5000;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'MODIFICO';
+        $descripcionac= 'la reunion con nombre: '.$nombre;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
+
+
+    $correo = 'jefatura@informaticaunah.com';
+    $Password = 'J3f@tur@';
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
+    $mail->Host = 'informaticaunah.com';
+    $mail->Port = 465;
+    $mail->SMTPSecure = 'ssl';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username = $correo;
+    $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
+    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    
+    $mail->setFrom($correo, 'Jefatura Departamento de Informática');
+    $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t3.descripcion = 1 and t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
+    $res = $mysqli->query($sql);
+    while ($destino = $res->fetch_assoc()) {
+        $email = $destino['participantes'];
+        $mail->addAddress($email);
+    }
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Eliminado de la reunión';
+    $body  = "<h3>Por medio de la presente se le notifica que usted ha sido eliminado de la reunión $nombre </h3><br>";
+    $body .= "<b>Si cree que ha ocurrido un error, favor contactarse al siguiente correo: $correojefatura</b><br>";
+    $body .= "<br>";
+    $body .= "<br>";
+    $body .= "Este es un correo automático favor no responder a esta dirección, si quiere contactarse con nosotros por algún motivo escribanos a: ";
+    $body .= "<strong><a href=''>$correojefatura</a></strong>";
+    $body .= "<br>";
+    $body .= "<br>";
+    $body .= "Enlace: <strong><a href='$enlace'>$enlace</a></strong><br>";
+    $body .= "<h3>Saludos Cordiales, <strong>Departamento de Informática</strong></h3><br>";
+    $body .= "<br>";
+    $body .= "--<br>Msc. Patricia Ellner<br><br>Departamento de Informática";
+    $body .= "<br>";
+    $body .= "<br>";
+    $mail->Body = $body;
+    $mail->CharSet = 'UTF-8';
+    $mail->send();
+
+    foreach ($invitados as $inv) {
+        $stmt = $mysqli->prepare("DELETE FROM tbl_participantes WHERE descripcion=?");
+        $stmt->bind_param("i", $desc);
+        $stmt->execute();
+    }
+
+    if ($stmt->affected_rows) {
+        $respuesta = array(
+            'respuesta' => 'exito',
+            'id_actualizado' => $id_registro
+        );
+    } else {
+        $respuesta = array(
+            'respuesta' => 'error'
+        );
+    }
         $correo = 'jefatura@informaticaunah.com';
         $Password = 'J3f@tur@';
         $mail->SMTPDebug = 0;                      //Enable verbose debug output                                          //Send using SMTP
@@ -152,11 +240,10 @@ if ($_POST['reunion'] == 'actualizar') {
         $mail->Username = $correo;
         $mail->Password = $Password;                              //SMTP password          //Enable implicit TLS encryption
         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        //Recipients
 
-        $stmt->close();
+        
         $mail->setFrom($correo, 'Jefatura Departamento de Informática');
-        $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion";
+        $sql = "SELECT t1.valor AS participantes FROM tbl_contactos t1 INNER JOIN tbl_personas t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_participantes t3 ON t3.id_persona = t2.id_persona WHERE t1.id_tipo_contacto = 4 and t3.id_reunion = $id_reunion AND t3.descripcion IS NULL";
         $res = $mysqli->query($sql);
         while ($destino = $res->fetch_assoc()) {
             $email = $destino['participantes'];
@@ -197,6 +284,7 @@ if ($_POST['reunion'] == 'actualizar') {
         $mail->Body = $body;
         $mail->CharSet = 'UTF-8';
         $mail->send();
+        $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
         $respuesta = array(
@@ -228,6 +316,18 @@ if ($_POST['reunion'] == 'cancelar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5000;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'CANCELO';
+        $descripcionac= 'la reunion con el siguiente id: '.$id_cancelar;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
+
         //Server settings
         $correo = 'jefatura@informaticaunah.com';
         $Password = 'J3f@tur@';

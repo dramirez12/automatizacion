@@ -10,8 +10,9 @@ require_once('../clases/funcion_permisos.php');
 $dtz = new DateTimeZone("America/Tegucigalpa");
 $dt = new DateTime("now", $dtz);
 $hoy = $dt->format("Y-m-d");
-$Id_objeto = 146;
-bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A ver documentos');
+$Id_objeto = 5006;
+$vista = $estado['num_acta'];
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'Visualizar archivos ');
 $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
@@ -63,11 +64,10 @@ ob_end_flush();
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h4>Visualizacion de archivos del acta <b><?php echo $estado['num_acta']; ?></b></h1>
+                        <h4>Visualizacion de archivos del acta <br><b><?php echo $estado['num_acta']; ?></b></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                             <li class="breadcrumb-item active">Visualizacion de archivos</li>
                         </ol>
                     </div>
@@ -115,7 +115,7 @@ ob_end_flush();
                                 <?php echo $estadoacta['formato']; ?>
                             </td>
                             <td>
-                                <a href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?> download="<?php echo $estadoacta['nombre']; ?>""><i style="color: #359c32;" class="fas fa-download"></i></a>
+                                <a href="<?php echo $estadoacta['url'] . $estadoacta['nombre']; ?>" download="<?php echo $estadoacta['nombre']; ?>"><i style="color: #359c32;" class="fas fa-download"></i></a>
                             </td>
                         </tr>
                     <?php  }  ?>

@@ -7,7 +7,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
-$Id_objeto = 148;
+$Id_objeto = 5006;
 $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
@@ -50,12 +50,14 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista">Menu Gestión actas</a></li>
-                            <li class="breadcrumb-item active">Lista de Actas</li>
+                        <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                           <li class="breadcrumb-item"><a href="menu_acta_vista">Menú Actas</a></li>
+                           <li class="breadcrumb-item active">Listar de Actas</li>
                         </ol>
+                        <br>
                     </div>
                     <div style="padding: 10px 0 0 8px; float: right;">
+                    <br>
                         <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-acta btn btn-primary" href="listar_actasarchivadas_vista">Ver Actas Archivadas</a>
                     </div>
                     <div class="RespuestaAjax"></div>
@@ -147,15 +149,15 @@ ob_end_flush();
                         <div class="tab-content" id="custom-tabs-four-tabContent">
                             <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                 <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_manactareunion.php">
-                                    <table id="listar_actas" class="table table-bordered table-striped">
+                                    <table id="listar_actas" class="table table-bordered table-striped table-hover">
                                         <thead>
-                                            <tr>
+                                            <tr class="table-secondary">
                                                 <th>No. Acta</th>
                                                 <th>Nombre Reunión</th>
+                                                <th>Categoria</th>
                                                 <th>Estado</th>
                                                 <th>Fecha</th>
                                                 <th>Hora Inicio</th>
-                                                <th>Hora Final</th>
                                                 <th>Archivos</th>
                                                 <th>Acciones</th>
                                                 <!-- <th>Acta</th>-->
@@ -164,7 +166,7 @@ ob_end_flush();
                                         <tbody>
                                             <?php
                                             try {
-                                                $sql = "SELECT t1.id_acta,t1.num_acta,t2.nombre_reunion,t4.tipo, t3.estado,t2.lugar,t1.fecha,t1.hora_inicial,t1.hora_final, GROUP_CONCAT(t5.url) AS url
+                                                $sql = "SELECT t1.id_acta,t1.num_acta,t2.nombre_reunion,t4.tipo, t2.categoria, t3.estado,t2.lugar,t1.fecha,t1.hora_inicial,t1.hora_final, GROUP_CONCAT(t5.url) AS url
                                                 from tbl_acta t1
                                                 LEFT JOIN tbl_reunion t2 ON t2.id_reunion = t1.id_reunion
                                                 LEFT JOIN tbl_estado_acta t3 ON t3.id_estado = t1.id_estado
@@ -180,10 +182,10 @@ ob_end_flush();
                                                 <tr>
                                                     <td><?php echo $reunion['num_acta']; ?></td>
                                                     <td><?php echo $reunion['nombre_reunion']; ?></td>
+                                                    <td><?php echo $reunion['categoria']; ?></td>
                                                     <td><?php echo $reunion['estado']; ?></td>
                                                     <td><?php echo $reunion['fecha']; ?></td>
                                                     <td><?php echo $reunion['hora_inicial']; ?></td>
-                                                    <td><?php echo $reunion['hora_final']; ?></td>
                                                     <td>
                                                         <a target="_blank" href="../vistas/archivos_acta_vista?id=<?php echo $reunion['id_acta'] ?>">archivos</a>
                                                     </td>
@@ -284,8 +286,8 @@ ob_end_flush();
                     //       },
                     {
                         extend: "pdfHtml5",
-                        download: 'open',
-                        text: '<i class="fas fa-file-pdf"></i> ',
+          /*download: 'open',*/
+          text: '<i class="far fa-file-pdf"></i> <b style=font-size: 30px;>PDF</b> ',
                         titleAttr: "Exportar a PDF",
                         className: "btn btn-danger",
                         orientation: "landscape",

@@ -4,42 +4,46 @@ session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_bitacora.php');
+
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Menu Mantenimiento Actas');
 
 
-if (permiso_ver('154') == '1') {
+
+if (permiso_ver('5013') == '1') {
 
     $_SESSION['mantenimiento_tipo_reunion_vista'] = "...";
 } else {
     $_SESSION['mantenimiento_tipo_reunion_vista'] = "No tiene permisos para visualizar";
 }
 
-if (permiso_ver('155') == '1') {
+if (permiso_ver('5014') == '1') {
 
     $_SESSION['mantenimiento_estado_acta_vista'] = "...";
 } else {
     $_SESSION['mantenimiento_estado_acta_vista'] = "No tiene permisos para visualizar";
 }
-if (permiso_ver('156') == '1') {
+if (permiso_ver('5015') == '1') {
 
     $_SESSION['mantenimiento_estado_reunion_vista'] = "...";
 } else {
     $_SESSION['mantenimiento_estado_reunion_vista'] = "No tiene permisos para visualizar";
 }
 
-if (permiso_ver('157') == '1') {
+if (permiso_ver('5016') == '1') {
 
     $_SESSION['mantenimiento_estado_acuerdo_vista'] = "...";
 } else {
     $_SESSION['mantenimiento_estado_acuerdo_vista'] = "No tiene permisos para visualizar";
 }
-if (permiso_ver('158') == '1') {
+if (permiso_ver('5017') == '1') {
 
     $_SESSION['mantenimiento_estado_notificacion_vista'] = "...";
 } else {
     $_SESSION['mantenimiento_estado_notificacion_vista'] = "No tiene permisos para visualizar";
 }
 
-if (permiso_ver('159') == '1') {
+if (permiso_ver('5018') == '1') {
 
     $_SESSION['mantenimiento_estado_participante_vista'] = "...";
 } else {
@@ -69,12 +73,12 @@ ob_end_flush();
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">MANTENIMIENTOS REUNION / ACTAS </h1>
+                            <h1 class="m-0 text-dark">Menú Mantenimiento actas</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-
+                                <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                                <li class="breadcrumb-item active">Menú Mantenimiento actas</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->

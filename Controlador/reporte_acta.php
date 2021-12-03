@@ -16,7 +16,7 @@ $dtz = new DateTimeZone("America/Tegucigalpa");
 $dt = new DateTime("now", $dtz);
 $anio = $dt->format("Y");
 
-$sql="SELECT a.num_acta, tra.tipo ,a.fecha, r.lugar, r.hora_inicio, r.hora_final
+$sql="SELECT a.num_acta, r.categoria, tra.tipo ,a.fecha, r.lugar, r.hora_inicio, r.hora_final
 FROM tbl_acta a
 INNER JOIN tbl_reunion r ON r.id_reunion = a.id_reunion
 INNER JOIN tbl_tipo_reunion_acta tra ON tra.id_tipo = r.id_tipo
@@ -24,7 +24,7 @@ WHERE a.id_acta = '$_GET[id]'";
 $resultado = $mysqli->query($sql);
 $datos = $resultado->fetch_assoc();
 
-$sql="SELECT r.agenda_propuesta FROM tbl_acta a
+$sql="SELECT r.agenda_propuesta, r.nombre_reunion FROM tbl_acta a
 INNER JOIN tbl_reunion r ON r.id_reunion = a.id_reunion
 WHERE a.id_acta = '$_GET[id]'";
 $resultado = $mysqli->query($sql);
@@ -36,7 +36,17 @@ $resultado = $mysqli->query($sql);
 $des = $resultado->fetch_assoc();
 
 
-
+$dtz = new DateTimeZone("America/Tegucigalpa");
+$dt = new DateTime("now", $dtz);
+$hoy = $dt->format("Y-m-d H:i:s");
+$id_objetoac = 5005;
+$id_userac = $_SESSION['id_usuario'];
+$accionac = 'REPORTE';
+$descripcionac= 'generÓ reporte de ACTA no. '.$datos['num_acta'].' de la reuniÓn con nombre: '.$agen['nombre_reunion'];
+$fechaac = $hoy;
+$stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+$stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+$stmt->execute();
 
 class PDF extends FPDF
 	{
@@ -73,13 +83,13 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->SetFont('Arial','B',15);
 	$pdf->cell(0,6,utf8_decode('Universidad Nacional Autónoma de Honduras'),0,1,'C');
 	$pdf->ln(2);
-	$pdf->cell(0,6,utf8_decode('Facultad de Ciencias Economicas'),0,1,'C');
+	$pdf->cell(0,6,utf8_decode('Facultad de Ciencias Económicas'),0,1,'C');
 	$pdf->ln(2);
 	$pdf->cell(0,6,utf8_decode('Departamento de Informática Administrativa'),0,1,'C');
 	$pdf->ln(10);
 	$pdf->SetFont('Arial','', 10);
 	$pdf->ln(5);
-	$pdf->Cell(0,5,utf8_decode('Fecha Impresion: '.$fecha.' ' .$hora),0,1,'C');
+	$pdf->Cell(0,5,utf8_decode('Fecha Impresión: '.$fecha.' ' .$hora),0,1,'C');
 	$pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','B',14);
 	$pdf->ln(5);
@@ -95,13 +105,16 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->ln();
 
 	$pdf->SetX(90);
-	$pdf->Cell(110, 7, utf8_decode("Modalidad  : ".$datos['tipo']), 0, 0, 'L');
+	$pdf->Cell(110, 7, utf8_decode("Categoria  : ".$datos['categoria']), 0, 0, 'L');
 	$pdf->Cell(80, 7, utf8_decode("Hora Inicio : ".$datos['hora_inicio']), 0, 0, 'L');
 	$pdf->ln();
 
 	$pdf->SetX(90);
-	$pdf->Cell(110, 7, utf8_decode("Lugar         : ".$datos['lugar']), 0, 0, 'L');
+	$pdf->Cell(110, 7, utf8_decode("Modalidad  : ".$datos['tipo']), 0, 0, 'L');
 	$pdf->Cell(80, 7, utf8_decode("Hora Final  : ".$datos['hora_final']), 0, 0, 'L');
+	$pdf->ln();
+	$pdf->SetX(90);
+	$pdf->Cell(110, 7, utf8_decode("Lugar         : ".$datos['lugar']), 0, 0, 'L');
 	$pdf->ln();
 	$pdf->ln();
 	$pdf->ln(2);
@@ -119,7 +132,7 @@ $resultado = mysqli_query($connection, $sql);
 
     $pdf->SetFont('Arial', 'B', 14);
 	$pdf->SetX(30);
-    $pdf->Cell(350, 7, utf8_decode('Desarrollo de la Reunion:'), 0, 0, 'L');
+    $pdf->Cell(350, 7, utf8_decode('Desarrollo de la Reunión:'), 0, 0, 'L');
     $pdf->ln();
 	$pdf->SetFont('Arial', '', 12);
 	$pdf->SetX(30);
@@ -268,8 +281,23 @@ $resultado = mysqli_query($connection, $sql);
 			$pdf->Cell(90, 15, '', 1, 0, 'C');
 			$pdf->ln();
 		}		
+		$pdf->ln();
+		$pdf->ln();
+		$pdf->ln();
+		$pdf->ln();
+		$pdf->ln();
 
 
+		$pdf->SetX(90);
+	$pdf->SetFont('Arial', 'B', 14);
+	$pdf->Cell(110, 7, utf8_decode("----------------------------------------"));
+	$pdf->Cell(80, 7, utf8_decode("-----------------------------------------"));
+	$pdf->ln();
+
+	$pdf->SetX(90);
+	$pdf->Cell(110, 7, utf8_decode("FIRMA Y SELLO JEFE/A"));
+	$pdf->Cell(80, 7, utf8_decode("FIRMA Y SELLO SECRETARIO/A"));
+	$pdf->ln();
 	$pdf->SetX(20);
 	$pdf->ln(5);
 	$pdf->SetX(25);

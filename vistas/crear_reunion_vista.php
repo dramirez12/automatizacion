@@ -10,7 +10,7 @@ $dtz = new DateTimeZone("America/Tegucigalpa");
 $dt = new DateTime("now", $dtz);
 $hoy = $dt->format("Y-m-d");
 
-$Id_objeto = 144;
+$Id_objeto = 5000;
 
 bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A crear Reunión');
 
@@ -48,6 +48,7 @@ ob_end_flush();
 
 <head>
     <script src="../js/autologout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../plugins/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel=" stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js">
     <title></title>
@@ -65,7 +66,8 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/menu_reunion_vista">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                           <li class="breadcrumb-item"><a href="menu_reunion_vista">Menú Reuniones</a></li>
                             <li class="breadcrumb-item active">Crear Reunión</li>
                         </ol>
                     </div>
@@ -86,12 +88,12 @@ ob_end_flush();
                                 <a style="display: none;" class="nav-link " id="datosreunion-tab" data-toggle="pill" href="#datosreunion" role="tab" aria-controls="datosreunion" aria-selected="true">Participantes</a>
                             </li>
                             <li class="nav-item">
-                            <form role="form" name="guardar-reunion" id="guardar-reunion" method="post" action="../Modelos/modelo_reunion.php">
+                            <form role="form" name="guardar-reunion" id="guardar-reunion" method="post" action="../Modelos/modelo_reunion.php" >
                             <div class="form-control" style="padding: 0px 0 0px 0; margin: 0px 0px 5px 10px;">
                                <input type="hidden" name="estado" value="1">
                                <input type="hidden" name="reunion" value="nuevo">
-                               <button type="submit" class="btn btn-success float-right" <?php echo $_SESSION['btn_crear']; ?> disabled>Agendar</button>
-                               <a style="color: white !important; margin: 0px 0px 0px 10px;" class="cancelar-reunion btn btn-danger" href="reuniones_pendientes_vista" id="confirm">Cancelar</a>
+                               <button type="submit" class="btn btn-success float-right bloquear" <?php echo $_SESSION['btn_crear']; ?> disabled>Agendar</button> 
+                               <a style="color: white !important; padding-left: 10px;" class="cancelar-reunion btn btn-danger" data-toggle="modal" data-target="#modal-default" href="#" id="confirm">Cancelar</a>
                             </div>
                             </li>
                         </ul>
@@ -111,7 +113,7 @@ ob_end_flush();
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="nombre">Nombre:</label>
-                                                        <input onkeyup="MismaLetra('nombre');" onkeypress="return validacion(event)" onblur="limpia()" required="" maxlength="50" minlength="5" onchange="showdatos()"  type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunión">
+                                                        <input onkeyup="MismaLetra('nombre');" onkeypress="return validacion(event)" onblur="limpia()" required="" minlength="5" maxlength="50"  onchange="showdatos()"  type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de la Reunión. (Mínimo 5 caracteres)">
                                                     </div>
 
                                                     <div class="form-group">
@@ -135,7 +137,7 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="lugar">Lugar:</label>
-                                                        <input onkeyup="MismaLetra('lugar');" onkeypress="return validacion(event)" onblur="limpia()" required="" maxlength="30" minlength="4" onchange="showdatos()" style="width: 90%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se dearrollara la Reunión">
+                                                        <input onkeyup="MismaLetra('lugar');" onkeypress="return validacion(event)" onblur="limpia()" required="" minlength="4" maxlength="30" onchange="showdatos()" style="width: 100%;" type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar donde se desarrollará la Reunión. (Mínimo 4 caracteres)">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="fecha">Fecha:</label>
@@ -143,15 +145,15 @@ ob_end_flush();
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="horainicio">Hora Inicio: </label>
-                                                        <input required style="width: 30%;" onchange="showdatos()" type="time" class="form-control" id="horainicio" name="horainicio" min="7:00" max="23:00" value="00:00">
+                                                        <input required style="width: 30%;" onchange="showdatos()" type="time" class="form-control" id="horainicio" name="horainicio" value="05:00" min="5:00" max="23:30">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="horafinal">Hora Final: </label>
-                                                        <input required style="width: 30%;" onchange="showdatos()" type="time" class="form-control" id="horafinal" name="horafinal" min="7:30" max="24:00">
+                                                        <input required style="width: 30%;" onchange="showdatos()" type="time" class="form-control" id="horafinal" name="horafinal" min="5:30" >
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="display: none;" id="enlaces" for="enlace">Enlace de la Reunión:</label>
-                                                        <input style="display: none;" minlength="10" maxlength="1000" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunión">
+                                                        <input style="display: none;"  maxlength="1000" type="text" class="form-control" id="enlace" name="enlace" placeholder="Ingrese el Link de la Reunión">
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -169,11 +171,11 @@ ob_end_flush();
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="asunto">Asunto:</label>
-                                                    <textarea onkeyup="MismaLetra('asunto');" type="text" onkeypress="return validacion(event)"  minlength="5" maxlength="50" required minlength="4" onchange="showdatos()"  class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión"></textarea>
+                                                    <textarea onkeyup="MismaLetra('asunto');" type="text" onkeypress="return validacion(event)" minlength="5"  maxlength="50" onchange="showdatos()"  class="form-control" id="asunto" name="asunto" rows="3" placeholder="Ingrese el asunto de la Reunión. (Mínimo 5 caracteres)"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="agenda">Agenda Propuesta</label>
-                                                    <textarea onkeyup="MismaLetra('agenda');" onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" maxlength="65000" onchange="showdatos()"  class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese Agenda Propuesta"></textarea>
+                                                    <textarea onkeyup="MismaLetra('agenda');" onkeypress="return validacion(event)" onblur="limpia()" required minlength="5" maxlength="65000" onchange="showdatos()"  class="form-control" id="agenda" name="agenda" rows="13" placeholder="Ingrese la Agenda Propuesta. (Mínimo 5 caracteres)"></textarea>
                                                 </div>
                                             </div>
                                             <!-- /.card-body -->
@@ -225,7 +227,11 @@ ob_end_flush();
                                                             <body>
                                                                 <?php
                                                                 try {
-                                                                    $sql = "SELECT t1.id_persona,concat_ws(' ', t1.nombres, t1.apellidos) as nombres, t3.jornada FROM tbl_personas t1 INNER JOIN tbl_horario_docentes t2 ON t2.id_persona = t1.id_persona INNER JOIN tbl_jornadas t3 ON t2.id_jornada = t3.id_jornada ORDER BY nombres ASC";
+                                                                    $sql = "SELECT t1.id_persona, CONCAT_WS(' ', t1.nombres, t1.apellidos) AS nombres, t3.jornada
+                                                                    FROM tbl_personas t1
+                                                                    INNER JOIN tbl_horario_docentes t2 ON t2.id_persona = t1.id_persona
+                                                                    INNER JOIN tbl_jornadas t3 ON t2.id_jornada = t3.id_jornada
+                                                                    ORDER BY nombres ASC";
                                                                     $resultado = $mysqli->query($sql);
                                                                 } catch (Exception $e) {
                                                                     $error = $e->getMessage();
@@ -235,7 +241,7 @@ ob_end_flush();
                                                                     <tr>
                                                                         <td>
                                                                             <div class="icheck-danger d-inline">
-                                                                                <input onclick="return false;" type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chknormal[]" value="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                <input class="normal"  type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chknormal[]" value="<?php echo $estadoacta['id_persona']; ?>">
                                                                                 <label for="<?php echo $estadoacta['id_persona']; ?>">
                                                                                     <?php echo $estadoacta['nombres']; ?>
                                                                                 </label>
@@ -272,7 +278,7 @@ ob_end_flush();
                                                             <body>
                                                                 <?php
                                                                 try {
-                                                                    $sql = "SELECT t1.id_persona, CONCAT_WS(' ', t1.nombres, t1.apellidos) AS nombres, t3.jornada
+                                                                    $sql = "SELECT t1.id_persona+10000 AS id_persona, CONCAT_WS(' ', t1.nombres, t1.apellidos) AS nombres, t3.jornada
                                                                     FROM tbl_personas t1
                                                                     INNER JOIN tbl_horario_docentes t2 ON t2.id_persona = t1.id_persona
                                                                     INNER JOIN tbl_jornadas t3 ON t2.id_jornada = t3.id_jornada
@@ -287,7 +293,7 @@ ob_end_flush();
                                                                     <tr>
                                                                         <td>
                                                                             <div class="icheck-danger d-inline">
-                                                                                <input onclick="return false;" type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chk[]" value="<?php echo $estadoacta['id_persona']; ?>">
+                                                                                <input class="asamblea" type="checkbox" id="<?php echo $estadoacta['id_persona']; ?>" name="chk[]" value="<?php echo $estadoacta['id_persona']; ?>">
                                                                                 <label for="<?php echo $estadoacta['id_persona']; ?>">
                                                                                     <?php echo $estadoacta['nombres']; ?>
                                                                                 </label>
@@ -316,6 +322,27 @@ ob_end_flush();
             </div>
             </form>
         </section>
+        
+    <div class="modal fade justify-content-center" id="modal-default">
+
+<div class="modal-dialog modal-dialog-centered modal-sm justify-content-center">
+    <div class="modal-content lg-secondary">
+        <div class="modal-header">
+            <h4 style="padding-left: 19%;" class="modal-title"><b>¿Desea cancelar?</b></h4>
+        </div>
+        <div class="modal-body justify-content-center">
+            <p style="padding-left: 6%;">¡Lo que haya escrito no se guardará!</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+            <a style="color: white ;" type="button" class="btn btn-primary" href="reuniones_pendientes_vista">Sí, deseo cancelar</a>
+            <a style="color: white ;" type="button" class="btn btn-danger" data-dismiss="modal">No</a>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -335,6 +362,9 @@ ob_end_flush();
         });
 
 
+ 
+ 
+
     </script>
 
     <?php
@@ -349,6 +379,8 @@ LIMIT 1";
     $resultado = $mysqli->query($sql);
     $ultimo = $resultado->fetch_assoc();
     ?>
+
+    
     <script>
         
 /********** guardar reunion ***********/
@@ -374,25 +406,45 @@ $('#guardar-reunion').on('submit', function(e) {
                         <br>
                         ¿Ahora que desea hacer?
                         <br>
-                        <b><a target="_blank" href="../pdf/reporte_memorandum.php?id=<?php echo $ultimo['valor']; ?>">Ver Reporte</a></b>`,
+                        <b><a target="_blank" href="../pdf/reporte_memorandum.php?id=<?php echo $ultimo['valor']; ?>">Ver Reporte</a></b>
+                        <br><br><br>
+                        <a style="padding: 4px 25px; background: rgb(225, 33, 33); border: 1px solid #B91C1C; color: #fff; border-radius: 4px; text-decoration:none;" href="pagina_principal_vista"><b>Salir</b></a>`,
+                        
                 }).then(function() {
                     location.href = "../vistas/reuniones_pendientes_vista.php";
                 });
             } else {
                 swal(
                     'Error',
-                    'Hubo un error falta campos por llenar!',
+                    'Hubo un error!',
                     'error'
                 )
             }
         }
     })
 });
+
+function Misma(id_input) {
+	var valor = $('#' + id_input).val();
+	var longitud = valor.length;
+	//console.log(valor+longitud);
+	if (longitud > 2) {
+		var str1 = valor.substring(longitud - 3, longitud - 2);
+		var str2 = valor.substring(longitud - 2, longitud - 1);
+		var str3 = valor.substring(longitud - 1, longitud);
+		nuevo_valor = valor.substring(0, longitud - 1);
+		if (str1 == str2 && str1 == str3 && str2 == str3) {
+			swal('Error', 'No se permiten tres letras consecutivas', 'error');
+
+			$('#' + id_input).val(nuevo_valor);
+		}
+	}
+}
     </script>
 </body>
 
 </html>
-<script type="text/javascript" src="../js/validaciones_mca.js"></script>
+
 <script src="../plugins/select2/js/select2.min.js"></script>
 <!-- Select2 -->
 <script src="../plugins/select2/js/select2.full.min.js"></script>
@@ -402,3 +454,4 @@ $('#guardar-reunion').on('submit', function(e) {
 <!-- para usar botones en datatables JS -->
 <script src="../plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
 <script src="../js/tipoacta-ajax.js"></script>
+<script type="text/javascript" src="../js/validaciones_mca.js"></script>

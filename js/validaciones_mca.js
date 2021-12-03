@@ -15,12 +15,15 @@ function MismaLetra(id_input) {
 		}
 	}
 }
+
 //hora final no sea menor a la de inicio
 const inicio = document.getElementById("horainicio");
 const final = document.getElementById("horafinal");
+const fechaselect = document.getElementById("fecha");
 const comparaHoras = () => {
     const vInicio = inicio.value;
     const vFinal = final.value;
+    const vfecha = fechaselect.value;
     if (!vInicio || !vFinal) {
         return;
     }
@@ -38,6 +41,7 @@ const comparaHoras = () => {
         swal('Error', '<h5>La hora inicio con la hora final no pueden ser Iguales</h5>', 'error');
         document.getElementById('horafinal').value = ''
     }
+    
 }
 inicio.addEventListener("change", comparaHoras);
 final.addEventListener("change", comparaHoras);
@@ -47,7 +51,9 @@ window.onload = function() {
     var asu = document.getElementById('asunto');
     var lugar = document.getElementById('lugar');
     var agenda = document.getElementById('agenda');
+
     
+   
     nom.onpaste = function(e) {
       e.preventDefault();
       swal('Error', '<h5>La acción de <b>pegar</b> está prohibida</h5>', 'error');
@@ -84,7 +90,11 @@ window.onload = function() {
       e.preventDefault();
       swal('Error', '<h5>La acción de <b>copiar</b> está prohibida</h5>', 'error');
     }
+
+    
+   
   }
+
 
   function validacion(e) {
     key = e.keyCode || e.which;
@@ -172,7 +182,7 @@ $(function() {
 // ******************************************
 $(function() {
     $('input:checkbox').change(function() {
-        $('button:submit').prop({
+        $('.bloquear').prop({
             disabled: $('input:checkbox:checked').length < 2
         });
     });
@@ -198,6 +208,8 @@ function showdatos() {
     }
 }
 
+
+
 function mayus(e) {
     e.value = e.value.toUpperCase();
 }
@@ -220,6 +232,7 @@ $(function() {
                 break;
 
             case "2":
+               
                 $("#reu-normal").hide();
                 $( "#chknormal" ).prop( "disabled", true );
                 $( "#chk" ).prop( "disabled", false );
@@ -231,6 +244,7 @@ $(function() {
                 break;
 
             case "3":
+                
                 $("#chknormal").prop( "disabled", false );
                 $("#reu-normal").show();
                 $("#reu-asamblea").hide();
@@ -246,3 +260,4 @@ $(function() {
     }).change();
 
 });
+

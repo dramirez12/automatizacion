@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 require_once('../clases/Conexion.php');
 $tipo = $_POST['tipo'];
 $id_tipo = $_POST['id_tipo'];
@@ -18,6 +20,17 @@ if ($_POST['tipo-actareunion'] == 'nuevo') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5013;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'INGRESO';
+        $descripcionac= 'Tipo para la reunión/acta con nombre:'.$tipo;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -41,6 +54,17 @@ if ($_POST['tipo-actareunion'] == 'actualizar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5013;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'MODIFICO';
+        $descripcionac= 'Tipo para la reunión/acta con nombre:'.$tipo;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {
@@ -50,8 +74,6 @@ if ($_POST['tipo-actareunion'] == 'actualizar') {
     }
     die(json_encode($respuesta));
 }
-
-
 
 if ($_POST['tipo-actareunion'] == 'eliminar') {
     $id_borrar = $_POST['id'];
@@ -70,6 +92,17 @@ if ($_POST['tipo-actareunion'] == 'eliminar') {
                 'respuesta' => 'error'
             );
         }
+        $dtz = new DateTimeZone("America/Tegucigalpa");
+        $dt = new DateTime("now", $dtz);
+        $hoy = $dt->format("Y-m-d H:i:s");
+        $id_objetoac = 5013;
+        $id_userac = $_SESSION['id_usuario'];
+        $accionac = 'ELIMINO';
+        $descripcionac= 'Tipo para la reunión/acta con id:'.$id_borrar;
+        $fechaac = $hoy;
+        $stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+        $stmt->execute();
         $stmt->close();
         $mysqli->close();
     } catch (Exception $e) {

@@ -1,6 +1,7 @@
 <?php 
 
-	 session_start();
+ob_start();
+session_start();
 
 require 'fpdf/fpdf.php';
 require_once ('../clases/Conexion.php');
@@ -35,7 +36,8 @@ t1.agenda_propuesta,
 t1.enlace,
 t2.estado_reunion,
 t3.tipo, 
-t1.mensaje
+t1.mensaje,
+t1.categoria
 FROM
 tbl_reunion t1
 INNER JOIN tbl_estado_reunion t2 ON
@@ -85,6 +87,18 @@ function Footer()
 }
 //date_default_timezone_get('America/Tegucigalpa');
 
+$dtz = new DateTimeZone("America/Tegucigalpa");
+$dt = new DateTime("now", $dtz);
+$hoy = $dt->format("Y-m-d H:i:s");
+$id_objetoac = 146;
+$id_userac = $_SESSION['id_usuario'];
+$accionac = 'REPORTE';
+$descripcionac= 'generÓ reporte de memorÁndum de la reuniÓn con nombre: '.$estado['nombre_reunion'];
+$fechaac = $hoy;
+$stmt = $mysqli->prepare("INSERT INTO `tbl_bitacora` (`Id_usuario`, `Id_objeto`, `Fecha`, `Accion`, `Descripcion`) VALUES (?,?,?,?,?)");
+$stmt->bind_param("iisss", $id_userac, $id_objetoac, $fechaac, $accionac, $descripcionac);
+$stmt->execute();
+
 $resultado = mysqli_query($connection, $sql);
 	$row = mysqli_fetch_array($resultado);
 	$pdf = new PDF();
@@ -102,18 +116,20 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->ln(2);
 	$pdf->SetFont('Arial','', 10);
 	$pdf->ln(5);
-	$pdf->Cell(0,5,utf8_decode('Fecha Impresion: '.$fecha."  ".$hora),0,1,'C');
+	$pdf->Cell(0,5,utf8_decode('Fecha Impresión: '.$fecha."  ".$hora),0,1,'C');
 	$pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','B',12);
 	$pdf->ln(10);
 	$pdf->SetX(20);
 	$pdf->multicell(170,7,utf8_decode('Nombre Reunion: '. $estado['nombre_reunion']),0);
 	$pdf->SetX(20);
+	$pdf->multicell(170,7,utf8_decode('Categoria: '. $estado['categoria']),0);
+	$pdf->SetX(20);
 	$pdf->multicell(170,7,utf8_decode('Fecha: '. $estado['fecha']),0);
 	$pdf->SetX(20);
 	$pdf->multicell(170,7,utf8_decode('Lugar: ' . $estado['lugar']),0);
 	$pdf->SetX(20);
-	$pdf->multicell(170,7,utf8_decode('Tipo: ' . $estado['tipo']),0);
+	$pdf->multicell(170,7,utf8_decode('Modalidad: ' . $estado['tipo']),0);
 	$pdf->SetX(20);
 	$pdf->multicell(170,7,utf8_decode('De: Jefatura Depto. Informática Administrativa'),0);
 	$pdf->SetX(20);
@@ -151,5 +167,4 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->multicell(170,5,utf8_decode('Tegucigalpa MDC '.$fecha),0);
 	$pdf->ln(5);
 	$pdf->SetX(25);
-	$pdf->Output();
-	$pdf->Output();
+	$pdf->Output('REPORTE_MEMORANDUM IA-'.$estado['id_reunion'].'/'.$anio.'.pdf', 'I');

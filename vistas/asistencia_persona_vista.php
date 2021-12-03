@@ -8,7 +8,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-$Id_objeto = 153;
+$Id_objeto = 5012;
 $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
@@ -58,8 +58,9 @@ ob_end_flush();
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_asistencia_vista">Menu Asistencia</a></li>
-                            <li class="breadcrumb-item active">Lista de Actas</li>
+                            <li class="breadcrumb-item"><a href="../vistas/menu_asistencia_vista">Menú Asistencia</a></li>
+                            <li class="breadcrumb-item active">
+Asistencia por persona</li>
                         </ol>
                     </div>
                     <div class="RespuestaAjax"></div>
@@ -88,11 +89,11 @@ ob_end_flush();
                             <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                 <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_manactareunion.php">
 
-                                    <table id="asistencia_persona" class="table table-bordered table-striped">
+                                    <table id="asistencia_persona" class="table roundedver table-bordered table-striped table-hover">
                                         <thead class="text-center">
-                                            <tr>
+                                            <tr class="table-secondary">
                                                 <th>Nombre Persona</th>
-                                                <th>No. reuniones</th>
+                                                <th>No. Reuniones</th>
                                                 <th>Asistencia</th>
                                                 <th>Inasistencia</th>
                                                 <th>Excusados</th>
@@ -249,8 +250,8 @@ ob_end_flush();
                     //       },
                     {
                         extend: "pdfHtml5",
-                        download: 'open',
-                        text: '<i class="fas fa-file-pdf"></i> ',
+          /*download: 'open',*/
+          text: '<i class="far fa-file-pdf"></i> <b style=font-size: 30px;>PDF</b> ',
                         titleAttr: "Exportar a PDF",
                         className: "btn btn-danger",
                         orientation: "landscape",

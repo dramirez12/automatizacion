@@ -7,7 +7,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
-$Id_objeto = 148;
+$Id_objeto = 5027;
 $visualizacion = permiso_ver($Id_objeto);
 if ($visualizacion == 0) {
     echo '<script type="text/javascript">
@@ -21,7 +21,7 @@ if ($visualizacion == 0) {
                            window.location = "../vistas/menu_acta_vista.php";
                             </script>';
 } else {
-    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Lista Actas');
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Lista Actas Archivadas (Secretaria)');
 }
 
 ob_end_flush();
@@ -50,9 +50,10 @@ ob_end_flush();
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vistas/pagina_principal_vista.php">Inicio</a></li>
-                            <li class="breadcrumb-item"><a href="../vistas/menu_acta_vista.php">Menu Gestión actas</a></li>
-                            <li class="breadcrumb-item active">Actas Archivadas</li>
+                        <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="menu_acta_vista">Menú Acta</a></li>
+                        <li class="breadcrumb-item"><a href="listar_actas_vista">Listar Actas</a></li>
+                        <li class="breadcrumb-item active">Actas Archivadas</li>
                         </ol>
                     </div>
                     <div class="RespuestaAjax"></div>
@@ -81,9 +82,9 @@ ob_end_flush();
                         <div class="tab-content" id="custom-tabs-four-tabContent">
                             <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                 <form role="form" name="guardar-tiporeu" id="guardar-tiporeu" method="post" action="../Modelos/modelo_manactareunion.php">
-                                    <table id="listar_actas" class="table table-bordered table-striped">
+                                    <table id="listar_actas" class="table table-bordered table-striped table-hover">
                                         <thead>
-                                            <tr>
+                                            <tr class="table-secondary">
                                                 <th>No. Acta</th>
                                                 <th>Nombre Reunión</th>
                                                 <th>Tipo Reunión</th>
@@ -222,8 +223,8 @@ ob_end_flush();
                     //       },
                     {
                         extend: "pdfHtml5",
-                        download: 'open',
-                        text: '<i class="fas fa-file-pdf"></i> ',
+          /*download: 'open',*/
+          text: '<i class="far fa-file-pdf"></i> <b style=font-size: 30px;>PDF</b> ',
                         titleAttr: "Exportar a PDF",
                         className: "btn btn-danger",
                         orientation: "landscape",
@@ -233,7 +234,7 @@ ob_end_flush();
                             columns: [0, 1, 2, 3, 4, 5],
 
                         },
-                        title: "REPORTE LISTA DE ACTAS ",
+                        title: "REPORTE LISTA DE ACTAS ARCHIVADAS",
 
                         messageTop: "FECHA: " + fechaYHora,
                         customize: function(doc) {

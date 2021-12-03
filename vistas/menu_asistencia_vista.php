@@ -4,21 +4,19 @@ session_start();
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_bitacora.php');
 
-if (permiso_ver('279') == '1') {
+bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Menu Asistencia');
 
-    $_SESSION['menu_asistencia_acta'] = "...";
-} else {
-    $_SESSION['menu_asistencia_acta'] = "No tiene permisos para visualizar";
-}
-if (permiso_ver('152') == '1') {
+
+if (permiso_ver('5011') == '1') {
 
     $_SESSION['asistencia_acta'] = "...";
 } else {
     $_SESSION['asistencia_acta'] = "No tiene permisos para visualizar";
 }
 
-if (permiso_ver('153') == '1') {
+if (permiso_ver('5012') == '1') {
 
     $_SESSION['asistencia_persona'] = "...";
 } else {
@@ -45,13 +43,12 @@ ob_end_flush();
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Asistencias</h1>
+                            <h1 class="m-0 text-dark">Menú asistencia</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item active">Control de actas</li>
-                                <li class="breadcrumb-item active">Asistencias</li>
+                                <li class="breadcrumb-item"><a href="pagina_principal_vista">Inicio</a></li>
+                                <li class="breadcrumb-item active">menú asistencia</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -60,7 +57,7 @@ ob_end_flush();
             <!-- /.content-header -->
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
+                <div class="container-fluid"><br><br>
                     <!-- Info boxes -->
                     <div class="row" style="  display: flex; align-items: center; justify-content: center;">
                         <!-- fix for small devices only -->
