@@ -340,8 +340,8 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
-            <!-- AGREGANDO CONTROL DE ACTAS -->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_control_actas'] ?>">
+        <!-- AGREGANDO CONTROL DE ACTAS -->
+        <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_control_actas'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-paste"></i>
                 <p>
@@ -388,15 +388,16 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
                 <!--- Gestión asistencia  -->
-                <li class="nav-item" /style="display:<?php echo $_SESSION['gestion_actas'] ?>"/>
-              <a href="../vistas/listar_actasarchivadasdocentes_vista.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      Consultar Acta
-                    </p>
-                </a>
-            </li>
-            <!--- Consultar actas  -->
+
+                <li class="nav-item" style="display:<?php echo $_SESSION['gestion_consulta_actas'] ?>">
+                  <a href="../vistas/listar_actasarchivadasdocentes_vista" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Consultar Acta
+                        </p>
+                    </a>
+                </li>
+                <!--- Consultar actas  -->
               </ul>
             </li>
             
@@ -789,8 +790,8 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
 
-                <li class="nav-item">
-                  <a href="../vistas/menu_mantenimientoacta_vista" class="nav-link">
+                <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_actas'] ?>">
+                  <a href="../vistas/menu_mantenimientoacta_vista" class="nav-link"></a>
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Mantenimientos Actas

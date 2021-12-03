@@ -94,6 +94,7 @@ $_SESSION['gestion_reunion'] = 'none';
 $_SESSION['gestion_actas'] = 'none';
 $_SESSION['gestion_acuerdos_seguimientos'] = 'none';
 $_SESSION['gestion_lista_asistencia'] = 'none';
+$_SESSION['gestion_consulta_actas'] = 'none';
 $_SESSION['mantenimiento_actas'] = 'none';
 $_SESSION['mantenimiento_laboratorio'] = 'none';
 $_SESSION['producto_vista'] = 'none';
@@ -385,32 +386,58 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
          $_SESSION['btn_coordinacion'] = "block";
       }
    }
+   
 
-   //AGREGANDO MENU REUNION
-   if ($_SESSION['pantalla'] == '276') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_control_actas'] = "block";
-      }
-   }
-   //AGREGANDO MENU ACTAS
-   if ($_SESSION['pantalla'] == '277') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_control_actas'] = "block";
-      }
-   }
-   //AGREGANDO MENU ACUERDO
-   if ($_SESSION['pantalla'] == '278') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_control_actas'] = "block";
-      }
-   }
-   //AGREGANDO MENU ASISTENCIA
-   if ($_SESSION['pantalla'] == '279') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_control_actas'] = "block";
-      }
-   }
+   //AGREGANDO Modulo Control de Actas
 
+   //Boton Principal Control de Actas
+  if ($_SESSION['pantalla']='5000' or $_SESSION['pantalla']='5001' or $_SESSION['pantalla']='5003' or $_SESSION['pantalla']='5004' or $_SESSION['pantalla']='5006' or $_SESSION['pantalla']='5007' or $_SESSION['pantalla']='5009' or $_SESSION['pantalla']='5010' or $_SESSION['pantalla']='5011' or $_SESSION['pantalla']='5012' or $_SESSION['pantalla']='5020' or $_SESSION['pantalla']='5027' ){
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['btn_control_actas'] = "block";
+   }
+}
+//Menu de Reuniones
+  if ($_SESSION['pantalla'] = '5000' or $_SESSION['pantalla'] = '5001' or $_SESSION['pantalla'] = '5003') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['gestion_reunion'] = "block";
+   }
+}
+
+      //Menu de Actas 
+      if ($_SESSION['pantalla'] >= '5004' && $_SESSION['pantalla'] <= '5006' or $_SESSION['pantalla'] = '5019') {
+         if ($_SESSION['confirmacion'] == 'block') {
+            $_SESSION['gestion_actas'] = "block";
+         }
+      }
+
+      //Menu Acuerdos y Seguimientos
+      if ($_SESSION['pantalla'] = '5007' or $_SESSION['pantalla'] = '5009' or $_SESSION['pantalla'] = '5010') {
+         if ($_SESSION['confirmacion'] == 'block') {
+            $_SESSION['gestion_acuerdos_seguimientos'] = "block";
+         }
+      }
+     
+      //Menu Lista de Asistencia
+      if ($_SESSION['pantalla'] = '5011' or $_SESSION['pantalla'] = '5012') {
+         if ($_SESSION['confirmacion'] == 'block') {
+            $_SESSION['gestion_lista_asistencia'] = "block";
+         }
+      }
+
+      //Menu Lista de Actas Archivadas
+      if ($_SESSION['pantalla'] = '5020'){
+         if ($_SESSION['confirmacion'] == 'block') {
+            $_SESSION['gestion_consulta_actas']  = "block";
+         }
+      }
+          
+      //Mantenimiento de Actas
+      if ($_SESSION['pantalla'] >= '5013' && $_SESSION['pantalla'] <= '5018'){
+         if ($_SESSION['confirmacion'] == 'block') {
+            $_SESSION['mantenimiento_actas'] = "block";
+         }
+      }
+   //aqui termina modulo actas
 
    if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] == '48' or $_SESSION['pantalla'] == '104' or $_SESSION['pantalla'] == '275') {
       if ($_SESSION['confirmacion'] == 'block') {
@@ -565,43 +592,9 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
    //AGREGANDO MODULO CVE
 
 
-   /* if ($_SESSION['pantalla']=='144' or $_SESSION['pantalla']=='145' or $_SESSION['pantalla']=='146' ){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_control_actas'] = "block";
-   }
-} */
+  
 
-
-   if ($_SESSION['pantalla'] = '144' or $_SESSION['pantalla'] == '145' or $_SESSION['pantalla'] == '146') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['gestion_reunion'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] = '147' or $_SESSION['pantalla'] = '148') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['gestion_actas'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] = '149' or $_SESSION['pantalla'] = '150' or $_SESSION['pantalla'] = '151') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['gestion_acuerdos_seguimientos'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] = '152' or $_SESSION['pantalla'] = '153') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['gestion_lista_asistencia'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] = '154' or $_SESSION['pantalla'] = '155' or $_SESSION['pantalla'] = '156' or $_SESSION['pantalla'] = '157' or $_SESSION['pantalla'] = '158' or $_SESSION['pantalla'] = '159') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['mantenimiento_actas'] = "block";
-      }
-   }
-
+  
 
    //----agregando vistas de GESTION DEL MODULO DE JEFATURA----//
    if ($_SESSION['pantalla'] = '266') {
