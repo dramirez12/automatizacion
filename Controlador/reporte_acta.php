@@ -301,7 +301,5 @@ $resultado = mysqli_query($connection, $sql);
 	$pdf->SetX(20);
 	$pdf->ln(5);
 	$pdf->SetX(25);
-	$pdf->Output();
-	$pdf->Output();
-
+	$pdf->Output('ACTA '.$datos['num_acta'].'.pdf', 'I');
     ?>

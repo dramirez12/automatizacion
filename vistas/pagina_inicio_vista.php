@@ -778,7 +778,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
 
                 <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_actas'] ?>">
-                  <a href="../vistas/menu_mantenimientoacta_vista" class="nav-link"></a>
+                  <a href="../vistas/menu_mantenimientoacta_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
                       Mantenimientos Actas
