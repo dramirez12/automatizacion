@@ -337,41 +337,7 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
       }
    }
 
-   if ($_SESSION['pantalla'] >= '224' and $_SESSION['pantalla'] <= '225') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_comite_vida_estudiantil'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] == '228') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_comite_vida_estudiantil'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] == '229') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_comite_vida_estudiantil'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] == '232') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_comite_vida_estudiantil'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] == '233') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_comite_vida_estudiantil'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] == '235') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_comite_vida_estudiantil'] = "block";
-      }
-   }
+ 
 
    //MODULO VISTA 360 ESTUDIANTIL
    if ($_SESSION['pantalla'] == '115') {
@@ -788,36 +754,94 @@ if ($_SESSION['pantalla']='184' and $_SESSION['pantalla']='185' or $_SESSION['pa
 
 
 
-   //COMITE VIDA ESTUDIANTL
-   if ($_SESSION['pantalla'] == '220' or $_SESSION['pantalla'] == '221' or $_SESSION['pantalla'] == '222' or $_SESSION['pantalla'] == '223') {
+    //COMITE VIDA ESTUDIANTL
+    if ($_SESSION['pantalla'] == '8219' and $_SESSION['pantalla'] == '8220' and $_SESSION['pantalla'] == '8221' and $_SESSION['pantalla'] == '8222' and $_SESSION['pantalla'] == '8223') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['administracion_cve'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] >= '8224' and $_SESSION['pantalla'] <= '8225') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] >= '8224' and $_SESSION['pantalla'] <= '8225') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+
+   if ($_SESSION['pantalla'] == '8228') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+
+   if ($_SESSION['pantalla'] == '8229') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+
+   if ($_SESSION['pantalla'] == '8232') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '8219') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] == '8233') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+
+   if ($_SESSION['pantalla'] == '8235') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_comite_vida_estudiantil'] = "block";
+      }
+   }
+   
+
+
+   if ($_SESSION['pantalla'] == '8220' or $_SESSION['pantalla'] == '8221' or $_SESSION['pantalla'] == '8222' or $_SESSION['pantalla'] == '8223') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['administracion_cve'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] = '224') {
+   if ($_SESSION['pantalla'] = '8224') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['actividades_cve'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] = '226') {
+   if ($_SESSION['pantalla'] = '8226') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['faltas_cve'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] = '228') {
+   if ($_SESSION['pantalla'] = '8228') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['horas_cve'] = "block";
       }
    }
-
-   if ($_SESSION['pantalla'] = '234') {
+   if ($_SESSION['pantalla'] = '8219') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['administracion_cve'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '8234') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['memos_cve'] = "block";
       }
    }
+   //Fin del Comite vide estudiantil
+ 
 
    //PERFIL 360
    if ($_SESSION['pantalla'] = '116') {
