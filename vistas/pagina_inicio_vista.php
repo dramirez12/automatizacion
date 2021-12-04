@@ -340,8 +340,8 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
-        <!-- AGREGANDO CONTROL DE ACTAS -->
-        <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_control_actas'] ?>">
+            <!-- AGREGANDO CONTROL DE ACTAS -->
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_control_actas'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-paste"></i>
                 <p>
@@ -388,20 +388,8 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
                 <!--- Gestión asistencia  -->
-
-                <li class="nav-item" style="display:<?php echo $_SESSION['gestion_consulta_actas'] ?>">
-                  <a href="../vistas/listar_actasarchivadasdocentes_vista" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>
-                          Consultar Acta
-                        </p>
-                    </a>
-                </li>
-                <!--- Consultar actas  -->
               </ul>
             </li>
-            
-         
 
 
             <!---- solicitudes ----->
@@ -599,25 +587,25 @@ if (session_status() === PHP_SESSION_NONE) {
               </a>
               <ul class="nav nav-treeview">
 
-                <li class="nav-item" style="display:<?php echo $_SESSION['notificacion'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['movil_notificacion'] ?>">
                   <a href="../vistas/movil_menu_notificaciones_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Notificaciones </p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:<?php echo $_SESSION['noticias'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['movil_noticias'] ?>">
                   <a href="../vistas/movil_menu_noticias_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Noticias </p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:<?php echo $_SESSION['chat'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['movil_chat'] ?>">
                   <a href="../vistas/movil_chat_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Chat </p>
                   </a>
                 </li>
-                <li class="nav-item" style="display:<?php echo $_SESSION['bitacora'] ?>">
+                <li class="nav-item" style="display:<?php echo $_SESSION['movil_bitacora'] ?>">
                   <a href="../vistas/movil_bitacora_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Bitácora </p>
@@ -627,7 +615,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!-- APP INFORMATICA -->
-            <li class="nav-item has-treeview" style="display:block">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_gestion_app'] ?>">
               <a href="../vistas/movil_menu_gestion_vista" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -790,7 +778,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
 
-                <li class="nav-item" style="display:<?php echo $_SESSION['mantenimiento_actas'] ?>">
+                <li class="nav-item">
                   <a href="../vistas/menu_mantenimientoacta_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
@@ -806,7 +794,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
 
-                <li class="nav-item has-treeview" style="display:block">
+                <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['menu_movil_mantenimientos'] ?>">
                   <a href="../vistas/movil_menu_mantenimiento_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>
