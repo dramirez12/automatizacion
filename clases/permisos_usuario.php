@@ -46,6 +46,8 @@ $_SESSION['btn_control_actas'] = 'none';
 $_SESSION['btn_jefatura'] = 'none';
 $_SESSION['btn_gestion_laboratorio'] = 'none';
 $_SESSION['btn_administracion_app'] = 'none';
+$_SESSION['btn_gestion_app'] = 'none';
+
 
 
 /*Menu laterales*/
@@ -108,6 +110,14 @@ $_SESSION['transaccion_kardex'] = 'none';
 $_SESSION['objetos_vista'] = 'none';
 $_SESSION['modulos_vista'] = 'none';
 $_SESSION['asignacion_vista'] = 'none'; //nuevo
+// modulo app
+$_SESSION['movil_noticias'] = "none";
+$_SESSION['movil_notificacion'] = "none";
+$_SESSION['movil_chat'] = "none";
+$_SESSION['movil_bitacora'] = "none";
+$_SESSION['btn_gestion_app'] = "none";
+$_SESSION['menu_movil_mantenimientos'] = "none";
+
 
 
 
@@ -851,26 +861,57 @@ if ($_SESSION['pantalla']='184' and $_SESSION['pantalla']='185' or $_SESSION['pa
    }
 
 
-   //MENU ADMINISTRACION APP 
+  //MENU ADMINISTRACION APP 
 
-   if ($_SESSION['pantalla'] = '181') {
+  if ($_SESSION['pantalla'] = '10181') {
+   if ($_SESSION['confirmacion'] == 'block') {
+      $_SESSION['btn_administracion_app'] = "block";
+   }
+   }
+   if ($_SESSION['pantalla'] = '10162') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['btn_administracion_app'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '162') {
+   if ($_SESSION['pantalla'] = '10161') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['btn_administracion_app'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '161') {
+   if ($_SESSION['pantalla'] = '10160') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['btn_administracion_app'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '160') {
+   if ($_SESSION['pantalla'] = '10168' and $_SESSION['pantalla'] = '10162' and $_SESSION['pantalla'] = '10180') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_administracion_app'] = "block";
+         $_SESSION['movil_noticias'] = "block";
       }
    }
+   if ($_SESSION['pantalla'] = '10169' and $_SESSION['pantalla'] = '10163' and $_SESSION['pantalla'] = '10181') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['movil_notificacion'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '10161') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['movil_chat'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '10160') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['movil_bitacora'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '10164' and $_SESSION['pantalla'] = '10165' and $_SESSION['pantalla'] = '10170' and $_SESSION['pantalla'] = '10171' and $_SESSION['pantalla'] = '10172' and $_SESSION['pantalla'] = '10178') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['btn_gestion_app'] = "block";
+      }
+   }
+   if ($_SESSION['pantalla'] = '10164' and $_SESSION['pantalla'] = '10165' and $_SESSION['pantalla'] = '10170' and $_SESSION['pantalla'] = '10171' and $_SESSION['pantalla'] = '10172' and $_SESSION['pantalla'] = '10179') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['menu_movil_mantenimientos'] = "block";
+      }
+   }
+   //Aqui finaliza Menu APP
 }
