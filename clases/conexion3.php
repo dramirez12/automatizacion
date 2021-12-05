@@ -4,7 +4,7 @@ function conexion(){
     $db_host="51.222.86.251";
  	$db_nombre="informat_desarrollo_automatizacion";
  	$db_usuario="informat_desarrollo";
- 	$db_contra="^Kwd{PE^(L&# ";
+ 	$db_contra="^Kwd{PE^(L&#";
 
  	$conexion = mysqli_connect($db_host,$db_usuario,$db_contra);
 
