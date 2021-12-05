@@ -1,10 +1,10 @@
 <?php
 //generando la conexion a la base de datos
 function conexion(){ 
-    $db_host="51.222.86.251";
+    $db_host="localhost";
  	$db_nombre="informat_desarrollo_automatizacion";
- 	$db_usuario="informat_desarrollo";
- 	$db_contra="^Kwd{PE^(L&#";
+ 	$db_usuario="root";
+ 	$db_contra="";
 
  	$conexion = mysqli_connect($db_host,$db_usuario,$db_contra);
 

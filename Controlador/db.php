@@ -194,10 +194,10 @@ class db extends conexion2
         return 'exito';
     }
 
-    //cambiar los indicadores funcion activo y desactivar
+    //!cambiar los indicadores funcion activo y desactivar
     public function cambiarEstadogg($id, $estado)
     {
-        $sql = "UPDATE  tbl_indicadores_gestion set estado = :estado WHERE id_indicadores_gestion = :id";
+        $sql = "UPDATE `tbl_indicadores_gestion` SET estado =:estado WHERE id_indicadores_gestion =:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'id' => $id,
@@ -630,6 +630,20 @@ class db extends conexion2
         return 'exito';
     }
 
+    //!eliminacion de un indicador
+    public function eliminar_indicador_v2($id)
+    {
+        $sql = "DELETE FROM `tbl_indicadores_gestion` WHERE id_indicadores_gestion =:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        return 'exito';
+    }
+    //!fin eliminacion de un indicador
+
+
+
     public function eliminarGestion_indicador($id_detalles_tipo_indicador)
     {
         $sql = "DELETE FROM ` tbl_detalles_tipo_indicador` WHERE id_indicador = :id_indicador";
@@ -722,7 +736,7 @@ class db extends conexion2
 
     //?fin modificacion 29/07/2021
 
-        //!ACTIVIDADES cambios POA
+    //!ACTIVIDADES cambios POA
 
     //!cambios POA_metas
     public function edicion_metas($id_metas, $primer_trimestre, $segundo_trimestre, $tercer_trimestre, $cuarto_trimestre)
@@ -768,7 +782,7 @@ class db extends conexion2
     }
 
     //!cambios POA actividades
-    
+
     public function editar_recurso($id_recurso, $nombre_recurso_ed, $descripcion_ed)
     {
         $sql = "UPDATE tbl_recursos_tipo SET descripcion= :descripcion_ed,nombre_recurso= :nombre_recurso_ed WHERE id_recurso_tipo =:id_recurso";
@@ -795,14 +809,16 @@ class db extends conexion2
         return 'exito';
     }
 
-    public function editar_gasto($id_gasto, $descripcion, $nombre_gasto)
+    //!edicion de un gasto 
+    public function editar_gasto($id_gasto, $descripcion, $nombre_gasto, $fecha)
     {
-        $sql = "UPDATE tbl_tipo_gastos SET nombre_gasto =:nombre_gasto, descripcion =:descripcion WHERE id_tipo_gastos =:id_gasto";
+        $sql = "UPDATE tbl_tipo_gastos SET nombre_gasto =:nombre_gasto, descripcion =:descripcion, fecha =:fecha WHERE id_tipo_gastos =:id_gasto";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'id_gasto' =>  $id_gasto,
             'descripcion' =>  $descripcion,
-            'nombre_gasto' =>  $nombre_gasto
+            'nombre_gasto' =>  $nombre_gasto,
+            'fecha' => $fecha
         ]);
         return 'exito';
     }
@@ -821,7 +837,7 @@ class db extends conexion2
         return 'exito';
     }
 
-    
+
     public function detalle_indicador($id_indicador, $descripcion)
     {
         $sql = "UPDATE tbl_detalles_tipo_indicador SET descripcion=:descripcion WHERE id_detalles_tipo_indicador =:id_indicador";
@@ -829,6 +845,103 @@ class db extends conexion2
         $stmt->execute([
             'id_indicador' => $id_indicador,
             'descripcion' => $descripcion
+        ]);
+        return 'exito';
+    }
+
+
+    public function eliminar_detalle_recurso($id_recurso)
+    {
+        $sql = "DELETE FROM `tbl_detalles_tipo_recurso` WHERE `id_detalle_tipo_recurso` =:id_recurso";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_recurso' => $id_recurso
+        ]);
+        return 'exito';
+    }
+
+    public function editar_gasto_detalle($id_gasto, $nombre_gasto_detalle, $precio_gasto_detalle, $cantidad_gasto_detalle, $desc_gasto_detalle)
+    {
+        $sql = "UPDATE tbl_detalles_tipo_gasto SET `nombre` =:nombre_gasto_detalle, `cantidad`=:cantidad_gasto_detalle, `descripcion`=:desc_gasto_detalle, `precio_aprox` =:precio_gasto_detalle WHERE `id_detalle_tipo_gasto` =:id_gasto";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_gasto' => $id_gasto,
+            'nombre_gasto_detalle' => $nombre_gasto_detalle,
+            'precio_gasto_detalle' => $precio_gasto_detalle,
+            'cantidad_gasto_detalle' => $cantidad_gasto_detalle,
+            'desc_gasto_detalle' => $desc_gasto_detalle
+        ]);
+        return 'exito';
+    }
+
+    //! funciones para eliminar los datos de academica
+    public function eliminar_Academica($id)
+    {
+        $sql = "DELETE FROM `tbl_coordinacion_academica` WHERE `id_coordAcademica` =:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        return 'exito';
+    }
+
+    public function eliminar_temporal_data($id)
+    {
+        $sql = "DELETE FROM `tbl_carga_academica_temporal` WHERE `id_coordAcademica` =:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        return 'exito';
+    }
+    //!fin funciones para eliminar los datos de academica se necesitaron 2 ya que la llave foranea de una de las tablas no esta bien en la BD
+
+    //!funciones para eliminar datos de la tablas craed
+    public function eliminar_craed_data($id)
+    {
+        $sql = "DELETE FROM `tbl_craed_jefatura` WHERE `id_craed_jefa` =:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        return 'exito';
+    }
+
+    public function eliminar_craed_temporal($id)
+    {
+        $sql = "DELETE FROM `tbl_carga_craed` WHERE `id_craed_jefa` =:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        return 'exito';
+    }
+    //!funciones para eliminar datos de la tablas craed pasa lo msimo co la llave foranea de las cargas (NO TOCAR LLAVES FORANEAS)
+
+
+    public function editar_academica_file($id_edit, $periodo, $anio, $descripcion)
+    {
+        $sql = "UPDATE `tbl_coordinacion_academica` SET `periodo`=:periodo,`descripcion`=:descripcion,`fecha`=:anio WHERE `id_coordAcademica` =:id_edit";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_edit' => $id_edit,
+            'periodo' => $periodo,
+            'anio' => $anio,
+            'descripcion' => $descripcion
+
+        ]);
+        return 'exito';
+    }
+
+    public function editar_craed_file($id_cr, $periodo_cr, $descrip_cr, $anio_cr)
+    {
+        $sql = "UPDATE `tbl_craed_jefatura` SET `periodo_cr` =:periodo_cr, `descripcion_cr`=:descrip_cr, `fecha_cr`=:anio_cr WHERE `id_craed_jefa`=:id_cr";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'id_cr' => $id_cr,
+            'periodo_cr' => $periodo_cr,
+            'descrip_cr' => $descrip_cr,
+            'anio_cr' => $anio_cr
         ]);
         return 'exito';
     }

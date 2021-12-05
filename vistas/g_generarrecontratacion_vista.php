@@ -7,7 +7,7 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('112') == '1') {
+if (permiso_ver('9243') == '1') {
 
   $_SESSION['g_generarrecontratacion_vista'] = "...";
 } else {
@@ -65,11 +65,11 @@ if (permiso_ver('112') == '1') {
               <table id="detalle_docenteCR" class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">Asignatura</th>
-                    <th scope="col">Centro CRAED</th>
-                    <th scope="col">Días</th>
-                    <th scope="col">Semana</th>
-                    <th scope="col">Sección</th>
+                    <th scope="col">ASIGNATURA</th>
+                    <th scope="col">CENTRO CRAED</th>
+                    <th scope="col">DÍAS</th>
+                    <th scope="col">SEMANA</th>
+                    <th scope="col">SECCIÓN</th>
                   </tr>
                 </thead>
                 <tbody></tbody>
@@ -160,7 +160,7 @@ if (permiso_ver('112') == '1') {
           data: null,
           render: function(data, type, row) {
 
-            return '<center><button class="btn btn-primary" id="get_ID" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus " ></i></button><center>';
+            return '<center><button class="btn btn-primary" id="get_ID" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye" ></i></button><center>';
           }
         }
       ]

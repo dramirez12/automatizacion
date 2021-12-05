@@ -4,7 +4,7 @@ require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
-$Id_objeto = 251;
+$Id_objeto = 9251;
 $visualizacion = permiso_ver($Id_objeto);
 
 if ($visualizacion == 0) {
@@ -70,7 +70,7 @@ ob_end_flush();
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Detalles de la solicitud</h5>
+          <h5 class="modal-title">Detalles de la Solicitud</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -84,7 +84,7 @@ ob_end_flush();
               <meta charset="UTF-8">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Retroalimentacion</title>
+              <title>Retroalimentación</title>
             </head>
             <style>
               p {
@@ -104,7 +104,7 @@ ob_end_flush();
               <p style="text-align:right; margin-right: 58px;">Oficio de solicitud N° ________</p><br>
               <p></p>
               <p align="center" class="f0">
-                <strong>Reporte de retroalimentación por reasignación académica</strong>
+                <strong>Reporte de Retroalimentación por Reasignación Académica</strong>
               </p>
               <br>
 
@@ -181,15 +181,15 @@ ob_end_flush();
             <input type="text" class="form-control" id="nombre_proyecto" maxlength="90" name="nombre_proyecto" onkeyup="mayusculas(this);" required>
             <div class="row">
               <div class="col-6">
-                <label for="">Fecha inicio</label>
+                <label for="">Fecha Inicio</label>
                 <input type="text" class="form-control" id="datepicker" onkeydown="return false" name="fecha_inicio" required>
               </div>
               <div class="col-6">
-                <label for="">Fecha final</label>
+                <label for="">Fecha Final</label>
                 <input type="text" class="form-control" id="datepicker1" onkeydown="return false" name="fecha_final" required>
               </div>
             </div>
-            <label for="">Periodo del proyecto</label>
+            <label for="">Periodo del Proyecto</label>
             <select name="periodo_soli" id="periodo_soli" class="form-control">
               <option value="PERIODO I">PERIODO I</option>
               <option value="PERIODO II">PERIODO II</option>
@@ -198,11 +198,11 @@ ob_end_flush();
             </select>
             <div class="row">
               <div class="col-4">
-                <label for="">Cantidad horas</label>
+                <label for="">Cantidad Horas</label>
                 <input type="text" id="horas_soli" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="horas_soli" class="form-control" number maxlength="2" required>
               </div>
               <div class="col-4">
-                <label for="">Cantidad clases</label>
+                <label for="">Cantidad Clases</label>
                 <input type="text" id="cant_clases" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="cant_clases" class="form-control" number maxlength="1" required>
               </div>
               <div class="col-4">
@@ -253,7 +253,7 @@ ob_end_flush();
       <div class="card-body  ">
         <div class="row">
           <div class="col-9">
-            <h3 class="card-title">Registro de retroalimentación</h3>
+            <h3 class="card-title">Registro de Retroalimentación</h3>
           </div>
           <div class="col-3">
             <a href="#" class="btn btn-success btn-m" data-toggle="modal" id="nueva_soli_retro" data-target="#nueva_retroali">Nueva retroalimentación</a>

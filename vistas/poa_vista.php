@@ -2,45 +2,35 @@
 session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
-// require_once('../clases/funcion_bitacora.php');
-// require_once('../clases/funcion_visualizar.php');
-
-// if (permiso_ver('114') == '1') {
-
-//   $_SESSION['g_cargaacademica_vista'] = "...";
-// } else {
-//   $_SESSION['g_cargaacademica_vista'] = "No 
-//    tiene permisos para visualizar";
-// }
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
 
 
-// $Id_objeto = 114;
-
-// $visualizacion = permiso_ver($Id_objeto);
+$Id_objeto = 9238;
 
 
-
-// if ($visualizacion == 0) {
-//   header('location:  ../vistas/pagina_principal_vista.php');
-// } else {
-//   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
-// }
+$visualizacion = permiso_ver($Id_objeto);
 
 
-// if (isset($_REQUEST['msj'])) {
-//   $msj = $_REQUEST['msj'];
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/poa_vista.php";
 
-//   if ($msj == 1) {
-//     echo '<script> alert("Fecha invalidas favor verificar.")</script>';
-//   }
+                            </script>';
+} else {
 
-//   if ($msj == 2) {
-//     echo '<script> alert("Datos por rellenar, por favor verificar.")</script>';
-//   }
-//   if ($msj == 3) {
-//     echo '<script> alert("Por favor verificar fechas.")</script>';
-//   }
-// }
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A PLAN OPERATIVO ANUAL POA.');
+
+
+  
+}
 
 ?>
 
@@ -112,12 +102,12 @@ require_once('../vistas/pagina_inicio_vista.php');
                                     <div class="modal-body">
                                         <form id="poa_form">
                                             <div class="container">
-                                                <label for="">Nombre planificación</label>
-                                                <input type="text" id="n_planificacion" name="n_planificacion" class="form-control" required>
+                                                <label for="">Nombre Planificación</label>
+                                                <input type="text" id="n_planificacion" name="n_planificacion" class="form-control"  maxlength="150" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('n_planificacion');" oncopy="return false" onpaste="return false" onkeypress="return sololetras(event) "placeholder="Nombre Planificación" required>
                                                 <label for="">Fecha</label>
                                                 <input type="text" id="datepicker" name="txt_fecha_ingreso_ca" onkeydown="return false" class="form-control" placeholder="AÑO" required="">
                                                 <label for="">Descripción</label>
-                                                <textarea class="form-control" id="descripción" name="descripcion" rows="3" required></textarea>
+                                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"  maxlength="50" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('descripcion');" oncopy="return false" onpaste="return false" onkeypress="return sololetras(event)" placeholder="Descripción" required></textarea>
                                                 <input type="text" id="id_plani_edit" name="id_plani_edit" hidden>
                                             </div>
                                         </form>
@@ -149,7 +139,7 @@ require_once('../vistas/pagina_inicio_vista.php');
             <div class="card-body  ">
                 <div class="row">
                     <div class="col-9">
-                        <h3 class="card-title">Registro de planificaciones</h3>
+                        <h3 class="card-title">Registro de Planificaciones</h3>
                     </div>
                     <div class="col-3">
                         <a href="#" class="btn btn-success btn-m" data-toggle="modal" data-target=".poa_modal" onclick="cambiarNombre();">Nueva planificación</a>
@@ -255,7 +245,7 @@ require_once('../vistas/pagina_inicio_vista.php');
                     },
                     {
                         "data": null,
-                        defaultContent: '<center><button id="add_objetivos" class="btn btn-primary"><i class="fas fa-link"></i></button></center>'
+                        defaultContent: '<center><button id="add_objetivos" class="btn btn-primary"><i class="fas fa-arrow-right"></i></button></center>'
                     },
                     {
                         "data": null,
@@ -475,3 +465,4 @@ require_once('../vistas/pagina_inicio_vista.php');
 </body>
 
 </html>
+<script type="text/javascript" src="../js/validacion_jefatura.js"></script>

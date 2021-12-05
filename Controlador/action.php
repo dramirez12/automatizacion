@@ -86,7 +86,7 @@ function subirBase_academica($nombre_archivo, $id_ca)
     // $respuesta = $db->contarArchivo($id);
     // $cantidad = $respuesta['cuenta'];
 
-    $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
+    $conexion = new mysqli('51.222.86.251', 'informat_desarrollo', '^Kwd{PE^(L&#', 'informat_desarrollo_automatizacion');
     //$ruta = '../archivos/file_academica/' . $nombre_archivo;
     class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
     {
@@ -134,7 +134,7 @@ function subirBase_craed($nombre_archivo_cr, $id_cr)
 {
 
 
-    $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
+    $conexion = new mysqli('51.222.86.251', 'informat_desarrollo', '^Kwd{PE^(L&#', 'informat_desarrollo_automatizacion');
     class MyReadFilte implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
     {
         public function readCell($column, $row, $worksheetName = '')
@@ -289,7 +289,7 @@ if (isset($_POST['eliminar_recurso'])) {
 //     $respuesta = $db->eliminarRecurso($id);
 //     echo json_encode($respuesta);
 // }
-
+//!este es del tipo de recursos por la consulta a la BD
 if (isset($_POST['cambiar_estado'])) {
     $estado = $_POST['estado'];
     $id = $_POST['id'];
@@ -303,6 +303,7 @@ if (isset($_POST['cambiar_estado'])) {
         echo json_encode($respuesta);
     }
 }
+//!este es del tipo de recursos por la consulta a la BD
 //termina recursos.
 
 //aqui gastos
@@ -319,13 +320,14 @@ if (isset($_POST['agregar_tipo_gasto'])) {
 }
 
 //eliminar el gasto
-if (isset($_POST['eliminar'])) {
+if (isset($_POST['eliminar_gastosV2'])) {
     $id = $_POST['id'];
     $respuesta = $db->eliminarGastos($id);
     echo json_encode($respuesta);
 }
-//cambiar estado de gastos
-if (isset($_POST['cambiar_estado'])) {
+//!cambiar estado de gastos, este es pra los gastos.
+
+if (isset($_POST['cambiar_estado_gastosV2'])) {
     $estado = $_POST['estado'];
     $id = $_POST['id'];
     if ($estado == 'Activo') {
@@ -358,8 +360,10 @@ if (isset($_POST['eliminar'])) {
     $respuesta = $db->eliminarGestion($id);
     echo json_encode($respuesta);
 }
-//cambiar estado para indicadores
-if (isset($_POST['cambiar_estado'])) {
+
+//!cambiar estado para indicadores 
+if (isset($_POST['cambiar_estado_indicador'])) {
+
     $estado = $_POST['estado'];
     $id = $_POST['id'];
     if ($estado == 'Activo') {
@@ -371,8 +375,18 @@ if (isset($_POST['cambiar_estado'])) {
         $respuesta = $db->cambiarEstadogg($id, $nuevo_estado);
         echo json_encode($respuesta);
     }
+    // if ($estado == 'Activo') {
+    //     $nuevo_estado = 'Inactivo';
+    //     $respuesta = $db->cambiarEstadogg($id, $nuevo_estado);
+    //     echo json_encode($respuesta);
+    // } else if ($estado == 'Inactivo') {
+    //     $nuevo_estado = 'Activo';
+    //     $respuesta = $db->cambiarEstadogg($id, $nuevo_estado);
+    //     echo json_encode($respuesta);
+    //}
+    //echo json_encode($_POST);
 }
-//fin datos de indicadores de gestion
+//!fin datos de indicadores de gestion de estado
 
 if (isset($_POST['subir_excel_ca'])) {
 
@@ -385,7 +399,7 @@ if (isset($_POST['subir_excel_ca'])) {
     if ($cantidad >= 1) {
         echo json_encode('archivo_subido');
     } else {
-        $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
+        $conexion = new mysqli('51.222.86.251', 'informat_desarrollo', '^Kwd{PE^(L&#', 'informat_desarrollo_automatizacion');
         //$ruta = '../archivos/file_academica/' . $nombre_archivo;
 
         class MyReadFilter implements \PhpOffice\PhpSpreadsheet\Reader\IReadFilter
@@ -440,7 +454,7 @@ if (isset($_POST['subir_excel_cr'])) {
     if ($cantidad >= 1) {
         echo json_encode('archivo_subidoCR');
     } else {
-        $conexion = new mysqli('localhost', 'root', '', 'informat_desarrollo_automatizacion');
+        $conexion = new mysqli('51.222.86.251', 'informat_desarrollo', '^Kwd{PE^(L&#', 'informat_desarrollo_automatizacion');
 
 
         //$ruta = '../archivos/file_academica/' . $nombre_archivo;
@@ -788,6 +802,16 @@ if (isset($_POST['eliminar'])) {
 }
 //!obetner detalles de tipo_gastos
 
+
+
+//!eliminacion de un indicador V2
+if (isset($_POST['eliminar_indicadorV2'])) {
+    $id = $_POST['id'];
+    $respuesta = $db->eliminar_indicador_v2($id);
+    echo json_encode($respuesta);
+}
+//!eliminacion de un indicador V2
+
 if (isset($_POST['getDataGasto'])) {
     $respuesta = $db->getDataTipo_gasto();
     echo json_encode($respuesta);
@@ -838,7 +862,7 @@ if (isset($_POST['eliminar_indicador'])) {
     echo json_encode($rspuesta);
 }
 if (isset($_POST['eliminar_detalle_gasto'])) {
-    
+
     $id_detalle_tipo_gasto = $_POST['id_detalle_tipo_gasto'];
     $rewspuesta = $db->eliminar_deatlle_gasto($id_detalle_tipo_gasto);
     echo json_encode($rewspuesta);
@@ -967,7 +991,8 @@ if (isset($_POST['editar_gasto_send'])) {
     $id_gasto = $_POST['id_gasto'];
     $descripcion = $_POST['desc_gasto'];
     $nombre_gasto = $_POST['nombre_gasto'];
-    $respuesta = $db->editar_gasto($id_gasto, $descripcion, $nombre_gasto);
+    $fecha = $_POST['fecha_recurso_ed'];
+    $respuesta = $db->editar_gasto($id_gasto, $descripcion, $nombre_gasto, $fecha);
     echo json_encode($respuesta);
 }
 
@@ -985,5 +1010,69 @@ if (isset($_POST['editar_indicdrosend_det'])) {
     $id_indicador = $_POST['id_indicador'];
     $descripcion = $_POST['desc_indicadro'];
     $respuesta = $db->detalle_indicador($id_indicador, $descripcion);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['eliminar_detalle_recurso'])) {
+
+    $id_recurso = $_POST['id_recurso'];
+    $respuesta = $db->eliminar_detalle_recurso($id_recurso);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['editar_gastos_detalle'])) {
+
+    $id_gasto = $_POST['id_gasto'];
+    $desc_gasto_detalle = $_POST['desc_gasto_detalle'];
+    $nombre_gasto_detalle = $_POST['nombre_gasto_detalle'];
+    $precio_gasto_detalle = $_POST['precio_gasto_detalle'];
+    $cantidad_gasto_detalle = $_POST['cantidad_gasto_detalle'];
+
+    $respuesta = $db->editar_gasto_detalle($id_gasto, $nombre_gasto_detalle, $precio_gasto_detalle, $cantidad_gasto_detalle, $desc_gasto_detalle);
+    echo json_encode($respuesta);
+}
+
+//!eliminacion de los datos de aademica, pero no elimina el archivo
+if (isset($_POST['file_delete_acd'])) {
+    $id_acd = $_POST['id'];
+    $respuesta = $db->eliminar_Academica($id_acd);
+    $respuesta2 = $db->eliminar_temporal_data($id_acd);
+    if ($respuesta == $respuesta2) {
+        echo json_encode('exito');
+    } else {
+        echo json_encode('error');
+    }
+    //echo json_encode($respuesta);
+}
+
+//!ELIMINACION DEL CRAED
+if (isset($_POST['file_delete_crd'])) {
+    $id_crd = $_POST['id'];
+    $respuesta = $db->eliminar_craed_data($id_crd);
+    $respuesta2 = $db->eliminar_craed_temporal($id_crd);
+    if ($respuesta == $respuesta2) {
+        echo json_encode('exito');
+    } else {
+        echo json_encode('error');
+    }
+    //echo json_encode($respuesta);
+}
+
+if (isset($_POST['datos_editar_acd'])) {
+    $id_edit = $_POST['id_editarAcd'];
+    $periodo = $_POST['periodo_ca_edit'];
+    $anio = $_POST['txt_fecha_ingreso_ca_edit'];
+    $descripcion = $_POST['descrp_ca_edit'];
+    $respuesta = $db->editar_academica_file($id_edit, $periodo, $anio, $descripcion);
+    echo json_encode($respuesta);
+}
+
+if (isset($_POST['datos_editar_crd'])) {
+    $id_cr = $_POST['id_editarCrd'];
+    $periodo_cr = $_POST['periodo_cr_edit'];
+    $descrip_cr = $_POST['descrip_cr_edit'];
+    $anio_cr = $_POST['txt_fecha_ingreso_cr'];
+
+    $respuesta = $db->editar_craed_file($id_cr, $periodo_cr, $descrip_cr, $anio_cr);
     echo json_encode($respuesta);
 }

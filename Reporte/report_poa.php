@@ -1,9 +1,9 @@
 <?php
 require '../vendor/autoload.php';
 
-$db_host = 'localhost';
-$db_username = 'root';
-$db_password = '';
+$db_host = '51.222.86.251';
+$db_username = 'informat_desarrollo';
+$db_password = '^Kwd{PE^(L&#';
 $db_name = 'informat_desarrollo_automatizacion';
 
 $db = new mysqli($db_host, $db_username, $db_password, $db_name);
@@ -64,7 +64,7 @@ if (isset($_GET['enviar'])) {
     $spreadsheet->getActiveSheet()->getStyle('A3:A5')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
     $spreadsheet->getActiveSheet()->getStyle('A3:A5')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
     $spreadsheet->getActiveSheet()->getStyle('A3:K5')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-    $spreadsheet->getActiveSheet()->getStyle('A3:K5')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('063970');
+    $spreadsheet->getActiveSheet()->getStyle('A3:K5')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setRGB('063970');
 
     $spreadsheet->getActiveSheet(1)->mergeCells('B3:B5');
     $spreadsheet->getActiveSheet()->getCell('B3')->setValue('RESULTADO ESPERADO');
@@ -192,7 +192,7 @@ if (isset($_GET['enviar'])) {
         $spreadsheet->getActiveSheet()->setCellValue('A6', 'INTRODUZCA DATOS AL PROYECTO');
     }
 
-    $filename = 'areas.xlsx';
+    $filename = 'POA.xlsx';
 
     header('Content-Type: application/vnd.ms-excel');
     header('Content-Disposition: attachment;filename=' . $filename);

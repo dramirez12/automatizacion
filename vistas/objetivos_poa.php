@@ -2,45 +2,34 @@
 session_start();
 require_once('../clases/Conexion.php');
 require_once('../vistas/pagina_inicio_vista.php');
-// require_once('../clases/funcion_bitacora.php');
-// require_once('../clases/funcion_visualizar.php');
+require_once('../clases/funcion_bitacora.php');
+require_once('../clases/funcion_visualizar.php');
 
-// if (permiso_ver('114') == '1') {
-
-//   $_SESSION['g_cargaacademica_vista'] = "...";
-// } else {
-//   $_SESSION['g_cargaacademica_vista'] = "No 
-//    tiene permisos para visualizar";
-// }
+$Id_objeto = 9240;
 
 
-// $Id_objeto = 114;
-
-// $visualizacion = permiso_ver($Id_objeto);
+$visualizacion = permiso_ver($Id_objeto);
 
 
+if ($visualizacion == 0) {
+    echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/objetivos_poa.php";
 
-// if ($visualizacion == 0) {
-//   header('location:  ../vistas/pagina_principal_vista.php');
-// } else {
-//   bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'Ingreso', 'A Bitacora del sistema');
-// }
+                            </script>';
+} else {
+
+    bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'GESTIÓN DE OBJETIVOS POA.');
 
 
-// if (isset($_REQUEST['msj'])) {
-//   $msj = $_REQUEST['msj'];
-
-//   if ($msj == 1) {
-//     echo '<script> alert("Fecha invalidas favor verificar.")</script>';
-//   }
-
-//   if ($msj == 2) {
-//     echo '<script> alert("Datos por rellenar, por favor verificar.")</script>';
-//   }
-//   if ($msj == 3) {
-//     echo '<script> alert("Por favor verificar fechas.")</script>';
-//   }
-// }
+  
+}
 
 ?>
 
@@ -91,10 +80,10 @@ require_once('../vistas/pagina_inicio_vista.php');
                                     <div class="modal-body">
                                         <form id="obj_form">
                                             <div class="container">
-                                                <label for="">Nombre objetivo</label>
-                                                <input type="text" id="n_objetivo" name="n_objetivo" class="form-control" maxlength="50" required>
+                                                <label for="">Nombre Objetivo</label>
+                                                <input type="text" id="n_objetivo" name="n_objetivo" class="form-control" maxlength="150" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('n_objetivo');" oncopy="return false" onpaste="return false" onkeypress="return sololetras(event)" placeholder="nombre objetivo" required>
                                                 <label for="">Descripción</label>
-                                                <textarea class="form-control" id="obj_descripción" name="obj_descripción" rows="3" maxlength="100" required></textarea>
+                                                <textarea class="form-control" id="obj_descripción" name="obj_descripción" rows="3" maxlength="255" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('obj_descripción');" oncopy="return false" onpaste="return false" onkeypress="return sololetras(event)" placeholder="Descripción" required></textarea>
                                                 <input type="text" id="id_objetivo" name="id_objetivo_edit" hidden>
                                             </div>
                                         </form>
@@ -131,7 +120,7 @@ require_once('../vistas/pagina_inicio_vista.php');
             <div class="card-body  ">
                 <div class="row">
                     <div class="col-9">
-                        <h3 class="card-title">Registro de objetivos</h3>
+                        <h3 class="card-title">Registro de Objetivos</h3>
                     </div>
                     <div class="col-3">
                         <!-- <button class="btn btn-warning" onclick="clearData();">Limpiar data</button>
@@ -475,3 +464,4 @@ require_once('../vistas/pagina_inicio_vista.php');
 </body>
 
 </html>
+<script type="text/javascript" src="../js/validacion_jefatura.js"></script>

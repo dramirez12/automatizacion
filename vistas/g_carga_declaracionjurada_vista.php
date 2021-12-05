@@ -8,7 +8,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 
-$Id_objeto = 237;
+$Id_objeto = 9237;
 
 
 $visualizacion = permiso_ver($Id_objeto);

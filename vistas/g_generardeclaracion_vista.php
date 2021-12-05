@@ -7,13 +7,13 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
-if (permiso_ver('239') == '1') {
+//if (permiso_ver('9239') == '1') {
 
-  $_SESSION['g_generardeclaracion_vista'] = "...";
-} else {
-  $_SESSION['g_generardeclaracion_vista'] = "No 
-  tiene permisos para visualizar";
-}
+//  $_SESSION['g_generardeclaracion_vista'] = "...";
+//} else {
+ // $_SESSION['g_generardeclaracion_vista'] = "No 
+  //tiene permisos para visualizar";
+//}
 ?>
 <!DOCTYPE html>
 
@@ -49,18 +49,18 @@ if (permiso_ver('239') == '1') {
             <!--  <label for="">Nombre Jefe</label>-->
            <!-- <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" onkeyup="mayusculas(this);" required>-->
             <label for="">Departamento</label>
-            <input type="text" class="form-control" id="depto" name="depto" onkeyup="mayusculas(this);" required>
+            <input type="text" class="form-control" id="depto" name="depto" maxlength="90" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('depto');" oncopy="return false" onpaste="return false" onkeypress="return sololetras(event)" required>
             <!-- <label for="">Numero de identidad</label>
             <input type="text" class="form-control" id="identidad" name="identidad" required>-->
-            <label for="">Profesión del jefe</label>
-            <input type="text" class="form-control" id="profesion_jefe" name="profesion_jefe" onkeyup="mayusculas(this);" required>
-            <label for="">Profesión del docente</label>
-            <input type="text" class="form-control" id="profesion_docente" name="profesion_docente" onkeyup="mayusculas(this);" required>
+            <label for="">Profesión del Jefe</label>
+            <input type="text" class="form-control" id="profesion_jefe" name="profesion_jefe" maxlength="100" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('profesion_jefe');" oncopy="return false" onpaste="return false" onkeypress="return sololetras(event)" required>
+            <label for="">Profesión del Docente</label>
+            <input type="text" class="form-control" id="profesion_docente" name="profesion_docente" maxlength="80" value="" style="text-transform: uppercase" onkeyup="DobleEspacio(this, event); MismaLetra('profesion_docente');" oncopy="return false" onpaste="return false" onkeypress="return sololetras(event)" required>
             <input type="text" id="nombreEnviar_docente" hidden readonly>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
           <button type="button" class="btn btn-primary" id="reporte_modal_individual">Generar</button>
         </div>
       </div>
@@ -110,11 +110,11 @@ if (permiso_ver('239') == '1') {
               <table id="detalle_docente" class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">Codigo Asignatura</th>
-                    <th scope="col">Asignatura</th>
-                    <th scope="col">Unidades V.</th>
-                    <th scope="col">Sección</th>
-                    <th scope="col">N° de alumnos</th>
+                    <th scope="col">CODIGO ASIGNATURA</th>
+                    <th scope="col">ASIGNATURA</th>
+                    <th scope="col">UNIDADES V.</th>
+                    <th scope="col">SECCIÓN</th>
+                    <th scope="col">N° DE ALUMNO</th>
                   </tr>
                 </thead>
                 <tbody></tbody> 
@@ -187,7 +187,7 @@ if (permiso_ver('239') == '1') {
           data: null,
           render: function(data, type, row) {
 
-            return '<center><button class="btn btn-primary" id="get_ID" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus " ></i></button><center>';
+            return '<center><button class="btn btn-primary" id="get_ID" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye" ></i></button><center>';
           }
         },
         {
@@ -315,10 +315,11 @@ if (permiso_ver('239') == '1') {
     });
 
 
-    function mayusculas(e) {
-      e.value = e.value.toUpperCase();
-    }
+    //function mayusculas(e) {
+     // e.value = e.value.toUpperCase();
+   // }
   </script>
 </body>
 
 </html>
+<script type="text/javascript" src="../js/validacion_jefatura.js"></script>
