@@ -94,7 +94,7 @@ setlocale(LC_TIME,'es_HN');
 
 <body>
     <div class="container">
-    <img src="/xampp/htdocs/COPIA_AUTOMATIZACION_IMPLE_GRUPOS/dist/img/UNAH_CARGA.png" style="width:200px;height:200px;">
+    <img src="../img/UNAH_CARGA.png" style="width:200px;height:200px;">
       <br>
       <br>
         <p><strong>OFICIO No <?php echo $numero_ofi; ?> </strong> <br>
