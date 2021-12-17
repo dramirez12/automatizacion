@@ -1,17 +1,17 @@
 <?php
 require '../vendor/autoload.php';
+require('../clases/Conexion.php');
 
+// $db_host = 'localhost';
+// $db_username = 'root';
+// $db_password = '';
+// $db_name = 'informat_desarrollo_automatizacion';
 
-$db_host = '51.222.86.251';
-$db_username = 'informat_desarrollo';
-$db_password = '^Kwd{PE^(L&#';
-$db_name = 'informat_desarrollo_automatizacion';
+// $db = new mysqli($db_host, $db_username, $db_password, $db_name);
 
-$db = new mysqli($db_host, $db_username, $db_password, $db_name);
-
-if ($db->connect_error) {
-    die("Unable to connect database: " . $db->connect_error);
-}
+// if ($db->connect_error) {
+//     die("Unable to connect database: " . $db->connect_error);
+// }
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -46,6 +46,19 @@ if (isset($_GET['enviar'])) {
     $spreadsheet->getActiveSheet()->getCell('B10')->setValue($nombre_docente); //!setea el nombre del docente obtenido del modal y el boton generar informe
     $spreadsheet->getActiveSheet()->getStyle('B10')->getAlignment()->setHorizontal('center');
     $spreadsheet->getActiveSheet()->getStyle('B11')->getAlignment()->setHorizontal('center');
+    $spreadsheet->getActiveSheet()->getStyle('B10')->getFont()->setSize(16);
+    $spreadsheet->getActiveSheet()->getStyle('B10')->getFont()->setBold(true);
+    $arraystilonombre = [
+        'borders' => [
+            'outline' => [
+                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
+                'color' => ['argb' => '00000a'],
+            ],
+        ],
+    ];
+    $spreadsheet->getActiveSheet()->getStyle('B10:J10')->applyFromArray($arraystilonombre);
+
+    
 
     $spreadsheet->getActiveSheet()->getCell('A7')->setValue('I.-');
     $spreadsheet->getActiveSheet()->getCell('B7')->setValue('DATOS GENERALES');
@@ -75,16 +88,30 @@ if (isset($_GET['enviar'])) {
     $spreadsheet->getActiveSheet()->getCell('D14')->setValue('UV');
     $spreadsheet->getActiveSheet()->getCell('E14')->setValue('OBSERVACIONES');
 
-    //!consulta para sacar las clases
-    $query_planificacion = $db->query("SELECT * FROM tbl_carga_craed WHERE Profesor  = '" . $nombre_docente . "' and id_craed_jefa = '" . $id_craed . "'");
+
+    $sql = "SELECT * FROM tbl_carga_craed WHERE Profesor  = '" . $nombre_docente . "' and id_craed_jefa = '" . $id_craed . "'";
+    $resultado = $mysqli->query($sql);
+    //$query_planificacion = $db->query("SELECT * FROM tbl_carga_craed WHERE Profesor  = '" . $nombre_docente . "' and id_craed_jefa = '" . $id_craed . "'");
     $i = 15; //? numero de la celda donde queremos que el while empieze a escribir
     //$activeSheet->setCellValue('B1', 'Nombre POA: ' . $fila_plan['Asignatura_cr'] . $fecha);
-    while ($fila_plan = $query_planificacion->fetch_assoc()) {
+    while ($fila_plan = $resultado->fetch_assoc()) {
         $spreadsheet->getActiveSheet()->getCell('A' . $i)->setValue($fila_plan['Asignatura_cr']);
         $spreadsheet->getActiveSheet()->getCell('B' . $i)->setValue($fila_plan['Dias_cr']);
         $spreadsheet->getActiveSheet()->getCell('C' . $i)->setValue($fila_plan['Seccion_cr']);
         $i++; //!aumenta el numero de la celda donde se escribe
     }
+
+    //!consulta para sacar las clases
+
+    // $query_planificacion = $db->query("SELECT * FROM tbl_carga_craed WHERE Profesor  = '" . $nombre_docente . "' and id_craed_jefa = '" . $id_craed . "'");
+    // $i = 15; //? numero de la celda donde queremos que el while empieze a escribir
+    // //$activeSheet->setCellValue('B1', 'Nombre POA: ' . $fila_plan['Asignatura_cr'] . $fecha);
+    // while ($fila_plan = $query_planificacion->fetch_assoc()) {
+    //     $spreadsheet->getActiveSheet()->getCell('A' . $i)->setValue($fila_plan['Asignatura_cr']);
+    //     $spreadsheet->getActiveSheet()->getCell('B' . $i)->setValue($fila_plan['Dias_cr']);
+    //     $spreadsheet->getActiveSheet()->getCell('C' . $i)->setValue($fila_plan['Seccion_cr']);
+    //     $i++; //!aumenta el numero de la celda donde se escribe
+    // }
     //!fin consulta para sacar las clases
 
     $spreadsheet->getActiveSheet(1)->mergeCells('E14:J14');
