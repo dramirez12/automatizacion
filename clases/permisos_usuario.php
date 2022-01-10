@@ -1,54 +1,22 @@
 <?php
-
-require_once('../clases/Conexion.php');
-
-
-
-
-
 if (session_status() === PHP_SESSION_NONE) {
    session_start();
 }
 
-if (!isset($_SESSION['id_usuario'])){
+if (!isset($_SESSION['id_usuario'])) {
    echo '<script type="text/javascript">
-                    swal({
-                       title:"",
-                       text:"Tu sesión ha vencido, te redireccionaremos al login.",
-                       type: "error",
-                       showConfirmButton: false,
-                       timer: 4000
-                    });
-                    
-                </script>';
+                 swal({
+                    title:"",
+                    text:"Tu sesión ha vencido, te redireccionaremos al login.",
+                    type: "error",
+                    showConfirmButton: false,
+                    timer: 4000
+                 });
+                 
+             </script>';
    header('location:../');
-
 }
-
-
-
-
-$sql_permisos = "select pu.visualizar ,p.id_objeto from tbl_permisos_usuarios pu ,tbl_objetos p,tbl_usuarios u ,tbl_roles r where r.id_rol=pu.id_rol and r.id_rol=u.id_rol and pu.id_objeto=p.id_objeto and id_usuario=" . $_SESSION['id_usuario'] . " ";
-
-$resultado_permisos = $mysqli->query($sql_permisos);
-
-/*Botones principales*/
-$_SESSION['btn_seguridad'] = 'none';
-$_SESSION['btn_vinculacion'] = 'none';
-$_SESSION['btn_solicitudes'] = 'none';
-$_SESSION['btn_coordinacion'] = 'none';
-$_SESSION['btn_docentes'] = 'none';
-$_SESSION['btn_ayuda'] = 'none';
-$_SESSION['btn_mantenimiento'] = 'none';
-$_SESSION['btn_perfil_estudiantil'] = 'none';
-$_SESSION['btn_comite_vida_estudiantil'] = 'none';
-$_SESSION['btn_control_actas'] = 'none';
-$_SESSION['btn_jefatura'] = 'none';
-$_SESSION['btn_gestion_laboratorio'] = 'none';
-$_SESSION['btn_administracion_app'] = 'none';
-$_SESSION['btn_gestion_app'] = 'none';
-
-
+require_once('../Modelos/permisos_modelo.php');
 
 /*Menu laterales*/
 $_SESSION['pregunta_vista'] = 'none';
@@ -118,71 +86,40 @@ $_SESSION['movil_bitacora'] = "none";
 $_SESSION['btn_gestion_app'] = "none";
 $_SESSION['menu_movil_mantenimientos'] = "none";
 
+//Instancia del modelo
+$instancia_permisos = new permisos_objetos();
+$resultado_permisos = $instancia_permisos->listar($_SESSION['id_usuario']);
+$modulos = $instancia_permisos->listar_select_modulos();
+$b = 0; //es un contador
 
+$arraymodulos = array(); //Contendra los modulos del sistema.
 
+while ($b = $modulos->fetch_object()) { //Llena el arreglo con los modulos existentes
+   $_SESSION['MOD' . $b->id_modulo] = "none";
+   array_push($arraymodulos, $b->id_modulo);
+}
 
-while ($fila = $resultado_permisos->fetch_row()) {
-   /*
-   	echo '<script> alert("Bienvenido a nuestro sistema :  ' .$fila[0], $fila[1]. '")</script>';
-       */
-   if ($fila[0] == '1') {
+while ($fila = $resultado_permisos->fetch_object()) { //Recorre los objetos y permisos de estos.
+   if ($fila->visualizar == '1') {
       $_SESSION['confirmacion_ver'] = "block";
    } else {
       $_SESSION['confirmacion_ver'] = "none";
    }
-   permisos_a_roles_visualizar($fila[1], $_SESSION['confirmacion_ver']);
+
+   permisos_a_roles_visualizar($fila->Id_objeto, $_SESSION['confirmacion_ver']); //Llama la funcion de permisos_a_roles_visualizar
+   $clave = array_search($fila->id_modulo, $arraymodulos); //Busca si el el modulo de objeto existe en el arreglo de modulos.
+
+   if ($clave > -1) { //Validando que si la busqueda retorno un numero mayor a -1
+      $_SESSION['MOD' . $fila->id_modulo] = "block"; //Asignando una variable de session por modulo.
+      unset($arraymodulos[$clave]); //Eliminando el modulo del arreglo.
+   }
 }
-
-
-
 
 function  permisos_a_roles_visualizar($pantalla, $confirmacion)
 {
    $_SESSION['confirmacion'] = $confirmacion;
    $_SESSION['pantalla'] = $pantalla;
 
-
-   /* $_SESSION['historial_registro']='none';*/
-
-
-
-   if ($_SESSION['pantalla'] >= '1' and $_SESSION['pantalla'] <= '10') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_seguridad'] = "block";
-      }
-   }
-
-
-   if ($_SESSION['pantalla'] == '14' or $_SESSION['pantalla'] == '20'  or $_SESSION['pantalla'] == '21') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_vinculacion'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] >= '51') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_docentes'] = "block";
-      }
-   }
-   //  if ($_SESSION['pantalla']>='51')
-   //  {
-   //   if ( $_SESSION['confirmacion']=='block') 
-   //   {
-   //    $_SESSION['btn_docentes']="block";
-   //  }
-   // }
-
-   if ($_SESSION['pantalla'] >= '71') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_ayuda'] = "block";
-      }
-   }
-
-   if ($_SESSION['pantalla'] >= '70') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_mantenimiento'] = "block";
-      }
-   }
    if ($_SESSION['pantalla'] == '1' or $_SESSION['pantalla'] == '2') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['pregunta_vista'] = "block";
@@ -318,114 +255,49 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
       }
    }
 
-
-
-
-
-
-   if ($_SESSION['pantalla'] >= '51') {
+   //CVE
+   if ($_SESSION['pantalla'] == '8219' and $_SESSION['pantalla'] == '8220' and $_SESSION['pantalla'] == '8221' and $_SESSION['pantalla'] == '8222' and $_SESSION['pantalla'] == '8223') {
       if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_docentes'] = "block";
+         $_SESSION['administracion_cve'] = "block";
       }
    }
-
-//CVE
-if ($_SESSION['pantalla'] == '8219' and $_SESSION['pantalla'] == '8220' and $_SESSION['pantalla'] == '8221' and $_SESSION['pantalla'] == '8222' and $_SESSION['pantalla'] == '8223') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['administracion_cve'] = "block";
-   }
-}
-if ($_SESSION['pantalla'] >= '8224' and $_SESSION['pantalla'] <= '8225') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-if ($_SESSION['pantalla'] >= '8224' and $_SESSION['pantalla'] <= '8225') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-
-if ($_SESSION['pantalla'] == '8228') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-
-if ($_SESSION['pantalla'] == '8229') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-
-if ($_SESSION['pantalla'] == '8232') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-if ($_SESSION['pantalla'] == '8219') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-if ($_SESSION['pantalla'] == '8233') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-
-if ($_SESSION['pantalla'] == '8235') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_comite_vida_estudiantil'] = "block";
-   }
-}
-// FIN DE CVE
-
-
-
-   // boton de solicitudes */
-   if ($_SESSION['pantalla'] >= '29' and $_SESSION['pantalla'] <= '33' or $_SESSION['pantalla'] == '13' or $_SESSION['pantalla'] == '15' or $_SESSION['pantalla'] == '16' or $_SESSION['pantalla'] == '17' or $_SESSION['pantalla'] == '19' or $_SESSION['pantalla'] == '39' or  $_SESSION['pantalla'] == '40') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_solicitudes'] = "block";
-      }
-   }
-   // boton de coordinacion */
-   //** las pantallas son el id de la tbl_objetos */
-   if ($_SESSION['pantalla'] >= '34' and $_SESSION['pantalla'] <= '38') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_coordinacion'] = "block";
-      }
-   }
-
- 
-
-   //MODULO VISTA 360 ESTUDIANTIL
-   if ($_SESSION['pantalla'] == '115') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_perfil_estudiantil'] = "block";
-      }
-   }
-
-   //AGREGANDO CARGA ACADEMICA
-   if ($_SESSION['pantalla'] == '45') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_coordinacion'] = "block";
-      }
-   }
-   
+   // FIN DE CVE
 
    //AGREGANDO Modulo Control de Actas
 
-   //Boton Principal Control de Actas
-   if ($_SESSION['pantalla'] == '5000' or $_SESSION['pantalla'] == '5001' or $_SESSION['pantalla'] == '5003' or $_SESSION['pantalla'] == '5004' or $_SESSION['pantalla'] == '5006' or $_SESSION['pantalla'] == '5007' or $_SESSION['pantalla'] == '5009' or $_SESSION['pantalla'] == '5010' or $_SESSION['pantalla'] == '5011' or $_SESSION['pantalla'] == '5012' or $_SESSION['pantalla'] == '5020' or $_SESSION['pantalla'] == '5027' ){ if ($_SESSION['confirmacion'] == 'block') { $_SESSION['btn_control_actas'] = "block"; } } //Menu de Reuniones
-   if ($_SESSION['pantalla'] == '5000' or $_SESSION['pantalla'] == '5001' or $_SESSION['pantalla'] == '5003') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_reunion'] = "block"; } } //Menu de Actas 
-   if ($_SESSION['pantalla'] == '5004' or $_SESSION['pantalla'] == '5005' or $_SESSION['pantalla'] == '5006' or $_SESSION['pantalla'] == '5019') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_actas'] = "block"; } }
-    //Menu Acuerdos y Seguimientos
-    if ($_SESSION['pantalla'] == '5007' or $_SESSION['pantalla'] == '5008' or $_SESSION['pantalla'] == '5009' or $_SESSION['pantalla'] == '5010') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_acuerdos_seguimientos'] = "block"; } } //Menu Lista de Asistencia 
-    if ($_SESSION['pantalla'] == '5011' or $_SESSION['pantalla'] == '5012') { if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_lista_asistencia'] = "block"; } } //Menu Lista de Actas Archivadas 
-    if ($_SESSION['pantalla'] == '5020'){ if ($_SESSION['confirmacion'] == 'block') { $_SESSION['gestion_consulta_actas'] = "block"; } } //Mantenimiento de Actas 
-    if ($_SESSION['pantalla'] == '5013' or $_SESSION['pantalla'] == '5014' or $_SESSION['pantalla'] == '5015' or $_SESSION['pantalla'] == '5016' or $_SESSION['pantalla'] == '5017' or $_SESSION['pantalla'] == '5018'){ if ($_SESSION['confirmacion'] == 'block') { $_SESSION['mantenimiento_actas'] = "block"; } } 
- 
+
+   if ($_SESSION['pantalla'] == '5000' or $_SESSION['pantalla'] == '5001' or $_SESSION['pantalla'] == '5003') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['gestion_reunion'] = "block";
+      }
+   } //Menu de Actas 
+   if ($_SESSION['pantalla'] == '5004' or $_SESSION['pantalla'] == '5005' or $_SESSION['pantalla'] == '5006' or $_SESSION['pantalla'] == '5019') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['gestion_actas'] = "block";
+      }
+   }
+   //Menu Acuerdos y Seguimientos
+   if ($_SESSION['pantalla'] == '5007' or $_SESSION['pantalla'] == '5008' or $_SESSION['pantalla'] == '5009' or $_SESSION['pantalla'] == '5010') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['gestion_acuerdos_seguimientos'] = "block";
+      }
+   } //Menu Lista de Asistencia 
+   if ($_SESSION['pantalla'] == '5011' or $_SESSION['pantalla'] == '5012') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['gestion_lista_asistencia'] = "block";
+      }
+   } //Menu Lista de Actas Archivadas 
+   if ($_SESSION['pantalla'] == '5020') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['gestion_consulta_actas'] = "block";
+      }
+   } //Mantenimiento de Actas 
+   if ($_SESSION['pantalla'] == '5013' or $_SESSION['pantalla'] == '5014' or $_SESSION['pantalla'] == '5015' or $_SESSION['pantalla'] == '5016' or $_SESSION['pantalla'] == '5017' or $_SESSION['pantalla'] == '5018') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_actas'] = "block";
+      }
+   }
+
    //aqui termina modulo actas
 
    if ($_SESSION['pantalla'] == '47' or $_SESSION['pantalla'] == '48' or $_SESSION['pantalla'] == '104' or $_SESSION['pantalla'] == '275') {
@@ -581,9 +453,9 @@ if ($_SESSION['pantalla'] == '8235') {
    //AGREGANDO MODULO CVE
 
 
-  
 
-  
+
+
 
    //----agregando vistas de GESTION DEL MODULO DE JEFATURA----//
    if ($_SESSION['pantalla'] = '266') {
@@ -746,76 +618,69 @@ if ($_SESSION['pantalla'] == '8235') {
 
 
 
-//GESTION LABORATORIO
-if ($_SESSION['pantalla']='194' or $_SESSION['pantalla']='195' or $_SESSION['pantalla']='196' or $_SESSION['pantalla']='210' or $_SESSION['pantalla']='211' or $_SESSION['pantalla']='218' or $_SESSION['pantalla']='208' or $_SESSION['pantalla']='209' or $_SESSION['pantalla']='212' or $_SESSION['pantalla']='214' or $_SESSION['pantalla']='217' or $_SESSION['pantalla']='207' or $_SESSION['pantalla']='206'  ){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_gestion_laboratorio'] = "block";
+   //GESTION LABORATORIO
+
+   if ($_SESSION['pantalla'] = '194' or $_SESSION['pantalla'] = '195' or $_SESSION['pantalla'] = '196') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['producto_vista'] = "block";
+      }
    }
-}
 
 
-
-if ($_SESSION['pantalla']='194' or $_SESSION['pantalla']='195' or $_SESSION['pantalla']='196'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['producto_vista'] = "block";
+   if ($_SESSION['pantalla'] = '210' or $_SESSION['pantalla'] = '211' or $_SESSION['pantalla'] = '218') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['adquisicion_vista'] = "block";
+      }
    }
-}
 
 
-if ($_SESSION['pantalla']='210' or $_SESSION['pantalla']='211' or $_SESSION['pantalla']='218'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['adquisicion_vista'] = "block";
+   if ($_SESSION['pantalla'] = '208' or $_SESSION['pantalla'] = '209') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['salida_vista'] = "block";
+      }
    }
-}
 
-
-if ($_SESSION['pantalla']='208' or $_SESSION['pantalla']='209'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['salida_vista'] = "block";
+   if ($_SESSION['pantalla'] = '212' or $_SESSION['pantalla'] = '214') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['asignacion_vista'] = "block";
+      }
    }
-}
 
-if ($_SESSION['pantalla']='212' or $_SESSION['pantalla']='214'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['asignacion_vista'] = "block";
+   if ($_SESSION['pantalla'] = '217') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['transaccion_kardex'] = "block";
+      }
    }
-}
 
-if ($_SESSION['pantalla']='217'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['transaccion_kardex'] = "block";
+
+   if ($_SESSION['pantalla'] = '206' or $_SESSION['pantalla'] = '207') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['reportes_vista'] = "block";
+      }
    }
-}
 
-
-if ($_SESSION['pantalla']='206' or $_SESSION['pantalla']='207'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['reportes_vista'] = "block";
+   if ($_SESSION['pantalla'] = '206') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['reportes_existencias_vista'] = "block";
+      }
    }
-}
 
-if ($_SESSION['pantalla']='206'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['reportes_existencias_vista'] = "block";
+   if ($_SESSION['pantalla'] = '207') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['reportes_ubicacion_vista'] = "block";
+      }
    }
-}
 
-if ($_SESSION['pantalla']='207'){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['reportes_ubicacion_vista'] = "block";
+   if ($_SESSION['pantalla'] = '184' and $_SESSION['pantalla'] = '185' or $_SESSION['pantalla'] = '186' or $_SESSION['pantalla'] = '187' or $_SESSION['pantalla'] = '188' or $_SESSION['pantalla'] = '189' or $_SESSION['pantalla'] = '191' or $_SESSION['pantalla'] = '192' or $_SESSION['pantalla'] = '197' or $_SESSION['pantalla'] = '198' or $_SESSION['pantalla'] = '199' or $_SESSION['pantalla'] = '200') {
+      if ($_SESSION['confirmacion'] == 'block') {
+         $_SESSION['mantenimiento_laboratorio'] = "block";
+      }
    }
-}
-
-if ($_SESSION['pantalla']='184' and $_SESSION['pantalla']='185' or $_SESSION['pantalla']='186' or $_SESSION['pantalla']='187' or $_SESSION['pantalla']='188' or $_SESSION['pantalla']='189' or $_SESSION['pantalla']='191' or $_SESSION['pantalla']='192' or $_SESSION['pantalla']='197'or $_SESSION['pantalla']='198' or $_SESSION['pantalla']='199' or $_SESSION['pantalla']='200' ){
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['mantenimiento_laboratorio'] = "block";
-   }
-}
 
 
 
-    //COMITE VIDA ESTUDIANTL
-   
+   //COMITE VIDA ESTUDIANTL
+
    if ($_SESSION['pantalla'] == '8220' or $_SESSION['pantalla'] == '8221' or $_SESSION['pantalla'] == '8222' or $_SESSION['pantalla'] == '8223') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['administracion_cve'] = "block";
@@ -849,9 +714,9 @@ if ($_SESSION['pantalla']='184' and $_SESSION['pantalla']='185' or $_SESSION['pa
          $_SESSION['memos_cve'] = "block";
       }
    }
-  
+
    //Fin del Comite vide estudiantil
- 
+
 
    //PERFIL 360
    if ($_SESSION['pantalla'] = '116') {
@@ -861,28 +726,7 @@ if ($_SESSION['pantalla']='184' and $_SESSION['pantalla']='185' or $_SESSION['pa
    }
 
 
-  //MENU ADMINISTRACION APP 
-
-  if ($_SESSION['pantalla'] = '10181') {
-   if ($_SESSION['confirmacion'] == 'block') {
-      $_SESSION['btn_administracion_app'] = "block";
-   }
-   }
-   if ($_SESSION['pantalla'] = '10162') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_administracion_app'] = "block";
-      }
-   }
-   if ($_SESSION['pantalla'] = '10161') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_administracion_app'] = "block";
-      }
-   }
-   if ($_SESSION['pantalla'] = '10160') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_administracion_app'] = "block";
-      }
-   }
+   //MENU ADMINISTRACION APP 
    if ($_SESSION['pantalla'] = '10168' and $_SESSION['pantalla'] = '10162' and $_SESSION['pantalla'] = '10180') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['movil_noticias'] = "block";
@@ -903,15 +747,11 @@ if ($_SESSION['pantalla']='184' and $_SESSION['pantalla']='185' or $_SESSION['pa
          $_SESSION['movil_bitacora'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '10164' and $_SESSION['pantalla'] = '10165' and $_SESSION['pantalla'] = '10170' and $_SESSION['pantalla'] = '10171' and $_SESSION['pantalla'] = '10172' and $_SESSION['pantalla'] = '10178') {
-      if ($_SESSION['confirmacion'] == 'block') {
-         $_SESSION['btn_gestion_app'] = "block";
-      }
-   }
+
    if ($_SESSION['pantalla'] = '10164' and $_SESSION['pantalla'] = '10165' and $_SESSION['pantalla'] = '10170' and $_SESSION['pantalla'] = '10171' and $_SESSION['pantalla'] = '10172' and $_SESSION['pantalla'] = '10179') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['menu_movil_mantenimientos'] = "block";
       }
    }
    //Aqui finaliza Menu APP
-}
+}//Aqui finaliza la funcion 

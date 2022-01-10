@@ -49,7 +49,7 @@ if (isset($_REQUEST['msj'])) {
 
 
 
-$Id_objeto = 19;
+$Id_objeto = 6004;
 
 $visualizacion = permiso_ver($Id_objeto);
 

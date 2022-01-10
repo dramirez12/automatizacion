@@ -5,7 +5,7 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_visualizar.php');
 
 
-if (permiso_ver('13') == '1') {
+if (permiso_ver('6001') == '1') {
 
   $_SESSION['incripcion_estudiante_charla_menu'] = "...";
 } else {
@@ -13,16 +13,7 @@ if (permiso_ver('13') == '1') {
   tiene permisos para visualizar";
 }
 
-
-if (permiso_ver('17') == '1') {
-
-  $_SESSION['registrar_empresas_practica_menu'] = "...";
-} else {
-  $_SESSION['registrar_empresas_practica_menu'] = "No 
-  tiene permisos para visualizar";
-}
-
-if (permiso_ver('18') == '1') {
+if (permiso_ver('6005') == '1') {
 
   $_SESSION['historial_constancias_practica_menu'] = "...";
 } else {
@@ -30,7 +21,7 @@ if (permiso_ver('18') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('19') == '1') {
+if (permiso_ver('6004') == '1') {
 
   $_SESSION['subir_doc_practica_menu'] = "...";
 } else {
@@ -40,7 +31,7 @@ if (permiso_ver('19') == '1') {
 
 
 
-if (permiso_ver('39') == '1') {
+if (permiso_ver('6002') == '1') {
 
   $_SESSION['solicitud_practica_menu'] = "...";
 } else {
@@ -48,7 +39,7 @@ if (permiso_ver('39') == '1') {
   tiene permisos para visualizar";
 }
 
-if (permiso_ver('40') == '1') {
+if (permiso_ver('6003') == '1') {
 
   $_SESSION['gestion_solicitud_practica_menu'] = "...";
 } else {

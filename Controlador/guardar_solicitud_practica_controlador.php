@@ -55,7 +55,7 @@ if (isset($identidad_estudiante) and isset($nacimiento_estudiante) and isset($di
 
 
                           if ($resultado === TRUE) {
-                            $Id_objeto=39; 
+                            $Id_objeto=6002; 
                           bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'],'INSERTO' , 'UNA SOLICITUD PPS EL ESTUDIANTE '.$identidad_estudiante.'');
 
                           echo '<script type="text/javascript">

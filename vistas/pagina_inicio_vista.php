@@ -132,7 +132,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item has-treeview " style="display:<?php echo $_SESSION['btn_seguridad'] ?>">
+            <li class="nav-item has-treeview " style="display:<?php echo $_SESSION['MOD1'] ?>">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-user-shield"></i>
                 <p>
@@ -194,7 +194,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_vinculacion'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD2'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
@@ -231,7 +231,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_coordinacion'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD3'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -321,7 +321,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!-- AGREGANDO DOCENTES -->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_docentes'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD4'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file-signature"></i>
                 <p>
@@ -341,7 +341,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!-- AGREGANDO CONTROL DE ACTAS -->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_control_actas'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD5'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-paste"></i>
                 <p>
@@ -394,7 +394,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <!---- solicitudes ----->
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_solicitudes'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD6'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file-signature"></i>
                 <p>
@@ -480,7 +480,7 @@ if (session_status() === PHP_SESSION_NONE) {
               </ul>
             </li>
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_perfil_estudiantil'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD7'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file-signature"></i>
                 <p>
@@ -501,7 +501,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!-- AGREGANDO COMITE DE VIDA ESTUDIANTIL -->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_comite_vida_estudiantil'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD8'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-address-card"></i>
                 <p>
@@ -539,7 +539,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!---- Jefatura ----->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_Jefatura'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD9'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-tie"></i>
                 <p>
@@ -576,7 +576,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!----Modulo Administrativo App ----->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_administracion_app'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD10'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fab fa-buysellads"></i>
                 <p>
@@ -590,7 +590,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <li class="nav-item" style="display:<?php echo $_SESSION['movil_notificacion'] ?>">
                   <a href="../vistas/movil_menu_notificaciones_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p> Notificaciones </p>
+                    <p> Notificaciones </p>KT
                   </a>
                 </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['movil_noticias'] ?>">
@@ -615,7 +615,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!-- APP INFORMATICA -->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_gestion_app'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD11'] ?>">
               <a href="../vistas/movil_menu_gestion_vista" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -627,7 +627,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
 
             <!----GESTION LABORATORIO ----->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_gestion_laboratorio'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD12'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -703,7 +703,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <!---- Ayuda ----->
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_ayuda'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD13'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book-open"></i>
                 <p>
@@ -732,7 +732,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <!---- ----->
             <!----MANTENIMIENTOS ----->
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_mantenimiento'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD14'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -817,7 +817,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </li>
             <!----About ----->
 
-            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['btn_solicitudes'] ?>">
+            <li class="nav-item has-treeview" style="display:<?php echo $_SESSION['MOD15'] ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-info"></i>
                 <p>

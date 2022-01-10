@@ -8,7 +8,7 @@ require_once ('../clases/funcion_bitacora.php');
 
 
 
-$Id_objeto=19;
+$Id_objeto=6004;
 
 
 $sqlsubida=("SELECT valor FROM `tbl_parametros` where Parametro='CANTIDAD_DOCUMENTOS'");

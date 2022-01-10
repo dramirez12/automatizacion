@@ -8,7 +8,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 //Objeto de egresado
-$Id_objeto = 13;
+$Id_objeto = 6001;
 //txt_constancia_charla
 
 
@@ -48,7 +48,6 @@ if ($visualizacion == 0) {
   $sql = ("select concat(p.nombres,' ', p.apellidos) as nombre ,px.valor from tbl_personas_extendidas px, tbl_personas p where  p.id_persona='$id_persona' and px.id_atributo=12 and px.id_persona=p.id_persona ");
   //Obtener la fila del query
   $resultado = mysqli_fetch_assoc($mysqli->query($sql));
-
   $nombre = $resultado['nombre'];
   $cuenta = $resultado['valor'];
 }

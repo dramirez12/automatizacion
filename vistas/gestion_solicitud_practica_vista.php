@@ -74,7 +74,7 @@ FROM tbl_roles";
 
 
 
-$Id_objeto = 40;
+$Id_objeto = 6003;
 $visualizacion = permiso_ver($Id_objeto);
 
 
