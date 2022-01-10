@@ -40,21 +40,6 @@ if ($visualizacion == 0) {
     $_SESSION['btn_guardar_permisos'] = "disabled";
   }
 
-  /*
-if (isset($_REQUEST['msj']))
- {
-   $msj=$_REQUEST['msj'];
-
-    if ($msj==1) 
-      {
-      echo '<script> alert("Permisos agregados correctamente")</script>';
-      }
-           if ($msj==2)
-            {
-              echo '<script> alert("Lo sentimos tiene campos por rellenar ")</script>';
-            }
-   
-}*/
 }
 
 
@@ -131,7 +116,7 @@ ob_end_flush();
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <label>Roles</label>
-                    <select class="form-control select2" style="width: 100%;" name="comborol" required="">
+                    <select class="form-control select2" id="select_roles" style="width: 100%;" name="comborol" required="">
                       <option value="0">Seleccione un Rol:</option>
                       <?php
                       $query = $mysqli->query("SELECT * FROM tbl_roles ");
@@ -204,11 +189,12 @@ ob_end_flush();
             <div class="card-header">
               <h3 class="card-title">Pantallas</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+               <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>-->
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+                <!--      
               <table id="tabla" class="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -218,7 +204,7 @@ ob_end_flush();
                   </tr>
                 </thead>
                 <tbody>
-                  <?php while ($row = $resultadotabla_permisos->fetch_array(MYSQLI_ASSOC)) { ?>
+                  <?php /* while ($row = $resultadotabla_permisos->fetch_array(MYSQLI_ASSOC)) { ?>
                     <tr>
                       <td><?php echo $row['objeto']; ?></td>
 
@@ -230,11 +216,16 @@ ob_end_flush();
                       </td>
 
                     </tr>
-                  <?php } ?>
+                  <?php } */
+                 
+                ?>
                 </tbody>
-              </table>
+              </table>-->
             </div>
-            <!-- /.card-body -->
+            <div id="modulos">
+               <!-- /.card-body -->
+             
+            </div><!--modulos-->
           </div>
 
 
@@ -249,41 +240,7 @@ ob_end_flush();
 
 
   </div>
-
+  <script src="../js/crear_permisos.js  "></script>
 </body>
 
 </html>
-<script type="text/javascript">
-  $(function() {
-
-    $('#tabla').DataTable({
-      "language": {
-
-
-        "sProcessing": "Procesando...",
-        "sLengthMenu": "Mostrar _MENU_ registros",
-        "sZeroRecords": "No se encontraron resultados",
-        "sEmptyTable": "Ningún dato disponible en esta tabla",
-        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
-        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix": "",
-        "sSearch": "Buscar:",
-        "sUrl": "",
-        "sInfoThousands": ",",
-        "sLoadingRecords": "Cargando...",
-        "oPaginate": {
-          "sFirst": "Primero",
-          "sLast": "Último",
-          "sNext": "Siguiente",
-          "sPrevious": "Anterior"
-        },
-        "oAria": {
-          "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-        }
-
-      }
-    });
-  });
-</script>

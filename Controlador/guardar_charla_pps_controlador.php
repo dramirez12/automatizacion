@@ -46,7 +46,7 @@ if (!empty($No_constancia) and $jornada_ <> "0") {
 
                 </script>';
   } else {
-    $Id_objeto = 13;
+    $Id_objeto = 6001;
 
     $usuario = $_SESSION['id_usuario'];
     $id = ("select id_persona from tbl_usuarios where id_usuario='$usuario'");

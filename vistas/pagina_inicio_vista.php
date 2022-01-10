@@ -156,6 +156,18 @@ if (session_status() === PHP_SESSION_NONE) {
                     <p>Usuarios</p>
                   </a>
                 </li>
+                <li class="nav-item" style="display:<?php echo $_SESSION['modulos_vista'] ?>">
+                  <a href="../vistas/menu_modulo_vista" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Módulos</p>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:<?php echo $_SESSION['objetos_vista'] ?>">
+                  <a href="../vistas/menu_objeto_vista" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Objetos</p>
+                  </a>
+                </li>
                 <li class="nav-item" style="display:<?php echo $_SESSION['roles_vista'] ?>">
                   <a href="../vistas/menu_roles_vista" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>

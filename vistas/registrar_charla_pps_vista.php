@@ -8,7 +8,7 @@ require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
 //Objeto de egresado
-$Id_objeto = 13;
+$Id_objeto = 6001;
 //txt_constancia_charla
 
 
