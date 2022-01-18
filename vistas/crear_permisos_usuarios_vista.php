@@ -167,13 +167,13 @@ ob_end_flush();
 
 
                 <p class="text-center" style="margin-top: 20px;">
-                  <button type="submit" class="btn btn-primary" id="btn_guardar_permisos" name="btn_guardar_permisos"> <?php echo $_SESSION['btn_guardar_permisos']; ?><i class="zmdi zmdi-floppy"></i> Guardar</button>
+                  <button type="submit" class="btn btn-primary" id="btn_guardar_permisos" name="btn_guardar_permisos" value="Act"> <?php echo $_SESSION['btn_guardar_permisos']; ?><i class="zmdi zmdi-floppy"></i> Guardar</button>
                 </p>
 
               </div>
             </div>
 
-
+            <input type="text" name="operacion" id="operacion" hidden value="1">
 
             <!-- /.card-body -->
             <div class="card-footer">
@@ -189,41 +189,18 @@ ob_end_flush();
             <div class="card-header">
               <h3 class="card-title">Pantallas</h3>
               <div class="card-tools">
-               <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>-->
+                
+               <button type="button" class="btn btn-warning form-control-sm" id="editar_permisos">EDITAR <i id="icono_editar" class="fas fa-edit"></i></button>
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <!--      
-              <table id="tabla" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>PANTALLA</th>
-                    <th>ESTADO</th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php /* while ($row = $resultadotabla_permisos->fetch_array(MYSQLI_ASSOC)) { ?>
-                    <tr>
-                      <td><?php echo $row['objeto']; ?></td>
-
-
-                      <td style="text-align: center;">
-
-                        <input type="checkbox" name="objeto[]" value="<?php echo $row['Id_objeto']; ?>">
-
-                      </td>
-
-                    </tr>
-                  <?php } */
-                 
-                ?>
+              
                 </tbody>
-              </table>-->
+              </table>
             </div>
             <div id="modulos">
-               <!-- /.card-body -->
+              
              
             </div><!--modulos-->
           </div>
