@@ -1,9 +1,7 @@
 <?php 
 
 ob_start();
-require_once "../../clases/global.php";
-
-
+require_once dirname(dirname(__DIR__))."/clases/global.php";
 class Conexion{
 
     public function conexion_bd(){
