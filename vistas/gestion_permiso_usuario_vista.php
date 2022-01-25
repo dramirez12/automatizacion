@@ -10,7 +10,19 @@ require_once('../clases/Conexion.php');
 require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
-
+$sqltabla_permisos = "select r.rol , p.objeto,  Case pu.insertar when 0 then 'Inactivo' 
+when 1 then 'Activo'
+END   as Insertar ,   
+Case pu.Modificar when 0 then 'Inactivo' 
+when 1 then 'Activo'
+END   as Modificar ,
+Case pu.Eliminar when 0 then 'Inactivo' 
+when 1 then 'Activo'
+END   as Eliminar ,
+Case pu.Visualizar when 0 then 'Inactivo' 
+when 1 then 'Activo'
+END   as Visualizar , m.nombre   from tbl_permisos_usuarios pu,tbl_roles r,tbl_objetos p, tbl_modulos m,tbl_modulo_objetos mo where pu.id_rol=r.id_rol and pu.Id_objeto=p.Id_objeto and p.Id_objeto=mo.id_objeto and mo.id_modulo=m.id_modulo;
+";
 
 if (isset($_REQUEST['msj'])) {
 
@@ -28,18 +40,7 @@ if (isset($_REQUEST['msj'])) {
                     
                 </script>';
 
-    $sqltabla_permisos = "select r.rol , p.objeto,  Case pu.insertar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Insertar ,   
-Case pu.Modificar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Modificar ,
-Case pu.Eliminar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Eliminar ,
-Case pu.Visualizar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Visualizar    from tbl_permisos_usuarios pu,tbl_roles r,tbl_objetos p where pu.id_rol=r.id_rol and pu.Id_objeto=p.Id_objeto;";
+   
     $resultadotabla_permisos = $mysqli->query($sqltabla_permisos);
   }
 
@@ -94,18 +95,7 @@ if ($visualizacion == 0) {
 
 
   /* Manda a llamar todos las datos de la tabla para llenar el gridview  */
-  $sqltabla_permisos = "select r.rol , p.objeto,  Case pu.insertar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Insertar ,   
-Case pu.Modificar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Modificar ,
-Case pu.Eliminar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Eliminar ,
-Case pu.Visualizar when 0 then 'Inactivo' 
-             when 1 then 'Activo'
-END   as Visualizar    from tbl_permisos_usuarios pu,tbl_roles r,tbl_objetos p where pu.id_rol=r.id_rol and pu.Id_objeto=p.Id_objeto;";
+  
   $resultadotabla_permisos = $mysqli->query($sqltabla_permisos);
 
   /* Se declara una variable para el input check*/
@@ -198,18 +188,7 @@ END   as Visualizar    from tbl_permisos_usuarios pu,tbl_roles r,tbl_objetos p w
     }
 
 
-    /* La variable $msj me sirve para enviar un mensaje desde actualizar.php desde esta pagina */
-    /*  $_REQUEST recibe el valor de la variable ?msj y se valida con el isset*/
-    /* if (isset($_REQUEST['msj']))
-    {
-    $msj=$_REQUEST['msj'];
     
-    if ($msj==1)
-        {
-         echo '<script> alert("Permisos modificada correctamente")</script>';
-        }
-   
-      */
   }
 }
 
@@ -273,11 +252,13 @@ ob_end_flush();
             <tr>
               <th>ROL</th>
               <th>PANTALLA</th>
+              <th>MÓDULO</th>
               <th>VISUALIZAR</th>
               <th>INSERTAR</th>
               <th>MODIFICAR</th>
               <th>ELIMINAR</th>
               <th>EDITAR</th>
+
 
             </tr>
           </thead>
@@ -286,6 +267,7 @@ ob_end_flush();
               <tr>
                 <td><?php echo $row['rol']; ?></td>
                 <td><?php echo $row['objeto']; ?></td>
+                <td><?php echo $row['nombre']; ?></td>
                 <td><?php echo $row['Visualizar']; ?></td>
                 <td><?php echo $row['Insertar']; ?></td>
                 <td><?php echo $row['Modificar']; ?></td>
