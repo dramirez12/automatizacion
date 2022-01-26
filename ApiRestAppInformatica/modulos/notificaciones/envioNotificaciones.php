@@ -50,6 +50,11 @@
                         http_response_code(400);
                         $mensaje = "Error con las variables enviadas a la API REST";
                         echo json_encode($httpResponseCode->badRequest($mensaje));
+                        break; 
+                    case "error":
+                        http_response_code(500);
+                        $mensaje = "Ocurrio algún problema al insertar las transacciones en la base de datos, no se enviarons las notificaciones, intentelo nuevamente";
+                        echo json_encode($httpResponseCode->internalServerError($mensaje));
                         break;                    
                     default:
                         //Algun error del servidor
