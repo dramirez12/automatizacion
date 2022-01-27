@@ -126,10 +126,11 @@ ob_end_flush();
 
                     <td style="text-align: center;">
 
-                      <form class="well" action="../pdf/reporte_constancia_charla.php" method="POST" target="_blank">
-                        <button type="submit" class="btn btn-secondary btn-raised btn-sm" name="btn_imprimir">Imprimir
-                          <i class="zmdi zmdi-local-printshop"></i>
-                    </td>
+                    <form class="well" action="../pdf/reporte_constancia_charla.php" method="POST" target="_blank">
+                        <input type="hidden" name="id_persona" value="<?php echo $id_persona ?>">
+                        <button type="submit"  class="btn btn-secondary btn-raised btn-sm" name= "btn_imprimir">Imprimir
+                        <i class="zmdi zmdi-local-printshop"></i>
+                      </td>
                     </form>
                     <td style="text-align: center;">
 

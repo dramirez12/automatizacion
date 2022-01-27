@@ -370,6 +370,4 @@ foreach($_FILES["txt_documentos"]['tmp_name'] as $key => $tmp_name)
 
 				</script>';
 			}
-
-
 			?>

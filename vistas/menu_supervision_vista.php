@@ -4,9 +4,76 @@ require_once('../clases/Conexion.php');
 require_once('../clases/permisos_usuario.php');
 require_once('../clases/funcion_visualizar.php');
 
+if (permiso_ver('2010')=='1')
+ {
+  
+  $_SESSION['primera_supervision_menu']="...";
+}
+else
+{
+$_SESSION['primera_supervision_menu']="No tiene permisos para visualizar";
 
+}
 
+if (permiso_ver('2011')=='1')
+ {
+  
+  $_SESSION['segunda_supervision_menu']="...";
+}
+else
+{
+$_SESSION['segunda_supervision_menu']="No 
+  tiene permisos para visualizar";
 
+}
+
+if (permiso_ver('2012')=='1')
+ {
+  
+  $_SESSION['unica_supervision_menu']="...";
+}
+else
+{
+$_SESSION['unica_supervision_menu']="No 
+  tiene permisos para visualizar";
+
+}
+
+if (permiso_ver('2013')=='1')
+ {
+  
+  $_SESSION['asignar_docente_menu']="...";
+}
+else
+{
+$_SESSION['asignar_docente_menu']="No 
+  tiene permisos para visualizar";
+
+}
+
+if (permiso_ver('2014')=='1')
+ {
+  
+  $_SESSION['estudiante_pps_menu']="...";
+}
+else
+{
+$_SESSION['estudiante_pps_menu']="No 
+  tiene permisos para visualizar";
+
+}
+
+if (permiso_ver('2015')=='1')
+ {
+  
+  $_SESSION['reportes_pps_menu']="...";
+}
+else
+{
+$_SESSION['reportes_pps_menu']="No 
+  tiene permisos para visualizar";
+
+}
 
 
 ?>
@@ -61,8 +128,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>Primera Supervisión </h5>
-                  <br>
-                  <br>
+                  <p><?php echo $_SESSION['primera_supervision_menu']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-plus"></i>
@@ -79,8 +145,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>Segunda Supervisión </h5>
-                  <br>
-                  <br>
+                  <p><?php echo $_SESSION['segunda_supervision_menu']; ?></p>
                 </div>
                 <div class="icon">
 
@@ -98,8 +163,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>Única Supervisión </h5>
-                  <br>
-                  <br>
+                  <p><?php echo $_SESSION['unica_supervision_menu']; ?></p>
                 </div>
                 <div class="icon">
 
@@ -116,8 +180,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-light">
                 <div class="inner">
                   <h5>Asignar docente supervisor </h5>
-                  <br>
-                  <br>
+                  <p><?php echo $_SESSION['asignar_docente_menu']; ?></p>
                 </div>
                 <div class="icon">
 
@@ -136,7 +199,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-primary">
                 <div class="inner">
                   <h4>Estudiantes en Práctica Profesional Supervisada </h4>
-                  <br>
+                  <p><?php echo $_SESSION['estudiante_pps_menu']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>
@@ -150,7 +213,7 @@ require_once('../clases/funcion_visualizar.php');
               <div class="small-box bg-primary">
                 <div class="inner">
                   <h4>Reportes Práctica Profesional Supervisada </h4>
-                  <br>
+                  <p><?php echo $_SESSION['reportes_pps_menu']; ?></p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-user-edit"></i>

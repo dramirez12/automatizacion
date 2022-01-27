@@ -8,8 +8,30 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
+//Objeto 
+$Id_objeto = 2010;
+
+$visualizacion = permiso_ver($Id_objeto);
 
 
+
+if ($visualizacion == 0) {
+  echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/menu_supervision_vista.php";
+
+                            </script>';
+} else {
+
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A PRIMERA SUPERVISION.');
+
+}
 
 ob_end_flush();
 
@@ -29,7 +51,8 @@ ob_end_flush();
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-  </h <body>
+  </h>
+  <body>
 
 
   <div class="content-wrapper">

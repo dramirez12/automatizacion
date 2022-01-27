@@ -97,13 +97,13 @@ if (permiso_ver('6003') == '1') {
 
                 <div class="col-md-10">
                   <div>
-                    <p class="my-2">1. Solicitar la constancia de charla académica
+                    <p class="my-2">1. Solicitar la constancia de charla académica.
                     </p>
-                    <p class="my-2">2. Una vez obtenida la constancia de charla, registrar la solicitud para PPS
+                    <p class="my-2">2. Una vez obtenida la constancia de charla, registrar la solicitud para PPS.
                     </p>
-                    <p class="my-2">3. Ya registrada la solitud de PPS, tendrá que esperar a que se le notifique mediante un correo si se le a aprobado la práctica profesional o ah sido rechazada.
+                    <p class="my-2">3. Ya registrada la solitud de PPS, tendrá que esperar a que se le notifique mediante un correo si se le a aprobado la práctica profesional o ha sido rechazada.
                     </p>
-                    <p class="my-2">4. Ya registrada su solicitud, podrán enviar la documentación que se les este exigiendo (de preferencia en formato pdf). Para insertar mas de 1 documento a la vez utilizar el comando cntrl + clic derecho.
+                    <p class="my-2">4. Ya registrada su solicitud, podrán enviar la documentación que se les este exigiendo (de preferencia en formato pdf). Para insertar más de 1 documento a la vez utilizar el comando ctrl + clic derecho.
                     </p>
                     <p class="my-2">5. Estos pasos deben seguir este orden, ya que no podran adelantar solicitudes si asi lo quisieran.
                     </p>

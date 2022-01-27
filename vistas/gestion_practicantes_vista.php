@@ -10,6 +10,33 @@ require_once('../clases/funcion_bitacora.php');
 require_once('../clases/funcion_visualizar.php');
 require_once('../clases/funcion_permisos.php');
 
+//Objeto 
+$Id_objeto = 2014;
+
+$visualizacion = permiso_ver($Id_objeto);
+
+
+
+if ($visualizacion == 0) {
+  echo '<script type="text/javascript">
+                              swal({
+                                   title:"",
+                                   text:"Lo sentimos no tiene permiso de visualizar la pantalla",
+                                   type: "error",
+                                   showConfirmButton: false,
+                                   timer: 3000
+                                });
+                           window.location = "../vistas/menu_supervision_vista.php";
+
+                            </script>';
+} else {
+
+  bitacora::evento_bitacora($Id_objeto, $_SESSION['id_usuario'], 'INGRESO', 'A ESTUDIANTES EN PPS.');
+
+}
+
+ob_end_flush(); 
+
 ?>
 <<link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
