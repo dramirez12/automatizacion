@@ -107,7 +107,7 @@ switch ($_GET["op"]) {
 
       while ($r = $respuesta->fetch_object()) {
 
-        echo '<div class="card card-default collapsed-card " ><div class="card-header"><h3 class="card-title">' . $r->nombre . '</h3>&nbsp;  &nbsp;  &nbsp;  &nbsp;  <input type="checkbox" estado="0" onclick="checked_input(this,' . $r->id_modulo . ');" class="principal-input" name="" id="modulo_input' . $r->id_modulo . '" ><div class="card-tools" ><button type="button" name[]="" id="34" class="btn btn-tool obj-listar" data-card-widget="collapse"><i class="fas fa-plus"></i></button></div></div><!-- /.card-header --><div class="card-body" style="position: relative; display: none;" id="bodycard' . $r->id_modulo . '"><div id="' . $r->id_modulo . '" class="modulo-div"></div></div></div>';
+        echo '<div class="card card-default collapsed-card " ><div class="card-header" id="tarjeta_modulo'.$r->id_modulo.'"><h3 class="card-title">' . $r->nombre . '</h3>&nbsp;  &nbsp;  &nbsp;  &nbsp;  <div class="card-tools" ><input type="checkbox" estado="0" onclick="checked_input(this,' . $r->id_modulo . ');" class="principal-input" name="" id="modulo_input' . $r->id_modulo . '" ><button type="button" name[]="" id="34" class="btn btn-tool obj-listar" data-card-widget="collapse"><i class="fas fa-plus"></i></button></div></div><!-- /.card-header --><div class="card-body" style="position: relative; display: none;" id="bodycard' . $r->id_modulo . '"><div id="' . $r->id_modulo . '" class="modulo-div"></div></div></div>';
       }
     } else {
       echo 'No hay informacion';

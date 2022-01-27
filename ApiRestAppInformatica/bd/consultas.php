@@ -168,7 +168,7 @@ class Consultas
         $query = "CALL sp_insert_transacciones_android($segmento, $idNotificacion);";
         
         $respuesta = mysqli_query($bd, $query);
-
+echo mysqli_errno($bd);
         if(mysqli_errno($bd) == 0)
         {
             return $respuesta;

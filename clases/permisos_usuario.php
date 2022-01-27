@@ -195,31 +195,31 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
       }
    }
 
-   if ($_SESSION['pantalla'] == '29') {
+   if ($_SESSION['pantalla'] == '6006') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['solicitud_final_practica'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] == '30') {
+   if ($_SESSION['pantalla'] == '6007') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['solicitud_cambio_carrera'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] == '31') {
+   if ($_SESSION['pantalla'] == '6008') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['solicitud_carta_egresado'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] == '32') {
+   if ($_SESSION['pantalla'] == '6009') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['solicitud_equivalencias'] = "block";
       }
    }
 
-   if ($_SESSION['pantalla'] == '33') {
+   if ($_SESSION['pantalla'] == '6010') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['solicitud_cancelar_clases'] = "block";
       }
@@ -379,7 +379,7 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
 
 
 
-   if ($_SESSION['pantalla'] = '123' or $_SESSION['pantalla'] == '120') {
+   if ($_SESSION['pantalla'] = '6014' or $_SESSION['pantalla'] == '120') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['solicitud_examensuficiencia'] = "block";
       }
@@ -390,7 +390,7 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
          $_SESSION['suficiencia'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '121') {
+   if ($_SESSION['pantalla'] = '6016') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['reactivacion_cuenta'] = "block";
       }
@@ -419,12 +419,12 @@ function  permisos_a_roles_visualizar($pantalla, $confirmacion)
          $_SESSION['menu_revision_suficiencia'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '128') {
+   if ($_SESSION['pantalla'] = '6012') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['solicitud_servicio_comunitario'] = "block";
       }
    }
-   if ($_SESSION['pantalla'] = '129') {
+   if ($_SESSION['pantalla'] = '6017') {
       if ($_SESSION['confirmacion'] == 'block') {
          $_SESSION['revision_servicio_comunitario'] = "block";
       }

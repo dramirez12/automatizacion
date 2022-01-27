@@ -54,58 +54,67 @@
 
                             
                             //Insertar todas las transacciones en la base de datos
-                            $consulta->insertarTransaccionesAndroid($datosArray['segmento'], $datosArray['idLote']);
+                            $transaccion = $consulta->insertarTransaccionesAndroid($datosArray['segmento'], $datosArray['idLote']);
 
-                             //Preparacion del array para el json de los token
-                            while($datosbd = mysqli_fetch_assoc($respuesta))
-                            { 
-                                array_push($tokensbd, $datosbd['token']);
-                                $i++;                               
-                                
-                                //Preparacion de lotes, Firebase solo permite un maximo de 500 tokens a la vez
-                                if($i == 500)
-                                {
-                                    $i = 0;     
+                            if($transaccion != false)
+                            {
+
+                                //Preparacion del array para el json de los token
+                                while($datosbd = mysqli_fetch_assoc($respuesta))
+                                { 
+                                    array_push($tokensbd, $datosbd['token']);
+                                    $i++;                               
+                                    
+                                    //Preparacion de lotes, Firebase solo permite un maximo de 500 tokens a la vez
+                                    if($i == 500)
+                                    {
+                                        $i = 0;     
+
+                                        //Formato del array de los tokens (solo los valores del array)
+                                        $tokens = array_values($tokensbd);
+
+                                        //Validar que se envien los lotes                                  
+                                        $respuestaApi = $this->pushNotification($idLote, $titulo, $body, $imagen, $tokens, $serverKey);
+
+                                        if($respuestaApi != true)
+                                        {
+                                            //Se deberia guardar en algun lugar, para revisar por que no se envian las notificaciones
+                                        }                                        
+                                        
+                                        $tokensbd = array();
+                                    }                                
+                                }  
+
+                                //Por si el lote o ultimo lote no llega a los 500 tokens
+                                if($i > 0)
+                                {       
+                                    $i = 0;   
 
                                     //Formato del array de los tokens (solo los valores del array)
                                     $tokens = array_values($tokensbd);
 
-                                    //Validar que se envien los lotes                                  
+                                    //Validar que se envien los lotes                                        
                                     $respuestaApi = $this->pushNotification($idLote, $titulo, $body, $imagen, $tokens, $serverKey);
 
                                     if($respuestaApi != true)
                                     {
                                         //Se deberia guardar en algun lugar, para revisar por que no se envian las notificaciones
-                                    }                                        
-                                    
-                                    $tokensbd = array();
-                                }                                
-                            }  
-
-                            //Por si el lote o ultimo lote no llega a los 500 tokens
-                            if($i > 0)
-                            {       
-                                $i = 0;   
-
+                                    }                             
+                                }
+                                
                                 //Formato del array de los tokens (solo los valores del array)
-                                $tokens = array_values($tokensbd);
+                                //$tokens = array_values($tokensbd);
 
-                                //Validar que se envien los lotes                                        
-                                $respuestaApi = $this->pushNotification($idLote, $titulo, $body, $imagen, $tokens, $serverKey);
+                                //$respuestaApi = $this->pushNotification($titulo, $body, $imagen, $tokens, $serverKey);
 
-                                if($respuestaApi != true)
-                                {
-                                    //Se deberia guardar en algun lugar, para revisar por que no se envian las notificaciones
-                                }                             
-                            }
+                                if($respuestaApi == true) return "ok";
+                                else return $respuestaApi; 
                             
-                            //Formato del array de los tokens (solo los valores del array)
-                            //$tokens = array_values($tokensbd);
-
-                            //$respuestaApi = $this->pushNotification($titulo, $body, $imagen, $tokens, $serverKey);
-
-                            if($respuestaApi == true) return "ok";
-                            else return $respuestaApi;  
+                            }else
+                            {
+                                //Ocurrio algun error al insertar las transacciones en la db
+                                return "error";
+                            }
 
                         }else
                         {
