@@ -177,7 +177,7 @@ ob_end_flush();
 
             <div class="col-sm-6">
               <div class="form-group">
-                <label> Documentos</label>
+                <label> Documento</label>
                 <input class="form-control" type="file" class="form-control" id="txt_documentos[]" name="txt_documentos[]" multiple="">
               </div>
             </div>
