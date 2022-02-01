@@ -17,14 +17,13 @@ $(function() {
         var pastTime = new Date(timeString);
         var timeDiff = currentTime - pastTime;
         var minPast = Math.floor(timeDiff / 600000);
-
+       
         if (minPast > maxMinutes) {
             sessionStorage.removeItem("lastTimeStamp");
             window.location = "../vistas/cerrar_sesion.php";
             return false;
         } else {
-            //JUST ADDED AS A VISUAL CONFIRMATION
-            /*   console.log(currentTime +" - "+ pastTime+" - "+minPast+" min past"); */
+            
         }
     }
 

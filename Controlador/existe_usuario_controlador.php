@@ -21,6 +21,8 @@ if(is_numeric($Usuario) && $cuenta==11)
 	$sql="SELECT id_persona from tbl_personas_extendidas where valor='$Usuario'";
 	$resultado1 = $mysqli->query($sql);
 	$fila = mysqli_fetch_array($resultado1); 
+
+	session_set_cookie_params(10);
 	session_start();
 	$_SESSION["id"]=$fila['id_persona'];
 	/* Verifica que el usuario y contraseña sean correctas, si es uno es correcto , si noes falso*/
@@ -43,6 +45,7 @@ if ($row['usuario'] ==1 )
 	$result = $mysqli->query($sql_datos);
 	$row = mysqli_fetch_array($result); 
 	session_start();
+	
 	$_SESSION["id_usuario"]=$row['id_usuario'];
 	$_SESSION["id_persona"]=$row['id_persona'];
 	$_SESSION["usuario"]=$row['usuario'];
@@ -66,6 +69,7 @@ if ($row['usuario'] ==1 )
 		if ($resultado_fecha_contra['Vence_contra']<$resultado_PARAMETRO_fecha_contra['valor']) 
 		{
 			header('location: ../vistas/pagina_principal_vista.php');
+	
 				
 		}
 		else
@@ -329,6 +333,7 @@ elseif(ctype_alpha($Usuario)==true)
 				if ($resultado_fecha_contra['Vence_contra']<$resultado_PARAMETRO_fecha_contra['valor']) 
 				{
 					header('location: ../vistas/pagina_principal_vista.php');	
+					session_set_cookie_params(10);
 				}
 				else
 				{

@@ -20,7 +20,7 @@
                 $i = 0; 
                 $push = false;
                 
-                //print_r($respuesta);
+                print_r($respuesta);
                 if(mysqli_num_rows($respuesta) > 0)
                 {     
                     //Preparacion del array para el json

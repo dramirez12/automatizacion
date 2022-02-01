@@ -30,7 +30,7 @@ class Consultas
         $query = "CALL sp_get_noticias('$token');";
         
         $respuesta = mysqli_query($bd, $query);
-
+echo mysqli_errno($bd)." error ";
         mysqli_close($bd);
         return $respuesta;
     }
@@ -168,7 +168,7 @@ class Consultas
         $query = "CALL sp_insert_transacciones_android($segmento, $idNotificacion);";
         
         $respuesta = mysqli_query($bd, $query);
-echo mysqli_errno($bd);
+
         if(mysqli_errno($bd) == 0)
         {
             return $respuesta;
@@ -568,7 +568,7 @@ echo mysqli_errno($bd);
                                                 '$telefono', '$numeroCuenta');";
         
         $respuesta = mysqli_query($bd, $query);
-        
+        echo mysqli_errno($bd);
         if(mysqli_errno($bd) == 0)
         {
             return $respuesta;

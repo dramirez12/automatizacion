@@ -54,12 +54,12 @@
                             $segmento = 1;
                             break;     
                         case 'ESTUDIANTE':
-                            $rol = 2;
-                            $segmento = 3;
+                            $rol = 49;
+                            $segmento = 2;
                             break;     
                         case 'EGRESADO':
-                            $rol = 2;
-                            $segmento = 5;
+                            $rol = 49;
+                            $segmento = 4;
                             break;                                       
                         default: //permisos de invitado por defecto
                             $rol = 1;

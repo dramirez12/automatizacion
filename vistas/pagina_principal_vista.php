@@ -15,7 +15,6 @@ require_once ('../clases/Conexion.php');
 
 
 
- 
 
 <body >
 <script src="../js/autologout.js"></script>
@@ -29,6 +28,7 @@ require_once ('../clases/Conexion.php');
                 <div class="">
                   <img src="../dist/img/lOGO_OFICIAL.jpg" alt="AdminLTE Logo" class="brand-image   img-fluid"style="opacity: .2">
                 </div>	
+               
                 <div>
                 <img src="../dist/img/logo-unah-blue.png" alt="AdminLTE Logo" class="brand-image  img-fluid"style="opacity: .3">
                 </div>

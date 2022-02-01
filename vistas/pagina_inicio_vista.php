@@ -12,8 +12,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +62,15 @@ if (session_status() === PHP_SESSION_NONE) {
 
 </head>
 
+
 <body class="hold-transition sidebar-mini layout-fixed">
+  <?php 
+  
+if(session_status() === PHP_SESSION_ACTIVE){
+
+  
+
+  ?>
   <div class="wrapper">
 
 
@@ -849,6 +855,19 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
   </div>
+  <?php
+}else{
+  echo '<script>swal({
+    title: "¡LA SESIÓN CADUCO Ó EXPIRÓ.!",
+    text: "VUELVA POR FAVOR A INICIAR SESIÓN.",
+    type: "warning",
+    timer: 3000
+}, 
+function(){
+    window.location.href = "../login.php";
+}) </script>';
+}
+?>
 
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
@@ -911,6 +930,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <script src="../js/sweetalert2.min.js"></script>
 
   <script src="../js/main.js"></script>
+  <script src="../js/autologout.js"></script>
 
 
   <!-- HORAS VOEA
